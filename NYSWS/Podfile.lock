@@ -1,0 +1,124 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - BRPickerView (2.8.0):
+    - BRPickerView/AddressPickerView (= 2.8.0)
+    - BRPickerView/Base (= 2.8.0)
+    - BRPickerView/DatePickerView (= 2.8.0)
+    - BRPickerView/StringPickerView (= 2.8.0)
+  - BRPickerView/AddressPickerView (2.8.0):
+    - BRPickerView/Base
+  - BRPickerView/Base (2.8.0)
+  - BRPickerView/DatePickerView (2.8.0):
+    - BRPickerView/Base
+  - BRPickerView/StringPickerView (2.8.0):
+    - BRPickerView/Base
+  - DZNEmptyDataSet (1.8.1)
+  - FFPopup (1.1.5)
+  - FLAnimatedImage (1.0.17)
+  - FlexLib (3.1.6):
+    - FlexLib/standard (= 3.1.6)
+  - FlexLib/standard (3.1.6):
+    - FlexLib/standard/no-arc (= 3.1.6)
+    - Yoga (= 1.14.0)
+  - FlexLib/standard/no-arc (3.1.6):
+    - Yoga (= 1.14.0)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - IQKeyboardManager (6.5.11)
+  - Masonry (1.1.0)
+  - MJRefresh (3.7.5)
+  - ReactiveObjC (3.1.1)
+  - SDWebImage (5.15.5):
+    - SDWebImage/Core (= 5.15.5)
+  - SDWebImage/Core (5.15.5)
+  - SGQRCode (4.1.0)
+  - SVProgressHUD (2.2.5)
+  - WRNavigationBar (1.4.0)
+  - XHLaunchAd (3.9.12):
+    - FLAnimatedImage (~> 1.0.12)
+  - Yoga (1.14.0)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+  - ZLPhotoBrowser-objc (1.0.4):
+    - SDWebImage
+
+DEPENDENCIES:
+  - AFNetworking (= 4.0.1)
+  - BRPickerView (= 2.8.0)
+  - DZNEmptyDataSet (= 1.8.1)
+  - FFPopup (= 1.1.5)
+  - FlexLib (= 3.1.6)
+  - FMDB (= 2.7.5)
+  - IQKeyboardManager (= 6.5.11)
+  - Masonry (= 1.1.0)
+  - MJRefresh (= 3.7.5)
+  - ReactiveObjC (= 3.1.1)
+  - SGQRCode
+  - SVProgressHUD (= 2.2.5)
+  - WRNavigationBar (= 1.4.0)
+  - XHLaunchAd (= 3.9.12)
+  - YYKit (= 1.0.9)
+  - ZLPhotoBrowser-objc
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - BRPickerView
+    - DZNEmptyDataSet
+    - FFPopup
+    - FLAnimatedImage
+    - FlexLib
+    - FMDB
+    - IQKeyboardManager
+    - Masonry
+    - MJRefresh
+    - ReactiveObjC
+    - SDWebImage
+    - SGQRCode
+    - SVProgressHUD
+    - WRNavigationBar
+    - XHLaunchAd
+    - Yoga
+    - YYKit
+    - ZLPhotoBrowser-objc
+
+SPEC CHECKSUMS:
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  BRPickerView: a0ff460bf092bc069db5a54153395b1f7e8f5300
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
+  FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
+  FlexLib: 11124863c7f197423b46d0593f2cd95c7ca0c0a5
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
+  XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
+  Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
+
+PODFILE CHECKSUM: 5e360bd3598ab87dc45890a5e5475a724a25f951
+
+COCOAPODS: 1.11.3

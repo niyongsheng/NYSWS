@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67F99B10A93F6D5A38977CB9 /* Pods_NYSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C39D75D6B210C9BCA03B427 /* Pods_NYSKit.framework */; };
+		C85979F329F4FB07008BEE7F /* NYSKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = C85979F229F4FB07008BEE7F /* NYSKit.docc */; };
+		C85979F429F4FB07008BEE7F /* NYSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C85979F129F4FB07008BEE7F /* NYSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8597AB229F51B35008BEE7F /* NYSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AAB29F51B34008BEE7F /* NYSTools.m */; };
+		C8597AB329F51B35008BEE7F /* NYSKeyChain.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AAC29F51B34008BEE7F /* NYSKeyChain.h */; };
+		C8597AB429F51B35008BEE7F /* NYSTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AAD29F51B35008BEE7F /* NYSTools.h */; };
+		C8597AB529F51B35008BEE7F /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AAE29F51B35008BEE7F /* NullSafe.m */; };
+		C8597AB629F51B35008BEE7F /* NYSKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AAF29F51B35008BEE7F /* NYSKeyChain.m */; };
+		C8597AB729F51B35008BEE7F /* NYSRegularCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AB029F51B35008BEE7F /* NYSRegularCheck.m */; };
+		C8597AB829F51B35008BEE7F /* NYSRegularCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AB129F51B35008BEE7F /* NYSRegularCheck.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8A10C2BBE352F3A5C63F1DD7 /* Pods-NYSKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSKit.debug.xcconfig"; path = "Target Support Files/Pods-NYSKit/Pods-NYSKit.debug.xcconfig"; sourceTree = "<group>"; };
+		8C39D75D6B210C9BCA03B427 /* Pods_NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		910C80FD2F1655B4DC58FD73 /* Pods-NYSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSKit.release.xcconfig"; path = "Target Support Files/Pods-NYSKit/Pods-NYSKit.release.xcconfig"; sourceTree = "<group>"; };
+		C85979EE29F4FB07008BEE7F /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C85979F129F4FB07008BEE7F /* NYSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSKit.h; sourceTree = "<group>"; };
+		C85979F229F4FB07008BEE7F /* NYSKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NYSKit.docc; sourceTree = "<group>"; };
+		C8597AAB29F51B34008BEE7F /* NYSTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSTools.m; sourceTree = "<group>"; };
+		C8597AAC29F51B34008BEE7F /* NYSKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSKeyChain.h; sourceTree = "<group>"; };
+		C8597AAD29F51B35008BEE7F /* NYSTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSTools.h; sourceTree = "<group>"; };
+		C8597AAE29F51B35008BEE7F /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		C8597AAF29F51B35008BEE7F /* NYSKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSKeyChain.m; sourceTree = "<group>"; };
+		C8597AB029F51B35008BEE7F /* NYSRegularCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSRegularCheck.m; sourceTree = "<group>"; };
+		C8597AB129F51B35008BEE7F /* NYSRegularCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSRegularCheck.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C85979EB29F4FB07008BEE7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F99B10A93F6D5A38977CB9 /* Pods_NYSKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		639ED7ACB8A408E0DA5D9429 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C39D75D6B210C9BCA03B427 /* Pods_NYSKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AED0372750A1BF94B373805F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A10C2BBE352F3A5C63F1DD7 /* Pods-NYSKit.debug.xcconfig */,
+				910C80FD2F1655B4DC58FD73 /* Pods-NYSKit.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		C85979E429F4FB06008BEE7F = {
+			isa = PBXGroup;
+			children = (
+				C85979F029F4FB07008BEE7F /* NYSKit */,
+				C85979EF29F4FB07008BEE7F /* Products */,
+				AED0372750A1BF94B373805F /* Pods */,
+				639ED7ACB8A408E0DA5D9429 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C85979EF29F4FB07008BEE7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C85979EE29F4FB07008BEE7F /* NYSKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C85979F029F4FB07008BEE7F /* NYSKit */ = {
+			isa = PBXGroup;
+			children = (
+				C85979F129F4FB07008BEE7F /* NYSKit.h */,
+				C8597AAE29F51B35008BEE7F /* NullSafe.m */,
+				C8597AAC29F51B34008BEE7F /* NYSKeyChain.h */,
+				C8597AAF29F51B35008BEE7F /* NYSKeyChain.m */,
+				C8597AB129F51B35008BEE7F /* NYSRegularCheck.h */,
+				C8597AB029F51B35008BEE7F /* NYSRegularCheck.m */,
+				C8597AAD29F51B35008BEE7F /* NYSTools.h */,
+				C8597AAB29F51B34008BEE7F /* NYSTools.m */,
+				C85979F229F4FB07008BEE7F /* NYSKit.docc */,
+			);
+			path = NYSKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C85979E929F4FB07008BEE7F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8597AB329F51B35008BEE7F /* NYSKeyChain.h in Headers */,
+				C8597AB829F51B35008BEE7F /* NYSRegularCheck.h in Headers */,
+				C85979F429F4FB07008BEE7F /* NYSKit.h in Headers */,
+				C8597AB429F51B35008BEE7F /* NYSTools.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C85979ED29F4FB07008BEE7F /* NYSKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C85979F729F4FB07008BEE7F /* Build configuration list for PBXNativeTarget "NYSKit" */;
+			buildPhases = (
+				A56E0C3218FDE2D3E186C5F9 /* [CP] Check Pods Manifest.lock */,
+				C85979E929F4FB07008BEE7F /* Headers */,
+				C85979EA29F4FB07008BEE7F /* Sources */,
+				C85979EB29F4FB07008BEE7F /* Frameworks */,
+				C85979EC29F4FB07008BEE7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NYSKit;
+			productName = NYSKit;
+			productReference = C85979EE29F4FB07008BEE7F /* NYSKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C85979E529F4FB06008BEE7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					C85979ED29F4FB07008BEE7F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = C85979E829F4FB06008BEE7F /* Build configuration list for PBXProject "NYSKit" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C85979E429F4FB06008BEE7F;
+			productRefGroup = C85979E429F4FB06008BEE7F;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C85979ED29F4FB07008BEE7F /* NYSKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C85979EC29F4FB07008BEE7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A56E0C3218FDE2D3E186C5F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NYSKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C85979EA29F4FB07008BEE7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8597AB229F51B35008BEE7F /* NYSTools.m in Sources */,
+				C8597AB629F51B35008BEE7F /* NYSKeyChain.m in Sources */,
+				C85979F329F4FB07008BEE7F /* NYSKit.docc in Sources */,
+				C8597AB529F51B35008BEE7F /* NullSafe.m in Sources */,
+				C8597AB729F51B35008BEE7F /* NYSRegularCheck.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C85979F529F4FB07008BEE7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C85979F629F4FB07008BEE7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C85979F829F4FB07008BEE7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A10C2BBE352F3A5C63F1DD7 /* Pods-NYSKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = F9J739W8Y4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C85979F929F4FB07008BEE7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 910C80FD2F1655B4DC58FD73 /* Pods-NYSKit.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = F9J739W8Y4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C85979E829F4FB06008BEE7F /* Build configuration list for PBXProject "NYSKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C85979F529F4FB07008BEE7F /* Debug */,
+				C85979F629F4FB07008BEE7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C85979F729F4FB07008BEE7F /* Build configuration list for PBXNativeTarget "NYSKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C85979F829F4FB07008BEE7F /* Debug */,
+				C85979F929F4FB07008BEE7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C85979E529F4FB06008BEE7F /* Project object */;
+}
