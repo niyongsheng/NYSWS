@@ -1,30 +1,25 @@
 platform :ios, '13.0'
-use_frameworks!
+#use_frameworks!
 inhibit_all_warnings!
 
 workspace './NYSWS.xcworkspace'
 
-# 框架公共依赖
-def kitCommonPods
-  pod 'YYKit', '1.0.9'
-  pod 'ReactiveObjC', '3.1.1'
-  pod 'AFNetworking', '4.0.1'
-  pod 'SVProgressHUD', '2.2.5'
-end
-
 # 项目公共依赖
 def commonPods
-  pod 'FMDB', '2.7.5'
   pod 'Masonry', '1.1.0'
   pod 'MJRefresh', '3.7.5'
+  pod 'ReactiveObjC', '3.1.1'
   pod 'SVProgressHUD', '2.2.5'
   pod 'DZNEmptyDataSet', '1.8.1'
+  
 end
 
 # Swift 项目
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   
   commonPods
+  pod 'FMDB', '2.7.5'
+  pod 'YYKit', '1.0.9'
   pod 'FlexLib', '3.1.6'
   pod 'FFPopup', '1.1.5'
   pod 'XHLaunchAd', '3.9.12'
@@ -33,12 +28,15 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   pod 'BRPickerView', '2.8.0'
   pod 'IQKeyboardManagerSwift', '6.5.11'
   pod 'ZLPhotoBrowser', '4.4.0'
+  
 end
 
 # Object-C 项目
 target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   
   commonPods
+  pod 'FMDB', '2.7.5'
+  pod 'YYKit', '1.0.9'
   pod 'FlexLib', '3.1.6'
   pod 'FFPopup', '1.1.5'
   pod 'XHLaunchAd', '3.9.12'
@@ -47,16 +45,35 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   pod 'BRPickerView', '2.8.0'
   pod 'IQKeyboardManager', '6.5.11'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
+  pod 'WRNavigationBar', '~>1.4.0’
   pod 'MBProgressHUD'
+  
+  pod 'JPush', '3.7.4'
+  pod 'UMDevice'
+  pod 'UMAPM'
+  pod 'UMCCommon'
+  pod 'UMCCommonLog', '2.0.2'
+  
+  post_install do |installer|
+    installer.generated_projects.each do |project|
+      project.targets.each do |target|
+        target.build_configurations.each do |config|
+          config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        end
+      end
+    end
+  end
+  
 end
 
-# UI Static Lib
+# UI Framework
 target 'NYSUIKit' do project './NYSUIKit/NYSUIKit.xcodeproj'
-  kitCommonPods
   commonPods
 end
 
-# Core Static Lib
+# Core Framework
 target 'NYSKit' do project './NYSKit/NYSKit.xcodeproj'
-  kitCommonPods
+  pod 'AFNetworking', '4.0.1'
+  pod 'SVProgressHUD', '2.2.5'
 end

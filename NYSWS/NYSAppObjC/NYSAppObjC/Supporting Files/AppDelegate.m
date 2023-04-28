@@ -6,6 +6,8 @@
 //
 
 #import "AppDelegate.h"
+#import "AppDelegate+AppService.h"
+#import "AppDelegate+PushService.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +16,29 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:[[UIViewController alloc] init]];
-    [self.window makeKeyAndVisible];
+    
+    // 友盟初始化
+    [self initUMeng];
+    
+    // 初始化window
+    [self initWindow];
+    
+    // 初始化导航栏样式
+    [self initNavBarAppearence];
+    
+    // 初始化app服务
+    [self initService];
+    
+    // 网络监听
+    [self initMonitorNetworkStatus];
+    
+    // 推送初始化
+    [self initPush:launchOptions application:application];
+    
+    
+    [[ThemeManager sharedThemeManager] configTheme];
+    
+    
     return YES;
 }
 

@@ -4,6 +4,18 @@
 #pragma mark -- 三方框架 --
 #import <NYSKit/NYSKit.h>
 #import <NYSUIKit/NYSUIkit.h>
+#import <WRNavigationBar/WRNavigationBar.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
+
+#pragma mark -- 宏定义 --
+#import "CommonMacros.h"
+#import "ConfigMacros.h"
+#import "StyleMacros.h"
+
+
+#import "NYSTabbarViewController.h"
+
+
 
 #pragma mark -- 模型 --
 

@@ -40,7 +40,12 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - IQKeyboardManager (6.5.11)
+  - IQKeyboardManagerSwift (6.5.11)
+  - JCore (2.7.1)
+  - JPush (3.7.4):
+    - JCore (< 3.0.0, >= 2.0.0)
   - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - ReactiveObjC (3.1.1)
   - SDWebImage (5.15.5):
@@ -48,6 +53,12 @@ PODS:
   - SDWebImage/Core (5.15.5)
   - SGQRCode (4.1.0)
   - SVProgressHUD (2.2.5)
+  - UMAPM (1.8.1)
+  - UMCCommon (7.3.7):
+    - UMAPM
+    - UMDevice
+  - UMCCommonLog (2.0.2)
+  - UMDevice (2.2.1)
   - WRNavigationBar (1.4.0)
   - XHLaunchAd (3.9.12):
     - FLAnimatedImage (~> 1.0.12)
@@ -55,8 +66,11 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
+  - ZLPhotoBrowser (4.4.0):
+    - ZLPhotoBrowser/Core (= 4.4.0)
   - ZLPhotoBrowser-objc (1.0.4):
     - SDWebImage
+  - ZLPhotoBrowser/Core (4.4.0)
 
 DEPENDENCIES:
   - AFNetworking (= 4.0.1)
@@ -66,15 +80,24 @@ DEPENDENCIES:
   - FlexLib (= 3.1.6)
   - FMDB (= 2.7.5)
   - IQKeyboardManager (= 6.5.11)
+  - IQKeyboardManagerSwift (= 6.5.11)
+  - JPush (= 3.7.4)
   - Masonry (= 1.1.0)
+  - MBProgressHUD
   - MJRefresh (= 3.7.5)
   - ReactiveObjC (= 3.1.1)
-  - SGQRCode
+  - SGQRCode (= 4.1.0)
   - SVProgressHUD (= 2.2.5)
+  - UMAPM
+  - UMCCommon
+  - UMCCommonLog (= 2.0.2)
+  - UMDevice
   - WRNavigationBar (= 1.4.0)
+  - WRNavigationBar (~> 1.4.0)
   - XHLaunchAd (= 3.9.12)
   - YYKit (= 1.0.9)
-  - ZLPhotoBrowser-objc
+  - ZLPhotoBrowser (= 4.4.0)
+  - ZLPhotoBrowser-objc (= 1.0.4)
 
 SPEC REPOS:
   trunk:
@@ -86,16 +109,25 @@ SPEC REPOS:
     - FlexLib
     - FMDB
     - IQKeyboardManager
+    - IQKeyboardManagerSwift
+    - JCore
+    - JPush
     - Masonry
+    - MBProgressHUD
     - MJRefresh
     - ReactiveObjC
     - SDWebImage
     - SGQRCode
     - SVProgressHUD
+    - UMAPM
+    - UMCCommon
+    - UMCCommonLog
+    - UMDevice
     - WRNavigationBar
     - XHLaunchAd
     - Yoga
     - YYKit
+    - ZLPhotoBrowser
     - ZLPhotoBrowser-objc
 
 SPEC CHECKSUMS:
@@ -107,18 +139,27 @@ SPEC CHECKSUMS:
   FlexLib: 11124863c7f197423b46d0593f2cd95c7ca0c0a5
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  JCore: 9d5bda3a172c65bbe14f2806ab0f6246f8a06065
+  JPush: e455ad2a7b854bca8149df085772d6c4f79b2416
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  UMAPM: 569616d3b4d91c670e6591b2698879286f9fa304
+  UMCCommon: aac337052f23b0e08c0f3cf021d3bb209f2c49bd
+  UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
+  UMDevice: 053478c4b4d7292f31f0a275c227d3c4007a5571
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: 5e360bd3598ab87dc45890a5e5475a724a25f951
+PODFILE CHECKSUM: f9d9ff7d07aea0357dbd27136e6a5f95346e5418
 
 COCOAPODS: 1.11.3

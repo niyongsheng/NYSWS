@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DEE117A21D7E3356FCE4E82 /* libPods-NYSAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */; };
 		C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8597A8129F5119E008BEE7F /* AppDelegate.swift */; };
 		C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8597A8529F5119E008BEE7F /* ViewController.swift */; };
 		C8597A8929F5119E008BEE7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8729F5119E008BEE7F /* Main.storyboard */; };
 		C8597A8B29F511A0008BEE7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8A29F511A0008BEE7F /* Assets.xcassets */; };
 		C8597A8E29F511A0008BEE7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8C29F511A0008BEE7F /* LaunchScreen.storyboard */; };
-		C8597A9E29F5191A008BEE7F /* NYSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9C29F5191A008BEE7F /* NYSKit.framework */; };
 		C8597AA029F5191A008BEE7F /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.release.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.release.xcconfig"; sourceTree = "<group>"; };
+		5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A7E29F5119E008BEE7F /* NYSAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYSAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A8129F5119E008BEE7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8597A8529F5119E008BEE7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,9 +26,9 @@
 		C8597A8A29F511A0008BEE7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8597A8D29F511A0008BEE7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8597A8F29F511A0008BEE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8597A9C29F5191A008BEE7F /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597AC929F522D9008BEE7F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		F86D932ED806A9BFD9FF6C44 /* Pods-NYSAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.debug.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,19 +37,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8597AA029F5191A008BEE7F /* NYSUIKit.framework in Frameworks */,
-				C8597A9E29F5191A008BEE7F /* NYSKit.framework in Frameworks */,
+				0DEE117A21D7E3356FCE4E82 /* libPods-NYSAppSwift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F461CD117C781D81F0487B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F86D932ED806A9BFD9FF6C44 /* Pods-NYSAppSwift.debug.xcconfig */,
+				4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		C8597A7529F5119E008BEE7F = {
 			isa = PBXGroup;
 			children = (
 				C8597A8029F5119E008BEE7F /* NYSAppSwift */,
 				C8597A7F29F5119E008BEE7F /* Products */,
 				C8597A9B29F5191A008BEE7F /* Frameworks */,
+				4F461CD117C781D81F0487B8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +105,8 @@
 		C8597A9B29F5191A008BEE7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C8597A9C29F5191A008BEE7F /* NYSKit.framework */,
 				C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */,
+				5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -105,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8597A9229F511A0008BEE7F /* Build configuration list for PBXNativeTarget "NYSAppSwift" */;
 			buildPhases = (
+				C1831D385453AAE0FFB3790E /* [CP] Check Pods Manifest.lock */,
 				C8597A7A29F5119E008BEE7F /* Sources */,
 				C8597A7B29F5119E008BEE7F /* Frameworks */,
 				C8597A7C29F5119E008BEE7F /* Resources */,
+				AC772B460248A30C2480CD89 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -163,6 +178,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AC772B460248A30C2480CD89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1831D385453AAE0FFB3790E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NYSAppSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8597A7A29F5119E008BEE7F /* Sources */ = {
@@ -312,6 +369,7 @@
 		};
 		C8597A9329F511A0008BEE7F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F86D932ED806A9BFD9FF6C44 /* Pods-NYSAppSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -343,6 +401,7 @@
 		};
 		C8597A9429F511A0008BEE7F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
