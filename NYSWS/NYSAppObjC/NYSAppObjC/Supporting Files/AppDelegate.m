@@ -24,13 +24,13 @@
     [self initWindow];
     
     // 初始化导航栏样式
-    [self initNavBarAppearence];
+    [self initNavBar];
     
     // 初始化app服务
     [self initService];
     
     // 网络监听
-    [self initMonitorNetworkStatus];
+    [self initNetwork];
     
     // 推送初始化
     [self initPush:launchOptions application:application];

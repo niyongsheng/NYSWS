@@ -86,7 +86,7 @@ CGRect rectNav = self.navigationController.navigationBar.frame;\
 #define NRandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 // UIColor(hex)
 #define UIColorFromHex(s) [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0 green:(((s &0xFF00) >>8))/255.0 blue:((s &0xFF))/255.0 alpha:1.0]
-#define UIColorfFollowHex(_hex_)   [UIColor colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
+#define UIColorfFollowHex(_hex_) [UIColor colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
 
 #define RGBColor(r, g, b) RGBAColor(r, g, b, 1.0)
 #define RGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]

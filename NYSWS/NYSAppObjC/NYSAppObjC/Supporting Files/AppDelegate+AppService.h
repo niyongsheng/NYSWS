@@ -21,13 +21,13 @@ typedef void (^checkServiceCompletion)(BOOL isNormal);
 - (void)initWindow;
 
 /** 初始化导航栏 */
-- (void)initNavBarAppearence;
+- (void)initNavBar;
 
 /** 初始化友盟 */
 - (void)initUMeng;
 
 /** 监听网络状态 */
-- (void)initMonitorNetworkStatus;
+- (void)initNetwork;
 
 @end
 

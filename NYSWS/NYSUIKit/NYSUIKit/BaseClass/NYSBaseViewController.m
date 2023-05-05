@@ -45,7 +45,7 @@ DZNEmptyDataSetDelegate
     // 默认显示返回按钮
     self.isShowLiftBack = YES;
     // 默认显示状态栏样式
-    self.customStatusBarStyle = UIStatusBarStyleDefault;
+    self.customStatusBarStyle = UIStatusBarStyleLightContent;
     
     // 关闭拓展全屏布局，等效于automaticallyAdjustsScrollViewInsets = NO;
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -71,7 +71,7 @@ DZNEmptyDataSetDelegate
     
     // 默认错误信息
 //    [self addObserver:self forKeyPath:@"dataSource" options:NSKeyValueObservingOptionNew context:nil];
-    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:@"暂无数据" reason:@"" suggestion:@"重试" placeholderImg:@"null"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:@"暂无数据" reason:@"" suggestion:@"重试" placeholderImg:@"linkedin_binding_magnifier"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -299,7 +299,7 @@ DZNEmptyDataSetDelegate
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *placeholderStr = self.emptyError.userInfo[@"NSLocalizedPlaceholderImageName"];
     if ([NYSTools stringIsNull:placeholderStr]) {
-        return [NYSUIKitUtilities imageNamed:@"null"];
+        return [NYSUIKitUtilities imageNamed:@"error"];
     } else {
         return [NYSUIKitUtilities imageNamed:placeholderStr];
     }
@@ -321,7 +321,7 @@ DZNEmptyDataSetDelegate
                                  NSForegroundColorAttributeName: [UIColor lightGrayColor],
                                  NSParagraphStyleAttributeName: paragraph};
                                  
-    return [[NSAttributedString alloc] initWithString:self.emptyError.localizedFailureReason attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:self.emptyError.localizedFailureReason ?:@"" attributes:attributes];
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
@@ -557,8 +557,10 @@ DZNEmptyDataSetDelegate
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (@available(iOS 10.0, *)) {
-        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
+#ifdef DEBUG
+        UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
         [feedBackGenertor impactOccurred];
+#endif
     } else {
         // Fallback on earlier versions
     }

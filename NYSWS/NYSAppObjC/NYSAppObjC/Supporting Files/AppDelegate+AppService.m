@@ -45,7 +45,7 @@
 }
 
 #pragma mark -- 初始化三方导航栏样式 --
-- (void)initNavBarAppearence {
+- (void)initNavBar {
     [WRNavigationBar wr_widely];
     [WRNavigationBar wr_setBlacklist:@[@"SpecialController",
                                        @"TZPhotoPickerController",
@@ -119,8 +119,12 @@
     }
 }
 
-#pragma mark -- 网络状态监听 --
-- (void)initMonitorNetworkStatus {
+#pragma mark -- 网络状态 --
+- (void)initNetwork {
+    
+    [[NYSKitManager sharedNYSKitManager] setHost:APP_BASE_URL];
+    [[NYSKitManager sharedNYSKitManager] setToken:@""];
+    
     // 网络状态改变监听
     
 }

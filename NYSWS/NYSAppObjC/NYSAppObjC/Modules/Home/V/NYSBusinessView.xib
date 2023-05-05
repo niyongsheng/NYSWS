@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSBusinessView">
+            <connections>
+                <outlet property="iconIV" destination="Wgk-Mg-9PD" id="h8m-SD-gSK"/>
+                <outlet property="titleL" destination="P6k-Aa-Hex" id="PlW-KY-eo1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="271" height="245"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_item_00" translatesAutoresizingMaskIntoConstraints="NO" id="Wgk-Mg-9PD">
+                    <rect key="frame" x="108.5" y="75.5" width="54" height="54"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-Aa-Hex">
+                    <rect key="frame" x="122.5" y="144.5" width="26" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Wgk-Mg-9PD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3F9-7a-mZj"/>
+                <constraint firstItem="Wgk-Mg-9PD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="87a-vT-3hz"/>
+                <constraint firstItem="P6k-Aa-Hex" firstAttribute="top" secondItem="Wgk-Mg-9PD" secondAttribute="bottom" constant="15" id="bC3-O1-aYP"/>
+                <constraint firstItem="P6k-Aa-Hex" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kQc-uX-5Sr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="83.333333333333343" y="143.63839285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_item_00" width="54" height="54"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

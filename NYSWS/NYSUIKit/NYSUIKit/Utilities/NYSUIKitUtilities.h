@@ -20,9 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// 底部安全高度
 + (CGFloat)nys_safeDistanceBottom;
 
-/// 读取包中图片资源
-/// - Parameter name: 名称
+/// 读取.xcassets中图片资源
+/// - Parameter name: 图片名名称
 + (nullable UIImage *)imageNamed:(NSString *)name;
+
+/// 读取.bundle中图片资源
+/// - Parameter name: 图片名名称
++ (nullable UIImage *)imageBundleNamed:(NSString *)name;
 
 @end
 

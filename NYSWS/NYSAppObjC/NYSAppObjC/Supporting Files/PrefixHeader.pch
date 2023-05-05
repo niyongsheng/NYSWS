@@ -4,8 +4,17 @@
 #pragma mark -- 三方框架 --
 #import <NYSKit/NYSKit.h>
 #import <NYSUIKit/NYSUIkit.h>
+
+#import <YYKit/YYKit.h>
+#import <Masonry.h>
+#import <MJRefresh.h>
+#import <WMZBanner/WMZBannerView.h>
+#import <BRPickerView/BRPickerView.h>
+#import <SGPagingView/SGPagingView.h>
 #import <WRNavigationBar/WRNavigationBar.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import <SafariServices/SFSafariViewController.h>
+//#import <AFNetworking/AFNetworking.h>
 
 #pragma mark -- 宏定义 --
 #import "CommonMacros.h"
@@ -13,11 +22,13 @@
 #import "StyleMacros.h"
 
 
+
 #import "NYSTabbarViewController.h"
 
 
 
 #pragma mark -- 模型 --
+#import "NYSHomeModel.h"
 
 
 #endif /* PrefixHeader_pch */

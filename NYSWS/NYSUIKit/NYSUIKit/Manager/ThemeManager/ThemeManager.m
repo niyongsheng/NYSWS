@@ -9,6 +9,7 @@
 #import "ThemeManager.h"
 #import "LEETheme.h"
 #import "LEEBubble.h"
+#import "PublicHeader.h"
 
 @implementation ThemeManager
 
@@ -52,11 +53,11 @@
     .LeeThemeChangingBlock(^(NSString *tag, LEEBubble * item) {
         
         if ([tag isEqualToString:DAY]) {
-            item.image = [UIImage imageNamed:@"day"];
+            item.image = [NYSUIKitUtilities imageNamed:@"day"];
         } else if ([tag isEqualToString:NIGHT]) {
-            item.image = [UIImage imageNamed:@"night"];
+            item.image = [NYSUIKitUtilities imageNamed:@"night"];
         } else {
-            item.image = [UIImage imageNamed:@"day"];
+            item.image = [NYSUIKitUtilities imageNamed:@"day"];
         }
     });
     

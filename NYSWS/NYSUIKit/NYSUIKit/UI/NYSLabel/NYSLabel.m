@@ -36,6 +36,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
 }
 

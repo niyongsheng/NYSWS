@@ -42,7 +42,7 @@ tmp;\
 + (CGFloat)nys_navigationFullHeight {
     return [self nys_statusBarHeight] + 44;
 }
- 
+
 + (CGFloat)nys_safeDistanceBottom {
     if (@available(iOS 13.0, *)) {
         NSSet *set = [UIApplication sharedApplication].connectedScenes;
@@ -64,8 +64,17 @@ tmp;\
 
 /// 读取包中图片资源
 /// - Parameter name: 名称
+/// mark: 如果bundle获取到的一直是app的资源名，需要把Framework修改成动态库 MACH_O_TYPE = dynamic
 + (nullable UIImage *)imageNamed:(NSString *)name {
-    return [UIImage imageNamed:name inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *image = [UIImage imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
+    return image;
+}
+
++ (nullable UIImage *)imageBundleNamed:(NSString *)name {
+    NSBundle*bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *image = [UIImage imageNamed:@"NYSUIKit.bundle/image"  inBundle:bundle compatibleWithTraitCollection:nil];
+    return image;
 }
 
 @end

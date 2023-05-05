@@ -74,15 +74,13 @@
 		C8B7480429FA818900673B75 /* NYSBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747F029FA818900673B75 /* NYSBaseTabBarController.m */; };
 		C8B7480529FA818900673B75 /* NYSBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747F129FA818900673B75 /* NYSBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B7480729FB8C7E00673B75 /* PublicHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7480629FB8C7E00673B75 /* PublicHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8B7480C29FBA78000673B75 /* NYSUIKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B7480B29FBA78000673B75 /* NYSUIKit.xcassets */; };
 		C8B7480E29FBA7D300673B75 /* douyuFont.otf in Resources */ = {isa = PBXBuildFile; fileRef = C8B7480D29FBA7D300673B75 /* douyuFont.otf */; };
 		C8B7481229FBA8FA00673B75 /* NYSUIKitUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7481029FBA8FA00673B75 /* NYSUIKitUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B7481329FBA8FA00673B75 /* NYSUIKitUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7481129FBA8FA00673B75 /* NYSUIKitUtilities.m */; };
 		C8B7484129FBBE7D00673B75 /* ThemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7483C29FBBE7D00673B75 /* ThemeManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B7484229FBBE7D00673B75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C8B7483D29FBBE7D00673B75 /* README.md */; };
 		C8B7484329FBBE7D00673B75 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7483E29FBBE7D00673B75 /* ThemeManager.m */; };
-		C8B7484429FBBE7D00673B75 /* themejson_night.json in Resources */ = {isa = PBXBuildFile; fileRef = C8B7483F29FBBE7D00673B75 /* themejson_night.json */; };
-		C8B7484529FBBE7D00673B75 /* themejson_day.json in Resources */ = {isa = PBXBuildFile; fileRef = C8B7484029FBBE7D00673B75 /* themejson_day.json */; };
+		C8C750222A049A0C00A91AAE /* NYSUIKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B7480B29FBA78000673B75 /* NYSUIKit.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -176,8 +174,6 @@
 		C8B7483C29FBBE7D00673B75 /* ThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
 		C8B7483D29FBBE7D00673B75 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C8B7483E29FBBE7D00673B75 /* ThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
-		C8B7483F29FBBE7D00673B75 /* themejson_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_night.json; sourceTree = "<group>"; };
-		C8B7484029FBBE7D00673B75 /* themejson_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_day.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,8 +450,6 @@
 			isa = PBXGroup;
 			children = (
 				C8B7483D29FBBE7D00673B75 /* README.md */,
-				C8B7484029FBBE7D00673B75 /* themejson_day.json */,
-				C8B7483F29FBBE7D00673B75 /* themejson_night.json */,
 				C8B7483C29FBBE7D00673B75 /* ThemeManager.h */,
 				C8B7483E29FBBE7D00673B75 /* ThemeManager.m */,
 			);
@@ -568,12 +562,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8B7484529FBBE7D00673B75 /* themejson_day.json in Resources */,
+				C8C750222A049A0C00A91AAE /* NYSUIKit.xcassets in Resources */,
 				C8B747F529FA818900673B75 /* webloaderrorview.png in Resources */,
 				C8B7480E29FBA7D300673B75 /* douyuFont.otf in Resources */,
 				C8B7484229FBBE7D00673B75 /* README.md in Resources */,
-				C8B7480C29FBA78000673B75 /* NYSUIKit.xcassets in Resources */,
-				C8B7484429FBBE7D00673B75 /* themejson_night.json in Resources */,
 				C8B747F629FA818900673B75 /* WebLoadErrorView.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,7 +792,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -830,7 +822,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

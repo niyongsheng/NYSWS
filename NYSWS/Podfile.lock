@@ -51,6 +51,7 @@ PODS:
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
   - SDWebImage/Core (5.15.5)
+  - SGPagingView (1.7.2)
   - SGQRCode (4.1.0)
   - SVProgressHUD (2.2.5)
   - UMAPM (1.8.1)
@@ -59,6 +60,8 @@ PODS:
     - UMDevice
   - UMCCommonLog (2.0.2)
   - UMDevice (2.2.1)
+  - WMZBanner (1.2.0):
+    - SDWebImage
   - WRNavigationBar (1.4.0)
   - XHLaunchAd (3.9.12):
     - FLAnimatedImage (~> 1.0.12)
@@ -86,14 +89,15 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh (= 3.7.5)
   - ReactiveObjC (= 3.1.1)
+  - SGPagingView (= 1.7.2)
   - SGQRCode (= 4.1.0)
   - SVProgressHUD (= 2.2.5)
   - UMAPM
   - UMCCommon
   - UMCCommonLog (= 2.0.2)
   - UMDevice
+  - WMZBanner (= 1.2.0)
   - WRNavigationBar (= 1.4.0)
-  - WRNavigationBar (~> 1.4.0)
   - XHLaunchAd (= 3.9.12)
   - YYKit (= 1.0.9)
   - ZLPhotoBrowser (= 4.4.0)
@@ -117,12 +121,14 @@ SPEC REPOS:
     - MJRefresh
     - ReactiveObjC
     - SDWebImage
+    - SGPagingView
     - SGQRCode
     - SVProgressHUD
     - UMAPM
     - UMCCommon
     - UMCCommonLog
     - UMDevice
+    - WMZBanner
     - WRNavigationBar
     - XHLaunchAd
     - Yoga
@@ -147,12 +153,14 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SGPagingView: 0b91bd360370e56a6496b06df9b3e28bc3f075cc
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UMAPM: 569616d3b4d91c670e6591b2698879286f9fa304
   UMCCommon: aac337052f23b0e08c0f3cf021d3bb209f2c49bd
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
   UMDevice: 053478c4b4d7292f31f0a275c227d3c4007a5571
+  WMZBanner: 42d02896dc7a67a4d7a2ebe1ef5b7a79f8d2c540
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
@@ -160,6 +168,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: f9d9ff7d07aea0357dbd27136e6a5f95346e5418
+PODFILE CHECKSUM: ff1f2b367fbf86c1d53b5186ec85294076d6c55f
 
 COCOAPODS: 1.11.3

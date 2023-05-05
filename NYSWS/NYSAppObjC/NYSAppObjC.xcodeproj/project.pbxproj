@@ -12,12 +12,40 @@
 		C8597A2929F51054008BEE7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8597A2829F51054008BEE7F /* Assets.xcassets */; };
 		C8597A2C29F51054008BEE7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8597A2A29F51054008BEE7F /* LaunchScreen.storyboard */; };
 		C8597A2F29F51054008BEE7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597A2E29F51054008BEE7F /* main.m */; };
-		C8597AA829F5194A008BEE7F /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; };
+		C8599B8E2A035E8700DEA603 /* themejson_day.json in Resources */ = {isa = PBXBuildFile; fileRef = C8599B8C2A035E8700DEA603 /* themejson_day.json */; };
+		C8599B8F2A035E8700DEA603 /* themejson_night.json in Resources */ = {isa = PBXBuildFile; fileRef = C8599B8D2A035E8700DEA603 /* themejson_night.json */; };
+		C8599B952A037DF100DEA603 /* NYSBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8599B922A037DF100DEA603 /* NYSBannerCell.m */; };
+		C8599BA12A03828400DEA603 /* NYSRecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8599B9F2A03828400DEA603 /* NYSRecommendedCell.m */; };
+		C8599BA22A03828400DEA603 /* NYSRecommendedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8599BA02A03828400DEA603 /* NYSRecommendedCell.xib */; };
+		C8599BA52A038BAE00DEA603 /* NYSBusinessView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8599BA42A038BAE00DEA603 /* NYSBusinessView.m */; };
+		C8599BA72A038BF200DEA603 /* NYSBusinessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8599BA62A038BF200DEA603 /* NYSBusinessView.xib */; };
+		C8599BAA2A03A3EC00DEA603 /* NYSSearchCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8599BA92A03A3EC00DEA603 /* NYSSearchCourseVC.m */; };
+		C8599BAE2A03A73A00DEA603 /* NYSCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8599BAC2A03A73A00DEA603 /* NYSCourseCell.m */; };
+		C8599BAF2A03A73A00DEA603 /* NYSCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8599BAD2A03A73A00DEA603 /* NYSCourseCell.xib */; };
 		C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */; };
 		C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482929FBB2AC00673B75 /* AppDelegate+AppService.m */; };
 		C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */; };
+		C8B7484E29FBCD6B00673B75 /* NYSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7484D29FBCD6B00673B75 /* NYSHomeViewController.m */; };
+		C8B7485129FBCDD500673B75 /* NYSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7485029FBCDD500673B75 /* NYSHomeModel.m */; };
+		C8C750292A04A8F300A91AAE /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; };
+		C8C7502A2A04A8F300A91AAE /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C7502C2A04B03100A91AAE /* LaunchImage.png */; };
 		E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8C7502B2A04A8F300A91AAE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8C7502A2A04A8F300A91AAE /* NYSUIKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +61,22 @@
 		C8597A9929F5129D008BEE7F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C8597AA529F5194A008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597AB929F52007008BEE7F /* Bridging-Header.h.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h.h"; sourceTree = "<group>"; };
+		C8599B8C2A035E8700DEA603 /* themejson_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_day.json; sourceTree = "<group>"; };
+		C8599B8D2A035E8700DEA603 /* themejson_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_night.json; sourceTree = "<group>"; };
+		C8599B922A037DF100DEA603 /* NYSBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSBannerCell.m; sourceTree = "<group>"; };
+		C8599B932A037DF100DEA603 /* NYSBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSBannerCell.h; sourceTree = "<group>"; };
+		C8599B9E2A03828400DEA603 /* NYSRecommendedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSRecommendedCell.h; sourceTree = "<group>"; };
+		C8599B9F2A03828400DEA603 /* NYSRecommendedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSRecommendedCell.m; sourceTree = "<group>"; };
+		C8599BA02A03828400DEA603 /* NYSRecommendedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSRecommendedCell.xib; sourceTree = "<group>"; };
+		C8599BA32A038BAE00DEA603 /* NYSBusinessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSBusinessView.h; sourceTree = "<group>"; };
+		C8599BA42A038BAE00DEA603 /* NYSBusinessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSBusinessView.m; sourceTree = "<group>"; };
+		C8599BA62A038BF200DEA603 /* NYSBusinessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSBusinessView.xib; sourceTree = "<group>"; };
+		C8599BA82A03A3EC00DEA603 /* NYSSearchCourseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSSearchCourseVC.h; sourceTree = "<group>"; };
+		C8599BA92A03A3EC00DEA603 /* NYSSearchCourseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSSearchCourseVC.m; sourceTree = "<group>"; };
+		C8599BAB2A03A73A00DEA603 /* NYSCourseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSCourseCell.h; sourceTree = "<group>"; };
+		C8599BAC2A03A73A00DEA603 /* NYSCourseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSCourseCell.m; sourceTree = "<group>"; };
+		C8599BAD2A03A73A00DEA603 /* NYSCourseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSCourseCell.xib; sourceTree = "<group>"; };
+		C8599BB02A03B18E00DEA603 /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7475D29FA75E100673B75 /* NYSAppObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYSAppObjC.entitlements; sourceTree = "<group>"; };
 		C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSTabbarViewController.h; sourceTree = "<group>"; };
 		C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSTabbarViewController.m; sourceTree = "<group>"; };
@@ -43,6 +87,11 @@
 		C8B7482929FBB2AC00673B75 /* AppDelegate+AppService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+AppService.m"; sourceTree = "<group>"; };
 		C8B7482A29FBB2AC00673B75 /* AppDelegate+AppService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+AppService.h"; sourceTree = "<group>"; };
 		C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+PushService.m"; sourceTree = "<group>"; };
+		C8B7484C29FBCD6B00673B75 /* NYSHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHomeViewController.h; sourceTree = "<group>"; };
+		C8B7484D29FBCD6B00673B75 /* NYSHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeViewController.m; sourceTree = "<group>"; };
+		C8B7484F29FBCDD500673B75 /* NYSHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHomeModel.h; sourceTree = "<group>"; };
+		C8B7485029FBCDD500673B75 /* NYSHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeModel.m; sourceTree = "<group>"; };
+		C8C7502C2A04B03100A91AAE /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		FE7C22C1B089104DEA1663BB /* Pods-NYSAppObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppObjC.release.xcconfig"; path = "Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8597AA829F5194A008BEE7F /* NYSUIKit.framework in Frameworks */,
+				C8C750292A04A8F300A91AAE /* NYSUIKit.framework in Frameworks */,
 				E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +139,8 @@
 		C8597A9529F51202008BEE7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C8599B8C2A035E8700DEA603 /* themejson_day.json */,
+				C8599B8D2A035E8700DEA603 /* themejson_night.json */,
 				C8597A9929F5129D008BEE7F /* PrefixHeader.pch */,
 				C8597AB929F52007008BEE7F /* Bridging-Header.h.h */,
 				C8597A1C29F51052008BEE7F /* AppDelegate.h */,
@@ -100,6 +151,7 @@
 				C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */,
 				C8597A2529F51052008BEE7F /* Main.storyboard */,
 				C8597A2829F51054008BEE7F /* Assets.xcassets */,
+				C8C7502C2A04B03100A91AAE /* LaunchImage.png */,
 				C8597A2A29F51054008BEE7F /* LaunchScreen.storyboard */,
 				C8597A2D29F51054008BEE7F /* Info.plist */,
 				C8597A2E29F51054008BEE7F /* main.m */,
@@ -110,8 +162,10 @@
 		C8597A9629F5124A008BEE7F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8B7484829FBC32A00673B75 /* Course */,
+				C8B7484729FBC32200673B75 /* Mine */,
+				C8B7484629FBC31500673B75 /* Home */,
 				C8B7482229FBB1D300673B75 /* Headers */,
-				C8B7481729FBB12200673B75 /* Manager */,
 				C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */,
 				C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */,
 			);
@@ -121,17 +175,11 @@
 		C8597AA329F5194A008BEE7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8599BB02A03B18E00DEA603 /* NYSKit.framework */,
 				C8597AA529F5194A008BEE7F /* NYSUIKit.framework */,
 				8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C8B7481729FBB12200673B75 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		C8B7482229FBB1D300673B75 /* Headers */ = {
@@ -142,6 +190,68 @@
 				C8B7482629FBB1D300673B75 /* StyleMacros.h */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		C8B7484629FBC31500673B75 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C8B7484B29FBCBFF00673B75 /* M */,
+				C8B7484A29FBCBFA00673B75 /* V */,
+				C8B7484929FBCBF100673B75 /* C */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C8B7484729FBC32200673B75 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		C8B7484829FBC32A00673B75 /* Course */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
+		C8B7484929FBCBF100673B75 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				C8B7484C29FBCD6B00673B75 /* NYSHomeViewController.h */,
+				C8B7484D29FBCD6B00673B75 /* NYSHomeViewController.m */,
+				C8599BA82A03A3EC00DEA603 /* NYSSearchCourseVC.h */,
+				C8599BA92A03A3EC00DEA603 /* NYSSearchCourseVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		C8B7484A29FBCBFA00673B75 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C8599B932A037DF100DEA603 /* NYSBannerCell.h */,
+				C8599B922A037DF100DEA603 /* NYSBannerCell.m */,
+				C8599B9E2A03828400DEA603 /* NYSRecommendedCell.h */,
+				C8599B9F2A03828400DEA603 /* NYSRecommendedCell.m */,
+				C8599BA02A03828400DEA603 /* NYSRecommendedCell.xib */,
+				C8599BA32A038BAE00DEA603 /* NYSBusinessView.h */,
+				C8599BA42A038BAE00DEA603 /* NYSBusinessView.m */,
+				C8599BA62A038BF200DEA603 /* NYSBusinessView.xib */,
+				C8599BAB2A03A73A00DEA603 /* NYSCourseCell.h */,
+				C8599BAC2A03A73A00DEA603 /* NYSCourseCell.m */,
+				C8599BAD2A03A73A00DEA603 /* NYSCourseCell.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		C8B7484B29FBCBFF00673B75 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				C8B7484F29FBCDD500673B75 /* NYSHomeModel.h */,
+				C8B7485029FBCDD500673B75 /* NYSHomeModel.m */,
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		E67E3E5AF7C3D51628F10A1E /* Pods */ = {
@@ -166,6 +276,7 @@
 				C8597A1629F51052008BEE7F /* Frameworks */,
 				C8597A1729F51052008BEE7F /* Resources */,
 				51FA752FB9473966E96F9AB6 /* [CP] Copy Pods Resources */,
+				C8C7502B2A04A8F300A91AAE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +294,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = NYS;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					C8597A1829F51052008BEE7F = {
@@ -214,8 +326,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8599B8E2A035E8700DEA603 /* themejson_day.json in Resources */,
+				C8599B8F2A035E8700DEA603 /* themejson_night.json in Resources */,
+				C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */,
 				C8597A2C29F51054008BEE7F /* LaunchScreen.storyboard in Resources */,
 				C8597A2929F51054008BEE7F /* Assets.xcassets in Resources */,
+				C8599BA22A03828400DEA603 /* NYSRecommendedCell.xib in Resources */,
+				C8599BAF2A03A73A00DEA603 /* NYSCourseCell.xib in Resources */,
+				C8599BA72A038BF200DEA603 /* NYSBusinessView.xib in Resources */,
 				C8597A2729F51052008BEE7F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,11 +387,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8599BA52A038BAE00DEA603 /* NYSBusinessView.m in Sources */,
 				C8597A1E29F51052008BEE7F /* AppDelegate.m in Sources */,
+				C8599BAA2A03A3EC00DEA603 /* NYSSearchCourseVC.m in Sources */,
 				C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */,
 				C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */,
+				C8599BA12A03828400DEA603 /* NYSRecommendedCell.m in Sources */,
 				C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */,
+				C8B7485129FBCDD500673B75 /* NYSHomeModel.m in Sources */,
+				C8B7484E29FBCD6B00673B75 /* NYSHomeViewController.m in Sources */,
+				C8599BAE2A03A73A00DEA603 /* NYSCourseCell.m in Sources */,
 				C8597A2F29F51054008BEE7F /* main.m in Sources */,
+				C8599B952A037DF100DEA603 /* NYSBannerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F9J739W8Y4;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppObjC/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -427,7 +553,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -466,7 +592,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

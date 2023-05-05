@@ -6,6 +6,7 @@
 //
 
 #import "NYSTabbarViewController.h"
+#import "NYSHomeViewController.h"
 
 @interface NYSTabbarViewController ()
 
@@ -16,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NYSBaseViewController *homeVC = [NYSBaseViewController new];
+    NYSHomeViewController *homeVC = [NYSHomeViewController new];
     homeVC.tabBarItem.title = @"首页";
     homeVC.tabBarItem.image = [UIImage imageNamed:@"home_normal_icon"];
     homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_selected_icon"];

@@ -8,6 +8,7 @@ workspace './NYSWS.xcworkspace'
 def commonPods
   pod 'Masonry', '1.1.0'
   pod 'MJRefresh', '3.7.5'
+  pod 'AFNetworking', '4.0.1'
   pod 'ReactiveObjC', '3.1.1'
   pod 'SVProgressHUD', '2.2.5'
   pod 'DZNEmptyDataSet', '1.8.1'
@@ -45,7 +46,8 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   pod 'BRPickerView', '2.8.0'
   pod 'IQKeyboardManager', '6.5.11'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
-  pod 'WRNavigationBar', '~>1.4.0’
+  pod 'WMZBanner', '1.2.0'
+  pod 'SGPagingView', '1.7.2'
   pod 'MBProgressHUD'
   
   pod 'JPush', '3.7.4'

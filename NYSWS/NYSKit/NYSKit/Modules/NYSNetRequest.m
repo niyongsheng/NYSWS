@@ -10,7 +10,7 @@
 #import "PublicHeader.h"
 #import "NYSTools.h"
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <AFNetworking/AFHTTPSessionManager.h>
+#import <AFNetworking/AFNetworking.h>
 
 #define TimeoutInterval 15
 
@@ -20,11 +20,8 @@
 
 @implementation NYSNetRequest
 
-
-
-static AFHTTPSessionManager *manager;
-
 + (AFHTTPSessionManager *)sharedManager {
+    static AFHTTPSessionManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -224,7 +221,7 @@ static AFHTTPSessionManager *manager;
         urlStr = url;
     }
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlStr parameters:argument error:nil];
-    [request setValuesForKeysWithDictionary:[self headers]];
+    [request setAllHTTPHeaderFields:[self headers]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
                                                uploadProgress:nil

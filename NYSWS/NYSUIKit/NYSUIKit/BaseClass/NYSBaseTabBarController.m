@@ -49,17 +49,14 @@
 
 #pragma mark - auto rotate
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    
     return [self.selectedViewController preferredInterfaceOrientationForPresentation];
 }
 
 - (BOOL)shouldAutorotate {
-    
     return [self.selectedViewController shouldAutorotate];
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    
     return [self.selectedViewController supportedInterfaceOrientations];
 }
 
