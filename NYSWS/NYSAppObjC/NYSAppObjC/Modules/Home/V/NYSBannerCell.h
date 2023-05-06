@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NYSBannerCell : UICollectionViewCell
 
 @property (nonatomic, weak) NYSBannerModel *bannerModel;
+
+@property (nonatomic, assign) BOOL isCourseBanner;
 @end
 
 NS_ASSUME_NONNULL_END

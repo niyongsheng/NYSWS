@@ -30,6 +30,42 @@
 		C8C750292A04A8F300A91AAE /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; };
 		C8C7502A2A04A8F300A91AAE /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C7502C2A04B03100A91AAE /* LaunchImage.png */; };
+		C8C750302A04C95F00A91AAE /* NYSHomeCourseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7502F2A04C95F00A91AAE /* NYSHomeCourseVC.m */; };
+		C8C750332A04D2C800A91AAE /* NYSMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750322A04D2C800A91AAE /* NYSMessageCenterVC.m */; };
+		C8C750372A04D35C00A91AAE /* NYSMessageCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750352A04D35C00A91AAE /* NYSMessageCenterCell.m */; };
+		C8C750382A04D35C00A91AAE /* NYSMessageCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750362A04D35C00A91AAE /* NYSMessageCenterCell.xib */; };
+		C8C7503C2A04D66500A91AAE /* NYSCallCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7503A2A04D66500A91AAE /* NYSCallCenterVC.m */; };
+		C8C7503D2A04D66500A91AAE /* NYSCallCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7503B2A04D66500A91AAE /* NYSCallCenterVC.xib */; };
+		C8C750432A04DED500A91AAE /* NYSCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750422A04DED500A91AAE /* NYSCourseModel.m */; };
+		C8C750462A04DF2C00A91AAE /* NYSCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750452A04DF2C00A91AAE /* NYSCourseListVC.m */; };
+		C8C750492A04DFD400A91AAE /* LayoutFittingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750482A04DFD400A91AAE /* LayoutFittingView.m */; };
+		C8C7504D2A04E69100A91AAE /* NYSRecommendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7504B2A04E69100A91AAE /* NYSRecommendVC.m */; };
+		C8C7504E2A04E69100A91AAE /* NYSRecommendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7504C2A04E69100A91AAE /* NYSRecommendVC.xib */; };
+		C8C750542A04ECBB00A91AAE /* NYSMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750532A04ECBB00A91AAE /* NYSMineModel.m */; };
+		C8C750582A04ECE400A91AAE /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750562A04ECE400A91AAE /* NYSMineViewController.xib */; };
+		C8C750592A04ECE400A91AAE /* NYSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750572A04ECE400A91AAE /* NYSMineViewController.m */; };
+		C8C7505D2A062D8E00A91AAE /* NYSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7505A2A062D8D00A91AAE /* NYSSettingViewController.m */; };
+		C8C7505E2A062D8E00A91AAE /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7505C2A062D8E00A91AAE /* NYSSettingViewController.xib */; };
+		C8C750622A062DF500A91AAE /* NYSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750602A062DF500A91AAE /* NYSAboutViewController.m */; };
+		C8C750632A062DF500A91AAE /* NYSAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750612A062DF500A91AAE /* NYSAboutViewController.xib */; };
+		C8C750672A06356C00A91AAE /* NYSHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750652A06356C00A91AAE /* NYSHelpViewController.m */; };
+		C8C750682A06356C00A91AAE /* NYSHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750662A06356C00A91AAE /* NYSHelpViewController.xib */; };
+		C8C7506C2A06375A00A91AAE /* NYSUpdateInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750692A06375A00A91AAE /* NYSUpdateInfoVC.xib */; };
+		C8C7506D2A06375A00A91AAE /* NYSUpdateInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7506B2A06375A00A91AAE /* NYSUpdateInfoVC.m */; };
+		C8C750712A063B7900A91AAE /* NYSWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7506F2A063B7900A91AAE /* NYSWalletViewController.m */; };
+		C8C750722A063B7900A91AAE /* NYSWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750702A063B7900A91AAE /* NYSWalletViewController.xib */; };
+		C8C750752A063D9600A91AAE /* NYSWalletHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750742A063D9600A91AAE /* NYSWalletHeader.m */; };
+		C8C750772A063D9F00A91AAE /* NYSWalletHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750762A063D9F00A91AAE /* NYSWalletHeader.xib */; };
+		C8C7507B2A06422F00A91AAE /* NYSWalletMovemenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750782A06422F00A91AAE /* NYSWalletMovemenCell.m */; };
+		C8C7507C2A06422F00A91AAE /* NYSWalletMovemenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750792A06422F00A91AAE /* NYSWalletMovemenCell.xib */; };
+		C8C750802A06462A00A91AAE /* NYSMovementDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7507E2A06462A00A91AAE /* NYSMovementDetailVC.xib */; };
+		C8C750812A06462A00A91AAE /* NYSMovementDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7507F2A06462A00A91AAE /* NYSMovementDetailVC.m */; };
+		C8C750852A064B2600A91AAE /* NYSSecurityProtectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750832A064B2600A91AAE /* NYSSecurityProtectionVC.xib */; };
+		C8C750862A064B2600A91AAE /* NYSSecurityProtectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750842A064B2600A91AAE /* NYSSecurityProtectionVC.m */; };
+		C8C7508A2A064CF300A91AAE /* NYSWithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750882A064CF300A91AAE /* NYSWithdrawViewController.m */; };
+		C8C7508B2A064CF300A91AAE /* NYSWithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750892A064CF300A91AAE /* NYSWithdrawViewController.xib */; };
+		C8C7508F2A0653A600A91AAE /* NYSFeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7508C2A0653A600A91AAE /* NYSFeedbackVC.m */; };
+		C8C750902A0653A600A91AAE /* NYSFeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7508D2A0653A600A91AAE /* NYSFeedbackVC.xib */; };
 		E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +128,63 @@
 		C8B7484F29FBCDD500673B75 /* NYSHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHomeModel.h; sourceTree = "<group>"; };
 		C8B7485029FBCDD500673B75 /* NYSHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeModel.m; sourceTree = "<group>"; };
 		C8C7502C2A04B03100A91AAE /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		C8C7502E2A04C95F00A91AAE /* NYSHomeCourseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHomeCourseVC.h; sourceTree = "<group>"; };
+		C8C7502F2A04C95F00A91AAE /* NYSHomeCourseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeCourseVC.m; sourceTree = "<group>"; };
+		C8C750312A04D2C800A91AAE /* NYSMessageCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSMessageCenterVC.h; sourceTree = "<group>"; };
+		C8C750322A04D2C800A91AAE /* NYSMessageCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSMessageCenterVC.m; sourceTree = "<group>"; };
+		C8C750342A04D35C00A91AAE /* NYSMessageCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSMessageCenterCell.h; sourceTree = "<group>"; };
+		C8C750352A04D35C00A91AAE /* NYSMessageCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSMessageCenterCell.m; sourceTree = "<group>"; };
+		C8C750362A04D35C00A91AAE /* NYSMessageCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSMessageCenterCell.xib; sourceTree = "<group>"; };
+		C8C750392A04D66500A91AAE /* NYSCallCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSCallCenterVC.h; sourceTree = "<group>"; };
+		C8C7503A2A04D66500A91AAE /* NYSCallCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSCallCenterVC.m; sourceTree = "<group>"; };
+		C8C7503B2A04D66500A91AAE /* NYSCallCenterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSCallCenterVC.xib; sourceTree = "<group>"; };
+		C8C750412A04DED500A91AAE /* NYSCourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSCourseModel.h; sourceTree = "<group>"; };
+		C8C750422A04DED500A91AAE /* NYSCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSCourseModel.m; sourceTree = "<group>"; };
+		C8C750442A04DF2C00A91AAE /* NYSCourseListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSCourseListVC.h; sourceTree = "<group>"; };
+		C8C750452A04DF2C00A91AAE /* NYSCourseListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSCourseListVC.m; sourceTree = "<group>"; };
+		C8C750472A04DFD400A91AAE /* LayoutFittingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutFittingView.h; sourceTree = "<group>"; };
+		C8C750482A04DFD400A91AAE /* LayoutFittingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutFittingView.m; sourceTree = "<group>"; };
+		C8C7504A2A04E69100A91AAE /* NYSRecommendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSRecommendVC.h; sourceTree = "<group>"; };
+		C8C7504B2A04E69100A91AAE /* NYSRecommendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSRecommendVC.m; sourceTree = "<group>"; };
+		C8C7504C2A04E69100A91AAE /* NYSRecommendVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSRecommendVC.xib; sourceTree = "<group>"; };
+		C8C750522A04ECBB00A91AAE /* NYSMineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSMineModel.h; sourceTree = "<group>"; };
+		C8C750532A04ECBB00A91AAE /* NYSMineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSMineModel.m; sourceTree = "<group>"; };
+		C8C750552A04ECE400A91AAE /* NYSMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSMineViewController.h; sourceTree = "<group>"; };
+		C8C750562A04ECE400A91AAE /* NYSMineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSMineViewController.xib; sourceTree = "<group>"; };
+		C8C750572A04ECE400A91AAE /* NYSMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSMineViewController.m; sourceTree = "<group>"; };
+		C8C7505A2A062D8D00A91AAE /* NYSSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSSettingViewController.m; sourceTree = "<group>"; };
+		C8C7505B2A062D8D00A91AAE /* NYSSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSSettingViewController.h; sourceTree = "<group>"; };
+		C8C7505C2A062D8E00A91AAE /* NYSSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
+		C8C7505F2A062DF500A91AAE /* NYSAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSAboutViewController.h; sourceTree = "<group>"; };
+		C8C750602A062DF500A91AAE /* NYSAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSAboutViewController.m; sourceTree = "<group>"; };
+		C8C750612A062DF500A91AAE /* NYSAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSAboutViewController.xib; sourceTree = "<group>"; };
+		C8C750642A06356C00A91AAE /* NYSHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSHelpViewController.h; sourceTree = "<group>"; };
+		C8C750652A06356C00A91AAE /* NYSHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSHelpViewController.m; sourceTree = "<group>"; };
+		C8C750662A06356C00A91AAE /* NYSHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSHelpViewController.xib; sourceTree = "<group>"; };
+		C8C750692A06375A00A91AAE /* NYSUpdateInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSUpdateInfoVC.xib; sourceTree = "<group>"; };
+		C8C7506A2A06375A00A91AAE /* NYSUpdateInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSUpdateInfoVC.h; sourceTree = "<group>"; };
+		C8C7506B2A06375A00A91AAE /* NYSUpdateInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSUpdateInfoVC.m; sourceTree = "<group>"; };
+		C8C7506E2A063B7900A91AAE /* NYSWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSWalletViewController.h; sourceTree = "<group>"; };
+		C8C7506F2A063B7900A91AAE /* NYSWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSWalletViewController.m; sourceTree = "<group>"; };
+		C8C750702A063B7900A91AAE /* NYSWalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSWalletViewController.xib; sourceTree = "<group>"; };
+		C8C750732A063D9600A91AAE /* NYSWalletHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSWalletHeader.h; sourceTree = "<group>"; };
+		C8C750742A063D9600A91AAE /* NYSWalletHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSWalletHeader.m; sourceTree = "<group>"; };
+		C8C750762A063D9F00A91AAE /* NYSWalletHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSWalletHeader.xib; sourceTree = "<group>"; };
+		C8C750782A06422F00A91AAE /* NYSWalletMovemenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSWalletMovemenCell.m; sourceTree = "<group>"; };
+		C8C750792A06422F00A91AAE /* NYSWalletMovemenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSWalletMovemenCell.xib; sourceTree = "<group>"; };
+		C8C7507A2A06422F00A91AAE /* NYSWalletMovemenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSWalletMovemenCell.h; sourceTree = "<group>"; };
+		C8C7507D2A06462A00A91AAE /* NYSMovementDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSMovementDetailVC.h; sourceTree = "<group>"; };
+		C8C7507E2A06462A00A91AAE /* NYSMovementDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSMovementDetailVC.xib; sourceTree = "<group>"; };
+		C8C7507F2A06462A00A91AAE /* NYSMovementDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSMovementDetailVC.m; sourceTree = "<group>"; };
+		C8C750822A064B2600A91AAE /* NYSSecurityProtectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSSecurityProtectionVC.h; sourceTree = "<group>"; };
+		C8C750832A064B2600A91AAE /* NYSSecurityProtectionVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSSecurityProtectionVC.xib; sourceTree = "<group>"; };
+		C8C750842A064B2600A91AAE /* NYSSecurityProtectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSSecurityProtectionVC.m; sourceTree = "<group>"; };
+		C8C750872A064CF300A91AAE /* NYSWithdrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSWithdrawViewController.h; sourceTree = "<group>"; };
+		C8C750882A064CF300A91AAE /* NYSWithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSWithdrawViewController.m; sourceTree = "<group>"; };
+		C8C750892A064CF300A91AAE /* NYSWithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSWithdrawViewController.xib; sourceTree = "<group>"; };
+		C8C7508C2A0653A600A91AAE /* NYSFeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSFeedbackVC.m; sourceTree = "<group>"; };
+		C8C7508D2A0653A600A91AAE /* NYSFeedbackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSFeedbackVC.xib; sourceTree = "<group>"; };
+		C8C7508E2A0653A600A91AAE /* NYSFeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSFeedbackVC.h; sourceTree = "<group>"; };
 		FE7C22C1B089104DEA1663BB /* Pods-NYSAppObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppObjC.release.xcconfig"; path = "Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +298,9 @@
 		C8B7484729FBC32200673B75 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				C8C750512A04EC9B00A91AAE /* M */,
+				C8C750502A04EC9600A91AAE /* V */,
+				C8C7504F2A04EC9000A91AAE /* C */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -212,6 +308,9 @@
 		C8B7484829FBC32A00673B75 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				C8C750402A04DEAE00A91AAE /* M */,
+				C8C7503F2A04DEA200A91AAE /* V */,
+				C8C7503E2A04DE9C00A91AAE /* C */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -221,8 +320,18 @@
 			children = (
 				C8B7484C29FBCD6B00673B75 /* NYSHomeViewController.h */,
 				C8B7484D29FBCD6B00673B75 /* NYSHomeViewController.m */,
+				C8C7502E2A04C95F00A91AAE /* NYSHomeCourseVC.h */,
+				C8C7502F2A04C95F00A91AAE /* NYSHomeCourseVC.m */,
 				C8599BA82A03A3EC00DEA603 /* NYSSearchCourseVC.h */,
 				C8599BA92A03A3EC00DEA603 /* NYSSearchCourseVC.m */,
+				C8C750312A04D2C800A91AAE /* NYSMessageCenterVC.h */,
+				C8C750322A04D2C800A91AAE /* NYSMessageCenterVC.m */,
+				C8C750392A04D66500A91AAE /* NYSCallCenterVC.h */,
+				C8C7503A2A04D66500A91AAE /* NYSCallCenterVC.m */,
+				C8C7503B2A04D66500A91AAE /* NYSCallCenterVC.xib */,
+				C8C7504A2A04E69100A91AAE /* NYSRecommendVC.h */,
+				C8C7504B2A04E69100A91AAE /* NYSRecommendVC.m */,
+				C8C7504C2A04E69100A91AAE /* NYSRecommendVC.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -241,6 +350,9 @@
 				C8599BAB2A03A73A00DEA603 /* NYSCourseCell.h */,
 				C8599BAC2A03A73A00DEA603 /* NYSCourseCell.m */,
 				C8599BAD2A03A73A00DEA603 /* NYSCourseCell.xib */,
+				C8C750342A04D35C00A91AAE /* NYSMessageCenterCell.h */,
+				C8C750352A04D35C00A91AAE /* NYSMessageCenterCell.m */,
+				C8C750362A04D35C00A91AAE /* NYSMessageCenterCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -250,6 +362,92 @@
 			children = (
 				C8B7484F29FBCDD500673B75 /* NYSHomeModel.h */,
 				C8B7485029FBCDD500673B75 /* NYSHomeModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		C8C7503E2A04DE9C00A91AAE /* C */ = {
+			isa = PBXGroup;
+			children = (
+				C8C750442A04DF2C00A91AAE /* NYSCourseListVC.h */,
+				C8C750452A04DF2C00A91AAE /* NYSCourseListVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		C8C7503F2A04DEA200A91AAE /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C8C750472A04DFD400A91AAE /* LayoutFittingView.h */,
+				C8C750482A04DFD400A91AAE /* LayoutFittingView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		C8C750402A04DEAE00A91AAE /* M */ = {
+			isa = PBXGroup;
+			children = (
+				C8C750412A04DED500A91AAE /* NYSCourseModel.h */,
+				C8C750422A04DED500A91AAE /* NYSCourseModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		C8C7504F2A04EC9000A91AAE /* C */ = {
+			isa = PBXGroup;
+			children = (
+				C8C750552A04ECE400A91AAE /* NYSMineViewController.h */,
+				C8C750572A04ECE400A91AAE /* NYSMineViewController.m */,
+				C8C750562A04ECE400A91AAE /* NYSMineViewController.xib */,
+				C8C7505B2A062D8D00A91AAE /* NYSSettingViewController.h */,
+				C8C7505A2A062D8D00A91AAE /* NYSSettingViewController.m */,
+				C8C7505C2A062D8E00A91AAE /* NYSSettingViewController.xib */,
+				C8C7505F2A062DF500A91AAE /* NYSAboutViewController.h */,
+				C8C750602A062DF500A91AAE /* NYSAboutViewController.m */,
+				C8C750612A062DF500A91AAE /* NYSAboutViewController.xib */,
+				C8C750642A06356C00A91AAE /* NYSHelpViewController.h */,
+				C8C750652A06356C00A91AAE /* NYSHelpViewController.m */,
+				C8C750662A06356C00A91AAE /* NYSHelpViewController.xib */,
+				C8C7506A2A06375A00A91AAE /* NYSUpdateInfoVC.h */,
+				C8C7506B2A06375A00A91AAE /* NYSUpdateInfoVC.m */,
+				C8C750692A06375A00A91AAE /* NYSUpdateInfoVC.xib */,
+				C8C7506E2A063B7900A91AAE /* NYSWalletViewController.h */,
+				C8C7506F2A063B7900A91AAE /* NYSWalletViewController.m */,
+				C8C750702A063B7900A91AAE /* NYSWalletViewController.xib */,
+				C8C7507D2A06462A00A91AAE /* NYSMovementDetailVC.h */,
+				C8C7507F2A06462A00A91AAE /* NYSMovementDetailVC.m */,
+				C8C7507E2A06462A00A91AAE /* NYSMovementDetailVC.xib */,
+				C8C750822A064B2600A91AAE /* NYSSecurityProtectionVC.h */,
+				C8C750842A064B2600A91AAE /* NYSSecurityProtectionVC.m */,
+				C8C750832A064B2600A91AAE /* NYSSecurityProtectionVC.xib */,
+				C8C750872A064CF300A91AAE /* NYSWithdrawViewController.h */,
+				C8C750882A064CF300A91AAE /* NYSWithdrawViewController.m */,
+				C8C750892A064CF300A91AAE /* NYSWithdrawViewController.xib */,
+				C8C7508E2A0653A600A91AAE /* NYSFeedbackVC.h */,
+				C8C7508C2A0653A600A91AAE /* NYSFeedbackVC.m */,
+				C8C7508D2A0653A600A91AAE /* NYSFeedbackVC.xib */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		C8C750502A04EC9600A91AAE /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C8C750732A063D9600A91AAE /* NYSWalletHeader.h */,
+				C8C750742A063D9600A91AAE /* NYSWalletHeader.m */,
+				C8C750762A063D9F00A91AAE /* NYSWalletHeader.xib */,
+				C8C7507A2A06422F00A91AAE /* NYSWalletMovemenCell.h */,
+				C8C750782A06422F00A91AAE /* NYSWalletMovemenCell.m */,
+				C8C750792A06422F00A91AAE /* NYSWalletMovemenCell.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		C8C750512A04EC9B00A91AAE /* M */ = {
+			isa = PBXGroup;
+			children = (
+				C8C750522A04ECBB00A91AAE /* NYSMineModel.h */,
+				C8C750532A04ECBB00A91AAE /* NYSMineModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -326,15 +524,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C7504E2A04E69100A91AAE /* NYSRecommendVC.xib in Resources */,
+				C8C750902A0653A600A91AAE /* NYSFeedbackVC.xib in Resources */,
+				C8C750852A064B2600A91AAE /* NYSSecurityProtectionVC.xib in Resources */,
 				C8599B8E2A035E8700DEA603 /* themejson_day.json in Resources */,
 				C8599B8F2A035E8700DEA603 /* themejson_night.json in Resources */,
 				C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */,
+				C8C7505E2A062D8E00A91AAE /* NYSSettingViewController.xib in Resources */,
 				C8597A2C29F51054008BEE7F /* LaunchScreen.storyboard in Resources */,
+				C8C750722A063B7900A91AAE /* NYSWalletViewController.xib in Resources */,
+				C8C750802A06462A00A91AAE /* NYSMovementDetailVC.xib in Resources */,
 				C8597A2929F51054008BEE7F /* Assets.xcassets in Resources */,
 				C8599BA22A03828400DEA603 /* NYSRecommendedCell.xib in Resources */,
+				C8C7507C2A06422F00A91AAE /* NYSWalletMovemenCell.xib in Resources */,
 				C8599BAF2A03A73A00DEA603 /* NYSCourseCell.xib in Resources */,
+				C8C7506C2A06375A00A91AAE /* NYSUpdateInfoVC.xib in Resources */,
+				C8C750582A04ECE400A91AAE /* NYSMineViewController.xib in Resources */,
+				C8C750632A062DF500A91AAE /* NYSAboutViewController.xib in Resources */,
 				C8599BA72A038BF200DEA603 /* NYSBusinessView.xib in Resources */,
+				C8C750682A06356C00A91AAE /* NYSHelpViewController.xib in Resources */,
+				C8C750772A063D9F00A91AAE /* NYSWalletHeader.xib in Resources */,
+				C8C7503D2A04D66500A91AAE /* NYSCallCenterVC.xib in Resources */,
+				C8C7508B2A064CF300A91AAE /* NYSWithdrawViewController.xib in Resources */,
 				C8597A2729F51052008BEE7F /* Main.storyboard in Resources */,
+				C8C750382A04D35C00A91AAE /* NYSMessageCenterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,18 +600,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C750862A064B2600A91AAE /* NYSSecurityProtectionVC.m in Sources */,
+				C8C7506D2A06375A00A91AAE /* NYSUpdateInfoVC.m in Sources */,
+				C8C750492A04DFD400A91AAE /* LayoutFittingView.m in Sources */,
+				C8C750542A04ECBB00A91AAE /* NYSMineModel.m in Sources */,
+				C8C750372A04D35C00A91AAE /* NYSMessageCenterCell.m in Sources */,
+				C8C750592A04ECE400A91AAE /* NYSMineViewController.m in Sources */,
 				C8599BA52A038BAE00DEA603 /* NYSBusinessView.m in Sources */,
 				C8597A1E29F51052008BEE7F /* AppDelegate.m in Sources */,
 				C8599BAA2A03A3EC00DEA603 /* NYSSearchCourseVC.m in Sources */,
+				C8C750432A04DED500A91AAE /* NYSCourseModel.m in Sources */,
 				C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */,
 				C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */,
 				C8599BA12A03828400DEA603 /* NYSRecommendedCell.m in Sources */,
+				C8C750462A04DF2C00A91AAE /* NYSCourseListVC.m in Sources */,
 				C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */,
 				C8B7485129FBCDD500673B75 /* NYSHomeModel.m in Sources */,
+				C8C7508A2A064CF300A91AAE /* NYSWithdrawViewController.m in Sources */,
+				C8C7508F2A0653A600A91AAE /* NYSFeedbackVC.m in Sources */,
 				C8B7484E29FBCD6B00673B75 /* NYSHomeViewController.m in Sources */,
+				C8C750622A062DF500A91AAE /* NYSAboutViewController.m in Sources */,
 				C8599BAE2A03A73A00DEA603 /* NYSCourseCell.m in Sources */,
+				C8C750332A04D2C800A91AAE /* NYSMessageCenterVC.m in Sources */,
+				C8C7503C2A04D66500A91AAE /* NYSCallCenterVC.m in Sources */,
+				C8C7505D2A062D8E00A91AAE /* NYSSettingViewController.m in Sources */,
+				C8C7504D2A04E69100A91AAE /* NYSRecommendVC.m in Sources */,
+				C8C750672A06356C00A91AAE /* NYSHelpViewController.m in Sources */,
+				C8C750712A063B7900A91AAE /* NYSWalletViewController.m in Sources */,
+				C8C750752A063D9600A91AAE /* NYSWalletHeader.m in Sources */,
 				C8597A2F29F51054008BEE7F /* main.m in Sources */,
+				C8C750812A06462A00A91AAE /* NYSMovementDetailVC.m in Sources */,
+				C8C7507B2A06422F00A91AAE /* NYSWalletMovemenCell.m in Sources */,
 				C8599B952A037DF100DEA603 /* NYSBannerCell.m in Sources */,
+				C8C750302A04C95F00A91AAE /* NYSHomeCourseVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

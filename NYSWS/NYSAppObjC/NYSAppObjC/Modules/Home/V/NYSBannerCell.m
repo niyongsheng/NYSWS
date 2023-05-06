@@ -44,6 +44,10 @@
     
     self.titleLabel.text = [NSString stringWithFormat:@"  %@", bannerModel.remark];
     [self.bannerImageV setImageWithURL:NCDNURL(bannerModel.bannerUrl) placeholder:[UIImage imageNamed:@"plaholder_image_banner"]];
+    
+    if (_isCourseBanner) {
+        [self.bannerImageV setImageWithURL:NCDNURL(bannerModel.bannerUrl) placeholder:[UIImage imageNamed:@"course_banner_bg"]];
+    }
 }
 
 @end

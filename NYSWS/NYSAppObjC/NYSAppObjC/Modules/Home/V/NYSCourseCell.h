@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSCourseCell : UITableViewCell
-@property (nonatomic, weak) NYSCourseModel *model;
+@property (nonatomic, weak) NYSHomeCourseModel *model;
 
 @end
 

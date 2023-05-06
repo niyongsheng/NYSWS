@@ -19,5 +19,8 @@
 @implementation NYSRecommendedModel
 @end
 
-@implementation NYSCourseModel
+@implementation NYSHomeCourseModel
+@end
+
+@implementation NYSMessageCenterModel
 @end

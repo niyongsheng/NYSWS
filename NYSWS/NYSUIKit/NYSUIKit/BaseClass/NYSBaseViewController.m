@@ -20,6 +20,8 @@
 @interface NYSBaseViewController ()
 <
 UIScrollViewDelegate,
+UITableViewDelegate,
+UITableViewDataSource,
 DZNEmptyDataSetSource,
 DZNEmptyDataSetDelegate
 >
@@ -40,29 +42,8 @@ DZNEmptyDataSetDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NLog(@"%@", [NSString stringWithFormat:@"【控制器：%@】---> viewDidLoad", NSStringFromClass(self.class)]);
+    NLog(@"%@", [NSString stringWithFormat:@"【控制器：%@】---> viewDidLoad", NSStringFromClass(self.class)]);
     
-    // 默认显示返回按钮
-    self.isShowLiftBack = YES;
-    // 默认显示状态栏样式
-    self.customStatusBarStyle = UIStatusBarStyleLightContent;
-    
-    // 关闭拓展全屏布局，等效于automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
-//        self.navigationController.navigationBar.translucent = YES;
-//        self.automaticallyAdjustsScrollViewInsets = YES;
-//    }
-    
-    // 导航栏适配
-//    if (@available(iOS 13.0, *)) {
-//        UINavigationBarAppearance *barApp = [UINavigationBarAppearance new];
-//        barApp.shadowColor = [UIColor clearColor];
-////        barApp.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5]; // 背景色
-//        self.navigationController.navigationBar.scrollEdgeAppearance = barApp;
-//        self.navigationController.navigationBar.standardAppearance = barApp;
-//    }
-
     // 配置主题
     [self configTheme];
     
@@ -138,6 +119,9 @@ DZNEmptyDataSetDelegate
         _tableView.emptyDataSetSource = self;
         _tableView.emptyDataSetDelegate = self;
         
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
         static NSString *endStr = @"没有更多了";
         if (self.isUseUIRefreshControl) {
             // header refresh
@@ -200,6 +184,28 @@ DZNEmptyDataSetDelegate
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 0.0001f)];
     }
     return _tableView;
+}
+
+#pragma mark - tableview delegate / dataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataSourceArr.count;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /**
@@ -530,8 +536,29 @@ DZNEmptyDataSetDelegate
 
 #pragma mark - 设置主题
 - (void)configTheme {
-    if ([[UIDevice currentDevice] systemVersion].floatValue < 13.0) {
-    }
+    // 默认显示返回按钮
+    self.isShowLiftBack = YES;
+    
+    // 默认显示状态栏样式
+    self.customStatusBarStyle = UIStatusBarStyleLightContent;
+    
+    // 关闭拓展全屏布局，等效于automaticallyAdjustsScrollViewInsets = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+//        self.navigationController.navigationBar.translucent = YES;
+//        self.automaticallyAdjustsScrollViewInsets = YES;
+//    }
+    
+    // 导航栏适配
+//    if (@available(iOS 13.0, *)) {
+//        UINavigationBarAppearance *barApp = [UINavigationBarAppearance new];
+//        barApp.shadowColor = [UIColor clearColor];
+//        barApp.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5]; // 背景色
+//        self.navigationController.navigationBar.scrollEdgeAppearance = barApp;
+//        self.navigationController.navigationBar.standardAppearance = barApp;
+//    }
+
+    // 背景色
     self.view.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_0");
 }
 

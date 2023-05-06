@@ -10,7 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSSearchCourseVC : NYSBaseViewController
-
+@property (nonatomic, assign) BOOL isShowBanner;
+@property (nonatomic, strong) NSString *index;
 @end
 
 NS_ASSUME_NONNULL_END

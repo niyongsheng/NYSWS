@@ -12,6 +12,11 @@
 #import "NYSRecommendedCell.h"
 
 #import "NYSSearchCourseVC.h"
+#import "NYSHomeCourseVC.h"
+
+#import "NYSCallCenterVC.h"
+#import "NYSRecommendVC.h"
+#import "NYSMessageCenterVC.h"
 
 #define HomeBannerHeight        RealValue(180)
 #define HomeRecommendedHeight   RealValue(150)
@@ -144,6 +149,7 @@ NYSBusinessViewDelegate
     
     // 分页栏
     NSArray *titleArr = @[@"全部", @"老挝", @"中文", @"英文"];
+    NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
     SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
     segmentConfigure.indicatorColor = NAppThemeColor;
@@ -166,12 +172,13 @@ NYSBusinessViewDelegate
     });
     [self.containerScrollView addSubview:_pageTitleView];
     
-    NSArray *childArr = @[[[NYSBaseViewController alloc] init],
-                          [[NYSBaseViewController alloc] init],
-                          [[NYSBaseViewController alloc] init],
-                          [[NYSBaseViewController alloc] init],
-                          ];
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, NScreenWidth, NScreenHeight) parentVC:self childVCs:childArr];
+    NSMutableArray *childVCs = [NSMutableArray array];
+    for (NSString *valueStr in valueArr) {
+        NYSHomeCourseVC *hVC = [[NYSHomeCourseVC alloc] init];
+        hVC.index = valueStr;
+        [childVCs addObject:hVC];
+    }
+    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
     self.pageContentCollectionView.delegatePageContentCollectionView = self;
     [self.containerScrollView addSubview:_pageContentCollectionView];
     
@@ -191,7 +198,16 @@ NYSBusinessViewDelegate
 #pragma mark - NYSBusinessViewDelegate
 - (void)tapViewWithModel:(NYSBusinessModel *)model {
     if ([model.title isEqual:@"咨询客服"]) {
+        [self.navigationController pushViewController:[NYSCallCenterVC new] animated:YES];
         
+    } else if ([model.title isEqual:@"推荐有礼"]) {
+        [self.navigationController pushViewController:[NYSRecommendVC new] animated:YES];
+        
+    } else if ([model.title isEqual:@"消息中心"]) {
+        [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
+        
+    } else if ([model.title isEqual:@"互联外卖"]) {
+        [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
     }
 }
 

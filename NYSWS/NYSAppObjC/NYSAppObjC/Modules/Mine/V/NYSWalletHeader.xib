@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSWalletHeader">
+            <connections>
+                <outlet property="moneyL" destination="peO-9m-dec" id="TWL-to-PCj"/>
+                <outlet property="rechargeBtn" destination="jsG-3X-tRT" id="gB5-lG-DAc"/>
+                <outlet property="withdrawBtn" destination="8NB-Ok-Nwq" id="f3N-OE-tq3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="332"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbG-2W-ufd">
+                    <rect key="frame" x="0.0" y="0.0" width="334" height="270"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_bg" translatesAutoresizingMaskIntoConstraints="NO" id="m3C-As-U9f">
+                            <rect key="frame" x="0.0" y="0.0" width="334" height="270"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peO-9m-dec">
+                            <rect key="frame" x="136" y="118.5" width="62.5" height="33.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGZ-Cp-hjP">
+                            <rect key="frame" x="138.5" y="157" width="57.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsG-3X-tRT">
+                            <rect key="frame" x="30" y="220" width="110" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="GeM-0N-QAj"/>
+                                <constraint firstAttribute="width" constant="110" id="uMJ-7A-m2c"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="充值">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <connections>
+                                <action selector="rechargeBtnOnclicked:" destination="-1" eventType="touchUpInside" id="Gte-C6-rOq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NB-Ok-Nwq">
+                            <rect key="frame" x="194" y="220" width="110" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="110" id="AjH-hO-3Hf"/>
+                                <constraint firstAttribute="height" constant="30" id="M0t-5e-EyO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="提现">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                            <connections>
+                                <action selector="withdrawBtnOnclicked:" destination="-1" eventType="touchUpInside" id="0wL-Kh-QAL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96862739320000002" green="0.96862739320000002" blue="0.96862739320000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="270" id="23g-O3-Y0q"/>
+                        <constraint firstAttribute="bottom" secondItem="8NB-Ok-Nwq" secondAttribute="bottom" constant="20" id="Hnz-df-LiV"/>
+                        <constraint firstItem="peO-9m-dec" firstAttribute="centerX" secondItem="WbG-2W-ufd" secondAttribute="centerX" id="Hz7-9G-fLl"/>
+                        <constraint firstItem="jsG-3X-tRT" firstAttribute="leading" secondItem="WbG-2W-ufd" secondAttribute="leading" constant="30" id="N2F-BM-kcE"/>
+                        <constraint firstAttribute="trailing" secondItem="8NB-Ok-Nwq" secondAttribute="trailing" constant="30" id="QCf-1p-fEP"/>
+                        <constraint firstItem="m3C-As-U9f" firstAttribute="top" secondItem="WbG-2W-ufd" secondAttribute="top" id="SaM-Vk-3gr"/>
+                        <constraint firstItem="FGZ-Cp-hjP" firstAttribute="top" secondItem="peO-9m-dec" secondAttribute="bottom" constant="5" id="Xde-iG-8ZW"/>
+                        <constraint firstItem="FGZ-Cp-hjP" firstAttribute="centerX" secondItem="WbG-2W-ufd" secondAttribute="centerX" id="Zgi-cC-C5j"/>
+                        <constraint firstItem="peO-9m-dec" firstAttribute="centerY" secondItem="WbG-2W-ufd" secondAttribute="centerY" id="mW1-sy-V9p"/>
+                        <constraint firstAttribute="bottom" secondItem="jsG-3X-tRT" secondAttribute="bottom" constant="20" id="snO-P9-TF7"/>
+                        <constraint firstAttribute="bottom" secondItem="m3C-As-U9f" secondAttribute="bottom" id="wgU-Tc-QPJ"/>
+                        <constraint firstItem="m3C-As-U9f" firstAttribute="leading" secondItem="WbG-2W-ufd" secondAttribute="leading" id="x8W-nf-jfF"/>
+                        <constraint firstAttribute="trailing" secondItem="m3C-As-U9f" secondAttribute="trailing" id="xoh-9p-oR9"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCe-lO-khH">
+                    <rect key="frame" x="30" y="290" width="74" height="22"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.96862739320000002" green="0.96862739320000002" blue="0.96862739320000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WbG-2W-ufd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1RR-Ix-qrq"/>
+                <constraint firstItem="xCe-lO-khH" firstAttribute="top" secondItem="WbG-2W-ufd" secondAttribute="bottom" constant="20" id="6nz-i7-fBt"/>
+                <constraint firstItem="xCe-lO-khH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="YlB-DK-J9j"/>
+                <constraint firstItem="WbG-2W-ufd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="huf-yH-ND3"/>
+                <constraint firstAttribute="trailing" secondItem="WbG-2W-ufd" secondAttribute="trailing" id="mSn-cu-rC5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="130.43478260869566" y="173.4375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="wallet_bg" width="375" height="260"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

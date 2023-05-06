@@ -60,7 +60,7 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 
 #pragma mark -- 第三方平台相关 --
 // Company Name
-#define CompanyName     @"硕鼠工作室"
+#define CompanyName     @"NYS Studio"
 // App Store ID
 #define APPID           @"6443611778"
 // App Store详情页

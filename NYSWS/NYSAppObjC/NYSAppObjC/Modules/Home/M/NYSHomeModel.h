@@ -38,6 +38,10 @@
 
 @end
 
-@interface NYSCourseModel : NYSBaseObject
+@interface NYSHomeCourseModel : NYSBaseObject
+
+@end
+
+@interface NYSMessageCenterModel : NYSBaseObject
 
 @end

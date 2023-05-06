@@ -15,9 +15,7 @@
 
 @implementation NYSBusinessView
 
-- (void)setupView {
-    
-    ViewRadius(self, 10);
+- (void)layoutSubviews {
     
     WS(weakSelf)
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {

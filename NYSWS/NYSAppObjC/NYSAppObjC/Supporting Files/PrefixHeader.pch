@@ -7,13 +7,14 @@
 
 #import <YYKit/YYKit.h>
 #import <Masonry.h>
-#import <MJRefresh.h>
+#import <MJRefresh/MJRefresh.h>
 #import <WMZBanner/WMZBannerView.h>
 #import <BRPickerView/BRPickerView.h>
 #import <SGPagingView/SGPagingView.h>
 #import <WRNavigationBar/WRNavigationBar.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 //#import <AFNetworking/AFNetworking.h>
 
 #pragma mark -- 宏定义 --
@@ -29,6 +30,8 @@
 
 #pragma mark -- 模型 --
 #import "NYSHomeModel.h"
+#import "NYSCourseModel.h"
+#import "NYSMineModel.h"
 
 
 #endif /* PrefixHeader_pch */
