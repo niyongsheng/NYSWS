@@ -14,6 +14,7 @@
 #import "NYSWalletViewController.h"
 #import "NYSSecurityProtectionVC.h"
 #import "NYSFeedbackVC.h"
+#import "NYSMyCourseListPagingVC.h"
 
 @interface NYSMineViewController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewTop;
@@ -41,9 +42,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.isHidenNaviBar = YES;
-    self.contentViewTop.constant -= NStatusBarHeight;
+
+    [self wr_setNavBarBackgroundAlpha:0];
+    self.contentViewTop.constant -= NTopHeight;
+    self.customStatusBarStyle = UIStatusBarStyleLightContent;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(0, 280)];
@@ -51,22 +53,22 @@
     [path addLineToPoint:CGPointMake(kScreenWidth, 0)];
     [path addLineToPoint:CGPointMake(kScreenWidth, 280)];
     [path addQuadCurveToPoint:CGPointMake(0, 280) controlPoint:CGPointMake(kScreenWidth/2, 300)];
-
+    
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.frame = CGRectMake(0, 0, kScreenWidth, 300);
     layer.path = path.CGPath;
     _headerBgV.layer.mask = layer;
-//
-//    CAGradientLayer *gl = [CAGradientLayer layer];
-//    gl.frame = layer.frame;
-//    gl.startPoint = CGPointMake(0, 0);
-//    gl.endPoint = CGPointMake(1, 1);
-//    gl.colors = @[(__bridge id)[UIColor colorWithHexString:@"#FF8648"].CGColor,
-//                  (__bridge id)[UIColor colorWithHexString:@"#FA8632"].CGColor,
-//                  (__bridge id)[UIColor colorWithHexString:@"#F88641"].CGColor];
-//    gl.locations = @[@(0.0),@(0.8),@(1.0)];
-//    [_headerBgV.layer addSublayer:gl];
-
+    //
+    //    CAGradientLayer *gl = [CAGradientLayer layer];
+    //    gl.frame = layer.frame;
+    //    gl.startPoint = CGPointMake(0, 0);
+    //    gl.endPoint = CGPointMake(1, 1);
+    //    gl.colors = @[(__bridge id)[UIColor colorWithHexString:@"#FF8648"].CGColor,
+    //                  (__bridge id)[UIColor colorWithHexString:@"#FA8632"].CGColor,
+    //                  (__bridge id)[UIColor colorWithHexString:@"#F88641"].CGColor];
+    //    gl.locations = @[@(0.0),@(0.8),@(1.0)];
+    //    [_headerBgV.layer addSublayer:gl];
+    
     ViewBorderRadius(_iconIV, 40, 1, UIColor.whiteColor);
     ViewRadius(_rechargeV, 17.5);
     ViewRadius(_rechargeBtn, 12.5);
@@ -115,12 +117,12 @@
             [self.navigationController pushViewController:NYSCallCenterVC.new animated:YES];
         }
             break;
-        
+            
         case 5: {
             [self.navigationController pushViewController:NYSSecurityProtectionVC.new animated:YES];
         }
             break;
-        
+            
         case 6: {
             [self.navigationController pushViewController:NYSFeedbackVC.new animated:YES];
         }
@@ -136,10 +138,16 @@
     }
 }
 
-- (IBAction)mineBtnOnclicked:(UIButton *)sender {
-    
-    
+- (IBAction)otherBtnOnclicked:(UIButton *)sender {
+    if (sender.tag == 1) {
+        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+        [NRootViewController presentViewController:loginVC animated:YES completion:^{
+            
+        }];
+        
+    } else {
+        [self.navigationController pushViewController:NYSMyCourseListPagingVC.new animated:YES];
+    }
 }
-
 
 @end

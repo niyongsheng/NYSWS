@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="NYSLessonPlayCell">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="66"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="66"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJh-91-zwW">
+                        <rect key="frame" x="15" y="0.0" width="342" height="66"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_small_icon" translatesAutoresizingMaskIntoConstraints="NO" id="o8b-Xb-hqD">
+                                <rect key="frame" x="5" y="15" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="2Gi-SX-mN6"/>
+                                    <constraint firstAttribute="width" secondItem="o8b-Xb-hqD" secondAttribute="height" multiplier="1:1" id="zll-Hh-GHq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第-章 ----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZV-if-J3E">
+                                <rect key="frame" x="30" y="15" width="74" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9g-SR-PJE">
+                                <rect key="frame" x="30" y="39.5" width="23" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_small_icon" translatesAutoresizingMaskIntoConstraints="NO" id="8mK-ae-mxK">
+                                <rect key="frame" x="321" y="22.5" width="21" height="21"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8mK-ae-mxK" secondAttribute="trailing" id="0Js-v5-wDf"/>
+                            <constraint firstItem="8mK-ae-mxK" firstAttribute="centerY" secondItem="EJh-91-zwW" secondAttribute="centerY" id="5UV-dh-b2i"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UZV-if-J3E" secondAttribute="trailing" constant="10" id="CgN-Gs-mxJ"/>
+                            <constraint firstItem="m9g-SR-PJE" firstAttribute="leading" secondItem="UZV-if-J3E" secondAttribute="leading" id="S8j-Aa-Ft2"/>
+                            <constraint firstItem="m9g-SR-PJE" firstAttribute="top" secondItem="UZV-if-J3E" secondAttribute="bottom" constant="5" id="TnI-AJ-eAy"/>
+                            <constraint firstItem="UZV-if-J3E" firstAttribute="top" secondItem="o8b-Xb-hqD" secondAttribute="top" id="Va7-wF-caE"/>
+                            <constraint firstItem="UZV-if-J3E" firstAttribute="leading" secondItem="o8b-Xb-hqD" secondAttribute="trailing" constant="10" id="fHt-ZD-IQj"/>
+                            <constraint firstItem="o8b-Xb-hqD" firstAttribute="top" secondItem="EJh-91-zwW" secondAttribute="top" constant="15" id="mRh-JJ-cRi"/>
+                            <constraint firstItem="o8b-Xb-hqD" firstAttribute="leading" secondItem="EJh-91-zwW" secondAttribute="leading" constant="5" id="opd-a2-amG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="EJh-91-zwW" secondAttribute="bottom" id="8eo-QD-x8h"/>
+                    <constraint firstAttribute="trailing" secondItem="EJh-91-zwW" secondAttribute="trailing" constant="15" id="DBc-Va-zIW"/>
+                    <constraint firstItem="EJh-91-zwW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="k4N-u1-nW4"/>
+                    <constraint firstItem="EJh-91-zwW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sZw-sS-vw1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="conView" destination="EJh-91-zwW" id="fXb-Md-dEV"/>
+                <outlet property="icon" destination="o8b-Xb-hqD" id="fq2-8W-PM3"/>
+                <outlet property="subtitle" destination="m9g-SR-PJE" id="x1e-3y-oMS"/>
+                <outlet property="titleL" destination="UZV-if-J3E" id="URz-hx-tZW"/>
+            </connections>
+            <point key="canvasLocation" x="169.56521739130437" y="79.6875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="detail_small_icon" width="21" height="21"/>
+        <image name="play_small_icon" width="16" height="16"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

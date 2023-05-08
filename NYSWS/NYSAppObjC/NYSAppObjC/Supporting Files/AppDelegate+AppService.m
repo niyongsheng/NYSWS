@@ -60,7 +60,7 @@
     // 设置导航栏标题默认颜色
     [WRNavigationBar wr_setDefaultNavBarTitleColor:[UIColor blackColor]];
     // 统一设置状态栏样式
-    [WRNavigationBar wr_setDefaultStatusBarStyle:UIStatusBarStyleLightContent];
+    [WRNavigationBar wr_setDefaultStatusBarStyle:UIStatusBarStyleDefault];
     // 如果需要设置导航栏底部分割线隐藏，可以在这里统一设置
     [WRNavigationBar wr_setDefaultNavBarShadowImageHidden:YES];
 }
@@ -69,7 +69,7 @@
 - (void)initIQKeyboardManager {
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
-    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
 }
 
 #pragma mark -- 友盟 初始化 --

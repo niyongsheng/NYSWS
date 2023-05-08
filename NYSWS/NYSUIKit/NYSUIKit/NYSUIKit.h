@@ -35,6 +35,7 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/UIButton+NYS.h>
 #import <NYSUIKit/UIImage+NYS.h>
 #import <NYSUIKit/UINavigationController+FDFullscreenPopGesture.h>
+#import <NYSUIKit/UINavigationController+NYSUIKit.h>
 #import <NYSUIKit/UITextField+NYS.h>
 #import <NYSUIKit/UIView+Tools.h>
 

@@ -37,6 +37,11 @@
     self.delegate = self;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    NYSBaseViewController *vc = (NYSBaseViewController *)self.topViewController;
+    return [vc customStatusBarStyle];
+}
+
 /// theme config
 - (void)configTheme {
     if ([[UIDevice currentDevice] systemVersion].floatValue < 13.0) {
@@ -112,18 +117,6 @@
             [vc.navigationController setNavigationBarHidden:YES animated:animated];
         } else {
             [vc.navigationController setNavigationBarHidden:NO animated:animated];
-        }
-    }
-}
-
-/// pop到指定控制器
-/// @param aClass 类
-/// @param animated 动画
-- (void)popToViewControllerClass:(Class)aClass animated:(BOOL)animated {
-    for (UIViewController *controller in self.navigationController.viewControllers) {
-        
-        if ([controller isKindOfClass:aClass]) {
-            [self.navigationController popToViewController:controller animated:YES];
         }
     }
 }

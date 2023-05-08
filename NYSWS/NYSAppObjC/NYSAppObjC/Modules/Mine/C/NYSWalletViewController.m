@@ -10,11 +10,13 @@
 #import "NYSWalletMovemenCell.h"
 #import "NYSMovementDetailVC.h"
 #import "NYSWithdrawViewController.h"
+#import "NYSRechargeAlertView.h"
 
 @interface NYSWalletViewController ()
 {
     NSInteger _pageNo;
 }
+@property (strong, nonatomic) NYSRechargeAlertView *rechargeAlertView;
 @end
 
 @implementation NYSWalletViewController
@@ -22,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"我的钱包";
+    self.navigationItem.title = @"我的钱包";
     
     [self wr_setNavBarBackgroundAlpha:0];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
@@ -48,7 +50,16 @@
     NYSWalletHeader *headerView = [[NYSWalletHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 330)];
     headerView.block = ^(id obj) {
         if ([obj isEqual:@"1"]) {
-            
+            // 充值弹框
+            FFPopup *popup = [FFPopup popupWithContentView:self.rechargeAlertView showType:FFPopupShowType_BounceInFromBottom dismissType:FFPopupDismissType_BounceOutToBottom maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
+            FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Left, FFPopupVerticalLayout_Bottom);
+            self.rechargeAlertView.block = ^(id obj) {
+                [popup dismissAnimated:YES];
+                
+                
+                
+            };
+            [popup showWithLayout:layout];
         } else {
             [self.navigationController pushViewController:NYSWithdrawViewController.new animated:YES];
         }
@@ -140,6 +151,15 @@
     NYSMovementDetailVC *vc = NYSMovementDetailVC.new;
     vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (NYSRechargeAlertView *)rechargeAlertView {
+    if (!_rechargeAlertView) {
+        CGFloat width = NScreenWidth;
+        CGFloat height = 570 + NBottomHeight;
+        _rechargeAlertView = [[NYSRechargeAlertView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    }
+    return _rechargeAlertView;
 }
 
 @end

@@ -30,10 +30,6 @@ DZNEmptyDataSetDelegate
 
 @implementation NYSBaseViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return _customStatusBarStyle;
-}
-
 - (void)setCustomStatusBarStyle:(UIStatusBarStyle)StatusBarStyle {
     _customStatusBarStyle = StatusBarStyle;
     // 动态更新状态栏颜色
@@ -540,7 +536,7 @@ DZNEmptyDataSetDelegate
     self.isShowLiftBack = YES;
     
     // 默认显示状态栏样式
-    self.customStatusBarStyle = UIStatusBarStyleLightContent;
+    self.customStatusBarStyle = UIStatusBarStyleDefault;
     
     // 关闭拓展全屏布局，等效于automaticallyAdjustsScrollViewInsets = NO;
 //    self.edgesForExtendedLayout = UIRectEdgeNone;

@@ -10,6 +10,7 @@
 #import "NYSBannerCell.h"
 #import "NYSBusinessView.h"
 #import "NYSRecommendedCell.h"
+#import "PopTableListView.h"
 
 #import "NYSSearchCourseVC.h"
 #import "NYSHomeCourseVC.h"
@@ -18,11 +19,16 @@
 #import "NYSRecommendVC.h"
 #import "NYSMessageCenterVC.h"
 
+#import "NYSCourseDetailVC.h"
+#import "NYSPurchasedCourseDetailVC.h"
+#import "NYSCatalogViewController.h"
+
 #define HomeBannerHeight        RealValue(180)
 #define HomeRecommendedHeight   RealValue(150)
 
 @interface NYSHomeViewController ()
 <
+PopTableCellDelegate,
 UIScrollViewDelegate,
 SGPageTitleViewDelegate,
 SGPageContentCollectionViewDelegate,
@@ -50,6 +56,9 @@ NYSBusinessViewDelegate
 
 @property (nonatomic, strong) SGPageTitleView *pageTitleView;
 @property (nonatomic, strong) SGPageContentCollectionView *pageContentCollectionView;
+
+@property (nonatomic, strong) PopView *popView;
+@property (nonatomic, strong) PopTableListView *popListView;
 @end
 
 @implementation NYSHomeViewController
@@ -63,8 +72,30 @@ NYSBusinessViewDelegate
     [self setupUI];
 }
 
-- (void)rightBtnOnclicked:(UIButton *)sender {
+- (PopTableListView *)popListView{
+    if (_popListView == nil) {
+        _popListView = [[PopTableListView alloc] initWithTitles:@[@"简体中文",@"ກະຣຸນາ"] imgNames:nil];
+        _popListView.backgroundColor = [UIColor whiteColor];
+        _popListView.layer.cornerRadius = 15;
+        _popListView.delegate = self;
+    }
+    return _popListView;
+}
+
+#pragma mark - PopTableCellDelegate
+- (void)cellOnclick:(NSIndexPath *)indexPath tag:(NSInteger)tag {
+    [PopView hidenPopView];
     
+    if (indexPath.row == 0) {
+        
+    } else {
+        
+    }
+}
+
+- (void)rightBtnOnclicked:(UIButton *)sender {
+    self.popView = [PopView popUpContentView:self.popListView direct:PopViewDirection_PopUpBottom onView:sender offset:0 triangleView:nil animation:YES];
+    self.popView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
 }
 
 #pragma mark - UI布局
@@ -276,7 +307,20 @@ NYSBusinessViewDelegate
             return cell;
         })
         .wEventClickSet(^(id anyID, NSInteger index) {
-            
+            if (index == 0) {
+                NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            } else if (index == 1) {
+                
+                NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            } else {
+                
+                NYSCatalogViewController *vc = NYSCatalogViewController.new;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         })
         .wFrameSet(CGRectMake(0, 0, NScreenWidth, HomeRecommendedHeight))
         .wItemSizeSet(CGSizeMake(kScreenWidth * 0.8, HomeRecommendedHeight))

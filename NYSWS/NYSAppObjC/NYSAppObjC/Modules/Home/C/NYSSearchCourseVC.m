@@ -8,6 +8,7 @@
 #import "NYSSearchCourseVC.h"
 #import "NYSCourseCell.h"
 #import "NYSBannerCell.h"
+#import "NYSCourseDetailVC.h"
 
 #define HomeBannerHeight        RealValue(120)
 
@@ -162,7 +163,8 @@ UITextFieldDelegate
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
-
+    NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Setter/Getter

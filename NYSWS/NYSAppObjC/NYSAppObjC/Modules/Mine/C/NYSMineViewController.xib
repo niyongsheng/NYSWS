@@ -567,7 +567,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="82.666666666666671" height="90"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <connections>
-                                                                        <action selector="mineBtnOnclicked:" destination="-1" eventType="touchUpInside" id="dWW-wk-Nzk"/>
+                                                                        <action selector="otherBtnOnclicked:" destination="-1" eventType="touchUpInside" id="uvZ-ko-mIN"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -590,7 +590,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="82.333333333333329" height="90"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <connections>
-                                                                        <action selector="mineBtnOnclicked:" destination="-1" eventType="touchUpInside" id="5q4-GH-o4E"/>
+                                                                        <action selector="otherBtnOnclicked:" destination="-1" eventType="touchUpInside" id="vK0-Md-aCP"/>
                                                                     </connections>
                                                                 </button>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_other_iocn" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-Pf-VIZ">

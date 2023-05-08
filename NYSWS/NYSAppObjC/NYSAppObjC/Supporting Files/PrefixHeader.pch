@@ -7,6 +7,7 @@
 
 #import <YYKit/YYKit.h>
 #import <Masonry.h>
+#import <FFPopup/FFPopup.h>
 #import <MJRefresh/MJRefresh.h>
 #import <WMZBanner/WMZBannerView.h>
 #import <BRPickerView/BRPickerView.h>
@@ -24,6 +25,7 @@
 
 
 
+#import "NYSLoginVC.h"
 #import "NYSTabbarViewController.h"
 
 

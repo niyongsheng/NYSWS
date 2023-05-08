@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NYSBaseNavigationController : UINavigationController
-- (void)popToViewControllerClass:(Class)aClass animated:(BOOL)animated;
+
 @end

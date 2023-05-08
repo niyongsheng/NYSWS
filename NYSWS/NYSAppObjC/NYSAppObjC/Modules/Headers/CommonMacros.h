@@ -40,7 +40,7 @@ tmp;\
 })
 
 // 状态栏高度
-#define NStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+#define NStatusBarHeight [NYSUIKitUtilities nys_statusBarHeight]
 
 #define NGetNavBarHight \
 ({\
@@ -49,7 +49,7 @@ CGRect rectNav = self.navigationController.navigationBar.frame;\
 })\
 
 #define NTopHeight (NStatusBarHeight + NGetNavBarHight)
-#define NBottomHeight (NStatusBarHeight == 44 ? 34 : 0)
+#define NBottomHeight [NYSUIKitUtilities nys_safeDistanceBottom]
 #define NTabBarHeight (NBottomHeight + 49)
 
 // 强弱引用

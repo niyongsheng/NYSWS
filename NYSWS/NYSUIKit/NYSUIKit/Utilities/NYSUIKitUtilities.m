@@ -33,9 +33,11 @@ tmp;\
         NSSet *set = [UIApplication sharedApplication].connectedScenes;
         UIWindowScene *windowScene = [set anyObject];
         UIStatusBarManager *statusBarManager = windowScene.statusBarManager;
-        return statusBarManager.statusBarFrame.size.height;
+        CGFloat h = statusBarManager.statusBarFrame.size.height;
+        return h;
     } else {
-        return [UIApplication sharedApplication].statusBarFrame.size.height;
+        CGFloat h = [UIApplication sharedApplication].statusBarFrame.size.height;
+        return h;
     }
 }
 
@@ -48,11 +50,13 @@ tmp;\
         NSSet *set = [UIApplication sharedApplication].connectedScenes;
         UIWindowScene *windowScene = [set anyObject];
         UIWindow *window = windowScene.windows.firstObject;
-        return window.safeAreaInsets.bottom;
+        CGFloat h = window.safeAreaInsets.bottom;
+        return h;
         
     } else if (@available(iOS 11.0, *)) {
         UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
-        return window.safeAreaInsets.bottom;
+        CGFloat h = window.safeAreaInsets.bottom;
+        return h;
     }
     
     if (isIphonex) {

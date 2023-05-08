@@ -38,6 +38,8 @@
     mineVC.tabBarItem.selectedImage = [UIImage imageNamed:@"mine_selected_icon"];
     [self addChildViewController:[[NYSBaseNavigationController alloc] initWithRootViewController:mineVC]];
     
+    self.tabBar.tintColor = NAppThemeColor;
+    
 }
 
 @end

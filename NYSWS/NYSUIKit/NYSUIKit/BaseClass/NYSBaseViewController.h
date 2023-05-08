@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-/** 状态栏样式 */
+/** 状态栏主题样式 */
 @property (nonatomic, assign) UIStatusBarStyle customStatusBarStyle;
 /** 是否隐藏导航栏 default :NO **/
 @property (nonatomic, assign) BOOL isHidenNaviBar;
