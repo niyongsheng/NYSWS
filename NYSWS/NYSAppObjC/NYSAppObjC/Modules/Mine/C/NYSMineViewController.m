@@ -15,6 +15,7 @@
 #import "NYSSecurityProtectionVC.h"
 #import "NYSFeedbackVC.h"
 #import "NYSMyCourseListPagingVC.h"
+#import "NYSRecommendVC.h"
 
 @interface NYSMineViewController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewTop;
@@ -87,12 +88,11 @@
         [self.navigationController pushViewController:NYSWalletViewController.new animated:YES];
         
     } else if (sender.tag == 1) {
-        
+        [self.navigationController pushViewController:NYSMyCourseListPagingVC.new animated:YES];
         
     } else if (sender.tag == 2) {
-        
+        [self.navigationController pushViewController:NYSRecommendVC.new animated:YES];
     }
-    
 }
 
 - (IBAction)functionBtnOnclicked:(UIButton *)sender {
@@ -146,7 +146,7 @@
         }];
         
     } else {
-        [self.navigationController pushViewController:NYSMyCourseListPagingVC.new animated:YES];
+        
     }
 }
 

@@ -20,20 +20,20 @@
     [super viewDidLoad];
     
     NYSHomeViewController *homeVC = [NYSHomeViewController new];
-    homeVC.tabBarItem.title = @"首页";
+    homeVC.tabBarItem.title = NSLocalizedStringFromTable(@"home", @"InfoPlist", nil);
     homeVC.tabBarItem.image = [UIImage imageNamed:@"home_normal_icon"];
     homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_selected_icon"];
     [self addChildViewController:[[NYSBaseNavigationController alloc] initWithRootViewController:homeVC]];
     
     NYSCourseListVC *courseVC = [NYSCourseListVC new];
     courseVC.view.backgroundColor = UIColor.greenColor;
-    courseVC.tabBarItem.title = @"课程";
+    courseVC.tabBarItem.title = NSLocalizedStringFromTable(@"course", @"InfoPlist", nil);
     courseVC.tabBarItem.image = [UIImage imageNamed:@"course_normal_icon"];
     courseVC.tabBarItem.selectedImage = [UIImage imageNamed:@"course_selected_icon"];
     [self addChildViewController:[[NYSBaseNavigationController alloc] initWithRootViewController:courseVC]];
     
     NYSMineViewController *mineVC = [NYSMineViewController new];
-    mineVC.tabBarItem.title = @"我的";
+    mineVC.tabBarItem.title = NSLocalizedStringFromTable(@"mine", @"InfoPlist", nil);
     mineVC.tabBarItem.image = [UIImage imageNamed:@"mine_normal_icon"];
     mineVC.tabBarItem.selectedImage = [UIImage imageNamed:@"mine_selected_icon"];
     [self addChildViewController:[[NYSBaseNavigationController alloc] initWithRootViewController:mineVC]];

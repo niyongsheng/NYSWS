@@ -42,10 +42,8 @@
 		C8C7504D2A04E69100A91AAE /* NYSRecommendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7504B2A04E69100A91AAE /* NYSRecommendVC.m */; };
 		C8C7504E2A04E69100A91AAE /* NYSRecommendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7504C2A04E69100A91AAE /* NYSRecommendVC.xib */; };
 		C8C750542A04ECBB00A91AAE /* NYSMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750532A04ECBB00A91AAE /* NYSMineModel.m */; };
-		C8C750582A04ECE400A91AAE /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750562A04ECE400A91AAE /* NYSMineViewController.xib */; };
 		C8C750592A04ECE400A91AAE /* NYSMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750572A04ECE400A91AAE /* NYSMineViewController.m */; };
 		C8C7505D2A062D8E00A91AAE /* NYSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C7505A2A062D8D00A91AAE /* NYSSettingViewController.m */; };
-		C8C7505E2A062D8E00A91AAE /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C7505C2A062D8E00A91AAE /* NYSSettingViewController.xib */; };
 		C8C750622A062DF500A91AAE /* NYSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750602A062DF500A91AAE /* NYSAboutViewController.m */; };
 		C8C750632A062DF500A91AAE /* NYSAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C750612A062DF500A91AAE /* NYSAboutViewController.xib */; };
 		C8C750672A06356C00A91AAE /* NYSHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C750652A06356C00A91AAE /* NYSHelpViewController.m */; };
@@ -94,6 +92,11 @@
 		C8EE7E992A08DE24000E3A3A /* NYSCatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EE7E972A08DE24000E3A3A /* NYSCatalogViewController.xib */; };
 		C8EE7EA62A08E4D3000E3A3A /* PopTableListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7EA22A08E4D3000E3A3A /* PopTableListView.m */; };
 		C8EE7EA72A08E4D3000E3A3A /* YLButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7EA32A08E4D3000E3A3A /* YLButton.m */; };
+		C8EE7EAE2A08E9AD000E3A3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8EE7EB02A08E9AD000E3A3A /* InfoPlist.strings */; };
+		C8EE7ECE2A08F396000E3A3A /* NSBundle+DAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7ECA2A08F395000E3A3A /* NSBundle+DAUtils.m */; };
+		C8EE7ECF2A08F396000E3A3A /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7ECC2A08F395000E3A3A /* DAConfig.m */; };
+		C8EE7ED22A08F56A000E3A3A /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EE7ED12A08F56A000E3A3A /* NYSMineViewController.xib */; };
+		C8EE7ED42A08F643000E3A3A /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EE7ED32A08F642000E3A3A /* NYSSettingViewController.xib */; };
 		E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */; };
 /* End PBXBuildFile section */
 
@@ -178,11 +181,9 @@
 		C8C750522A04ECBB00A91AAE /* NYSMineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSMineModel.h; sourceTree = "<group>"; };
 		C8C750532A04ECBB00A91AAE /* NYSMineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSMineModel.m; sourceTree = "<group>"; };
 		C8C750552A04ECE400A91AAE /* NYSMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSMineViewController.h; sourceTree = "<group>"; };
-		C8C750562A04ECE400A91AAE /* NYSMineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSMineViewController.xib; sourceTree = "<group>"; };
 		C8C750572A04ECE400A91AAE /* NYSMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSMineViewController.m; sourceTree = "<group>"; };
 		C8C7505A2A062D8D00A91AAE /* NYSSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSSettingViewController.m; sourceTree = "<group>"; };
 		C8C7505B2A062D8D00A91AAE /* NYSSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSSettingViewController.h; sourceTree = "<group>"; };
-		C8C7505C2A062D8E00A91AAE /* NYSSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
 		C8C7505F2A062DF500A91AAE /* NYSAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSAboutViewController.h; sourceTree = "<group>"; };
 		C8C750602A062DF500A91AAE /* NYSAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSAboutViewController.m; sourceTree = "<group>"; };
 		C8C750612A062DF500A91AAE /* NYSAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSAboutViewController.xib; sourceTree = "<group>"; };
@@ -258,6 +259,18 @@
 		C8EE7EA12A08E4D3000E3A3A /* PopTableListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopTableListView.h; sourceTree = "<group>"; };
 		C8EE7EA22A08E4D3000E3A3A /* PopTableListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopTableListView.m; sourceTree = "<group>"; };
 		C8EE7EA32A08E4D3000E3A3A /* YLButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLButton.m; sourceTree = "<group>"; };
+		C8EE7EA82A08E8D9000E3A3A /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/Main.strings"; sourceTree = "<group>"; };
+		C8EE7EA92A08E8DA000E3A3A /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C8EE7EAA2A08E8EC000E3A3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C8EE7EAB2A08E8EC000E3A3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C8EE7EAF2A08E9AD000E3A3A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C8EE7EB12A08E9B3000E3A3A /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C8EE7ECA2A08F395000E3A3A /* NSBundle+DAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+DAUtils.m"; sourceTree = "<group>"; };
+		C8EE7ECB2A08F395000E3A3A /* NSBundle+DAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+DAUtils.h"; sourceTree = "<group>"; };
+		C8EE7ECC2A08F395000E3A3A /* DAConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAConfig.m; sourceTree = "<group>"; };
+		C8EE7ECD2A08F396000E3A3A /* DAConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAConfig.h; sourceTree = "<group>"; };
+		C8EE7ED12A08F56A000E3A3A /* NYSMineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSMineViewController.xib; sourceTree = "<group>"; };
+		C8EE7ED32A08F642000E3A3A /* NYSSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
 		FE7C22C1B089104DEA1663BB /* Pods-NYSAppObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppObjC.release.xcconfig"; path = "Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -321,6 +334,7 @@
 				C8597A2A29F51054008BEE7F /* LaunchScreen.storyboard */,
 				C8597A2D29F51054008BEE7F /* Info.plist */,
 				C8597A2E29F51054008BEE7F /* main.m */,
+				C8EE7EB02A08E9AD000E3A3A /* InfoPlist.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -335,6 +349,10 @@
 				C8B7482229FBB1D300673B75 /* Headers */,
 				C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */,
 				C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */,
+				C8EE7ECD2A08F396000E3A3A /* DAConfig.h */,
+				C8EE7ECC2A08F395000E3A3A /* DAConfig.m */,
+				C8EE7ECB2A08F395000E3A3A /* NSBundle+DAUtils.h */,
+				C8EE7ECA2A08F395000E3A3A /* NSBundle+DAUtils.m */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -505,10 +523,10 @@
 			children = (
 				C8C750552A04ECE400A91AAE /* NYSMineViewController.h */,
 				C8C750572A04ECE400A91AAE /* NYSMineViewController.m */,
-				C8C750562A04ECE400A91AAE /* NYSMineViewController.xib */,
+				C8EE7ED12A08F56A000E3A3A /* NYSMineViewController.xib */,
 				C8C7505B2A062D8D00A91AAE /* NYSSettingViewController.h */,
 				C8C7505A2A062D8D00A91AAE /* NYSSettingViewController.m */,
-				C8C7505C2A062D8E00A91AAE /* NYSSettingViewController.xib */,
+				C8EE7ED32A08F642000E3A3A /* NYSSettingViewController.xib */,
 				C8C7505F2A062DF500A91AAE /* NYSAboutViewController.h */,
 				C8C750602A062DF500A91AAE /* NYSAboutViewController.m */,
 				C8C750612A062DF500A91AAE /* NYSAboutViewController.xib */,
@@ -642,6 +660,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"lo-LA",
+				"zh-Hans",
 			);
 			mainGroup = C8597A1029F51052008BEE7F;
 			productRefGroup = C8597A1A29F51052008BEE7F /* Products */;
@@ -666,9 +686,9 @@
 				C8C750852A064B2600A91AAE /* NYSSecurityProtectionVC.xib in Resources */,
 				C8EE7E712A08AB33000E3A3A /* NYSMyCourseCell.xib in Resources */,
 				C8599B8E2A035E8700DEA603 /* themejson_day.json in Resources */,
+				C8EE7ED42A08F643000E3A3A /* NYSSettingViewController.xib in Resources */,
 				C8599B8F2A035E8700DEA603 /* themejson_night.json in Resources */,
 				C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */,
-				C8C7505E2A062D8E00A91AAE /* NYSSettingViewController.xib in Resources */,
 				C8597A2C29F51054008BEE7F /* LaunchScreen.storyboard in Resources */,
 				C8C750722A063B7900A91AAE /* NYSWalletViewController.xib in Resources */,
 				C8C750802A06462A00A91AAE /* NYSMovementDetailVC.xib in Resources */,
@@ -679,10 +699,11 @@
 				C8C7507C2A06422F00A91AAE /* NYSWalletMovemenCell.xib in Resources */,
 				C8599BAF2A03A73A00DEA603 /* NYSCourseCell.xib in Resources */,
 				C8C7506C2A06375A00A91AAE /* NYSUpdateInfoVC.xib in Resources */,
-				C8C750582A04ECE400A91AAE /* NYSMineViewController.xib in Resources */,
 				C8C750632A062DF500A91AAE /* NYSAboutViewController.xib in Resources */,
 				C8599BA72A038BF200DEA603 /* NYSBusinessView.xib in Resources */,
+				C8EE7ED22A08F56A000E3A3A /* NYSMineViewController.xib in Resources */,
 				C8C750682A06356C00A91AAE /* NYSHelpViewController.xib in Resources */,
+				C8EE7EAE2A08E9AD000E3A3A /* InfoPlist.strings in Resources */,
 				C8C750772A063D9F00A91AAE /* NYSWalletHeader.xib in Resources */,
 				C8EE7E912A08D875000E3A3A /* NYSPurchasedDetailHeader.xib in Resources */,
 				C8EE7E992A08DE24000E3A3A /* NYSCatalogViewController.xib in Resources */,
@@ -753,6 +774,7 @@
 				C8C750542A04ECBB00A91AAE /* NYSMineModel.m in Sources */,
 				C8C750372A04D35C00A91AAE /* NYSMessageCenterCell.m in Sources */,
 				C8C750592A04ECE400A91AAE /* NYSMineViewController.m in Sources */,
+				C8EE7ECF2A08F396000E3A3A /* DAConfig.m in Sources */,
 				C8599BA52A038BAE00DEA603 /* NYSBusinessView.m in Sources */,
 				C8597A1E29F51052008BEE7F /* AppDelegate.m in Sources */,
 				C8599BAA2A03A3EC00DEA603 /* NYSSearchCourseVC.m in Sources */,
@@ -766,6 +788,7 @@
 				C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */,
 				C8B7485129FBCDD500673B75 /* NYSHomeModel.m in Sources */,
 				C8C7508A2A064CF300A91AAE /* NYSWithdrawViewController.m in Sources */,
+				C8EE7ECE2A08F396000E3A3A /* NSBundle+DAUtils.m in Sources */,
 				C8EE7EA72A08E4D3000E3A3A /* YLButton.m in Sources */,
 				C8C7508F2A0653A600A91AAE /* NYSFeedbackVC.m in Sources */,
 				C8EE7E902A08D875000E3A3A /* NYSPurchasedDetailHeader.m in Sources */,
@@ -805,6 +828,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C8597A2629F51052008BEE7F /* Base */,
+				C8EE7EA82A08E8D9000E3A3A /* lo-LA */,
+				C8EE7EAA2A08E8EC000E3A3A /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -813,8 +838,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				C8597A2B29F51054008BEE7F /* Base */,
+				C8EE7EA92A08E8DA000E3A3A /* lo-LA */,
+				C8EE7EAB2A08E8EC000E3A3A /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C8EE7EB02A08E9AD000E3A3A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8EE7EAF2A08E9AD000E3A3A /* zh-Hans */,
+				C8EE7EB12A08E9B3000E3A3A /* lo-LA */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -824,6 +860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -882,6 +919,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

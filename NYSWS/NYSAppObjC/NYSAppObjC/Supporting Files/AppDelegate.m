@@ -38,7 +38,7 @@
     
     [[ThemeManager sharedThemeManager] configTheme];
     
-    
+    id xx = [NSLocale preferredLanguages].firstObject;
     return YES;
 }
 

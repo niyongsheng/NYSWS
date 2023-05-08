@@ -87,10 +87,31 @@ NYSBusinessViewDelegate
     [PopView hidenPopView];
     
     if (indexPath.row == 0) {
+        [DAConfig setUserLanguage:@"zh-Hans-CN"];
         
     } else {
-        
+        [DAConfig setUserLanguage:@"lo"];
     }
+    
+    [NYSTools showToast:@"请重启APP生效"];
+    
+//    NYSTabbarViewController *tabVC = [NYSTabbarViewController new];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [UIApplication sharedApplication].keyWindow.rootViewController = tabVC;
+//        NSLog(@"已切换到语言 %@", [NSBundle currentLanguage]);
+//    });
+    
+//    UITabBarController *tbc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+//    tbc.selectedIndex = 2;
+//    DALanguageSettingsViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:NSStringFromClass([DALanguageSettingsViewController class])];
+//    UINavigationController *nvc = tbc.selectedViewController;
+//    NSMutableArray *vcs = nvc.viewControllers.mutableCopy;
+//    [vcs addObject:vc];
+//    //解决奇怪的动画bug。异步执行
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [UIApplication sharedApplication].keyWindow.rootViewController = tbc;
+//        NSLog(@"已切换到语言 %@", [NSBundle currentLanguage]);
+//    });
 }
 
 - (void)rightBtnOnclicked:(UIButton *)sender {
