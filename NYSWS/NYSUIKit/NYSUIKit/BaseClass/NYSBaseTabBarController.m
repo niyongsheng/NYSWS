@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    [self configTheme];
+//    [self configTheme];
     self.delegate = self;
 }
 

@@ -57,7 +57,7 @@ UITextFieldDelegate
     self.searchTF = [[UITextField alloc] initWithFrame:CGRectMake(searchIconIV.right + NNormalSpace, 0, searchView.width - searchIconIV.right - 2 * NNormalSpace, searchViewH)];
     self.searchTF.delegate = self;
     self.searchTF.font = [UIFont systemFontOfSize:14];
-    self.searchTF.placeholder = @"搜一搜~";
+    self.searchTF.placeholder = NLocalizedStr(@"Search");
     self.searchTF.returnKeyType = UIReturnKeySearch;
     [searchView addSubview:self.searchTF];
     
@@ -87,7 +87,7 @@ UITextFieldDelegate
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"暂无数据" reason:@"" suggestion:@"" placeholderImg:@"null"];
+                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
             }
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
         }
@@ -98,7 +98,7 @@ UITextFieldDelegate
     } failed:^(NSError * _Nullable error) {
         [weakSelf.tableView.refreshControl endRefreshing];
         [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"网络错误" reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 

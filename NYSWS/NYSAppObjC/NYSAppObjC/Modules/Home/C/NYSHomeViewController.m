@@ -23,6 +23,8 @@
 #import "NYSPurchasedCourseDetailVC.h"
 #import "NYSCatalogViewController.h"
 
+#import "ThirdViewController.h"
+
 #define HomeBannerHeight        RealValue(180)
 #define HomeRecommendedHeight   RealValue(150)
 
@@ -66,7 +68,7 @@ NYSBusinessViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"学易点";
+    self.navigationItem.title = NLocalizedStr(@"CFBundleDisplayName");
     
     [self setupNav];
     [self setupUI];
@@ -87,31 +89,28 @@ NYSBusinessViewDelegate
     [PopView hidenPopView];
     
     if (indexPath.row == 0) {
-        [DAConfig setUserLanguage:@"zh-Hans-CN"];
-        
+        [self showHUDCompletion:^{
+            [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
+        }];
     } else {
-        [DAConfig setUserLanguage:@"lo"];
+        [self showHUDCompletion:^{
+            [NYSUIKitUtilities setUserLanguage:@"lo"];
+        }];
     }
-    
-    [NYSTools showToast:@"请重启APP生效"];
-    
-//    NYSTabbarViewController *tabVC = [NYSTabbarViewController new];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [UIApplication sharedApplication].keyWindow.rootViewController = tabVC;
-//        NSLog(@"已切换到语言 %@", [NSBundle currentLanguage]);
-//    });
-    
-//    UITabBarController *tbc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-//    tbc.selectedIndex = 2;
-//    DALanguageSettingsViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:NSStringFromClass([DALanguageSettingsViewController class])];
-//    UINavigationController *nvc = tbc.selectedViewController;
-//    NSMutableArray *vcs = nvc.viewControllers.mutableCopy;
-//    [vcs addObject:vc];
-//    //解决奇怪的动画bug。异步执行
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [UIApplication sharedApplication].keyWindow.rootViewController = tbc;
-//        NSLog(@"已切换到语言 %@", [NSBundle currentLanguage]);
-//    });
+
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    UIWindow *window = app.window;
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0.5;
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+
+}
+
+- (void)showHUDCompletion:(void (^ __nullable)(void))completion {
+    ThirdViewController *vc = [[ThirdViewController alloc] init];
+    [self presentViewController:vc animated:NO completion:completion];
 }
 
 - (void)rightBtnOnclicked:(UIButton *)sender {
@@ -129,7 +128,7 @@ NYSBusinessViewDelegate
     rightBtn.frame = CGRectMake(0, 0, w, iconW);
     [rightBtn setImage:[UIImage imageNamed:@"detail_ico_more"] forState:UIControlStateNormal];
     rightBtn.imageView.contentMode = UIViewContentModeCenter;
-    [rightBtn setTitle:@"语言" forState:UIControlStateNormal];
+    [rightBtn setTitle:NLocalizedStr(@"Language") forState:UIControlStateNormal];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
     rightBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [rightBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
@@ -178,7 +177,7 @@ NYSBusinessViewDelegate
     
     self.searchTF = [[UITextField alloc] initWithFrame:CGRectMake(searchIconIV.right + NNormalSpace, 0, searchView.width - searchIconIV.right - 2 * NNormalSpace, searchViewH)];
     self.searchTF.userInteractionEnabled = NO;
-    self.searchTF.placeholder = @"搜一搜~";
+    self.searchTF.placeholder = NLocalizedStr(@"Search");
     [searchView addSubview:self.searchTF];
     
     UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
@@ -200,7 +199,10 @@ NYSBusinessViewDelegate
     h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
     
     // 分页栏
-    NSArray *titleArr = @[@"全部", @"老挝", @"中文", @"英文"];
+    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
+                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
+                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
+                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
     NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
     SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
@@ -249,16 +251,16 @@ NYSBusinessViewDelegate
 
 #pragma mark - NYSBusinessViewDelegate
 - (void)tapViewWithModel:(NYSBusinessModel *)model {
-    if ([model.title isEqual:@"咨询客服"]) {
+    if ([model.title isEqual:NLocalizedStr(@"Consult")]) {
         [self.navigationController pushViewController:[NYSCallCenterVC new] animated:YES];
         
-    } else if ([model.title isEqual:@"推荐有礼"]) {
+    } else if ([model.title isEqual:NLocalizedStr(@"Recommend")]) {
         [self.navigationController pushViewController:[NYSRecommendVC new] animated:YES];
         
-    } else if ([model.title isEqual:@"消息中心"]) {
+    } else if ([model.title isEqual:NLocalizedStr(@"Message")]) {
         [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
         
-    } else if ([model.title isEqual:@"互联外卖"]) {
+    } else if ([model.title isEqual:NLocalizedStr(@"Interconnect")]) {
         [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
     }
 }
@@ -275,10 +277,10 @@ NYSBusinessViewDelegate
 
 - (NSMutableArray<NYSBusinessModel *> *)businessArray {
     if (!_businessArray) {
-        NYSBusinessModel *business0 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_00", @"title": @"咨询客服"}];
-        NYSBusinessModel *business1 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_01", @"title": @"推荐有礼"}];
-        NYSBusinessModel *business2 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_02", @"title": @"消息中心"}];
-        NYSBusinessModel *business3 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_03", @"title": @"互联外卖"}];
+        NYSBusinessModel *business0 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_00", @"title": NLocalizedStr(@"Consult")}];
+        NYSBusinessModel *business1 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_01", @"title": NLocalizedStr(@"Recommend")}];
+        NYSBusinessModel *business2 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_02", @"title": NLocalizedStr(@"Message")}];
+        NYSBusinessModel *business3 = [NYSBusinessModel modelWithDictionary:@{@"defaultIconName": @"icon_item_03", @"title": NLocalizedStr(@"Interconnect")}];
         _businessArray = @[business0, business1, business2, business3].mutableCopy;
     }
     return _businessArray;
@@ -344,7 +346,7 @@ NYSBusinessViewDelegate
             }
         })
         .wFrameSet(CGRectMake(0, 0, NScreenWidth, HomeRecommendedHeight))
-        .wItemSizeSet(CGSizeMake(kScreenWidth * 0.8, HomeRecommendedHeight))
+        .wItemSizeSet(CGSizeMake(kScreenWidth * 0.85, HomeRecommendedHeight))
         .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, 0))
         .wLineSpacingSet(20)
         .wHideBannerControlSet(YES)

@@ -27,7 +27,10 @@ SGPageContentCollectionViewDelegate
     self.isShowLiftBack = NO;
     
     // 1.分页栏配置
-    NSArray *titleArr = @[@"全部", @"老挝", @"中文", @"英文"];
+    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
+                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
+                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
+                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
     NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
     SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
@@ -42,7 +45,7 @@ SGPageContentCollectionViewDelegate
     segmentConfigure.titleTextZoomRatio = .6f;
     
     // 2.分页栏view
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth*0.5, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
+    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
     self.pageTitleView.backgroundColor = [UIColor clearColor];
     self.pageTitleView
     .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {

@@ -32,4 +32,7 @@
 #pragma mark -- 数据区 --
 #define DefaultPageSize             @"10"
 
+#pragma mark -- 数据区 --
+#define NLocalizedStr(key)          NSLocalizedStringFromTable(key, @"InfoPlist", nil)
+
 #endif /* ThemeMacros_h */

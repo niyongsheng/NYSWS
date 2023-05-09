@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C2DFE84E2D681925071B28BF /* libPods-NYSUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C55F36F242B015CD4EB52A29 /* libPods-NYSUIKit.a */; };
+		C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8464AA02A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C8464A9E2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m */; };
+		C8464AB82A0A3353003CD376 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8464ABA2A0A3353003CD376 /* InfoPlist.strings */; };
 		C8597A0929F4FDC5008BEE7F /* NYSUIKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = C8597A0829F4FDC5008BEE7F /* NYSUIKit.docc */; };
 		C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597A0729F4FDC5008BEE7F /* NYSUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8597AC729F52192008BEE7F /* NYSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AC529F52192008BEE7F /* NYSLabel.m */; };
@@ -103,6 +106,11 @@
 		209289BB670D6485A4CFD5C7 /* Pods-NYSUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSUIKit.debug.xcconfig"; path = "Target Support Files/Pods-NYSUIKit/Pods-NYSUIKit.debug.xcconfig"; sourceTree = "<group>"; };
 		51CA5D968476C7E524243C8B /* Pods-NYSUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSUIKit.release.xcconfig"; path = "Target Support Files/Pods-NYSUIKit/Pods-NYSUIKit.release.xcconfig"; sourceTree = "<group>"; };
 		C55F36F242B015CD4EB52A29 /* libPods-NYSUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSUIKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+NYSLanguageSwitch.h"; sourceTree = "<group>"; };
+		C8464A9E2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+NYSLanguageSwitch.m"; sourceTree = "<group>"; };
+		C8464AB92A0A3353003CD376 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C8464ABB2A0A3357003CD376 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C8464ABC2A0A335C003CD376 /* lo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lo; path = lo.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C8597A0429F4FDC5008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A0729F4FDC5008BEE7F /* NYSUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSUIKit.h; sourceTree = "<group>"; };
 		C8597A0829F4FDC5008BEE7F /* NYSUIKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NYSUIKit.docc; sourceTree = "<group>"; };
@@ -379,6 +387,8 @@
 				C8B747C729FA7DF700673B75 /* UIView+Tools.m */,
 				C8EE7E7F2A08C18D000E3A3A /* UINavigationController+NYSUIKit.h */,
 				C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */,
+				C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */,
+				C8464A9E2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -429,6 +439,7 @@
 		C8B7480A29FBA74500673B75 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8464ABA2A0A3353003CD376 /* InfoPlist.strings */,
 				C8B7480D29FBA7D300673B75 /* douyuFont.otf */,
 				C8B7480B29FBA78000673B75 /* NYSUIKit.xcassets */,
 			);
@@ -504,6 +515,7 @@
 				C8B7484129FBBE7D00673B75 /* ThemeManager.h in Headers */,
 				C8B7481229FBA8FA00673B75 /* NYSUIKitUtilities.h in Headers */,
 				C8EE7E812A08C18D000E3A3A /* UINavigationController+NYSUIKit.h in Headers */,
+				C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */,
 				C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +565,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				lo,
 			);
 			mainGroup = C85979FA29F4FDC5008BEE7F;
 			productRefGroup = C85979FA29F4FDC5008BEE7F;
@@ -570,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8C750222A049A0C00A91AAE /* NYSUIKit.xcassets in Resources */,
+				C8464AB82A0A3353003CD376 /* InfoPlist.strings in Resources */,
 				C8B747F529FA818900673B75 /* webloaderrorview.png in Resources */,
 				C8B7480E29FBA7D300673B75 /* douyuFont.otf in Resources */,
 				C8B7484229FBBE7D00673B75 /* README.md in Resources */,
@@ -636,6 +651,7 @@
 				C8B7479529FA775400673B75 /* LEEBubble.m in Sources */,
 				C8B747BC29FA775400673B75 /* CMPopTipView.m in Sources */,
 				C8B7484329FBBE7D00673B75 /* ThemeManager.m in Sources */,
+				C8464AA02A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m in Sources */,
 				C8B747CF29FA7DF700673B75 /* UIButton+NYS.m in Sources */,
 				C8EE7E822A08C18D000E3A3A /* UINavigationController+NYSUIKit.m in Sources */,
 				C8B747D229FA7DF700673B75 /* UITextField+NYS.m in Sources */,
@@ -662,6 +678,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C8464ABA2A0A3353003CD376 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8464AB92A0A3353003CD376 /* en */,
+				C8464ABB2A0A3357003CD376 /* zh-Hans */,
+				C8464ABC2A0A335C003CD376 /* lo */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C8597A0B29F4FDC5008BEE7F /* Debug */ = {

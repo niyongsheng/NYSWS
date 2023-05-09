@@ -1,57 +1,57 @@
 
 /* Class = "UILabel"; text = "互联外卖"; ObjectID = "1KA-xu-USt"; */
-"1KA-xu-USt.text" = "互联外卖";
+"1KA-xu-USt.text" = "ຮູ້ລຽນໄວໄມ";
 
 /* Class = "UILabel"; text = "其他"; ObjectID = "24A-By-fYC"; */
-"24A-By-fYC.text" = "其他";
+"24A-By-fYC.text" = "ອື່ນໆ";
 
 /* Class = "UILabel"; text = "意见反馈"; ObjectID = "AdK-OV-Ufs"; */
-"AdK-OV-Ufs.text" = "意见反馈";
+"AdK-OV-Ufs.text" = "ຄໍາຄິດເຫັນ";
 
 /* Class = "UIButton"; normalTitle = "去学习"; ObjectID = "Cv3-u3-Xrf"; */
-"Cv3-u3-Xrf.normalTitle" = "去学习";
+"Cv3-u3-Xrf.normalTitle" = "ເຂົ້າສູ່ຫ້ອງຮຽນ";
 
 /* Class = "UILabel"; text = "功能"; ObjectID = "Mc0-cc-ROU"; */
-"Mc0-cc-ROU.text" = "功能";
+"Mc0-cc-ROU.text" = "ຟັງຊັນ";
 
 /* Class = "UILabel"; text = "安全设置"; ObjectID = "RMb-cp-pAg"; */
-"RMb-cp-pAg.text" = "安全设置";
+"RMb-cp-pAg.text" = "ຕັ້ງຄ່າຄວາມປອດໄພ";
 
 /* Class = "UILabel"; text = "--"; ObjectID = "Rqf-Yw-4YL"; */
 "Rqf-Yw-4YL.text" = "--";
 
 /* Class = "UILabel"; text = "我的钱包"; ObjectID = "Sgj-BW-y12"; */
-"Sgj-BW-y12.text" = "我的钱包";
+"Sgj-BW-y12.text" = "ກະເປົາເງີນຂອງຂ້ອຍ";
 
 /* Class = "UIButton"; normalTitle = "去推荐"; ObjectID = "XlL-4g-vFj"; */
-"XlL-4g-vFj.normalTitle" = "去推荐";
+"XlL-4g-vFj.normalTitle" = "ເຊື້ອເຊີນໝູ່";
 
 /* Class = "UIButton"; normalTitle = "充值"; ObjectID = "Yc5-4a-r6n"; */
-"Yc5-4a-r6n.normalTitle" = "充值";
+"Yc5-4a-r6n.normalTitle" = "ເຕີມເງີນ";
 
 /* Class = "UILabel"; text = "推荐好友赢好礼"; ObjectID = "YdH-tU-1aG"; */
-"YdH-tU-1aG.text" = "推荐好友赢好礼";
+"YdH-tU-1aG.text" = "ແນະນໍາໝູ່ເພື່ອແລກລາງວັນ";
 
 /* Class = "UILabel"; text = "客服中心"; ObjectID = "bug-Ej-fjl"; */
-"bug-Ej-fjl.text" = "客服中心";
+"bug-Ej-fjl.text" = "ສູນບໍລິການລູກຄ້າ";
 
 /* Class = "UILabel"; text = "*******"; ObjectID = "m3j-TL-eMc"; */
 "m3j-TL-eMc.text" = "*******";
 
 /* Class = "UILabel"; text = "我的课程"; ObjectID = "nUy-cR-c1q"; */
-"nUy-cR-c1q.text" = "我的课程";
+"nUy-cR-c1q.text" = "ບົດຮຽນຂອງຂ້ອຍ";
 
 /* Class = "UILabel"; text = "互联外卖"; ObjectID = "oqZ-Z9-bKR"; */
-"oqZ-Z9-bKR.text" = "互联外卖";
+"oqZ-Z9-bKR.text" = "ຮູ້ລຽນໄວໄມ";
 
 /* Class = "UILabel"; text = "消息中心"; ObjectID = "tUm-gj-YM6"; */
-"tUm-gj-YM6.text" = "消息中心";
+"tUm-gj-YM6.text" = "ສູນບໍລິການຂໍ້ມູນ";
 
 /* Class = "UILabel"; text = "帮助中心"; ObjectID = "vRi-5z-dYU"; */
-"vRi-5z-dYU.text" = "帮助中心";
+"vRi-5z-dYU.text" = "ສູນຊ່ວຍເຫຼືອ";
 
 /* Class = "UILabel"; text = "关于我们"; ObjectID = "vyP-gV-Nma"; */
-"vyP-gV-Nma.text" = "关于我们";
+"vyP-gV-Nma.text" = "ກ່ຽວກັບພວກເຮົາ";
 
 /* Class = "UILabel"; text = "nickname"; ObjectID = "y2q-O3-8Zf"; */
-"y2q-O3-8Zf.text" = "昵称";
+"y2q-O3-8Zf.text" = "ຊື່ເເຟ້ມ";

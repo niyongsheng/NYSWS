@@ -36,8 +36,7 @@
 #import "NYSMineModel.h"
 
 
-#import "DAConfig.h"
-#import "NSBundle+DAUtils.h"
+#import "AppDelegate.h"
 
 
 #endif /* PrefixHeader_pch */

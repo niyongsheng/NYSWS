@@ -5,7 +5,21 @@
   Created by niyongsheng on 2023/5/8.
   
 */
-CFBundleDisplayName="ມີບັນຫາເພື່ອຮຽນຮ້ອງນາໄວ້";
-home="ບ້ານເຄື່ອນໄຫວ";
-course="ຂໍ້ມູນໂປຣເເກຣມ";
-mine="ຂ້າພະເຈົ້າ";
+CFBundleDisplayName="XueyiDian";
+Home="ບ້ານເຄື່ອນໄຫວ";
+Course="ຂໍ້ມູນໂປຣເເກຣມ";
+Mine="ຂ້າພະເຈົ້າ";
+All="ທັງໝົດ";
+Laos="ພາສາລາວ";
+Chinese="ພາສາຈີນ";
+English="ພາສາອັງກິດ";
+Language="ພາສາ";
+
+Consult="ສອບຖາມຂໍ້ມູນ";
+Recommend="ແນະນໍາໝູ່ເພື່ອແລກລາງວັນ";
+Message="ສູນບໍລິການຂໍ້ມູນ";
+Interconnect="ຮູ້ລຽນໄວໄມ";
+
+Search="ຄົ້ນຫາ";
+NoData="ບໍ່ມີຂໍ້ມູນເພີ້ມ";
+NetErr="ເກີດຂໍ້ຜິດພາດລະອຽດຂອງ່າຍ";

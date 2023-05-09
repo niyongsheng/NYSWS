@@ -6,6 +6,20 @@
   
 */
 CFBundleDisplayName="易学点";
-home="首页";
-course="课程";
-mine="我的";
+Home="首页";
+Course="课程";
+Mine="我的";
+All="全部";
+Laos="老挝";
+Chinese="中文";
+English="英文";
+Language="语言";
+
+Consult="咨询客服";
+Recommend="推荐有礼";
+Message="消息中心";
+Interconnect="互联外卖";
+
+Search="搜一搜";
+NoData="暂无数据";
+NetErr="网络错误";

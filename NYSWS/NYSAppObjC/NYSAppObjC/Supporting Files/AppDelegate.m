@@ -38,7 +38,10 @@
     
     [[ThemeManager sharedThemeManager] configTheme];
     
-    id xx = [NSLocale preferredLanguages].firstObject;
+    id lang = [NSLocale preferredLanguages].firstObject;
+    NSString *currLanguage = [NSBundle currentLanguage];
+    NSLog(@"%@当前语言是=%@", lang, currLanguage);
+    
     return YES;
 }
 

@@ -28,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// - Parameter name: 图片名名称
 + (nullable UIImage *)imageBundleNamed:(NSString *)name;
 
+/// 重置系统语言
++ (void)resetSystemLanguage;
+/// 用户自定义使用的语言，当传nil时，等同于resetSystemLanguage
+@property (class, nonatomic, strong, nullable) NSString *userLanguage;
+
 @end
 
 NS_ASSUME_NONNULL_END

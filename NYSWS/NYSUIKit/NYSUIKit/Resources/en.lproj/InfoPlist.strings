@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  NYSAppObjC
+
+  Created by niyongsheng on 2023/5/8.
+  
+*/
+NorMore="No More";
+NoData="No Data";
+NetErr="Network Error";
+Retry="Retry";
+Loading="Loading...";

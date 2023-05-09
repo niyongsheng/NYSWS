@@ -48,7 +48,7 @@ DZNEmptyDataSetDelegate
     
     // 默认错误信息
 //    [self addObserver:self forKeyPath:@"dataSource" options:NSKeyValueObservingOptionNew context:nil];
-    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:@"暂无数据" reason:@"" suggestion:@"重试" placeholderImg:@"linkedin_binding_magnifier"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"linkedin_binding_magnifier"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +71,7 @@ DZNEmptyDataSetDelegate
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context {
     if (_dataSourceArr.count == 0) {
-        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:@"暂无数据" reason:@"" suggestion:@"重试" placeholderImg:@"null"];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"null"];
     }
 }
 
@@ -118,7 +118,7 @@ DZNEmptyDataSetDelegate
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
-        static NSString *endStr = @"没有更多了";
+        NSString *endStr = NSLocalizedStringFromTable(@"NoMore", @"InfoPlist", nil);
         if (self.isUseUIRefreshControl) {
             // header refresh
             UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -225,7 +225,7 @@ DZNEmptyDataSetDelegate
         _collectionView.emptyDataSetSource = self;
         _collectionView.emptyDataSetDelegate = self;
 
-        static NSString *endStr = @"没有更多了";
+        NSString *endStr = NSLocalizedStringFromTable(@"NoMore", @"InfoPlist", nil);
         if (self.isUseUIRefreshControl) {
             // header refresh
             UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -378,7 +378,7 @@ DZNEmptyDataSetDelegate
             [NYSTools showBottomToast:@"没有实现CollectionView刷新方法"];
         }
     } else {
-        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"加载中..." reason:@"" suggestion:@"" placeholderImg:@"null"];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NSLocalizedStringFromTable(@"Loading", @"InfoPlist", nil) reason:@"" suggestion:@"" placeholderImg:@"null"];
     }
 }
 

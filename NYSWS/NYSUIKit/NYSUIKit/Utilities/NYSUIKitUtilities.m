@@ -22,6 +22,9 @@ tmp = 0;\
 tmp;\
 })
 
+static NSString *const NYSUserLanguageKey = @"NYSUserLanguageKey";
+#define STANDARD_USER_DEFAULT  [NSUserDefaults standardUserDefaults]
+
 @implementation NYSUIKitUtilities
 
 + (CGFloat)nys_navigationHeight {
@@ -79,6 +82,31 @@ tmp;\
     NSBundle*bundle = [NSBundle bundleForClass:[self class]];
     UIImage *image = [UIImage imageNamed:@"NYSUIKit.bundle/image"  inBundle:bundle compatibleWithTraitCollection:nil];
     return image;
+}
+
++ (void)setUserLanguage:(NSString *)userLanguage {
+    // 跟随手机系统
+    if (!userLanguage.length) {
+        [self resetSystemLanguage];
+        return;
+    }
+    // 用户自定义
+    [STANDARD_USER_DEFAULT setValue:userLanguage forKey:NYSUserLanguageKey];
+    [STANDARD_USER_DEFAULT setValue:@[userLanguage] forKey:@"AppleLanguages"];
+    [STANDARD_USER_DEFAULT synchronize];
+}
+
++ (NSString *)userLanguage {
+    return [STANDARD_USER_DEFAULT valueForKey:NYSUserLanguageKey];
+}
+
+/**
+ 重置系统语言
+ */
++ (void)resetSystemLanguage {
+    [STANDARD_USER_DEFAULT removeObjectForKey:NYSUserLanguageKey];
+    [STANDARD_USER_DEFAULT setValue:nil forKey:@"AppleLanguages"];
+    [STANDARD_USER_DEFAULT synchronize];
 }
 
 @end

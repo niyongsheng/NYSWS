@@ -1,20 +1,19 @@
 //
-//  NSBundle+DAUtils.m
-//  LanguageSettingsDemo
+//  NSBundle+NYSLanguageSwitch.m
+//  NYSUIKit
 //
-//  Created by DarkAngel on 2017/5/4.
-//  Copyright © 2017年 暗の天使. All rights reserved.
+//  Created by niyongsheng on 2023/5/9.
 //
 
-#import "NSBundle+DAUtils.h"
-#import "DAConfig.h"
+#import "NSBundle+NYSLanguageSwitch.h"
+#import "PublicHeader.h"
 #import <objc/runtime.h>
 
 @interface DABundle : NSBundle
 
 @end
 
-@implementation NSBundle (DAUtils)
+@implementation NSBundle (NYSLanguageSwitch)
 
 + (BOOL)isChineseLanguage
 {
@@ -28,7 +27,7 @@
 
 + (NSString *)currentLanguage
 {
-    return [DAConfig userLanguage] ? : [NSLocale preferredLanguages].firstObject;
+    return [NYSUIKitUtilities userLanguage] ? : [NSLocale preferredLanguages].firstObject;
 }
 
 + (void)load
