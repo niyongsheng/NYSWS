@@ -14,7 +14,7 @@
                 <outlet property="accountTF" destination="apu-tR-zca" id="EtT-rv-rdW"/>
                 <outlet property="contentView" destination="SFK-kR-XvI" id="XVt-yJ-Ufc"/>
                 <outlet property="loginBtn" destination="wtz-Ih-j8c" id="bUH-cl-jcd"/>
-                <outlet property="onceCodeTF" destination="thj-Ir-Apc" id="ATf-wT-gaV"/>
+                <outlet property="passwordTF" destination="thj-Ir-Apc" id="ATf-wT-gaV"/>
                 <outlet property="protocolBtn" destination="svH-3w-U8R" id="f9v-rt-mTx"/>
                 <outlet property="protocolT" destination="Wcu-ju-yUp" id="29z-0z-D2C"/>
                 <outlet property="scrollV" destination="5Jg-GP-kca" id="wed-Xg-e0o"/>
@@ -45,13 +45,13 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h89-D3-oLS">
                                             <rect key="frame" x="0.0" y="20" width="350" height="50"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="apu-tR-zca">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="apu-tR-zca">
                                                     <rect key="frame" x="70" y="15.666666666666659" width="200" height="18.666666666666679"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="Lyo-bK-wCT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHa-Zl-v74">
                                                     <rect key="frame" x="0.0" y="49" width="350" height="1"/>
@@ -92,12 +92,12 @@
                                             <rect key="frame" x="0.0" y="95" width="350" height="50"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thj-Ir-Apc">
-                                                    <rect key="frame" x="65" y="15.666666666666687" width="200" height="18.666666666666679"/>
+                                                    <rect key="frame" x="65" y="16.666666666666686" width="200" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="9pv-9I-ZUp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNe-rt-xbl">
                                                     <rect key="frame" x="0.0" y="49" width="350" height="1"/>

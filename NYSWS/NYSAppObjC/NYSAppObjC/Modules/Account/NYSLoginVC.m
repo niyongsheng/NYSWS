@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 
 @property (weak, nonatomic) IBOutlet UITextField *accountTF;
-@property (weak, nonatomic) IBOutlet UITextField *onceCodeTF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *protocolBtn;
@@ -44,11 +44,11 @@
         self.top.constant = - NStatusBarHeight;
     }
     
-    self.accountTF.maxLength = 11;
-    self.onceCodeTF.maxLength = 6;
+    self.accountTF.maxLength = 15;
+    self.passwordTF.maxLength = 20;
     
     self.accountTF.delegate = self;
-    self.onceCodeTF.delegate = self;
+    self.passwordTF.delegate = self;
     
     [self check];
     
@@ -68,8 +68,12 @@
     [_protocolT setAttributedText:attString];
     
 #ifdef DEBUG
-    _accountTF.text = @"15254998038";
-    _onceCodeTF.text = @"123456";
+    _accountTF.text = @"13523652365";
+    _passwordTF.text = @"123456";
+    
+    [self check];
+    [self.view endEditing:YES];
+    self.protocolBtn.selected = YES;
 #endif
 }
 
@@ -92,7 +96,7 @@
         return;
     }
     
-    if (![_onceCodeTF.text isNotBlank]) {
+    if (![_passwordTF.text isNotBlank]) {
         [NYSTools showToast:@"请输入验证码"];
         [NYSTools shakToShow:sender];
         return;
@@ -105,76 +109,32 @@
     }
     
     
-    [NYSTools zoomToShow:sender];
-    NSDictionary *argument = @{@"phone": _accountTF.text,
-                               @"code": _onceCodeTF.text,
+    [NYSTools zoomToShow:sender.layer];
+    NSDictionary *argument = @{@"username": _accountTF.text,
+                               @"password": _passwordTF.text,
     };
-//    NYSRequest *request = [[NYSRequest alloc] initWithMethod:YTKRequestMethodPOST
-//                                                         url:POST_SMSLogin
-//                                                    argument:argument
-//                                       requestSerializerType:YTKRequestSerializerTypeJSON
-//                                                      remark:@"登录"];
-//
-//    [request requestSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//        [NUserManager loginHandler:NUserLoginTypePwd
-//                         tokenInfo:request.responseJSONObject
-//                        completion:^(BOOL success, id obj) {
-//
-//            if (success) {
-//                [NYSTools showIconToast:obj isSuccess:YES offset:UIOffsetMake(0, 0)];
-//                [SVProgressHUD dismissWithDelay:0.5f completion:^{
-//                    NPostNotification(NNotificationLoginStateChange, @YES)
-//                }];
-//
-//            } else {
-//                [SVProgressHUD showInfoWithStatus:obj];
-//                [SVProgressHUD dismissWithDelay:1.f];
-//            }
-//        }];
-//
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//    }];
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/login"
+                                       argument:argument
+                                         remark:@"登录"
+                                        success:^(id response) {
+        @strongify(self)
+        [NAppManager loginHandler:NUserLoginTypePwd authInfo:[NYSAuthInfo modelWithDictionary:@{@"token" : response}] completion:^(BOOL success, id obj) {
+            if (success) {
+                [NYSTools showIconToast:@"登录成功" isSuccess:YES offset:UIOffsetMake(0, 0)];
+                [NYSTools dismissWithCompletion:^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    });
+                }];
+            }
+        }];
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
-
-- (IBAction)codeOnclicked:(UIButton *)sender {
-    [self.view endEditing:YES];
-    if (![_accountTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入手机号码"];
-        return;
-    }
-    
-    WS(weakSelf)
-    NSDictionary *argument = @{@"phone": _accountTF.text};
-//    NYSRequest *request = [[NYSRequest alloc] initWithMethod:YTKRequestMethodPOST
-//                                                         url:GET_CaptchaSMS
-//                                                    argument:argument
-//                                       requestSerializerType:YTKRequestSerializerTypeJSON
-//                                                      remark:@"获取短信验证码"];
-//    [request requestSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//        [NYSTools showToast:@"验证码已发送，请注意查收"];
-//        weakSelf.accountTF.enabled = NO;
-//
-//        weakSelf.onceCodeBtn.userInteractionEnabled = NO;
-//        weakSelf.secondsCountDownInput = 1*60;
-//        weakSelf.countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:weakSelf selector:@selector(timerTriggerMethon) userInfo:nil repeats:YES];
-//
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//    }];
-}
-
-- (void)timerTriggerMethon {
-    self.secondsCountDownInput --;
-
-}
-
-- (IBAction)wcBtnOnclicked:(UIButton *)sender {
-    
-}
-
 
 - (IBAction)protocolBtnOnclicked:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -206,7 +166,7 @@
 }
 
 - (void)check {
-    if (self.accountTF.text.length == 11 && self.onceCodeTF.text.length >= 6) {
+    if (self.accountTF.text.length >= 4 && self.passwordTF.text.length >= 6) {
         [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
         [self.loginBtn setBackgroundColor:NAppThemeColor];
         [self.loginBtn setEnabled:YES];

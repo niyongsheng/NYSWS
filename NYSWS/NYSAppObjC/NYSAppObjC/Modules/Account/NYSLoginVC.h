@@ -8,17 +8,9 @@
 
 #import <NYSUIKit/NYSUIKit.h>
 
-typedef NS_ENUM(NSInteger, NYSLoginType)
-{
-    NYSLoginTypeSms,
-    NYSLoginTypePwd
-};
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSLoginVC : NYSBaseViewController
-
-@property (nonatomic, assign) NYSLoginType *loginType;
 
 @end
 

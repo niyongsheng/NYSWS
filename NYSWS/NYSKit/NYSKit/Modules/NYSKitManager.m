@@ -17,4 +17,19 @@
     });
     return sharedNYSKitManager;
 }
+
+- (NSString *)tokenInvalidCode {
+    if (!_tokenInvalidCode) {
+        _tokenInvalidCode = @"403";
+    }
+    return _tokenInvalidCode;
+}
+
+- (NSString *)kickedCode {
+    if (!_kickedCode) {
+        _kickedCode = @"405";
+    }
+    return _kickedCode;
+}
+
 @end

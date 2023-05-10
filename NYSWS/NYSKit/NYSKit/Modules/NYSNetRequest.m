@@ -26,6 +26,13 @@
     dispatch_once(&onceToken, ^{
         
         manager = [AFHTTPSessionManager manager];
+//        NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:manager.responseSerializer.acceptableContentTypes];
+//        [contentTypes addObject:@"text/html"];
+//        [contentTypes addObject:@"text/plain"];
+//        [contentTypes addObject:@"application/json"];
+//        [contentTypes addObject:@"image/jpeg"];
+//        [contentTypes addObject:@"image/jpg"];
+//        [contentTypes addObject:@"application/octet-stream"];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager.requestSerializer setTimeoutInterval:TimeoutInterval];
@@ -60,6 +67,7 @@
         case GET: {
             [[self sharedManager] GET:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                DBGLog(@"\n[GET]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -72,6 +80,7 @@
         case POST: {
             [[self sharedManager] POST:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                DBGLog(@"\n[POST]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -84,6 +93,7 @@
         case PUT: {
             [[self sharedManager] PUT:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                DBGLog(@"\n[PUT]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -96,6 +106,7 @@
         case DELTTE: {
             [[self sharedManager] DELETE:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                DBGLog(@"\n[DELTTE]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -152,6 +163,7 @@
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         handelResponse(argument, failed, remark, responseObject, success, urlStr);
+        DBGLog(@"\n[POST]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failed) {
             failed(error);
@@ -193,6 +205,7 @@
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         handelResponse(argument, failed, remark, responseObject, success, urlStr);
+        DBGLog(@"\n[POST]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failed) {
             failed(error);
@@ -230,7 +243,7 @@
         [SVProgressHUD dismissWithDelay:1.0f];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayLoadingMethod) object:nil];
         
-        DBGLog(@"\n[%@]\n%@\n参数:\n%@\n返回结果:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
+        DBGLog(@"\n[POST]%@:\n%@\n[Form]参数:\n%@\n响应:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
         if (!error) {
             if (isCheck) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
@@ -241,7 +254,7 @@
             }
             
         } else {
-            DBGLog(@"\n[%@]\n%@", @"错误", error.localizedDescription);
+            DBGLog(@"\n[%@]\n%@", @"❌错误", error.localizedDescription);
             if (failed) {
                 failed(error);
                 handelError(error);
@@ -253,7 +266,7 @@
 }
 
 + (NSString *)jsonPrettyStringEncoded:(NSDictionary *)dict {
-    if ([NSJSONSerialization isValidJSONObject:self]) {
+    if ([NSJSONSerialization isValidJSONObject:dict]) {
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
         NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -268,7 +281,6 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         success(responseObject);
         return;
     }
-    
     NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
     NSString *status = [responseObject objectForKey:@"status"];
     if (code == 200) {
@@ -276,16 +288,21 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         if (success) {
             success(data);
         }
-    } else if (code == 403) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:nil];
     } else if ([status isEqualToString:@"SUCCESS"]) {
         if (success) {
             success(responseObject);
         }
+    } else if (code == [[[NYSKitManager sharedNYSKitManager] kickedCode] integerValue]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:nil];
+    } else if (code == [[[NYSKitManager sharedNYSKitManager] tokenInvalidCode] integerValue]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:nil];
     } else {
         NSString *msg = [responseObject objectForKey:@"msg"];
         if ([NYSTools stringIsNull:msg]) {
             msg = [responseObject objectForKey:@"error_msg"];
+        }
+        if ([NYSTools stringIsNull:msg]) {
+            msg = @"unknown error";
         }
         [NYSTools showBottomToast:msg];
         if (failed) {
@@ -302,20 +319,20 @@ static void handelError(NSError * _Nullable error) {
         [NYSTools showToast:@"请求超时，请检查网络！"];
         
     } else if (error.code == -1004) {
-        [NYSTools showToast:@"无法连接服务器"];
+        [NYSTools showToast:@"无法连接到服务器"];
         
     } else if (error.code == -1009) {
         [NYSTools showToast:@"您似乎断开了网络连接，请前往【设置】-【无线数据】打开WLAN或者蜂窝网络"];
         
     } else if (error.code == -1011) {
-        [NYSTools showToast:@"服务器暂时不可用"];
+        [NYSTools showToast:@"服务暂时不可用"];
         
     } else {
         [NYSTools showToast:error.localizedDescription];
-#ifdef DEBUG
-        NSLog(@"%@", error);
-#endif
     }
+#ifdef DEBUG
+    NSLog(@"❌%@", error);
+#endif
 }
 
 /// 数据加载中

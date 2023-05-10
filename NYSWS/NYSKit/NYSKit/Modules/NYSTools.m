@@ -399,7 +399,7 @@
     [SVProgressHUD setOffsetFromCenter:offset];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD showImage:[UIImage imageNamed:name] status:msg];
-    [SVProgressHUD dismissWithDelay:1.7 completion:nil];
+    [SVProgressHUD dismissWithDelay:1.25f completion:nil];
 }
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset {
@@ -413,6 +413,14 @@
     } else {
         [SVProgressHUD showInfoWithStatus:msg];
     }
+}
+
++ (void)dismissWithCompletion:(NYSToolsDismissCompletion)completion {
+    [SVProgressHUD dismissWithDelay:1.1f completion:completion];
+}
+
++ (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion {
+    [SVProgressHUD dismissWithDelay:delay completion:completion];
 }
 
 #pragma mark - 其他

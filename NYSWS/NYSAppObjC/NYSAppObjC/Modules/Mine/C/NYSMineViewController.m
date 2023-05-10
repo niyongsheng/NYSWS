@@ -41,6 +41,12 @@
 
 @implementation NYSMineViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self updateUserInfo:NAppManager.userInfo];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -59,16 +65,16 @@
     layer.frame = CGRectMake(0, 0, kScreenWidth, 300);
     layer.path = path.CGPath;
     _headerBgV.layer.mask = layer;
-    //
-    //    CAGradientLayer *gl = [CAGradientLayer layer];
-    //    gl.frame = layer.frame;
-    //    gl.startPoint = CGPointMake(0, 0);
-    //    gl.endPoint = CGPointMake(1, 1);
-    //    gl.colors = @[(__bridge id)[UIColor colorWithHexString:@"#FF8648"].CGColor,
-    //                  (__bridge id)[UIColor colorWithHexString:@"#FA8632"].CGColor,
-    //                  (__bridge id)[UIColor colorWithHexString:@"#F88641"].CGColor];
-    //    gl.locations = @[@(0.0),@(0.8),@(1.0)];
-    //    [_headerBgV.layer addSublayer:gl];
+    
+//    CAGradientLayer *gl = [CAGradientLayer layer];
+//    gl.frame = layer.frame;
+//    gl.startPoint = CGPointMake(0, 0);
+//    gl.endPoint = CGPointMake(1, 1);
+//    gl.colors = @[(__bridge id)[UIColor colorWithHexString:@"#FF8648"].CGColor,
+//                  (__bridge id)[UIColor colorWithHexString:@"#FA8632"].CGColor,
+//                  (__bridge id)[UIColor colorWithHexString:@"#F88641"].CGColor];
+//    gl.locations = @[@(0.0),@(0.8),@(1.0)];
+//    [_headerBgV.layer addSublayer:gl];
     
     ViewBorderRadius(_iconIV, 40, 1, UIColor.whiteColor);
     ViewRadius(_rechargeV, 17.5);
@@ -77,6 +83,23 @@
     ViewRadius(_itemTwoBtn, 13);
     ViewRadius(_functionV, 10);
     ViewRadius(_mineV, 10);
+    self.coinL.adjustsFontSizeToFitWidth = YES;
+    
+    @weakify(self)
+    [NAppManager loadUserInfoCompletion:^(BOOL success, NYSUserInfo *userInfo, NSError *error) {
+        @strongify(self)
+        [self updateUserInfo:userInfo];
+    }];
+}
+
+- (void)updateUserInfo:(NYSUserInfo *)userInfo {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.coinL.text = userInfo.balance;
+        self.nicknameL.text = userInfo.nickname;
+        self.phoneL.text = [NYSTools phoneStringAsteriskHandle:userInfo.phone];
+        
+        [self.iconIV setImageWithURL:NCDNURL(userInfo.avatar) placeholder:NPImageFillet];
+    });
 }
 
 - (IBAction)headerBtnOnclicked:(UIButton *)sender {

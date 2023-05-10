@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^NYSToolsDismissCompletion)(void);
+
 NS_ASSUME_NONNULL_BEGIN
 
 /// 工具类
@@ -150,6 +152,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)showToast:(NSString *)msg imageNamed:(NSString *)name offset:(UIOffset)offset;
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset;
+
++ (void)dismissWithCompletion:(NYSToolsDismissCompletion)completion;
+
++ (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion;
 
 #pragma mark - 其他
 /**

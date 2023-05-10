@@ -12,31 +12,30 @@
 #import <WMZBanner/WMZBannerView.h>
 #import <BRPickerView/BRPickerView.h>
 #import <SGPagingView/SGPagingView.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 #import <WRNavigationBar/WRNavigationBar.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-//#import <AFNetworking/AFNetworking.h>
 
 #pragma mark -- 宏定义 --
 #import "CommonMacros.h"
 #import "ConfigMacros.h"
 #import "StyleMacros.h"
 
-
-
-#import "NYSLoginVC.h"
-#import "NYSTabbarViewController.h"
-
-
+#pragma mark -- 管理 --
+#import "AppDelegate.h"
+#import "AppManager.h"
 
 #pragma mark -- 模型 --
 #import "NYSHomeModel.h"
 #import "NYSCourseModel.h"
 #import "NYSMineModel.h"
 
+#pragma mark -- 控制器 --
+#import "NYSLoginVC.h"
+#import "NYSTabbarViewController.h"
 
-#import "AppDelegate.h"
 
 
 #endif /* PrefixHeader_pch */

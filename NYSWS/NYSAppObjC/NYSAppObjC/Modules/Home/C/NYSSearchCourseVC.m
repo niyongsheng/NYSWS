@@ -45,8 +45,8 @@ UITextFieldDelegate
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
+    //    self.tableView.delegate = self;
+    //    self.tableView.dataSource = self;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
         make.left.mas_equalTo(self.view.mas_left);
@@ -95,32 +95,34 @@ UITextFieldDelegate
         @"pageNo": @(_pageNo),
         @"pageSize": DefaultPageSize,
         @"keyword": _searchTF.text,
-      };
-    WS(weakSelf)
+    };
+    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
-                                      argument:argument
-                                             remark:@"课程搜索列表"
-                                            success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response[@"records"]];
+                                            url:@"/index/Course/list"
+                                       argument:argument
+                                         remark:@"课程搜索列表"
+                                        success:^(id response) {
+        @strongify(self)
+        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
-            [weakSelf.dataSourceArr addObjectsFromArray:array];
-            [weakSelf.tableView.mj_footer endRefreshing];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
             }
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView reloadData];
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
         
     } failed:^(NSError * _Nullable error) {
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
@@ -180,26 +182,26 @@ UITextFieldDelegate
 - (WMZBannerParam *)bannerParam {
     if (!_bannerParam) {
         _bannerParam = BannerParam()
-        .wMyCellClassNameSet(@"NYSBannerCell")
-        .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView, NSArray *dataArr) {
-            NYSBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSBannerCell class]) forIndexPath:indexPath];
-            cell.isCourseBanner = YES;
-            cell.bannerModel = model;
-            return cell;
-        })
-        .wEventClickSet(^(id anyID, NSInteger index) {
-            
-        })
-        .wFrameSet(CGRectMake(0, 0, NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
-        .wItemSizeSet(CGSizeMake(NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
-        .wScaleFactorSet(0.15f)
-        .wScaleSet(NO)
-        .wLineSpacingSet(NNormalSpace)
-        .wRepeatSet(YES)
-        .wAutoScrollSet(YES)
-        .wAutoScrollSecondSet(5.0f)
-        .wHideBannerControlSet(YES)
-        .wDataSet(self.bannerArray);
+            .wMyCellClassNameSet(@"NYSBannerCell")
+            .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView, NSArray *dataArr) {
+                NYSBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSBannerCell class]) forIndexPath:indexPath];
+                cell.isCourseBanner = YES;
+                cell.bannerModel = model;
+                return cell;
+            })
+            .wEventClickSet(^(id anyID, NSInteger index) {
+                
+            })
+            .wFrameSet(CGRectMake(0, 0, NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
+            .wItemSizeSet(CGSizeMake(NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
+            .wScaleFactorSet(0.15f)
+            .wScaleSet(NO)
+            .wLineSpacingSet(NNormalSpace)
+            .wRepeatSet(YES)
+            .wAutoScrollSet(YES)
+            .wAutoScrollSecondSet(5.0f)
+            .wHideBannerControlSet(YES)
+            .wDataSet(self.bannerArray);
     }
     return _bannerParam;
 }

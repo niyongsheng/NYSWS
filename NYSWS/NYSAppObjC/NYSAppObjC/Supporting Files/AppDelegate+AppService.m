@@ -29,11 +29,21 @@
                                 name:NNotificationLoginStateChange
                               object:nil];
     
+    // 鉴权失效监听
+    [NNotificationCenter addObserver:self
+                            selector:@selector(tokenInvalidation:)
+                                name:NNotificationTokenInvalidation
+                              object:nil];
+    
     // 网络状态监听
     [NNotificationCenter addObserver:self
                             selector:@selector(netWorkStateChange:)
                                 name:NNotificationNetWorkStateChange
                               object:nil];
+    
+    id lang = [NSLocale preferredLanguages].firstObject;
+    NSString *currLanguage = [NSBundle currentLanguage];
+    NLog(@"%@当前语言是=%@", lang, currLanguage);
 }
 
 
@@ -95,7 +105,6 @@
         anima.type = @"cube";
         anima.subtype = kCATransitionFromRight;
         anima.duration = 0.3f;
-        
         [NAppWindow.layer addAnimation:anima forKey:@"revealAnimation"];
         
     } else { // 登陆失败加载登陆页面控制器
@@ -104,10 +113,16 @@
         anima.type = @"cube";
         anima.subtype = kCATransitionFromLeft;
         anima.duration = 0.3f;
-
-//        NRootViewController = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
         [NAppWindow.layer addAnimation:anima forKey:@"revealAnimation"];
     }
+}
+
+#pragma mark -- 鉴权失效监听 --
+- (void)tokenInvalidation:(NSNotification *)notification {
+    NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+    [NRootViewController presentViewController:loginVC animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark -- 网络状态变化 --
@@ -123,7 +138,8 @@
 - (void)initNetwork {
     
     [[NYSKitManager sharedNYSKitManager] setHost:APP_BASE_URL];
-    [[NYSKitManager sharedNYSKitManager] setToken:@""];
+    [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
+    [[NYSKitManager sharedNYSKitManager] setTokenInvalidCode:@"500"];
     
     // 网络状态改变监听
     

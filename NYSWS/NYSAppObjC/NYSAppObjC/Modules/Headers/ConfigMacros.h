@@ -3,33 +3,33 @@
 #define CommonMacros_h
 
 #pragma mark -- 网络相关 --
-#define DevelopSever 0
+#define DevelopSever 1
 #define TestSever    0
-#define ProductSever 1
+#define ProductSever 0
 
 #if DevelopSever
 /** 接口前缀-开发服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";
-static NSString *const APP_BASE_URL         = @"https://xiaoluht.app12345.cn";
-static NSString *const APP_CDN_URL          = @"";
+static NSString *const APP_BASE_URL         = @"http://xyd.app12345.cn";
+static NSString *const APP_CDN_URL          = @"http://xyd.app12345.cn";
 static NSString *const APP_FEEDBACK_URL     = @"";
 #elif TestSever
 /** 接口前缀-测试服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";
-static NSString *const APP_BASE_URL         = @"https://xiaoluht.app12345.cn";
+static NSString *const APP_BASE_URL         = @"http://xyd.app12345.cn";
 static NSString *const APP_CDN_URL          = @"";
 static NSString *const APP_FEEDBACK_URL     = @"";
 #elif ProductSever
 /** 接口前缀-生产服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";
-static NSString *const APP_BASE_URL         = @"https://xiaolu.sdcrxlw.cn";
+static NSString *const APP_BASE_URL         = @"http://xyd.app12345.cn";
 static NSString *const APP_CDN_URL          = @"";
 static NSString *const APP_FEEDBACK_URL     = @"";
 #endif
 
-#define AppOfficialWebsite      @"https://xiaolu.sdcrxlw.cn/aboutus.html"
-#define AppServiceAgreement     @"https://xiaolu.sdcrxlw.cn/xieyi.html"
-#define AppPrivacyAgreement     @"https://xiaolu.sdcrxlw.cn/yinsi.html"
+#define AppOfficialWebsite      [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/aboutus.html"]
+#define AppServiceAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/xieyi.html"]
+#define AppPrivacyAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/yinsi.html"]
 
 #define DefaultClientId  @"xopY5z6Ge8H2201" // client ID
 #define DefaultAppId     @"app5wtzrduk4143" // 店铺 ID

@@ -16,8 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 请求地址
 @property (nonatomic, strong) NSString * _Nonnull host;
 /// 授权令牌
-@property (nonatomic, strong) NSString * _Nonnull token;
-
+@property (nonatomic, strong) NSString * token;
+/// 令牌失效错误码
+@property (nonatomic, strong) NSString * tokenInvalidCode;
+/// 被踢/其他设备登录-错误码
+@property (nonatomic, strong) NSString * kickedCode;
 @end
 
 NS_ASSUME_NONNULL_END

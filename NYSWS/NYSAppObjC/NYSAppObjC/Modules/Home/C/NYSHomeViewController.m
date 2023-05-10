@@ -216,7 +216,7 @@ NYSBusinessViewDelegate
     segmentConfigure.titleTextZoom = YES;
     segmentConfigure.titleTextZoomRatio = .6f;
 
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, h, kScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
+    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(NNormalSpace, h, kScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
     self.pageTitleView.backgroundColor = [UIColor clearColor];
     self.pageTitleView
     .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {
