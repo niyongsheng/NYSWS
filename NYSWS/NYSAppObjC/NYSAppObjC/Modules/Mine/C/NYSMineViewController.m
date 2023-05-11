@@ -44,12 +44,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self updateUserInfo:NAppManager.userInfo];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // 刷新UI
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NNotificationReloadUserDetailInfo object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [self updateUserInfo:NAppManager.userInfo];
+    }];
+    
     [self wr_setNavBarBackgroundAlpha:0];
     self.contentViewTop.constant -= NTopHeight;
     self.customStatusBarStyle = UIStatusBarStyleLightContent;
@@ -98,7 +102,7 @@
         self.nicknameL.text = userInfo.nickname;
         self.phoneL.text = [NYSTools phoneStringAsteriskHandle:userInfo.phone];
         
-        [self.iconIV setImageWithURL:NCDNURL(userInfo.avatar) placeholder:NPImageFillet];
+        [self.iconIV setImageWithURL:NCDNURL(userInfo.avatar) placeholder:[UIImage imageNamed:@"icon_test_pass"]];
     });
 }
 
@@ -142,7 +146,7 @@
             break;
             
         case 5: {
-            [self.navigationController pushViewController:NYSSecurityProtectionVC.new animated:YES];
+            [self.navigationController pushViewController:NYSSettingViewController.new animated:YES];
         }
             break;
             
@@ -169,7 +173,7 @@
         }];
         
     } else {
-        
+        [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];
     }
 }
 

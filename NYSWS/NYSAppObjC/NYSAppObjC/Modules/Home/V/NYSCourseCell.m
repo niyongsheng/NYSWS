@@ -8,6 +8,7 @@
 #import "NYSCourseCell.h"
 
 @interface NYSCourseCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgV;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleL;
@@ -28,10 +29,19 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.contentView.backgroundColor = UIColor.whiteColor;
-    ViewRadius(self.contentView, 7);
-    ViewRadius(self.iconIV, 5);
+    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
+    ViewRadius(self.bgV, 10);
+    ViewRadius(self.iconIV, 7);
     ViewRadius(self.getBtn, 15);
+}
+
+- (void)setModel:(NYSHomeCourseModel *)model {
+    _model = model;
+
+    [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    self.titleL.text = model.name;
+    self.subtitleL.text = model.details;
+    self.priceL.text = model.price;
 }
 
 @end

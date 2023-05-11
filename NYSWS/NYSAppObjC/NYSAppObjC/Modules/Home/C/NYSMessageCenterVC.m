@@ -26,6 +26,7 @@ UITextFieldDelegate
     self.navigationItem.title = @"消息中心";
     
     [self setupSearchView];
+    [self footerRereshing];
 }
 
 - (void)setupSearchView {
@@ -34,7 +35,7 @@ UITextFieldDelegate
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
@@ -70,24 +71,33 @@ UITextFieldDelegate
     _pageNo ++;
     
     NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": DefaultPageSize,
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
         @"keyword": _searchTF.text,
       };
     WS(weakSelf)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
+                                          url:@"/index/Member/lists"
                                       argument:argument
                                              remark:@"消息中心列表"
                                             success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSMessageCenterModel class] json:response[@"records"]];
+        NSDictionary *jd = @{
+            @"title": @"消息标题",
+            @"content": @"消息内容",
+            @"user_id": @"123",
+            @"type": @"",
+            @"createtime": @"2021-05-O7 18:04",
+            @"updatetime": @"",
+        };
+        NSArray *jda = @[jd, jd, jd];
+        NSArray *array = [NSArray modelArrayWithClass:[NYSMessageCenterModel class] json:response];
         if (array.count > 0) {
             [weakSelf.dataSourceArr addObjectsFromArray:array];
             [weakSelf.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
         }
@@ -122,7 +132,7 @@ UITextFieldDelegate
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NCellHeight;
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

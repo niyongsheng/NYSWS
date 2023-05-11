@@ -31,9 +31,9 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define AppServiceAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/xieyi.html"]
 #define AppPrivacyAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/yinsi.html"]
 
-#define DefaultClientId  @"xopY5z6Ge8H2201" // client ID
-#define DefaultAppId     @"app5wtzrduk4143" // 店铺 ID
-#define DefaultSecretKey @"LOtdlYWOUz9uZVbsxF4CmMdPJ8F9PAFG" // 小鹅通申请的秘钥
+#define DefaultClientId  @"" // client ID
+#define DefaultAppId     @"" // 店铺 ID
+#define DefaultSecretKey @"" // 小鹅通申请的秘钥
 #define DefaultSourceUrl @"https://app5wtzrduk4143.h5.xiaoeknow.com" //小鹅店铺首页链接
 
 // 网络url
@@ -62,7 +62,7 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 // Company Name
 #define CompanyName     @"NYS Studio"
 // App Store ID
-#define APPID           @"6443611778"
+#define APPID           @"6443611777"
 // App Store详情页
 #define AppStoreURL     [NSString stringWithFormat:@"https://itunes.apple.com/cn/app/id%@", APPID]
 // App APIs
@@ -87,10 +87,10 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define UMengKey        @"63ad31dcd64e6861390988c9"
 
 // 兔小巢
-#define TXCAppID        @"344558"
+#define TXCAppID        @"3445158"
 
 // 融云IM
-#define RCAPPKEY_DEV    @"n19jmcy5n8fz9" // 开发环境
+#define RCAPPKEY_DEV    @"n19jmcy5n8fz90" // 开发环境
 #define RCAPPKEY_PRO    @"" // 生产环境
 
 #endif /* CommonMacros_h */

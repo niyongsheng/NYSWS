@@ -28,6 +28,7 @@ UITextFieldDelegate
 @end
 
 @implementation NYSSearchCourseVC
+static NSString *CellID = @"NYSCourseCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +36,8 @@ UITextFieldDelegate
     self.navigationItem.title = @"搜索";
     
     [self setupSearchView];
+    if (_isShowBanner)
+        [self footerRereshing];
 }
 
 - (void)setupSearchView {
@@ -43,10 +46,13 @@ UITextFieldDelegate
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor whiteColor];
-    //    self.tableView.delegate = self;
-    //    self.tableView.dataSource = self;
+    
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.tableView registerNib:[UINib nibWithNibName:CellID bundle:nil] forCellReuseIdentifier:CellID];
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
         make.left.mas_equalTo(self.view.mas_left);
@@ -57,6 +63,7 @@ UITextFieldDelegate
     CGFloat searchViewH = 40;
     if (_isShowBanner) searchViewH += (HomeBannerHeight + 2 * NNormalSpace);
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, searchViewH + NNormalSpace)];
+    headerView.backgroundColor = [UIColor whiteColor];
     
     // 搜索框
     UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(NNormalSpace, NNormalSpace/2, kScreenWidth - 2 * NNormalSpace, 40)];
@@ -92,15 +99,16 @@ UITextFieldDelegate
     _pageNo ++;
     
     NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": DefaultPageSize,
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
         @"keyword": _searchTF.text,
+        @"class_id": _index,
     };
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:@"/index/Course/list"
+                                            url:self.isShowBanner ? @"/index/Course/list" : @"/index/Course/select_coures"
                                        argument:argument
-                                         remark:@"课程搜索列表"
+                                         remark:@"课程分类/搜索列表"
                                         success:^(id response) {
         @strongify(self)
         NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
@@ -110,7 +118,7 @@ UITextFieldDelegate
             
         } else {
             if (self->_pageNo == 1) {
-                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
@@ -129,7 +137,8 @@ UITextFieldDelegate
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    _pageNo = 1;
+    _pageNo = 0;
+    [self.dataSourceArr removeAllObjects];
     [self footerRereshing];
     
     return YES;
@@ -144,17 +153,14 @@ UITextFieldDelegate
     return self.dataSourceArr.count;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
+    CGFloat h = [model.details heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 130 + h;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"NYSCourseCell";
-    NYSCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:ID owner:self options:nil] firstObject];
-    }
+    NYSCourseCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellID];
     cell.model = self.dataSourceArr[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

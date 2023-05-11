@@ -140,6 +140,7 @@
     [[NYSKitManager sharedNYSKitManager] setHost:APP_BASE_URL];
     [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidCode:@"500"];
+    [[NYSKitManager sharedNYSKitManager] setTokenInvalidMessage:@"验证失败，请先登录"];
     
     // 网络状态改变监听
     

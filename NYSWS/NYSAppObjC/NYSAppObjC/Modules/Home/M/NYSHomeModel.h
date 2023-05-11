@@ -12,19 +12,11 @@
 
 
 @interface NYSBannerModel : NYSBaseObject
-@property (nonatomic , copy) NSString              * bannerId;
-@property (nonatomic , copy) NSString              * desc;
-@property (nonatomic , copy) NSString              * createBy;
-@property (nonatomic , copy) NSString              * deptName;
-@property (nonatomic , copy) NSString              * bannerType;
-@property (nonatomic , copy) NSString              * updateBy;
-@property (nonatomic , copy) NSString              * targetUrl;
-@property (nonatomic , copy) NSString              * deptId;
-@property (nonatomic , copy) NSString              * bannerUrl;
-@property (nonatomic , copy) NSString              * createTime;
-@property (nonatomic , copy) NSString              * remark;
-@property (nonatomic , copy) NSString              * status;
-@property (nonatomic , copy) NSString              * updateTime;
+@property (nonatomic , assign) NSInteger              ID;
+@property (nonatomic , copy) NSString              * content;
+@property (nonatomic , copy) NSString              * name;
+@property (nonatomic , copy) NSString              * image;
+@property (nonatomic , copy) NSString              * create_time;
 @end
 
 @interface NYSBusinessModel : NYSBaseObject
@@ -35,13 +27,41 @@
 @end
 
 @interface NYSRecommendedModel : NYSBaseObject
-
+@property (nonatomic , assign) NSInteger              ID;
+@property (nonatomic , assign) NSInteger              createtime;
+@property (nonatomic , copy) NSString              * version;
+@property (nonatomic , copy) NSString              * details;
+@property (nonatomic , assign) NSInteger              size;
+@property (nonatomic , copy) NSString              * price;
+@property (nonatomic , copy) NSString              * image;
+@property (nonatomic , assign) NSInteger              updatetime;
+@property (nonatomic , assign) NSInteger              class_id;
+@property (nonatomic , assign) NSInteger              sort;
+@property (nonatomic , copy) NSString              * name;
+@property (nonatomic , copy) NSString              * is_recommend;
 @end
 
 @interface NYSHomeCourseModel : NYSBaseObject
+@property (nonatomic , assign) NSInteger              ID;
+@property (nonatomic , assign) NSInteger              createtime;
+@property (nonatomic , copy) NSString              * version;
+@property (nonatomic , copy) NSString              * details;
+@property (nonatomic , assign) NSInteger              size;
+@property (nonatomic , copy) NSString              * price;
+@property (nonatomic , copy) NSString              * image;
+@property (nonatomic , assign) NSInteger              updatetime;
+@property (nonatomic , assign) NSInteger              class_id;
+@property (nonatomic , assign) NSInteger              sort;
+@property (nonatomic , copy) NSString              * name;
+@property (nonatomic , copy) NSString              * is_recommend;
 
 @end
 
 @interface NYSMessageCenterModel : NYSBaseObject
-
+@property (nonatomic , copy) NSString              * updatetime;
+@property (nonatomic , copy) NSString              * title;
+@property (nonatomic , copy) NSString              * content;
+@property (nonatomic , copy) NSString              * user_id;
+@property (nonatomic , copy) NSString              * type;
+@property (nonatomic , copy) NSString              * createtime;
 @end

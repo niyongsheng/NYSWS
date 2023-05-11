@@ -7,20 +7,17 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface NYSKitManager : NSObject
 
-+ (NYSKitManager *)sharedNYSKitManager;
++ (NYSKitManager *_Nonnull)sharedNYSKitManager;
 
 /// 请求地址
 @property (nonatomic, strong) NSString * _Nonnull host;
 /// 授权令牌
 @property (nonatomic, strong) NSString * token;
 /// 令牌失效错误码
-@property (nonatomic, strong) NSString * tokenInvalidCode;
+@property (nonatomic, strong) NSString * _Nonnull tokenInvalidCode;
+@property (nonatomic, strong) NSString * _Nonnull tokenInvalidMessage;
 /// 被踢/其他设备登录-错误码
-@property (nonatomic, strong) NSString * kickedCode;
+@property (nonatomic, strong) NSString * _Nonnull kickedCode;
 @end
-
-NS_ASSUME_NONNULL_END

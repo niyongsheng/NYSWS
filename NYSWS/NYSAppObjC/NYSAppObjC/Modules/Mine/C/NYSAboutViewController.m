@@ -24,7 +24,20 @@ SKStoreProductViewControllerDelegate
     self.navigationItem.title = @"关于我们";
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
-    _versionL.text = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    _versionL.text = [@"版本：" stringByAppendingString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Index/about_us"
+                                       argument:nil
+                                         remark:@"关于我们"
+                                        success:^(id response) {
+        @strongify(self)
+
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
 
 - (IBAction)itemViewOnclicked1:(UIButton *)sender {

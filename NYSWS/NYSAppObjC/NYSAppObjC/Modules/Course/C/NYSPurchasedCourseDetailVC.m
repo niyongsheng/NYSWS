@@ -73,8 +73,8 @@
     _pageNo ++;
     
     NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": DefaultPageSize,
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
     };
     WS(weakSelf)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
@@ -82,14 +82,14 @@
                                        argument:argument
                                          remark:@"资金变动列表"
                                         success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSMovementModel class] json:response[@"records"]];
+        NSArray *array = [NSArray modelArrayWithClass:[NYSMovementModel class] json:response];
         if (array.count > 0) {
             [weakSelf.dataSourceArr addObjectsFromArray:array];
             [weakSelf.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
         }

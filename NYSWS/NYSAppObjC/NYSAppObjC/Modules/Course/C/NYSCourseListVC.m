@@ -26,48 +26,67 @@ SGPageContentCollectionViewDelegate
 
     self.isShowLiftBack = NO;
     
-    // 1.分页栏配置
-    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
-                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
-                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
-                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
-    NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
-    SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
-    segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
-    segmentConfigure.indicatorColor = NAppThemeColor;
-    segmentConfigure.showBottomSeparator = NO;
-    segmentConfigure.indicatorHeight = 4;
-    segmentConfigure.indicatorCornerRadius = 2;
-    segmentConfigure.indicatorToBottomDistance = 10;
-    segmentConfigure.indicatorScrollStyle = SGIndicatorScrollStyleDefault;
-    segmentConfigure.titleFont = [UIFont boldSystemFontOfSize:15.0];
-    segmentConfigure.titleTextZoom = YES;
-    segmentConfigure.titleTextZoomRatio = .6f;
-    
-    // 2.分页栏view
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
-    self.pageTitleView.backgroundColor = [UIColor clearColor];
-    self.pageTitleView
-    .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {
-        [item resetTitleColor:[UIColor blackColor] titleSelectedColor:NAppThemeColor];
-    }).LeeAddCustomConfig(NIGHT, ^(SGPageTitleView *item) {
-        [item resetTitleColor:[UIColor lightGrayColor] titleSelectedColor:NAppThemeColor];
-    });
-    LayoutFittingView *LFView = [[LayoutFittingView alloc] initWithFrame:CGRectMake(0, 0, NScreenWidth, 44)];
-    [LFView addSubview:_pageTitleView];
-    self.navigationItem.titleView = LFView;
-    
-    // 3.分页控制器
-    NSMutableArray *childVCs = [NSMutableArray array];
-    for (NSString *valueStr in valueArr) {
-        NYSSearchCourseVC *hVC = [[NYSSearchCourseVC alloc] init];
-        hVC.isShowBanner = YES;
-        hVC.index = valueStr;
-        [childVCs addObject:hVC];
-    }
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
-    self.pageContentCollectionView.delegatePageContentCollectionView = self;
-    [self.view addSubview:_pageContentCollectionView];
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Courseclass/list"
+                                       argument:nil
+                                         remark:@"课程分类"
+                                        success:^(id response) {
+        @strongify(self)
+        NSMutableArray *valueArr = [NSMutableArray array];
+        NSMutableArray *titleArr = [NSMutableArray array];
+        [valueArr addObject:@""];
+        [titleArr addObject:NSLocalizedStringFromTable(@"All", @"InfoPlist", nil)];
+        for (NSDictionary *dict in response) {
+            [valueArr addObject:dict[@"id"]];
+            [titleArr addObject:dict[@"name"]];
+        }
+        // 1.分页栏配置
+//        NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
+//                              NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
+//                              NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
+//                              NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
+//        NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
+        SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
+        segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
+        segmentConfigure.indicatorColor = NAppThemeColor;
+        segmentConfigure.showBottomSeparator = NO;
+        segmentConfigure.indicatorHeight = 4;
+        segmentConfigure.indicatorCornerRadius = 2;
+        segmentConfigure.indicatorToBottomDistance = 10;
+        segmentConfigure.indicatorScrollStyle = SGIndicatorScrollStyleDefault;
+        segmentConfigure.titleFont = [UIFont boldSystemFontOfSize:15.0];
+        segmentConfigure.titleTextZoom = YES;
+        segmentConfigure.titleTextZoomRatio = .6f;
+        
+        // 2.分页栏view
+        self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
+        self.pageTitleView.backgroundColor = [UIColor clearColor];
+        self.pageTitleView
+        .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {
+            [item resetTitleColor:[UIColor blackColor] titleSelectedColor:NAppThemeColor];
+        }).LeeAddCustomConfig(NIGHT, ^(SGPageTitleView *item) {
+            [item resetTitleColor:[UIColor lightGrayColor] titleSelectedColor:NAppThemeColor];
+        });
+        LayoutFittingView *LFView = [[LayoutFittingView alloc] initWithFrame:CGRectMake(0, 0, NScreenWidth, 44)];
+        [LFView addSubview:self.pageTitleView];
+        self.navigationItem.titleView = LFView;
+        
+        // 3.分页控制器
+        NSMutableArray *childVCs = [NSMutableArray array];
+        for (NSString *valueStr in valueArr) {
+            NYSSearchCourseVC *hVC = [[NYSSearchCourseVC alloc] init];
+            hVC.isShowBanner = YES;
+            hVC.index = valueStr;
+            [childVCs addObject:hVC];
+        }
+        self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
+        self.pageContentCollectionView.delegatePageContentCollectionView = self;
+        [self.view addSubview:self.pageContentCollectionView];
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
 
 #pragma mark - SGPagingViewDelegate

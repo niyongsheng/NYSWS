@@ -71,7 +71,7 @@ DZNEmptyDataSetDelegate
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context {
     if (_dataSourceArr.count == 0) {
-        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"null"];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"linkedin_binding_magnifier"];
     }
 }
 
@@ -109,6 +109,7 @@ DZNEmptyDataSetDelegate
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
         _tableView.showsVerticalScrollIndicator = YES;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         
@@ -177,7 +178,7 @@ DZNEmptyDataSetDelegate
         }
         
         _tableView.scrollsToTop = YES;
-        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 0.0001f)];
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, CGFLOAT_MIN)];
     }
     return _tableView;
 }
@@ -290,11 +291,11 @@ DZNEmptyDataSetDelegate
 
 #pragma mark - MJRefresh Methods
 - (void)headerRereshing {
-    self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"加载中..." reason:@"" suggestion:@"" placeholderImg:@"null"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NSLocalizedStringFromTable(@"Loading", @"InfoPlist", nil) reason:@"" suggestion:@"" placeholderImg:@"null"];
 }
 
 - (void)footerRereshing {
-    self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"加载中..." reason:@"" suggestion:@"" placeholderImg:@"null"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NSLocalizedStringFromTable(@"Loading", @"InfoPlist", nil) reason:@"" suggestion:@"" placeholderImg:@"null"];
 }
 
 #pragma mark - UITableViewDataSource Methods

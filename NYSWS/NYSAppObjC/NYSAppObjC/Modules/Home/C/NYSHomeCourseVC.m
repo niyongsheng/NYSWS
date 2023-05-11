@@ -9,9 +9,6 @@
 #import "NYSCourseCell.h"
 
 @interface NYSHomeCourseVC ()
-<
-UITextFieldDelegate
->
 {
     NSInteger _pageNo;
 }
@@ -34,10 +31,11 @@ UITextFieldDelegate
     self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.scrollEnabled = NO;
+    self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
-    self.tableView.emptyDataSetSource = nil;
-    self.tableView.emptyDataSetDelegate = nil;
+//    self.tableView.emptyDataSetSource = nil;
+//    self.tableView.emptyDataSetDelegate = nil;
     self.tableView.mj_footer = nil;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
@@ -54,35 +52,38 @@ UITextFieldDelegate
     _pageNo ++;
     
     NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": @(9999),
-        @"index": _index,
-      };
-    WS(weakSelf)
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
+        @"class_id": _index,
+    };
+    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
-                                      argument:argument
-                                             remark:@"课程搜索列表"
-                                            success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response[@"records"]];
+                                            url:@"/index/Course/list"
+                                       argument:argument
+                                         remark:@"（首页）课程分类列表"
+                                        success:^(id response) {
+        @strongify(self)
+        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
-            [weakSelf.dataSourceArr addObjectsFromArray:array];
-            [weakSelf.tableView.mj_footer endRefreshing];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView reloadData];
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
+        [self changeTableviewHeight:self.dataSourceArr];
         
     } failed:^(NSError * _Nullable error) {
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
@@ -97,7 +98,8 @@ UITextFieldDelegate
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
+    return [self getCellHeight:model];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,6 +119,25 @@ UITextFieldDelegate
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
 
+}
+
+#pragma mark - 计算Cell高度
+- (CGFloat)getCellHeight:(NYSHomeCourseModel *)model {
+    CGFloat h = [model.details heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 130 + h;
+}
+
+- (void)changeTableviewHeight:(NSMutableArray *)dataSourceArr {
+    
+    CGFloat h = 0;
+    for (NYSHomeCourseModel *model in self.dataSourceArr) {
+        h += [self getCellHeight:model];
+    }
+    self.tableViewHeight = h;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tableviewHeight:)]) {
+        [self.delegate tableviewHeight:h];
+    }
 }
 
 @end

@@ -14,6 +14,7 @@
 #import <SGPagingView/SGPagingView.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <WRNavigationBar/WRNavigationBar.h>
+#import <ZLPhotoBrowser-objc/ZLPhotoBrowser.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>

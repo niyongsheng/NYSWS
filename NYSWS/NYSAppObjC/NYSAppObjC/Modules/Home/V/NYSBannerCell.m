@@ -42,11 +42,12 @@
 - (void)setBannerModel:(NYSBannerModel *)bannerModel {
     _bannerModel = bannerModel;
     
-    self.titleLabel.text = [NSString stringWithFormat:@"  %@", bannerModel.remark];
-    [self.bannerImageV setImageWithURL:NCDNURL(bannerModel.bannerUrl) placeholder:[UIImage imageNamed:@"plaholder_image_banner"]];
+    self.titleLabel.text = [NSString stringWithFormat:@"  %@", bannerModel.name];
+    [self.bannerImageV setImageWithURL:[NSURL URLWithString:bannerModel.image] placeholder:[UIImage imageNamed:@"plaholder_image_banner"]];
     
+    NLog(@"bannner:%@", bannerModel.image);
     if (_isCourseBanner) {
-        [self.bannerImageV setImageWithURL:NCDNURL(bannerModel.bannerUrl) placeholder:[UIImage imageNamed:@"course_banner_bg"]];
+        [self.bannerImageV setImageWithURL:NCDNURL(bannerModel.image) placeholder:[UIImage imageNamed:@"course_banner_bg"]];
     }
 }
 

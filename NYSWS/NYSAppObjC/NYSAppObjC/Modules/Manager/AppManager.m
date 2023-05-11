@@ -23,7 +23,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appManager = [[self alloc] init];
-        [[NNotificationCenter rac_addObserverForName:NNotificationChangeDefaultBuilding object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NNotificationChangeDefaultBuilding object:nil] subscribeNext:^(NSNotification * _Nullable x) {
             [appManager loadUserInfoCompletion:nil];
         }];
     });
@@ -98,7 +98,7 @@
             @strongify(self)
             self.userInfo = nil; // 置空
             // 通知刷新UI
-            [NNotificationCenter postNotificationName:NNotificationReloadUserDetailInfo object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationReloadUserDetailInfo object:nil];
             NYSUserInfo *userInfo = [NYSUserInfo modelWithDictionary:data];
             completion ? completion(YES, userInfo, nil) : nil;
         }];
@@ -136,20 +136,24 @@
     // 3.清除APP角标
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
-    
-    // 4.清空当前用户信息
-    self.seq = 0;
-    self.token = nil;
-    self.userInfo = nil;
-    self.isLogined = NO;
-    
-    // 5.移除缓存
+
+    // 4.移除缓存
     [NUserDefaults removeObjectForKey:NUserTokenKey];
     [self.userCache removeAllObjectsWithBlock:^{
         if (completion) {
             completion(YES, nil);
         }
     }];
+    
+    // 5.清空当前用户信息
+    self.seq = 0;
+    self.token = nil;
+    self.userInfo = nil;
+    self.isLogined = NO;
+    [[NYSKitManager sharedNYSKitManager] setToken:nil];
+    
+    // 通知刷新UI
+    [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationReloadUserDetailInfo object:nil];
 }
 
 #pragma mark —- 被踢下线 —-

@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, NSNYSErrorCode){
 /// @param description 描述
 /// @param reason 原因
 /// @param suggestion 建议
-/// @param imageName 图片名key:@"NSLocalizedPlaceholderImageName"
+/// @param imageName 图片名key:@"NSLocalizedPlaceholderImageName" （Framework中的图片资源）
 + (NSError*)errorCode:(NSNYSErrorCode)code description:(NSString *)description reason:(NSString *)reason suggestion:(NSString *)suggestion placeholderImg:(NSString *)imageName;
 
 @end

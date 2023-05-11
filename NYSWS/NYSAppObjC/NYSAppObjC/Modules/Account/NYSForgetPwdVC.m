@@ -8,6 +8,11 @@
 #import "NYSForgetPwdVC.h"
 
 @interface NYSForgetPwdVC ()
+@property (weak, nonatomic) IBOutlet UIButton *qqBtn;
+@property (weak, nonatomic) IBOutlet UIButton *wechatBtn;
+
+@property (strong, nonatomic) NSString *qq;
+@property (strong, nonatomic) NSString *wechat;
 
 @end
 
@@ -29,11 +34,44 @@
     [btn addTarget:self action:@selector(backBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
     [btn setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/get_service"
+                                       argument:nil
+                                         remark:@"获取客服"
+                                        success:^(id response) {
+        @strongify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.qq = [[response firstObject] stringValueForKey:@"value" default:@""];
+            self.wechat = [[response lastObject] stringValueForKey:@"value" default:@""];
+            [self.qqBtn setTitle:[NSString stringWithFormat:@"QQ：%@", self.qq] forState:UIControlStateNormal];
+            [self.wechatBtn setTitle:[NSString stringWithFormat:@"微信：%@", self.wechat] forState:UIControlStateNormal];
+        });
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
 
 - (void)backBtnOnclicked:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)qqBtnOnclicked:(UIButton *)sender {
+    [NYSTools zoomToShow:sender.layer];
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.qq;
+    [NYSTools showToast:@"已复制"];
+}
+
+- (IBAction)wechatBtnOnclicked:(UIButton *)sender {
+    [NYSTools zoomToShow:sender.layer];
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.wechat;
+    [NYSTools showToast:@"已复制"];
+}
 
 @end

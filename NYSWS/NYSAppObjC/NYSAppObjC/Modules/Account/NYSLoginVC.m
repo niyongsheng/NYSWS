@@ -89,6 +89,7 @@
 /// @param sender btn
 - (IBAction)loginBtnOnclicked:(UIButton *)sender {
     [self.view endEditing:YES];
+    [NYSTools zoomToShow:sender.layer];
 
     if (![_accountTF.text isNotBlank]) {
         [NYSTools showToast:@"请输入手机号码"];
@@ -108,8 +109,6 @@
         return;
     }
     
-    
-    [NYSTools zoomToShow:sender.layer];
     NSDictionary *argument = @{@"username": _accountTF.text,
                                @"password": _passwordTF.text,
     };

@@ -38,6 +38,10 @@
 - (void)setModel:(NYSRecommendedModel *)model {
     _model = model;
     
+    [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
+    self.titleL.text = model.name;
+    self.subtitleL.text = model.details;
+    self.priceL.text = model.price;
 }
 
 

@@ -41,7 +41,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUv-di-bj5">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_test_pass" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-am-lcS">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_test_pass" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-am-lcS">
                                             <rect key="frame" x="15" y="110" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="QXP-am-lcS" secondAttribute="height" multiplier="1:1" id="A0p-SU-dix"/>
