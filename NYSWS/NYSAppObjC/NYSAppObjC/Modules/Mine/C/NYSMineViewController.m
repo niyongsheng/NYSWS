@@ -70,6 +70,7 @@
     layer.path = path.CGPath;
     _headerBgV.layer.mask = layer;
     
+    // 渐变背景色
 //    CAGradientLayer *gl = [CAGradientLayer layer];
 //    gl.frame = layer.frame;
 //    gl.startPoint = CGPointMake(0, 0);
@@ -89,11 +90,7 @@
     ViewRadius(_mineV, 10);
     self.coinL.adjustsFontSizeToFitWidth = YES;
     
-    @weakify(self)
-    [NAppManager loadUserInfoCompletion:^(BOOL success, NYSUserInfo *userInfo, NSError *error) {
-        @strongify(self)
-        [self updateUserInfo:userInfo];
-    }];
+    NAppManager.isLogined ? [self updateUserInfo:NAppManager.userInfo] : nil;
 }
 
 - (void)updateUserInfo:(NYSUserInfo *)userInfo {

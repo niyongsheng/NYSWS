@@ -10,14 +10,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSFeedbackVC">
             <connections>
-                <outlet property="addBtn" destination="Mk5-U3-ka8" id="Lwo-Eo-UYV"/>
                 <outlet property="btn0" destination="vbK-rN-Vf2" id="2II-uR-qfQ"/>
                 <outlet property="btn1" destination="Ae2-Ub-qv2" id="XYA-Qy-3Oh"/>
                 <outlet property="btn2" destination="xmf-em-2sH" id="e6S-tv-oqH"/>
                 <outlet property="commitBtn" destination="eJI-qV-gfi" id="sMr-Sm-91f"/>
-                <outlet property="contentT" destination="T7a-AA-vYM" id="gn4-SU-f97"/>
+                <outlet property="contentTV" destination="T7a-AA-vYM" id="gn4-SU-f97"/>
                 <outlet property="contentV" destination="XWl-eA-7Nd" id="ODw-B3-lgb"/>
-                <outlet property="contentView" destination="SFK-kR-XvI" id="XVt-yJ-Ufc"/>
+                <outlet property="contentView" destination="SFK-kR-XvI" id="ztS-dv-1ic"/>
+                <outlet property="imageV" destination="l2v-ec-eZT" id="RFh-1f-q85"/>
                 <outlet property="scrollV" destination="5Jg-GP-kca" id="wed-Xg-e0o"/>
                 <outlet property="view" destination="Wsz-Re-I4y" id="rCg-tr-015"/>
             </connections>
@@ -53,6 +53,9 @@
                                             <state key="normal" title="功能建议">
                                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="typeBtnOnclicked:" destination="-1" eventType="touchUpInside" id="ux5-bJ-8zx"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae2-Ub-qv2">
                                             <rect key="frame" x="90" y="12.666666666666671" width="80" height="30"/>
@@ -65,6 +68,9 @@
                                             <state key="normal" title="使用建议">
                                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="typeBtnOnclicked:" destination="-1" eventType="touchUpInside" id="2iJ-nQ-DbQ"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmf-em-2sH">
                                             <rect key="frame" x="180" y="12.666666666666671" width="80" height="30"/>
@@ -77,6 +83,10 @@
                                             <state key="normal" title="异常问题">
                                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <state key="selected" title="异常问题"/>
+                                            <connections>
+                                                <action selector="typeBtnOnclicked:" destination="-1" eventType="touchUpInside" id="8uk-VR-zap"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,7 +109,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWl-eA-7Nd">
                                     <rect key="frame" x="15" y="164" width="360" height="120"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed" translatesAutoresizingMaskIntoConstraints="NO" id="T7a-AA-vYM">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7a-AA-vYM">
                                             <rect key="frame" x="10" y="10" width="340" height="100"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="textColor" systemColor="labelColor"/>
@@ -117,23 +127,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2v-ec-eZT">
-                                    <rect key="frame" x="15" y="346" width="360" height="200"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk5-U3-ka8">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="VlX-Cm-0ph"/>
-                                                <constraint firstAttribute="width" secondItem="Mk5-U3-ka8" secondAttribute="height" multiplier="1:1" id="amF-Tt-DZ3"/>
-                                            </constraints>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="add_icon"/>
-                                        </button>
-                                    </subviews>
+                                    <rect key="frame" x="15" y="346" width="360" height="400"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="Mk5-U3-ka8" firstAttribute="leading" secondItem="l2v-ec-eZT" secondAttribute="leading" id="NgK-dX-m5B"/>
-                                        <constraint firstItem="Mk5-U3-ka8" firstAttribute="top" secondItem="l2v-ec-eZT" secondAttribute="top" id="YVD-Rq-YFt"/>
-                                        <constraint firstAttribute="height" constant="200" id="dpN-dC-cu0"/>
+                                        <constraint firstAttribute="height" constant="400" id="dpN-dC-cu0"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJI-qV-gfi">
@@ -204,7 +201,6 @@
         </view>
     </objects>
     <resources>
-        <image name="add_icon" width="19" height="19"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
