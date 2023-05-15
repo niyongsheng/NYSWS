@@ -41,19 +41,42 @@ SKStoreProductViewControllerDelegate
 }
 
 - (IBAction)itemViewOnclicked1:(UIButton *)sender {
-    NYSWebViewController *webVC = [NYSWebViewController new];
-    webVC.urlStr = AppServiceAgreement;
-    webVC.title = @"服务协议";
-    webVC.autoTitle = NO;
-    [self.navigationController pushViewController:webVC animated:YES];
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/get_user_agreement"
+                                       argument:nil
+                                         remark:@"服务协议"
+                                        success:^(id response) {
+        @strongify(self)
+        NYSWebViewController *webVC = [NYSWebViewController new];
+        webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+        webVC.title = @"服务协议";
+        webVC.autoTitle = NO;
+        [self.navigationController pushViewController:webVC animated:YES];
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
 
 - (IBAction)itemViewOnclicked2:(UIButton *)sender {
-    NYSWebViewController *webVC = [NYSWebViewController new];
-    webVC.urlStr = AppPrivacyAgreement;
-    webVC.title = @"隐私协议";
-    webVC.autoTitle = NO;
-    [self.navigationController pushViewController:webVC animated:YES];
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/get_privacy_agreement"
+                                       argument:nil
+                                         remark:@"隐私协议"
+                                        success:^(id response) {
+        @strongify(self)
+        NYSWebViewController *webVC = [NYSWebViewController new];
+        webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
+        webVC.title = @"隐私协议";
+        webVC.autoTitle = NO;
+        [self.navigationController pushViewController:webVC animated:YES];
+        [self.navigationController pushViewController:webVC animated:YES];
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
 
 @end

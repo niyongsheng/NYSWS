@@ -33,7 +33,8 @@
 #import "NYSCourseModel.h"
 #import "NYSMineModel.h"
 
-#pragma mark -- 控制器 --
+#pragma mark -- 公共 --
+#import "NYSAlertView.h"
 #import "NYSLoginVC.h"
 #import "NYSTabbarViewController.h"
 

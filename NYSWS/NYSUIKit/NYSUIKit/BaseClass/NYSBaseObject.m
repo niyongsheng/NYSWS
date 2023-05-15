@@ -19,6 +19,13 @@
     };
 }
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+        @"nysobjs" : [NYSBaseObject class],
+        @"nysObjects" : @"NYSBaseObject"
+    };
+}
+
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     // 处理字符串为null 改为@""
     for (NSString * key in [self bk_properties_string]) {

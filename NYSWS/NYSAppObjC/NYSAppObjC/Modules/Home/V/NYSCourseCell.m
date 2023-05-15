@@ -33,6 +33,8 @@
     ViewRadius(self.bgV, 10);
     ViewRadius(self.iconIV, 7);
     ViewRadius(self.getBtn, 15);
+    
+    self.priceL.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setModel:(NYSHomeCourseModel *)model {
@@ -40,7 +42,7 @@
 
     [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
     self.titleL.text = model.name;
-    self.subtitleL.text = model.details;
+    self.subtitleL.text = model.subtitle;
     self.priceL.text = model.price;
 }
 

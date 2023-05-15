@@ -23,12 +23,12 @@
     ViewRadius(_conView, 10);
 }
 
-//- (void)setCellModel:(NYSItemListModel *)cellModel {
-//    _cellModel = cellModel;
-//    
-//    _titleL.text = cellModel.itemTitle;
-//    _subtitle.text = [NSString stringWithFormat:@"%ld次学习", cellModel.itemLearnCount];
+- (void)setModel:(NYSChapter *)model {
+    _model = model;
+    
+    _titleL.text = model.title;
+    _subtitle.text = model.subtitle;
 //    _icon.image = cellModel.isPlaying ? [UIImage imageNamed:@"pause_small_icon"] : [UIImage imageNamed:@"play_small_icon"];
-//}
+}
 
 @end

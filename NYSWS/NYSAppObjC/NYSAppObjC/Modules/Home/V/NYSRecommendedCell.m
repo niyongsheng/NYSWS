@@ -35,12 +35,12 @@
     ViewRadius(self.getBtn, 15);
 }
 
-- (void)setModel:(NYSRecommendedModel *)model {
+- (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
     
     [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
     self.titleL.text = model.name;
-    self.subtitleL.text = model.details;
+    self.subtitleL.text = model.subtitle;
     self.priceL.text = model.price;
 }
 

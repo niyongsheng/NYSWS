@@ -44,6 +44,7 @@
                 <outlet property="moneyV3" destination="sAx-OB-slh" id="hxu-4w-oYX"/>
                 <outlet property="moneyV4" destination="O8U-8F-EZ8" id="rfo-1v-fL8"/>
                 <outlet property="moneyV5" destination="OiU-p3-UMS" id="F0O-Bn-S8Q"/>
+                <outlet property="payWayBtn0" destination="B2U-zh-ll1" id="vo6-14-5Np"/>
                 <outlet property="payWayV0" destination="JqF-uY-f79" id="iyK-u4-Mty"/>
                 <outlet property="payWayV1" destination="m94-3x-gZD" id="pdD-9R-55T"/>
                 <outlet property="payWayV2" destination="aMA-m0-VdL" id="OFQ-6f-c3n"/>

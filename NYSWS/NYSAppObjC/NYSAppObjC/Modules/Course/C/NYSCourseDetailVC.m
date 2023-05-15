@@ -10,6 +10,7 @@
 #import "NYSLessonPlayCell.h"
 #import "NYSCoursePurchaseVC.h"
 #import "NYSCourseExchangeVC.h"
+#import "NYSCatalogViewController.h"
 
 #define BottomBtnHeight 50
 
@@ -17,6 +18,8 @@
 {
     NSInteger _pageNo;
 }
+@property (strong, nonatomic) NYSHomeCourseModel *detailModel;
+@property (strong, nonatomic) NYSCourseDetailHeader *headerView;
 @end
 
 @implementation NYSCourseDetailVC
@@ -36,6 +39,7 @@
     self.view.backgroundColor = NAppThemeColor;
     
     [self setupUI];
+    [self getDetailData];
 }
 
 - (void)setupUI {
@@ -43,6 +47,8 @@
     _tableviewStyle = UITableViewStylePlain;
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
+    self.tableView.mj_footer = nil;
+    self.tableView.emptyDataSetSource = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [NYSTools addRoundedCorners:self.tableView corners:UIRectCornerTopLeft|UIRectCornerTopRight radius:30];
@@ -53,8 +59,8 @@
     }];
     
     // 表头
-    NYSCourseDetailHeader *headerView = [[NYSCourseDetailHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 350)];
-    self.tableView.tableHeaderView = headerView;
+    self.headerView = [[NYSCourseDetailHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
+    self.tableView.tableHeaderView = self.headerView;
     
     // 购买兑换
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kScreenHeight - BottomBtnHeight, kScreenWidth/2, BottomBtnHeight)];
@@ -83,18 +89,58 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
 
+#pragma mark - 加载详情数据
+- (void)getDetailData {
+    NSMutableDictionary *params = @{
+        @"course_id": @(self.model.ID),
+      }.mutableCopy;
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                          url:@"/index/Course/info"
+                                      argument:params
+                                             remark:@"课程详情"
+                                            success:^(id response) {
+        @strongify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.detailModel = [NYSHomeCourseModel modelWithDictionary:response];
+            self.headerView.model = self.detailModel;
+            
+            // 计算富文本的高度
+            NSDictionary *optoins = @{
+                NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
+                NSFontAttributeName:[UIFont systemFontOfSize:20]
+            };
+            NSString *contentStr = self.detailModel.details;
+            NSString *handelStr = [NSString stringWithFormat:@"<head><style>img{max-width:%f !important;height:auto}</style></head>%@", NScreenWidth - 30, contentStr];
+            NSData *data = [handelStr dataUsingEncoding:NSUnicodeStringEncoding];
+            NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:nil];
+            CGSize attSize = [attributeString boundingRectWithSize:CGSizeMake(NScreenWidth-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+            self.tableView.tableHeaderView.height = 300 + attSize.height;
+            
+            self.dataSourceArr = self.detailModel.chapter.mutableCopy;
+            [self.tableView reloadData];
+        });
+    } failed:^(NSError * _Nullable error) {
+
+
+    }];
+}
+
 - (void)bottomBtnOnclicked:(UIButton *)sender {
     if (sender.tag == 11) {
-        [self.navigationController pushViewController:NYSCourseExchangeVC.new animated:YES];
-    } else {
+        NYSCourseExchangeVC *vc = NYSCourseExchangeVC.new;
+        vc.detailModel = self.detailModel;
+        [self.navigationController pushViewController:vc animated:YES];
         
-        [self.navigationController pushViewController:NYSCoursePurchaseVC.new animated:YES];
+    } else {
+        NYSCoursePurchaseVC *vc = NYSCoursePurchaseVC.new;
+        vc.detailModel = self.detailModel;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
-
-    return NScreenHeight*0.2;
+    return NScreenHeight * 0.4;
 }
 
 #pragma mark - 网络加载数据
@@ -110,7 +156,7 @@
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:@""
                                        argument:argument
-                                         remark:@"资金变动列表"
+                                         remark:@"课程章节列表"
                                         success:^(id response) {
         NSArray *array = [NSArray modelArrayWithClass:[NYSMovementModel class] json:response];
         if (array.count > 0) {
@@ -152,9 +198,8 @@
     return self.dataSourceArr.count;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NCellHeight;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -163,7 +208,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:ID owner:self options:nil] firstObject];
     }
-//    cell.model = self.dataSourceArr[indexPath.row];
+    cell.model = self.dataSourceArr[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -171,7 +216,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+ 
+    NYSChapter *model = self.dataSourceArr[indexPath.row];
     
+    NYSCatalogViewController *vc = NYSCatalogViewController.new;
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

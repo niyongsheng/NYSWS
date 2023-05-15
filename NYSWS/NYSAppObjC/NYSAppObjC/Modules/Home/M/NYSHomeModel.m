@@ -16,10 +16,15 @@
 @implementation NYSBusinessModel
 @end
 
-@implementation NYSRecommendedModel
+@implementation NYSChapter
 @end
 
 @implementation NYSHomeCourseModel
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+        @"chapter" : [NYSChapter class]
+    };
+}
 @end
 
 @implementation NYSMessageCenterModel

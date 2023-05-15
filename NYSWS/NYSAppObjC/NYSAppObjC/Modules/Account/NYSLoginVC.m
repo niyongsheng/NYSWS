@@ -142,19 +142,41 @@
 #pragma mark 富文本点击事件
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
     if ([[URL scheme] isEqualToString:@"user"]) {
-        NYSWebViewController *webVC = [NYSWebViewController new];
-        webVC.urlStr = AppServiceAgreement;
-        webVC.title = @"服务协议";
-        webVC.autoTitle = NO;
-        [self.navigationController pushViewController:webVC animated:YES];
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Member/get_user_agreement"
+                                           argument:nil
+                                             remark:@"服务协议"
+                                            success:^(id response) {
+            @strongify(self)
+            NYSWebViewController *webVC = [NYSWebViewController new];
+            webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+            webVC.title = @"服务协议";
+            webVC.autoTitle = NO;
+            [self.navigationController pushViewController:webVC animated:YES];
+
+        } failed:^(NSError * _Nullable error) {
+
+        }];
         
     } else {
-        
-        NYSWebViewController *webVC = [NYSWebViewController new];
-        webVC.urlStr = AppPrivacyAgreement;
-        webVC.title = @"隐私协议";
-        webVC.autoTitle = NO;
-        [self.navigationController pushViewController:webVC animated:YES];
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Member/get_privacy_agreement"
+                                           argument:nil
+                                             remark:@"隐私协议"
+                                            success:^(id response) {
+            @strongify(self)
+            NYSWebViewController *webVC = [NYSWebViewController new];
+            webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
+            webVC.title = @"隐私协议";
+            webVC.autoTitle = NO;
+            [self.navigationController pushViewController:webVC animated:YES];
+            [self.navigationController pushViewController:webVC animated:YES];
+
+        } failed:^(NSError * _Nullable error) {
+
+        }];
     }
     return YES;
 }

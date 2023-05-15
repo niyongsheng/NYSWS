@@ -139,6 +139,8 @@
 		C8DBA69B2A0F14C400F2656D /* TZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DBA68A2A0F14C400F2656D /* TZLocationManager.m */; };
 		C8DBA69C2A0F14C400F2656D /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DBA68B2A0F14C400F2656D /* TZGifPhotoPreviewController.m */; };
 		C8DBA69D2A0F14C400F2656D /* TZImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DBA68C2A0F14C400F2656D /* TZImageRequestOperation.m */; };
+		C8DBA6A02A11C20B00F2656D /* NYSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DBA69F2A11C20B00F2656D /* NYSAlertView.m */; };
+		C8DBA6A22A11C22D00F2656D /* NYSAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8DBA6A12A11C22D00F2656D /* NYSAlertView.xib */; };
 		C8EE7E552A087A6D000E3A3A /* NYSRechargeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E522A087A6D000E3A3A /* NYSRechargeAlertView.m */; };
 		C8EE7E562A087A6D000E3A3A /* NYSRechargeAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8EE7E542A087A6D000E3A3A /* NYSRechargeAlertView.xib */; };
 		C8EE7E5B2A089995000E3A3A /* NYSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E592A089995000E3A3A /* NYSLoginVC.m */; };
@@ -412,6 +414,9 @@
 		C8DBA68B2A0F14C400F2656D /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
 		C8DBA68C2A0F14C400F2656D /* TZImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageRequestOperation.m; sourceTree = "<group>"; };
 		C8DBA68D2A0F14C400F2656D /* TZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProgressView.h; sourceTree = "<group>"; };
+		C8DBA69E2A11C20B00F2656D /* NYSAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSAlertView.h; sourceTree = "<group>"; };
+		C8DBA69F2A11C20B00F2656D /* NYSAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSAlertView.m; sourceTree = "<group>"; };
+		C8DBA6A12A11C22D00F2656D /* NYSAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSAlertView.xib; sourceTree = "<group>"; };
 		C8EE7E522A087A6D000E3A3A /* NYSRechargeAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSRechargeAlertView.m; sourceTree = "<group>"; };
 		C8EE7E532A087A6D000E3A3A /* NYSRechargeAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSRechargeAlertView.h; sourceTree = "<group>"; };
 		C8EE7E542A087A6D000E3A3A /* NYSRechargeAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSRechargeAlertView.xib; sourceTree = "<group>"; };
@@ -840,9 +845,6 @@
 			children = (
 				C8C750472A04DFD400A91AAE /* LayoutFittingView.h */,
 				C8C750482A04DFD400A91AAE /* LayoutFittingView.m */,
-				C8EE7E532A087A6D000E3A3A /* NYSRechargeAlertView.h */,
-				C8EE7E522A087A6D000E3A3A /* NYSRechargeAlertView.m */,
-				C8EE7E542A087A6D000E3A3A /* NYSRechargeAlertView.xib */,
 				C8EE7E6D2A08AB33000E3A3A /* NYSMyCourseCell.h */,
 				C8EE7E6E2A08AB33000E3A3A /* NYSMyCourseCell.m */,
 				C8EE7E6F2A08AB33000E3A3A /* NYSMyCourseCell.xib */,
@@ -855,6 +857,9 @@
 				C8EE7E7B2A08B278000E3A3A /* NYSLessonPlayCell.h */,
 				C8EE7E7C2A08B278000E3A3A /* NYSLessonPlayCell.m */,
 				C8EE7E7A2A08B277000E3A3A /* NYSLessonPlayCell.xib */,
+				C8DBA69E2A11C20B00F2656D /* NYSAlertView.h */,
+				C8DBA69F2A11C20B00F2656D /* NYSAlertView.m */,
+				C8DBA6A12A11C22D00F2656D /* NYSAlertView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -918,6 +923,9 @@
 				C8C7507A2A06422F00A91AAE /* NYSWalletMovemenCell.h */,
 				C8C750782A06422F00A91AAE /* NYSWalletMovemenCell.m */,
 				C8C750792A06422F00A91AAE /* NYSWalletMovemenCell.xib */,
+				C8EE7E532A087A6D000E3A3A /* NYSRechargeAlertView.h */,
+				C8EE7E522A087A6D000E3A3A /* NYSRechargeAlertView.m */,
+				C8EE7E542A087A6D000E3A3A /* NYSRechargeAlertView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1153,6 +1161,7 @@
 				C85A34F42A0E449A00E42C6B /* VideoOverlay.png in Resources */,
 				C85A34F72A0E449A00E42C6B /* ImageSelectedOff@3x.png in Resources */,
 				C85A34E52A0E449A00E42C6B /* PlayButtonOverlayLargeTap@2x.png in Resources */,
+				C8DBA6A22A11C22D00F2656D /* NYSAlertView.xib in Resources */,
 				C8DBA6952A0F14C400F2656D /* TZImagePickerController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1259,6 +1268,7 @@
 				C8DBA6912A0F14C400F2656D /* TZAssetModel.m in Sources */,
 				C8EE7E742A08AD66000E3A3A /* NYSCourseDetailVC.m in Sources */,
 				C85A34992A0E40EA00E42C6B /* UIViewController+LLExtension.m in Sources */,
+				C8DBA6A02A11C20B00F2656D /* NYSAlertView.m in Sources */,
 				C8464AC02A0B7B91003CD376 /* AppManager.m in Sources */,
 				C85A34D62A0E449A00E42C6B /* MWCaptionView.m in Sources */,
 				C85A34922A0E40EA00E42C6B /* LLImagePickerModel.m in Sources */,

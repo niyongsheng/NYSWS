@@ -8,7 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSPurchasedDetailHeader"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSPurchasedDetailHeader">
+            <connections>
+                <outlet property="descL" destination="j2D-Cr-8mm" id="giT-k4-b09"/>
+                <outlet property="sectionL" destination="IcQ-mF-3Br" id="cM9-c0-IHN"/>
+                <outlet property="sizeL" destination="Lds-je-eSO" id="6Wl-mp-lg1"/>
+                <outlet property="timeL" destination="uPU-Wh-ISp" id="bRz-pX-OkF"/>
+                <outlet property="versionL" destination="zDF-9Z-meQ" id="OSo-2P-DC7"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="364" height="247"/>

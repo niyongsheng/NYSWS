@@ -30,6 +30,7 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
     [self setupUI];
+    [self footerRereshing];
 }
 
 - (void)setupUI {
@@ -43,11 +44,12 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(-NTopHeight);
         make.left.mas_equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
+        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight + NTopHeight));
     }];
     
-    
+    @weakify(self)
     NYSWalletHeader *headerView = [[NYSWalletHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 330)];
+    headerView.moneyStr = NAppManager.userInfo.balance;
     headerView.block = ^(id obj) {
         if ([obj isEqual:@"1"]) {
             // 充值弹框
@@ -56,8 +58,10 @@
             self.rechargeAlertView.block = ^(id obj) {
                 [popup dismissAnimated:YES];
                 
-                
-                
+                @strongify(self)
+                if ([obj isKindOfClass:NSDictionary.class]) {
+                    [self commitPay:obj];
+                }
             };
             [popup showWithLayout:layout];
         } else {
@@ -66,6 +70,48 @@
     };
     self.tableView.tableHeaderView = headerView;
 }
+
+- (void)commitPay:(NSDictionary *)obj {
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                          url:@"/index/Order/create"
+                                      argument:obj
+                                             remark:@"下单调起支付"
+                                            success:^(id response) {
+        @strongify(self)
+        if ([obj[@"pay_type"] intValue] == 0) {
+            NSString *url = [NSString stringWithFormat:@"weixin://%@", response];
+            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
+            if (canOpen) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+                
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你尚未安装微信APP" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:cancelAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            
+        } else if ([obj[@"pay_type"] intValue] == 1) {
+            NSString *url = [NSString stringWithFormat:@"alipay://%@", response];
+            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
+            if (canOpen) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+                
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你尚未安装支付宝APP" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:cancelAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }
+        
+
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+}
+
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
 
@@ -81,31 +127,33 @@
         @"page": @(_pageNo),
         @"limit": DefaultPageSize,
     };
-    WS(weakSelf)
+    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:@""
+                                            url:@"/index/Member/balance_record"
                                        argument:argument
                                          remark:@"资金变动列表"
                                         success:^(id response) {
+        @strongify(self)
         NSArray *array = [NSArray modelArrayWithClass:[NYSMovementModel class] json:response];
         if (array.count > 0) {
-            [weakSelf.dataSourceArr addObjectsFromArray:array];
-            [weakSelf.tableView.mj_footer endRefreshing];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView reloadData];
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
         
     } failed:^(NSError * _Nullable error) {
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
@@ -129,7 +177,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NCellHeight;
+    return 90;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -148,9 +196,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSMovementModel *model = self.dataSourceArr[indexPath.row];
-    NYSMovementDetailVC *vc = NYSMovementDetailVC.new;
-    vc.model = model;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([model.order_id isNotBlank]) {
+        NYSMovementDetailVC *vc = NYSMovementDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (NYSRechargeAlertView *)rechargeAlertView {

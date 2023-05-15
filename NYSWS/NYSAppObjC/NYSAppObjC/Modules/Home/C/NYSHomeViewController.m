@@ -21,7 +21,6 @@
 
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
-#import "NYSCatalogViewController.h"
 
 #import "ThirdViewController.h"
 
@@ -55,7 +54,7 @@ NYSHomeCourseVCDelegate
 /// 菜单栏
 @property (nonatomic, strong) NSMutableArray<NYSBusinessModel *> *businessArray;
 /// 推荐课程
-@property (nonatomic, strong) NSMutableArray<NYSRecommendedModel *> *recommendedArray;
+@property (nonatomic, strong) NSMutableArray<NYSHomeCourseModel *> *recommendedArray;
 
 @property (nonatomic, strong) SGPageTitleView *pageTitleView;
 @property (nonatomic, strong) SGPageContentCollectionView *pageContentCollectionView;
@@ -124,7 +123,7 @@ NYSHomeCourseVCDelegate
                                          remark:@"推荐课程"
                                         success:^(id response) {
         @strongify(self)
-        self.recommendedArray = [NSArray modelArrayWithClass:[NYSRecommendedModel class] json:response].mutableCopy;
+        self.recommendedArray = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response].mutableCopy;
         self.recommendedParam.wDataSet(self.recommendedArray);
         [self.recommendedView updateUI];
     } failed:^(NSError * _Nullable error) {
@@ -363,9 +362,9 @@ NYSHomeCourseVCDelegate
     return _businessArray;
 }
 
-- (NSMutableArray<NYSRecommendedModel *> *)recommendedArray {
+- (NSMutableArray<NYSHomeCourseModel *> *)recommendedArray {
     if (!_recommendedArray) {
-        NYSRecommendedModel *billboard = [NYSRecommendedModel new];
+        NYSHomeCourseModel *billboard = [NYSHomeCourseModel new];
         _recommendedArray = @[billboard, billboard, billboard].mutableCopy;
     }
     return _recommendedArray;
@@ -407,18 +406,16 @@ NYSHomeCourseVCDelegate
             return cell;
         })
         .wEventClickSet(^(id anyID, NSInteger index) {
-            if (index == 0) {
-                NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
-                [self.navigationController pushViewController:vc animated:YES];
-                
-            } else if (index == 1) {
-                
+            NYSHomeCourseModel *model = self.recommendedArray[index];
+            
+            if ([model.is_activation isEqual:@"1"]) {
                 NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+                vc.model = model;
                 [self.navigationController pushViewController:vc animated:YES];
                 
             } else {
-                
-                NYSCatalogViewController *vc = NYSCatalogViewController.new;
+                NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+                vc.model = model;
                 [self.navigationController pushViewController:vc animated:YES];
             }
         })

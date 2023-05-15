@@ -364,9 +364,10 @@ static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDict
 
 /// 数据加载中
 + (void)delayLoadingMethod {
-    [SVProgressHUD setDefaultAnimationType:(SVProgressHUDAnimationTypeFlat)];
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"Loading..."];
 }
 
 @end

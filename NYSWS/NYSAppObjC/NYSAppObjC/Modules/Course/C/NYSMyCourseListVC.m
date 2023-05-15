@@ -7,6 +7,8 @@
 
 #import "NYSMyCourseListVC.h"
 #import "NYSMyCourseCell.h"
+#import "NYSCourseDetailVC.h"
+#import "NYSPurchasedCourseDetailVC.h"
 
 @interface NYSMyCourseListVC ()
 {
@@ -26,14 +28,14 @@
        self.tableView.refreshControl = nil;
        self.tableView.showsVerticalScrollIndicator = NO;
        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-       self.tableView.backgroundColor = [UIColor whiteColor];
-   //    self.tableView.delegate = self;
-   //    self.tableView.dataSource = self;
+       self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
            make.top.mas_equalTo(self.view.mas_top).offset(0);
            make.left.mas_equalTo(self.view.mas_left);
            make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
        }];
+    
+    [self footerRereshing];
 }
 
 #pragma mark - 网络加载数据
@@ -42,14 +44,15 @@
     _pageNo ++;
     
     NSDictionary *argument = @{
+        @"status": _index,
         @"page": @(_pageNo),
         @"limit": DefaultPageSize,
       };
     WS(weakSelf)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
+                                          url:@"/index/Course/user_activation"
                                       argument:argument
-                                             remark:@"课程搜索列表"
+                                             remark:@"已购/已学列表"
                                             success:^(id response) {
         NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
@@ -93,7 +96,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    return 140;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,6 +116,16 @@
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
 
+    if ([model.is_activation isEqual:@"1"]) {
+        NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } else {
+        NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
 #import "NYSWalletMovemenCell.h"
 
 @interface NYSWalletMovemenCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgV;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
@@ -27,13 +28,17 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    ViewRadius(self.contentView, 7);
+    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
+    ViewRadius(self.bgV, 10);
 }
 
 - (void)setModel:(NYSMovementModel *)model {
     _model = model;
     
-    
+    self.titleL.text = model.notes;
+    self.timeL.text = [NYSTools transformTimestampToTime:model.createtime * 1000 format:nil];
+    self.movementL.text = [NSString stringWithFormat:@"%@%.2f", model.type_text, model.change_balance];
+    self.movementL.textColor = [model.type isEqualToString:@"0"] ? [UIColor blackColor] : [UIColor redColor];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "NYSCourseCell.h"
 #import "NYSBannerCell.h"
 #import "NYSCourseDetailVC.h"
+#import "NYSPurchasedCourseDetailVC.h"
 
 #define HomeBannerHeight        RealValue(120)
 
@@ -155,7 +156,7 @@ static NSString *CellID = @"NYSCourseCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
-    CGFloat h = [model.details heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
     return 130 + h;
 }
 
@@ -171,8 +172,17 @@ static NSString *CellID = @"NYSCourseCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
-    NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([model.is_activation isEqual:@"1"]) {
+        NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } else {
+        NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - Setter/Getter

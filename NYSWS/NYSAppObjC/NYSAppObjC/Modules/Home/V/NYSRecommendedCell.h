@@ -7,10 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class NYSRecommendedModel;
+@class NYSHomeCourseModel;
 
 @interface NYSRecommendedCell : UICollectionViewCell
-@property (nonatomic, weak) NYSRecommendedModel *model;
+@property (nonatomic, weak) NYSHomeCourseModel *model;
 
 @end
 

@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSPurchasedDetailHeader : NYSBaseView
-
+@property (strong, nonatomic) NYSHomeCourseModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -37,18 +37,60 @@
     
     ViewRadius(_contentV, 30);
     ViewRadius(_commitBtn, 22.5);
-
+    self.timeL.adjustsFontSizeToFitWidth = YES;
+    self.infoL.adjustsFontSizeToFitWidth = YES;
+    
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [btn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [btn setImage:[UIImage imageNamed:@"back_icon_night"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    
+    [self.iconIV setImageWithURL:[NSURL URLWithString:self.detailModel.image] placeholder:NPImageFillet];
+    self.titleL.text = self.detailModel.name;
+    self.subtitleL.text = self.detailModel.subtitle;
+    self.coinL.text = self.detailModel.price;
+    self.timeL.text = [NSString stringWithFormat:@"更新时间：%@", [NYSTools transformTimestampToTime:self.detailModel.updatetime * 1000 format:nil]];
+    self.infoL.text = [NSString stringWithFormat:@"课件大小：%.2fMB   版本：%@", self.detailModel.size, self.detailModel.version];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     [NYSTools zoomToShow:sender.layer];
     
+    if (![_codeTF.text isNotBlank]) {
+        [NYSTools showToast:@"请输入兑换码"];
+        return;
+    }
+    
+    NSMutableDictionary *params = @{
+        @"activation_code": self.codeTF.text,
+        @"course_id": @(self.detailModel.class_id)
+    }.mutableCopy;
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Course/activation"
+                                       argument:params
+                                         remark:@"激活课程"
+                                        success:^(id response) {
+        @strongify(self)
+        NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(200))];
+        alertView.cancelBtn.hidden = YES;
+        alertView.titleL.text = @"激活成功";
+        alertView.block = ^(id obj) {
+            if ([obj isEqual:@"1"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        };
+        FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:YES];
+        FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
+        [popup showWithLayout:layout];
+        
+    } failed:^(NSError * _Nullable error) {
+        
+        
+    }];
 }
 
 @end

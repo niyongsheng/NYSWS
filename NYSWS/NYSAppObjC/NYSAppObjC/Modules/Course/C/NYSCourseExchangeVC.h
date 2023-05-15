@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSCourseExchangeVC : NYSBaseViewController
-
+@property (strong, nonatomic) NYSHomeCourseModel *detailModel;
 @end
 
 NS_ASSUME_NONNULL_END

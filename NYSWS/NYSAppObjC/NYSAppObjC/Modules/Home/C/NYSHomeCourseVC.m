@@ -7,6 +7,8 @@
 
 #import "NYSHomeCourseVC.h"
 #import "NYSCourseCell.h"
+#import "NYSCourseDetailVC.h"
+#import "NYSPurchasedCourseDetailVC.h"
 
 @interface NYSHomeCourseVC ()
 {
@@ -118,12 +120,22 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
-
+    
+    if ([model.is_activation isEqual:@"1"]) {
+        NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } else {
+        NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - 计算Cell高度
 - (CGFloat)getCellHeight:(NYSHomeCourseModel *)model {
-    CGFloat h = [model.details heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
     return 130 + h;
 }
 

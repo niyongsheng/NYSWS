@@ -8,14 +8,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSWalletHeader"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSCourseDetailHeader">
+            <connections>
+                <outlet property="descL" destination="j2D-Cr-8mm" id="otH-FK-vce"/>
+                <outlet property="iconIV" destination="7KR-MM-p6h" id="kdS-OU-4xl"/>
+                <outlet property="priceL" destination="RsL-c1-aBc" id="hr3-yk-E2H"/>
+                <outlet property="sectionL" destination="IcQ-mF-3Br" id="Ut2-1T-x7n"/>
+                <outlet property="subtitleL" destination="QO3-ck-mNr" id="Cy6-mn-fo4"/>
+                <outlet property="timeL" destination="6KZ-gl-FgQ" id="UzT-QO-UEh"/>
+                <outlet property="titleL" destination="1tb-Ps-i8Z" id="bSH-sS-R6k"/>
+                <outlet property="versionL" destination="mr1-OQ-eFE" id="YnD-V0-hZY"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="364" height="362"/>
+            <rect key="frame" x="0.0" y="0.0" width="364" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCe-lO-khH">
-                    <rect key="frame" x="15" y="320" width="37" height="22"/>
+                    <rect key="frame" x="15" y="289" width="37" height="22"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,19 +39,19 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tb-Ps-i8Z">
-                    <rect key="frame" x="130" y="25" width="15" height="19.5"/>
+                    <rect key="frame" x="125" y="25" width="15" height="19.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QO3-ck-mNr">
-                    <rect key="frame" x="130" y="54.5" width="30.5" height="21"/>
+                    <rect key="frame" x="125" y="54.5" width="30.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WV-c8-8LA">
-                    <rect key="frame" x="130" y="115" width="150" height="50"/>
+                    <rect key="frame" x="125" y="115" width="150" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更新时间：2023-04-08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KZ-gl-FgQ">
                             <rect key="frame" x="10" y="10" width="130" height="11"/>
@@ -89,20 +100,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.奥瑞特文章大家、诗坛领袖、创新词人、书画家、政论家于一身,又有实干才能，性格乐天幽默，课程带你.全面认识传统中国完美人格的" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2D-Cr-8mm">
-                    <rect key="frame" x="15" y="240" width="334" height="47"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2D-Cr-8mm">
+                    <rect key="frame" x="15" y="240" width="334" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共计--章" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcQ-mF-3Br">
-                    <rect key="frame" x="57" y="330" width="40.5" height="12"/>
+                    <rect key="frame" x="57" y="299" width="40.5" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" red="0.4927835176" green="0.4927835176" blue="0.4927835176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVt-Mm-ynV">
-                    <rect key="frame" x="15" y="302" width="334" height="3"/>
+                    <rect key="frame" x="15" y="271" width="334" height="3"/>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="FOo-kP-ooF"/>
@@ -135,14 +146,15 @@
                 <constraint firstItem="RsL-c1-aBc" firstAttribute="leading" secondItem="asf-cZ-Bsc" secondAttribute="trailing" constant="5" id="kv3-vU-2hY"/>
                 <constraint firstItem="j2D-Cr-8mm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="n3l-nn-Ko3"/>
                 <constraint firstItem="xCe-lO-khH" firstAttribute="top" secondItem="LVt-Mm-ynV" secondAttribute="bottom" constant="15" id="ps4-UB-Hw8"/>
+                <constraint firstItem="asf-cZ-Bsc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6WV-c8-8LA" secondAttribute="trailing" constant="5" id="r0a-zi-h7g"/>
                 <constraint firstItem="7KR-MM-p6h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="tGV-ts-14e"/>
-                <constraint firstItem="1tb-Ps-i8Z" firstAttribute="leading" secondItem="7KR-MM-p6h" secondAttribute="trailing" constant="15" id="trq-kG-bAZ"/>
+                <constraint firstItem="1tb-Ps-i8Z" firstAttribute="leading" secondItem="7KR-MM-p6h" secondAttribute="trailing" constant="10" id="trq-kG-bAZ"/>
                 <constraint firstItem="IcQ-mF-3Br" firstAttribute="leading" secondItem="xCe-lO-khH" secondAttribute="trailing" constant="5" id="w6d-7y-O8Y"/>
                 <constraint firstItem="LVt-Mm-ynV" firstAttribute="top" secondItem="j2D-Cr-8mm" secondAttribute="bottom" constant="15" id="wHy-3s-4Wi"/>
                 <constraint firstAttribute="trailing" secondItem="iLm-LS-qUP" secondAttribute="trailing" constant="15" id="yrQ-dB-nHZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="152.17391304347828" y="183.48214285714286"/>
+            <point key="canvasLocation" x="152.17391304347828" y="169.41964285714286"/>
         </view>
     </objects>
     <resources>
