@@ -24,3 +24,16 @@
 @property (nonatomic , assign) NSInteger              createtime;
 @property (nonatomic , copy) NSString              * type_text;
 @end
+
+@interface NYSCatalogModel : NYSBaseObject
+@property (nonatomic , assign) NSInteger              ID;
+@property (nonatomic , copy) NSString              * content_type;
+@property (nonatomic , copy) NSString              * content;
+@property (nonatomic , assign) NSInteger              chapter_id;
+@property (nonatomic , assign) NSInteger              sort;
+@property (nonatomic , assign) NSInteger              updatetime;
+@property (nonatomic , copy) NSString              * translate;
+@property (nonatomic , assign) NSInteger              createtime;
+@property (nonatomic , copy) NSString              * url;
+@end
+

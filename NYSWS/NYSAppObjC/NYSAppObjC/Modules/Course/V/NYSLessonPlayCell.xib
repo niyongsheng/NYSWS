@@ -34,7 +34,7 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9g-SR-PJE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9g-SR-PJE">
                                 <rect key="frame" x="30" y="39.5" width="23" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
@@ -47,6 +47,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8mK-ae-mxK" secondAttribute="trailing" id="0Js-v5-wDf"/>
+                            <constraint firstItem="8mK-ae-mxK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m9g-SR-PJE" secondAttribute="trailing" constant="10" id="1Ed-A4-eem"/>
                             <constraint firstItem="8mK-ae-mxK" firstAttribute="centerY" secondItem="EJh-91-zwW" secondAttribute="centerY" id="5UV-dh-b2i"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UZV-if-J3E" secondAttribute="trailing" constant="10" id="CgN-Gs-mxJ"/>
                             <constraint firstItem="m9g-SR-PJE" firstAttribute="leading" secondItem="UZV-if-J3E" secondAttribute="leading" id="S8j-Aa-Ft2"/>

@@ -199,7 +199,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    NYSChapter *model = self.dataSourceArr[indexPath.row];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 50 + h;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -217,11 +219,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
  
-    NYSChapter *model = self.dataSourceArr[indexPath.row];
-    
-    NYSCatalogViewController *vc = NYSCatalogViewController.new;
-    vc.model = model;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.model.is_try.boolValue || self.model.is_activation.boolValue) {
+        NYSCatalogViewController *vc = NYSCatalogViewController.new;
+        vc.index = indexPath.row;
+        vc.chapterArray = self.dataSourceArr;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

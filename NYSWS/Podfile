@@ -3,7 +3,7 @@ platform :ios, '13.0'
 inhibit_all_warnings!
 
 workspace './NYSWS.xcworkspace'
-#source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 #source 'https://gitee.com/mirrors/CocoaPods-Specs.git'
 
 # 项目公共依赖

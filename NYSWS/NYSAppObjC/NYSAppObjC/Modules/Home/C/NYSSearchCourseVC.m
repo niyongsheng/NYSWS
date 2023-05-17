@@ -173,7 +173,7 @@ static NSString *CellID = @"NYSCourseCell";
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
     
-    if ([model.is_activation isEqual:@"1"]) {
+    if (![model.is_activation isEqual:@"1"]) {
         NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];

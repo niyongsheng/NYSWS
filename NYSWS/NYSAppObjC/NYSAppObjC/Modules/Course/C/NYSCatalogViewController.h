@@ -10,7 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSCatalogViewController : NYSBaseViewController
-@property (strong, nonatomic) NYSChapter *model;
+@property (strong, nonatomic) NSArray<NYSChapter *> *chapterArray;
+@property (assign, nonatomic) NSInteger index;
 @end
 
 NS_ASSUME_NONNULL_END

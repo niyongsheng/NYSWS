@@ -13,3 +13,6 @@
 
 @implementation NYSMovementModel
 @end
+
+@implementation NYSCatalogModel
+@end

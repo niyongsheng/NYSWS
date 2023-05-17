@@ -97,7 +97,7 @@
             NSData *data = [handelStr dataUsingEncoding:NSUnicodeStringEncoding];
             NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:nil];
             CGSize attSize = [attributeString boundingRectWithSize:CGSizeMake(NScreenWidth-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
-            self.tableView.tableHeaderView.height = 300 + attSize.height;
+            self.tableView.tableHeaderView.height = 200 + attSize.height;
             
             self.dataSourceArr = self.detailModel.chapter.mutableCopy;
             [self.tableView reloadData];
@@ -165,7 +165,9 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NCellHeight;
+    NYSChapter *model = self.dataSourceArr[indexPath.row];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 50 + h;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -174,7 +176,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:ID owner:self options:nil] firstObject];
     }
-//    cell.model = self.dataSourceArr[indexPath.row];
+    cell.model = self.dataSourceArr[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -183,10 +185,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NYSChapter *model = self.dataSourceArr[indexPath.row];
-    
     NYSCatalogViewController *vc = NYSCatalogViewController.new;
-    vc.model = model;
+    vc.index = indexPath.row;
+    vc.chapterArray = self.dataSourceArr;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
