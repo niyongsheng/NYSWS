@@ -44,6 +44,14 @@
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     self.priceL.text = model.price;
+    
+    if (model.is_try.boolValue) {
+        [_getBtn setTitle:@"立即试听" forState:UIControlStateNormal];
+    }
+    
+    if (model.is_activation.boolValue) {
+        [_getBtn setTitle:@"已激活" forState:UIControlStateNormal];
+    }
 }
 
 @end

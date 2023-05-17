@@ -50,7 +50,11 @@
 #pragma mark —- 初始化window --
 - (void)initWindow {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-    self.window.rootViewController = [[NYSTabbarViewController alloc] init];
+    if ([NAppManager isLogined]) {
+        self.window.rootViewController = [[NYSTabbarViewController alloc] init];
+    } else {
+        self.window.rootViewController = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+    }
     [self.window makeKeyAndVisible];
 }
 
@@ -105,6 +109,8 @@
         anima.type = @"cube";
         anima.subtype = kCATransitionFromRight;
         anima.duration = 0.3f;
+        
+        NRootViewController = [NYSTabbarViewController new];
         [NAppWindow.layer addAnimation:anima forKey:@"revealAnimation"];
         
     } else { // 登陆失败加载登陆页面控制器
@@ -113,6 +119,8 @@
         anima.type = @"cube";
         anima.subtype = kCATransitionFromLeft;
         anima.duration = 0.3f;
+        
+        NRootViewController = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
         [NAppWindow.layer addAnimation:anima forKey:@"revealAnimation"];
     }
 }

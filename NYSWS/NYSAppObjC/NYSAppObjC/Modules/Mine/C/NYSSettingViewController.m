@@ -54,8 +54,9 @@
                     [SVProgressHUD dismissWithDelay:1.0f completion:^{
                         [self.navigationController popViewControllerAnimated:YES];
                         
-                        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
-                        [NRootViewController presentViewController:loginVC animated:YES completion:nil];
+                        NPostNotification(NNotificationLoginStateChange, @NO)
+//                        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+//                        [NRootViewController presentViewController:loginVC animated:YES completion:nil];
                     }];
                 } else {
                     [NYSTools showIconToast:@"登出失败" isSuccess:NO offset:UIOffsetMake(0, 0)];

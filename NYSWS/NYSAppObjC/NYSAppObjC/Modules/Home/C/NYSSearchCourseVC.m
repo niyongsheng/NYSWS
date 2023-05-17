@@ -88,8 +88,22 @@ static NSString *CellID = @"NYSCourseCell";
         self.bannerView = [[WMZBannerView alloc] initConfigureWithModel:self.bannerParam withView:headerView];
         self.bannerView.top = searchView.bottom + NNormalSpace;
         self.bannerView.centerX = headerView.centerX;
+        
+        // 加载数据
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Index/banner"
+                                           argument:@{ @"page": @1, @"limit": @999 }
+                                             remark:@"轮播图"
+                                            success:^(id response) {
+            @strongify(self)
+            self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
+            self.bannerParam.wDataSet(self.bannerArray);
+            [self.bannerView updateUI];
+        } failed:^(NSError * _Nullable error) {
+            
+        }];
     }
-    
     
     self.tableView.tableHeaderView = headerView;
 }
@@ -173,7 +187,7 @@ static NSString *CellID = @"NYSCourseCell";
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
     
-    if (![model.is_activation isEqual:@"1"]) {
+    if ([model.is_activation isEqual:@"1"]) {
         NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];

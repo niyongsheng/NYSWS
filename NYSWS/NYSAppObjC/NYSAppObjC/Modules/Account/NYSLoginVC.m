@@ -36,6 +36,7 @@
     self.isShowLiftBack = NO;
     self.navigationItem.title = @"登录";
     self.view.backgroundColor = UIColor.whiteColor;
+    self.scrollV.backgroundColor = UIColor.whiteColor;
     self.scrollV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentScrollableAxes;
     
     
@@ -123,9 +124,10 @@
             if (success) {
                 [NYSTools showIconToast:@"登录成功" isSuccess:YES offset:UIOffsetMake(0, 0)];
                 [NYSTools dismissWithCompletion:^{
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                    });
+                    NPostNotification(NNotificationLoginStateChange, @YES)
+//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                        [self dismissViewControllerAnimated:YES completion:nil];
+//                    });
                 }];
             }
         }];

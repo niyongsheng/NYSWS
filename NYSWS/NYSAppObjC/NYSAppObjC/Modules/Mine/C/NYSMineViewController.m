@@ -164,10 +164,12 @@
 
 - (IBAction)otherBtnOnclicked:(UIButton *)sender {
     if (sender.tag == 1) {
-        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
-        [NRootViewController presentViewController:loginVC animated:YES completion:^{
-            
-        }];
+        [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];
+        
+//        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+//        [NRootViewController presentViewController:loginVC animated:YES completion:^{
+//            
+//        }];
         
     } else {
         [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];

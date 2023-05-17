@@ -239,7 +239,6 @@ NYSHomeCourseVCDelegate
     [searchView addSubview:self.searchTF];
     
     UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
-//    [searchBtn setBackgroundColor:UIColor.redColor];
     [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
         NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
         [self.navigationController pushViewController:searchVC animated:YES];

@@ -47,7 +47,7 @@
     
     NLog(@"bannner:%@", bannerModel.image);
     if (_isCourseBanner) {
-        [self.bannerImageV setImageWithURL:NCDNURL(bannerModel.image) placeholder:[UIImage imageNamed:@"course_banner_bg"]];
+        [self.bannerImageV setImageWithURL:[NSURL URLWithString:bannerModel.image] placeholder:[UIImage imageNamed:@"course_banner_bg"]];
     }
 }
 

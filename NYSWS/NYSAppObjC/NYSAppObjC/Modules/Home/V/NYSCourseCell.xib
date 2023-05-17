@@ -42,15 +42,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USs-nP-lgD">
-                                <rect key="frame" x="204" y="68" width="130" height="30"/>
+                                <rect key="frame" x="254" y="68" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.81966799499999998" green="0.28621619939999998" blue="0.16086065769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Pdo-qn-wuY"/>
+                                    <constraint firstAttribute="width" constant="80" id="Pdo-qn-wuY"/>
                                     <constraint firstAttribute="height" constant="30" id="ryf-cG-RPn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="立即试听/激活兑换"/>
+                                <state key="normal" title="激活兑换"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fe-Jd-11o">
                                 <rect key="frame" x="125" y="15" width="209" height="22"/>

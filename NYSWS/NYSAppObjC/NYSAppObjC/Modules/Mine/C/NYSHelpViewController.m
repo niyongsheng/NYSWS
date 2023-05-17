@@ -6,6 +6,7 @@
 //
 
 #import "NYSHelpViewController.h"
+#import "NYSHelpContentVC.h"
 
 @interface NYSHelpViewController ()
 
@@ -21,11 +22,15 @@
 }
 
 - (IBAction)itemViewOnclicked1:(UIButton *)sender {
-    
+    NYSHelpContentVC *vc = NYSHelpContentVC.new;
+    vc.index = 0;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)itemViewOnclicked2:(UIButton *)sender {
-    
+    NYSHelpContentVC *vc = NYSHelpContentVC.new;
+    vc.index = 1;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
