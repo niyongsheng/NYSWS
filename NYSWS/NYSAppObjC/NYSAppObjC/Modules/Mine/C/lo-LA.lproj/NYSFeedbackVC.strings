@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = "使用建议"; ObjectID = "Ae2-Ub-qv2"; */
+"Ae2-Ub-qv2.normalTitle" = "ແນະນຳໃຫ້ໃຊ້";
+
+/* Class = "UILabel"; text = "反馈内容"; ObjectID = "Fxq-bo-d9v"; */
+"Fxq-bo-d9v.text" = "ສະນົບຄຳແປງຂໍ້ມູນ";
+
+/* Class = "UILabel"; text = "反馈类型"; ObjectID = "L5D-wa-FKj"; */
+"L5D-wa-FKj.text" = "ຮູບແບບຜູ້ໃຊ້ງານ";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "eJI-qV-gfi"; */
+"eJI-qV-gfi.normalTitle" = "ຕິດຕັ້ງ";
+
+/* Class = "UILabel"; text = "添加图片"; ObjectID = "r7R-zI-k0m"; */
+"r7R-zI-k0m.text" = "ເພີ່ມຮູບພາບ";
+
+/* Class = "UIButton"; normalTitle = "功能建议"; ObjectID = "vbK-rN-Vf2"; */
+"vbK-rN-Vf2.normalTitle" = "ໂປຣເເກຣມຫ້ອງການ";
+
+/* Class = "UIButton"; normalTitle = "异常问题"; ObjectID = "xmf-em-2sH"; */
+"xmf-em-2sH.normalTitle" = "ໂປຣເເກຣມຫ້ອງການ";
+
+/* Class = "UIButton"; selectedTitle = "异常问题"; ObjectID = "xmf-em-2sH"; */
+"xmf-em-2sH.selectedTitle" = "ໂປຣເເກຣມຫ້ອງການ";

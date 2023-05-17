@@ -192,7 +192,7 @@
         _placeHolderLabel.numberOfLines = 0;
         _placeHolderLabel.textAlignment = NSTextAlignmentLeft;
         _placeHolderLabel.textColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.4f];
-        _placeHolderLabel.text = @"我要吐槽...";
+        _placeHolderLabel.text = NLocalizedStr(@"Tease");
         _placeHolderLabel.font = _contentTV.font;
         [_placeHolderLabel sizeToFit];
     }

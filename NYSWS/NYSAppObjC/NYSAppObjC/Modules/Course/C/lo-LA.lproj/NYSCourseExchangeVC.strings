@@ -1,0 +1,24 @@
+
+/* Class = "UITextField"; placeholder = "请输入激活码"; ObjectID = "85n-wQ-66w"; */
+"85n-wQ-66w.placeholder" = "ກະລຸນາໃສ່ແຫ້ມຜູ້ໃຊ້ໂປຣເເກຣມ";
+
+/* Class = "UILabel"; text = "激活码"; ObjectID = "EX1-S8-LXq"; */
+"EX1-S8-LXq.text" = "ໂປຣເເກຣມສຳລັບຜູ້ໃຊ້";
+
+/* Class = "UIButton"; normalTitle = "激活"; ObjectID = "JAR-Zv-oxS"; */
+"JAR-Zv-oxS.normalTitle" = "ເປນນິກສະແດງ";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "JaK-da-waL"; */
+"JaK-da-waL.text" = "----";
+
+/* Class = "UILabel"; text = "--"; ObjectID = "QZl-VO-44U"; */
+"QZl-VO-44U.text" = "--";
+
+/* Class = "UILabel"; text = "更新时间：xxxx-xx-xx"; ObjectID = "SQF-s7-SDq"; */
+"SQF-s7-SDq.text" = "更新时间：xxxx-xx-xx";
+
+/* Class = "UILabel"; text = "课件大小：--MB      版本--"; ObjectID = "unE-if-4gI"; */
+"unE-if-4gI.text" = "课件大小：--MB      版本--";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "y43-3E-jVh"; */
+"y43-3E-jVh.text" = "0.00";

@@ -23,3 +23,12 @@ Interconnect="互联外卖";
 Search="搜一搜";
 NoData="暂无数据";
 NetErr="网络错误";
+
+Copied="已复制";
+Wechat="微信";
+
+CustomerServiceEmail="客服邮箱";
+MobilePhone="手机电话";
+TelPhone="座机电话";
+Tease="我要吐槽...";
+

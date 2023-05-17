@@ -46,7 +46,7 @@
             self.qq = [[response firstObject] stringValueForKey:@"value" default:@""];
             self.wechat = [[response lastObject] stringValueForKey:@"value" default:@""];
             [self.qqBtn setTitle:[NSString stringWithFormat:@"QQ：%@", self.qq] forState:UIControlStateNormal];
-            [self.wechatBtn setTitle:[NSString stringWithFormat:@"微信：%@", self.wechat] forState:UIControlStateNormal];
+            [self.wechatBtn setTitle:[NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"Wechat"), self.wechat] forState:UIControlStateNormal];
         });
 
     } failed:^(NSError * _Nullable error) {
@@ -63,7 +63,7 @@
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.qq;
-    [NYSTools showToast:@"已复制"];
+    [NYSTools showToast:NLocalizedStr(@"Copied")];
 }
 
 - (IBAction)wechatBtnOnclicked:(UIButton *)sender {
@@ -71,7 +71,7 @@
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.wechat;
-    [NYSTools showToast:@"已复制"];
+    [NYSTools showToast:NLocalizedStr(@"Copied")];
 }
 
 @end

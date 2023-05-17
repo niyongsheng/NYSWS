@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "----"; ObjectID = "0vj-Dg-OTe"; */
+"0vj-Dg-OTe.text" = "----";
+
+/* Class = "UILabel"; text = "充值"; ObjectID = "4Eu-dZ-TCu"; */
+"4Eu-dZ-TCu.text" = "充值";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "KVb-OX-VsU"; */
+"KVb-OX-VsU.text" = "----";
+
+/* Class = "UILabel"; text = "支付成功"; ObjectID = "Vlm-CI-Ty7"; */
+"Vlm-CI-Ty7.text" = "支付成功";
+
+/* Class = "UILabel"; text = "订单号"; ObjectID = "b2c-V0-mP3"; */
+"b2c-V0-mP3.text" = "订单号";
+
+/* Class = "UILabel"; text = "付款方式"; ObjectID = "bR0-Qe-tt7"; */
+"bR0-Qe-tt7.text" = "付款方式";
+
+/* Class = "UILabel"; text = "+0.00"; ObjectID = "eQ5-KB-Cbz"; */
+"eQ5-KB-Cbz.text" = "+0.00";
+
+/* Class = "UILabel"; text = "支付时间"; ObjectID = "lVP-ma-Cgq"; */
+"lVP-ma-Cgq.text" = "支付时间";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "otJ-a2-IYQ"; */
+"otJ-a2-IYQ.text" = "----";

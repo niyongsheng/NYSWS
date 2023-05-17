@@ -34,9 +34,9 @@
         self.dataDict = response;
         dispatch_async(dispatch_get_main_queue(), ^{
             self.addressL.text = [NSString stringWithFormat:@"%@", [response stringValueForKey:@"address" default:@""]];
-            self.emailL.text = [NSString stringWithFormat:@"客服邮箱：%@", [response stringValueForKey:@"email" default:@""]];
-            self.telL.text = [NSString stringWithFormat:@"座机电话：%@", [response stringValueForKey:@"tel" default:@""]];
-            self.phoneL.text = [NSString stringWithFormat:@"手机电话：%@", [response stringValueForKey:@"phone" default:@""]];
+            self.emailL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"CustomerServiceEmail"), [response stringValueForKey:@"email" default:@""]];
+            self.telL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"TelPhone"), [response stringValueForKey:@"tel" default:@""]];
+            self.phoneL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"MobilePhone"), [response stringValueForKey:@"phone" default:@""]];
         });
 
     } failed:^(NSError * _Nullable error) {

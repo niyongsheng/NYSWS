@@ -5,7 +5,7 @@
   Created by niyongsheng on 2023/5/8.
   
 */
-CFBundleDisplayName="XueyiDian";
+CFBundleDisplayName="YiXueDian";
 Home="ບ້ານເຄື່ອນໄຫວ";
 Course="ຂໍ້ມູນໂປຣເເກຣມ";
 Mine="ຂ້າພະເຈົ້າ";
@@ -23,3 +23,11 @@ Interconnect="ຮູ້ລຽນໄວໄມ";
 Search="ຄົ້ນຫາ";
 NoData="ບໍ່ມີຂໍ້ມູນເພີ້ມ";
 NetErr="ເກີດຂໍ້ຜິດພາດລະອຽດຂອງ່າຍ";
+
+Copied="ສຳຮອງໄວ້";
+Wechat="WeChat";
+
+CustomerServiceEmail="ອີເເມວລ໌ທີ່ເປັນປະໂຫຍດການເມືອງ";
+MobilePhone="ໂປຣເເກຣມໂປຣເເກຣມ";
+TelPhone="ໂປຣເເກຣມຫ້ອງການ";
+Tease="ຂ້ອຍກຳລັງອອກດິນ...";

@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "忘记密码"; ObjectID = "1ZC-Ie-62w"; */
+"1ZC-Ie-62w.normalTitle" = "ລືມລະຫັດ";
+
+/* Class = "UIButton"; selectedTitle = "验证码登录"; ObjectID = "1ZC-Ie-62w"; */
+"1ZC-Ie-62w.selectedTitle" = "ແລກໂຕເລືອກ ຕັ້ງຄ່າ";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "DHB-dB-vAn"; */
+"DHB-dB-vAn.normalTitle" = "ລົງທະບຽນ";
+
+/* Class = "UITextView"; text = "我已阅读并同意《用户协议》和《隐私协议》"; ObjectID = "Wcu-ju-yUp"; */
+"Wcu-ju-yUp.text" = "ຂ້ອຍອ່ານແລະຂ້ອຍເຂົ້າຮ່ວມກັນພັດທະນາ ໂປຣເເກຣມສຳລັບເເດສະທຳສາດ ແລະ ສ່ວນຕົວ";
+
+/* Class = "UITextField"; placeholder = "请输入账号"; ObjectID = "apu-tR-zca"; */
+"apu-tR-zca.placeholder" = "ກະລຸນາໃສ່ບັນຊີຜູ້ໃຊ້";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "thj-Ir-Apc"; */
+"thj-Ir-Apc.placeholder" = "ກະລຸນາໃສ່ລະຫັດຜ່ານ";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "wtz-Ih-j8c"; */
+"wtz-Ih-j8c.normalTitle" = "ເຂົ້າສູ່ລະບົບ";

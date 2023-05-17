@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "支付方式"; ObjectID = "EX1-S8-LXq"; */
+"EX1-S8-LXq.text" = "支付方式";
+
+/* Class = "UILabel"; text = "余额"; ObjectID = "Hh0-cI-N06"; */
+"Hh0-cI-N06.text" = "余额";
+
+/* Class = "UIButton"; normalTitle = "支付"; ObjectID = "JAR-Zv-oxS"; */
+"JAR-Zv-oxS.normalTitle" = "支付";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "JaK-da-waL"; */
+"JaK-da-waL.text" = "----";
+
+/* Class = "UILabel"; text = "●  你将购买的商品为虚拟内容服务，购买后不支持退订、转让、退换，请斟酌确认。"; ObjectID = "QVP-g8-fv7"; */
+"QVP-g8-fv7.text" = "●  你将购买的商品为虚拟内容服务，购买后不支持退订、转让、退换，请斟酌确认。";
+
+/* Class = "UILabel"; text = "--"; ObjectID = "QZl-VO-44U"; */
+"QZl-VO-44U.text" = "--";
+
+/* Class = "UILabel"; text = "更新时间：xxxx-xx-xx"; ObjectID = "SQF-s7-SDq"; */
+"SQF-s7-SDq.text" = "更新时间：xxxx-xx-xx";
+
+/* Class = "UILabel"; text = "课件大小：110MB      版本2.1"; ObjectID = "unE-if-4gI"; */
+"unE-if-4gI.text" = "课件大小：110MB      版本2.1";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "y43-3E-jVh"; */
+"y43-3E-jVh.text" = "0.00";

@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "提现"; ObjectID = "8NB-Ok-Nwq"; */
+"8NB-Ok-Nwq.normalTitle" = "ຖອນເງີນ";
+
+/* Class = "UILabel"; text = "我的余额"; ObjectID = "FGZ-Cp-hjP"; */
+"FGZ-Cp-hjP.text" = "ຍອດເງິນຂອງຂ້ອຍ";
+
+/* Class = "UIButton"; normalTitle = "充值"; ObjectID = "jsG-3X-tRT"; */
+"jsG-3X-tRT.normalTitle" = "ເຕີມເງີນ";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "peO-9m-dec"; */
+"peO-9m-dec.text" = "0.00";
+
+/* Class = "UILabel"; text = "交易记录"; ObjectID = "xCe-lO-khH"; */
+"xCe-lO-khH.text" = "ການເຄື່ອນໄຫວ";
