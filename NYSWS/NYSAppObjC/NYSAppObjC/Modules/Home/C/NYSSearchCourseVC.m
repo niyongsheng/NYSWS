@@ -187,6 +187,11 @@ static NSString *CellID = @"NYSCourseCell";
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
     
+#ifdef DEBUG
+    NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+#else
     if ([model.is_activation isEqual:@"1"]) {
         NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
         vc.model = model;
@@ -197,6 +202,7 @@ static NSString *CellID = @"NYSCourseCell";
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];
     }
+#endif
 }
 
 #pragma mark - Setter/Getter

@@ -45,6 +45,7 @@
     _tableviewStyle = UITableViewStylePlain;
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
+    self.tableView.mj_footer = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [NYSTools addRoundedCorners:self.tableView corners:UIRectCornerTopLeft|UIRectCornerTopRight radius:30];

@@ -5,25 +5,18 @@
 //  Created by niyongsheng on 2023/5/8.
 //
 
-#import "NYSCatalogViewController.h"
+#import "NYSCatalogSearchViewController.h"
 #import "NYSWordCell.h"
 #import "NYSStatementCell.h"
 
-#import "NYSCatalogSearchViewController.h"
-
-@interface NYSCatalogViewController ()
+@interface NYSCatalogSearchViewController ()
+<
+UITextFieldDelegate
+>
 {
     NSInteger _pageNo;
 }
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *catalogTitleVHeight;
-@property (weak, nonatomic) IBOutlet UIView *catalogTitleV;
 @property (weak, nonatomic) IBOutlet UIView *contentV;
-@property (weak, nonatomic) IBOutlet UIView *pagingV;
-
-@property (weak, nonatomic) IBOutlet UILabel *titleL;
-@property (weak, nonatomic) IBOutlet UILabel *subtitleL;
-@property (weak, nonatomic) IBOutlet UIButton *leftBtn;
-@property (weak, nonatomic) IBOutlet UIButton *rightBtn;
 
 @property (nonatomic, strong) UITextField *searchTF;
 
@@ -31,7 +24,7 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @end
 
-@implementation NYSCatalogViewController
+@implementation NYSCatalogSearchViewController
 static NSString *NYSWordCellID = @"NYSWordCell";
 static NSString *NYSStatementCellID = @"NYSStatementCell";
 
@@ -50,21 +43,13 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     [searchView addSubview:searchIconIV];
     
     self.searchTF = [[UITextField alloc] initWithFrame:CGRectMake(searchIconIV.right + NNormalSpace, 0, searchView.width - searchIconIV.right - 2 * NNormalSpace, 40)];
-    self.searchTF.enabled = NO;
+    self.searchTF.delegate = self;
     self.searchTF.font = [UIFont systemFontOfSize:14];
     self.searchTF.placeholder = @"搜索词";
     self.searchTF.returnKeyType = UIReturnKeySearch;
     [searchView addSubview:self.searchTF];
     
     self.navigationItem.titleView = searchView;
-    
-    self.navigationItem.titleView.userInteractionEnabled = YES;
-    [self.navigationItem.titleView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-        NYSCatalogSearchViewController *vc = NYSCatalogSearchViewController.new;
-        vc.index = self.index;
-        vc.chapterArray = self.chapterArray;
-        [self.navigationController pushViewController:vc animated:YES];
-    }]];
     
     
     _tableviewStyle = UITableViewStylePlain;
@@ -85,38 +70,17 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         make.right.mas_equalTo(self.contentV.mas_right).offset(-10);
     }];
     
-    [self headerDisplayHandle];
-    
-    ViewRadius(_catalogTitleV, 25);
     ViewRadius(_contentV, 20);
     self.contentV.backgroundColor = [UIColor colorWithHexString:@"#4FBAD4"];
 }
 
-- (IBAction)leftBtnOnclicked:(UIButton *)sender {
-    [NYSTools zoomToShow:sender.layer];
-    self.index --;
-    
-    [self headerDisplayHandle];
-}
-
-- (IBAction)rightBtnOnclicked:(UIButton *)sender {
-    [NYSTools zoomToShow:sender.layer];
-    self.index ++;
-    
-    [self headerDisplayHandle];
-}
-
-- (void)headerDisplayHandle {
-    self.leftBtn.enabled = self.index > 0;
-    self.rightBtn.enabled = self.index < self.chapterArray.count - 1;
-    
-    self.titleL.text = [self.chapterArray[self.index] title];
-    self.subtitleL.text = [self.chapterArray[self.index] subtitle];
-    [UIView animateWithDuration:1.0f animations:^{
-        self.catalogTitleVHeight.constant = 40 + [self.subtitleL.text heightForFont:[UIFont systemFontOfSize:12] width:kScreenWidth - 145];
-    }];
-    
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    [self.dataSourceArr removeAllObjects];
     [self getDetailData:@"1"];
+    
+    return YES;
 }
 
 #pragma mark - 网络加载数据
@@ -132,16 +96,17 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     NSDictionary *argument = @{
         @"page": page,
         @"chapter_id": @([self.chapterArray[self.index] ID]),
+        @"keyword": self.searchTF.text,
     };
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:@"/index/Course/chapter_info"
+                                            url:@"/index/Course/select_content"
                                        argument:argument
-                                         remark:@"章节详情"
+                                         remark:@"关键词搜索"
                                         success:^(id response) {
         @strongify(self)
-        NSArray *wordArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"data"][@"word_list"]];
-        NSArray *statementArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"data"][@"statement_list"]];
+        NSArray *wordArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"word_list"]];
+        NSArray *statementArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"statement_list"]];
         
         [self.dataSourceArr removeAllObjects];
         if ((wordArray.count + statementArray.count) > 0) {
@@ -159,63 +124,11 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         [self.tableView.refreshControl endRefreshing];
         [self.tableView reloadData];
         
-        [self setTotalPage:[response[@"total_page"] integerValue] currentPage:page.integerValue];
-        
     } failed:^(NSError * _Nullable error) {
         [self.tableView.refreshControl endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
-}
-
-- (void)setTotalPage:(NSInteger)totalPage currentPage:(NSInteger)currentPage {
-    _totalPage = totalPage;
-    [self.pagingV removeAllSubviews];
-    
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 30)];
-    scrollView.showsHorizontalScrollIndicator = NO;
-    [self.pagingV addSubview:scrollView];
-    CGFloat x = 0;
-    for (int i = 0; i < totalPage; i++) {
-        NSString *titleStr = [NSString stringWithFormat:@"%d", i + 1];
-        CGFloat btnWidth = 30;
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.tag = i + 1;
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
-        button.backgroundColor = UIColor.whiteColor;
-        [button setTitleColor:[UIColor colorWithHexString:@"#85E7FF"] forState:UIControlStateNormal];
-        [button setTitle:titleStr forState:UIControlStateNormal];
-        button.titleLabel.adjustsFontSizeToFitWidth = YES;
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        button.frame = CGRectMake(x + 15, 0, btnWidth, btnWidth);
-        [button addTarget:self action:@selector(pagingBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
-        [scrollView addSubview:button];
-        ViewBorderRadius(button, btnWidth/2, 1, [UIColor colorWithHexString:@"#85E7FF"]);
-        
-        if (i == currentPage - 1) {
-            button.backgroundColor = [UIColor colorWithHexString:@"#85E7FF"];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        }
-        
-        x += (btnWidth + 15);
-    }
-
-    scrollView.contentSize = CGSizeMake(x, 0);
-}
-
-- (void)pagingBtnOnclicked:(UIButton *)sender {
-    
-    [self getDetailData:[NSString stringWithFormat:@"%ld", sender.tag]];
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    _pageNo = 1;
-    [self footerRereshing];
-    
-    return YES;
 }
 
 #pragma mark - tableview delegate / dataSource

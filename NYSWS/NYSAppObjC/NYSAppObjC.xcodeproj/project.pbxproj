@@ -108,6 +108,8 @@
 		C85A34FE2A0E449A00E42C6B /* ImageSelectedSmallOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C85A34D42A0E449A00E42C6B /* ImageSelectedSmallOn@2x.png */; };
 		C85A35082A0E450E00E42C6B /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A35022A0E450E00E42C6B /* DALabeledCircularProgressView.m */; };
 		C85A35092A0E450E00E42C6B /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A35032A0E450E00E42C6B /* DACircularProgressView.m */; };
+		C87D6DB92A14E12B009033A5 /* NYSCatalogSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */; };
+		C87D6DBA2A14E12B009033A5 /* NYSCatalogSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */; };
 		C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */; };
 		C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482929FBB2AC00673B75 /* AppDelegate+AppService.m */; };
 		C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */; };
@@ -393,6 +395,9 @@
 		C85A35032A0E450E00E42C6B /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		C85A35042A0E450E00E42C6B /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
 		C85A35052A0E450E00E42C6B /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSCatalogSearchViewController.m; sourceTree = "<group>"; };
+		C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSCatalogSearchViewController.xib; sourceTree = "<group>"; };
+		C87D6DB82A14E12B009033A5 /* NYSCatalogSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSCatalogSearchViewController.h; sourceTree = "<group>"; };
 		C8B7475D29FA75E100673B75 /* NYSAppObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYSAppObjC.entitlements; sourceTree = "<group>"; };
 		C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSTabbarViewController.h; sourceTree = "<group>"; };
 		C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSTabbarViewController.m; sourceTree = "<group>"; };
@@ -896,6 +901,9 @@
 				C8EE7E952A08DE24000E3A3A /* NYSCatalogViewController.h */,
 				C8EE7E962A08DE24000E3A3A /* NYSCatalogViewController.m */,
 				C8EE7E972A08DE24000E3A3A /* NYSCatalogViewController.xib */,
+				C87D6DB82A14E12B009033A5 /* NYSCatalogSearchViewController.h */,
+				C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */,
+				C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1182,6 +1190,7 @@
 				C8587E402A14760400DE6587 /* NYSWordCell.xib in Resources */,
 				C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */,
 				C85A34E82A0E449A00E42C6B /* ImageSelectedSmallOff@3x.png in Resources */,
+				C87D6DBA2A14E12B009033A5 /* NYSCatalogSearchViewController.xib in Resources */,
 				C85A34F62A0E449A00E42C6B /* UIBarButtonItemArrowLeft@3x.png in Resources */,
 				C8597A2C29F51054008BEE7F /* LaunchScreen.storyboard in Resources */,
 				C85A34F02A0E449A00E42C6B /* ImageSelectedOn.png in Resources */,
@@ -1359,6 +1368,7 @@
 				C8464AC32A0B7C21003CD376 /* NYSUserInfo.m in Sources */,
 				C8F4B94E2A0CBBA500719AF2 /* NYSResetPwdViewController.m in Sources */,
 				C8DBA6902A0F14C400F2656D /* TZVideoPlayerController.m in Sources */,
+				C87D6DB92A14E12B009033A5 /* NYSCatalogSearchViewController.m in Sources */,
 				C8DBA6962A0F14C400F2656D /* TZProgressView.m in Sources */,
 				C85A34DD2A0E449A00E42C6B /* MWGridCell.m in Sources */,
 				C8DBA68F2A0F14C400F2656D /* TZAssetCell.m in Sources */,
