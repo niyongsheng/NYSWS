@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"忘记密码";
+    self.navigationItem.title = NLocalizedStr(@"ForgetPwd");
     [self wr_setNavBarTitleColor:UIColor.whiteColor];
     [self wr_setNavBarBackgroundAlpha:0];
     

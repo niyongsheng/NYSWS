@@ -21,10 +21,10 @@ SKStoreProductViewControllerDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"关于我们";
+    self.navigationItem.title = NLocalizedStr(@"AboutOur");
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
-    _versionL.text = [@"版本：" stringByAppendingString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    _versionL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"CourseVersion"), [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
@@ -50,7 +50,7 @@ SKStoreProductViewControllerDelegate
         @strongify(self)
         NYSWebViewController *webVC = [NYSWebViewController new];
         webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
-        webVC.title = @"服务协议";
+        webVC.title = NLocalizedStr(@"UserProtocol");
         webVC.autoTitle = NO;
         [self.navigationController pushViewController:webVC animated:YES];
 
@@ -69,7 +69,7 @@ SKStoreProductViewControllerDelegate
         @strongify(self)
         NYSWebViewController *webVC = [NYSWebViewController new];
         webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
-        webVC.title = @"隐私协议";
+        webVC.title = NLocalizedStr(@"PrivacyProtocol");
         webVC.autoTitle = NO;
         [self.navigationController pushViewController:webVC animated:YES];
         [self.navigationController pushViewController:webVC animated:YES];

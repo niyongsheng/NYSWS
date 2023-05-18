@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"详情";
+    self.navigationItem.title = NLocalizedStr(@"Detail");
     
     [self wr_setNavBarBarTintColor:NAppThemeColor];
     [self wr_setNavBarTitleColor:UIColor.whiteColor];

@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"我的钱包";
+    self.navigationItem.title = NLocalizedStr(@"MyWallet");
     
     [self wr_setNavBarBackgroundAlpha:0];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
@@ -86,8 +86,8 @@
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
                 
             } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你尚未安装微信APP" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallWechat") preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
                 [alert addAction:cancelAction];
                 [self presentViewController:alert animated:YES completion:nil];
             }
@@ -99,8 +99,8 @@
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
                 
             } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你尚未安装支付宝APP" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallAlipay") preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
                 [alert addAction:cancelAction];
                 [self presentViewController:alert animated:YES completion:nil];
             }

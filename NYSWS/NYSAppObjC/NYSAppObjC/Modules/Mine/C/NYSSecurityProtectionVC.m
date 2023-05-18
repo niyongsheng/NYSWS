@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"密保问题";
+    self.title = NLocalizedStr(@"SecurityQuestion");
 
     ViewRadius(_commitBtn, 22.5f)
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
@@ -38,7 +38,7 @@
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     
     if (![_nameTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入密保答案"];
+        [NYSTools showToast:NLocalizedStr(@"TipsSecurityQuestionAnswer")];
         return;
     }
     
@@ -53,7 +53,7 @@
                                              remark:@"验证密保答案"
                                             success:^(id response) {
         @strongify(self)
-        [NYSTools showIconToast:@"验证通过" isSuccess:YES offset:UIOffsetMake(0, 0)];
+        [NYSTools showIconToast:NLocalizedStr(@"PassVerification") isSuccess:YES offset:UIOffsetMake(0, 0)];
         [NYSTools dismissWithDelay:1.0f completion:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];

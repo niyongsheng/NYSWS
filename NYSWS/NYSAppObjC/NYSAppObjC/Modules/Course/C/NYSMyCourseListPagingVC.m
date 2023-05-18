@@ -26,7 +26,8 @@ SGPageContentCollectionViewDelegate
     [super viewDidLoad];
 
     // 1.分页栏配置
-    NSArray *titleArr = @[@"已购", @"已学"];
+//    NSArray *titleArr = @[@"已购", @"已学"];
+    NSArray *titleArr = @[NLocalizedStr(@"Purchased"), NLocalizedStr(@"Learned")];
     NSArray *valueArr = @[@"1", @"0"];
     SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     segmentConfigure.indicatorStyle = SGIndicatorStyleCover;

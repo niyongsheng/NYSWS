@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"帮助中心";
+    self.navigationItem.title = NLocalizedStr(@"HelpCenter");
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
 }

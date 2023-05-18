@@ -17,9 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (self.index == 0) {
-        self.navigationItem.title = @"多久到账";
+        self.navigationItem.title = NLocalizedStr(@"HowLongReceived");
     } else {
-        self.navigationItem.title = @"如何提现";
+        self.navigationItem.title = NLocalizedStr(@"HowToWithdraw");
     }
     
     @weakify(self)

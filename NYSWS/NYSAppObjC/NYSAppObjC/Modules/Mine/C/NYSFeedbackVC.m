@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"意见反馈";
+    self.title = NLocalizedStr(@"Feedback");
     ViewRadius(_commitBtn, 22.5f)
     
     ViewBorderRadius(_contentV, 2.0f, 0.7, UIColor.lightGrayColor);
@@ -108,22 +108,21 @@
     }
 }
 
-
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     [NYSTools zoomToShow:sender.layer];
     
     if ([self.selectedBtnIndex isEqualToString:@"-1"]) {
-        [NYSTools showToast:@"请选择反馈类型"];
+        [NYSTools showToast:NLocalizedStr(@"TipsFeedbackType")];
         return;
     }
     
     if (![self.contentTV.text isNotBlank]) {
-        [NYSTools showToast:@"请输入反馈内容"];
+        [NYSTools showToast:NLocalizedStr(@"TipsFeedbackContent")];
         return;
     }
     
     if (self.selectedImagesArray.count == 0) {
-        [NYSTools showToast:@"请选择图片"];
+        [NYSTools showToast:NLocalizedStr(@"TipsImg")];
         return;
     }
     
@@ -175,7 +174,7 @@
                                             success:^(id response) {
         
         @strongify(self)
-        [NYSTools showIconToast:@"已提交" isSuccess:YES offset:UIOffsetMake(0, 0)];
+        [NYSTools showIconToast:NLocalizedStr(@"Commited") isSuccess:YES offset:UIOffsetMake(0, 0)];
         [NYSTools dismissWithDelay:1.0f completion:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];

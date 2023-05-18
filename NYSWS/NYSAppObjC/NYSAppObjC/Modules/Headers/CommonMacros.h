@@ -76,11 +76,12 @@ CGRect rectNav = self.navigationController.navigationBar.frame;\
 // IOS 版本判断
 #define IOSAVAILABLEVERSION(version) ([[UIDevice currentDevice] availableVersion:version] < 0)
 // 当前系统版本
-#define CurrentSystemVersion [[UIDevice currentDevice] systemVersion].floatValue
+#define CurrentSystemVersion    [[UIDevice currentDevice] systemVersion].floatValue
 // 当前语言
-#define CurrentLanguage ([NSLocale preferredLanguages] objectAtIndex:0])
+#define CurrentLanguage         ([NSLocale preferredLanguages] objectAtIndex:0])
+#define NLocalizedStr(key)      NSLocalizedStringFromTable(key, @"InfoPlist", nil)
 // APP版本
-#define CurrentAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define CurrentAppVersion       [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 // 随机色生成
 #define NRandomColor RGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))

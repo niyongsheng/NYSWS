@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的资料";
+    self.title = NLocalizedStr(@"MyInfo");
 
     _iconUrl = @"";
     ViewRadius(_commitBtn, 22.5f)
@@ -87,7 +87,7 @@
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     
     if (![_remarkTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入昵称"];
+        [NYSTools showToast:NLocalizedStr(@"TipsNickname")];
         return;
     }
     
@@ -105,7 +105,7 @@
         [NAppManager loadUserInfoCompletion:nil];
         
         @strongify(self)
-        [NYSTools showIconToast:@"已更新" isSuccess:YES offset:UIOffsetMake(0, 0)];
+        [NYSTools showIconToast:NLocalizedStr(@"Updated") isSuccess:YES offset:UIOffsetMake(0, 0)];
         [NYSTools dismissWithDelay:1.0f completion:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];

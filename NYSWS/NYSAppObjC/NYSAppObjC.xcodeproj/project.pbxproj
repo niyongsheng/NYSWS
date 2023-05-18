@@ -110,6 +110,7 @@
 		C85A35092A0E450E00E42C6B /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A35032A0E450E00E42C6B /* DACircularProgressView.m */; };
 		C87D6DB92A14E12B009033A5 /* NYSCatalogSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */; };
 		C87D6DBA2A14E12B009033A5 /* NYSCatalogSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */; };
+		C87D6DBE2A161572009033A5 /* CKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DBC2A161572009033A5 /* CKAudioPlayerHelper.m */; };
 		C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */; };
 		C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482929FBB2AC00673B75 /* AppDelegate+AppService.m */; };
 		C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */; };
@@ -398,6 +399,8 @@
 		C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSCatalogSearchViewController.m; sourceTree = "<group>"; };
 		C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSCatalogSearchViewController.xib; sourceTree = "<group>"; };
 		C87D6DB82A14E12B009033A5 /* NYSCatalogSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSCatalogSearchViewController.h; sourceTree = "<group>"; };
+		C87D6DBC2A161572009033A5 /* CKAudioPlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKAudioPlayerHelper.m; sourceTree = "<group>"; };
+		C87D6DBD2A161572009033A5 /* CKAudioPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAudioPlayerHelper.h; sourceTree = "<group>"; };
 		C8B7475D29FA75E100673B75 /* NYSAppObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYSAppObjC.entitlements; sourceTree = "<group>"; };
 		C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSTabbarViewController.h; sourceTree = "<group>"; };
 		C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSTabbarViewController.m; sourceTree = "<group>"; };
@@ -784,6 +787,15 @@
 			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
+		C87D6DBB2A161572009033A5 /* CKAudioPlayerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C87D6DBD2A161572009033A5 /* CKAudioPlayerHelper.h */,
+				C87D6DBC2A161572009033A5 /* CKAudioPlayerHelper.m */,
+			);
+			path = CKAudioPlayerHelper;
+			sourceTree = "<group>";
+		};
 		C8B7482229FBB1D300673B75 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -943,6 +955,7 @@
 		C8C750402A04DEAE00A91AAE /* M */ = {
 			isa = PBXGroup;
 			children = (
+				C87D6DBB2A161572009033A5 /* CKAudioPlayerHelper */,
 				C8C750412A04DED500A91AAE /* NYSCourseModel.h */,
 				C8C750422A04DED500A91AAE /* NYSCourseModel.m */,
 			);
@@ -1316,6 +1329,7 @@
 				C8DBA6942A0F14C400F2656D /* TZPhotoPreviewController.m in Sources */,
 				C8DBA69D2A0F14C400F2656D /* TZImageRequestOperation.m in Sources */,
 				C8599BAA2A03A3EC00DEA603 /* NYSSearchCourseVC.m in Sources */,
+				C87D6DBE2A161572009033A5 /* CKAudioPlayerHelper.m in Sources */,
 				C8DBA6932A0F14C400F2656D /* UIView+Layout.m in Sources */,
 				C8C750432A04DED500A91AAE /* NYSCourseModel.m in Sources */,
 				C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */,

@@ -23,7 +23,7 @@ UITextFieldDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"消息中心";
+    self.navigationItem.title = NLocalizedStr(@"MessageCenter");
     
     [self setupSearchView];
     [self footerRereshing];

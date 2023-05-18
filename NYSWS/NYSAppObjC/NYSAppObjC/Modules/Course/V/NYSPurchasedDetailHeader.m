@@ -37,7 +37,7 @@
     self.timeL.text = [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil];
     self.sizeL.text = [NSString stringWithFormat:@"%.2f", model.size];
     self.versionL.text = model.version;
-    self.sectionL.text = [NSString stringWithFormat:@"共计%ld章", model.chapter.count];
+    self.sectionL.text = [NSString stringWithFormat:@"%@%ld%@", NLocalizedStr(@"Total"), model.chapter.count, NLocalizedStr(@"Section")];
 }
 
 @end

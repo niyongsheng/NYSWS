@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isShowLiftBack = NO;
-    self.navigationItem.title = @"登录";
+    self.navigationItem.title = NLocalizedStr(@"Login");
     self.view.backgroundColor = UIColor.whiteColor;
     self.scrollV.backgroundColor = UIColor.whiteColor;
     self.scrollV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentScrollableAxes;
@@ -54,13 +54,13 @@
     [self check];
     
     // 协议富文本
-    NSString *protocolStr = @"我已阅读并同意《服务协议》、《隐私政策》"; //@"阅读并同意《隐私政策》";
+    NSString *protocolStr = NLocalizedStr(@"ProtocolDesc"); //@"阅读并同意《隐私政策》";
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:protocolStr];
     [attString addAttribute:(NSString*)NSForegroundColorAttributeName value:UIColor.grayColor range:[protocolStr rangeOfString:protocolStr]];
     
-    NSRange range2 = [protocolStr rangeOfString:@"《服务协议》"];
-    NSRange range3 = [protocolStr rangeOfString:@"《隐私政策》"];
-
+    NSRange range2 = [protocolStr rangeOfString:NLocalizedStr(@"UserProtocol")];
+    NSRange range3 = [protocolStr rangeOfString:NLocalizedStr(@"PrivacyProtocol")];
+    
     [attString addAttribute:NSLinkAttributeName value:@"user://" range:range2];
     [attString addAttribute:NSLinkAttributeName value:@"privacy://" range:range3];
     
@@ -93,19 +93,19 @@
     [NYSTools zoomToShow:sender.layer];
 
     if (![_accountTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入手机号码"];
+        [NYSTools showToast:NLocalizedStr(@"PlaceholderAccout")];
         [NYSTools shakToShow:sender];
         return;
     }
     
     if (![_passwordTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入验证码"];
+        [NYSTools showToast:NLocalizedStr(@"PlaceholderPwd")];
         [NYSTools shakToShow:sender];
         return;
     }
     
     if (!self.protocolBtn.selected) {
-        [NYSTools showToast:@"请勾选协议"];
+        [NYSTools showToast:NLocalizedStr(@"TipsProtocol")];
         [NYSTools shakToShow:self.protocolBtn];
         return;
     }
@@ -122,7 +122,7 @@
         @strongify(self)
         [NAppManager loginHandler:NUserLoginTypePwd authInfo:[NYSAuthInfo modelWithDictionary:@{@"token" : response}] completion:^(BOOL success, id obj) {
             if (success) {
-                [NYSTools showIconToast:@"登录成功" isSuccess:YES offset:UIOffsetMake(0, 0)];
+                [NYSTools showIconToast:NLocalizedStr(@"LoginSuccess") isSuccess:YES offset:UIOffsetMake(0, 0)];
                 [NYSTools dismissWithCompletion:^{
                     NPostNotification(NNotificationLoginStateChange, @YES)
 //                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -153,7 +153,7 @@
             @strongify(self)
             NYSWebViewController *webVC = [NYSWebViewController new];
             webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
-            webVC.title = @"服务协议";
+            webVC.title = NLocalizedStr(@"UserProtocol");
             webVC.autoTitle = NO;
             [self.navigationController pushViewController:webVC animated:YES];
 
@@ -171,7 +171,7 @@
             @strongify(self)
             NYSWebViewController *webVC = [NYSWebViewController new];
             webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
-            webVC.title = @"隐私协议";
+            webVC.title = NLocalizedStr(@"PrivacyProtocol");
             webVC.autoTitle = NO;
             [self.navigationController pushViewController:webVC animated:YES];
             [self.navigationController pushViewController:webVC animated:YES];

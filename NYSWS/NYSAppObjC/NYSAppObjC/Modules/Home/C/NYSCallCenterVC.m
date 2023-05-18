@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"客服";
+    self.navigationItem.title = NLocalizedStr(@"Service");
     self.view.backgroundColor = [UIColor whiteColor];
     
     @weakify(self)

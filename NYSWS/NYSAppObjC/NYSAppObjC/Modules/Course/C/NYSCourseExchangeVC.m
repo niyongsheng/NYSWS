@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"激活";
+    self.navigationItem.title = NLocalizedStr(@"Active");
     [self wr_setNavBarBarTintColor:NAppThemeColor];
     [self wr_setNavBarTitleColor:UIColor.whiteColor];
     
@@ -52,15 +52,16 @@
     self.titleL.text = self.detailModel.name;
     self.subtitleL.text = self.detailModel.subtitle;
     self.coinL.text = self.detailModel.price;
-    self.timeL.text = [NSString stringWithFormat:@"更新时间：%@", [NYSTools transformTimestampToTime:self.detailModel.updatetime * 1000 format:nil]];
-    self.infoL.text = [NSString stringWithFormat:@"课件大小：%.2fMB   版本：%@", self.detailModel.size, self.detailModel.version];
+    self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:self.detailModel.updatetime * 1000 format:nil]];
+    self.infoL.text = [NSString stringWithFormat:@"%@：%.2fMB   %@：%@",
+                       NLocalizedStr(@"CourseSize"), self.detailModel.size, NLocalizedStr(@"CourseVersion"), self.detailModel.version];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     [NYSTools zoomToShow:sender.layer];
     
     if (![_codeTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入兑换码"];
+        [NYSTools showToast:NLocalizedStr(@"TipsConvertCode")];
         return;
     }
     
@@ -77,7 +78,7 @@
         @strongify(self)
         NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(200))];
         alertView.cancelBtn.hidden = YES;
-        alertView.titleL.text = @"激活成功";
+        alertView.titleL.text = NLocalizedStr(@"ActiveSuccess");
         alertView.block = ^(id obj) {
             if ([obj isEqual:@"1"]) {
                 [self.navigationController popViewControllerAnimated:YES];

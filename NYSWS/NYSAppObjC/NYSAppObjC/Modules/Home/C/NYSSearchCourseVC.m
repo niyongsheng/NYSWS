@@ -34,8 +34,6 @@ static NSString *CellID = @"NYSCourseCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"搜索";
-    
     [self setupSearchView];
     if (_isShowBanner)
         [self footerRereshing];

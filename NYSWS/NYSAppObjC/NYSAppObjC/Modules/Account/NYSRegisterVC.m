@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"注册";
+    self.navigationItem.title = NLocalizedStr(@"Regist");
     
     ViewRadius(_commitBtn, 22.5f)
     
@@ -45,56 +45,56 @@
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     if (![self.nicknameTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入登录名"];
+        [NYSTools showToast:NLocalizedStr(@"TipsLoginName")];
         [NYSTools shakeAnimation:self.nicknameTF.layer];
         return;
     }
     
     if (![self.phoneTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入手机号"];
+        [NYSTools showToast:NLocalizedStr(@"TipsPhone")];
         [NYSTools shakeAnimation:self.phoneTF.layer];
         return;
     }
     
     if (self.phoneTF.text.length != 11) {
-        [NYSTools showToast:@"请输入格式正确的手机号"];
+        [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
         [NYSTools shakeAnimation:self.phoneTF.layer];
         return;
     }
     
     if (![self.passwordTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入密码"];
+        [NYSTools showToast:NLocalizedStr(@"PlaceholderPwd")];
         [NYSTools shakeAnimation:self.passwordTF.layer];
         return;
     }
     
     if (![self.repasswordTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入重复密码"];
+        [NYSTools showToast:NLocalizedStr(@"TipsRepwd")];
         [NYSTools shakeAnimation:self.repasswordTF.layer];
         return;
     }
     
     if (![self.repasswordTF.text isEqualToString:self.passwordTF.text]) {
-        [NYSTools showToast:@"两次密码不一致"];
+        [NYSTools showToast:NLocalizedStr(@"TipsRepwdError")];
         [NYSTools shakeAnimation:self.passwordTF.layer];
         [NYSTools shakeAnimation:self.repasswordTF.layer];
         return;
     }
     
     if (![self.securityQuestionTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入密保问题"];
+        [NYSTools showToast:NLocalizedStr(@"TipsSecurityQuestion")];
         [NYSTools shakeAnimation:self.securityQuestionTF.layer];
         return;
     }
     
     if (![self.securityAnswerTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入密保答案"];
+        [NYSTools showToast:NLocalizedStr(@"TipsSecurityQuestionAnswer")];
         [NYSTools shakeAnimation:self.securityAnswerTF.layer];
         return;
     }
     
 //    if (![self.InvitationCodeTF.text isNotBlank]) {
-//        [NYSTools showToast:@"请输入邀请码"];
+//        [NYSTools showToast:NLocalizedStr(@"TipsInviteCode")];
 //        [NYSTools shakeAnimation:self.InvitationCodeTF.layer];
 //        return;
 //    }
@@ -114,7 +114,7 @@
                                          remark:@"注册"
                                         success:^(id response) {
         @strongify(self)
-        [NYSTools showIconToast:@"注册成功" isSuccess:YES offset:UIOffsetMake(0, 0)];
+        [NYSTools showIconToast:NLocalizedStr(@"RegistSuccess") isSuccess:YES offset:UIOffsetMake(0, 0)];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });

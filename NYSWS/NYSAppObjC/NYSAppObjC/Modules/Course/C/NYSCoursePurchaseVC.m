@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"支付";
+    self.navigationItem.title = NLocalizedStr(@"Pay");
     [self wr_setNavBarBarTintColor:NAppThemeColor];
     [self wr_setNavBarTitleColor:UIColor.whiteColor];
     
@@ -50,8 +50,9 @@
     self.titleL.text = self.detailModel.name;
     self.subtitleL.text = self.detailModel.subtitle;
     self.coinL.text = self.detailModel.price;
-    self.timeL.text = [NSString stringWithFormat:@"更新时间：%@", [NYSTools transformTimestampToTime:self.detailModel.updatetime * 1000 format:nil]];
-    self.infoL.text = [NSString stringWithFormat:@"课件大小：%.2fMB   版本：%@", self.detailModel.size, self.detailModel.version];
+    self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:self.detailModel.updatetime * 1000 format:nil]];
+    self.infoL.text = [NSString stringWithFormat:@"%@：%.2fMB   %@：%@",
+                       NLocalizedStr(@"CourseSize"), self.detailModel.size, NLocalizedStr(@"CourseVersion"), self.detailModel.version];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
@@ -69,7 +70,7 @@
         @strongify(self)
         NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(200))];
         alertView.cancelBtn.hidden = YES;
-        alertView.titleL.text = @"购买成功";
+        alertView.titleL.text = NLocalizedStr(@"BuySuccess");
         alertView.block = ^(id obj) {
             if ([obj isEqual:@"1"]) {
                 [self.navigationController popViewControllerAnimated:YES];

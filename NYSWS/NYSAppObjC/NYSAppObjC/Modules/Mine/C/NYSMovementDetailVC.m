@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"账单详情";
+    self.navigationItem.title = NLocalizedStr(@"BillDetail");
     self.view.backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
     
     NSMutableDictionary *params = @{
@@ -41,15 +41,15 @@
             self.statusL.text = [response[@"stauts"] isEqual:@"0"] ? @"待支付" : @"已支付";
             NSInteger payType = [response[@"pay_type"] intValue];
             if (payType == 0) {
-                self.wayL.text = @"微信";
+                self.wayL.text = NLocalizedStr(@"WeChat");
             } else if (payType == 1) {
-                self.wayL.text = @"支付宝";
+                self.wayL.text = NLocalizedStr(@"AliPay");
             } else if (payType == 2) {
-                self.wayL.text = @"苹果";
+                self.wayL.text = NLocalizedStr(@"Apple");
             } else if (payType == 3) {
-                self.wayL.text = @"银行卡";
+                self.wayL.text = NLocalizedStr(@"BankCard");
             } else if (payType == 4) {
-                self.wayL.text = @"国外";
+                self.wayL.text = NLocalizedStr(@"Foreign");
             }
         });
 

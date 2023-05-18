@@ -8,6 +8,7 @@
 #import "NYSCatalogSearchViewController.h"
 #import "NYSWordCell.h"
 #import "NYSStatementCell.h"
+#import "CKAudioPlayerHelper.h"
 
 @interface NYSCatalogSearchViewController ()
 <
@@ -45,7 +46,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     self.searchTF = [[UITextField alloc] initWithFrame:CGRectMake(searchIconIV.right + NNormalSpace, 0, searchView.width - searchIconIV.right - 2 * NNormalSpace, 40)];
     self.searchTF.delegate = self;
     self.searchTF.font = [UIFont systemFontOfSize:14];
-    self.searchTF.placeholder = @"搜索词";
+    self.searchTF.placeholder = NLocalizedStr(@"SearchWord");
     self.searchTF.returnKeyType = UIReturnKeySearch;
     [searchView addSubview:self.searchTF];
     
@@ -72,6 +73,8 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     
     ViewRadius(_contentV, 20);
     self.contentV.backgroundColor = [UIColor colorWithHexString:@"#4FBAD4"];
+    
+    [self.searchTF becomeFirstResponder];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -106,11 +109,20 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
                                         success:^(id response) {
         @strongify(self)
         NSArray *wordArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"word_list"]];
+        NSMutableArray *wordArrM = [NSMutableArray array];
+        for (int i = 0; i < wordArray.count; i += 2) {
+            if (i + 1 > wordArray.count -1) {
+                [wordArrM addObject:@[wordArray[i]]];
+            } else {
+                [wordArrM addObject:@[wordArray[i], wordArray[i+1]]];
+            }
+        }
+        
         NSArray *statementArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"statement_list"]];
         
         [self.dataSourceArr removeAllObjects];
         if ((wordArray.count + statementArray.count) > 0) {
-            [self.dataSourceArr addObject:wordArray];
+            [self.dataSourceArr addObject:wordArrM];
             [self.dataSourceArr addObject:statementArray];
             [self.tableView.mj_footer endRefreshing];
             
@@ -141,14 +153,23 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
     if (indexPath.section == 0) {
-        CGFloat labelH0 = [model.content heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
-        CGFloat labelH1 = [model.translate heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
+        NSArray<NYSCatalogModel *> *arr = self.dataSourceArr[indexPath.section][indexPath.row];
+        NSString *content = [[arr firstObject] content];
+        NSString *translate = [[arr firstObject] translate];
+        if (arr.count > 1) {
+            if ([[arr lastObject] content].length > [[arr firstObject] content].length)
+                content = [[arr lastObject] content];
+            if ([[arr lastObject] translate].length > [[arr firstObject] translate].length)
+                translate = [[arr lastObject] translate];
+        }
+        
+        CGFloat labelH0 = [content heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
+        CGFloat labelH1 = [translate heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
         
         return 20 + labelH0 + labelH1;
     } else {
-        
+        NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
         CGFloat labelH0 = [model.content heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
         CGFloat labelH1 = [model.translate heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
         
@@ -157,13 +178,19 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
     if (indexPath.section == 0) {
         NYSWordCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NYSWordCellID];
-        cell.model = model;
+        cell.modelArr = self.dataSourceArr[indexPath.section][indexPath.row];
+        cell.block = ^(BOOL isLeft, NSIndexPath * _Nonnull indexP) {
+            NSArray<NYSCatalogModel *> *arr = self.dataSourceArr[indexP.section][indexP.row];
+            [self playWav:isLeft ? [[arr firstObject] url] : [[arr lastObject] url]];
+        };
+//        cell.model = model;
         return cell;
         
     } else {
+        
+        NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
         NYSStatementCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NYSStatementCellID];
         cell.model = model;
         return cell;
@@ -176,13 +203,21 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
     
-    
-    NSURL *url = [NSURL URLWithString:model.url];
-    AVPlayerItem *songItem = [[AVPlayerItem alloc] initWithURL:url];
-    AVPlayer *player = [[AVPlayer alloc] initWithPlayerItem:songItem];
-    [player play];
+    if (indexPath.section == 1) {
+        NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
+        [self playWav:model.url];
+    }
+}
+
+- (void)playWav:(NSString *)urlStr {
+    if (![urlStr isNotBlank]) {
+        [NYSTools showToast:NLocalizedStr(@"NoAudioInfo")];
+        return;
+    }
+
+    // @"http://xyd.app12345.cn/upload/images/76/84577a010bf752f4c6530bf60c9412.wav"
+    [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:urlStr playOrPause:YES];
 }
 
 @end

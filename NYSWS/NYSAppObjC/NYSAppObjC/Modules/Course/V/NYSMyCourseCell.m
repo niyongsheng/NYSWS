@@ -42,8 +42,9 @@
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     
-    self.timeL.text = [NSString stringWithFormat:@"更新时间：%@", [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil]];
-    self.versionL.text = [NSString stringWithFormat:@"课件大小：%.2fMB   版本：%@", model.size, model.version];
+    self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil]];
+    self.versionL.text = [NSString stringWithFormat:@"%@：%.2fMB   %@：%@",
+                          NLocalizedStr(@"CourseSize"), model.size, NLocalizedStr(@"CourseVersion"), model.version];
     self.tagIV.hidden = [model.is_recommend isEqual:@"0"] ? YES : NO;
 }
 

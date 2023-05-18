@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"提现";
+    self.title = NLocalizedStr(@"Withdraw");
 
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     ViewRadius(_alipayAcccountTF, 2);
@@ -28,12 +28,12 @@
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     if (![_alipayAcccountTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入支付宝账户"];
+        [NYSTools showToast:NLocalizedStr(@"TipsAliPayAccount")];
         return;
     }
     
     if (![_customMoneyTF.text isNotBlank]) {
-        [NYSTools showToast:@"请输入提现金额"];
+        [NYSTools showToast:NLocalizedStr(@"TipsMoney")];
         return;
     }
     
@@ -50,7 +50,7 @@
                                             success:^(id response) {
         
         @strongify(self)
-        [NYSTools showIconToast:@"已提交提现申请" isSuccess:YES offset:UIOffsetMake(0, 0)];
+        [NYSTools showIconToast:NLocalizedStr(@"WithdrawalSubmitted") isSuccess:YES offset:UIOffsetMake(0, 0)];
         [NYSTools dismissWithDelay:1.0f completion:^{
             [self.navigationController popViewControllerAnimated:YES];
         }];

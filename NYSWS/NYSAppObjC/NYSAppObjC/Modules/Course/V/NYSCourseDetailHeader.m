@@ -47,9 +47,10 @@
     self.descL.attributedText = attributeString;
 
     self.priceL.text = model.price;
-    self.timeL.text = [NSString stringWithFormat:@"更新时间：%@", [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil]];
-    self.versionL.text = [NSString stringWithFormat:@"课件大小：%.2fMB   版本：%@", model.size, model.version];
-    self.sectionL.text = [NSString stringWithFormat:@"共计%ld章", model.chapter.count];
+    self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil]];
+    self.versionL.text = [NSString stringWithFormat:@"%@：%.2fMB   %@：%@",
+                          NLocalizedStr(@"CourseSize"), model.size, NLocalizedStr(@"CourseVersion"), model.version];
+    self.sectionL.text = [NSString stringWithFormat:@"%@%ld%@", NLocalizedStr(@"Total"), model.chapter.count, NLocalizedStr(@"Section")];
 }
 
 @end

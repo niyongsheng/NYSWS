@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"首页课程列表";
-    
     [self setupSearchView];
 }
 
