@@ -41,9 +41,10 @@
                                 name:NNotificationNetWorkStateChange
                               object:nil];
     
-    
+    // 检查更新
     if ([FirApiToken isNotBlank]) {
         [FIRVersionCheck setAPIToken:FirApiToken];
+        [FIRVersionCheck setTargetController:NRootViewController];
         [FIRVersionCheck check];
     }
     

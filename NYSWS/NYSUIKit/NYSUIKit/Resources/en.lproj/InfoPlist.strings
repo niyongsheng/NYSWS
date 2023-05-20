@@ -10,3 +10,6 @@ NoData="No Data";
 NetErr="Network Error";
 Retry="Retry";
 Loading="Loading...";
+
+TipsAppUpdate="New test version";
+AppUpdate="Update";

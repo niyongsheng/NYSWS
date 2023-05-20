@@ -15,6 +15,11 @@
 + (void)setAPIToken:(NSString *)APIToken;
 
 /**
+*  配置 targetController，弹窗的控制器
+*/
++ (void)setTargetController:(UIViewController *)targetController;
+
+/**
  *  配置 app_id 和 api_token
  */
 + (void)setAppID:(NSString *)appID APIToken:(NSString *)APIToken;
