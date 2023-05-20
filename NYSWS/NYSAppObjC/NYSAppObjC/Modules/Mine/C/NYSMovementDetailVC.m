@@ -38,7 +38,7 @@
             self.moneyL.text = [NSString stringWithFormat:@"+%@", [response stringValueForKey:@"price" default:@""]];
             self.orderL.text = [response stringValueForKey:@"order_id" default:@""];
             self.timeL.text = [NYSTools transformTimestampToTime:[response[@"createtime"] integerValue] format:nil];
-            self.statusL.text = [response[@"stauts"] isEqual:@"0"] ? @"待支付" : @"已支付";
+            self.statusL.text = [response[@"stauts"] isEqual:@"0"] ? NLocalizedStr(@"WaitPay") : NLocalizedStr(@"Payed");
             NSInteger payType = [response[@"pay_type"] intValue];
             if (payType == 0) {
                 self.wayL.text = NLocalizedStr(@"WeChat");

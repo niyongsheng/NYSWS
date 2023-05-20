@@ -147,28 +147,28 @@ NYSHomeCourseVCDelegate
     [PopView hidenPopView];
     
     if (indexPath.row == 0) {
-        [self showHUDCompletion:^{
-            [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
-        }];
+        [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
     } else {
-        [self showHUDCompletion:^{
-            [NYSUIKitUtilities setUserLanguage:@"lo"];
-        }];
+        [NYSUIKitUtilities setUserLanguage:@"lo"];
     }
+    [self showHUDCompletion:nil];
 
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     UIWindow *window = app.window;
-    [UIView animateWithDuration:1.0f animations:^{
-        window.alpha = 0.5;
+    [UIView animateWithDuration:1.5f animations:^{
+        window.alpha = 0.1;
     } completion:^(BOOL finished) {
         exit(0);
     }];
-
 }
 
 - (void)showHUDCompletion:(void (^ __nullable)(void))completion {
     ThirdViewController *vc = [[ThirdViewController alloc] init];
-    [self presentViewController:vc animated:NO completion:completion];
+    [self presentViewController:vc animated:NO completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].delegate.window.rootViewController = [[NYSTabbarViewController alloc] init];
+        [vc dismissViewControllerAnimated:NO completion:completion ?: nil];
+    });
 }
 
 - (void)rightBtnOnclicked:(UIButton *)sender {
@@ -336,7 +336,8 @@ NYSHomeCourseVCDelegate
         [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
         
     } else if ([model.title isEqual:NLocalizedStr(@"Interconnect")]) {
-        [self.navigationController pushViewController:[NYSBaseViewController new] animated:YES];
+        SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:HLWMUrl]];
+        [self presentViewController:sfVC animated:YES completion:nil];
     }
 }
 
@@ -420,7 +421,7 @@ NYSHomeCourseVCDelegate
         })
         .wFrameSet(CGRectMake(0, 0, NScreenWidth, HomeRecommendedHeight))
         .wItemSizeSet(CGSizeMake(kScreenWidth * 0.85, HomeRecommendedHeight))
-        .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, 0))
+        .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, NNormalSpace))
         .wLineSpacingSet(20)
         .wHideBannerControlSet(YES)
         .wDataSet(self.recommendedArray);

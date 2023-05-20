@@ -33,6 +33,7 @@ static NSString *CellID = @"NYSCourseCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = NLocalizedStr(@"SearchTitle");
     
     [self setupSearchView];
     if (_isShowBanner)

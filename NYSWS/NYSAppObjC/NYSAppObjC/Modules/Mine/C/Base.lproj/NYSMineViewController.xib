@@ -588,7 +588,7 @@
                                                                 <constraint firstItem="vve-5N-jfK" firstAttribute="centerY" secondItem="FTT-bC-FCp" secondAttribute="centerY" constant="-5" id="zaV-zk-0p7"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-Jk-nvh">
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-Jk-nvh">
                                                             <rect key="frame" x="82.666666666666686" y="0.0" width="82.333333333333314" height="90"/>
                                                             <subviews>
                                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzJ-ev-kPO">

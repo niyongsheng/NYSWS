@@ -164,7 +164,9 @@
 
 - (IBAction)otherBtnOnclicked:(UIButton *)sender {
     if (sender.tag == 1) {
-        [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];
+        
+        SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:HLWMUrl]];
+        [self presentViewController:sfVC animated:YES completion:nil];
         
 //        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
 //        [NRootViewController presentViewController:loginVC animated:YES completion:^{

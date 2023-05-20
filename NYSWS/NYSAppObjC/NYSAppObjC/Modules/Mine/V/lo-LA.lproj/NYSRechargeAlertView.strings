@@ -36,7 +36,7 @@
 "gbv-JK-nlD.text" = "----";
 
 /* Class = "UILabel"; text = "国外支付"; ObjectID = "gck-f8-NN6"; */
-"gck-f8-NN6.text" = "ການຊໍາລະຂ້າມແດນ";
+"gck-f8-NN6.text" = "PayPal";
 
 /* Class = "UILabel"; text = "支付方式"; ObjectID = "hwV-uc-yDW"; */
 "hwV-uc-yDW.text" = "ຊ່ອງທາງການຊໍາລະ";

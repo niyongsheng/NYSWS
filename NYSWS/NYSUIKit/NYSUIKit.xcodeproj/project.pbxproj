@@ -15,6 +15,8 @@
 		C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597A0729F4FDC5008BEE7F /* NYSUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8597AC729F52192008BEE7F /* NYSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AC529F52192008BEE7F /* NYSLabel.m */; };
 		C8597AC829F52192008BEE7F /* NYSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AC629F52192008BEE7F /* NYSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C85F4E642A189217007DAADC /* FIRVersionCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = C85F4E622A189217007DAADC /* FIRVersionCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C85F4E652A189217007DAADC /* FIRVersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C85F4E632A189217007DAADC /* FIRVersionCheck.m */; };
 		C8B7475A29FA753300673B75 /* NYSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B7475929FA753300673B75 /* NYSKit.framework */; };
 		C8B7475B29FA753300673B75 /* NYSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8B7475929FA753300673B75 /* NYSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8B7479529FA775400673B75 /* LEEBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7476029FA775300673B75 /* LEEBubble.m */; };
@@ -116,6 +118,8 @@
 		C8597A0829F4FDC5008BEE7F /* NYSUIKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NYSUIKit.docc; sourceTree = "<group>"; };
 		C8597AC529F52192008BEE7F /* NYSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSLabel.m; sourceTree = "<group>"; };
 		C8597AC629F52192008BEE7F /* NYSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSLabel.h; sourceTree = "<group>"; };
+		C85F4E622A189217007DAADC /* FIRVersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRVersionCheck.h; sourceTree = "<group>"; };
+		C85F4E632A189217007DAADC /* FIRVersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIRVersionCheck.m; sourceTree = "<group>"; };
 		C8B7475929FA753300673B75 /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7476029FA775300673B75 /* LEEBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEBubble.m; sourceTree = "<group>"; };
 		C8B7476129FA775300673B75 /* LEEBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEBubble.h; sourceTree = "<group>"; };
@@ -263,9 +267,19 @@
 			path = NYSLabel;
 			sourceTree = "<group>";
 		};
+		C85F4E612A189217007DAADC /* FIRVersionCheck */ = {
+			isa = PBXGroup;
+			children = (
+				C85F4E622A189217007DAADC /* FIRVersionCheck.h */,
+				C85F4E632A189217007DAADC /* FIRVersionCheck.m */,
+			);
+			path = FIRVersionCheck;
+			sourceTree = "<group>";
+		};
 		C8B7475E29FA76FC00673B75 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C85F4E612A189217007DAADC /* FIRVersionCheck */,
 				C8B7476E29FA775300673B75 /* BlugeTabBar */,
 				C8B7479229FA775400673B75 /* CMPopTipView */,
 				C8B7475F29FA775300673B75 /* LEEBubble */,
@@ -515,6 +529,7 @@
 				C8B7484129FBBE7D00673B75 /* ThemeManager.h in Headers */,
 				C8B7481229FBA8FA00673B75 /* NYSUIKitUtilities.h in Headers */,
 				C8EE7E812A08C18D000E3A3A /* UINavigationController+NYSUIKit.h in Headers */,
+				C85F4E642A189217007DAADC /* FIRVersionCheck.h in Headers */,
 				C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */,
 				C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */,
 			);
@@ -648,6 +663,7 @@
 				C8B747A029FA775400673B75 /* NYSBlugeTabBar.m in Sources */,
 				C8597A0929F4FDC5008BEE7F /* NYSUIKit.docc in Sources */,
 				C8B747FC29FA818900673B75 /* NYSBaseViewController.m in Sources */,
+				C85F4E652A189217007DAADC /* FIRVersionCheck.m in Sources */,
 				C8B7479529FA775400673B75 /* LEEBubble.m in Sources */,
 				C8B747BC29FA775400673B75 /* CMPopTipView.m in Sources */,
 				C8B7484329FBBE7D00673B75 /* ThemeManager.m in Sources */,

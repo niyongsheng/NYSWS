@@ -30,8 +30,8 @@
     [super awakeFromNib];
     
     self.contentView.backgroundColor = UIColor.whiteColor;
-    ViewRadius(self.contentView, 7);
-    ViewRadius(self.iconIV, 5);
+    ViewRadius(self.contentView, 10);
+    ViewRadius(self.iconIV, 10);
     ViewRadius(self.getBtn, 15);
 }
 

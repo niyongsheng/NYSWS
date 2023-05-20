@@ -41,6 +41,12 @@
                                 name:NNotificationNetWorkStateChange
                               object:nil];
     
+    
+    if ([FirApiToken isNotBlank]) {
+        [FIRVersionCheck setAPIToken:FirApiToken];
+        [FIRVersionCheck check];
+    }
+    
     id lang = [NSLocale preferredLanguages].firstObject;
     NSString *currLanguage = [NSBundle currentLanguage];
     NLog(@"%@当前语言是=%@", lang, currLanguage);

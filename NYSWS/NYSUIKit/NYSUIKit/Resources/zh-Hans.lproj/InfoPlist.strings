@@ -5,7 +5,7 @@
   Created by niyongsheng on 2023/5/8.
   
 */
-NorMore="没有更多了";
+NoMore="没有更多了";
 NoData="暂无数据";
 NetErr="网络错误";
 Retry="重试";

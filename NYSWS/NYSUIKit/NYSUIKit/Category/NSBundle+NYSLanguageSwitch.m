@@ -27,7 +27,8 @@
 
 + (NSString *)currentLanguage
 {
-    return [NYSUIKitUtilities userLanguage] ? : [NSLocale preferredLanguages].firstObject;
+    NSString *currentLang = [NYSUIKitUtilities userLanguage] ? : [NSLocale preferredLanguages].firstObject;
+    return currentLang;
 }
 
 + (void)load

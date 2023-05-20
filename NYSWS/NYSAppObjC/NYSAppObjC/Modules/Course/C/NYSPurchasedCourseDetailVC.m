@@ -34,8 +34,6 @@
     [self wr_setNavBarTitleColor:UIColor.whiteColor];
     self.customStatusBarStyle = UIStatusBarStyleLightContent;
     
-    self.view.backgroundColor = NAppThemeColor;
-    
     [self setupUI];
     [self getDetailData];
 }
@@ -43,17 +41,13 @@
 - (void)setupUI {
     
     _tableviewStyle = UITableViewStylePlain;
-    [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
     self.tableView.mj_footer = nil;
-    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.bounces = NO;
+    self.tableView.showsVerticalScrollIndicator = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [NYSTools addRoundedCorners:self.tableView corners:UIRectCornerTopLeft|UIRectCornerTopRight radius:30];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).offset(0);
-        make.left.mas_equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
-    }];
+    self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [self.view addSubview:self.tableView];
     
     // 表头
     self.headerView = [[NYSPurchasedDetailHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
@@ -68,8 +62,11 @@
 }
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
-
     return NScreenHeight*0.2;
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    return nil;
 }
 
 #pragma mark - 加载详情数据
@@ -102,6 +99,7 @@
             
             self.dataSourceArr = self.detailModel.chapter.mutableCopy;
             [self.tableView reloadData];
+            
         });
     } failed:^(NSError * _Nullable error) {
 

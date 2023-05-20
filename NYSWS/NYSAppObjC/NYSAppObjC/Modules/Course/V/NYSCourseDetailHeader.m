@@ -8,6 +8,7 @@
 #import "NYSCourseDetailHeader.h"
 
 @interface NYSCourseDetailHeader ()
+@property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleL;
@@ -22,7 +23,7 @@
 @implementation NYSCourseDetailHeader
 
 - (void)setupView {
-    
+    ViewRadius(self.topView, 30);
     ViewRadius(self.iconIV, 7);
     self.priceL.adjustsFontSizeToFitWidth = YES;
     self.timeL.adjustsFontSizeToFitWidth = YES;
@@ -34,7 +35,7 @@
     
     [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
     self.titleL.text = model.name;
-    self.subtitleL.text = model.name;
+    self.subtitleL.text = model.subtitle;
     
     NSDictionary *optoins = @{
         NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,

@@ -27,13 +27,15 @@
 
 @interface NYSCatalogModel : NYSBaseObject
 @property (nonatomic , assign) NSInteger              ID;
-@property (nonatomic , copy) NSString              * content_type;
-@property (nonatomic , copy) NSString              * content;
-@property (nonatomic , assign) NSInteger              chapter_id;
 @property (nonatomic , assign) NSInteger              sort;
-@property (nonatomic , assign) NSInteger              updatetime;
 @property (nonatomic , copy) NSString              * translate;
-@property (nonatomic , assign) NSInteger              createtime;
+@property (nonatomic , copy) NSString              * createtime;
+@property (nonatomic , copy) NSString              * chapter;
+@property (nonatomic , copy) NSString              * content_type;
 @property (nonatomic , copy) NSString              * url;
+@property (nonatomic , copy) NSString              * word_list;
+@property (nonatomic , copy) NSString              * chapter_id;
+@property (nonatomic , copy) NSString              * updatetime;
+@property (nonatomic , copy) NSString              * total_page;
+@property (nonatomic , copy) NSString              * content;
 @end
-

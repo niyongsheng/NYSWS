@@ -35,8 +35,7 @@
     [self wr_setNavBarBarTintColor:NAppThemeColor];
     [self wr_setNavBarTitleColor:UIColor.whiteColor];
     self.customStatusBarStyle = UIStatusBarStyleLightContent;
-    
-    self.view.backgroundColor = NAppThemeColor;
+    self.view.backgroundColor = UIColor.whiteColor;
     
     [self setupUI];
     [self getDetailData];
@@ -48,14 +47,13 @@
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
     self.tableView.mj_footer = nil;
-    self.tableView.emptyDataSetSource = nil;
-    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.bounces = NO;
+    self.tableView.showsVerticalScrollIndicator = YES;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [NYSTools addRoundedCorners:self.tableView corners:UIRectCornerTopLeft|UIRectCornerTopRight radius:30];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
         make.left.mas_equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight - BottomBtnHeight));
+        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight - BottomBtnHeight - NBottomHeight));
     }];
     
     // 表头
@@ -63,19 +61,19 @@
     self.tableView.tableHeaderView = self.headerView;
     
     // 购买兑换
-    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, kScreenHeight - BottomBtnHeight, kScreenWidth/2, BottomBtnHeight)];
+    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, NScreenHeight - BottomBtnHeight - NBottomHeight, kScreenWidth/2, BottomBtnHeight)];
     leftBtn.tag = 11;
     [leftBtn addTarget:self action:@selector(bottomBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
-    [leftBtn setTitle:@"兑换激活" forState:UIControlStateNormal];
+    [leftBtn setTitle:NLocalizedStr(@"Activation") forState:UIControlStateNormal];
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:14.f];
     [leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [leftBtn setBackgroundColor:[UIColor colorWithHexString:@"#FFB433"]];
     [self.view addSubview:leftBtn];
     
-    UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/2, kScreenHeight - BottomBtnHeight, kScreenWidth/2, BottomBtnHeight)];
+    UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/2, NScreenHeight - BottomBtnHeight - NBottomHeight, kScreenWidth/2, BottomBtnHeight)];
     rightBtn.tag = 22;
     [rightBtn addTarget:self action:@selector(bottomBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtn setTitle:@"立即购买" forState:UIControlStateNormal];
+    [rightBtn setTitle:NLocalizedStr(@"Purchase") forState:UIControlStateNormal];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:14.f];
     [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightBtn setBackgroundColor:[UIColor colorWithHexString:@"#FE6A48"]];
@@ -140,7 +138,11 @@
 }
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
-    return NScreenHeight * 0.4;
+    return NScreenHeight*0.2;
+}
+
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    return nil;
 }
 
 #pragma mark - 网络加载数据

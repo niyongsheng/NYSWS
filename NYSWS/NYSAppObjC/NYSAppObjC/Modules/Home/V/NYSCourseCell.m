@@ -31,7 +31,7 @@
     
     self.contentView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
     ViewRadius(self.bgV, 10);
-    ViewRadius(self.iconIV, 7);
+    ViewRadius(self.iconIV, 10);
     ViewRadius(self.getBtn, 15);
     
     self.priceL.adjustsFontSizeToFitWidth = YES;

@@ -8,6 +8,7 @@
 #import "NYSPurchasedDetailHeader.h"
 
 @interface NYSPurchasedDetailHeader ()
+@property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *sizeL;
 @property (weak, nonatomic) IBOutlet UILabel *versionL;
@@ -18,7 +19,7 @@
 @implementation NYSPurchasedDetailHeader
 
 - (void)setupView {
-    
+    ViewRadius(self.topView, 30);
 }
 
 - (void)setModel:(NYSHomeCourseModel *)model {

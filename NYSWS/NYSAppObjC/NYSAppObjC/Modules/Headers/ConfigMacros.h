@@ -31,11 +31,6 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define AppServiceAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/xieyi.html"]
 #define AppPrivacyAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/yinsi.html"]
 
-#define DefaultClientId  @"" // client ID
-#define DefaultAppId     @"" // 店铺 ID
-#define DefaultSecretKey @"" // 小鹅通申请的秘钥
-#define DefaultSourceUrl @"https://app5wtzrduk4143.h5.xiaoeknow.com" //小鹅店铺首页链接
-
 // 网络url
 #define NCDNURL(urlStr) [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr]]
 // 网络状态变化
@@ -70,27 +65,42 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 // 机构编码
 #define OrganizationID  @"c3485b27-4b20-53a3-8f81-07c03a9f949b"
 
+// 小鹅通
+#define DefaultClientId  @"" // client ID
+#define DefaultAppId     @"" // 店铺 ID
+#define DefaultSecretKey @"" // 小鹅通申请的秘钥
+#define DefaultSourceUrl @"https://app5wtzrduk4143.h5.xiaoeknow.com" //小鹅店铺首页链接
+
+// 互联外卖
+#define HLWMUrl                 @"https://ddg.568lao.com/addons/we7_wmall/template/vue/index.html?menu=#/pages/home/index?map=baidu&dr=kip&i=3"
+// 内测自动更新
+#define FirApiToken             @"b4c29398b061073cb43ab65cf518be9c"
+
 // 微信登录
-#define WXAPPID         @""
-#define APPSECRET       @""
+#define WXAPPID                 @""
+#define APPSECRET               @""
+
+// 支付宝
+#define AILIPAY_ID              @"2021003194692259"
+#define AILIPAY_SECRET          @""
 
 // QQ登录
-#define QQAPPID         @""
-#define QQAPPKEY        @""
+#define QQAPPID                 @""
+#define QQAPPKEY                @""
 
 // 极光推送
-#define JPUSH_APPKEY    @""
-#define JPUSH_CHANNEl   @"App Store"
-#define IS_Prod         YES
+#define JPUSH_APPKEY            @""
+#define JPUSH_CHANNEl           @"App Store"
+#define IS_Prod                 YES
 
 // 友盟+
-#define UMengKey        @"63ad31dcd64e6861390988c9"
+#define UMengKey                @"63ad31dcd64e6861390988c9"
 
 // 兔小巢
-#define TXCAppID        @"3445158"
+#define TXCAppID                @"3445158"
 
 // 融云IM
-#define RCAPPKEY_DEV    @"n19jmcy5n8fz90" // 开发环境
-#define RCAPPKEY_PRO    @"" // 生产环境
+#define RCAPPKEY_DEV            @"n19jmcy5n8fz90" // 开发环境
+#define RCAPPKEY_PRO            @"" // 生产环境
 
 #endif /* CommonMacros_h */

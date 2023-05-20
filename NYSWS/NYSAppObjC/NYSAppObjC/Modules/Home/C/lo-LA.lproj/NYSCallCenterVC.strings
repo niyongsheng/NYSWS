@@ -6,7 +6,7 @@
 "FV5-nW-Ab3.text" = "ໂປຣເເກຣມໂປຣເເກຣມ： ";
 
 /* Class = "UILabel"; text = "客服邮箱："; ObjectID = "JNw-W2-azi"; */
-"JNw-W2-azi.text" = "ອີເເມວລ໌ທີ່ເປັນປະໂຫຍດການເມືອງ：";
+"JNw-W2-azi.text" = "ອີເມວລ໌：";
 
 /* Class = "UILabel"; text = "座机电话："; ObjectID = "Jhe-g8-fOk"; */
 "Jhe-g8-fOk.text" = "ໂປຣເເກຣມຫ້ອງການ：";

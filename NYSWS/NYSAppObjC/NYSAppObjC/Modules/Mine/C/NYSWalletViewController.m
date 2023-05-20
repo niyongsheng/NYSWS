@@ -12,6 +12,8 @@
 #import "NYSWithdrawViewController.h"
 #import "NYSRechargeAlertView.h"
 
+#define NAVBAR_COLORCHANGE_POINT 100
+
 @interface NYSWalletViewController ()
 {
     NSInteger _pageNo;
@@ -26,7 +28,9 @@
     
     self.navigationItem.title = NLocalizedStr(@"MyWallet");
     
+    [self wr_setNavBarBarTintColor:[UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0]];
     [self wr_setNavBarBackgroundAlpha:0];
+    [self wr_setNavBarTintColor:[UIColor whiteColor]];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
     [self setupUI];
@@ -210,6 +214,24 @@
         _rechargeAlertView = [[NYSRechargeAlertView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     }
     return _rechargeAlertView;
+}
+
+#pragma mark - 导航栏透明化处理
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > NAVBAR_COLORCHANGE_POINT) {
+        CGFloat alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NTopHeight;
+        [self wr_setNavBarBackgroundAlpha:alpha];
+        [self wr_setNavBarTintColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
+        [self wr_setNavBarTitleColor:[[UIColor blackColor] colorWithAlphaComponent:alpha]];
+        [self wr_setStatusBarStyle:UIStatusBarStyleDefault];
+
+    } else {
+        [self wr_setNavBarBackgroundAlpha:0];
+        [self wr_setNavBarTintColor:[UIColor whiteColor]];
+        [self wr_setNavBarTitleColor:[UIColor blackColor]];
+        [self wr_setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
 }
 
 @end

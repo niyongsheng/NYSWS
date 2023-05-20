@@ -20,7 +20,18 @@
 @implementation NYSTabbarViewController
 
 + (void)initialize {
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: TintColor} forState:UIControlStateSelected];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
+    appearance.backgroundColor = [UIColor redColor];
+    appearance.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
+    self.tabBarItem.standardAppearance = appearance;
+    if (@available(iOS 15.0, *)) {
+        self.tabBarItem.scrollEdgeAppearance = appearance;
+    }
 }
 
 - (void)viewDidLoad {

@@ -5,6 +5,12 @@
   Created by niyongsheng on 2023/5/8.
   
 */
+NoMore="没有更多了";
+NoData="暂无数据";
+NetErr="网络错误";
+Retry="重试";
+Loading="加载中...";
+
 CFBundleDisplayName="易学点";
 Home="首页";
 Course="课程";
@@ -21,8 +27,6 @@ Message="消息中心";
 Interconnect="互联外卖";
 
 Search="搜一搜";
-NoData="暂无数据";
-NetErr="网络错误";
 
 Copied="已复制";
 Wechat="微信";
@@ -69,8 +73,11 @@ Purchased="已购";
 Learned="已学";
 Detail="详情";
 Pay="支付";
+WaitPay="待支付";
+Payed="已支付";
 Active="激活";
 SearchWord="搜索词";
+SearchTitle="搜索";
 NoAudioInfo="暂无音频信息";
 
 ActiveSuccess="激活成功";
@@ -121,3 +128,6 @@ TipsImg="请选择图片";
 
 TipsOldPwd="请输入旧密码";
 TipsNewPwd="请输入新密码";
+
+Activation="兑换激活";
+Purchase="立即购买";
