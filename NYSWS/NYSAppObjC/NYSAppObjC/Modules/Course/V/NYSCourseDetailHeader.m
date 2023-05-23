@@ -8,6 +8,8 @@
 #import "NYSCourseDetailHeader.h"
 
 @interface NYSCourseDetailHeader ()
+@property (strong, nonatomic) YYLabel *label;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descLHeight;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
@@ -28,24 +30,33 @@
     self.priceL.adjustsFontSizeToFitWidth = YES;
     self.timeL.adjustsFontSizeToFitWidth = YES;
     self.versionL.adjustsFontSizeToFitWidth = YES;
+    
+    self.label = [YYLabel new];
+    self.label.numberOfLines = 0;
+    self.label.userInteractionEnabled = YES;
+    [self.label addGestureRecognizer];
+    [self.descL addSubview:self.label];
+    
+    self.descL.userInteractionEnabled = YES;
+    self.descL.text = nil;
 }
 
 - (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
     
-    [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    if ([model.image containsString:@"http"]) {
+        [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    } else {
+        [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
+    }
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     
-    NSDictionary *optoins = @{
-        NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
-        NSFontAttributeName:[UIFont systemFontOfSize:17]
-    };
-    NSString *contentStr = model.details;
-    NSString *handelStr = [NSString stringWithFormat:@"<head><style>img{max-width:%f !important;height:auto}</style></head>%@", NScreenWidth - 30, contentStr];
-    NSData *data = [handelStr dataUsingEncoding:NSUnicodeStringEncoding];
-    NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:nil];
-    self.descL.attributedText = attributeString;
+    NSMutableAttributedString *aStr = [NYSCustomLabel getAttributedString:model.details];
+    CGRect frame = [NYSCustomLabel getAttributedStringFrame:aStr width:kScreenWidth - 30];
+    self.label.attributedText = aStr;
+    self.label.frame = frame;
+    self.descLHeight.constant = frame.size.height;
 
     self.priceL.text = model.price;
     self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil]];

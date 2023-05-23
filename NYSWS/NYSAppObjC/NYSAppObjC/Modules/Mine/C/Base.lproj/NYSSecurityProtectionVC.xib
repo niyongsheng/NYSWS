@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSSecurityProtectionVC">
             <connections>
+                <outlet property="answerTF" destination="QVe-mW-YlL" id="hgI-vr-pGo"/>
                 <outlet property="commitBtn" destination="aZu-9W-rQf" id="0ex-iR-R3o"/>
-                <outlet property="nameL" destination="FIy-8r-sOT" id="X3m-63-2Ve"/>
-                <outlet property="nameTF" destination="QVe-mW-YlL" id="hgI-vr-pGo"/>
+                <outlet property="questionL" destination="FIy-8r-sOT" id="X3m-63-2Ve"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

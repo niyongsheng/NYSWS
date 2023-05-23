@@ -46,7 +46,11 @@
     
     self.payTypeBtn0.selected = YES;
     
-    [self.iconIV setImageWithURL:[NSURL URLWithString:self.detailModel.image] placeholder:NPImageFillet];
+    if ([self.detailModel.image containsString:@"http"]) {
+        [self.iconIV setImageWithURL:[NSURL URLWithString:self.detailModel.image] placeholder:NPImageFillet];
+    } else {
+        [self.iconIV setImageWithURL:NCDNURL(self.detailModel.image) placeholder:NPImageFillet];
+    }
     self.titleL.text = self.detailModel.name;
     self.subtitleL.text = self.detailModel.subtitle;
     self.coinL.text = self.detailModel.price;
@@ -59,7 +63,7 @@
     [NYSTools zoomToShow:sender.layer];
     
     NSMutableDictionary *params = @{
-        @"course_id": @(self.detailModel.class_id)
+        @"course_id": @(self.detailModel.ID)
     }.mutableCopy;
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"

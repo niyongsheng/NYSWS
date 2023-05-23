@@ -14,8 +14,8 @@
 /* Class = "UILabel"; text = "*"; ObjectID = "5Y2-gB-tgl"; */
 "5Y2-gB-tgl.text" = "*";
 
-/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "7QP-uD-626"; */
-"7QP-uD-626.placeholder" = "ກະລຸນາໃສ່";
+/* Class = "UITextField"; placeholder = "请选择"; ObjectID = "7QP-uD-626"; */
+"7QP-uD-626.placeholder" = "ກະລຸນາໃສ່ອ";
 
 /* Class = "UITextField"; placeholder = "请输入"; ObjectID = "8yW-0O-F8o"; */
 "8yW-0O-F8o.placeholder" = "ກະລຸນາໃສ່";

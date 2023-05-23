@@ -14,7 +14,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UIView *iconV;
-@property (weak, nonatomic) IBOutlet UITextField *remarkTF;
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @end
@@ -31,7 +31,7 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
     _iconUrl = NAppManager.userInfo.avatar;
-    self.remarkTF.text = NAppManager.userInfo.nickname;
+    self.nicknameTF.text = NAppManager.userInfo.nickname;
     [self.iconIV setImageWithURL:NCDNURL(_iconUrl) placeholder:NPImageFillet];
     
     @weakify(self)
@@ -42,8 +42,9 @@
         ZLPhotoActionSheet *ac = [[ZLPhotoActionSheet alloc] init];
         ac.configuration.navTitleColor = NAppThemeColor;
         ac.configuration.maxSelectCount = 1;
-        ac.configuration.maxPreviewCount = 0;
+        ac.configuration.maxPreviewCount = 10;
         ac.configuration.allowEditImage = YES;
+        ac.configuration.allowSelectVideo = NO;
         ac.sender = self;
         [ac setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
             @strongify(self)
@@ -86,13 +87,19 @@
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     
-    if (![_remarkTF.text isNotBlank]) {
+    if (![self.nicknameTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"TipsNickname")];
         return;
     }
     
+    if (self.nicknameTF.text.length < 1 || self.nicknameTF.text.length > 13) {
+        [NYSTools showToast:NLocalizedStr(@"TipsNicknameLength")];
+        [NYSTools shakeAnimation:self.nicknameTF.layer];
+        return;
+    }
+    
     NSMutableDictionary *params = @{
-        @"nickname": _remarkTF.text,
+        @"nickname": _nicknameTF.text,
         @"avatar": _iconUrl
       }.mutableCopy;
     @weakify(self)

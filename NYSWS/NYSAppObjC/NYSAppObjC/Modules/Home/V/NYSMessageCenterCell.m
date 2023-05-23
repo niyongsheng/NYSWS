@@ -33,7 +33,7 @@
     _model = model;
     
     self.titleL.text = model.title;
-    self.subtitleL.text = model.createtime;
+    self.subtitleL.text = [NYSTools transformTimestampToTime:model.createtime * 1000 format:nil];
 }
 
 @end

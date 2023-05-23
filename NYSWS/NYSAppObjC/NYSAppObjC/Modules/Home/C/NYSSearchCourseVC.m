@@ -10,6 +10,7 @@
 #import "NYSBannerCell.h"
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
+#import "NYSCatalogViewController.h"
 
 #define HomeBannerHeight        RealValue(120)
 
@@ -44,7 +45,7 @@ static NSString *CellID = @"NYSCourseCell";
     
     _tableviewStyle = UITableViewStylePlain;
     [self.view addSubview:self.tableView];
-    self.tableView.refreshControl = nil;
+    //    self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -80,7 +81,15 @@ static NSString *CellID = @"NYSCourseCell";
     self.searchTF.font = [UIFont systemFontOfSize:14];
     self.searchTF.placeholder = NLocalizedStr(@"Search");
     self.searchTF.returnKeyType = UIReturnKeySearch;
+    self.searchTF.userInteractionEnabled = NO;
     [searchView addSubview:self.searchTF];
+    
+    UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
+    [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
+        [self.navigationController pushViewController:searchVC animated:YES];
+    }];
+    [searchView addSubview:searchBtn];
     
     // 轮播图
     if (_isShowBanner) {
@@ -108,10 +117,20 @@ static NSString *CellID = @"NYSCourseCell";
 }
 
 #pragma mark - 网络加载数据
+- (void)headerRereshing {
+    [super headerRereshing];
+    
+    _pageNo = 1;
+    [self getData:YES];
+}
+
 - (void)footerRereshing {
     [super footerRereshing];
     _pageNo ++;
-    
+    [self getData:NO];
+}
+
+- (void)getData:(BOOL)isHeader {
     NSDictionary *argument = @{
         @"page": @(_pageNo),
         @"limit": DefaultPageSize,
@@ -127,6 +146,9 @@ static NSString *CellID = @"NYSCourseCell";
         @strongify(self)
         NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
+            if (isHeader) {
+                [self.dataSourceArr removeAllObjects];
+            }
             [self.dataSourceArr addObjectsFromArray:array];
             [self.tableView.mj_footer endRefreshing];
             
@@ -186,22 +208,39 @@ static NSString *CellID = @"NYSCourseCell";
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
     
-#ifdef DEBUG
-    NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
-    vc.model = model;
-    [self.navigationController pushViewController:vc animated:YES];
-#else
-    if ([model.is_activation isEqual:@"1"]) {
+    if ([model.is_activation isEqual:@"0"]) {
         NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];
+        
+    } else if ([model.is_try isEqual:@"0"]) {
+        NSMutableDictionary *params = @{
+            @"course_id": @(model.ID),
+          }.mutableCopy;
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                              url:@"/index/Course/info"
+                                          argument:params
+                                                 remark:@"课程详情"
+                                                success:^(id response) {
+            @strongify(self)
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NYSHomeCourseModel *detailModel = [NYSHomeCourseModel modelWithDictionary:response];
+                NYSCatalogViewController *vc = NYSCatalogViewController.new;
+                vc.isFromTry = YES;
+                vc.index = 0;
+                vc.chapterArray = detailModel.chapter;
+                [self.navigationController pushViewController:vc animated:YES];
+            });
+        } failed:^(NSError * _Nullable error) {
+            
+        }];
         
     } else {
         NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];
     }
-#endif
 }
 
 #pragma mark - Setter/Getter

@@ -116,16 +116,9 @@
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
 
-    if ([model.is_activation isEqual:@"1"]) {
-        NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
-        vc.model = model;
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    } else {
-        NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
-        vc.model = model;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+    NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -30,6 +30,9 @@
 
 @property (nonatomic, assign) NSInteger totalPage;
 @property (nonatomic, assign) NSInteger currentPage;
+
+/// 是否可试听
+@property (nonatomic , copy) NSString *is_try;
 @end
 
 @implementation NYSCatalogViewController
@@ -61,6 +64,11 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     
     self.navigationItem.titleView.userInteractionEnabled = YES;
     [self.navigationItem.titleView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        if (self.isFromTry) {
+            [NYSTools showToast:NLocalizedStr(@"CanNotSearch")];
+            return;
+        }
+        
         NYSCatalogSearchViewController *vc = NYSCatalogSearchViewController.new;
         vc.index = self.index;
         vc.chapterArray = self.chapterArray;
@@ -111,6 +119,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     self.leftBtn.enabled = self.index > 0;
     self.rightBtn.enabled = self.index < self.chapterArray.count - 1;
     
+    self.is_try = [self.chapterArray[self.index] is_try];
     self.titleL.text = [self.chapterArray[self.index] title];
     self.subtitleL.text = [self.chapterArray[self.index] subtitle];
     [UIView animateWithDuration:1.0f animations:^{
@@ -265,12 +274,17 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         NYSWordCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NYSWordCellID];
+        cell.indexPath = indexPath;
         cell.modelArr = self.dataSourceArr[indexPath.section][indexPath.row];
         cell.block = ^(BOOL isLeft, NSIndexPath * _Nonnull indexP) {
+            
             NSArray<NYSCatalogModel *> *arr = self.dataSourceArr[indexP.section][indexP.row];
-            [self playWav:isLeft ? [[arr firstObject] url] : [[arr lastObject] url]];
+            if (isLeft) {
+                [self playWav:[[arr firstObject] url]];
+            } else if (arr.count > 1) {
+                [self playWav:[[arr lastObject] url]];
+            }
         };
-//        cell.model = model;
         return cell;
         
     } else {
@@ -290,18 +304,27 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
+        
         NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
         [self playWav:model.url];
     }
 }
 
 - (void)playWav:(NSString *)urlStr {
+    if (self.isFromTry && self.is_try.boolValue) {
+        [NYSTools showToast:NLocalizedStr(@"PleaseBuy")];
+        return;
+    }
+    
     if (![urlStr isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"NoAudioInfo")];
         return;
     }
-    
-    // @"http://xyd.app12345.cn/upload/images/76/84577a010bf752f4c6530bf60c9412.wav"
+
+    if (![urlStr containsString:@"http"]) {
+        urlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr];
+    }
+
     [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:urlStr playOrPause:YES];
 }
 @end

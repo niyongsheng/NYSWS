@@ -39,6 +39,6 @@
 #import "NYSLoginVC.h"
 #import "NYSTabbarViewController.h"
 
-
+#import "NYSCustomLabel.h"
 
 #endif /* PrefixHeader_pch */

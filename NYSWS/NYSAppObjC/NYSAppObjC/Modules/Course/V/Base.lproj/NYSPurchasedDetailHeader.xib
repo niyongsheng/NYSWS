@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSPurchasedDetailHeader">
             <connections>
                 <outlet property="descL" destination="j2D-Cr-8mm" id="giT-k4-b09"/>
+                <outlet property="descLHeight" destination="mXu-gv-ONg" id="jhc-dD-9NL"/>
                 <outlet property="sectionL" destination="IcQ-mF-3Br" id="cM9-c0-IHN"/>
                 <outlet property="sizeL" destination="Lds-je-eSO" id="6Wl-mp-lg1"/>
                 <outlet property="timeL" destination="uPU-Wh-ISp" id="bRz-pX-OkF"/>
@@ -51,6 +52,9 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2D-Cr-8mm">
                     <rect key="frame" x="15" y="125" width="334" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="mXu-gv-ONg"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>

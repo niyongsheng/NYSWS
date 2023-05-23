@@ -38,14 +38,18 @@
 - (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
     
-    [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    if ([model.image containsString:@"http"]) {
+        [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    } else {
+        [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
+    }
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     
     self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:model.updatetime * 1000 format:nil]];
     self.versionL.text = [NSString stringWithFormat:@"%@：%.2fMB   %@：%@",
                           NLocalizedStr(@"CourseSize"), model.size, NLocalizedStr(@"CourseVersion"), model.version];
-    self.tagIV.hidden = [model.is_recommend isEqual:@"0"] ? YES : NO;
+    self.tagIV.hidden = [model.is_recommend isEqual:@"1"] ? YES : NO;
 }
 
 @end

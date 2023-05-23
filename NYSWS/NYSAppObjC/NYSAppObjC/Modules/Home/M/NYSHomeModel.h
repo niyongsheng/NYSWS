@@ -49,8 +49,13 @@
 @property (nonatomic , assign) NSInteger              sort;
 @property (nonatomic , copy) NSString              * name;
 @property (nonatomic , copy) NSString              * subtitle;
+/// 是否推荐0是1否
 @property (nonatomic , copy) NSString              * is_recommend;
+/// 当前用户是否已激活0是1否
 @property (nonatomic , copy) NSString              * is_activation;
+/// 当前用户是否已购买0是1否
+@property (nonatomic , copy) NSString              * is_course;
+/// 是否有试听章节0是1否
 @property (nonatomic , copy) NSString              * is_try;
 
 @property (nonatomic , copy) NSArray<NYSChapter *> * chapter;
@@ -62,5 +67,5 @@
 @property (nonatomic , copy) NSString              * content;
 @property (nonatomic , copy) NSString              * user_id;
 @property (nonatomic , copy) NSString              * type;
-@property (nonatomic , copy) NSString              * createtime;
+@property (nonatomic , assign) NSInteger             createtime;
 @end

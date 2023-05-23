@@ -9,6 +9,7 @@
 #import "NYSCourseCell.h"
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
+#import "NYSCatalogViewController.h"
 
 @interface NYSHomeCourseVC ()
 {
@@ -20,6 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [NNotificationCenter addObserverForName:@"HomeRefreshNotification" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        self->_pageNo = 0;
+        [self.dataSourceArr removeAllObjects];
+        [self footerRereshing];
+    }];
     
     [self setupSearchView];
 }
@@ -119,10 +126,33 @@
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
     
-    if ([model.is_activation isEqual:@"1"]) {
+    if ([model.is_activation isEqual:@"0"]) {
         NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];
+        
+    } else if ([model.is_try isEqual:@"0"]) {
+        NSMutableDictionary *params = @{
+            @"course_id": @(model.ID),
+          }.mutableCopy;
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                              url:@"/index/Course/info"
+                                          argument:params
+                                                 remark:@"课程详情"
+                                                success:^(id response) {
+            @strongify(self)
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NYSHomeCourseModel *detailModel = [NYSHomeCourseModel modelWithDictionary:response];
+                NYSCatalogViewController *vc = NYSCatalogViewController.new;
+                vc.isFromTry = YES;
+                vc.index = 0;
+                vc.chapterArray = detailModel.chapter;
+                [self.navigationController pushViewController:vc animated:YES];
+            });
+        } failed:^(NSError * _Nullable error) {
+            
+        }];
         
     } else {
         NYSCourseDetailVC *vc = NYSCourseDetailVC.new;

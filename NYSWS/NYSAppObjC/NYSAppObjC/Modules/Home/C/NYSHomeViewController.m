@@ -21,6 +21,7 @@
 
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
+#import "NYSCatalogViewController.h"
 
 #import "ThirdViewController.h"
 
@@ -74,6 +75,15 @@ NYSHomeCourseVCDelegate
     
     [self setupNav];
     [self getPagingData];
+}
+
+- (void)headerRereshing {
+    [self getData];
+    [self.pageTitleView setResetSelectedIndex:0];
+    [NNotificationCenter postNotificationName:@"HomeRefreshNotification" object:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.containerScrollView.refreshControl endRefreshing];
+    });
 }
 
 - (void)getPagingData {
@@ -199,6 +209,10 @@ NYSHomeCourseVCDelegate
     CGFloat h = 0;
     
     self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = NAppThemeColor;
+    [refreshControl addTarget:self action:@selector(headerRereshing) forControlEvents:UIControlEventValueChanged];
+    self.containerScrollView.refreshControl = refreshControl;
     [self.view addSubview:self.containerScrollView];
     
     self.bannerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HomeBannerHeight + 500)];
@@ -365,7 +379,7 @@ NYSHomeCourseVCDelegate
 - (NSMutableArray<NYSHomeCourseModel *> *)recommendedArray {
     if (!_recommendedArray) {
         NYSHomeCourseModel *billboard = [NYSHomeCourseModel new];
-        _recommendedArray = @[billboard, billboard, billboard].mutableCopy;
+        _recommendedArray = @[billboard].mutableCopy;
     }
     return _recommendedArray;
 }
@@ -408,10 +422,33 @@ NYSHomeCourseVCDelegate
         .wEventClickSet(^(id anyID, NSInteger index) {
             NYSHomeCourseModel *model = self.recommendedArray[index];
             
-            if ([model.is_activation isEqual:@"1"]) {
+            if ([model.is_activation isEqual:@"0"]) {
                 NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
                 vc.model = model;
                 [self.navigationController pushViewController:vc animated:YES];
+                
+            } else if ([model.is_try isEqual:@"0"]) {
+                NSMutableDictionary *params = @{
+                    @"course_id": @(model.ID),
+                  }.mutableCopy;
+                @weakify(self)
+                [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                      url:@"/index/Course/info"
+                                                  argument:params
+                                                         remark:@"课程详情"
+                                                        success:^(id response) {
+                    @strongify(self)
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NYSHomeCourseModel *detailModel = [NYSHomeCourseModel modelWithDictionary:response];
+                        NYSCatalogViewController *vc = NYSCatalogViewController.new;
+                        vc.isFromTry = YES;
+                        vc.index = 0;
+                        vc.chapterArray = detailModel.chapter;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    });
+                } failed:^(NSError * _Nullable error) {
+                    
+                }];
                 
             } else {
                 NYSCourseDetailVC *vc = NYSCourseDetailVC.new;

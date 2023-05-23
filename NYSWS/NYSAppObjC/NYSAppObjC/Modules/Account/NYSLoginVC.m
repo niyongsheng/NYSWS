@@ -9,6 +9,7 @@
 #import "NYSLoginVC.h"
 #import "NYSForgetPwdVC.h"
 #import "NYSRegisterVC.h"
+#import "NYSProtocolDetailVC.h"
 
 @interface NYSLoginVC () <UITextViewDelegate, UITextFieldDelegate>
 
@@ -151,11 +152,16 @@
                                              remark:@"服务协议"
                                             success:^(id response) {
             @strongify(self)
-            NYSWebViewController *webVC = [NYSWebViewController new];
-            webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
-            webVC.title = NLocalizedStr(@"UserProtocol");
-            webVC.autoTitle = NO;
-            [self.navigationController pushViewController:webVC animated:YES];
+//            NYSWebViewController *webVC = [NYSWebViewController new];
+//            webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+//            webVC.title = NLocalizedStr(@"UserProtocol");
+//            webVC.autoTitle = NO;
+//            [self.navigationController pushViewController:webVC animated:YES];
+            
+            NYSProtocolDetailVC *detailVC = [NYSProtocolDetailVC new];
+            detailVC.contentStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+            detailVC.title = NLocalizedStr(@"UserProtocol");
+            [self.navigationController pushViewController:detailVC animated:YES];
 
         } failed:^(NSError * _Nullable error) {
 
@@ -169,12 +175,16 @@
                                              remark:@"隐私协议"
                                             success:^(id response) {
             @strongify(self)
-            NYSWebViewController *webVC = [NYSWebViewController new];
-            webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
-            webVC.title = NLocalizedStr(@"PrivacyProtocol");
-            webVC.autoTitle = NO;
-            [self.navigationController pushViewController:webVC animated:YES];
-            [self.navigationController pushViewController:webVC animated:YES];
+//            NYSWebViewController *webVC = [NYSWebViewController new];
+//            webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
+//            webVC.title = NLocalizedStr(@"PrivacyProtocol");
+//            webVC.autoTitle = NO;
+//            [self.navigationController pushViewController:webVC animated:YES];
+            
+            NYSProtocolDetailVC *detailVC = [NYSProtocolDetailVC new];
+            detailVC.contentStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+            detailVC.title = NLocalizedStr(@"PrivacyProtocol");
+            [self.navigationController pushViewController:detailVC animated:YES];
 
         } failed:^(NSError * _Nullable error) {
 

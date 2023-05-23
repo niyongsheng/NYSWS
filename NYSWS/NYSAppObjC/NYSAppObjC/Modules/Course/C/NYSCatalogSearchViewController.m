@@ -74,7 +74,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     ViewRadius(_contentV, 20);
     self.contentV.backgroundColor = [UIColor colorWithHexString:@"#4FBAD4"];
     
-    [self.searchTF becomeFirstResponder];
+//    [self.searchTF becomeFirstResponder];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -180,12 +180,16 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         NYSWordCell *cell = [self.tableView dequeueReusableCellWithIdentifier:NYSWordCellID];
+        cell.indexPath = indexPath;
         cell.modelArr = self.dataSourceArr[indexPath.section][indexPath.row];
         cell.block = ^(BOOL isLeft, NSIndexPath * _Nonnull indexP) {
             NSArray<NYSCatalogModel *> *arr = self.dataSourceArr[indexP.section][indexP.row];
-            [self playWav:isLeft ? [[arr firstObject] url] : [[arr lastObject] url]];
+            if (isLeft) {
+                [self playWav:[[arr firstObject] url]];
+            } else if (arr.count > 1) {
+                [self playWav:[[arr lastObject] url]];
+            }
         };
-//        cell.model = model;
         return cell;
         
     } else {
@@ -215,7 +219,11 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         [NYSTools showToast:NLocalizedStr(@"NoAudioInfo")];
         return;
     }
-
+    
+    if (![urlStr containsString:@"http"]) {
+        urlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr];
+    }
+    
     // @"http://xyd.app12345.cn/upload/images/76/84577a010bf752f4c6530bf60c9412.wav"
     [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:urlStr playOrPause:YES];
 }

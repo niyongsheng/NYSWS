@@ -280,17 +280,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="yZk-fH-ciR">
-                                                    <rect key="frame" x="375" y="15" width="0.0" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" id="YrR-d7-rZM"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="355" y="15" width="20" height="20"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qy5-vz-tb1">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <connections>
+                                                        <action selector="securityQuestionBtnOnclicked:" destination="-1" eventType="touchUpInside" id="UVr-jk-N8x"/>
+                                                    </connections>
                                                 </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QP-uD-626">
-                                                    <rect key="frame" x="225" y="15.666666666666659" width="150" height="18.666666666666679"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7QP-uD-626">
+                                                    <rect key="frame" x="205" y="15.666666666666659" width="150" height="18.666666666666679"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="kJ8-V3-lXi"/>
                                                     </constraints>
@@ -404,7 +404,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-a1-wUB">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-a1-wUB">
                                                     <rect key="frame" x="14.999999999999998" y="14.999999999999998" width="7.6666666666666661" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>

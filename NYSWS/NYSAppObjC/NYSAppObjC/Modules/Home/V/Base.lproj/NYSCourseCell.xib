@@ -41,7 +41,7 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USs-nP-lgD">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USs-nP-lgD">
                                 <rect key="frame" x="254" y="68" width="80" height="30"/>
                                 <color key="backgroundColor" red="0.81966799499999998" green="0.28621619939999998" blue="0.16086065769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

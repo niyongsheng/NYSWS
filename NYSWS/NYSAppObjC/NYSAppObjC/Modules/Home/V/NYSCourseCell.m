@@ -39,17 +39,22 @@
 
 - (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
-
-    [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    
+    if ([model.image containsString:@"http"]) {
+        [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
+    } else {
+        [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
+    }
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     self.priceL.text = model.price;
+    [_getBtn setTitle:NLocalizedStr(@"ActivationExchange") forState:UIControlStateNormal];
     
-    if (model.is_try.boolValue) {
+    if (!model.is_try.boolValue) {
         [_getBtn setTitle:NLocalizedStr(@"ImmediateAudition") forState:UIControlStateNormal];
     }
     
-    if (model.is_activation.boolValue) {
+    if (!model.is_activation.boolValue) {
         [_getBtn setTitle:NLocalizedStr(@"Activated") forState:UIControlStateNormal];
     }
 }

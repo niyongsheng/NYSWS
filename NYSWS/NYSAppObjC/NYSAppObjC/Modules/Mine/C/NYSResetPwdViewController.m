@@ -50,11 +50,11 @@
     NSMutableDictionary *params = @{
         @"phone": NAppManager.userInfo.phone,
         @"old_password": _pwdTF.text,
-        @"password": _renewPwdTF.text,
+        @"new_password": _renewPwdTF.text,
       }.mutableCopy;
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@"/index/Member/update_pass"
+                                          url:@"/index/Member/update_password"
                                       argument:params
                                              remark:@"修改密码"
                                             success:^(id response) {

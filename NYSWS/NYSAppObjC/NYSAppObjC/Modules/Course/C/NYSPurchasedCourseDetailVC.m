@@ -85,17 +85,9 @@
             self.detailModel = [NYSHomeCourseModel modelWithDictionary:response];
             self.headerView.model = self.detailModel;
             
-            // 计算富文本的高度
-            NSDictionary *optoins = @{
-                NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,
-                NSFontAttributeName:[UIFont systemFontOfSize:20]
-            };
-            NSString *contentStr = self.detailModel.details;
-            NSString *handelStr = [NSString stringWithFormat:@"<head><style>img{max-width:%f !important;height:auto}</style></head>%@", NScreenWidth - 30, contentStr];
-            NSData *data = [handelStr dataUsingEncoding:NSUnicodeStringEncoding];
-            NSAttributedString *attributeString = [[NSAttributedString alloc] initWithData:data options:optoins documentAttributes:nil error:nil];
-            CGSize attSize = [attributeString boundingRectWithSize:CGSizeMake(NScreenWidth-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
-            self.tableView.tableHeaderView.height = 200 + attSize.height;
+            NSMutableAttributedString *aStr = [NYSCustomLabel getAttributedString:self.detailModel.details];
+            CGRect frame = [NYSCustomLabel getAttributedStringFrame:aStr width:kScreenWidth - 30];
+            self.tableView.tableHeaderView.height = 200 + frame.size.height;
             
             self.dataSourceArr = self.detailModel.chapter.mutableCopy;
             [self.tableView reloadData];
@@ -142,15 +134,6 @@
         [weakSelf.tableView.mj_footer endRefreshing];
         weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
-}
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    _pageNo = 1;
-    [self footerRereshing];
-    
-    return YES;
 }
 
 #pragma mark - tableview delegate / dataSource

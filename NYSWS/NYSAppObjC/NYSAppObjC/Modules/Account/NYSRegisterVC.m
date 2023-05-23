@@ -31,22 +31,44 @@
     self.navigationItem.title = NLocalizedStr(@"Regist");
     
     ViewRadius(_commitBtn, 22.5f)
+}
+
+- (IBAction)securityQuestionBtnOnclicked:(UIButton *)sender {
     
-#ifdef DEBUG
-    _nicknameTF.text = @"Testing";
-    _phoneTF.text = @"18888888888";
-    _passwordTF.text = @"abcd1234";
-    _repasswordTF.text = @"abcd1234";
-    _securityQuestionTF.text = @"how are you";
-    _securityAnswerTF.text = @"fine";
-    _InvitationCodeTF.text = @"123";
-#endif
+    BRStringPickerView *stringPickerView = [[BRStringPickerView alloc] init];
+    stringPickerView.pickerMode = BRStringPickerComponentSingle;
+    stringPickerView.title = NLocalizedStr(@"SecurityQuestionTitle");
+    stringPickerView.dataSourceArr = @[
+        NLocalizedStr(@"SecurityQuestion1"),
+        NLocalizedStr(@"SecurityQuestion2"),
+        NLocalizedStr(@"SecurityQuestion3"),
+        NLocalizedStr(@"SecurityQuestion4"),
+        NLocalizedStr(@"SecurityQuestion5"),
+    ];
+    stringPickerView.resultModelBlock = ^(BRResultModel * _Nullable resultModel) {
+        self.securityQuestionTF.text = resultModel.value;
+    };
+    
+    // 设置自定义样式
+    UIColor *color = NAppThemeColor;
+    BRPickerStyle *customStyle = [BRPickerStyle pickerStyleWithThemeColor:color];
+    customStyle.selectRowTextColor = color;
+    customStyle.topCornerRadius = 1.5*NRadius;
+    stringPickerView.pickerStyle = customStyle;
+    
+    [stringPickerView show];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     if (![self.nicknameTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"TipsLoginName")];
         [NYSTools shakeAnimation:self.nicknameTF.layer];
+        return;
+    }
+    
+    if (self.nicknameTF.text.length < 1 || self.nicknameTF.text.length > 13) {
+        [NYSTools showToast:NLocalizedStr(@"TipsNicknameLength")];
+        [NYSTools shakeAnimation:self.passwordTF.layer];
         return;
     }
     
@@ -64,6 +86,12 @@
     
     if (![self.passwordTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"PlaceholderPwd")];
+        [NYSTools shakeAnimation:self.passwordTF.layer];
+        return;
+    }
+    
+    if (self.passwordTF.text.length < 6 || self.passwordTF.text.length > 16) {
+        [NYSTools showToast:NLocalizedStr(@"TipsPwdLength")];
         [NYSTools shakeAnimation:self.passwordTF.layer];
         return;
     }

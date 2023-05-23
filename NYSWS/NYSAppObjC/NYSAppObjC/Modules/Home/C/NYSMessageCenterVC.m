@@ -7,6 +7,7 @@
 
 #import "NYSMessageCenterVC.h"
 #import "NYSMessageCenterCell.h"
+#import "NYSMessageDetailVC.h"
 
 @interface NYSMessageCenterVC ()
 <
@@ -81,15 +82,6 @@ UITextFieldDelegate
                                       argument:argument
                                              remark:@"消息中心列表"
                                             success:^(id response) {
-        NSDictionary *jd = @{
-            @"title": @"消息标题",
-            @"content": @"消息内容",
-            @"user_id": @"123",
-            @"type": @"",
-            @"createtime": @"2021-05-O7 18:04",
-            @"updatetime": @"",
-        };
-        NSArray *jda = @[jd, jd, jd];
         NSArray *array = [NSArray modelArrayWithClass:[NYSMessageCenterModel class] json:response];
         if (array.count > 0) {
             [weakSelf.dataSourceArr addObjectsFromArray:array];
@@ -151,7 +143,9 @@ UITextFieldDelegate
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSMessageCenterModel *model = self.dataSourceArr[indexPath.row];
-
+    NYSMessageDetailVC *vc = [NYSMessageDetailVC new];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

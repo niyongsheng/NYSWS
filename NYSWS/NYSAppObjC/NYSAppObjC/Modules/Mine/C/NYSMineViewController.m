@@ -6,6 +6,7 @@
 
 #import "NYSMineViewController.h"
 
+#import "NYSUpdateInfoVC.h"
 #import "NYSSettingViewController.h"
 #import "NYSCallCenterVC.h"
 #import "NYSMessageCenterVC.h"
@@ -16,6 +17,7 @@
 #import "NYSFeedbackVC.h"
 #import "NYSMyCourseListPagingVC.h"
 #import "NYSRecommendVC.h"
+#import "NYSRechargeAlertView.h"
 
 @interface NYSMineViewController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentViewTop;
@@ -36,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIView *functionV;
 @property (weak, nonatomic) IBOutlet UIView *mineV;
 
-
+@property (strong, nonatomic) NYSRechargeAlertView *rechargeAlertView;
 @end
 
 @implementation NYSMineViewController
@@ -105,11 +107,24 @@
 
 - (IBAction)headerBtnOnclicked:(UIButton *)sender {
     if (sender.tag == 11) {
-        [self.navigationController pushViewController:NYSSettingViewController.new animated:YES];
+        [self.navigationController pushViewController:NYSUpdateInfoVC.new animated:YES];
         
     } else if (sender.tag == 22) {
         [NYSTools zoomToShow:sender.layer];
-        [self.navigationController pushViewController:NYSWalletViewController.new animated:YES];
+        
+        // 充值弹框
+        @weakify(self)
+        FFPopup *popup = [FFPopup popupWithContentView:self.rechargeAlertView showType:FFPopupShowType_BounceInFromBottom dismissType:FFPopupDismissType_BounceOutToBottom maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
+        FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Left, FFPopupVerticalLayout_Bottom);
+        self.rechargeAlertView.block = ^(id obj) {
+            [popup dismissAnimated:YES];
+            
+            @strongify(self)
+            if ([obj isKindOfClass:NSDictionary.class]) {
+                [self commitPay:obj];
+            }
+        };
+        [popup showWithLayout:layout];
         
     } else if (sender.tag == 1) {
         [self.navigationController pushViewController:NYSMyCourseListPagingVC.new animated:YES];
@@ -168,14 +183,60 @@
         SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:HLWMUrl]];
         [self presentViewController:sfVC animated:YES completion:nil];
         
-//        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
-//        [NRootViewController presentViewController:loginVC animated:YES completion:^{
-//            
-//        }];
-        
     } else {
         [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];
     }
+}
+
+#pragma mark - 充值
+- (void)commitPay:(NSDictionary *)obj {
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                          url:@"/index/Order/create"
+                                      argument:obj
+                                             remark:@"下单调起支付"
+                                            success:^(id response) {
+        @strongify(self)
+        if ([obj[@"pay_type"] intValue] == 0) {
+            NSString *url = [NSString stringWithFormat:@"weixin://%@", response];
+            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
+            if (canOpen) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+                
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallWechat") preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:cancelAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            
+        } else if ([obj[@"pay_type"] intValue] == 1) {
+            NSString *url = [NSString stringWithFormat:@"alipay://%@", response];
+            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
+            if (canOpen) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+                
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallAlipay") preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:cancelAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }
+        
+
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+}
+
+- (NYSRechargeAlertView *)rechargeAlertView {
+    if (!_rechargeAlertView) {
+        CGFloat width = NScreenWidth;
+        CGFloat height = 570 + NBottomHeight;
+        _rechargeAlertView = [[NYSRechargeAlertView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    }
+    return _rechargeAlertView;
 }
 
 @end

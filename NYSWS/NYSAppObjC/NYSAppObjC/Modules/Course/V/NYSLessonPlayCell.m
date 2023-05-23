@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *subtitle;
 @property (weak, nonatomic) IBOutlet UIView *conView;
+@property (weak, nonatomic) IBOutlet UIImageView *rightIcon;
 
 @end
 
@@ -28,6 +29,12 @@
     
     _titleL.text = model.title;
     _subtitle.text = model.subtitle;
+    
+    if (model.is_try.boolValue) {
+        [_rightIcon setImage:[UIImage imageNamed:@"detail_small_icon"]];
+    } else {
+        [_rightIcon setImage:[UIImage imageNamed:@"detail_small_hear_icon"]];
+    }
 //    _icon.image = cellModel.isPlaying ? [UIImage imageNamed:@"pause_small_icon"] : [UIImage imageNamed:@"play_small_icon"];
 }
 

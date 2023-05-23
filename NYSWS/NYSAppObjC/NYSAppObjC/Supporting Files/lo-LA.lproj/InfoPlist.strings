@@ -13,7 +13,7 @@ Loading="ກຳລັງອອກ...";
 TipsAppUpdate="ລຸ້ນໃຫມ່ບັນຫາ";
 AppUpdate="ປັບປຸງຂໍ້ມູນ";
 
-CFBundleDisplayName="YiXueDian";
+CFBundleDisplayName="ຂຽນໂປຣເເກຣມ";
 Home="ບ້ານເຄື່ອນໄຫວ";
 Course="ຂໍ້ມູນໂປຣເເກຣມ";
 Mine="ຂ້າພະເຈົ້າ";
@@ -55,10 +55,15 @@ TipsPhone="ກະລຸນາໃສ່ໂຕເລກໂທລະທ່ານເ
 TipsPhoneFormat="ກະລຸນາໃສ່ແລກໂຕເລກ ທີ່ມີຮູບແບບທີ່ຕິດຕັ້ງ";
 TipsRepwd="ກະລຸນາໃສ່ລະຫັດຜ່ານ";
 TipsRepwdError="ມີຊື່ລະຫັດຜ່ອນໃຊ້ໄດ້ບໍ່ຢູ່";
-TipsSecurityQuestion="ກະລຸນາໃສ່ລາຍລະອຽດຂອງຄວາມປອດໄພ";
+TipsSecurityQuestion="ກະລຸນາໃສ່ລາຍໃຜຜູ້ໃຊ້";
 TipsSecurityQuestionAnswer="ກະລຸນາໃສ່ອີງຕັ້ງຄ່າທີ່ບໍ່ຮູ້";
 TipsInviteCode="ກະລຸນາໃສ່ແຫ້ມຜູ້ໃຊ້ໂຕເລືອກ";
 
+TipsPwdLength="ຄວາມຍາຍລະຫັດຜ່ານ(6~16)";
+TipsNicknameLength="ຄວາມຍາວຂອງຊື່ເເຟ້ມ(1~13)";
+TipsSecurityQuestionAnswerLength="ຄວາມຍາວຂອງຊື່ເເຟ້ມ(1~16)";
+
+ActivationExchange="ເຕີມການຄືນຄ່າຕັ້ງ";
 ImmediateAudition="ເປີດຟັງ";
 Activated="ການເປີດ";
 
@@ -81,6 +86,8 @@ Active="ເປນນິກສະແດງ";
 SearchWord="ຄໍາສັບ";
 SearchTitle="ຄົ້ນຫາ";
 NoAudioInfo="ບໍ່ມີຂໍ້ມູນເພີ້ມໂອລິມປະຈຸບັນ";
+PleaseBuy="ກະລຸນາໃສ່ລາຍສຸດ";
+CanNotSearch="ຮູບແບບທໍານຄົ້ນຫາບໍ່ສາມາດຄົ້ນຫາ";
 
 ActiveSuccess="ການທຳງານ";
 TipsConvertCode="ກະລຸນາໃສ່ແລກໃສ່";
@@ -133,3 +140,10 @@ TipsNewPwd="ກະລຸນາໃສ່ລະຫັດຜ່ານ";
 
 Activation="ແລກລາງວັນ";
 Purchase="ສັ່ງຊື້ທັນທີ";
+
+SecurityQuestionTitle="ຕອບສະຫນອງຄວາມຍຸດລົງ";
+SecurityQuestion1="ຊື່ຂອງຄຳເຈົ້າ";
+SecurityQuestion2="ຊື່ຂອງຕອບເຈົ້າ";
+SecurityQuestion3="ທໍາມະຊາດ";
+SecurityQuestion4="ຊື່ຂອງໂປຊາວເຈົ້າຮ້ອງໂຮງຮຽນ";
+SecurityQuestion5="ວັນນິກສະແດງຊາວນເຈົ້າ";

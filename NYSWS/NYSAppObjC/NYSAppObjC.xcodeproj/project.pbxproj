@@ -116,6 +116,14 @@
 		C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */; };
 		C8B7484E29FBCD6B00673B75 /* NYSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7484D29FBCD6B00673B75 /* NYSHomeViewController.m */; };
 		C8B7485129FBCDD500673B75 /* NYSHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7485029FBCDD500673B75 /* NYSHomeModel.m */; };
+		C8BDD1D62A1C5D6F00BB466A /* NYSProtocolDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BDD1D42A1C5D6F00BB466A /* NYSProtocolDetailVC.xib */; };
+		C8BDD1D72A1C5D6F00BB466A /* NYSProtocolDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BDD1D52A1C5D6F00BB466A /* NYSProtocolDetailVC.m */; };
+		C8BDD1DB2A1C612C00BB466A /* NYSMessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BDD1D92A1C612C00BB466A /* NYSMessageDetailVC.m */; };
+		C8BDD1DC2A1C612C00BB466A /* NYSMessageDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BDD1DA2A1C612C00BB466A /* NYSMessageDetailVC.xib */; };
+		C8BDD1E32A1CAAEF00BB466A /* drag-dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8BDD1DE2A1CAAEE00BB466A /* drag-dot@2x.png */; };
+		C8BDD1E42A1CAAEF00BB466A /* YYLabel+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BDD1E12A1CAAEE00BB466A /* YYLabel+Copy.m */; };
+		C8BDD1E52A1CAAEF00BB466A /* MagnifiterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BDD1E22A1CAAEE00BB466A /* MagnifiterView.m */; };
+		C8BDD1E82A1CAF6900BB466A /* NYSCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BDD1E72A1CAF6900BB466A /* NYSCustomLabel.m */; };
 		C8C750292A04A8F300A91AAE /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; };
 		C8C7502A2A04A8F300A91AAE /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8C7502D2A04B03100A91AAE /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C8C7502C2A04B03100A91AAE /* LaunchImage.png */; };
@@ -415,6 +423,19 @@
 		C8B7484D29FBCD6B00673B75 /* NYSHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeViewController.m; sourceTree = "<group>"; };
 		C8B7484F29FBCDD500673B75 /* NYSHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHomeModel.h; sourceTree = "<group>"; };
 		C8B7485029FBCDD500673B75 /* NYSHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeModel.m; sourceTree = "<group>"; };
+		C8BDD1D32A1C5D6F00BB466A /* NYSProtocolDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSProtocolDetailVC.h; sourceTree = "<group>"; };
+		C8BDD1D42A1C5D6F00BB466A /* NYSProtocolDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSProtocolDetailVC.xib; sourceTree = "<group>"; };
+		C8BDD1D52A1C5D6F00BB466A /* NYSProtocolDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSProtocolDetailVC.m; sourceTree = "<group>"; };
+		C8BDD1D82A1C612C00BB466A /* NYSMessageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSMessageDetailVC.h; sourceTree = "<group>"; };
+		C8BDD1D92A1C612C00BB466A /* NYSMessageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSMessageDetailVC.m; sourceTree = "<group>"; };
+		C8BDD1DA2A1C612C00BB466A /* NYSMessageDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSMessageDetailVC.xib; sourceTree = "<group>"; };
+		C8BDD1DE2A1CAAEE00BB466A /* drag-dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drag-dot@2x.png"; sourceTree = "<group>"; };
+		C8BDD1DF2A1CAAEE00BB466A /* MagnifiterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagnifiterView.h; sourceTree = "<group>"; };
+		C8BDD1E02A1CAAEE00BB466A /* YYLabel+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYLabel+Copy.h"; sourceTree = "<group>"; };
+		C8BDD1E12A1CAAEE00BB466A /* YYLabel+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+Copy.m"; sourceTree = "<group>"; };
+		C8BDD1E22A1CAAEE00BB466A /* MagnifiterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagnifiterView.m; sourceTree = "<group>"; };
+		C8BDD1E62A1CAF6900BB466A /* NYSCustomLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSCustomLabel.h; sourceTree = "<group>"; };
+		C8BDD1E72A1CAF6900BB466A /* NYSCustomLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSCustomLabel.m; sourceTree = "<group>"; };
 		C8C7502C2A04B03100A91AAE /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		C8C7502E2A04C95F00A91AAE /* NYSHomeCourseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHomeCourseVC.h; sourceTree = "<group>"; };
 		C8C7502F2A04C95F00A91AAE /* NYSHomeCourseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHomeCourseVC.m; sourceTree = "<group>"; };
@@ -847,6 +868,9 @@
 				C8599BA92A03A3EC00DEA603 /* NYSSearchCourseVC.m */,
 				C8C750312A04D2C800A91AAE /* NYSMessageCenterVC.h */,
 				C8C750322A04D2C800A91AAE /* NYSMessageCenterVC.m */,
+				C8BDD1D82A1C612C00BB466A /* NYSMessageDetailVC.h */,
+				C8BDD1D92A1C612C00BB466A /* NYSMessageDetailVC.m */,
+				C8BDD1DA2A1C612C00BB466A /* NYSMessageDetailVC.xib */,
 				C8C750392A04D66500A91AAE /* NYSCallCenterVC.h */,
 				C8C7503A2A04D66500A91AAE /* NYSCallCenterVC.m */,
 				C80648B42A149DA2003397CD /* NYSCallCenterVC.xib */,
@@ -891,6 +915,20 @@
 			path = M;
 			sourceTree = "<group>";
 		};
+		C8BDD1DD2A1CAAEE00BB466A /* YYLabelCopy */ = {
+			isa = PBXGroup;
+			children = (
+				C8BDD1DE2A1CAAEE00BB466A /* drag-dot@2x.png */,
+				C8BDD1DF2A1CAAEE00BB466A /* MagnifiterView.h */,
+				C8BDD1E22A1CAAEE00BB466A /* MagnifiterView.m */,
+				C8BDD1E02A1CAAEE00BB466A /* YYLabel+Copy.h */,
+				C8BDD1E12A1CAAEE00BB466A /* YYLabel+Copy.m */,
+				C8BDD1E62A1CAF6900BB466A /* NYSCustomLabel.h */,
+				C8BDD1E72A1CAF6900BB466A /* NYSCustomLabel.m */,
+			);
+			path = YYLabelCopy;
+			sourceTree = "<group>";
+		};
 		C8C7503E2A04DE9C00A91AAE /* C */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +961,7 @@
 		C8C7503F2A04DEA200A91AAE /* V */ = {
 			isa = PBXGroup;
 			children = (
+				C8BDD1DD2A1CAAEE00BB466A /* YYLabelCopy */,
 				C8C750472A04DFD400A91AAE /* LayoutFittingView.h */,
 				C8C750482A04DFD400A91AAE /* LayoutFittingView.m */,
 				C8EE7E6D2A08AB33000E3A3A /* NYSMyCourseCell.h */,
@@ -1001,6 +1040,9 @@
 				C8587E462A14886F00DE6587 /* NYSHelpContentVC.h */,
 				C8587E472A14886F00DE6587 /* NYSHelpContentVC.m */,
 				C8587E482A14886F00DE6587 /* NYSHelpContentVC.xib */,
+				C8BDD1D32A1C5D6F00BB466A /* NYSProtocolDetailVC.h */,
+				C8BDD1D52A1C5D6F00BB466A /* NYSProtocolDetailVC.m */,
+				C8BDD1D42A1C5D6F00BB466A /* NYSProtocolDetailVC.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1185,6 +1227,7 @@
 				C80648B92A149FFC003397CD /* NYSCourseDetailHeader.xib in Resources */,
 				C85A34FE2A0E449A00E42C6B /* ImageSelectedSmallOn@2x.png in Resources */,
 				C85A34FD2A0E449A00E42C6B /* ImageSelectedOn@2x.png in Resources */,
+				C8BDD1E32A1CAAEF00BB466A /* drag-dot@2x.png in Resources */,
 				C80648E32A14A15E003397CD /* NYSRechargeAlertView.xib in Resources */,
 				C8C7504E2A04E69100A91AAE /* NYSRecommendVC.xib in Resources */,
 				C85A34E22A0E449A00E42C6B /* UIBarButtonItemGrid@2x.png in Resources */,
@@ -1212,6 +1255,7 @@
 				C8597A2929F51054008BEE7F /* Assets.xcassets in Resources */,
 				C80648CE2A14A097003397CD /* NYSCoursePurchaseVC.xib in Resources */,
 				C85A34EF2A0E449A00E42C6B /* UIBarButtonItemArrowRight@3x.png in Resources */,
+				C8BDD1DC2A1C612C00BB466A /* NYSMessageDetailVC.xib in Resources */,
 				C8464AA82A0A2C3A003CD376 /* NYSRecommendedCell.xib in Resources */,
 				C8EE7E7D2A08B278000E3A3A /* NYSLessonPlayCell.xib in Resources */,
 				C8C7507C2A06422F00A91AAE /* NYSWalletMovemenCell.xib in Resources */,
@@ -1230,6 +1274,7 @@
 				C85A34E62A0E449A00E42C6B /* ImageError@2x.png in Resources */,
 				C80648FA2A14A284003397CD /* NYSHelpViewController.xib in Resources */,
 				C8EE7EAE2A08E9AD000E3A3A /* InfoPlist.strings in Resources */,
+				C8BDD1D62A1C5D6F00BB466A /* NYSProtocolDetailVC.xib in Resources */,
 				C80648DC2A14A110003397CD /* NYSWalletHeader.xib in Resources */,
 				C80648C02A14A009003397CD /* NYSPurchasedDetailHeader.xib in Resources */,
 				C85A34E02A0E449A00E42C6B /* ImageSelectedSmallOn.png in Resources */,
@@ -1313,6 +1358,7 @@
 				C8587E3B2A132B2700DE6587 /* UIButton+General.m in Sources */,
 				C8C750862A064B2600A91AAE /* NYSSecurityProtectionVC.m in Sources */,
 				C8C7506D2A06375A00A91AAE /* NYSUpdateInfoVC.m in Sources */,
+				C8BDD1E52A1CAAEF00BB466A /* MagnifiterView.m in Sources */,
 				C8EE7E652A08A1B6000E3A3A /* NYSRegisterVC.m in Sources */,
 				C8EE7E862A08CB29000E3A3A /* NYSCoursePurchaseVC.m in Sources */,
 				C8C750492A04DFD400A91AAE /* LayoutFittingView.m in Sources */,
@@ -1341,6 +1387,7 @@
 				C8EE7EDA2A09032D000E3A3A /* ThirdViewController.m in Sources */,
 				C85A34D52A0E449A00E42C6B /* MWPhotoBrowser.m in Sources */,
 				C8DBA6982A0F14C400F2656D /* TZPhotoPickerController.m in Sources */,
+				C8BDD1E82A1CAF6900BB466A /* NYSCustomLabel.m in Sources */,
 				C8EE7E602A089F8D000E3A3A /* NYSForgetPwdVC.m in Sources */,
 				C8DBA6922A0F14C400F2656D /* NSBundle+TZImagePicker.m in Sources */,
 				C8587E442A14762C00DE6587 /* NYSStatementCell.m in Sources */,
@@ -1359,6 +1406,7 @@
 				C8EE7E702A08AB33000E3A3A /* NYSMyCourseCell.m in Sources */,
 				C85A34D82A0E449A00E42C6B /* UIImage+MWPhotoBrowser.m in Sources */,
 				C8EE7E692A08A859000E3A3A /* NYSMyCourseListVC.m in Sources */,
+				C8BDD1E42A1CAAEF00BB466A /* YYLabel+Copy.m in Sources */,
 				C8B7484E29FBCD6B00673B75 /* NYSHomeViewController.m in Sources */,
 				C8DBA6972A0F14C400F2656D /* TZImageManager.m in Sources */,
 				C8C750622A062DF500A91AAE /* NYSAboutViewController.m in Sources */,
@@ -1391,11 +1439,13 @@
 				C8EE7E7E2A08B278000E3A3A /* NYSLessonPlayCell.m in Sources */,
 				C85A34DC2A0E449A00E42C6B /* MWGridViewController.m in Sources */,
 				C8C7505D2A062D8E00A91AAE /* NYSSettingViewController.m in Sources */,
+				C8BDD1D72A1C5D6F00BB466A /* NYSProtocolDetailVC.m in Sources */,
 				C8EE7E942A08DAF1000E3A3A /* NYSPurchasedCourseDetailVC.m in Sources */,
 				C8C7504D2A04E69100A91AAE /* NYSRecommendVC.m in Sources */,
 				C8C750672A06356C00A91AAE /* NYSHelpViewController.m in Sources */,
 				C8C750712A063B7900A91AAE /* NYSWalletViewController.m in Sources */,
 				C8DBA69C2A0F14C400F2656D /* TZGifPhotoPreviewController.m in Sources */,
+				C8BDD1DB2A1C612C00BB466A /* NYSMessageDetailVC.m in Sources */,
 				C8EE7E982A08DE24000E3A3A /* NYSCatalogViewController.m in Sources */,
 				C8C750752A063D9600A91AAE /* NYSWalletHeader.m in Sources */,
 				C8587E492A14886F00DE6587 /* NYSHelpContentVC.m in Sources */,
@@ -1807,13 +1857,14 @@
 				CODE_SIGN_ENTITLEMENTS = NYSAppObjC/NYSAppObjC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 662H5KKA5W;
+				DEVELOPMENT_TEAM = F9J739W8Y4;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppObjC/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NYSAppObjC/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许此APP打开相机进行拍照后修改头像、上传认证图片、扫描二维码？";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App需要您的同意,才能访问麦克风用于发送语音消息？";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "是否允许此APP打开本地相册进行拍照后修改头像或者上传图片？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1825,8 +1876,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidianAAAA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1849,12 +1900,13 @@
 				CODE_SIGN_ENTITLEMENTS = NYSAppObjC/NYSAppObjC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 662H5KKA5W;
+				DEVELOPMENT_TEAM = F9J739W8Y4;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppObjC/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NYSAppObjC/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许此APP打开相机进行拍照后修改头像、上传认证图片、扫描二维码？";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App需要您的同意,才能访问麦克风用于发送语音消息？";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "是否允许此APP打开本地相册进行拍照后修改头像或者上传图片？";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1866,8 +1918,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidianAAAA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
