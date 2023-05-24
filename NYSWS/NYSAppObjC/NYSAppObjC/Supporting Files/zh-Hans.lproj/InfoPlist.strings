@@ -30,6 +30,9 @@ Interconnect="互联外卖";
 
 Search="搜一搜";
 
+Copy="复制";
+Highlight="高亮";
+CancelHighlight="取消高亮";
 Copied="已复制";
 Wechat="微信";
 

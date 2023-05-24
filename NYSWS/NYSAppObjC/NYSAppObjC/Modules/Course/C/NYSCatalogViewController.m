@@ -314,16 +314,20 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 }
 
 - (void)playWav:(NSString *)urlStr {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    [hud hideAnimated:YES afterDelay:1.0f];
+    
     if (self.isFromTry && self.is_try.boolValue) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"PleaseBuy");
+        [hud hideAnimated:YES afterDelay:1.0f];
         return;
     }
     
     if (![urlStr isNotBlank]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"NoAudioInfo");
+        [hud hideAnimated:YES afterDelay:1.0f];
         return;
     }
 

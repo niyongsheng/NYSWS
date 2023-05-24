@@ -43,6 +43,9 @@
     self.title = NLocalizedStr(@"Feedback");
     ViewRadius(_commitBtn, 22.5f)
     
+    self.btn0.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.btn1.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.btn2.titleLabel.adjustsFontSizeToFitWidth = YES;
     ViewBorderRadius(_contentV, 2.0f, 0.7, UIColor.lightGrayColor);
     self.selectedBtnIndex = @"-1";
     [self typeBtnOnclicked:self.btn0];

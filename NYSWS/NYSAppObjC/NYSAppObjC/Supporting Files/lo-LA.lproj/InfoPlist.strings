@@ -30,6 +30,9 @@ Interconnect="ຮູ້ລຽນໄວໄມ";
 
 Search="ຄົ້ນຫາ";
 
+Copy="ສໍາເນົາ";
+Highlight="ເກັບຮູບແບບ";
+CancelHighlight="ເກີດຂໍ້ຜົນທຶກບ";
 Copied="ສຳຮອງໄວ້";
 Wechat="WeChat";
 

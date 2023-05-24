@@ -29,6 +29,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.getBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.titleL.adjustsFontSizeToFitWidth = YES;
     self.subtitleL.adjustsFontSizeToFitWidth = YES;
     self.contentView.backgroundColor = UIColor.whiteColor;

@@ -396,8 +396,8 @@ static const void *k_yy_copyEndPosition = @"yy_copyEndPosition";
     if (self.isFirstResponder) {
        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
            UIMenuController *menuController = [UIMenuController sharedMenuController];
-           UIMenuItem *menuItemCopy = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(menuCopy:)];
-           UIMenuItem *menuItemHighlight = [[UIMenuItem alloc] initWithTitle:@"高亮" action:@selector(highlight:)];
+           UIMenuItem *menuItemCopy = [[UIMenuItem alloc] initWithTitle:NLocalizedStr(@"Copy") action:@selector(menuCopy:)];
+           UIMenuItem *menuItemHighlight = [[UIMenuItem alloc] initWithTitle:NLocalizedStr(@"Highlight") action:@selector(highlight:)];
            NSArray *menus = @[menuItemCopy,menuItemHighlight];
            [menuController setMenuItems:menus];
            //菜单箭头方向(默认会自动判定)
@@ -457,9 +457,9 @@ static const void *k_yy_copyEndPosition = @"yy_copyEndPosition";
               [dic setValue:[NSNumber valueWithCGRect:rect] forKey:@"rect"];
               [weakSelf becomeFirstResponder];
               UIMenuController *menuController = [UIMenuController sharedMenuController];
-              UIMenuItem *menuItemCopy = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(itemHighlightCopy:)];
+              UIMenuItem *menuItemCopy = [[UIMenuItem alloc] initWithTitle:NLocalizedStr(@"Copy") action:@selector(itemHighlightCopy:)];
               objc_setAssociatedObject(menuController, @"menuItemCopy", dic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-              UIMenuItem *menuItemHighlight = [[UIMenuItem alloc] initWithTitle:@"取消高亮" action:@selector(menuItemHighlight:)];
+              UIMenuItem *menuItemHighlight = [[UIMenuItem alloc] initWithTitle:NLocalizedStr(@"CancelHighlight") action:@selector(menuItemHighlight:)];
               objc_setAssociatedObject(menuController, @"menuItemHighlight", dic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
               NSArray *menus = @[menuItemCopy,menuItemHighlight];
               [menuController setMenuItems:menus];

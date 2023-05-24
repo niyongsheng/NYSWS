@@ -31,7 +31,7 @@
     [self becomeFirstResponder];
     // 长按label时展示出复制选项(还可以定义剪贴,粘贴)
     // 创建UIMenuController
-    UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyAction)];
+    UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:NLocalizedStr(@"Copy") action:@selector(copyAction)];
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:copyItem]];
     // 设置frame和添加到的视图
     [[UIMenuController sharedMenuController] setTargetRect:self.frame inView:self.superview];

@@ -89,6 +89,8 @@
         @strongify(self)
         [NYSTools showIconToast:NLocalizedStr(@"Updated") isSuccess:YES offset:UIOffsetMake(0, 0)];
         [NYSTools dismissWithDelay:1.0f completion:^{
+            // 刷新用户信息
+            [NAppManager loadUserInfoCompletion:nil];
             [self.navigationController popViewControllerAnimated:YES];
         }];
     } failed:^(NSError * _Nullable error) {
