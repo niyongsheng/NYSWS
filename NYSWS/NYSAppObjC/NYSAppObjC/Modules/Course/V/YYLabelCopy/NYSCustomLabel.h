@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NYSCustomLabel : YYLabel
+@interface NYSCustomLabel : UILabel
 
 + (NSMutableAttributedString *)getAttributedString:(NSString *)string;
 

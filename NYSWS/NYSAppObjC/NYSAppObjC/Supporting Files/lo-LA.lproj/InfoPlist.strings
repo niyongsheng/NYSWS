@@ -76,6 +76,7 @@ CourseVersion="ສະແດງ";
 Total="ໂດຍລວມ";
 Section="ນາມແພັກເກດ";
 
+PurchasedCourse="ການນໍາອັກ";
 Purchased="ການນໍາອັກ";
 Learned="ຮຽນຮູ້";
 Detail="ຂໍ້ມູນລາຍລະອຽດ";

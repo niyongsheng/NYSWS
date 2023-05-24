@@ -29,6 +29,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.titleL.adjustsFontSizeToFitWidth = YES;
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
     self.contentView.backgroundColor = UIColor.whiteColor;
     ViewRadius(self.contentView, 10);
     ViewRadius(self.iconIV, 10);
@@ -50,6 +52,10 @@
     
     if (!model.is_try.boolValue) {
         [_getBtn setTitle:NLocalizedStr(@"ImmediateAudition") forState:UIControlStateNormal];
+    }
+    
+    if (!model.is_course.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"PurchasedCourse") forState:UIControlStateNormal];
     }
     
     if (!model.is_activation.boolValue) {

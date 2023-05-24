@@ -72,17 +72,17 @@
         return;
     }
     
-    if (![self.phoneTF.text isNotBlank]) {
-        [NYSTools showToast:NLocalizedStr(@"TipsPhone")];
-        [NYSTools shakeAnimation:self.phoneTF.layer];
-        return;
-    }
-    
-    if (self.phoneTF.text.length != 11) {
-        [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
-        [NYSTools shakeAnimation:self.phoneTF.layer];
-        return;
-    }
+//    if (![self.phoneTF.text isNotBlank]) {
+//        [NYSTools showToast:NLocalizedStr(@"TipsPhone")];
+//        [NYSTools shakeAnimation:self.phoneTF.layer];
+//        return;
+//    }
+//
+//    if (self.phoneTF.text.length != 11) {
+//        [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
+//        [NYSTools shakeAnimation:self.phoneTF.layer];
+//        return;
+//    }
     
     if (![self.passwordTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"PlaceholderPwd")];

@@ -10,14 +10,59 @@
 @interface NYSWordCell ()
 @property (weak, nonatomic) IBOutlet UIView *leftV;
 @property (weak, nonatomic) IBOutlet UIView *rightV;
-@property (weak, nonatomic) IBOutlet UILabel *leftL0;
-@property (weak, nonatomic) IBOutlet UILabel *leftL1;
-@property (weak, nonatomic) IBOutlet UILabel *rightL0;
-@property (weak, nonatomic) IBOutlet UILabel *rightL1;
+
+@property (strong, nonatomic) NYSCustomLabel *leftContentL;
+@property (strong, nonatomic) NYSCustomLabel *leftTranslateL;
+@property (strong, nonatomic) NYSCustomLabel *rightContentL;
+@property (strong, nonatomic) NYSCustomLabel *rightTranslateL;
 
 @end
 
 @implementation NYSWordCell
+
+- (NYSCustomLabel *)leftContentL {
+    if (!_leftContentL) {
+        _leftContentL = [[NYSCustomLabel alloc] initWithFrame:CGRectMake(10, 5, WordLabelWidth, 20)];
+        _leftContentL.adjustsFontSizeToFitWidth = YES;
+        _leftContentL.textColor = UIColor.whiteColor;
+        _leftContentL.font = WordLabelFont;
+        _leftContentL.numberOfLines = 0;
+    }
+    return _leftContentL;
+}
+
+- (NYSCustomLabel *)leftTranslateL {
+    if (!_leftTranslateL) {
+        _leftTranslateL = [[NYSCustomLabel alloc] initWithFrame:CGRectMake(10, 30, WordLabelWidth, 20)];
+        _leftTranslateL.adjustsFontSizeToFitWidth = YES;
+        _leftTranslateL.textColor = UIColor.whiteColor;
+        _leftTranslateL.font = WordLabelFont;
+        _leftTranslateL.numberOfLines = 0;
+    }
+    return _leftTranslateL;
+}
+
+- (NYSCustomLabel *)rightContentL {
+    if (!_rightContentL) {
+        _rightContentL = [[NYSCustomLabel alloc] initWithFrame:CGRectMake(10, 5, WordLabelWidth, 20)];
+        _rightContentL.adjustsFontSizeToFitWidth = YES;
+        _rightContentL.textColor = UIColor.whiteColor;
+        _rightContentL.font = WordLabelFont;
+        _rightContentL.numberOfLines = 0;
+    }
+    return _rightContentL;
+}
+
+- (NYSCustomLabel *)rightTranslateL {
+    if (!_rightTranslateL) {
+        _rightTranslateL = [[NYSCustomLabel alloc] initWithFrame:CGRectMake(10, 30, WordLabelWidth, 20)];
+        _rightTranslateL.adjustsFontSizeToFitWidth = YES;
+        _rightTranslateL.textColor = UIColor.whiteColor;
+        _rightTranslateL.font = WordLabelFont;
+        _rightTranslateL.numberOfLines = 0;
+    }
+    return _rightTranslateL;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -38,30 +83,30 @@
             self.block(NO, self.indexPath);
         }
     }]];
-}
-
-- (void)setModel:(NYSCatalogModel *)model {
-    _model = model;
     
-    self.leftL0.text = model.content;
-    self.leftL1.text = model.translate;
-    
-    self.rightL0.text = model.content;
-    self.rightL1.text = model.translate;
+    [self.leftV addSubview:self.leftContentL];
+    [self.leftV addSubview:self.leftTranslateL];
+    [self.rightV addSubview:self.rightContentL];
+    [self.rightV addSubview:self.rightTranslateL];
 }
 
 - (void)setModelArr:(NSArray<NYSCatalogModel *> *)modelArr {
     _modelArr = modelArr;
     
-    self.leftL0.text = [[modelArr firstObject] content];
-    self.leftL1.text = [[modelArr firstObject] translate];
+    self.leftContentL.text = [[modelArr firstObject] content];
+    self.leftTranslateL.text = [[modelArr firstObject] translate];
+    
+    self.leftContentL.height = [[[modelArr firstObject] content] heightForFont:WordLabelFont width:WordLabelWidth];
+    self.leftTranslateL.height = [[[modelArr firstObject] translate] heightForFont:WordLabelFont width:WordLabelWidth];
+    self.leftTranslateL.top = self.leftContentL.bottom + 5;
     
     if (modelArr.count > 1) {
-        self.rightL0.text = [[modelArr lastObject] content];
-        self.rightL1.text = [[modelArr lastObject] translate];
-    } else {
-        self.rightL0.text = nil;
-        self.rightL1.text = nil;
+        self.rightContentL.text = [[modelArr lastObject] content];
+        self.rightTranslateL.text = [[modelArr lastObject] translate];
+        
+        self.rightContentL.height = [[[modelArr lastObject] content] heightForFont:WordLabelFont width:WordLabelWidth];
+        self.rightTranslateL.height = [[[modelArr lastObject] translate] heightForFont:WordLabelFont width:WordLabelWidth];
+        self.rightTranslateL.top = self.rightContentL.bottom + 5;
     }
 }
 

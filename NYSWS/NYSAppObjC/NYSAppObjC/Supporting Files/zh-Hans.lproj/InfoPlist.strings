@@ -76,6 +76,7 @@ CourseVersion="版本";
 Total="共计";
 Section="章";
 
+PurchasedCourse="已购买";
 Purchased="已购";
 Learned="已学";
 Detail="详情";

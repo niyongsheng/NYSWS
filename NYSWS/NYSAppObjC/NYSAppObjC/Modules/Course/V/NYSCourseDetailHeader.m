@@ -30,6 +30,7 @@
     self.priceL.adjustsFontSizeToFitWidth = YES;
     self.timeL.adjustsFontSizeToFitWidth = YES;
     self.versionL.adjustsFontSizeToFitWidth = YES;
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
     
     self.label = [YYLabel new];
     self.label.numberOfLines = 0;

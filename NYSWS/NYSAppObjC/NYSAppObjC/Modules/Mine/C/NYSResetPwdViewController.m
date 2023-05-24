@@ -47,6 +47,12 @@
         return;
     }
     
+    if (self.freshPwdTF.text.length < 6 || self.freshPwdTF.text.length > 16) {
+        [NYSTools showToast:NLocalizedStr(@"TipsPwdLength")];
+        [NYSTools shakeAnimation:self.freshPwdTF.layer];
+        return;
+    }
+    
     NSMutableDictionary *params = @{
         @"phone": NAppManager.userInfo.phone,
         @"old_password": _pwdTF.text,

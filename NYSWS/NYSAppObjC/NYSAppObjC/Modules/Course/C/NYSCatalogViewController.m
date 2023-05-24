@@ -65,7 +65,10 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     self.navigationItem.titleView.userInteractionEnabled = YES;
     [self.navigationItem.titleView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         if (self.isFromTry) {
-            [NYSTools showToast:NLocalizedStr(@"CanNotSearch")];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NLocalizedStr(@"CanNotSearch");
+            [hud hideAnimated:YES afterDelay:1.0f];
             return;
         }
         
@@ -258,14 +261,14 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
                 translate = [[arr lastObject] translate];
         }
         
-        CGFloat labelH0 = [content heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
-        CGFloat labelH1 = [translate heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
+        CGFloat labelH0 = [content heightForFont:WordLabelFont width:WordLabelWidth];
+        CGFloat labelH1 = [translate heightForFont:WordLabelFont width:WordLabelWidth];
         
         return 20 + labelH0 + labelH1;
     } else {
         NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
-        CGFloat labelH0 = [model.content heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
-        CGFloat labelH1 = [model.translate heightForFont:[UIFont systemFontOfSize:15] width:(kScreenWidth - 90) / 2];
+        CGFloat labelH0 = [model.content heightForFont:StatementLabelFont width:StatementLabelWidth];
+        CGFloat labelH1 = [model.translate heightForFont:StatementLabelFont width:StatementLabelWidth];
         
         return 20 + labelH0 + labelH1;
     }
@@ -311,13 +314,16 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 }
 
 - (void)playWav:(NSString *)urlStr {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    [hud hideAnimated:YES afterDelay:1.0f];
     if (self.isFromTry && self.is_try.boolValue) {
-        [NYSTools showToast:NLocalizedStr(@"PleaseBuy")];
+        hud.label.text = NLocalizedStr(@"PleaseBuy");
         return;
     }
     
     if (![urlStr isNotBlank]) {
-        [NYSTools showToast:NLocalizedStr(@"NoAudioInfo")];
+        hud.label.text = NLocalizedStr(@"NoAudioInfo");
         return;
     }
 

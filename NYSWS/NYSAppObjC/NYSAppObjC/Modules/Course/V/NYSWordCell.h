@@ -7,6 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define WordLabelWidth (kScreenWidth - 90)/2
+#define WordLabelFont  [UIFont systemFontOfSize:15]
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^NYSWordCellBlock)(BOOL isLeft, NSIndexPath *indexP);
@@ -15,7 +18,6 @@ typedef void(^NYSWordCellBlock)(BOOL isLeft, NSIndexPath *indexP);
 @property (nonatomic, copy) NYSWordCellBlock block;
 @property (nonatomic, assign) NSIndexPath *indexPath;
 @property (nonatomic, weak) NSArray<NYSCatalogModel *> *modelArr;
-@property (nonatomic, weak) NYSCatalogModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

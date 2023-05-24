@@ -215,8 +215,12 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 }
 
 - (void)playWav:(NSString *)urlStr {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    [hud hideAnimated:YES afterDelay:1.0f];
+    
     if (![urlStr isNotBlank]) {
-        [NYSTools showToast:NLocalizedStr(@"NoAudioInfo")];
+        hud.label.text = NLocalizedStr(@"NoAudioInfo");
         return;
     }
     

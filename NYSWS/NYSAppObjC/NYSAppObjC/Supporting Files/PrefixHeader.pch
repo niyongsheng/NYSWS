@@ -13,6 +13,7 @@
 #import <BRPickerView/BRPickerView.h>
 #import <SGPagingView/SGPagingView.h>
 #import <ReactiveObjC/ReactiveObjC.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import <WRNavigationBar/WRNavigationBar.h>
 #import <ZLPhotoBrowser-objc/ZLPhotoBrowser.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>

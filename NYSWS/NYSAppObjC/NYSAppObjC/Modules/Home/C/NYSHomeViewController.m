@@ -133,7 +133,20 @@ NYSHomeCourseVCDelegate
                                          remark:@"推荐课程"
                                         success:^(id response) {
         @strongify(self)
+        CGFloat h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
         self.recommendedArray = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response].mutableCopy;
+        if (self.recommendedArray.count == 0) {
+            self.recommendedView.height = 0;
+            self.recommendedView.hidden = YES;
+            
+            h = self.bannerContainerView.bottom + NNormalSpace;
+        } else {
+            self.recommendedView.height = HomeRecommendedHeight;
+            self.recommendedView.hidden = NO;
+        }
+        self.pageTitleView.top = h;
+        self.pageContentCollectionView.top = h + 44;
+        
         self.recommendedParam.wDataSet(self.recommendedArray);
         [self.recommendedView updateUI];
     } failed:^(NSError * _Nullable error) {
@@ -304,7 +317,7 @@ NYSHomeCourseVCDelegate
         hVC.index = valueStr;
         [self.childVCs addObject:hVC];
     }
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, kScreenHeight) parentVC:self childVCs:self.childVCs];
+    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, 100000) parentVC:self childVCs:self.childVCs];
     self.pageContentCollectionView.delegatePageContentCollectionView = self;
     [self.containerScrollView addSubview:_pageContentCollectionView];
     
@@ -422,33 +435,10 @@ NYSHomeCourseVCDelegate
         .wEventClickSet(^(id anyID, NSInteger index) {
             NYSHomeCourseModel *model = self.recommendedArray[index];
             
-            if ([model.is_activation isEqual:@"0"]) {
+            if ([model.is_activation isEqual:@"0"] || [model.is_course isEqual:@"0"]) {
                 NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
                 vc.model = model;
                 [self.navigationController pushViewController:vc animated:YES];
-                
-            } else if ([model.is_try isEqual:@"0"]) {
-                NSMutableDictionary *params = @{
-                    @"course_id": @(model.ID),
-                  }.mutableCopy;
-                @weakify(self)
-                [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                                      url:@"/index/Course/info"
-                                                  argument:params
-                                                         remark:@"课程详情"
-                                                        success:^(id response) {
-                    @strongify(self)
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NYSHomeCourseModel *detailModel = [NYSHomeCourseModel modelWithDictionary:response];
-                        NYSCatalogViewController *vc = NYSCatalogViewController.new;
-                        vc.isFromTry = YES;
-                        vc.index = 0;
-                        vc.chapterArray = detailModel.chapter;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    });
-                } failed:^(NSError * _Nullable error) {
-                    
-                }];
                 
             } else {
                 NYSCourseDetailVC *vc = NYSCourseDetailVC.new;

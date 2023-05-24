@@ -7,6 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define StatementLabelWidth (kScreenWidth - 70)/2
+#define StatementLabelFont  [UIFont systemFontOfSize:15]
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSStatementCell : UITableViewCell

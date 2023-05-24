@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSLessonPlayCell : UITableViewCell
+/// 是否已激活
+@property (nonatomic, assign) BOOL isActived;
 @property (nonatomic, weak) NYSChapter *model;
 @end
 

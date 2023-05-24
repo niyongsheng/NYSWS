@@ -24,7 +24,6 @@
     
     [NNotificationCenter addObserverForName:@"HomeRefreshNotification" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
         self->_pageNo = 0;
-        [self.dataSourceArr removeAllObjects];
         [self footerRereshing];
     }];
     
@@ -36,14 +35,12 @@
     _tableviewStyle = UITableViewStylePlain;
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
+    self.tableView.mj_footer = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.scrollEnabled = NO;
     self.tableView.bounces = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
-//    self.tableView.emptyDataSetSource = nil;
-//    self.tableView.emptyDataSetDelegate = nil;
-    self.tableView.mj_footer = nil;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
         make.left.mas_equalTo(self.view.mas_left);
@@ -60,7 +57,8 @@
     
     NSDictionary *argument = @{
         @"page": @(_pageNo),
-        @"limit": DefaultPageSize,
+        @"limit": @999,
+        @"is_recommend": @0,
         @"class_id": _index,
     };
     @weakify(self)
@@ -70,6 +68,10 @@
                                          remark:@"（首页）课程分类列表"
                                         success:^(id response) {
         @strongify(self)
+        if (self->_pageNo == 1) {
+            [self.dataSourceArr removeAllObjects];
+        }
+        
         NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
             [self.dataSourceArr addObjectsFromArray:array];
@@ -126,33 +128,10 @@
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
     
-    if ([model.is_activation isEqual:@"0"]) {
+    if ([model.is_activation isEqual:@"0"] || [model.is_course isEqual:@"0"]) {
         NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
         vc.model = model;
         [self.navigationController pushViewController:vc animated:YES];
-        
-    } else if ([model.is_try isEqual:@"0"]) {
-        NSMutableDictionary *params = @{
-            @"course_id": @(model.ID),
-          }.mutableCopy;
-        @weakify(self)
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                              url:@"/index/Course/info"
-                                          argument:params
-                                                 remark:@"课程详情"
-                                                success:^(id response) {
-            @strongify(self)
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NYSHomeCourseModel *detailModel = [NYSHomeCourseModel modelWithDictionary:response];
-                NYSCatalogViewController *vc = NYSCatalogViewController.new;
-                vc.isFromTry = YES;
-                vc.index = 0;
-                vc.chapterArray = detailModel.chapter;
-                [self.navigationController pushViewController:vc animated:YES];
-            });
-        } failed:^(NSError * _Nullable error) {
-            
-        }];
         
     } else {
         NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
@@ -174,6 +153,10 @@
         h += [self getCellHeight:model];
     }
     self.tableViewHeight = h;
+    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(NScreenWidth, h + 15));
+    }];
+    [self.view layoutIfNeeded];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(tableviewHeight:)]) {
         [self.delegate tableviewHeight:h];

@@ -30,7 +30,7 @@
     _titleL.text = model.title;
     _subtitle.text = model.subtitle;
     
-    if (model.is_try.boolValue) {
+    if (model.is_try.boolValue || self.isActived) {
         [_rightIcon setImage:[UIImage imageNamed:@"detail_small_icon"]];
     } else {
         [_rightIcon setImage:[UIImage imageNamed:@"detail_small_hear_icon"]];

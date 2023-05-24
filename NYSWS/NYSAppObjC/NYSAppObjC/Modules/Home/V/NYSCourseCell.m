@@ -34,6 +34,7 @@
     ViewRadius(self.iconIV, 10);
     ViewRadius(self.getBtn, 15);
     
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
     self.priceL.adjustsFontSizeToFitWidth = YES;
 }
 
@@ -52,6 +53,10 @@
     
     if (!model.is_try.boolValue) {
         [_getBtn setTitle:NLocalizedStr(@"ImmediateAudition") forState:UIControlStateNormal];
+    }
+    
+    if (!model.is_course.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"PurchasedCourse") forState:UIControlStateNormal];
     }
     
     if (!model.is_activation.boolValue) {

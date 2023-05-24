@@ -62,7 +62,7 @@
 }
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
-    return NScreenHeight*0.2;
+    return NScreenHeight*0.3;
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
@@ -158,6 +158,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:ID owner:self options:nil] firstObject];
     }
+    cell.isActived = YES;
     cell.model = self.dataSourceArr[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

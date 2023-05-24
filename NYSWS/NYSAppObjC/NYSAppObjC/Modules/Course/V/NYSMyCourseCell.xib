@@ -26,14 +26,14 @@
                                     <constraint firstAttribute="width" constant="100" id="UB8-Sm-Zgd"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hll-2d-2Ec">
-                                <rect key="frame" x="125.00000000000001" y="39.333333333333336" width="30.666666666666671" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hll-2d-2Ec">
+                                <rect key="frame" x="125" y="39.333333333333336" width="26" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_icon" translatesAutoresizingMaskIntoConstraints="NO" id="HD2-ly-5FV">
-                                <rect key="frame" x="301" y="15" width="34" height="18"/>
+                                <rect key="frame" x="309" y="7" width="34" height="18"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHy-vm-frQ">
                                 <rect key="frame" x="125" y="109" width="165" height="50"/>
@@ -77,10 +77,11 @@
                             <constraint firstItem="LHy-vm-frQ" firstAttribute="leading" secondItem="o9X-fT-Mcc" secondAttribute="leading" id="9jg-pd-VqR"/>
                             <constraint firstItem="o9X-fT-Mcc" firstAttribute="top" secondItem="hLW-ms-OGc" secondAttribute="top" id="Fob-Lr-NDP"/>
                             <constraint firstItem="hLW-ms-OGc" firstAttribute="centerY" secondItem="8Cx-1x-YVQ" secondAttribute="centerY" id="J40-84-p4A"/>
-                            <constraint firstAttribute="trailing" secondItem="HD2-ly-5FV" secondAttribute="trailing" constant="15" id="KYT-au-Bqb"/>
+                            <constraint firstAttribute="trailing" secondItem="HD2-ly-5FV" secondAttribute="trailing" constant="7" id="KYT-au-Bqb"/>
                             <constraint firstItem="hll-2d-2Ec" firstAttribute="top" secondItem="o9X-fT-Mcc" secondAttribute="bottom" constant="5" id="WJE-1m-46v"/>
                             <constraint firstItem="o9X-fT-Mcc" firstAttribute="leading" secondItem="hLW-ms-OGc" secondAttribute="trailing" constant="10" id="XJJ-Cq-cnm"/>
-                            <constraint firstItem="HD2-ly-5FV" firstAttribute="top" secondItem="8Cx-1x-YVQ" secondAttribute="top" constant="15" id="ma7-Wa-erH"/>
+                            <constraint firstItem="HD2-ly-5FV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o9X-fT-Mcc" secondAttribute="trailing" constant="5" id="afh-d7-1HH"/>
+                            <constraint firstItem="HD2-ly-5FV" firstAttribute="top" secondItem="8Cx-1x-YVQ" secondAttribute="top" constant="7" id="ma7-Wa-erH"/>
                             <constraint firstItem="hll-2d-2Ec" firstAttribute="leading" secondItem="o9X-fT-Mcc" secondAttribute="leading" id="rcv-uD-IQj"/>
                             <constraint firstItem="hLW-ms-OGc" firstAttribute="leading" secondItem="8Cx-1x-YVQ" secondAttribute="leading" constant="15" id="yz4-YK-6zT"/>
                         </constraints>
