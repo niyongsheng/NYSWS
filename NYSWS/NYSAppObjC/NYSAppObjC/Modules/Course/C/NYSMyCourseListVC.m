@@ -24,21 +24,28 @@
     [super viewDidLoad];
     
     _tableviewStyle = UITableViewStylePlain;
-       [self.view addSubview:self.tableView];
-       self.tableView.refreshControl = nil;
-       self.tableView.showsVerticalScrollIndicator = NO;
-       self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-       self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
-       [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.top.mas_equalTo(self.view.mas_top).offset(0);
-           make.left.mas_equalTo(self.view.mas_left);
-           make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
-       }];
+    [self.view addSubview:self.tableView];
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top).offset(0);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
+    }];
     
     [self footerRereshing];
 }
 
 #pragma mark - 网络加载数据
+- (void)headerRereshing {
+    [super headerRereshing];
+    
+    [self.dataSourceArr removeAllObjects];
+    _pageNo = 0;
+    [self footerRereshing];
+}
+
 - (void)footerRereshing {
     [super footerRereshing];
     _pageNo ++;

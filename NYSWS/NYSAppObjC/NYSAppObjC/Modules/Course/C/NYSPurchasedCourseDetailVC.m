@@ -169,6 +169,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSCatalogViewController *vc = NYSCatalogViewController.new;
+    vc.courseId = self.model.ID;
     vc.index = indexPath.row;
     vc.chapterArray = self.dataSourceArr;
     [self.navigationController pushViewController:vc animated:YES];

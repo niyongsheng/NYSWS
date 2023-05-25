@@ -1,5 +1,5 @@
 //
-//  NYSCatalogViewController.m
+//  NYSCatalogSearchViewController.m
 //  NYSAppObjC
 //
 //  Created by niyongsheng on 2023/5/8.

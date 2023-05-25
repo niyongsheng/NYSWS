@@ -313,7 +313,10 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     }
 }
 
+/// 播放
+/// - Parameter urlStr: 音频url
 - (void)playWav:(NSString *)urlStr {
+    [self signLearned];
     
     if (self.isFromTry && self.is_try.boolValue) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -337,4 +340,22 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 
     [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:urlStr playOrPause:YES];
 }
+
+- (void)signLearned {
+    NSDictionary *argument = @{
+        @"course_id": @(self.courseId),
+    };
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Course/learned"
+                                       argument:argument
+                                         remark:@"标记已学"
+                                        success:^(id response) {
+        @strongify(self)
+        
+    } failed:^(NSError * _Nullable error) {
+
+    }];
+}
+
 @end

@@ -208,6 +208,7 @@
     
     if (!self.model.is_activation.boolValue) {
         NYSCatalogViewController *vc = NYSCatalogViewController.new;
+        vc.courseId = self.model.ID;
         vc.index = indexPath.row;
         vc.chapterArray = self.dataSourceArr;
         [self.navigationController pushViewController:vc animated:YES];
@@ -215,6 +216,7 @@
     } else if (!model.is_try.boolValue) {
         NYSCatalogViewController *vc = NYSCatalogViewController.new;
         vc.isFromTry = YES;
+        vc.courseId = self.model.ID;
         vc.index = indexPath.row;
         vc.chapterArray = self.dataSourceArr;
         [self.navigationController pushViewController:vc animated:YES];

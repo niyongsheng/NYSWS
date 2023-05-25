@@ -132,12 +132,16 @@ static NSString *CellID = @"NYSCourseCell";
 }
 
 - (void)getData:(BOOL)isHeader {
-    NSDictionary *argument = @{
+    NSMutableDictionary *argument = @{
         @"page": @(_pageNo),
         @"limit": DefaultPageSize,
-        @"keyword": _searchTF.text,
         @"class_id": _index,
-    };
+    }.mutableCopy;
+    if (self.isShowBanner) {
+        [argument setValue:@1 forKey:@"is_recommend"];
+    } else {
+        [argument setValue:_searchTF.text forKey:@"keyword"];
+    }
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:self.isShowBanner ? @"/index/Course/list" : @"/index/Course/select_coures"
