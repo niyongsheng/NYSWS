@@ -58,6 +58,7 @@
     NSString *protocolStr = NLocalizedStr(@"ProtocolDesc"); //@"阅读并同意《隐私政策》";
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:protocolStr];
     [attString addAttribute:(NSString*)NSForegroundColorAttributeName value:UIColor.grayColor range:[protocolStr rangeOfString:protocolStr]];
+    [attString addAttribute:(NSString*)NSFontAttributeName value:[UIFont systemFontOfSize:12] range:[protocolStr rangeOfString:protocolStr]];
     
     NSRange range2 = [protocolStr rangeOfString:NLocalizedStr(@"UserProtocol")];
     NSRange range3 = [protocolStr rangeOfString:NLocalizedStr(@"PrivacyProtocol")];

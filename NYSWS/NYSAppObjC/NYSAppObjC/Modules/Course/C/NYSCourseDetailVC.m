@@ -220,6 +220,11 @@
         vc.index = indexPath.row;
         vc.chapterArray = self.dataSourceArr;
         [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = NLocalizedStr(@"PleaseBuy");
+        [hud hideAnimated:YES afterDelay:1.0f];
     }
 }
 

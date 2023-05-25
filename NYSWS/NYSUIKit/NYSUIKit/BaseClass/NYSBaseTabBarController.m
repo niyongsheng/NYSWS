@@ -10,9 +10,6 @@
 #import "NYSBaseNavigationController.h"
 #import "LEETheme.h"
 
-#define isUserGradualAnimation  NO // 渐变动画
-#define isUserZoomAnimation     YES // 缩放动画
-
 @interface NYSBaseTabBarController () <UITabBarControllerDelegate>
 
 @end
@@ -75,7 +72,7 @@
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (isUserGradualAnimation) {
+    if (self.isUserGradualAnimation) {
         CATransition *animation = [CATransition animation];
         [animation setDuration:0.75f];
         [animation setType:@"rippleEffect"];
@@ -90,29 +87,41 @@
 #pragma mark - UITabBarDelegate
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     NSInteger index = [self.tabBar.items indexOfObject:item];
-    if (isUserZoomAnimation) {
-        [self animationWithIndex:index];
-    }
+    [self animationWithIndex:index];
 }
 
-- (void)animationWithIndex:(NSInteger) index {
-    NSMutableArray * tabbarbuttonArray = [NSMutableArray array];
+- (void)animationWithIndex:(NSInteger)index {
+    NSMutableArray *tabbarbuttonArray = [NSMutableArray array];
     for (UIView *tabBarButton in self.tabBar.subviews) {
         if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
             [tabbarbuttonArray addObject:tabBarButton];
         }
     }
     
-    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    animation.duration = .5f;
-    
-    NSMutableArray *values = [NSMutableArray array];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 2.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.5, 1.5, 1.5)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.7, 0.7, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.5)]];
-    
-    animation.values = values;
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    switch (self.tabBarInteractionEffectStyle) {
+        case NYSBaseTabBar_InteractionEffectStyleNone:{ // 无
+        }break;
+        case NYSBaseTabBar_InteractionEffectStyleSpring:{ // 放大放小
+            animation.keyPath = @"transform.scale";
+            animation.values = @[@1.0,@1.3,@0.9,@1.15,@0.95,@1.02,@1.0];
+            animation.duration = 0.6;
+            animation.calculationMode = kCAAnimationCubic;
+            
+        }break;
+        case NYSBaseTabBar_InteractionEffectStyleShake:{ // 摇动
+            animation.keyPath = @"transform.rotation";
+            CGFloat angle = M_PI_4 / 10;
+            animation.values = @[@(-angle), @(angle), @(-angle)];
+            animation.duration = 0.2f;
+        }break;
+        case NYSBaseTabBar_InteractionEffectStyleAlpha:{ // 透明
+            animation.keyPath = @"opacity";
+            animation.values = @[@1.0,@0.7,@0.5,@0.7,@1.0];
+            animation.duration = 0.6;
+        }break;
+        default: break;
+    }
     [[tabbarbuttonArray[index] layer] addAnimation:animation forKey:nil];
     
     UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];

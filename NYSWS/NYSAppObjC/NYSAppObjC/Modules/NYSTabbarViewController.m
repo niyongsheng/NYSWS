@@ -19,24 +19,9 @@
 
 @implementation NYSTabbarViewController
 
-+ (void)initialize {
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
-    appearance.backgroundColor = [UIColor redColor];
-    appearance.shadowImage = [UIImage imageWithColor:[UIColor clearColor]];
-    self.tabBarItem.standardAppearance = appearance;
-    if (@available(iOS 15.0, *)) {
-        self.tabBarItem.scrollEdgeAppearance = appearance;
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+      
     if (@available(iOS 13.0, *)) {
         self.tabBar.unselectedItemTintColor = NormalColor;
         self.tabBar.tintColor = TintColor;
@@ -45,6 +30,9 @@
         [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : NormalColor} forState:UIControlStateSelected];
         [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : TintColor} forState:UIControlStateSelected];
     }
+    
+    // 点击动画
+    self.tabBarInteractionEffectStyle = NYSBaseTabBar_InteractionEffectStyleSpring;
     
     NYSHomeViewController *homeVC = [NYSHomeViewController new];
     homeVC.tabBarItem.title = NSLocalizedStringFromTable(@"Home", @"InfoPlist", nil);
