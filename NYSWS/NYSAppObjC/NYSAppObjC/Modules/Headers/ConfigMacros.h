@@ -32,12 +32,7 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define AppPrivacyAgreement     [NSString stringWithFormat:@"%@%@", APP_BASE_URL, @"/yinsi.html"]
 
 // 网络url
-#define NCDNURL(urlStr) [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr]]
-// 网络状态变化
-#define NNotificationNetWorkStateChange         @"KNotificationNetWorkStateChange"
-// 基类生命周期变化
-#define NNotificationBCViewWillAppear           @"KNNotificationBCViewWillAppear"
-#define NNotificationBCViewDidAppear            @"KNNotificationBCViewDidAppear"
+#define NCDNURL(urlStr)  [urlStr containsString:@"http"] ? [NSURL URLWithString:urlStr] : [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr]]
 
 #pragma mark -- 用户相关 --
 // 登录状态改变通知
@@ -77,8 +72,8 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define FirApiToken             @"b4c29398b061073cb43ab65cf518be9c"
 
 // 微信登录
-#define WXAPPID                 @""
-#define APPSECRET               @""
+#define WXAPPID                 @"wxc25e7fe76bc4fb27"
+#define APPSECRET               @"079e2329f461d678ba6af76b1c839dd1"
 
 // 支付宝
 #define AILIPAY_ID              @"2021003194692259"

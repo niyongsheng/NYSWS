@@ -13,6 +13,11 @@ Loading="加载中...";
 TipsAppUpdate="新测试版本";
 AppUpdate="立即更新";
 
+NetworkUnknown="❗️网络状态未知";
+NetworkNotReachable="⚠️ 网络不可用";
+NetworkWWAN="📶 移动蜂窝网络";
+NetworkWiFi="🌐 WiFi网络";
+
 CFBundleDisplayName="学易点";
 Home="首页";
 Course="课程";

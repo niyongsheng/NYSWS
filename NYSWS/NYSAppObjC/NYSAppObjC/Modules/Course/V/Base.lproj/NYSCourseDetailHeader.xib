@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSCourseDetailHeader">
             <connections>
+                <outlet property="coinIV" destination="asf-cZ-Bsc" id="5mu-Fk-wxB"/>
                 <outlet property="descL" destination="j2D-Cr-8mm" id="otH-FK-vce"/>
                 <outlet property="descLHeight" destination="XzB-pA-CTB" id="6cQ-K5-kRC"/>
                 <outlet property="iconIV" destination="7KR-MM-p6h" id="kdS-OU-4xl"/>

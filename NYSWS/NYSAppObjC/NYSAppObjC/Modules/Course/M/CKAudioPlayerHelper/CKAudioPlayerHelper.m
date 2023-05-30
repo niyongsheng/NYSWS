@@ -95,7 +95,7 @@
  */
 - (void)managerAudioWithLocalPath:(NSString *)localPath playOrPause:(BOOL)isPlaying{
     if (isPlaying) {
-        [self playAudioWithPath:localPath whiteStype:CKAudioFileTyle_Network];
+        [self playAudioWithPath:localPath whiteStype:CKAudioFileTyle_Local];
     } else {
         [self pausePlayingAudio];
     }

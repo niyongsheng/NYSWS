@@ -42,11 +42,7 @@
 - (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
     
-    if ([model.image containsString:@"http"]) {
-        [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
-    } else {
-        [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
-    }
+    [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     self.priceL.text = model.price;

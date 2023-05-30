@@ -200,16 +200,20 @@
 }
 
 - (void)check {
-    if (self.accountTF.text.length >= 4 && self.passwordTF.text.length >= 6) {
-        [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-        [self.loginBtn setBackgroundColor:NAppThemeColor];
-        [self.loginBtn setEnabled:YES];
+    [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [self.loginBtn setBackgroundColor:NAppThemeColor];
+    [self.loginBtn setEnabled:YES];
     
-    } else {
-        [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-        [self.loginBtn setBackgroundColor:[UIColor colorWithHexString:@"#CCCCCC"]];
-        [self.loginBtn setEnabled:NO];
-    }
+//    if (self.accountTF.text.length >= 4 && self.passwordTF.text.length >= 6) {
+//        [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+//        [self.loginBtn setBackgroundColor:NAppThemeColor];
+//        [self.loginBtn setEnabled:YES];
+//
+//    } else {
+//        [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+//        [self.loginBtn setBackgroundColor:[UIColor colorWithHexString:@"#CCCCCC"]];
+//        [self.loginBtn setEnabled:NO];
+//    }
 }
 
 @end

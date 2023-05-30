@@ -150,9 +150,8 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svH-3w-U8R">
-                                            <rect key="frame" x="28.666666666666664" y="280" width="30" height="30"/>
+                                            <rect key="frame" x="33.666666666666664" y="280" width="22" height="22"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="S7C-3i-zbN"/>
                                                 <constraint firstAttribute="width" secondItem="svH-3w-U8R" secondAttribute="height" multiplier="1:1" id="Xko-lS-T1j"/>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -163,7 +162,7 @@
                                             </connections>
                                         </button>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="我已阅读并同意《服务协议》、《隐私政策》" translatesAutoresizingMaskIntoConstraints="NO" id="Wcu-ju-yUp">
-                                            <rect key="frame" x="63.666666666666686" y="280" width="256" height="40"/>
+                                            <rect key="frame" x="60.666666666666686" y="276" width="256" height="40"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Zys-Vi-3JS"/>
@@ -217,7 +216,7 @@
                                         <constraint firstItem="wtz-Ih-j8c" firstAttribute="centerX" secondItem="GsX-NI-3Tq" secondAttribute="centerX" id="e13-ge-wnF"/>
                                         <constraint firstAttribute="trailing" secondItem="h89-D3-oLS" secondAttribute="trailing" id="gO4-BO-p9h"/>
                                         <constraint firstItem="1ZC-Ie-62w" firstAttribute="trailing" secondItem="YRj-2M-hLD" secondAttribute="trailing" id="ojv-Nq-XIW"/>
-                                        <constraint firstItem="Wcu-ju-yUp" firstAttribute="centerX" secondItem="GsX-NI-3Tq" secondAttribute="centerX" constant="15" id="rXN-W6-Pxz"/>
+                                        <constraint firstItem="Wcu-ju-yUp" firstAttribute="centerX" secondItem="GsX-NI-3Tq" secondAttribute="centerX" constant="12" id="rXN-W6-Pxz"/>
                                         <constraint firstItem="h89-D3-oLS" firstAttribute="top" secondItem="GsX-NI-3Tq" secondAttribute="top" constant="20" id="rYU-X4-gaz"/>
                                         <constraint firstItem="1ZC-Ie-62w" firstAttribute="top" secondItem="YRj-2M-hLD" secondAttribute="bottom" constant="5" id="unx-Nk-K8K"/>
                                         <constraint firstItem="YRj-2M-hLD" firstAttribute="leading" secondItem="GsX-NI-3Tq" secondAttribute="leading" id="yWI-L8-CXf"/>

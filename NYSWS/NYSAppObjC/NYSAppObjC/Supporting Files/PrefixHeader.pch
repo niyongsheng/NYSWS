@@ -19,6 +19,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import <JDStatusBarNotification/JDStatusBarNotification.h>
 
 #pragma mark -- 宏定义 --
 #import "CommonMacros.h"
@@ -41,5 +42,6 @@
 #import "NYSTabbarViewController.h"
 
 #import "NYSCustomLabel.h"
+#import "WXApi.h"
 
 #endif /* PrefixHeader_pch */

@@ -7,6 +7,7 @@
 
 #import "NYSPurchasedCourseDetailVC.h"
 #import "NYSPurchasedDetailHeader.h"
+#import "NYSCourseDetailHeader.h"
 #import "NYSLessonPlayCell.h"
 #import "NYSCoursePurchaseVC.h"
 #import "NYSCourseExchangeVC.h"
@@ -18,6 +19,7 @@
 }
 @property (strong, nonatomic) NYSHomeCourseModel *detailModel;
 @property (strong, nonatomic) NYSPurchasedDetailHeader *headerView;
+@property (strong, nonatomic) NYSCourseDetailHeader *headerViewNew;
 @end
 
 @implementation NYSPurchasedCourseDetailVC
@@ -51,7 +53,9 @@
     
     // 表头
     self.headerView = [[NYSPurchasedDetailHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
-    self.tableView.tableHeaderView = self.headerView;
+    self.headerViewNew = [[NYSCourseDetailHeader alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
+    self.headerViewNew.isHiddenPrice = YES;
+    self.tableView.tableHeaderView = self.headerViewNew;
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [btn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
@@ -83,11 +87,11 @@
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
             self.detailModel = [NYSHomeCourseModel modelWithDictionary:response];
-            self.headerView.model = self.detailModel;
+            self.headerViewNew.model = self.detailModel;
             
             NSMutableAttributedString *aStr = [NYSCustomLabel getAttributedString:self.detailModel.details];
             CGRect frame = [NYSCustomLabel getAttributedStringFrame:aStr width:kScreenWidth - 30];
-            self.tableView.tableHeaderView.height = 200 + frame.size.height;
+            self.tableView.tableHeaderView.height = 300 + frame.size.height;
             
             self.dataSourceArr = self.detailModel.chapter.mutableCopy;
             [self.tableView reloadData];

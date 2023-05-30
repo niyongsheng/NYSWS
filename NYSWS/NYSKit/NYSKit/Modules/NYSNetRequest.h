@@ -12,6 +12,8 @@
 #define NNotificationOnKick                     @"KNotificationOnKick"
 // 令牌失效
 #define NNotificationTokenInvalidation          @"KNotificationTokenInvalidation"
+// 网络状态
+#define NNotificationNetworkChange              @"KNotificationNetworkChange"
 
 typedef enum : NSUInteger {
     GET,

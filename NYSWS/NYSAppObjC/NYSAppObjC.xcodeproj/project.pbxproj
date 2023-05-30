@@ -28,6 +28,10 @@
 		C80649162A14A350003397CD /* NYSWithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80649182A14A350003397CD /* NYSWithdrawViewController.xib */; };
 		C806491D2A14A3DE003397CD /* NYSFeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C806491F2A14A3DE003397CD /* NYSFeedbackVC.xib */; };
 		C80649242A14A3E7003397CD /* NYSResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80649262A14A3E7003397CD /* NYSResetPwdViewController.xib */; };
+		C8427C9F2A20B1F000220171 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8427C9D2A20B1F000220171 /* read_me.txt */; };
+		C8427CA32A20B34300220171 /* NYSShareAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8427CA02A20B34200220171 /* NYSShareAlertView.m */; };
+		C8427CA42A20B34300220171 /* NYSShareAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8427CA12A20B34300220171 /* NYSShareAlertView.xib */; };
+		C8427CA52A20B6DD00220171 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8427C9C2A20B1F000220171 /* libWeChatSDK.a */; };
 		C8464AA12A0A268F003CD376 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8464AA32A0A268F003CD376 /* ThirdViewController.xib */; };
 		C8464AA82A0A2C3A003CD376 /* NYSRecommendedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8464AAA2A0A2C3A003CD376 /* NYSRecommendedCell.xib */; };
 		C8464AAF2A0A2E88003CD376 /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8464AB12A0A2E88003CD376 /* NYSMineViewController.xib */; };
@@ -275,6 +279,13 @@
 		C80649252A14A3E7003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSResetPwdViewController.xib; sourceTree = "<group>"; };
 		C80649282A14A3EA003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSResetPwdViewController.strings"; sourceTree = "<group>"; };
 		C806492A2A14A3EB003397CD /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSResetPwdViewController.strings"; sourceTree = "<group>"; };
+		C8427C9A2A20B1F000220171 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		C8427C9B2A20B1F000220171 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		C8427C9C2A20B1F000220171 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		C8427C9D2A20B1F000220171 /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
+		C8427CA02A20B34200220171 /* NYSShareAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSShareAlertView.m; sourceTree = "<group>"; };
+		C8427CA12A20B34300220171 /* NYSShareAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSShareAlertView.xib; sourceTree = "<group>"; };
+		C8427CA22A20B34300220171 /* NYSShareAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSShareAlertView.h; sourceTree = "<group>"; };
 		C8464AA22A0A268F003CD376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ThirdViewController.xib; sourceTree = "<group>"; };
 		C8464AA52A0A2699003CD376 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ThirdViewController.strings"; sourceTree = "<group>"; };
 		C8464AA72A0A2699003CD376 /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/ThirdViewController.strings"; sourceTree = "<group>"; };
@@ -299,7 +310,7 @@
 		C8587E462A14886F00DE6587 /* NYSHelpContentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSHelpContentVC.h; sourceTree = "<group>"; };
 		C8587E472A14886F00DE6587 /* NYSHelpContentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSHelpContentVC.m; sourceTree = "<group>"; };
 		C8587E482A14886F00DE6587 /* NYSHelpContentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSHelpContentVC.xib; sourceTree = "<group>"; };
-		C8597A1929F51052008BEE7F /* 易学点.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "易学点.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8597A1929F51052008BEE7F /* NYSAppObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYSAppObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A1C29F51052008BEE7F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8597A1D29F51052008BEE7F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C8597A2629F51052008BEE7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -309,7 +320,7 @@
 		C8597A2E29F51054008BEE7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8597A9929F5129D008BEE7F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C8597AA529F5194A008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8597AB929F52007008BEE7F /* Bridging-Header.h.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h.h"; sourceTree = "<group>"; };
+		C8597AB929F52007008BEE7F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		C8599B8C2A035E8700DEA603 /* themejson_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_day.json; sourceTree = "<group>"; };
 		C8599B8D2A035E8700DEA603 /* themejson_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_night.json; sourceTree = "<group>"; };
 		C8599B922A037DF100DEA603 /* NYSBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSBannerCell.m; sourceTree = "<group>"; };
@@ -573,12 +584,32 @@
 			files = (
 				C8C750292A04A8F300A91AAE /* NYSUIKit.framework in Frameworks */,
 				E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */,
+				C8427CA52A20B6DD00220171 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8427C982A20B1D700220171 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				C8427C992A20B1F000220171 /* wxSDK */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		C8427C992A20B1F000220171 /* wxSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C8427C9A2A20B1F000220171 /* WXApi.h */,
+				C8427C9B2A20B1F000220171 /* WXApiObject.h */,
+				C8427C9C2A20B1F000220171 /* libWeChatSDK.a */,
+				C8427C9D2A20B1F000220171 /* read_me.txt */,
+			);
+			path = wxSDK;
+			sourceTree = "<group>";
+		};
 		C8464ABD2A0B7A3F003CD376 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,7 +634,7 @@
 		C8597A1A29F51052008BEE7F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C8597A1929F51052008BEE7F /* 易学点.app */,
+				C8597A1929F51052008BEE7F /* NYSAppObjC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -624,7 +655,7 @@
 				C8599B8C2A035E8700DEA603 /* themejson_day.json */,
 				C8599B8D2A035E8700DEA603 /* themejson_night.json */,
 				C8597A9929F5129D008BEE7F /* PrefixHeader.pch */,
-				C8597AB929F52007008BEE7F /* Bridging-Header.h.h */,
+				C8597AB929F52007008BEE7F /* Bridging-Header.h */,
 				C8597A1C29F51052008BEE7F /* AppDelegate.h */,
 				C8597A1D29F51052008BEE7F /* AppDelegate.m */,
 				C8B7482A29FBB2AC00673B75 /* AppDelegate+AppService.h */,
@@ -645,6 +676,7 @@
 		C8597A9629F5124A008BEE7F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8427C982A20B1D700220171 /* SDK */,
 				C8EE7E572A08996E000E3A3A /* Account */,
 				C8B7484629FBC31500673B75 /* Home */,
 				C8B7484829FBC32A00673B75 /* Course */,
@@ -902,6 +934,9 @@
 				C8C750342A04D35C00A91AAE /* NYSMessageCenterCell.h */,
 				C8C750352A04D35C00A91AAE /* NYSMessageCenterCell.m */,
 				C8C750362A04D35C00A91AAE /* NYSMessageCenterCell.xib */,
+				C8427CA22A20B34300220171 /* NYSShareAlertView.h */,
+				C8427CA02A20B34200220171 /* NYSShareAlertView.m */,
+				C8427CA12A20B34300220171 /* NYSShareAlertView.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1162,9 +1197,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C8597A1829F51052008BEE7F /* 易学点 */ = {
+		C8597A1829F51052008BEE7F /* NYSAppObjC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C8597A3229F51054008BEE7F /* Build configuration list for PBXNativeTarget "易学点" */;
+			buildConfigurationList = C8597A3229F51054008BEE7F /* Build configuration list for PBXNativeTarget "NYSAppObjC" */;
 			buildPhases = (
 				74B9EC4985B5D668EF572BBE /* [CP] Check Pods Manifest.lock */,
 				C8597A1529F51052008BEE7F /* Sources */,
@@ -1177,9 +1212,9 @@
 			);
 			dependencies = (
 			);
-			name = "易学点";
+			name = NYSAppObjC;
 			productName = NYSAppObjC;
-			productReference = C8597A1929F51052008BEE7F /* 易学点.app */;
+			productReference = C8597A1929F51052008BEE7F /* NYSAppObjC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1212,7 +1247,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C8597A1829F51052008BEE7F /* 易学点 */,
+				C8597A1829F51052008BEE7F /* NYSAppObjC */,
 			);
 		};
 /* End PBXProject section */
@@ -1292,7 +1327,9 @@
 				C85A34FB2A0E449A00E42C6B /* PlayButtonOverlayLarge.png in Resources */,
 				C85A34F82A0E449A00E42C6B /* PlayButtonOverlayLarge@3x.png in Resources */,
 				C80648D52A14A0A3003397CD /* NYSCourseExchangeVC.xib in Resources */,
+				C8427C9F2A20B1F000220171 /* read_me.txt in Resources */,
 				C85A34FC2A0E449A00E42C6B /* ImageSelectedOn@3x.png in Resources */,
+				C8427CA42A20B34300220171 /* NYSShareAlertView.xib in Resources */,
 				C85A34DF2A0E449A00E42C6B /* UIBarButtonItemGrid@3x.png in Resources */,
 				C80649162A14A350003397CD /* NYSWithdrawViewController.xib in Resources */,
 				C806489D2A149C15003397CD /* NYSForgetPwdVC.xib in Resources */,
@@ -1397,6 +1434,7 @@
 				C85A34962A0E40EA00E42C6B /* UIImage+LLGif.m in Sources */,
 				C8EE7E6C2A08A99E000E3A3A /* NYSMyCourseListPagingVC.m in Sources */,
 				C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */,
+				C8427CA32A20B34300220171 /* NYSShareAlertView.m in Sources */,
 				C8B7485129FBCDD500673B75 /* NYSHomeModel.m in Sources */,
 				C8C7508A2A064CF300A91AAE /* NYSWithdrawViewController.m in Sources */,
 				C8EE7EA72A08E4D3000E3A3A /* YLButton.m in Sources */,
@@ -1876,7 +1914,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
+					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
+				);
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1918,7 +1961,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
+					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
+				);
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1943,7 +1991,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C8597A3229F51054008BEE7F /* Build configuration list for PBXNativeTarget "易学点" */ = {
+		C8597A3229F51054008BEE7F /* Build configuration list for PBXNativeTarget "NYSAppObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C8597A3329F51054008BEE7F /* Debug */,

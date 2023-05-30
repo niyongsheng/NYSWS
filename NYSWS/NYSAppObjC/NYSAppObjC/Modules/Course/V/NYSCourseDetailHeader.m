@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *subtitleL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *versionL;
+@property (weak, nonatomic) IBOutlet UIImageView *coinIV;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *descL;
 @property (weak, nonatomic) IBOutlet UILabel *sectionL;
@@ -42,14 +43,17 @@
     self.descL.text = nil;
 }
 
+- (void)setIsHiddenPrice:(BOOL)isHiddenPrice {
+    _isHiddenPrice = isHiddenPrice;
+    
+    self.priceL.hidden = self.isHiddenPrice;
+    self.coinIV.hidden = self.isHiddenPrice;
+}
+
 - (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
     
-    if ([model.image containsString:@"http"]) {
-        [self.iconIV setImageWithURL:[NSURL URLWithString:model.image] placeholder:NPImageFillet];
-    } else {
-        [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
-    }
+    [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
     self.titleL.text = model.name;
     self.subtitleL.text = model.subtitle;
     

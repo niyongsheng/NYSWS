@@ -24,7 +24,6 @@
     static AFHTTPSessionManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
         manager = [AFHTTPSessionManager manager];
         NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:manager.responseSerializer.acceptableContentTypes];
         [contentTypes addObject:@"text/html"];
@@ -36,6 +35,11 @@
 //        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
         [manager.requestSerializer setTimeoutInterval:TimeoutInterval];
+        
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationNetworkChange object:@(status)];
+        }];
     });
     return manager;
 }
@@ -233,8 +237,8 @@
 + (void)jsonRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id)argument isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
     // 加载动画-延时执行
     [self performSelector:@selector(delayLoadingMethod) withObject:nil afterDelay:2.0f];
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    // 监听网络状态
+    [self sharedManager];
     
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
     if ([url containsString:@"http"]) {
@@ -243,6 +247,7 @@
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlStr parameters:argument error:nil];
     [request setAllHTTPHeaderFields:[self headers]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
                                                uploadProgress:nil
                                              downloadProgress:nil

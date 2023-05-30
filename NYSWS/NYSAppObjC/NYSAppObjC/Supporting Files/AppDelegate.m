@@ -42,6 +42,9 @@
     if (@available(iOS 13.0, *))
         self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     
+    // 微信SDK初始化
+    [WXApi registerApp:WXAPPID];
+    
     return YES;
 }
 

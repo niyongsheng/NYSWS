@@ -46,11 +46,7 @@
     
     self.payTypeBtn0.selected = YES;
     
-    if ([self.detailModel.image containsString:@"http"]) {
-        [self.iconIV setImageWithURL:[NSURL URLWithString:self.detailModel.image] placeholder:NPImageFillet];
-    } else {
-        [self.iconIV setImageWithURL:NCDNURL(self.detailModel.image) placeholder:NPImageFillet];
-    }
+    [self.iconIV setImageWithURL:NCDNURL(self.detailModel.image) placeholder:NPImageFillet];
     self.titleL.text = self.detailModel.name;
     self.subtitleL.text = self.detailModel.subtitle;
     self.coinL.text = self.detailModel.price;

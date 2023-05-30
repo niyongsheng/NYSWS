@@ -38,7 +38,7 @@
     // 网络状态监听
     [NNotificationCenter addObserver:self
                             selector:@selector(netWorkStateChange:)
-                                name:NNotificationNetWorkStateChange
+                                name:NNotificationNetworkChange
                               object:nil];
     
     // 检查更新
@@ -142,22 +142,40 @@
 
 #pragma mark -- 网络状态变化 --
 - (void)netWorkStateChange:(NSNotification *)notification {
-    BOOL isNetWork = [notification.object boolValue];
-    
-    if (isNetWork) { // 有网络
-       
+    NSInteger netStatus = [notification.object integerValue];
+    switch (netStatus) {
+        case -1: {
+            [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkUnknown") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleError];
+            }
+            break;
+            
+        case 0: {
+            [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkNotReachable") dismissAfterDelay:1.5f includedStyle:JDStatusBarNotificationIncludedStyleDefaultStyle];
+            }
+            break;
+            
+        case 1: {
+            [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkWWAN") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleDefaultStyle];
+            }
+            break;
+        
+        case 2: {
+            [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkWiFi") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleDefaultStyle];
+            }
+            break;
+            
+        default:
+            break;
     }
 }
 
-#pragma mark -- 网络状态 --
+#pragma mark -- 网络请求配置 --
 - (void)initNetwork {
     
     [[NYSKitManager sharedNYSKitManager] setHost:APP_BASE_URL];
     [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidCode:@"500"];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidMessage:@"验证失败，请先登录"];
-    
-    // 网络状态改变监听
     
 }
 

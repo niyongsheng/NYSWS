@@ -8,8 +8,8 @@
 #import "AppManager.h"
 #import <JPush/JPUSHService.h>
 
-/// 是否需要主动登出
-#define IsNeedLogout 0
+/// 是否需要调用接口登出登录
+#define IsNeedLogout NO
 
 @interface AppManager ()
 /// 用户缓存对象
@@ -23,7 +23,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appManager = [[self alloc] init];
-        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:NNotificationChangeDefaultBuilding object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
             [appManager loadUserInfoCompletion:nil];
         }];
     });

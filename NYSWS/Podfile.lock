@@ -42,24 +42,25 @@ PODS:
   - IQKeyboardManager (6.5.11)
   - IQKeyboardManagerSwift (6.5.11)
   - JCore (2.7.1)
+  - JDStatusBarNotification (2.0.7)
   - JPush (3.7.4):
     - JCore (< 3.0.0, >= 2.0.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - ReactiveObjC (3.1.1)
-  - SDWebImage (5.15.5):
-    - SDWebImage/Core (= 5.15.5)
-  - SDWebImage/Core (5.15.5)
+  - SDWebImage (5.15.8):
+    - SDWebImage/Core (= 5.15.8)
+  - SDWebImage/Core (5.15.8)
   - SGPagingView (1.7.2)
   - SGQRCode (4.1.0)
   - SVProgressHUD (2.2.5)
-  - UMAPM (1.8.1)
+  - UMAPM (1.8.2)
   - UMCCommon (7.3.7):
     - UMAPM
     - UMDevice
   - UMCCommonLog (2.0.2)
-  - UMDevice (2.2.1)
+  - UMDevice (3.1.0)
   - WMZBanner (1.2.0):
     - SDWebImage
   - WRNavigationBar (1.4.0)
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - FMDB (= 2.7.5)
   - IQKeyboardManager (= 6.5.11)
   - IQKeyboardManagerSwift (= 6.5.11)
+  - JDStatusBarNotification
   - JPush (= 3.7.4)
   - Masonry (= 1.1.0)
   - MBProgressHUD
@@ -104,7 +106,7 @@ DEPENDENCIES:
   - ZLPhotoBrowser-objc (= 1.0.4)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - BRPickerView
     - DZNEmptyDataSet
@@ -115,6 +117,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - IQKeyboardManagerSwift
     - JCore
+    - JDStatusBarNotification
     - JPush
     - Masonry
     - MBProgressHUD
@@ -147,19 +150,20 @@ SPEC CHECKSUMS:
   IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   JCore: 9d5bda3a172c65bbe14f2806ab0f6246f8a06065
+  JDStatusBarNotification: 92e7ebdc628db36e1e8e96f0f77c8ce6d1627ec3
   JPush: e455ad2a7b854bca8149df085772d6c4f79b2416
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
   SGPagingView: 0b91bd360370e56a6496b06df9b3e28bc3f075cc
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  UMAPM: 569616d3b4d91c670e6591b2698879286f9fa304
+  UMAPM: 30c7435fea6cf59bcec7b504a7197a94b59c3b33
   UMCCommon: aac337052f23b0e08c0f3cf021d3bb209f2c49bd
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
-  UMDevice: 053478c4b4d7292f31f0a275c227d3c4007a5571
+  UMDevice: 9ef8045b59e0479cff7062915c879a1af46fa094
   WMZBanner: 42d02896dc7a67a4d7a2ebe1ef5b7a79f8d2c540
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
@@ -168,6 +172,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: 04c586e07dc08ae2ccd47320cc3ef753b0ae64ae
+PODFILE CHECKSUM: ef9d61d4a9c3ea46a76fd680bdfc658fcf8fca5f
 
 COCOAPODS: 1.11.3

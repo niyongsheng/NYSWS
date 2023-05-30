@@ -13,6 +13,11 @@ Loading="ກຳລັງອອກ...";
 TipsAppUpdate="ລຸ້ນໃຫມ່ບັນຫາ";
 AppUpdate="ປັບປຸງຂໍ້ມູນ";
 
+NetworkUnknown="❗️ບໍ່ຮູ້ສະຖານະຂໍ້ມູນເພີ້ມເຄືອຂ່າຍ";
+NetworkNotReachable="⚠️ ບໍ່ມີເຄືອຂ່າຍ";
+NetworkWWAN="📶 ເຄືອຂ່າຍເຄເບີ້ນພົມ";
+NetworkWiFi="🌐 WiFi ເຄືອຂ່າຍ";
+
 CFBundleDisplayName="ຂຽນໂປຣເເກຣມ";
 Home="ບ້ານເຄື່ອນໄຫວ";
 Course="ຂໍ້ມູນໂປຣເເກຣມ";
