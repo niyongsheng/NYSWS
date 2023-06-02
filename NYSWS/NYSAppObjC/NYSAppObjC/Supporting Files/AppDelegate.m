@@ -10,6 +10,9 @@
 #import "AppDelegate+PushService.h"
 
 @interface AppDelegate ()
+<
+WXApiDelegate
+>
 
 @end
 
@@ -57,6 +60,27 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // 收到远程推送消息
     completionHandler(UIBackgroundFetchResultNewData);
+}
+
+#pragma mark - wechat pay
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+#pragma mark - WXApiDelegate
+- (void)onResp:(BaseResp*)resp {
+    if ([resp isKindOfClass:[PayResp class]]) {
+        PayResp *response = (PayResp*)resp;
+        switch(response.errCode) {
+            case WXSuccess:
+                [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:@"Pay Success" dismissAfterDelay:1.5f includedStyle:JDStatusBarNotificationIncludedStyleSuccess];
+                break;
+                
+            default:
+                [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:[NSString stringWithFormat:@"Pay Fail, Retcode=%d", resp.errCode] dismissAfterDelay:1.5f includedStyle:JDStatusBarNotificationIncludedStyleSuccess];
+                break;
+        }
+    }
 }
 
 @end

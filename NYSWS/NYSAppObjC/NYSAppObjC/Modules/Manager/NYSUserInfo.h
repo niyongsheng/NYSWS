@@ -19,6 +19,16 @@
 @property (nonatomic , copy) NSString              * security_answer;
 @property (nonatomic , copy) NSString              * security_question;
 @property (nonatomic , copy) NSString              * balance;
+
+@property (nonatomic , assign) NSInteger              superior_id;
+@property (nonatomic , assign) NSInteger              uid;
+@property (nonatomic , assign) NSInteger              cishu;
+@property (nonatomic , copy) NSString              * unionid;
+@property (nonatomic , copy) NSString              * openid;
+@property (nonatomic , copy) NSString              * token;
+@property (nonatomic , copy) NSString              * expiretime;
+@property (nonatomic , copy) NSString              * password;
+@property (nonatomic , copy) NSString              * invite_code;
 @end
 
 /// 授权信息模型

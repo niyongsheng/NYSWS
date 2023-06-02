@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UIView *iconV;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
+@property (weak, nonatomic) IBOutlet UITextField *inviteCodeTF;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @end
@@ -32,6 +33,7 @@
     
     _iconUrl = NAppManager.userInfo.avatar;
     self.nicknameTF.text = NAppManager.userInfo.nickname;
+    self.inviteCodeTF.text = NAppManager.userInfo.invite_code;
     [self.iconIV setImageWithURL:NCDNURL(_iconUrl) placeholder:NPImageFillet];
     
     @weakify(self)

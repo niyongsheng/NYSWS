@@ -201,7 +201,15 @@
             NSString *url = [NSString stringWithFormat:@"weixin://%@", response];
             BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
             if (canOpen) {
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+                PayReq *request = [[PayReq alloc] init];
+                request.partnerId = response[@"partnerId"];
+                request.prepayId = response[@"prepayId"];
+                request.package = @"Sign=WXPay";
+                request.nonceStr = response[@"nonceStr"];
+                request.timeStamp = [NYSTools getNowTimeTimestamp].unsignedIntValue;
+                request.sign = response[@"sign"];
+                [WXApi sendReq:request];
+//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
                 
             } else {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallWechat") preferredStyle:UIAlertControllerStyleAlert];
