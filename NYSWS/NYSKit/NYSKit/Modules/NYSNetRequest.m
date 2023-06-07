@@ -294,27 +294,29 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         return;
     }
     NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-    NSString *status = [responseObject objectForKey:@"status"];
     NSString *msg = [responseObject objectForKey:@"msg"];
+    if ([NYSTools stringIsNull:msg]) {
+        msg = [responseObject objectForKey:@"message"];
+    }
     if ([NYSTools stringIsNull:msg]) {
         msg = [responseObject objectForKey:@"error_msg"];
     }
     if ([NYSTools stringIsNull:msg]) {
         msg = @"unknown error";
     }
-    if (code == 200 || code == 0) {
+    
+    NSArray *normalCodeArray = [[[NYSKitManager sharedNYSKitManager] normalCode] componentsSeparatedByString:@","];
+    BOOL isNormal = [normalCodeArray containsObject:[NSString stringWithFormat:@"%ld", code]];
+    if (isNormal) { // 正常返回
         NSDictionary *data = [responseObject objectForKey:@"data"];
         if (success) {
             success(data);
         }
-    } else if ([status isEqualToString:@"SUCCESS"]) {
-        if (success) {
-            success(responseObject);
-        }
-    } else if (code == [[[NYSKitManager sharedNYSKitManager] kickedCode] integerValue]) {
+    } else if (code == [[[NYSKitManager sharedNYSKitManager] kickedCode] integerValue]) { // 强制下线
         [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:nil];
-    } else if (code == [[[NYSKitManager sharedNYSKitManager] tokenInvalidCode] integerValue]) {
-        if ([[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]) { // 防止后端token失效code不唯一
+        
+    } else if (code == [[[NYSKitManager sharedNYSKitManager] tokenInvalidCode] integerValue]) { // token失效
+        if ([[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]) { // 防止后端token失效的code不唯一
             if ([msg containsString:[[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:nil];
             } else {
@@ -323,7 +325,7 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         } else {
             [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:nil];
         }
-    } else {
+    } else { // 其他错误
         [NYSTools showBottomToast:msg];
     }
     

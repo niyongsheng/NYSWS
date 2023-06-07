@@ -350,13 +350,11 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     NSDictionary *argument = @{
         @"course_id": @(self.courseId),
     };
-    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:@"/index/Course/learned"
                                        argument:argument
                                          remark:@"标记已学"
                                         success:^(id response) {
-//        @strongify(self)
         
     } failed:^(NSError * _Nullable error) {
 

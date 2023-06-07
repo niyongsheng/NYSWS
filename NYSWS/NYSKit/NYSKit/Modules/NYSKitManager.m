@@ -18,6 +18,13 @@
     return sharedNYSKitManager;
 }
 
+- (NSString *)normalCode {
+    if (!_normalCode) {
+        _normalCode = @"200,0";
+    }
+    return _normalCode;
+}
+
 - (NSString *)tokenInvalidCode {
     if (!_tokenInvalidCode) {
         _tokenInvalidCode = @"403";

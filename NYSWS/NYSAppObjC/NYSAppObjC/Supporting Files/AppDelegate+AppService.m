@@ -200,9 +200,9 @@
     
     [[NYSKitManager sharedNYSKitManager] setHost:APP_BASE_URL];
     [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
+    [[NYSKitManager sharedNYSKitManager] setNormalCode:@"200,0"];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidCode:@"500"];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidMessage:@"验证失败，请先登录"];
-    
 }
 
 // iOS9以上使用以下方法

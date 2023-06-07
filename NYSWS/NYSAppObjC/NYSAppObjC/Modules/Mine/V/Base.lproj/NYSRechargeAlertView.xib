@@ -437,7 +437,7 @@
                     <rect key="frame" x="15" y="270" width="376" height="50"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="自定义金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qju-vR-vH7">
-                            <rect key="frame" x="15" y="16" width="71.5" height="18.5"/>
+                            <rect key="frame" x="15" y="0.0" width="71.5" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -453,11 +453,13 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="cng-Kg-hJc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qju-vR-vH7" secondAttribute="trailing" constant="15" id="F55-ju-lwU"/>
+                        <constraint firstItem="Qju-vR-vH7" firstAttribute="top" secondItem="DrR-tt-qqM" secondAttribute="top" id="ShP-PY-tTp"/>
                         <constraint firstItem="gbv-JK-nlD" firstAttribute="leading" secondItem="cng-Kg-hJc" secondAttribute="trailing" constant="10" id="aek-d2-7U5"/>
                         <constraint firstAttribute="height" constant="50" id="b1Z-Y5-5Hj"/>
+                        <constraint firstAttribute="bottom" secondItem="Qju-vR-vH7" secondAttribute="bottom" id="d5D-Qk-6cw"/>
                         <constraint firstItem="cng-Kg-hJc" firstAttribute="centerY" secondItem="DrR-tt-qqM" secondAttribute="centerY" id="doX-X0-jFf"/>
                         <constraint firstAttribute="trailing" secondItem="gbv-JK-nlD" secondAttribute="trailing" constant="15" id="hA2-ax-DX5"/>
-                        <constraint firstItem="Qju-vR-vH7" firstAttribute="centerY" secondItem="DrR-tt-qqM" secondAttribute="centerY" id="mXv-Nb-e5N"/>
                         <constraint firstItem="Qju-vR-vH7" firstAttribute="leading" secondItem="DrR-tt-qqM" secondAttribute="leading" constant="15" id="uAU-06-kfD"/>
                         <constraint firstItem="gbv-JK-nlD" firstAttribute="centerY" secondItem="DrR-tt-qqM" secondAttribute="centerY" id="vcU-rT-Px7"/>
                     </constraints>
