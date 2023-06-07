@@ -41,7 +41,6 @@
 - (void)headerRereshing {
     [super headerRereshing];
     
-    [self.dataSourceArr removeAllObjects];
     _pageNo = 0;
     [self footerRereshing];
 }
@@ -62,6 +61,10 @@
                                              remark:@"已购/已学列表"
                                             success:^(id response) {
         @strongify(self)
+        if (self->_pageNo == 1) {
+            [self.dataSourceArr removeAllObjects];
+        }
+
         NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
             [self.dataSourceArr addObjectsFromArray:array];

@@ -39,4 +39,11 @@
     return _kickedCode;
 }
 
+- (NSString *)msgKey {
+    if (!_msgKey) {
+        _msgKey = @"msg,message";
+    }
+    return _msgKey;
+}
+
 @end

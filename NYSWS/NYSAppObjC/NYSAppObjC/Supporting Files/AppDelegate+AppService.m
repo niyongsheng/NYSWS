@@ -203,6 +203,8 @@
     [[NYSKitManager sharedNYSKitManager] setNormalCode:@"200,0"];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidCode:@"500"];
     [[NYSKitManager sharedNYSKitManager] setTokenInvalidMessage:@"验证失败，请先登录"];
+    [[NYSKitManager sharedNYSKitManager] setMsgKey:@"msg,message,error_msg"];
+    [[NYSKitManager sharedNYSKitManager] setIsAlwaysShowErrorMsg:YES];
 }
 
 // iOS9以上使用以下方法

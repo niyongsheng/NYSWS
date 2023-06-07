@@ -22,4 +22,9 @@
 @property (nonatomic, strong) NSString * _Nonnull tokenInvalidMessage;
 /// 被踢/其他设备登录-错误码
 @property (nonatomic, strong) NSString * _Nonnull kickedCode;
+/// 错误信息Key
+@property (nonatomic, strong) NSString * _Nonnull msgKey;
+/// 总是Toast错误信息
+@property (nonatomic, assign) BOOL       isAlwaysShowErrorMsg;
+
 @end

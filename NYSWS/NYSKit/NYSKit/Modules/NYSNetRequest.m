@@ -294,15 +294,13 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         return;
     }
     NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-    NSString *msg = [responseObject objectForKey:@"msg"];
-    if ([NYSTools stringIsNull:msg]) {
-        msg = [responseObject objectForKey:@"message"];
-    }
-    if ([NYSTools stringIsNull:msg]) {
-        msg = [responseObject objectForKey:@"error_msg"];
-    }
-    if ([NYSTools stringIsNull:msg]) {
-        msg = @"unknown error";
+    NSString *msg = @"unknown error";
+    for (NSString *key in [[[NYSKitManager sharedNYSKitManager] msgKey] componentsSeparatedByString:@","]) {
+        NSString *message = [responseObject objectForKey:key];
+        if (![NYSTools stringIsNull:message]) {
+            msg = message;
+            break;
+        }
     }
     
     NSArray *normalCodeArray = [[[NYSKitManager sharedNYSKitManager] normalCode] componentsSeparatedByString:@","];
@@ -326,12 +324,15 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
             [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:nil];
         }
     } else { // 其他错误
-        [NYSTools showBottomToast:msg];
-    }
-    
-    if (failed) {
-        NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
-        failed(error);
+        if (failed) {
+            NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
+            failed(error);
+        } else {
+            [NYSTools showBottomToast:msg];
+        }
+        
+        if ([[NYSKitManager sharedNYSKitManager] isAlwaysShowErrorMsg])
+            [NYSTools showBottomToast:msg];
     }
 }
 
