@@ -93,6 +93,7 @@
     self.coinL.adjustsFontSizeToFitWidth = YES;
     
     NAppManager.isLogined ? [self updateUserInfo:NAppManager.userInfo] : nil;
+//    [NAppManager loadUserInfoCompletion:nil];
 }
 
 - (void)updateUserInfo:(NYSUserInfo *)userInfo {

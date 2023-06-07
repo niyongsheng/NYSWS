@@ -165,7 +165,12 @@
         @strongify(self)
         [self.tableView.refreshControl endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 

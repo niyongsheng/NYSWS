@@ -18,6 +18,8 @@
 #import <UMCommon/UMCommon.h>
 #import <UMCommonLog/UMCommonLogManager.h>
 
+#define isMustLogin     NO
+#define isNeedLoginTips NO
 
 @implementation AppDelegate (AppService)
 
@@ -60,7 +62,11 @@
     if ([NAppManager isLogined]) {
         self.window.rootViewController = [[NYSTabbarViewController alloc] init];
     } else {
-        self.window.rootViewController = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+        if (isMustLogin) {
+            self.window.rootViewController = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+        } else {
+            self.window.rootViewController = [[NYSTabbarViewController alloc] init];
+        }
     }
     [self.window makeKeyAndVisible];
 }
@@ -91,6 +97,7 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+    [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 50;
 }
 
 #pragma mark -- 友盟 初始化 --
@@ -134,10 +141,29 @@
 
 #pragma mark -- 鉴权失效监听 --
 - (void)tokenInvalidation:(NSNotification *)notification {
-    NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
-    [NRootViewController presentViewController:loginVC animated:YES completion:^{
+    if (isNeedLoginTips) {
+        NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.7, RealValue(205))];
+        alertView.titleL.text = NLocalizedStr(@"Tips");
+        alertView.subtitleL.text = @"您还没有登陆";
+        alertView.iconIV.image = [UIImage imageNamed:@"img_alert_lingdang"];
+        [alertView.commitBtn setTitle:@"去登录" forState:UIControlStateNormal];
+        alertView.block = ^(id obj) {
+            if ([obj isEqual:@"1"]) {
+                NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+                [NRootViewController presentViewController:loginVC animated:YES completion:nil];
+            }
+            [FFPopup dismissAllPopups];
+        };
+        FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_GrowIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+        popup.showInDuration = 0.5f;
+        popup.maskType = FFPopupMaskType_Dimmed;
+        FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
+        [popup showWithLayout:layout];
         
-    }];
+    } else {
+        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
+        [NRootViewController presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 #pragma mark -- 网络状态变化 --

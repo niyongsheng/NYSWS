@@ -14,6 +14,7 @@
                 <outlet property="cancelBtn" destination="Zqi-OR-dic" id="b00-Pe-7r2"/>
                 <outlet property="commitBtn" destination="DPI-gW-YOP" id="Aq0-Zh-6sT"/>
                 <outlet property="iconIV" destination="Un2-iP-cdF" id="f6B-Aw-dAU"/>
+                <outlet property="subtitleL" destination="apf-Yd-bke" id="gQU-dj-vFs"/>
                 <outlet property="titleL" destination="FcZ-ev-Hqb" id="lSg-PL-vcI"/>
             </connections>
         </placeholder>
@@ -23,16 +24,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Un2-iP-cdF">
-                    <rect key="frame" x="99.666666666666686" y="15" width="115" height="100"/>
+                    <rect key="frame" x="99.666666666666686" y="20" width="115" height="100"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-ev-Hqb">
-                    <rect key="frame" x="15" y="125" width="284" height="0.0"/>
+                    <rect key="frame" x="15" y="130" width="284" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="if4-nI-VZD">
-                    <rect key="frame" x="15" y="246" width="284" height="30"/>
+                    <rect key="frame" x="15" y="241" width="284" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqi-OR-dic">
                             <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
@@ -65,19 +66,28 @@
                         <constraint firstItem="DPI-gW-YOP" firstAttribute="width" secondItem="Zqi-OR-dic" secondAttribute="width" id="9uU-po-eyo"/>
                     </constraints>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apf-Yd-bke">
+                    <rect key="frame" x="15" y="140" width="284" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Un2-iP-cdF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Cjt-o1-lCJ"/>
+                <constraint firstItem="Un2-iP-cdF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Cjt-o1-lCJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="apf-Yd-bke" secondAttribute="trailing" constant="15" id="KmF-Gw-Ibn"/>
                 <constraint firstItem="if4-nI-VZD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="P71-c6-sfS"/>
+                <constraint firstItem="apf-Yd-bke" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="W78-L6-I8R"/>
+                <constraint firstItem="apf-Yd-bke" firstAttribute="top" secondItem="FcZ-ev-Hqb" secondAttribute="bottom" constant="10" id="dR5-54-gZM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FcZ-ev-Hqb" secondAttribute="trailing" constant="15" id="j15-dt-6Yd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="if4-nI-VZD" secondAttribute="trailing" constant="15" id="nfH-0o-pwe"/>
                 <constraint firstItem="FcZ-ev-Hqb" firstAttribute="top" secondItem="Un2-iP-cdF" secondAttribute="bottom" constant="10" id="o7j-rY-tVp"/>
                 <constraint firstItem="FcZ-ev-Hqb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oQm-Zc-vZP"/>
                 <constraint firstItem="FcZ-ev-Hqb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="pqh-tk-2QW"/>
                 <constraint firstItem="Un2-iP-cdF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rhZ-UW-jDA"/>
-                <constraint firstAttribute="bottom" secondItem="if4-nI-VZD" secondAttribute="bottom" constant="15" id="xlF-9E-ezz"/>
+                <constraint firstAttribute="bottom" secondItem="if4-nI-VZD" secondAttribute="bottom" constant="20" id="xlF-9E-ezz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="79.389312977099237" y="-144.01408450704227"/>

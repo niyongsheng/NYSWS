@@ -39,6 +39,11 @@ static NSString *CellID = @"NYSCourseCell";
     [self setupSearchView];
     if (_isShowBanner)
         [self footerRereshing];
+    
+    // 刷新课程数据
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"NNotificationReloadData" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [self headerRereshing];
+    }];
 }
 
 - (void)setupSearchView {
@@ -171,7 +176,12 @@ static NSString *CellID = @"NYSCourseCell";
         @strongify(self)
         [self.tableView.refreshControl endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 

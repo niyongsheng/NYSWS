@@ -74,16 +74,20 @@
                                        argument:params
                                          remark:@"激活课程"
                                         success:^(id response) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NNotificationReloadData" object:nil];
+        
         @strongify(self)
-        NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(200))];
+        NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(220))];
         alertView.cancelBtn.hidden = YES;
         alertView.titleL.text = NLocalizedStr(@"ActiveSuccess");
         alertView.block = ^(id obj) {
+            [FFPopup dismissAllPopups];
+            
             if ([obj isEqual:@"1"]) {
-                [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }
         };
-        FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:YES];
+        FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
         FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
         [popup showWithLayout:layout];
         

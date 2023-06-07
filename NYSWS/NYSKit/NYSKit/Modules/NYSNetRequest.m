@@ -325,10 +325,11 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         }
     } else {
         [NYSTools showBottomToast:msg];
-        if (failed) {
-            NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
-            failed(error);
-        }
+    }
+    
+    if (failed) {
+        NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
+        failed(error);
     }
 }
 

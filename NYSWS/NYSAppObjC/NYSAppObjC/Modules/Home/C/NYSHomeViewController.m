@@ -73,6 +73,11 @@ NYSHomeCourseVCDelegate
     
     self.navigationItem.title = NLocalizedStr(@"CFBundleDisplayName");
     
+    // 刷新课程数据
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"NNotificationReloadData" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [self headerRereshing];
+    }];
+    
     [self setupNav];
     [self getPagingData];
 }

@@ -53,8 +53,6 @@
             [self uploadAvator:images];
         }];
         [ac showPreviewAnimated:YES];
-        
-
     }]];
 }
 

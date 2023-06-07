@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NYSAlertView : NYSBaseView
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleL;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 

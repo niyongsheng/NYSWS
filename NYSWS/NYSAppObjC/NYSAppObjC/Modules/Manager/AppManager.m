@@ -22,10 +22,7 @@
     static AppManager *appManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        appManager = [[self alloc] init];
-        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-            [appManager loadUserInfoCompletion:nil];
-        }];
+        appManager = [[AppManager alloc] init];
     });
     return appManager;
 }

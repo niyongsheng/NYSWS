@@ -186,7 +186,12 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     } failed:^(NSError * _Nullable error) {
         [self.tableView.refreshControl endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
@@ -351,7 +356,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
                                        argument:argument
                                          remark:@"标记已学"
                                         success:^(id response) {
-        @strongify(self)
+//        @strongify(self)
         
     } failed:^(NSError * _Nullable error) {
 

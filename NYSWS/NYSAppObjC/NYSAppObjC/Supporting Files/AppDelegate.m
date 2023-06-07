@@ -35,6 +35,9 @@ WXApiDelegate
     // 初始化导航栏样式
     [self initNavBar];
     
+    // 初始化 IQKM
+    [self initIQKeyboardManager];
+    
     // 初始化主题
     [[ThemeManager sharedThemeManager] configTheme];
     

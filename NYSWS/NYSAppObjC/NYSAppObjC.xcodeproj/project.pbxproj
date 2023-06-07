@@ -1919,7 +1919,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1966,7 +1966,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.0.9;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

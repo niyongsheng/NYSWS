@@ -27,13 +27,13 @@
 "LN4-OR-kXY.text" = "微信支付";
 
 /* Class = "UITextField"; placeholder = "自定义金额"; ObjectID = "Qju-vR-vH7"; */
-"Qju-vR-vH7.placeholder" = "自定义金额";
+"Qju-vR-vH7.placeholder" = "请输入自定义金额";
 
 /* Class = "UILabel"; text = "￥20"; ObjectID = "a9b-sh-Jca"; */
 "a9b-sh-Jca.text" = "￥20";
 
 /* Class = "UILabel"; text = "----"; ObjectID = "gbv-JK-nlD"; */
-"gbv-JK-nlD.text" = "----";
+"gbv-JK-nlD.text" = "--";
 
 /* Class = "UILabel"; text = "国外支付"; ObjectID = "gck-f8-NN6"; */
 "gck-f8-NN6.text" = "国外支付";

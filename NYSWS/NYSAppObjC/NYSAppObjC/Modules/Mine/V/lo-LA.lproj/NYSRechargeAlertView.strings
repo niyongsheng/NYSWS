@@ -33,7 +33,7 @@
 "a9b-sh-Jca.text" = "￥20";
 
 /* Class = "UILabel"; text = "----"; ObjectID = "gbv-JK-nlD"; */
-"gbv-JK-nlD.text" = "----";
+"gbv-JK-nlD.text" = "--";
 
 /* Class = "UILabel"; text = "国外支付"; ObjectID = "gck-f8-NN6"; */
 "gck-f8-NN6.text" = "PayPal";

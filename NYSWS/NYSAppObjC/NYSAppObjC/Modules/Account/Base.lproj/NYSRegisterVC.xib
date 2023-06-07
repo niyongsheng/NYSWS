@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFK-kR-XvI">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="850"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="550"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lw0-7k-wD4">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="365"/>
@@ -440,7 +440,7 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJI-qV-gfi">
-                                    <rect key="frame" x="15" y="755" width="360" height="45"/>
+                                    <rect key="frame" x="15" y="455" width="360" height="45"/>
                                     <color key="backgroundColor" red="0.9255563617" green="0.3646492362" blue="0.12170963730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="T6H-T7-i1D"/>
@@ -462,7 +462,7 @@
                                 <constraint firstItem="eJI-qV-gfi" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="JIH-Dn-MXv"/>
                                 <constraint firstAttribute="bottom" secondItem="eJI-qV-gfi" secondAttribute="bottom" constant="50" id="dhP-DW-r3M"/>
                                 <constraint firstItem="lw0-7k-wD4" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" id="eR9-gB-k1q"/>
-                                <constraint firstAttribute="height" constant="850" id="t7E-GO-m5w"/>
+                                <constraint firstAttribute="height" constant="550" id="t7E-GO-m5w"/>
                                 <constraint firstAttribute="trailing" secondItem="lw0-7k-wD4" secondAttribute="trailing" id="zNf-sc-nIE"/>
                             </constraints>
                         </view>

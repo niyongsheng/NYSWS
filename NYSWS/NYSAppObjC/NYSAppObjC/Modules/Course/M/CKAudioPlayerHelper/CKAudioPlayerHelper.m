@@ -112,9 +112,9 @@
         //上次播放的录音
         if (_pathName && [path isEqualToString:_pathName]) {
             
-            if(_audioPlayer.isPlaying){
+            if (_audioPlayer.isPlaying) {
                 [self pausePlayingAudio];
-            }else{
+            } else {
                 [self playAudio];
             }
             
@@ -195,6 +195,7 @@
 - (AVAudioPlayer *)getAudioPlayer:(NSString *)path withStype:(CKAudioFileTyle)type{
     NSURL *fileURL;
     if (type == CKAudioFileTyle_Network) {
+        path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
         //根据网络url生产NSData
         NSURL *url = [[NSURL alloc]initWithString:path];
         NSData *audioData = [NSData dataWithContentsOfURL:url];
@@ -205,7 +206,7 @@
         [audioData writeToFile:filePath atomically:YES];
         
         fileURL = [NSURL fileURLWithPath:filePath];
-    }else if (type == CKAudioFileTyle_Local){
+    } else if (type == CKAudioFileTyle_Local) {
         fileURL = [NSURL fileURLWithPath:path];
     }
     
