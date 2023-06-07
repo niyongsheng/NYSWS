@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSString *selectedBtnIndex;
 
 @property (weak, nonatomic) IBOutlet UIView *imageV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageVHeight;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @property (strong, nonatomic) NSMutableArray<UIImage *> *selectedImagesArray;
@@ -55,14 +56,7 @@
     [_contentTV setValue:self.placeHolderLabel forKey:@"_placeholderLabel"];
     
     // 图片选择器
-    _pickerView = ({
-        LLImagePickerView *pickerView = [LLImagePickerView ImagePickerViewWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 400) CountOfRow:3];
-        pickerView.type = LLImageTypePhotoAndCamera;
-        pickerView.maxImageSelected = 9;
-        pickerView.allowPickingVideo = NO;
-        [self.imageV addSubview:pickerView];
-        pickerView;
-    });
+    [self.imageV addSubview:self.pickerView];
     
     @weakify(self)
     [self.pickerView observeSelectedMediaArray:^(NSArray<LLImagePickerModel *> *list) {
@@ -76,7 +70,9 @@
     }];
     
     [self.pickerView observeViewHeight:^(CGFloat height) {
-//        [self.view layoutSubviews];
+        @strongify(self)
+        self.imageVHeight.constant = height;
+        [self.view layoutSubviews];
     }];
 }
 
@@ -213,6 +209,16 @@
         _selectedImagesUrlArray = [NSMutableArray array];
     }
     return _selectedImagesUrlArray;
+}
+
+- (LLImagePickerView *)pickerView {
+    if (!_pickerView) {
+        _pickerView = [LLImagePickerView ImagePickerViewWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 400) CountOfRow:3];
+        _pickerView.type = LLImageTypePhotoAndCamera;
+        _pickerView.maxImageSelected = 9;
+        _pickerView.allowPickingVideo = NO;
+    }
+    return _pickerView;
 }
 
 @end

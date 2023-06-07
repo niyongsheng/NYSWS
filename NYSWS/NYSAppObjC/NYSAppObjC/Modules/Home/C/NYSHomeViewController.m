@@ -168,21 +168,27 @@ NYSHomeCourseVCDelegate
 #pragma mark - PopTableCellDelegate
 - (void)cellOnclick:(NSIndexPath *)indexPath tag:(NSInteger)tag {
     [PopView hidenPopView];
-    
-    if (indexPath.row == 0) {
-        [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
-    } else {
-        [NYSUIKitUtilities setUserLanguage:@"lo"];
-    }
-    [self showHUDCompletion:nil];
 
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    UIWindow *window = app.window;
-    [UIView animateWithDuration:1.5f animations:^{
-        window.alpha = 0.1;
-    } completion:^(BOOL finished) {
-        exit(0);
-    }];
+    if (indexPath.row == 0) {
+        [self showHUDCompletion:^{
+            [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
+            NRootViewController = [NYSTabbarViewController new];
+        }];
+        
+    } else {
+        [self showHUDCompletion:^{
+            [NYSUIKitUtilities setUserLanguage:@"lo-LA"];
+            NRootViewController = [NYSTabbarViewController new];
+        }];
+    }
+    
+//    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//    UIWindow *window = app.window;
+//    [UIView animateWithDuration:1.5f animations:^{
+//        window.alpha = 0.15;
+//    } completion:^(BOOL finished) {
+//        exit(0);
+//    }];
 }
 
 - (void)showHUDCompletion:(void (^ __nullable)(void))completion {

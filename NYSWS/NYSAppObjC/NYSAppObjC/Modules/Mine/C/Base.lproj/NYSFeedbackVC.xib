@@ -18,6 +18,7 @@
                 <outlet property="contentV" destination="XWl-eA-7Nd" id="ODw-B3-lgb"/>
                 <outlet property="contentView" destination="SFK-kR-XvI" id="ztS-dv-1ic"/>
                 <outlet property="imageV" destination="l2v-ec-eZT" id="RFh-1f-q85"/>
+                <outlet property="imageVHeight" destination="dpN-dC-cu0" id="sDF-MZ-Vj9"/>
                 <outlet property="scrollV" destination="5Jg-GP-kca" id="wed-Xg-e0o"/>
                 <outlet property="view" destination="Wsz-Re-I4y" id="rCg-tr-015"/>
             </connections>
@@ -127,14 +128,14 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2v-ec-eZT">
-                                    <rect key="frame" x="15" y="346" width="360" height="400"/>
+                                    <rect key="frame" x="15" y="346" width="360" height="135"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="400" id="dpN-dC-cu0"/>
+                                        <constraint firstAttribute="height" constant="135" id="dpN-dC-cu0"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJI-qV-gfi">
-                                    <rect key="frame" x="15" y="755" width="360" height="45"/>
+                                    <rect key="frame" x="15" y="506" width="360" height="45"/>
                                     <color key="backgroundColor" red="0.9255563617" green="0.3646492362" blue="0.12170963730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="T6H-T7-i1D"/>
@@ -167,9 +168,9 @@
                                 <constraint firstItem="0iW-TQ-NA6" firstAttribute="top" secondItem="L5D-wa-FKj" secondAttribute="bottom" constant="15" id="OKi-KS-9Af"/>
                                 <constraint firstAttribute="trailing" secondItem="0iW-TQ-NA6" secondAttribute="trailing" constant="15" id="XEO-be-MOD"/>
                                 <constraint firstItem="XWl-eA-7Nd" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="Zp3-W1-UiG"/>
-                                <constraint firstAttribute="bottom" secondItem="eJI-qV-gfi" secondAttribute="bottom" constant="50" id="dhP-DW-r3M"/>
                                 <constraint firstItem="0iW-TQ-NA6" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="eYZ-Ku-B99"/>
                                 <constraint firstItem="r7R-zI-k0m" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="idu-w4-B50"/>
+                                <constraint firstItem="eJI-qV-gfi" firstAttribute="top" secondItem="l2v-ec-eZT" secondAttribute="bottom" constant="25" id="kWQ-SY-41o"/>
                                 <constraint firstItem="r7R-zI-k0m" firstAttribute="top" secondItem="XWl-eA-7Nd" secondAttribute="bottom" constant="20" id="ogi-v6-3KL"/>
                                 <constraint firstItem="Fxq-bo-d9v" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="pGD-PH-FmJ"/>
                                 <constraint firstItem="XWl-eA-7Nd" firstAttribute="top" secondItem="Fxq-bo-d9v" secondAttribute="bottom" constant="20" id="qhI-xh-yr6"/>

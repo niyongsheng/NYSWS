@@ -42,7 +42,7 @@
     
     NSString *str = ShareUrl;
     UIImageView *qrIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.45, kScreenWidth * 0.45)];
-    qrIV.image = [SGGenerateQRCode generateQRCodeWithData:str size:RealValue(200) logoImage:[UIImage imageNamed:@"logo"] ratio:NRadius];
+    qrIV.image = [SGGenerateQRCode generateQRCodeWithData:str size:RealValue(200) logoImage:[UIImage imageNamed:@"icon_logo"] ratio:NRadius];
     [self.inviteIV addSubview:qrIV];
     
     qrIV.centerX = self.view.centerX;

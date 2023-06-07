@@ -23,9 +23,9 @@
 - (void)setupUI{
     
     _icon = [[UIImageView alloc] init];
-//    _icon.layer.cornerRadius = 15.f;
+    _icon.layer.cornerRadius = 5.f;
 //    _icon.clipsToBounds = YES;
-    _icon.contentMode = UIViewContentModeScaleAspectFill;
+    _icon.contentMode = UIViewContentModeScaleToFill;
     [self.contentView addSubview:_icon];
     
     _deleteButton = [[UIButton alloc] init];

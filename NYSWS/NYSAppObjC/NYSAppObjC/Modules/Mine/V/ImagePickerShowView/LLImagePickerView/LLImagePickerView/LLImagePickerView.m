@@ -247,9 +247,9 @@ static NSInteger countOfRow;
             {
                 LLActionSheetView *alert = [[LLActionSheetView alloc]initWithTitleArray:@[@"从相册中选择",@"拍摄"] andShowCancel: YES];
                 alert.ClickIndex = ^(NSInteger index) {
-                    if (index == 1){
+                    if (index == 1) {
                         [weakSelf openAlbum];
-                    }else if (index == 2){
+                    } else if (index == 2) {
                         [weakSelf openCamera];
                     }
                 };
@@ -268,7 +268,7 @@ static NSInteger countOfRow;
                 alert.ClickIndex = ^(NSInteger index) {
                     if (index == 1){
                         [weakSelf openVideo];
-                    }else if (index == 2){
+                    } else if (index == 2) {
                         [weakSelf openVideotape];
                     }
                 };
@@ -364,7 +364,8 @@ static NSInteger countOfRow;
         count = _maxImageSelected - _mediaArray.count;
     }
     TZImagePickerController *imagePickController = [[TZImagePickerController alloc] initWithMaxImagesCount:count delegate:self];
-    imagePickController.naviBgColor = [UIColor colorWithHexString:@"#FFBC38"];
+    imagePickController.naviTitleColor = UIColor.blackColor;
+    imagePickController.barItemTextColor = UIColor.systemBlueColor;
     //是否 在相册中显示拍照按钮
     imagePickController.allowTakePicture = NO;
     //是否可以选择显示原图
@@ -374,7 +375,6 @@ static NSInteger countOfRow;
     if (!_allowMultipleSelection) {
         imagePickController.selectedAssets = _selectedImageAssets;
     }
-    imagePickController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.viewController presentViewController:imagePickController animated:YES completion:nil];
 }
 
@@ -425,7 +425,8 @@ static NSInteger countOfRow;
         count = _maxImageSelected - _mediaArray.count;
     }
     TZImagePickerController *imagePickController = [[TZImagePickerController alloc] initWithMaxImagesCount:count delegate:self];
-    imagePickController.naviBgColor = [UIColor colorWithHexString:@"#FFBC38"];
+    imagePickController.naviTitleColor = UIColor.blackColor;
+    imagePickController.barItemTextColor = UIColor.systemBlueColor;
     imagePickController.allowTakeVideo = NO;
     imagePickController.allowPickingVideo = YES;
     imagePickController.allowPickingImage = NO;

@@ -14,6 +14,7 @@
 <
 SKStoreProductViewControllerDelegate
 >
+@property (weak, nonatomic) IBOutlet UIImageView *logoIV;
 @property (weak, nonatomic) IBOutlet UILabel *versionL;
 
 @end
@@ -25,6 +26,7 @@ SKStoreProductViewControllerDelegate
     self.navigationItem.title = NLocalizedStr(@"AboutOur");
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     
+    ViewRadius(_logoIV, 7)
     _versionL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"CourseVersion"), [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     
     @weakify(self)
