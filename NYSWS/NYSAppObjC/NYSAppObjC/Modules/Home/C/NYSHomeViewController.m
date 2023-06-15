@@ -13,6 +13,7 @@
 #import "PopTableListView.h"
 
 #import "NYSSearchCourseVC.h"
+#import "NYSCatalogSearchViewController.h"
 #import "NYSHomeCourseVC.h"
 
 #import "NYSCallCenterVC.h"
@@ -21,7 +22,6 @@
 
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
-#import "NYSCatalogViewController.h"
 
 #import "ThirdViewController.h"
 
@@ -67,6 +67,12 @@ NYSHomeCourseVCDelegate
 @end
 
 @implementation NYSHomeViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -278,8 +284,13 @@ NYSHomeCourseVCDelegate
     
     UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
     [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
-        [self.navigationController pushViewController:searchVC animated:YES];
+//        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
+//        searchVC.type = @"1";
+//        [self.navigationController pushViewController:searchVC animated:YES];
+        
+        NYSCatalogSearchViewController *vc = NYSCatalogSearchViewController.new;
+        vc.isHomeSearch = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     [searchView addSubview:searchBtn];
     

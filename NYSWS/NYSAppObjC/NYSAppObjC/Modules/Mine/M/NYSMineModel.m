@@ -10,3 +10,12 @@
 @implementation NYSMineModel
 
 @end
+
+@implementation NYSHelpCenterModel
+@end
+
+@implementation NYSMoneyItemModel
+@end
+
+@implementation NYSPayWayModel
+@end

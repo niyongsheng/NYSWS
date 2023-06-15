@@ -12,9 +12,10 @@
 
 #import "NYSCatalogSearchViewController.h"
 
-@interface NYSCatalogViewController ()
+@interface NYSCatalogViewController () <CKAudioPlayerHelperDelegate>
 {
     NSInteger _pageNo;
+    CGFloat _tableviewInitHeight;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *catalogTitleVHeight;
 @property (weak, nonatomic) IBOutlet UIView *catalogTitleV;
@@ -26,18 +27,42 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rightBtn;
 
+@property (weak, nonatomic) IBOutlet UIImageView *adIV;
+@property (weak, nonatomic) IBOutlet UILabel *adL;
+
 @property (nonatomic, strong) UITextField *searchTF;
 
 @property (nonatomic, assign) NSInteger totalPage;
 @property (nonatomic, assign) NSInteger currentPage;
 
 /// 是否可试听
-@property (nonatomic , copy) NSString *is_try;
+@property (nonatomic, copy) NSString *is_try;
+
+/// 音频数组
+@property (nonatomic, strong) NSArray *urlArray;
 @end
 
 @implementation NYSCatalogViewController
 static NSString *NYSWordCellID = @"NYSWordCell";
 static NSString *NYSStatementCellID = @"NYSStatementCell";
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSArray *navtureRecognizers = self.navigationController.view.gestureRecognizers;
+    [navtureRecognizers enumerateObjectsUsingBlock:^(UIGestureRecognizer *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enabled = NO;
+    }];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    NSArray *navtureRecognizers = self.navigationController.view.gestureRecognizers;
+    [navtureRecognizers enumerateObjectsUsingBlock:^(UIGestureRecognizer *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.enabled = YES;
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,12 +121,47 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         make.left.mas_equalTo(self.contentV.mas_left).offset(10);
         make.right.mas_equalTo(self.contentV.mas_right).offset(-10);
     }];
+    _tableviewInitHeight = self.tableView.height;
     
     [self headerDisplayHandle];
     
     ViewRadius(_catalogTitleV, 25);
     ViewRadius(_contentV, 20);
     self.contentV.backgroundColor = [UIColor colorWithHexString:@"#4FBAD4"];
+    
+    [CKAudioPlayerHelper shareInstance].delegate = self;
+    
+    self.adL.text = self.courseModel.ad_title;
+    self.adIV.userInteractionEnabled = YES;
+    @weakify(self)
+    [self.adIV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        @strongify(self)
+        NYSWebViewController *webVC = [NYSWebViewController new];
+        webVC.urlStr = self.courseModel.ad_url;
+        webVC.autoTitle = YES;
+        [self.navigationController pushViewController:webVC animated:YES];
+    }]];
+    
+    // 右滑
+    UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        if (self.currentPage > 1) {
+            [self getDetailData:[NSString stringWithFormat:@"%ld", --self.currentPage]];
+        } else {
+            [NYSTools showToast:@"已到第一页"];
+        }
+    }];
+    [rightRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.tableView addGestureRecognizer:rightRecognizer];
+    // 左滑
+    UISwipeGestureRecognizer *leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+        if (self.currentPage < self.totalPage) {
+            [self getDetailData:[NSString stringWithFormat:@"%ld", ++self.currentPage]];
+        } else {
+            [NYSTools showToast:@"已到最后一页"];
+        }
+    }];
+    [leftRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.tableView addGestureRecognizer:leftRecognizer];
 }
 
 - (IBAction)leftBtnOnclicked:(UIButton *)sender {
@@ -180,6 +240,18 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         
         [self.tableView.refreshControl endRefreshing];
         [self.tableView reloadData];
+        [TableViewAnimationKit showWithAnimationType:XSTableViewAnimationTypeMove tableView:self.tableView];
+        
+        CGFloat th = self.tableView.contentSize.height;
+        if (self.dataSourceArr.count > 0 && th < self->_tableviewInitHeight) {
+            [self.view layoutIfNeeded];
+            [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(th - 5);
+            }];
+            [UIView animateWithDuration:0.5f animations:^{
+                self.contentV.height = th + 15;
+            }];
+        }
         
         [self setTotalPage:[response[@"total_page"] integerValue] currentPage:page.integerValue];
         
@@ -199,7 +271,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     _totalPage = totalPage;
     [self.pagingV removeAllSubviews];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 30, 30)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 190, 30)];
     scrollView.showsHorizontalScrollIndicator = NO;
     [self.pagingV addSubview:scrollView];
     CGFloat x = 0;
@@ -237,7 +309,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     _pageNo = 1;
     [self footerRereshing];
@@ -288,9 +360,9 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
             
             NSArray<NYSCatalogModel *> *arr = self.dataSourceArr[indexP.section][indexP.row];
             if (isLeft) {
-                [self playWav:[[arr firstObject] url]];
+                [self playWav:[[arr firstObject] url] contentUrl:[[arr firstObject] content_url]];
             } else if (arr.count > 1) {
-                [self playWav:[[arr lastObject] url]];
+                [self playWav:[[arr lastObject] url] contentUrl:[[arr lastObject] content_url]];
             }
         };
         return cell;
@@ -312,15 +384,14 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
-        
         NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
-        [self playWav:model.url];
+        [self playWav:model.url contentUrl:model.content_url];
     }
 }
 
 /// 播放
 /// - Parameter urlStr: 音频url
-- (void)playWav:(NSString *)urlStr {
+- (void)playWav:(NSString *)urlStr contentUrl:(NSString *)contentUrlStr {
     [self signLearned];
     
     if (self.isFromTry && self.is_try.boolValue) {
@@ -331,19 +402,34 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         return;
     }
     
-    if (![urlStr isNotBlank]) {
+    if (![urlStr isNotBlank] && ![contentUrlStr isNotBlank]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"NoAudioInfo");
         [hud hideAnimated:YES afterDelay:1.0f];
         return;
     }
-
-    if (![urlStr containsString:@"http"]) {
+    
+    if ([contentUrlStr isNotBlank] && ![contentUrlStr containsString:@"http"])
+        contentUrlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, contentUrlStr];
+    
+    if ([urlStr isNotBlank] && ![urlStr containsString:@"http"])
         urlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr];
-    }
+    
+    self.urlArray = @[contentUrlStr, urlStr];
 
-    [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:urlStr playOrPause:YES];
+    if ([[self.urlArray firstObject] isNotBlank]) {
+        [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray firstObject] playOrPause:YES];
+    } else {
+        [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray lastObject] playOrPause:YES];
+    }
+}
+
+#pragma mark - CKAudioPlayerHelperDelegate
+- (void)didAudioPlayerFinishPlay:(AVAudioPlayer*)audioPlayer pathName:(NSString *)pathName {
+    if ([pathName isEqualToString:[self.urlArray firstObject]]) {
+        [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray lastObject] playOrPause:YES];
+    }
 }
 
 - (void)signLearned {

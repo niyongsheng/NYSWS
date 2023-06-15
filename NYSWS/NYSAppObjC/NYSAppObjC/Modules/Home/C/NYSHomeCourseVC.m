@@ -9,7 +9,6 @@
 #import "NYSCourseCell.h"
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
-#import "NYSCatalogViewController.h"
 
 @interface NYSHomeCourseVC ()
 {

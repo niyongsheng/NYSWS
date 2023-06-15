@@ -10,7 +10,6 @@
 #import "NYSBannerCell.h"
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
-#import "NYSCatalogViewController.h"
 
 #define HomeBannerHeight        RealValue(120)
 
@@ -37,7 +36,7 @@ static NSString *CellID = @"NYSCourseCell";
     self.navigationItem.title = NLocalizedStr(@"SearchTitle");
     
     [self setupSearchView];
-    if (_isShowBanner)
+    if ([self.type isEqualToString:@"2"])
         [self footerRereshing];
     
     // 刷新课程数据
@@ -67,7 +66,7 @@ static NSString *CellID = @"NYSCourseCell";
     
     
     CGFloat searchViewH = 40;
-    if (_isShowBanner) searchViewH += (HomeBannerHeight + 2 * NNormalSpace);
+    if ([self.type isEqualToString:@"2"]) searchViewH += (HomeBannerHeight + 2 * NNormalSpace);
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, searchViewH + NNormalSpace)];
     headerView.backgroundColor = [UIColor whiteColor];
     
@@ -90,11 +89,13 @@ static NSString *CellID = @"NYSCourseCell";
     
     
     // 轮播图
-    if (_isShowBanner) {
+    if ([self.type isEqualToString:@"2"]) {
         self.searchTF.userInteractionEnabled = NO;
         UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
         [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
             NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
+            searchVC.type = @"3";
+            searchVC.classId = self.classId;
             [self.navigationController pushViewController:searchVC animated:YES];
         }];
         [searchView addSubview:searchBtn];
@@ -140,18 +141,17 @@ static NSString *CellID = @"NYSCourseCell";
     NSMutableDictionary *argument = @{
         @"page": @(_pageNo),
         @"limit": DefaultPageSize,
-        @"class_id": _index,
+        @"keyword": _searchTF.text
     }.mutableCopy;
-    if (self.isShowBanner) {
-        [argument setValue:@1 forKey:@"is_recommend"];
-    } else {
-        [argument setValue:_searchTF.text forKey:@"keyword"];
+    if ([self.type isEqualToString:@"2"] || [self.type isEqualToString:@"3"]) {
+//        [argument setValue:@1 forKey:@"is_recommend"];
+        [argument setValue:_classId forKey:@"class_id"];
     }
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:self.isShowBanner ? @"/index/Course/list" : @"/index/Course/select_coures"
+                                            url:[self.type isEqualToString:@"1"] ? @"/index/Course/select_coures" : @"/index/Course/list"
                                        argument:argument
-                                         remark:@"课程分类/搜索列表"
+                                         remark:@"搜索"
                                         success:^(id response) {
         @strongify(self)
         NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
@@ -186,13 +186,19 @@ static NSString *CellID = @"NYSCourseCell";
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     _pageNo = 0;
     [self.dataSourceArr removeAllObjects];
     [self footerRereshing];
     
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    _pageNo = 0;
+    [self.dataSourceArr removeAllObjects];
+    [self footerRereshing];
 }
 
 #pragma mark - tableview delegate / dataSource

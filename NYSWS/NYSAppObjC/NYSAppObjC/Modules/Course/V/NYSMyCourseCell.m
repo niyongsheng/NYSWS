@@ -27,6 +27,7 @@
     ViewRadius(self.iconIV, 7);
     self.timeL.adjustsFontSizeToFitWidth = YES;
     self.versionL.adjustsFontSizeToFitWidth = YES;
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

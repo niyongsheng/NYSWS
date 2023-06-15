@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, CKAudioFileTyle) {
 //暂停播放
 - (void)didAudioPlayerPausePlay:(AVAudioPlayer*)audioPlayer;
 //结束播放
-- (void)didAudioPlayerFinishPlay:(AVAudioPlayer*)audioPlayer;
+- (void)didAudioPlayerFinishPlay:(AVAudioPlayer*)audioPlayer pathName:(NSString *)pathName;
 
 @end
 

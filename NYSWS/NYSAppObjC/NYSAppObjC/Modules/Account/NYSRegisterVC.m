@@ -6,8 +6,9 @@
 //
 
 #import "NYSRegisterVC.h"
+#import "NYSProtocolDetailVC.h"
 
-@interface NYSRegisterVC ()
+@interface NYSRegisterVC () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollV;
 
@@ -19,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *securityAnswerTF;
 @property (weak, nonatomic) IBOutlet UITextField *InvitationCodeTF;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *protocolBtn;
+@property (weak, nonatomic) IBOutlet UITextView *protocolT;
 
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 @end
@@ -33,9 +35,26 @@
     self.navigationItem.title = NLocalizedStr(@"Regist");
     
     ViewRadius(_commitBtn, 22.5f)
+    
+    // 协议富文本
+    NSString *protocolStr = NLocalizedStr(@"ProtocolDesc"); //@"阅读并同意《隐私政策》";
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:protocolStr];
+    [attString addAttribute:(NSString*)NSForegroundColorAttributeName value:UIColor.grayColor range:[protocolStr rangeOfString:protocolStr]];
+    [attString addAttribute:(NSString*)NSFontAttributeName value:[UIFont systemFontOfSize:12] range:[protocolStr rangeOfString:protocolStr]];
+    
+    NSRange range2 = [protocolStr rangeOfString:NLocalizedStr(@"UserProtocol")];
+    NSRange range3 = [protocolStr rangeOfString:NLocalizedStr(@"PrivacyProtocol")];
+    
+    [attString addAttribute:NSLinkAttributeName value:@"user://" range:range2];
+    [attString addAttribute:NSLinkAttributeName value:@"privacy://" range:range3];
+    
+    _protocolT.linkTextAttributes = @{NSForegroundColorAttributeName:NAppThemeColor};
+    [_protocolT setDelegate:self];
+    [_protocolT setAttributedText:attString];
 }
 
 - (IBAction)securityQuestionBtnOnclicked:(UIButton *)sender {
+    [self.view endEditing:YES];
     
     BRStringPickerView *stringPickerView = [[BRStringPickerView alloc] init];
     stringPickerView.pickerMode = BRStringPickerComponentSingle;
@@ -59,6 +78,45 @@
     stringPickerView.pickerStyle = customStyle;
     
     [stringPickerView show];
+}
+
+#pragma mark 富文本点击事件
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
+    if ([[URL scheme] isEqualToString:@"user"]) {
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Member/get_user_agreement"
+                                           argument:nil
+                                             remark:@"服务协议"
+                                            success:^(id response) {
+            @strongify(self)
+            NYSProtocolDetailVC *detailVC = [NYSProtocolDetailVC new];
+            detailVC.contentStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+            detailVC.title = NLocalizedStr(@"UserProtocol");
+            [self.navigationController pushViewController:detailVC animated:YES];
+
+        } failed:^(NSError * _Nullable error) {
+
+        }];
+        
+    } else {
+        @weakify(self)
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Member/get_privacy_agreement"
+                                           argument:nil
+                                             remark:@"隐私协议"
+                                            success:^(id response) {
+            @strongify(self)
+            NYSProtocolDetailVC *detailVC = [NYSProtocolDetailVC new];
+            detailVC.contentStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
+            detailVC.title = NLocalizedStr(@"PrivacyProtocol");
+            [self.navigationController pushViewController:detailVC animated:YES];
+
+        } failed:^(NSError * _Nullable error) {
+
+        }];
+    }
+    return YES;
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
@@ -129,6 +187,12 @@
 //        return;
 //    }
     
+    if (!self.protocolBtn.selected) {
+        [NYSTools showToast:NLocalizedStr(@"TipsProtocol")];
+        [NYSTools shakToShow:self.protocolBtn];
+        return;
+    }
+    
     NSMutableDictionary *argument = [NSMutableDictionary dictionary];
     argument[@"nickname"] = _nicknameTF.text;
     argument[@"phone"] = _phoneTF.text;
@@ -152,6 +216,10 @@
     } failed:^(NSError * _Nullable error) {
 
     }];
+}
+
+- (IBAction)protocolBtnOnclicked:(UIButton *)sender {
+    sender.selected = !sender.selected;
 }
 
 @end

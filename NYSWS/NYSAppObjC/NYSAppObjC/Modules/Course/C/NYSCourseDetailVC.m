@@ -218,6 +218,7 @@
         vc.courseId = self.model.ID;
         vc.index = indexPath.row;
         vc.chapterArray = self.dataSourceArr;
+        vc.courseModel = self.model;
         [self.navigationController pushViewController:vc animated:YES];
         
     } else if (!model.is_try.boolValue) {
@@ -226,6 +227,7 @@
         vc.courseId = self.model.ID;
         vc.index = indexPath.row;
         vc.chapterArray = self.dataSourceArr;
+        vc.courseModel = self.model;
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

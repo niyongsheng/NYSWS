@@ -14,8 +14,6 @@
 {
     NSInteger _pageNo;
 }
-
-
 @end
 
 @implementation NYSMyCourseListVC
@@ -94,7 +92,7 @@
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     _pageNo = 1;
     [self footerRereshing];
@@ -113,7 +111,9 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 155;
+    NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 130 + h;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

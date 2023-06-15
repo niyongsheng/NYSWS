@@ -16,6 +16,8 @@
                 <outlet property="nicknameTF" destination="8yW-0O-F8o" id="4Id-pd-v7p"/>
                 <outlet property="passwordTF" destination="OCL-2W-h7R" id="drO-zt-6MX"/>
                 <outlet property="phoneTF" destination="Cjp-XP-MMB" id="hww-fw-GRi"/>
+                <outlet property="protocolBtn" destination="B1Z-Dm-5R2" id="Oyy-4g-1cB"/>
+                <outlet property="protocolT" destination="XPV-QF-tdC" id="hiX-dR-8fv"/>
                 <outlet property="repasswordTF" destination="j55-oC-7iT" id="8Hm-ch-kGb"/>
                 <outlet property="scrollV" destination="5Jg-GP-kca" id="wed-Xg-e0o"/>
                 <outlet property="securityAnswerTF" destination="gu6-IK-uZ3" id="oTB-aY-PX1"/>
@@ -454,12 +456,40 @@
                                         <action selector="commitBtnOnclicked:" destination="-1" eventType="touchUpInside" id="zIr-FD-Mql"/>
                                     </connections>
                                 </button>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="我已阅读并同意《服务协议》、《隐私政策》" translatesAutoresizingMaskIntoConstraints="NO" id="XPV-QF-tdC">
+                                    <rect key="frame" x="45" y="380" width="256" height="40"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Hco-0p-iDf"/>
+                                        <constraint firstAttribute="width" constant="256" id="l4g-1c-9aF"/>
+                                    </constraints>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1Z-Dm-5R2">
+                                    <rect key="frame" x="15" y="380" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="4Iu-o7-f7P"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="icon_unselected"/>
+                                    <state key="selected" image="icon_selected"/>
+                                    <connections>
+                                        <action selector="protocolBtnOnclicked:" destination="-1" eventType="touchUpInside" id="SKg-dW-o9M"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="lw0-7k-wD4" firstAttribute="top" secondItem="SFK-kR-XvI" secondAttribute="top" id="2C7-Ee-eAl"/>
                                 <constraint firstAttribute="trailing" secondItem="eJI-qV-gfi" secondAttribute="trailing" constant="15" id="2tc-30-ODA"/>
                                 <constraint firstItem="eJI-qV-gfi" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="JIH-Dn-MXv"/>
+                                <constraint firstItem="XPV-QF-tdC" firstAttribute="leading" secondItem="B1Z-Dm-5R2" secondAttribute="trailing" id="KAG-kh-JlD"/>
+                                <constraint firstItem="B1Z-Dm-5R2" firstAttribute="centerY" secondItem="XPV-QF-tdC" secondAttribute="centerY" constant="-5" id="L6D-Gi-AS0"/>
+                                <constraint firstItem="B1Z-Dm-5R2" firstAttribute="width" secondItem="B1Z-Dm-5R2" secondAttribute="height" multiplier="1:1" id="N0B-3i-c2s"/>
+                                <constraint firstItem="B1Z-Dm-5R2" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" constant="15" id="Nku-67-rsn"/>
+                                <constraint firstItem="B1Z-Dm-5R2" firstAttribute="top" secondItem="lw0-7k-wD4" secondAttribute="bottom" constant="15" id="a8v-es-f8t"/>
                                 <constraint firstAttribute="bottom" secondItem="eJI-qV-gfi" secondAttribute="bottom" constant="50" id="dhP-DW-r3M"/>
                                 <constraint firstItem="lw0-7k-wD4" firstAttribute="leading" secondItem="SFK-kR-XvI" secondAttribute="leading" id="eR9-gB-k1q"/>
                                 <constraint firstAttribute="height" constant="550" id="t7E-GO-m5w"/>
@@ -490,6 +520,8 @@
     </objects>
     <resources>
         <image name="icon_right_arrow" width="20" height="20"/>
+        <image name="icon_selected" width="15" height="15"/>
+        <image name="icon_unselected" width="15" height="15"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

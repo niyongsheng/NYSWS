@@ -35,8 +35,8 @@
 /* Class = "UILabel"; text = "----"; ObjectID = "gbv-JK-nlD"; */
 "gbv-JK-nlD.text" = "--";
 
-/* Class = "UILabel"; text = "国外支付"; ObjectID = "gck-f8-NN6"; */
-"gck-f8-NN6.text" = "国外支付";
+/* Class = "UILabel"; text = "苹果支付 "; ObjectID = "gck-f8-NN6"; */
+"gck-f8-NN6.text" = "苹果支付";
 
 /* Class = "UILabel"; text = "支付方式"; ObjectID = "hwV-uc-yDW"; */
 "hwV-uc-yDW.text" = "支付方式";
@@ -53,8 +53,8 @@
 /* Class = "UILabel"; text = "20"; ObjectID = "s9G-T2-Lhe"; */
 "s9G-T2-Lhe.text" = "20";
 
-/* Class = "UILabel"; text = "苹果支付"; ObjectID = "tDa-Tq-D2X"; */
-"tDa-Tq-D2X.text" = "苹果支付";
+/* Class = "UILabel"; text = "国外支付"; ObjectID = "tDa-Tq-D2X"; */
+"tDa-Tq-D2X.text" = "国外支付";
 
 /* Class = "UILabel"; text = "支付宝"; ObjectID = "thb-a9-cDn"; */
 "thb-a9-cDn.text" = "支付宝";

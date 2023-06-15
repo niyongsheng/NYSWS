@@ -10,6 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSCatalogSearchViewController : NYSBaseViewController
+/// 是否为首页搜索
+@property (assign, nonatomic) BOOL isHomeSearch;
 @property (strong, nonatomic) NSArray<NYSChapter *> *chapterArray;
 @property (assign, nonatomic) NSInteger index;
 @end

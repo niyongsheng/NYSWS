@@ -156,3 +156,5 @@ SecurityQuestion2="您父亲的姓名";
 SecurityQuestion3="您的出生地";
 SecurityQuestion4="您高中班主任姓名是";
 SecurityQuestion5="您的生日是";
+
+Share="分享";

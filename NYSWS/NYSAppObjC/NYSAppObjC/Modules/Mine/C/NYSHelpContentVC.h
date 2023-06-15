@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSHelpContentVC : NYSBaseViewController
-@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) NYSHelpCenterModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

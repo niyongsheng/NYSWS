@@ -247,6 +247,10 @@
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlStr parameters:argument error:nil];
     [request setAllHTTPHeaderFields:[self headers]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    // 设置cookie
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [request setValue:[NSString stringWithFormat:@"%@=%@", [defaults objectForKey:@"cookie.name"], [defaults objectForKey:@"cookie.value"]] forHTTPHeaderField:@"Cookie"];
+    
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
                                                uploadProgress:nil
@@ -257,6 +261,17 @@
         
         handelLog(remark, urlStr, @"POST", [request allHTTPHeaderFields], argument, responseObject, YES);
         if (!error) {
+            // 获取cookie
+            NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+                if ([cookie.name isEqualToString:@"PHPSESSID"]) {
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:cookie.name forKey:@"cookie.name"];
+                    [defaults setObject:cookie.value forKey:@"cookie.value"];
+                    [defaults synchronize];
+                }
+            }
+            
             if (isCheck) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
             } else {

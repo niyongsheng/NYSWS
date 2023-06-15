@@ -46,6 +46,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
 }
 
 - (void)viewDidLoad {
@@ -93,7 +94,6 @@
     self.coinL.adjustsFontSizeToFitWidth = YES;
     
     NAppManager.isLogined ? [self updateUserInfo:NAppManager.userInfo] : nil;
-//    [NAppManager loadUserInfoCompletion:nil];
 }
 
 - (void)updateUserInfo:(NYSUserInfo *)userInfo {
@@ -114,17 +114,9 @@
         [NYSTools zoomToShow:sender.layer];
         
         // 充值弹框
-        @weakify(self)
+        self.rechargeAlertView.superVC = self;
         FFPopup *popup = [FFPopup popupWithContentView:self.rechargeAlertView showType:FFPopupShowType_BounceInFromBottom dismissType:FFPopupDismissType_BounceOutToBottom maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
         FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Left, FFPopupVerticalLayout_Bottom);
-        self.rechargeAlertView.block = ^(id obj) {
-            [popup dismissAnimated:YES];
-            
-            @strongify(self)
-            if ([obj isKindOfClass:NSDictionary.class]) {
-                [self commitPay:obj];
-            }
-        };
         [popup showWithLayout:layout];
         
     } else if (sender.tag == 1) {
@@ -187,56 +179,6 @@
     } else {
         [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];
     }
-}
-
-#pragma mark - 充值
-- (void)commitPay:(NSDictionary *)obj {
-    @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@"/index/Order/create"
-                                      argument:obj
-                                             remark:@"下单调起支付"
-                                            success:^(id response) {
-        @strongify(self)
-        if ([obj[@"pay_type"] intValue] == 0) {
-            NSString *url = [NSString stringWithFormat:@"weixin://%@", response];
-            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
-            if (canOpen) {
-                PayReq *request = [[PayReq alloc] init];
-                request.partnerId = response[@"partnerId"];
-                request.prepayId = response[@"prepayId"];
-                request.package = @"Sign=WXPay";
-                request.nonceStr = response[@"nonceStr"];
-                request.timeStamp = [NYSTools getNowTimeTimestamp].unsignedIntValue;
-                request.sign = response[@"sign"];
-                [WXApi sendReq:request];
-//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
-                
-            } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallWechat") preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
-                [alert addAction:cancelAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-            
-        } else if ([obj[@"pay_type"] intValue] == 1) {
-            NSString *url = [NSString stringWithFormat:@"alipay://%@", response];
-            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
-            if (canOpen) {
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
-                
-            } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallAlipay") preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
-                [alert addAction:cancelAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-        }
-        
-
-    } failed:^(NSError * _Nullable error) {
-        
-    }];
 }
 
 - (NYSRechargeAlertView *)rechargeAlertView {

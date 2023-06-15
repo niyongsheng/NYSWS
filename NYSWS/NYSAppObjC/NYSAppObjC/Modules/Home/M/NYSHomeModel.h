@@ -49,6 +49,8 @@
 @property (nonatomic , assign) NSInteger              sort;
 @property (nonatomic , copy) NSString              * name;
 @property (nonatomic , copy) NSString              * subtitle;
+@property (nonatomic , copy) NSString              * ad_title;
+@property (nonatomic , copy) NSString              * ad_url;
 /// 是否推荐0是1否
 @property (nonatomic , copy) NSString              * is_recommend;
 /// 当前用户是否已激活0是1否

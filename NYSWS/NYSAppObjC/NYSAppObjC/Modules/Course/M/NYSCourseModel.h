@@ -32,10 +32,17 @@
 @property (nonatomic , copy) NSString              * createtime;
 @property (nonatomic , copy) NSString              * chapter;
 @property (nonatomic , copy) NSString              * content_type;
+@property (nonatomic , copy) NSString              * content_url;
 @property (nonatomic , copy) NSString              * url;
 @property (nonatomic , copy) NSString              * word_list;
 @property (nonatomic , copy) NSString              * chapter_id;
 @property (nonatomic , copy) NSString              * updatetime;
 @property (nonatomic , copy) NSString              * total_page;
 @property (nonatomic , copy) NSString              * content;
+
+#pragma mark - 首页搜索ADD
+/// 当前用户是否已激活0是1否
+@property (nonatomic , assign) NSInteger is_activation;
+/// 是否有试听章节0是1否
+@property (nonatomic , assign) NSInteger is_try;
 @end

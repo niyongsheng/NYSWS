@@ -21,6 +21,12 @@ SGPageContentCollectionViewDelegate
 
 @implementation NYSCourseListVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -76,8 +82,8 @@ SGPageContentCollectionViewDelegate
         NSMutableArray *childVCs = [NSMutableArray array];
         for (NSString *valueStr in valueArr) {
             NYSSearchCourseVC *hVC = [[NYSSearchCourseVC alloc] init];
-            hVC.isShowBanner = YES;
-            hVC.index = valueStr;
+            hVC.type = @"2";
+            hVC.classId = valueStr;
             [childVCs addObject:hVC];
         }
         self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];

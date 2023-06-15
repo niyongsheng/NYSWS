@@ -12,7 +12,8 @@
 
 @interface NYSCatalogSearchViewController ()
 <
-UITextFieldDelegate
+UITextFieldDelegate,
+CKAudioPlayerHelperDelegate
 >
 {
     NSInteger _pageNo;
@@ -23,6 +24,9 @@ UITextFieldDelegate
 
 @property (nonatomic, assign) NSInteger totalPage;
 @property (nonatomic, assign) NSInteger currentPage;
+
+/// 音频数组
+@property (nonatomic, strong) NSArray *urlArray;
 @end
 
 @implementation NYSCatalogSearchViewController
@@ -75,15 +79,23 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     self.contentV.backgroundColor = [UIColor colorWithHexString:@"#4FBAD4"];
     
 //    [self.searchTF becomeFirstResponder];
+    
+    [CKAudioPlayerHelper shareInstance].delegate = self;
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self.dataSourceArr removeAllObjects];
     [self getDetailData:@"1"];
     
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    _pageNo = 0;
+    [self.dataSourceArr removeAllObjects];
+    [self getDetailData:@"1"];
 }
 
 #pragma mark - 网络加载数据
@@ -96,16 +108,18 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 - (void)getDetailData:(NSString *)page {
     self.currentPage = page.integerValue;
     
-    NSDictionary *argument = @{
+    NSMutableDictionary *argument = @{
         @"page": page,
-        @"chapter_id": @([self.chapterArray[self.index] ID]),
         @"keyword": self.searchTF.text,
-    };
+    }.mutableCopy;
+    if (!self.isHomeSearch) {
+        [argument setValue:@([self.chapterArray[self.index] ID]) forKey:@"chapter_id"];
+    }
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:@"/index/Course/select_content"
+                                            url:self.isHomeSearch ? @"/index/Course/select_index_content" : @"/index/Course/select_content"
                                        argument:argument
-                                         remark:@"关键词搜索"
+                                         remark:self.isHomeSearch ? @"首页关键词搜索" : @"章节关键词搜索"
                                         success:^(id response) {
         @strongify(self)
         NSArray *wordArray = [NSArray modelArrayWithClass:[NYSCatalogModel class] json:response[@"word_list"]];
@@ -190,9 +204,11 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         cell.block = ^(BOOL isLeft, NSIndexPath * _Nonnull indexP) {
             NSArray<NYSCatalogModel *> *arr = self.dataSourceArr[indexP.section][indexP.row];
             if (isLeft) {
-                [self playWav:[[arr firstObject] url]];
+                NYSCatalogModel *firstWordModel = [arr firstObject];
+                [self playWav:[firstWordModel url] contentUrl:[firstWordModel content_url] isActivation:firstWordModel.is_activation isTry:firstWordModel.is_try];
             } else if (arr.count > 1) {
-                [self playWav:[[arr lastObject] url]];
+                NYSCatalogModel *lastWordModel = [arr firstObject];
+                [self playWav:[lastWordModel url] contentUrl:[lastWordModel content_url] isActivation:lastWordModel.is_activation isTry:lastWordModel.is_try];
             }
         };
         return cell;
@@ -215,13 +231,29 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     
     if (indexPath.section == 1) {
         NYSCatalogModel *model = self.dataSourceArr[indexPath.section][indexPath.row];
-        [self playWav:model.url];
+        [self playWav:model.url contentUrl:model.content_url isActivation:model.is_activation isTry:model.is_try];
     }
 }
 
-- (void)playWav:(NSString *)urlStr {
+/// 播放
+/// - Parameter urlStr: 音频url
+/// - Parameter contentUrlStr: 原文音频
+/// - Parameter isActivation: 是否激活
+/// - Parameter isTry: 是否试听
+/// http://xyd.app12345.cn/upload/images/76/84577a010bf752f4c6530bf60c9412.wav
+- (void)playWav:(NSString *)urlStr contentUrl:(NSString *)contentUrlStr isActivation:(NSInteger)isActivation isTry:(NSInteger)isTry {
     
-    if (![urlStr isNotBlank]) {
+    if (self.isHomeSearch) {
+        if (isActivation == 0 || isTry == 0) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NLocalizedStr(@"PleaseBuy");
+            [hud hideAnimated:YES afterDelay:1.0f];
+            return;
+        }
+    }
+    
+    if (![urlStr isNotBlank] && ![contentUrlStr isNotBlank]) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"NoAudioInfo");
@@ -229,12 +261,26 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         return;
     }
     
-    if (![urlStr containsString:@"http"]) {
-        urlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr];
-    }
+    if ([contentUrlStr isNotBlank] && ![contentUrlStr containsString:@"http"])
+        contentUrlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, contentUrlStr];
     
-    // @"http://xyd.app12345.cn/upload/images/76/84577a010bf752f4c6530bf60c9412.wav"
-    [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:urlStr playOrPause:YES];
+    if ([urlStr isNotBlank] && ![urlStr containsString:@"http"])
+        urlStr = [NSString stringWithFormat:@"%@%@", APP_CDN_URL, urlStr];
+    
+    self.urlArray = @[contentUrlStr, urlStr];
+
+    if ([[self.urlArray firstObject] isNotBlank]) {
+        [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray firstObject] playOrPause:YES];
+    } else {
+        [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray lastObject] playOrPause:YES];
+    }
+}
+
+#pragma mark - CKAudioPlayerHelperDelegate
+- (void)didAudioPlayerFinishPlay:(AVAudioPlayer*)audioPlayer pathName:(NSString *)pathName {
+    if ([pathName isEqualToString:[self.urlArray firstObject]]) {
+        [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray lastObject] playOrPause:YES];
+    }
 }
 
 @end

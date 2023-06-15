@@ -67,7 +67,17 @@
         @strongify(self)
         [NYSTools showIconToast:NLocalizedStr(@"Updated") isSuccess:YES offset:UIOffsetMake(0, 0)];
         [NYSTools dismissWithDelay:1.0f completion:^{
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            [NAppManager logout:^(BOOL success, id description) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (success) {
+                        [self.navigationController popViewControllerAnimated:YES];
+                        NPostNotification(NNotificationLoginStateChange, @NO)
+                    } else {
+                        [NYSTools showIconToast:NLocalizedStr(@"LogoutFail") isSuccess:NO offset:UIOffsetMake(0, 0)];
+                    }
+                });
+            }];
         }];
     } failed:^(NSError * _Nullable error) {
 

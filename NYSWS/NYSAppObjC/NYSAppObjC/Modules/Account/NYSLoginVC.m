@@ -70,6 +70,11 @@
     [_protocolT setDelegate:self];
     [_protocolT setAttributedText:attString];
     
+    // 自动填充上次登录成功的账号密码
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _accountTF.text = [defaults objectForKey:@"app.username"];
+    _passwordTF.text = [defaults objectForKey:@"app.password"];
+    
 #ifdef DEBUG
     _accountTF.text = @"13523652365";
     _passwordTF.text = @"123456";
@@ -124,6 +129,11 @@
         @strongify(self)
         [NAppManager loginHandler:NUserLoginTypePwd authInfo:[NYSAuthInfo modelWithDictionary:@{@"token" : response}] completion:^(BOOL success, id obj) {
             if (success) {
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:argument[@"username"] forKey:@"app.username"];
+                [defaults setObject:argument[@"password"] forKey:@"app.password"];
+                [defaults synchronize];
+                
                 [NYSTools showIconToast:NLocalizedStr(@"LoginSuccess") isSuccess:YES offset:UIOffsetMake(0, 0)];
                 [NYSTools dismissWithCompletion:^{
                     NPostNotification(NNotificationLoginStateChange, @YES)
@@ -153,12 +163,6 @@
                                              remark:@"服务协议"
                                             success:^(id response) {
             @strongify(self)
-//            NYSWebViewController *webVC = [NYSWebViewController new];
-//            webVC.urlStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
-//            webVC.title = NLocalizedStr(@"UserProtocol");
-//            webVC.autoTitle = NO;
-//            [self.navigationController pushViewController:webVC animated:YES];
-            
             NYSProtocolDetailVC *detailVC = [NYSProtocolDetailVC new];
             detailVC.contentStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
             detailVC.title = NLocalizedStr(@"UserProtocol");
@@ -176,12 +180,6 @@
                                              remark:@"隐私协议"
                                             success:^(id response) {
             @strongify(self)
-//            NYSWebViewController *webVC = [NYSWebViewController new];
-//            webVC.urlStr = [response stringValueForKey:@"value" default:AppPrivacyAgreement];
-//            webVC.title = NLocalizedStr(@"PrivacyProtocol");
-//            webVC.autoTitle = NO;
-//            [self.navigationController pushViewController:webVC animated:YES];
-            
             NYSProtocolDetailVC *detailVC = [NYSProtocolDetailVC new];
             detailVC.contentStr = [response stringValueForKey:@"value" default:AppServiceAgreement];
             detailVC.title = NLocalizedStr(@"PrivacyProtocol");

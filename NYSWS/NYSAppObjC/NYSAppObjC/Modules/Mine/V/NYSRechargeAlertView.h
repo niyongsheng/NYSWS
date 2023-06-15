@@ -11,8 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSRechargeAlertView : NYSBaseView
 @property (nonatomic, strong) NSString *moneyStr;
-
-@property (nonatomic, copy) NYSBlock block;
+@property (nonatomic, strong) UIViewController *superVC;
 @end
 
 NS_ASSUME_NONNULL_END

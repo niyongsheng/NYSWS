@@ -10,9 +10,11 @@
 @interface NYSForgetPwdVC ()
 @property (weak, nonatomic) IBOutlet UIButton *qqBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wechatBtn;
+@property (weak, nonatomic) IBOutlet UIButton *whatsappBtn;
 
 @property (strong, nonatomic) NSString *qq;
 @property (strong, nonatomic) NSString *wechat;
+@property (strong, nonatomic) NSString *whatsapp;
 
 @end
 
@@ -43,10 +45,23 @@
                                         success:^(id response) {
         @strongify(self)
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.qq = [[response firstObject] stringValueForKey:@"value" default:@""];
-            self.wechat = [[response lastObject] stringValueForKey:@"value" default:@""];
-            [self.qqBtn setTitle:[NSString stringWithFormat:@"QQ：%@", self.qq] forState:UIControlStateNormal];
-            [self.wechatBtn setTitle:[NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"Wechat"), self.wechat] forState:UIControlStateNormal];
+            
+            for (NSDictionary *obj in response) {
+                NSString *config = [obj stringValueForKey:@"config" default:@""];
+                NSString *value = [obj stringValueForKey:@"value" default:@""];
+                if ([config isEqualToString:@"service_wechat"]) {
+                    self.wechat = value;
+                    [self.wechatBtn setTitle:[NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"Wechat"), self.wechat] forState:UIControlStateNormal];
+                    
+                } else if ([config isEqualToString:@"service_qq"]) {
+                    self.qq = value;
+                    [self.qqBtn setTitle:[NSString stringWithFormat:@"QQ：%@", self.qq] forState:UIControlStateNormal];
+                    
+                } else if ([config isEqualToString:@"WhatsApp"]) {
+                    self.whatsapp = value;
+                    [self.whatsappBtn setTitle:[NSString stringWithFormat:@"WhatsApp：%@", self.qq] forState:UIControlStateNormal];
+                }
+            }
         });
 
     } failed:^(NSError * _Nullable error) {

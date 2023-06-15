@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSCatalogViewController">
             <connections>
+                <outlet property="adIV" destination="BA8-NJ-4LG" id="E39-12-OM7"/>
+                <outlet property="adL" destination="AjL-ZR-qv7" id="2tz-Wb-gPU"/>
                 <outlet property="catalogTitleV" destination="8Ai-OL-daJ" id="ZcW-UO-Erc"/>
                 <outlet property="catalogTitleVHeight" destination="DQ9-Kg-PGg" id="50z-CN-G9g"/>
                 <outlet property="contentV" destination="7yG-kJ-qzo" id="o4t-0s-lvo"/>
@@ -80,7 +82,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mah-5R-ZUE">
-                    <rect key="frame" x="15" y="773" width="363" height="30"/>
+                    <rect key="frame" x="15" y="773" width="203" height="30"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="DEF-8f-3yO"/>
@@ -90,22 +92,41 @@
                     <rect key="frame" x="15" y="139" width="363" height="619"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_bg" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-NJ-4LG">
+                    <rect key="frame" x="228" y="768" width="150" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="6wO-2x-Ivv"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjL-ZR-qv7">
+                    <rect key="frame" x="278" y="782" width="70" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="qGa-xW-zdc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="AjL-ZR-qv7" firstAttribute="trailing" secondItem="BA8-NJ-4LG" secondAttribute="trailing" constant="-30" id="05k-cg-JYb"/>
                 <constraint firstItem="8Ai-OL-daJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="6Dp-9s-iQz"/>
                 <constraint firstItem="Dig-Fm-Lai" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9cT-T4-iZR"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Mah-5R-ZUE" secondAttribute="trailing" constant="15" id="AAM-IV-Pwj"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Mah-5R-ZUE" secondAttribute="bottom" constant="15" id="GlA-WK-EFN"/>
                 <constraint firstAttribute="bottom" secondItem="Dig-Fm-Lai" secondAttribute="bottom" id="Ltw-7s-yl9"/>
                 <constraint firstItem="7yG-kJ-qzo" firstAttribute="top" secondItem="8Ai-OL-daJ" secondAttribute="bottom" constant="15" id="NS5-bF-hns"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="BA8-NJ-4LG" secondAttribute="trailing" constant="15" id="Obn-o9-940"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Dig-Fm-Lai" secondAttribute="trailing" id="QQs-ue-zf2"/>
+                <constraint firstItem="AjL-ZR-qv7" firstAttribute="centerY" secondItem="BA8-NJ-4LG" secondAttribute="centerY" id="U3b-qt-bDT"/>
                 <constraint firstItem="Mah-5R-ZUE" firstAttribute="top" secondItem="7yG-kJ-qzo" secondAttribute="bottom" constant="15" id="UZ6-xU-vNS"/>
                 <constraint firstItem="Mah-5R-ZUE" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="UuK-YL-35a"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="8Ai-OL-daJ" secondAttribute="trailing" constant="15" id="ZVO-pP-Hcq"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="7yG-kJ-qzo" secondAttribute="trailing" constant="15" id="ZkF-hC-dHb"/>
+                <constraint firstItem="BA8-NJ-4LG" firstAttribute="centerY" secondItem="Mah-5R-ZUE" secondAttribute="centerY" id="iRo-WJ-cD7"/>
                 <constraint firstItem="7yG-kJ-qzo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="s6o-C7-Y9h"/>
+                <constraint firstItem="BA8-NJ-4LG" firstAttribute="leading" secondItem="Mah-5R-ZUE" secondAttribute="trailing" constant="10" id="t1Q-Ue-Iq9"/>
                 <constraint firstItem="Dig-Fm-Lai" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="tUR-aJ-pA6"/>
                 <constraint firstItem="8Ai-OL-daJ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="15" id="yOC-wk-0tP"/>
             </constraints>
@@ -113,6 +134,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ad_bg" width="153.5" height="40"/>
         <image name="catalog_bg" width="375" height="810"/>
         <image name="left_btn_icon" width="32" height="32"/>
         <image name="left_btn_icon_height" width="32" height="32"/>

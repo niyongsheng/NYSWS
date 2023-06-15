@@ -13,6 +13,7 @@
                 <outlet property="qqBtn" destination="6QE-hg-dE8" id="DlG-bv-HSe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wechatBtn" destination="3NP-kn-ZJh" id="Buh-Ma-1io"/>
+                <outlet property="whatsappBtn" destination="aLM-tq-cZz" id="lfH-M8-qfw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -57,16 +58,29 @@
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLM-tq-cZz">
+                    <rect key="frame" x="142" y="535" width="109" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="WhatsApp:----">
+                        <color key="titleColor" systemColor="systemRedColor"/>
+                    </state>
+                    <connections>
+                        <action selector="wechatBtnOnclicked:" destination="-1" eventType="touchUpInside" id="A9D-NB-vVt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6QE-hg-dE8" firstAttribute="top" secondItem="Bay-uu-qrL" secondAttribute="bottom" constant="30" id="0U7-Fc-fvy"/>
                 <constraint firstAttribute="trailing" secondItem="cc6-J8-3HO" secondAttribute="trailing" id="4BL-Nm-gKi"/>
                 <constraint firstAttribute="bottom" secondItem="cc6-J8-3HO" secondAttribute="bottom" id="4wT-PG-VPd"/>
+                <constraint firstItem="aLM-tq-cZz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="F8M-KP-I2r"/>
                 <constraint firstItem="YbA-qb-gqV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="G5m-1G-XJR"/>
                 <constraint firstItem="cc6-J8-3HO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="M0d-aZ-Or1"/>
                 <constraint firstItem="YbA-qb-gqV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="R14-ce-zGE"/>
                 <constraint firstItem="Bay-uu-qrL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TsF-57-tal"/>
+                <constraint firstItem="aLM-tq-cZz" firstAttribute="top" secondItem="3NP-kn-ZJh" secondAttribute="bottom" constant="10" id="VkS-1X-D9o"/>
                 <constraint firstItem="3NP-kn-ZJh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XJE-AS-MNm"/>
                 <constraint firstAttribute="bottom" secondItem="YbA-qb-gqV" secondAttribute="bottom" constant="50" id="jDr-x2-5vY"/>
                 <constraint firstItem="3NP-kn-ZJh" firstAttribute="top" secondItem="6QE-hg-dE8" secondAttribute="bottom" constant="10" id="l4a-3g-oZp"/>

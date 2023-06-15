@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *inviteIV;
 /// 分享弹框
 @property(nonatomic, strong) NYSShareAlertView *shareAlertView;
+/// 宣传语
+@property (strong, nonatomic) NSArray *dataArr;
 @end
 
 @implementation NYSRecommendVC
@@ -34,19 +36,36 @@
     [btn setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    UIButton *shareBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
-    [shareBtn setBackgroundColor:UIColor.clearColor];
+    UIButton *shareBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
+    ViewRadius(shareBtn, 13)
+    [shareBtn setBackgroundColor:UIColor.whiteColor];
+    [shareBtn setTitle:NLocalizedStr(@"Share") forState:UIControlStateNormal];
+    [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    [shareBtn.titleLabel setFont:[UIFont systemFontOfSize:12.5]];
     [shareBtn addTarget:self action:@selector(shareBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:shareBtn];
-    shareBtn.centerY = kScreenHeight * 0.2;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     
     NSString *str = ShareUrl;
     UIImageView *qrIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.45, kScreenWidth * 0.45)];
+    qrIV.contentMode = UIViewContentModeScaleToFill;
     qrIV.image = [SGGenerateQRCode generateQRCodeWithData:str size:RealValue(200) logoImage:[UIImage imageNamed:@"icon_logo"] ratio:NRadius];
     [self.inviteIV addSubview:qrIV];
-    
-    qrIV.centerX = self.view.centerX;
+
+    qrIV.centerX = kScreenWidth * 0.5;
     qrIV.centerY = kScreenHeight * 0.65;
+    
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/get_xuanchuanyu"
+                                       argument:nil
+                                         remark:@"获取分享宣传语"
+                                        success:^(id response) {
+        @strongify(self)
+        self.dataArr = response;
+
+    } failed:^(NSError * _Nullable error) {
+
+    }];
 }
 
 - (void)backBtnOnclicked:(UIButton *)sender {
@@ -54,12 +73,15 @@
 }
 
 - (void)shareBtnOnclicked:(UIButton *)sender {
+    [NYSTools zoomToShow:sender.layer];
     UIImage *contentImage = [self.inviteIV snapshotImage];
     
     // 分享
     FFPopup *popup = [FFPopup popupWithContentView:self.shareAlertView showType:FFPopupShowType_BounceInFromBottom dismissType:FFPopupDismissType_BounceOutToBottom maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
     FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Left, FFPopupVerticalLayout_Bottom);
+    @weakify(self)
     self.shareAlertView.block = ^(NSInteger index, id  _Nonnull obj) {
+        @strongify(self)
         [popup dismissAnimated:YES];
         switch (index) {
             case 0:
@@ -91,8 +113,8 @@
                 sendReq.scene = WXSceneTimeline;
 
                 WXMediaMessage *urlMessage = [WXMediaMessage message];
-                urlMessage.title = @"邀请你一起学习外国语";
-                urlMessage.description = @"海量口碑课程、语言学习中心、聆听世界的声音";
+                urlMessage.title = [[self.dataArr firstObject] stringValueForKey:@"value" default:@"邀请你一起学习外国语"];
+                urlMessage.description = [[self.dataArr lastObject] stringValueForKey:@"value" default:@"海量口碑课程、语言学习中心、聆听世界的声音"];
                 [urlMessage setThumbImage:[UIImage imageNamed:@"AppIcon"]];
                 
                 WXWebpageObject *webObj = [WXWebpageObject object];
@@ -119,8 +141,8 @@
                 sendReq.scene = WXSceneSession;
 
                 WXMediaMessage *urlMessage = [WXMediaMessage message];
-                urlMessage.title = @"邀请你一起学习外国语";
-                urlMessage.description = @"海量口碑课程、语言学习中心、聆听世界的声音";
+                urlMessage.title = [[self.dataArr firstObject] stringValueForKey:@"value" default:@"邀请你一起学习外国语"];
+                urlMessage.description = [[self.dataArr lastObject] stringValueForKey:@"value" default:@"海量口碑课程、语言学习中心、聆听世界的声音"];
                 [urlMessage setThumbImage:[UIImage imageNamed:@"AppIcon"]];
 
                 WXWebpageObject *webObj = [WXWebpageObject object];

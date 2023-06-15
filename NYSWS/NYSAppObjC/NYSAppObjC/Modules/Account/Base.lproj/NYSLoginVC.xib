@@ -33,7 +33,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFK-kR-XvI">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="850"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6pn-Wl-kYy">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6pn-Wl-kYy">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="180"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="180" id="yzX-IM-tij"/>
@@ -263,7 +263,7 @@
         <image name="icon_selected" width="15" height="15"/>
         <image name="icon_unselected" width="15" height="15"/>
         <image name="login_acc_icon" width="16" height="18"/>
-        <image name="login_logo_icon" width="151" height="61.666667938232422"/>
+        <image name="login_icon" width="150.66667175292969" height="61.666667938232422"/>
         <image name="login_pwd_icon" width="15.666666984558105" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -174,8 +174,8 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     if(flag){
         //响应播放结束方法
-        if ([self.delegate respondsToSelector:@selector(didAudioPlayerFinishPlay:)]) {
-            [self.delegate didAudioPlayerFinishPlay:_audioPlayer];
+        if ([self.delegate respondsToSelector:@selector(didAudioPlayerFinishPlay:pathName:)]) {
+            [self.delegate didAudioPlayerFinishPlay:_audioPlayer pathName:_pathName];
         }
     }
 }
