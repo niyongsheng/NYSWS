@@ -103,7 +103,7 @@
 /**
  *  播放网络音频Audio
  *
- *  @param urlPath   网络音频链接路径
+ *  @param path   网络音频链接路径
  */
 - (void)playAudioWithPath:(NSString *)path whiteStype:(CKAudioFileTyle)type{
     if (path.length > 0) {

@@ -244,7 +244,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 - (void)playWav:(NSString *)urlStr contentUrl:(NSString *)contentUrlStr isActivation:(NSInteger)isActivation isTry:(NSInteger)isTry {
     
     if (self.isHomeSearch) {
-        if (isActivation == 0 || isTry == 0) {
+        if (isActivation == 1 && isTry == 1) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.label.text = NLocalizedStr(@"PleaseBuy");
