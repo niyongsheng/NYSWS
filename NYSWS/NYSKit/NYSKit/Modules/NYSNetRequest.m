@@ -326,18 +326,13 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
             success(data);
         }
     } else if (code == [[[NYSKitManager sharedNYSKitManager] kickedCode] integerValue]) { // 强制下线
-        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:msg];
         
     } else if (code == [[[NYSKitManager sharedNYSKitManager] tokenInvalidCode] integerValue]) { // token失效
-        if ([[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]) { // 防止后端token失效的code不唯一
-            if ([msg containsString:[[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]]) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:nil];
-            } else {
-                [NYSTools showBottomToast:msg];
-            }
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:nil];
+        if ([msg containsString:[[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]]) { // 防止后端token失效的code不唯一
+            [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:msg];
         }
+        [NYSTools showBottomToast:msg];
     } else { // 其他错误
         if (failed) {
             NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];

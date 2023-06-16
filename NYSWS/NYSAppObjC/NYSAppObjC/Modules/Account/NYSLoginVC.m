@@ -7,7 +7,7 @@
 //
 
 #import "NYSLoginVC.h"
-#import "NYSForgetPwdVC.h"
+#import "NYSResetPwdVC.h"
 #import "NYSRegisterVC.h"
 #import "NYSProtocolDetailVC.h"
 
@@ -70,11 +70,6 @@
     [_protocolT setDelegate:self];
     [_protocolT setAttributedText:attString];
     
-    // 自动填充上次登录成功的账号密码
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _accountTF.text = [defaults objectForKey:@"app.username"];
-    _passwordTF.text = [defaults objectForKey:@"app.password"];
-    
 #ifdef DEBUG
     _accountTF.text = @"13523652365";
     _passwordTF.text = @"123456";
@@ -82,6 +77,11 @@
     [self check];
     [self.view endEditing:YES];
     self.protocolBtn.selected = YES;
+#else
+    // 自动填充上次登录成功的账号密码
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _accountTF.text = [defaults objectForKey:@"app.username"];
+    _passwordTF.text = [defaults objectForKey:@"app.password"];
 #endif
 }
 
@@ -90,7 +90,7 @@
 }
 
 - (IBAction)forgetBtnOnclicked:(UIButton *)sender {
-    [self.navigationController pushViewController:NYSForgetPwdVC.new animated:YES];
+    [self.navigationController pushViewController:NYSResetPwdVC.new animated:YES];
 }
 
 /// 登录

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSForgetPwdVC">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSConsultVC">
             <connections>
                 <outlet property="qqBtn" destination="6QE-hg-dE8" id="DlG-bv-HSe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -66,7 +66,7 @@
                         <color key="titleColor" systemColor="systemRedColor"/>
                     </state>
                     <connections>
-                        <action selector="wechatBtnOnclicked:" destination="-1" eventType="touchUpInside" id="A9D-NB-vVt"/>
+                        <action selector="whatsappBtnOnclicked:" destination="-1" eventType="touchUpInside" id="8f9-Uu-Q5e"/>
                     </connections>
                 </button>
             </subviews>

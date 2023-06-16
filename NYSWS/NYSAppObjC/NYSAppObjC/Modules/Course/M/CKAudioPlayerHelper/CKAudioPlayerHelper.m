@@ -6,9 +6,8 @@
 @implementation CKAudioPlayerHelper
 
 #pragma mark - 对象生命
-//第二步：实现声明单例方法 GCD
-+ (CKAudioPlayerHelper *)shareInstance
-{
+/// 声明单例方法 GCD
++ (CKAudioPlayerHelper *)shareInstance {
     static CKAudioPlayerHelper *singleton = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -17,7 +16,7 @@
     return singleton;
 }
 
-//初始化-单例，只调用一次
+/// 初始化-单例
 - (id)init {
     self = [super init];
     if (self) {
@@ -26,7 +25,8 @@
     }
     return self;
 }
-//销毁
+
+/// 销毁
 - (void)dealloc {
     [self changeProximityMonitorEnableState:NO];
 }

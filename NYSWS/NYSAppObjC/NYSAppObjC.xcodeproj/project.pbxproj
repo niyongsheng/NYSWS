@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C80648962A149A6F003397CD /* NYSLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80648982A149A6F003397CD /* NYSLoginVC.xib */; };
-		C806489D2A149C15003397CD /* NYSForgetPwdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C806489F2A149C15003397CD /* NYSForgetPwdVC.xib */; };
+		C806489D2A149C15003397CD /* NYSConsultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C806489F2A149C15003397CD /* NYSConsultVC.xib */; };
 		C80648A42A149C60003397CD /* NYSRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80648A62A149C60003397CD /* NYSRegisterVC.xib */; };
 		C80648AB2A149D7C003397CD /* NYSCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80648AD2A149D7C003397CD /* NYSCourseCell.xib */; };
 		C80648B22A149DA2003397CD /* NYSCallCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80648B42A149DA2003397CD /* NYSCallCenterVC.xib */; };
@@ -178,7 +178,7 @@
 		C8DBA6A02A11C20B00F2656D /* NYSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DBA69F2A11C20B00F2656D /* NYSAlertView.m */; };
 		C8EE7E552A087A6D000E3A3A /* NYSRechargeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E522A087A6D000E3A3A /* NYSRechargeAlertView.m */; };
 		C8EE7E5B2A089995000E3A3A /* NYSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E592A089995000E3A3A /* NYSLoginVC.m */; };
-		C8EE7E602A089F8D000E3A3A /* NYSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E5D2A089F8D000E3A3A /* NYSForgetPwdVC.m */; };
+		C8EE7E602A089F8D000E3A3A /* NYSConsultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E5D2A089F8D000E3A3A /* NYSConsultVC.m */; };
 		C8EE7E652A08A1B6000E3A3A /* NYSRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E632A08A1B6000E3A3A /* NYSRegisterVC.m */; };
 		C8EE7E692A08A859000E3A3A /* NYSMyCourseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E682A08A859000E3A3A /* NYSMyCourseListVC.m */; };
 		C8EE7E6C2A08A99E000E3A3A /* NYSMyCourseListPagingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E6B2A08A99E000E3A3A /* NYSMyCourseListPagingVC.m */; };
@@ -199,6 +199,8 @@
 		C8EE7EAE2A08E9AD000E3A3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8EE7EB02A08E9AD000E3A3A /* InfoPlist.strings */; };
 		C8EE7EDA2A09032D000E3A3A /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7ED92A09032D000E3A3A /* ThirdViewController.m */; };
 		C8F4B94E2A0CBBA500719AF2 /* NYSResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4B94C2A0CBBA500719AF2 /* NYSResetPwdViewController.m */; };
+		C8FC1A112A3C22D600E28323 /* NYSResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FC1A102A3C22D600E28323 /* NYSResetPwdVC.m */; };
+		C8FC1A142A3C22DF00E28323 /* NYSResetPwdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8FC1A122A3C22DF00E28323 /* NYSResetPwdVC.xib */; };
 		E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */; };
 /* End PBXBuildFile section */
 
@@ -222,9 +224,9 @@
 		C80648972A149A6F003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSLoginVC.xib; sourceTree = "<group>"; };
 		C806489A2A149A76003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSLoginVC.strings"; sourceTree = "<group>"; };
 		C806489C2A149A76003397CD /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSLoginVC.strings"; sourceTree = "<group>"; };
-		C806489E2A149C15003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSForgetPwdVC.xib; sourceTree = "<group>"; };
-		C80648A12A149C1B003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSForgetPwdVC.strings"; sourceTree = "<group>"; };
-		C80648A32A149C1C003397CD /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSForgetPwdVC.strings"; sourceTree = "<group>"; };
+		C806489E2A149C15003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSConsultVC.xib; sourceTree = "<group>"; };
+		C80648A12A149C1B003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSConsultVC.strings"; sourceTree = "<group>"; };
+		C80648A32A149C1C003397CD /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSConsultVC.strings"; sourceTree = "<group>"; };
 		C80648A52A149C60003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSRegisterVC.xib; sourceTree = "<group>"; };
 		C80648A82A149C65003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSRegisterVC.strings"; sourceTree = "<group>"; };
 		C80648AA2A149C65003397CD /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSRegisterVC.strings"; sourceTree = "<group>"; };
@@ -537,8 +539,8 @@
 		C8EE7E532A087A6D000E3A3A /* NYSRechargeAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSRechargeAlertView.h; sourceTree = "<group>"; };
 		C8EE7E582A089995000E3A3A /* NYSLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSLoginVC.h; sourceTree = "<group>"; };
 		C8EE7E592A089995000E3A3A /* NYSLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSLoginVC.m; sourceTree = "<group>"; };
-		C8EE7E5D2A089F8D000E3A3A /* NYSForgetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSForgetPwdVC.m; sourceTree = "<group>"; };
-		C8EE7E5F2A089F8D000E3A3A /* NYSForgetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSForgetPwdVC.h; sourceTree = "<group>"; };
+		C8EE7E5D2A089F8D000E3A3A /* NYSConsultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSConsultVC.m; sourceTree = "<group>"; };
+		C8EE7E5F2A089F8D000E3A3A /* NYSConsultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSConsultVC.h; sourceTree = "<group>"; };
 		C8EE7E622A08A1B6000E3A3A /* NYSRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSRegisterVC.h; sourceTree = "<group>"; };
 		C8EE7E632A08A1B6000E3A3A /* NYSRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSRegisterVC.m; sourceTree = "<group>"; };
 		C8EE7E672A08A859000E3A3A /* NYSMyCourseListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSMyCourseListVC.h; sourceTree = "<group>"; };
@@ -580,6 +582,11 @@
 		C8EE7ED92A09032D000E3A3A /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		C8F4B94B2A0CBBA500719AF2 /* NYSResetPwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSResetPwdViewController.h; sourceTree = "<group>"; };
 		C8F4B94C2A0CBBA500719AF2 /* NYSResetPwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSResetPwdViewController.m; sourceTree = "<group>"; };
+		C8FC1A0F2A3C22D600E28323 /* NYSResetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYSResetPwdVC.h; path = Account/NYSResetPwdVC.h; sourceTree = "<group>"; };
+		C8FC1A102A3C22D600E28323 /* NYSResetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYSResetPwdVC.m; path = Account/NYSResetPwdVC.m; sourceTree = "<group>"; };
+		C8FC1A132A3C22DF00E28323 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Account/Base.lproj/NYSResetPwdVC.xib; sourceTree = "<group>"; };
+		C8FC1A162A3C392D00E28323 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Account/zh-Hans.lproj/NYSResetPwdVC.strings"; sourceTree = "<group>"; };
+		C8FC1A182A3C393600E28323 /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "Account/lo-LA.lproj/NYSResetPwdVC.strings"; sourceTree = "<group>"; };
 		FE7C22C1B089104DEA1663BB /* Pods-NYSAppObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppObjC.release.xcconfig"; path = "Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -684,6 +691,9 @@
 			children = (
 				C8427C982A20B1D700220171 /* SDK */,
 				C8EE7E572A08996E000E3A3A /* Account */,
+				C8FC1A0F2A3C22D600E28323 /* NYSResetPwdVC.h */,
+				C8FC1A102A3C22D600E28323 /* NYSResetPwdVC.m */,
+				C8FC1A122A3C22DF00E28323 /* NYSResetPwdVC.xib */,
 				C8B7484629FBC31500673B75 /* Home */,
 				C8B7484829FBC32A00673B75 /* Course */,
 				C8B7484729FBC32200673B75 /* Mine */,
@@ -1174,9 +1184,9 @@
 				C8EE7E582A089995000E3A3A /* NYSLoginVC.h */,
 				C8EE7E592A089995000E3A3A /* NYSLoginVC.m */,
 				C80648982A149A6F003397CD /* NYSLoginVC.xib */,
-				C8EE7E5F2A089F8D000E3A3A /* NYSForgetPwdVC.h */,
-				C8EE7E5D2A089F8D000E3A3A /* NYSForgetPwdVC.m */,
-				C806489F2A149C15003397CD /* NYSForgetPwdVC.xib */,
+				C8EE7E5F2A089F8D000E3A3A /* NYSConsultVC.h */,
+				C8EE7E5D2A089F8D000E3A3A /* NYSConsultVC.m */,
+				C806489F2A149C15003397CD /* NYSConsultVC.xib */,
 				C8EE7E622A08A1B6000E3A3A /* NYSRegisterVC.h */,
 				C8EE7E632A08A1B6000E3A3A /* NYSRegisterVC.m */,
 				C80648A62A149C60003397CD /* NYSRegisterVC.xib */,
@@ -1318,6 +1328,7 @@
 				C85A34E92A0E449A00E42C6B /* PlayButtonOverlayLargeTap.png in Resources */,
 				C8464AAF2A0A2E88003CD376 /* NYSMineViewController.xib in Resources */,
 				C85A34E62A0E449A00E42C6B /* ImageError@2x.png in Resources */,
+				C8FC1A142A3C22DF00E28323 /* NYSResetPwdVC.xib in Resources */,
 				C8EE7EAE2A08E9AD000E3A3A /* InfoPlist.strings in Resources */,
 				C8BDD1D62A1C5D6F00BB466A /* NYSProtocolDetailVC.xib in Resources */,
 				C80648DC2A14A110003397CD /* NYSWalletHeader.xib in Resources */,
@@ -1344,7 +1355,7 @@
 				C8427CA42A20B34300220171 /* NYSShareAlertView.xib in Resources */,
 				C85A34DF2A0E449A00E42C6B /* UIBarButtonItemGrid@3x.png in Resources */,
 				C80649162A14A350003397CD /* NYSWithdrawViewController.xib in Resources */,
-				C806489D2A149C15003397CD /* NYSForgetPwdVC.xib in Resources */,
+				C806489D2A149C15003397CD /* NYSConsultVC.xib in Resources */,
 				C8597A2729F51052008BEE7F /* Main.storyboard in Resources */,
 				C8C750382A04D35C00A91AAE /* NYSMessageCenterCell.xib in Resources */,
 				C85A34F42A0E449A00E42C6B /* VideoOverlay.png in Resources */,
@@ -1407,6 +1418,7 @@
 				C8587E3B2A132B2700DE6587 /* UIButton+General.m in Sources */,
 				C8C750862A064B2600A91AAE /* NYSSecurityProtectionVC.m in Sources */,
 				C8C7506D2A06375A00A91AAE /* NYSUpdateInfoVC.m in Sources */,
+				C8FC1A112A3C22D600E28323 /* NYSResetPwdVC.m in Sources */,
 				C8BDD1E52A1CAAEF00BB466A /* MagnifiterView.m in Sources */,
 				C8EE7E652A08A1B6000E3A3A /* NYSRegisterVC.m in Sources */,
 				C8EE7E862A08CB29000E3A3A /* NYSCoursePurchaseVC.m in Sources */,
@@ -1438,7 +1450,7 @@
 				C85A34D52A0E449A00E42C6B /* MWPhotoBrowser.m in Sources */,
 				C8DBA6982A0F14C400F2656D /* TZPhotoPickerController.m in Sources */,
 				C8BDD1E82A1CAF6900BB466A /* NYSCustomLabel.m in Sources */,
-				C8EE7E602A089F8D000E3A3A /* NYSForgetPwdVC.m in Sources */,
+				C8EE7E602A089F8D000E3A3A /* NYSConsultVC.m in Sources */,
 				C8DBA6922A0F14C400F2656D /* NSBundle+TZImagePicker.m in Sources */,
 				C8587E442A14762C00DE6587 /* NYSStatementCell.m in Sources */,
 				C8599BA12A03828400DEA603 /* NYSRecommendedCell.m in Sources */,
@@ -1525,14 +1537,14 @@
 			name = NYSLoginVC.xib;
 			sourceTree = "<group>";
 		};
-		C806489F2A149C15003397CD /* NYSForgetPwdVC.xib */ = {
+		C806489F2A149C15003397CD /* NYSConsultVC.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C806489E2A149C15003397CD /* Base */,
 				C80648A12A149C1B003397CD /* zh-Hans */,
 				C80648A32A149C1C003397CD /* lo-LA */,
 			);
-			name = NYSForgetPwdVC.xib;
+			name = NYSConsultVC.xib;
 			sourceTree = "<group>";
 		};
 		C80648A62A149C60003397CD /* NYSRegisterVC.xib */ = {
@@ -1774,6 +1786,16 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		C8FC1A122A3C22DF00E28323 /* NYSResetPwdVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8FC1A132A3C22DF00E28323 /* Base */,
+				C8FC1A162A3C392D00E28323 /* zh-Hans */,
+				C8FC1A182A3C393600E28323 /* lo-LA */,
+			);
+			name = NYSResetPwdVC.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1923,7 +1945,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1970,7 +1992,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

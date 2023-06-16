@@ -93,16 +93,24 @@
     ViewRadius(_mineV, 10);
     self.coinL.adjustsFontSizeToFitWidth = YES;
     
-    NAppManager.isLogined ? [self updateUserInfo:NAppManager.userInfo] : nil;
+    // 更新用户信息UI
+    [self updateUserInfo:NAppManager.userInfo];
 }
 
 - (void)updateUserInfo:(NYSUserInfo *)userInfo {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.coinL.text = userInfo.balance;
-        self.nicknameL.text = userInfo.nickname;
-        self.phoneL.text = [NYSTools phoneStringAsteriskHandle:userInfo.phone];
-        
-        [self.iconIV setImageWithURL:NCDNURL(userInfo.avatar) placeholder:[UIImage imageNamed:@"icon_test_pass"]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (NAppManager.isLogined) {
+            self.coinL.text = userInfo.balance;
+            self.nicknameL.text = userInfo.nickname;
+            self.phoneL.text = [NYSTools phoneStringAsteriskHandle:userInfo.phone];
+            [self.iconIV setImageWithURL:NCDNURL(userInfo.avatar) placeholder:[UIImage imageNamed:@"icon_test_pass"]];
+        } else {
+            self.nicknameL.text = NLocalizedStr(@"Unlogin");
+            self.headerBgV.userInteractionEnabled = YES;
+            [self.headerBgV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+                NPostNotification(NNotificationLoginStateChange, @NO)
+            }]];
+        }
     });
 }
 

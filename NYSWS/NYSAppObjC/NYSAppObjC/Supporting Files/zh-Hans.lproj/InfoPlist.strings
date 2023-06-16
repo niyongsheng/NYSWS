@@ -55,9 +55,11 @@ PlaceholderAccout="请输入账号";
 PlaceholderPwd="请输入密码";
 TipsProtocol="请阅读并同意协议";
 ForgetPwd="忘记密码";
+ConsultServer="咨询客服";
 
 Regist="注册";
 RegistSuccess="注册成功";
+ResetSuccess="重置成功";
 TipsLoginName="请输入登录名";
 TipsPhone="请输入手机号";
 TipsPhoneFormat="请输入格式正确的手机号";
@@ -158,3 +160,4 @@ SecurityQuestion4="您高中班主任姓名是";
 SecurityQuestion5="您的生日是";
 
 Share="分享";
+Unlogin="未登录";

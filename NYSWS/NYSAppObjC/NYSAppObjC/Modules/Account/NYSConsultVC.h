@@ -1,5 +1,5 @@
 //
-//  NYSRecommendVC.h
+//  NYSConsultVC.h
 //  NYSAppObjC
 //
 //  Created by niyongsheng on 2023/5/5.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NYSForgetPwdVC : NYSBaseViewController
+@interface NYSConsultVC : NYSBaseViewController
 
 @end
 

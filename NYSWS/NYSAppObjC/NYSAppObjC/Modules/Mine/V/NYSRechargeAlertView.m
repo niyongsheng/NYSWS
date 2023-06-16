@@ -56,8 +56,8 @@ NYSMoneyItemViewDelegate
     
     [NYSTools addRoundedCorners:self corners:UIRectCornerTopLeft|UIRectCornerTopRight radius:10];
     
-//    [self payMoneyBtnOnclicked:self.moneyBtn0];
-//    [self payWayBtnOnclicked:self.payWayBtn0];
+    // 默认第一种支付方式
+    [self payWayBtnOnclicked:self.payWayBtn0];
     
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
@@ -224,6 +224,12 @@ NYSMoneyItemViewDelegate
 
 #pragma mark - 充值
 - (void)commitPay {
+    
+    if (![self.price isNotBlank]) {
+        [NYSTools showToast:@"请选择金额"];
+        return;
+    }
+    
     NSMutableDictionary *argument = @{@"price" : self.price}.mutableCopy;
     switch (self.payType) {
         case 0: {

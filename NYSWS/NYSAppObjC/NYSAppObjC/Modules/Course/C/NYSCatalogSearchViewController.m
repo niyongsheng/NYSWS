@@ -245,7 +245,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     
     if (self.isHomeSearch) {
         if (isActivation == 1 && isTry == 1) {
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:NAppWindow animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.label.text = NLocalizedStr(@"PleaseBuy");
             [hud hideAnimated:YES afterDelay:1.0f];
@@ -254,7 +254,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     }
     
     if (![urlStr isNotBlank] && ![contentUrlStr isNotBlank]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:NAppWindow animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"NoAudioInfo");
         [hud hideAnimated:YES afterDelay:1.0f];

@@ -1,13 +1,13 @@
 //
-//  NYSRecommendVC.m
+//  NYSConsultVC.m
 //  NYSAppObjC
 //
 //  Created by niyongsheng on 2023/5/5.
 //
 
-#import "NYSForgetPwdVC.h"
+#import "NYSConsultVC.h"
 
-@interface NYSForgetPwdVC ()
+@interface NYSConsultVC ()
 @property (weak, nonatomic) IBOutlet UIButton *qqBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wechatBtn;
 @property (weak, nonatomic) IBOutlet UIButton *whatsappBtn;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation NYSForgetPwdVC
+@implementation NYSConsultVC
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = NLocalizedStr(@"ForgetPwd");
+    self.navigationItem.title = NLocalizedStr(@"ConsultServer");
     [self wr_setNavBarTitleColor:UIColor.whiteColor];
     [self wr_setNavBarBackgroundAlpha:0];
     
@@ -59,7 +59,7 @@
                     
                 } else if ([config isEqualToString:@"WhatsApp"]) {
                     self.whatsapp = value;
-                    [self.whatsappBtn setTitle:[NSString stringWithFormat:@"WhatsApp：%@", self.qq] forState:UIControlStateNormal];
+                    [self.whatsappBtn setTitle:[NSString stringWithFormat:@"WhatsApp：%@", self.whatsapp] forState:UIControlStateNormal];
                 }
             }
         });
@@ -86,6 +86,14 @@
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.wechat;
+    [NYSTools showToast:NLocalizedStr(@"Copied")];
+}
+
+- (IBAction)whatsappBtnOnclicked:(UIButton *)sender {
+    [NYSTools zoomToShow:sender.layer];
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.whatsapp;
     [NYSTools showToast:NLocalizedStr(@"Copied")];
 }
 

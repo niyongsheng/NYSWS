@@ -46,26 +46,12 @@
 static NSString *NYSWordCellID = @"NYSWordCell";
 static NSString *NYSStatementCellID = @"NYSStatementCell";
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    NSArray *navtureRecognizers = self.navigationController.view.gestureRecognizers;
-    [navtureRecognizers enumerateObjectsUsingBlock:^(UIGestureRecognizer *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enabled = NO;
-    }];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    NSArray *navtureRecognizers = self.navigationController.view.gestureRecognizers;
-    [navtureRecognizers enumerateObjectsUsingBlock:^(UIGestureRecognizer *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.enabled = YES;
-    }];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 避免向前翻译左滑冲突
+//    self.fd_interactivePopDisabled = YES;
+    self.fd_interactivePopMaxAllowedInitialDistanceToLeftEdge = 20;
     
     [self wr_setNavBarBackgroundAlpha:0];
     
@@ -142,7 +128,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         [self.navigationController pushViewController:webVC animated:YES];
     }]];
     
-    // 右滑
+    // 右滑翻页
     UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         if (self.currentPage > 1) {
             [self getDetailData:[NSString stringWithFormat:@"%ld", --self.currentPage]];
@@ -152,7 +138,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     }];
     [rightRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.tableView addGestureRecognizer:rightRecognizer];
-    // 左滑
+    // 左滑翻页
     UISwipeGestureRecognizer *leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         if (self.currentPage < self.totalPage) {
             [self getDetailData:[NSString stringWithFormat:@"%ld", ++self.currentPage]];
@@ -246,14 +232,15 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         if (self.dataSourceArr.count > 0 && th < self->_tableviewInitHeight) {
             [self.view layoutIfNeeded];
             [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(th - 5);
+                make.height.mas_equalTo(th);
             }];
             [UIView animateWithDuration:0.5f animations:^{
-                self.contentV.height = th + 15;
+                self.contentV.height = th + 20;
             }];
         }
         
-        [self setTotalPage:[response[@"total_page"] integerValue] currentPage:page.integerValue];
+//        [self setTotalPage:[response[@"total_page"] integerValue] currentPage:page.integerValue];
+        [self setTotalPage:100 currentPage:page.integerValue];
         
     } failed:^(NSError * _Nullable error) {
         [self.tableView.refreshControl endRefreshing];
@@ -267,6 +254,10 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     }];
 }
 
+/// 布局页码
+/// - Parameters:
+///   - totalPage: 总页码
+///   - currentPage: 当前页面
 - (void)setTotalPage:(NSInteger)totalPage currentPage:(NSInteger)currentPage {
     _totalPage = totalPage;
     [self.pagingV removeAllSubviews];
@@ -301,6 +292,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     }
 
     scrollView.contentSize = CGSizeMake(x, 0);
+    [scrollView setContentOffset:CGPointMake((currentPage - 1) * 45, 0) animated:NO];
 }
 
 - (void)pagingBtnOnclicked:(UIButton *)sender {
@@ -395,7 +387,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     [self signLearned];
     
     if (self.isFromTry && self.is_try.boolValue) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:NAppWindow animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"PleaseBuy");
         [hud hideAnimated:YES afterDelay:1.0f];
@@ -403,7 +395,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     }
     
     if (![urlStr isNotBlank] && ![contentUrlStr isNotBlank]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:NAppWindow animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NLocalizedStr(@"NoAudioInfo");
         [hud hideAnimated:YES afterDelay:1.0f];
