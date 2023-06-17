@@ -76,7 +76,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     self.navigationItem.titleView.userInteractionEnabled = YES;
     [self.navigationItem.titleView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
         if (self.isFromTry) {
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:NAppWindow animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.label.text = NLocalizedStr(@"CanNotSearch");
             [hud hideAnimated:YES afterDelay:1.0f];
@@ -239,8 +239,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
             }];
         }
         
-//        [self setTotalPage:[response[@"total_page"] integerValue] currentPage:page.integerValue];
-        [self setTotalPage:100 currentPage:page.integerValue];
+        [self setTotalPage:[response[@"total_page"] integerValue] currentPage:page.integerValue];
         
     } failed:^(NSError * _Nullable error) {
         [self.tableView.refreshControl endRefreshing];
