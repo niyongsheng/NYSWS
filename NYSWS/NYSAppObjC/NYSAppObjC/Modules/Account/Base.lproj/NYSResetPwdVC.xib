@@ -12,8 +12,8 @@
             <connections>
                 <outlet property="commitBtn" destination="eJI-qV-gfi" id="eHj-cL-JXM"/>
                 <outlet property="contentView" destination="SFK-kR-XvI" id="XVt-yJ-Ufc"/>
+                <outlet property="nicknameTF" destination="Cjp-XP-MMB" id="hww-fw-GRi"/>
                 <outlet property="passwordTF" destination="OCL-2W-h7R" id="drO-zt-6MX"/>
-                <outlet property="phoneTF" destination="Cjp-XP-MMB" id="hww-fw-GRi"/>
                 <outlet property="repasswordTF" destination="j55-oC-7iT" id="8Hm-ch-kGb"/>
                 <outlet property="scrollV" destination="5Jg-GP-kca" id="wed-Xg-e0o"/>
                 <outlet property="securityAnswerTF" destination="gu6-IK-uZ3" id="oTB-aY-PX1"/>
@@ -45,7 +45,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="M5Q-jx-zTn"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ps-q8-7TK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ps-q8-7TK">
                                                     <rect key="frame" x="32.666666666666664" y="14.999999999999998" width="51.999999999999993" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,7 +67,7 @@
                                                         <constraint firstAttribute="width" constant="150" id="zlV-TE-JMw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

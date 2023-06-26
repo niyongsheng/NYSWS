@@ -128,7 +128,7 @@
     
     if (self.nicknameTF.text.length < 1 || self.nicknameTF.text.length > 13) {
         [NYSTools showToast:NLocalizedStr(@"TipsNicknameLength")];
-        [NYSTools shakeAnimation:self.passwordTF.layer];
+        [NYSTools shakeAnimation:self.nicknameTF.layer];
         return;
     }
     

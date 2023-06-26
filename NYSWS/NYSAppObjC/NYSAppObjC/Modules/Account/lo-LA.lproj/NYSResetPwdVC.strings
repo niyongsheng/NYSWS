@@ -2,8 +2,8 @@
 /* Class = "UILabel"; text = "联系客服"; ObjectID = "1NA-rP-uSx"; */
 "1NA-rP-uSx.text" = "ບໍ່ລິການ ຄູ່ສົນທະນາ";
 
-/* Class = "UILabel"; text = "手机号"; ObjectID = "1ps-q8-7TK"; */
-"1ps-q8-7TK.text" = "ໂຕເລກໂທລະສັບເຈົ້າ";
+/* Class = "UILabel"; text = "登录名"; ObjectID = "1ps-q8-7TK"; */
+"1ps-q8-7TK.text" = "ຊື່ລົງທະບຽນ";
 
 /* Class = "UILabel"; text = "*"; ObjectID = "2Ke-uK-vtU"; */
 "2Ke-uK-vtU.text" = "*";

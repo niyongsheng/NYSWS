@@ -38,6 +38,7 @@
 #pragma mark -- 公共 --
 #import "AppDelegate.h"
 #import "NYSAlertView.h"
+#import "NYSNetAlertView.h"
 #import "NYSLoginVC.h"
 #import "NYSTabbarViewController.h"
 

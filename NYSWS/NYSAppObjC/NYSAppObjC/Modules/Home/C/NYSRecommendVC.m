@@ -36,12 +36,12 @@
     [btn setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    UIButton *shareBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 26)];
-    ViewRadius(shareBtn, 13)
+    UIButton *shareBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+    ViewRadius(shareBtn, 15)
     [shareBtn setBackgroundColor:UIColor.whiteColor];
     [shareBtn setTitle:NLocalizedStr(@"Share") forState:UIControlStateNormal];
     [shareBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    [shareBtn.titleLabel setFont:[UIFont systemFontOfSize:12.5]];
+    [shareBtn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [shareBtn addTarget:self action:@selector(shareBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
     

@@ -91,10 +91,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="376" height="45"/>
                             <subviews>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqF-uY-f79">
-                                    <rect key="frame" x="0.0" y="0.0" width="118.5" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="137" height="45"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-zh-ll1">
-                                            <rect key="frame" x="0.0" y="0.0" width="118.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="137" height="45"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <connections>
                                                 <action selector="payWayBtnOnclicked:" destination="-1" eventType="touchUpInside" id="9uK-nq-ihs"/>
@@ -104,8 +104,8 @@
                                             <rect key="frame" x="10" y="11.5" width="22" height="22"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LN4-OR-kXY">
-                                            <rect key="frame" x="37" y="14" width="57.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="37" y="14.5" width="53.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -123,10 +123,10 @@
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m94-3x-gZD">
-                                    <rect key="frame" x="128.5" y="0.0" width="119" height="45"/>
+                                    <rect key="frame" x="147" y="0.0" width="109.5" height="45"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JI5-Ze-gbR">
-                                            <rect key="frame" x="0.0" y="0.0" width="119" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="109.5" height="45"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <connections>
                                                 <action selector="payWayBtnOnclicked:" destination="-1" eventType="touchUpInside" id="aee-Oc-8qQ"/>
@@ -136,8 +136,8 @@
                                             <rect key="frame" x="10" y="11.5" width="22" height="22"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thb-a9-cDn">
-                                            <rect key="frame" x="37" y="14" width="43" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="37" y="14.5" width="40" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -155,10 +155,10 @@
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMA-m0-VdL">
-                                    <rect key="frame" x="257.5" y="0.0" width="118.5" height="45"/>
+                                    <rect key="frame" x="266.5" y="0.0" width="109.5" height="45"/>
                                     <subviews>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcZ-bY-pxW">
-                                            <rect key="frame" x="0.0" y="0.0" width="118.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="109.5" height="45"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <connections>
                                                 <action selector="payWayBtnOnclicked:" destination="-1" eventType="touchUpInside" id="w3j-73-bho"/>
@@ -168,8 +168,8 @@
                                             <rect key="frame" x="10" y="11.5" width="22" height="22"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国外支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDa-Tq-D2X">
-                                            <rect key="frame" x="37" y="14" width="57.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="37" y="14.5" width="53.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -199,8 +199,8 @@
                                 <constraint firstAttribute="trailing" secondItem="aMA-m0-VdL" secondAttribute="trailing" id="gEZ-6P-au1"/>
                                 <constraint firstItem="aMA-m0-VdL" firstAttribute="top" secondItem="eGG-vt-hif" secondAttribute="top" id="kX9-pp-Smn"/>
                                 <constraint firstItem="JqF-uY-f79" firstAttribute="leading" secondItem="eGG-vt-hif" secondAttribute="leading" id="ml0-bh-GIK"/>
-                                <constraint firstItem="m94-3x-gZD" firstAttribute="width" secondItem="JqF-uY-f79" secondAttribute="width" id="qac-Rk-zub"/>
-                                <constraint firstItem="aMA-m0-VdL" firstAttribute="width" secondItem="JqF-uY-f79" secondAttribute="width" id="sJP-lg-TG3"/>
+                                <constraint firstItem="m94-3x-gZD" firstAttribute="width" secondItem="JqF-uY-f79" secondAttribute="width" multiplier="0.8" id="qac-Rk-zub"/>
+                                <constraint firstItem="aMA-m0-VdL" firstAttribute="width" secondItem="JqF-uY-f79" secondAttribute="width" multiplier="0.8" id="sJP-lg-TG3"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r2i-9M-vUT">
@@ -220,8 +220,8 @@
                                             <rect key="frame" x="10" y="11.5" width="22" height="22"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIH-8C-rNu">
-                                            <rect key="frame" x="37" y="14" width="71.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="37" y="14.5" width="66.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -252,8 +252,8 @@
                                             <rect key="frame" x="10" y="11.5" width="22" height="22"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gck-f8-NN6">
-                                            <rect key="frame" x="37" y="14" width="57.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="37" y="14.5" width="53.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>

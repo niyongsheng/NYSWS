@@ -86,6 +86,7 @@ NYSHomeCourseVCDelegate
     
     [self setupNav];
     [self getPagingData];
+    [self refreshToken];
 }
 
 - (void)headerRereshing {
@@ -97,7 +98,29 @@ NYSHomeCourseVCDelegate
     });
 }
 
+- (void)refreshToken {
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/refresh"
+                                       argument:nil
+                                         remark:@"刷新Token"
+                                        success:^(id response) {
+        if ([response isNotBlank]) {
+            [NUserDefaults setValue:response forKey:NUserTokenKey];
+            [NUserDefaults synchronize];
+            NAppManager.token = nil;
+            [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
+        }
+    } failed:^(NSError * _Nullable error) {
+
+    }];
+}
+
 - (void)getPagingData {
+    NSMutableArray *valueArr = [NSMutableArray array];
+    NSMutableArray *titleArr = [NSMutableArray array];
+    [valueArr addObject:@""];
+    [titleArr addObject:NSLocalizedStringFromTable(@"All", @"InfoPlist", nil)];
+    
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:@"/index/Courseclass/list"
@@ -105,18 +128,26 @@ NYSHomeCourseVCDelegate
                                          remark:@"课程分类"
                                         success:^(id response) {
         @strongify(self)
-        NSMutableArray *valueArr = [NSMutableArray array];
-        NSMutableArray *titleArr = [NSMutableArray array];
-        [valueArr addObject:@""];
-        [titleArr addObject:NSLocalizedStringFromTable(@"All", @"InfoPlist", nil)];
+        [NUserDefaults setValue:response forKey:@"Course_Class_List"];
+        [NUserDefaults synchronize];
         for (NSDictionary *dict in response) {
             [valueArr addObject:dict[@"id"]];
             [titleArr addObject:dict[@"name"]];
         }
         [self setupUI:titleArr valueArr:valueArr];
         [self getData];
+        
     } failed:^(NSError * _Nullable error) {
-
+        @strongify(self)
+        id response = [NUserDefaults valueForKey:@"Course_Class_List"];
+        if (response) {
+            for (NSDictionary *dict in response) {
+                [valueArr addObject:dict[@"id"]];
+                [titleArr addObject:dict[@"name"]];
+            }
+            [self setupUI:titleArr valueArr:valueArr];
+            [self getData];
+        }
     }];
 }
 
@@ -414,7 +445,7 @@ NYSHomeCourseVCDelegate
 - (NSMutableArray<NYSHomeCourseModel *> *)recommendedArray {
     if (!_recommendedArray) {
         NYSHomeCourseModel *billboard = [NYSHomeCourseModel new];
-        _recommendedArray = @[billboard].mutableCopy;
+        _recommendedArray = @[].mutableCopy;
     }
     return _recommendedArray;
 }

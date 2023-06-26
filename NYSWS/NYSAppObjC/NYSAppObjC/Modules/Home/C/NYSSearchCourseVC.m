@@ -103,21 +103,6 @@ static NSString *CellID = @"NYSCourseCell";
         self.bannerView = [[WMZBannerView alloc] initConfigureWithModel:self.bannerParam withView:headerView];
         self.bannerView.top = searchView.bottom + NNormalSpace;
         self.bannerView.centerX = headerView.centerX;
-        
-        // 加载数据
-        @weakify(self)
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                                url:@"/index/Index/banner"
-                                           argument:@{ @"page": @1, @"limit": @999 }
-                                             remark:@"轮播图"
-                                            success:^(id response) {
-            @strongify(self)
-            self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
-            self.bannerParam.wDataSet(self.bannerArray);
-            [self.bannerView updateUI];
-        } failed:^(NSError * _Nullable error) {
-            
-        }];
     }
     
     self.tableView.tableHeaderView = headerView;
@@ -138,6 +123,21 @@ static NSString *CellID = @"NYSCourseCell";
 }
 
 - (void)getData:(BOOL)isHeader {
+    // 加载轮播数据
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Index/banner"
+                                       argument:@{ @"page": @1, @"limit": @999 }
+                                         remark:@"轮播图"
+                                        success:^(id response) {
+        @strongify(self)
+        self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
+        self.bannerParam.wDataSet(self.bannerArray);
+        [self.bannerView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+    
     NSMutableDictionary *argument = @{
         @"page": @(_pageNo),
         @"limit": DefaultPageSize,
@@ -147,7 +147,6 @@ static NSString *CellID = @"NYSCourseCell";
 //        [argument setValue:@1 forKey:@"is_recommend"];
         [argument setValue:_classId forKey:@"class_id"];
     }
-    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:[self.type isEqualToString:@"1"] ? @"/index/Course/select_coures" : @"/index/Course/list"
                                        argument:argument

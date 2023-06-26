@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollV;
 
-@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UITextField *repasswordTF;
 @property (weak, nonatomic) IBOutlet UITextField *securityQuestionTF;
@@ -30,32 +30,32 @@
     self.navigationItem.title = NLocalizedStr(@"ForgetPwd");
     
     ViewRadius(_commitBtn, 22.5f)
-    self.phoneTF.delegate = self;
+    self.nicknameTF.delegate = self;
 }
 
 - (IBAction)securityQuestionBtnOnclicked:(UIButton *)sender {
     [self.view endEditing:YES];
     
-    if (self.phoneTF.text.length != 11) {
+    if (self.nicknameTF.text.length != 11) {
         [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
-        [NYSTools shakeAnimation:self.phoneTF.layer];
+        [NYSTools shakeAnimation:self.nicknameTF.layer];
         return;
     }
     
-    [self textFieldDidChangeSelection:self.phoneTF];
+    [self textFieldDidChangeSelection:self.nicknameTF];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
     
-    if (![self.phoneTF.text isNotBlank]) {
-        [NYSTools showToast:NLocalizedStr(@"TipsPhone")];
-        [NYSTools shakeAnimation:self.phoneTF.layer];
+    if (![self.nicknameTF.text isNotBlank]) {
+        [NYSTools showToast:NLocalizedStr(@"TipsLoginName")];
+        [NYSTools shakeAnimation:self.nicknameTF.layer];
         return;
     }
     
-    if (self.phoneTF.text.length != 11) {
-        [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
-        [NYSTools shakeAnimation:self.phoneTF.layer];
+    if (self.nicknameTF.text.length < 1 || self.nicknameTF.text.length > 13) {
+        [NYSTools showToast:NLocalizedStr(@"TipsNicknameLength")];
+        [NYSTools shakeAnimation:self.nicknameTF.layer];
         return;
     }
     
@@ -97,7 +97,7 @@
     }
     
     NSMutableDictionary *argument = [NSMutableDictionary dictionary];
-    argument[@"phone"] = _phoneTF.text;
+    argument[@"nickname"] = _nicknameTF.text;
     argument[@"security_question"] = _securityQuestionTF.text;
     argument[@"security_answer"] = _securityAnswerTF.text;
     
@@ -109,7 +109,7 @@
                                         success:^(id response) {
         @strongify(self)
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        params[@"nickname"] = self.phoneTF.text;
+        params[@"nickname"] = self.nicknameTF.text;
         params[@"password"] = self.passwordTF.text;
         [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                                 url:@"/index/Member/update_pass"

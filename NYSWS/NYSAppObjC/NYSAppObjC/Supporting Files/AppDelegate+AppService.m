@@ -18,6 +18,8 @@
 #import <UMCommon/UMCommon.h>
 #import <UMCommonLog/UMCommonLogManager.h>
 
+#import "NYSMyCourseListVC.h"
+
 #define isMustLogin     NO
 #define isNeedLoginTips NO
 
@@ -175,21 +177,41 @@
     switch (netStatus) {
         case -1: {
             [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkUnknown") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleError];
-            }
+        }
             break;
             
         case 0: {
             [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkNotReachable") dismissAfterDelay:1.5f includedStyle:JDStatusBarNotificationIncludedStyleDefaultStyle];
+            
+            if (NAppManager.isLogined) {
+                NYSNetAlertView *alertView = [[NYSNetAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(220))];
+                alertView.block = ^(id obj) {
+                    [FFPopup dismissAllPopups];
+                    if ([obj isEqual:@"1"]) {
+                        NYSMyCourseListVC *hVC = [[NYSMyCourseListVC alloc] init];
+                        hVC.index = @"1";
+                        hVC.navigationItem.title = NLocalizedStr(@"Purchased");
+                        NYSBaseNavigationController *nav = [[NYSBaseNavigationController alloc] initWithRootViewController:hVC];
+                        nav.modalPresentationStyle = UIModalPresentationFullScreen;
+                        [NRootViewController presentViewController:nav animated:YES completion:nil];
+                    }
+                };
+                FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+                FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
+                [popup showWithLayout:layout];
             }
+        }
             break;
             
         case 1: {
             [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkWWAN") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleDefaultStyle];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NNotificationReloadData" object:nil];
             }
             break;
         
         case 2: {
             [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkWiFi") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleDefaultStyle];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NNotificationReloadData" object:nil];
             }
             break;
             
