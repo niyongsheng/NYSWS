@@ -36,6 +36,7 @@
 		C8464AAF2A0A2E88003CD376 /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8464AB12A0A2E88003CD376 /* NYSMineViewController.xib */; };
 		C8464AC02A0B7B91003CD376 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8464ABF2A0B7B91003CD376 /* AppManager.m */; };
 		C8464AC32A0B7C21003CD376 /* NYSUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C8464AC22A0B7C21003CD376 /* NYSUserInfo.m */; };
+		C84C4F802A4BCF8A00CA2329 /* NYSNetAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84C4F822A4BCF8A00CA2329 /* NYSNetAlertView.xib */; };
 		C8587E3B2A132B2700DE6587 /* UIButton+General.m in Sources */ = {isa = PBXBuildFile; fileRef = C8587E392A132B2700DE6587 /* UIButton+General.m */; };
 		C8587E3F2A14760400DE6587 /* NYSWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8587E3D2A14760400DE6587 /* NYSWordCell.m */; };
 		C8587E402A14760400DE6587 /* NYSWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8587E3E2A14760400DE6587 /* NYSWordCell.xib */; };
@@ -112,8 +113,9 @@
 		C87D6DB92A14E12B009033A5 /* NYSCatalogSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */; };
 		C87D6DBA2A14E12B009033A5 /* NYSCatalogSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */; };
 		C87D6DBE2A161572009033A5 /* CKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DBC2A161572009033A5 /* CKAudioPlayerHelper.m */; };
-		C8887BAA2A4972970015F75A /* NYSNetAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8887BA82A4972970015F75A /* NYSNetAlertView.xib */; };
 		C8887BAB2A4972970015F75A /* NYSNetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8887BA92A4972970015F75A /* NYSNetAlertView.m */; };
+		C8887BAF2A4AC9EC0015F75A /* NYSCacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8887BAC2A4AC9EB0015F75A /* NYSCacheViewController.xib */; };
+		C8887BB02A4AC9EC0015F75A /* NYSCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8887BAE2A4AC9EC0015F75A /* NYSCacheViewController.m */; };
 		C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */; };
 		C8B7482C29FBB2AD00673B75 /* AppDelegate+AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482929FBB2AC00673B75 /* AppDelegate+AppService.m */; };
 		C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7482B29FBB2AD00673B75 /* AppDelegate+PushService.m */; };
@@ -303,6 +305,9 @@
 		C8464ABF2A0B7B91003CD376 /* AppManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		C8464AC12A0B7C21003CD376 /* NYSUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSUserInfo.h; sourceTree = "<group>"; };
 		C8464AC22A0B7C21003CD376 /* NYSUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSUserInfo.m; sourceTree = "<group>"; };
+		C84C4F812A4BCF8A00CA2329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSNetAlertView.xib; sourceTree = "<group>"; };
+		C84C4F842A4BCF8C00CA2329 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSNetAlertView.strings"; sourceTree = "<group>"; };
+		C84C4F862A4BCF9600CA2329 /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSNetAlertView.strings"; sourceTree = "<group>"; };
 		C8587E392A132B2700DE6587 /* UIButton+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+General.m"; sourceTree = "<group>"; };
 		C8587E3A2A132B2700DE6587 /* UIButton+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+General.h"; sourceTree = "<group>"; };
 		C8587E3C2A14760400DE6587 /* NYSWordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSWordCell.h; sourceTree = "<group>"; };
@@ -422,8 +427,10 @@
 		C87D6DBC2A161572009033A5 /* CKAudioPlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKAudioPlayerHelper.m; sourceTree = "<group>"; };
 		C87D6DBD2A161572009033A5 /* CKAudioPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAudioPlayerHelper.h; sourceTree = "<group>"; };
 		C8887BA72A4972960015F75A /* NYSNetAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYSNetAlertView.h; path = Course/V/NYSNetAlertView.h; sourceTree = "<group>"; };
-		C8887BA82A4972970015F75A /* NYSNetAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NYSNetAlertView.xib; path = Course/V/NYSNetAlertView.xib; sourceTree = "<group>"; };
 		C8887BA92A4972970015F75A /* NYSNetAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYSNetAlertView.m; path = Course/V/NYSNetAlertView.m; sourceTree = "<group>"; };
+		C8887BAC2A4AC9EB0015F75A /* NYSCacheViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSCacheViewController.xib; sourceTree = "<group>"; };
+		C8887BAD2A4AC9EB0015F75A /* NYSCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSCacheViewController.h; sourceTree = "<group>"; };
+		C8887BAE2A4AC9EC0015F75A /* NYSCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSCacheViewController.m; sourceTree = "<group>"; };
 		C8B7475D29FA75E100673B75 /* NYSAppObjC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYSAppObjC.entitlements; sourceTree = "<group>"; };
 		C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSTabbarViewController.h; sourceTree = "<group>"; };
 		C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSTabbarViewController.m; sourceTree = "<group>"; };
@@ -706,7 +713,7 @@
 				C8B7482229FBB1D300673B75 /* Headers */,
 				C8887BA72A4972960015F75A /* NYSNetAlertView.h */,
 				C8887BA92A4972970015F75A /* NYSNetAlertView.m */,
-				C8887BA82A4972970015F75A /* NYSNetAlertView.xib */,
+				C84C4F822A4BCF8A00CA2329 /* NYSNetAlertView.xib */,
 				C8B7481429FBAD0D00673B75 /* NYSTabbarViewController.h */,
 				C8B7481529FBAD0D00673B75 /* NYSTabbarViewController.m */,
 			);
@@ -1013,6 +1020,9 @@
 				C87D6DB82A14E12B009033A5 /* NYSCatalogSearchViewController.h */,
 				C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */,
 				C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */,
+				C8887BAD2A4AC9EB0015F75A /* NYSCacheViewController.h */,
+				C8887BAE2A4AC9EC0015F75A /* NYSCacheViewController.m */,
+				C8887BAC2A4AC9EB0015F75A /* NYSCacheViewController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1349,7 +1359,7 @@
 				C85A349B2A0E40EA00E42C6B /* LLImagePicker.bundle in Resources */,
 				C8D9E7C52A3A9DC600985D2D /* NYSHelpContentVC.xib in Resources */,
 				C85A34F32A0E449A00E42C6B /* UIBarButtonItemArrowLeft@2x.png in Resources */,
-				C8887BAA2A4972970015F75A /* NYSNetAlertView.xib in Resources */,
+				C84C4F802A4BCF8A00CA2329 /* NYSNetAlertView.xib in Resources */,
 				C85A34E42A0E449A00E42C6B /* ImageSelectedOff.png in Resources */,
 				C8464AA12A0A268F003CD376 /* ThirdViewController.xib in Resources */,
 				C80648B22A149DA2003397CD /* NYSCallCenterVC.xib in Resources */,
@@ -1365,6 +1375,7 @@
 				C85A34DF2A0E449A00E42C6B /* UIBarButtonItemGrid@3x.png in Resources */,
 				C80649162A14A350003397CD /* NYSWithdrawViewController.xib in Resources */,
 				C806489D2A149C15003397CD /* NYSConsultVC.xib in Resources */,
+				C8887BAF2A4AC9EC0015F75A /* NYSCacheViewController.xib in Resources */,
 				C8597A2729F51052008BEE7F /* Main.storyboard in Resources */,
 				C8C750382A04D35C00A91AAE /* NYSMessageCenterCell.xib in Resources */,
 				C85A34F42A0E449A00E42C6B /* VideoOverlay.png in Resources */,
@@ -1482,6 +1493,7 @@
 				C8EE7E692A08A859000E3A3A /* NYSMyCourseListVC.m in Sources */,
 				C8BDD1E42A1CAAEF00BB466A /* YYLabel+Copy.m in Sources */,
 				C8B7484E29FBCD6B00673B75 /* NYSHomeViewController.m in Sources */,
+				C8887BB02A4AC9EC0015F75A /* NYSCacheViewController.m in Sources */,
 				C8DBA6972A0F14C400F2656D /* TZImageManager.m in Sources */,
 				C8C750622A062DF500A91AAE /* NYSAboutViewController.m in Sources */,
 				C8599BAE2A03A73A00DEA603 /* NYSCourseCell.m in Sources */,
@@ -1767,6 +1779,17 @@
 			name = NYSMineViewController.xib;
 			sourceTree = "<group>";
 		};
+		C84C4F822A4BCF8A00CA2329 /* NYSNetAlertView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C84C4F812A4BCF8A00CA2329 /* Base */,
+				C84C4F842A4BCF8C00CA2329 /* zh-Hans */,
+				C84C4F862A4BCF9600CA2329 /* lo-LA */,
+			);
+			name = NYSNetAlertView.xib;
+			path = Course/V;
+			sourceTree = "<group>";
+		};
 		C8597A2529F51052008BEE7F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1955,7 +1978,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2002,7 +2025,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

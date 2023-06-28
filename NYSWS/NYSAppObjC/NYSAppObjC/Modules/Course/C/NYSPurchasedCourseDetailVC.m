@@ -12,12 +12,12 @@
 #import "NYSCoursePurchaseVC.h"
 #import "NYSCourseExchangeVC.h"
 #import "NYSCatalogViewController.h"
+#import "NYSCacheViewController.h"
 
 @interface NYSPurchasedCourseDetailVC ()
 {
     NSInteger _pageNo;
 }
-@property (strong, nonatomic) NYSHomeCourseModel *detailModel;
 @property (strong, nonatomic) NYSPurchasedDetailHeader *headerView;
 @property (strong, nonatomic) NYSCourseDetailHeader *headerViewNew;
 @end
@@ -37,7 +37,20 @@
     self.customStatusBarStyle = UIStatusBarStyleLightContent;
     
     [self setupUI];
-    [self getDetailData];
+    
+    if (self.isOffLine) {
+        self.headerViewNew.model = self.detailModel;
+        
+        NSMutableAttributedString *aStr = [NYSCustomLabel getAttributedString:self.detailModel.details];
+        CGRect frame = [NYSCustomLabel getAttributedStringFrame:aStr width:kScreenWidth - 30];
+        self.tableView.tableHeaderView.height = 300 + frame.size.height;
+        
+        self.dataSourceArr = self.detailModel.chapter.mutableCopy;
+        [self.tableView reloadData];
+        
+    } else {
+        [self getDetailData];
+    }
 }
 
 - (void)setupUI {
@@ -179,12 +192,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NYSCatalogViewController *vc = NYSCatalogViewController.new;
-    vc.courseId = self.model.ID;
-    vc.index = indexPath.row;
-    vc.chapterArray = self.dataSourceArr;
-    vc.courseModel = self.model;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.isOffLine) {
+        NYSCacheViewController *vc = NYSCacheViewController.new;
+        vc.courseId = self.model.ID;
+        vc.index = indexPath.row;
+        vc.chapterArray = self.dataSourceArr;
+        vc.courseModel = self.model;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } else {
+        NYSCatalogViewController *vc = NYSCatalogViewController.new;
+        vc.courseId = self.model.ID;
+        vc.index = indexPath.row;
+        vc.chapterArray = self.dataSourceArr;
+        vc.courseModel = self.model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

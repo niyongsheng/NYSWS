@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSMyCourseListVC : NYSBaseViewController
 @property (nonatomic, strong) NSString *index;
+@property (nonatomic, assign) BOOL isOffLine;
 @end
 
 NS_ASSUME_NONNULL_END

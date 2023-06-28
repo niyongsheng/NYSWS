@@ -13,8 +13,9 @@
     ViewRadius(self, 10);
     
     ViewBorderRadius(self.commitBtn, 23, 1, NAppThemeColor);
-    [self.commitBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     self.commitBtn.backgroundColor = NAppThemeColor;
+    self.commitBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.commitBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
 }
 
 - (IBAction)cancelBtnOnclicked:(UIButton *)sender {

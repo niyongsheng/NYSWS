@@ -16,6 +16,15 @@
 @implementation NYSBusinessModel
 @end
 
+@implementation NYSChapterContentModel
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+        @"word_list" : [NYSCatalogModel class],
+        @"statement_list" : [NYSCatalogModel class]
+    };
+}
+@end
+
 @implementation NYSChapter
 @end
 

@@ -31,7 +31,7 @@ Language="语言";
 Consult="咨询客服";
 Recommend="推荐有礼";
 Message="消息中心";
-Interconnect="互联外卖";
+Interconnect="互连外卖";
 
 Search="搜一搜";
 
@@ -161,3 +161,5 @@ SecurityQuestion5="您的生日是";
 
 Share="分享朋友圈";
 Unlogin="未登录";
+
+CacheDownloading="缓存更新中";

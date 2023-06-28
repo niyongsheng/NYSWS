@@ -100,16 +100,17 @@
         [self pausePlayingAudio];
     }
 }
+
 /**
  *  播放网络音频Audio
  *
  *  @param path   网络音频链接路径
  */
-- (void)playAudioWithPath:(NSString *)path whiteStype:(CKAudioFileTyle)type{
+- (void)playAudioWithPath:(NSString *)path whiteStype:(CKAudioFileTyle)type {
     if (path.length > 0) {
-        //不随着静音键和屏幕关闭而静音。code by Aevit
+        // 不随着静音键和屏幕关闭而静音。code by Aevit
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-        //上次播放的录音
+        // 上次播放的录音
         if (_pathName && [path isEqualToString:_pathName]) {
             
             if (_audioPlayer.isPlaying) {
@@ -118,7 +119,7 @@
                 [self playAudio];
             }
             
-        } else {//不是上次播放的录音，重新保存播放
+        } else { //不是上次播放的录音，重新保存播放
             _pathName = path;
             
             if (_audioPlayer) {
@@ -126,7 +127,7 @@
                 self.audioPlayer = nil;
             }
             
-            //初始化播放器
+            // 初始化播放器
             self.audioPlayer = [self getAudioPlayer:path withStype:type];
             [self playAudio];
         }
@@ -197,7 +198,7 @@
     if (type == CKAudioFileTyle_Network) {
         path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
         //根据网络url生产NSData
-        NSURL *url = [[NSURL alloc]initWithString:path];
+        NSURL *url = [[NSURL alloc] initWithString:path];
         NSData *audioData = [NSData dataWithContentsOfURL:url];
         
         //将数据保存到本地指定位置Caches
@@ -212,11 +213,11 @@
     
     //初始化播放器并播放
     NSError *error;
-    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&error];
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL fileTypeHint:AVFileTypeMPEGLayer3 error:&error];
     player.delegate = self;
     [player prepareToPlay];
-    if(error){
-        NSLog(@"file error %@",error.description);
+    if (error) {
+        [NYSTools showToast:error.domain];
     }
     return player;
 }

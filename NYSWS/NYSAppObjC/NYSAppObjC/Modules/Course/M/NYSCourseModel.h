@@ -40,6 +40,13 @@
 @property (nonatomic , copy) NSString              * total_page;
 @property (nonatomic , copy) NSString              * content;
 
+#pragma mark - 转成base64缓存
+@property (nonatomic , copy) NSString              * content_url_base64;
+@property (nonatomic , copy) NSString              * url_base64;
+
+@property (nonatomic , copy) NSString              * content_url_path;
+@property (nonatomic , copy) NSString              * url_path;
+
 #pragma mark - 首页搜索ADD
 /// 当前用户是否已激活0是1否
 @property (nonatomic , assign) NSInteger is_activation;

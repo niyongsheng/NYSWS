@@ -32,7 +32,24 @@
         make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
     }];
     
-    [self footerRereshing];
+    if (self.isOffLine) {
+        self.tableView.mj_footer = nil;
+        id response = [NUserDefaults valueForKey:@"User_Purchased_List"];
+        if (response) {
+            NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView reloadData];
+            
+        } else {
+            self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"暂无缓存数据" reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
+        }
+    } else {
+        // 更新缓存
+        [NAppManager cacheAudioData:YES];
+        
+        // 分页加载
+        [self footerRereshing];
+    }
 }
 
 #pragma mark - 网络加载数据
@@ -135,6 +152,9 @@
 
     NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
     vc.model = model;
+    
+    vc.isOffLine = self.isOffLine;
+    vc.detailModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

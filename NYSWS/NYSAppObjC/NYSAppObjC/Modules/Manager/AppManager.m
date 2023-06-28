@@ -23,6 +23,28 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appManager = [[AppManager alloc] init];
+        
+        [NNotificationCenter addObserverForName:@"CacheAudioDataNotification" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            NSDictionary *obj = note.object;
+            if ([obj[@"isShow"] intValue] == 1) {
+                MBProgressHUD *processHud = [MBProgressHUD showHUDAddedTo:NAppWindow animated:YES];
+                processHud.bezelView.style = MBProgressHUDBackgroundStyleBlur;
+                processHud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+                processHud.backgroundView.color = [[UIColor blackColor] colorWithAlphaComponent:0.65f];
+                processHud.mode = MBProgressHUDModeIndeterminate; // MBProgressHUDModeDeterminateHorizontalBar;
+                processHud.label.text = NLocalizedStr(@"CacheDownloading");
+                
+            } else if ([obj[@"isShow"] intValue] == 0) {
+                MBProgressHUD *hud = [MBProgressHUD HUDForView:NAppWindow];
+                [hud hideAnimated:YES];
+                
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    MBProgressHUD *hud = [MBProgressHUD HUDForView:NAppWindow];
+                    hud.progress = [obj[@"progress"] floatValue];
+                });
+            }
+        }];
     });
     return appManager;
 }
@@ -133,7 +155,7 @@
     // 3.清除APP角标
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
-
+    
     // 4.移除缓存
     [NUserDefaults removeObjectForKey:NUserTokenKey];
     [self.userCache removeAllObjectsWithBlock:^{
@@ -187,6 +209,124 @@
         _userInfo = [NYSUserInfo modelWithDictionary:userDict];
     }
     return _userInfo;
+}
+
+#pragma mark - 缓存已购课程数据
+- (void)cacheAudioData:(BOOL)isShowProcess {
+    if (self.netStatus == 0) return;
+    
+    NSDictionary *argument = @{
+        @"status": @1,
+        @"is_page": @1
+    };
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Course/user_activation"
+                                       argument:argument
+                                         remark:@"缓存已购列表"
+                                        success:^(id _Nullable response) {
+        id cacheResponse = [NUserDefaults valueForKey:@"User_Purchased_List"];
+        if ([cacheResponse count] == [response count]) return;
+        
+        if (isShowProcess) [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@1, @"progress":@0}];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            NSArray<NYSHomeCourseModel *> *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
+            float total = 0;
+            float index = 0;
+            for (NYSHomeCourseModel *courseModel in array) {
+                for (NYSChapter *chapterModel in courseModel.chapter) {
+                    total += chapterModel.content.word_list.count;
+                    total += chapterModel.content.statement_list.count;
+                }
+            }
+            //            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            for (NYSHomeCourseModel *courseModel in array) {
+                for (NYSChapter *chapterModel in courseModel.chapter) {
+                    for (NYSCatalogModel *catalogModel in chapterModel.content.word_list) {
+                        NSString *path = catalogModel.url;
+                        if ([path isNotBlank]) {
+                            //                        dispatch_async(queue, ^{
+                            path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
+                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(path)];
+                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                            catalogModel.url_base64 = encodedStr;
+                            
+                            NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%f.caf", dirPath, timeinterval];
+                            [mp3Data writeToFile:filePath atomically:YES];
+                            catalogModel.url_path = filePath;
+                            //                        });
+                        }
+                        
+                        NSString *contentPath = catalogModel.content_url;
+                        if ([contentPath isNotBlank]) {
+                            //                        dispatch_async(queue, ^{
+                            contentPath = [contentPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
+                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(contentPath)];
+                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                            catalogModel.content_url_base64 = encodedStr;
+                            
+                            NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%.0f.caf", dirPath, timeinterval];
+                            [mp3Data writeToFile:filePath atomically:YES];
+                            catalogModel.content_url_path = filePath;
+                            //                        });
+                        }
+                        
+                        index++;
+                        [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@2, @"progress":@(index/total)}];
+                    }
+                    for (NYSCatalogModel *catalogModel in chapterModel.content.statement_list) {
+                        NSString *path = catalogModel.url;
+                        if ([path isNotBlank]) {
+                            //                        dispatch_async(queue, ^{
+                            path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
+                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(path)];
+                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                            catalogModel.url_base64 = encodedStr;
+                            
+                            NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%f.caf", dirPath, timeinterval];
+                            [mp3Data writeToFile:filePath atomically:YES];
+                            catalogModel.url_path = filePath;
+                            //                        });
+                        }
+                        
+                        NSString *contentPath = catalogModel.content_url;
+                        if ([contentPath isNotBlank]) {
+                            //                        dispatch_async(queue, ^{
+                            contentPath = [contentPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
+                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(contentPath)];
+                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                            catalogModel.content_url_base64 = encodedStr;
+                            
+                            NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%.0f.caf", dirPath, timeinterval];
+                            [mp3Data writeToFile:filePath atomically:YES];
+                            catalogModel.content_url_path = filePath;
+                            //                        });
+                        }
+                        
+                        index++;
+                        [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@2, @"progress":@(index/total)}];
+                    }
+                }
+            }
+            
+            [NUserDefaults setValue:[array modelToJSONObject] forKey:@"User_Purchased_List"];
+            [NUserDefaults synchronize];
+            
+            [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@0, @"progress":@1}];
+            
+        });
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 @end

@@ -87,6 +87,9 @@ NYSHomeCourseVCDelegate
     [self setupNav];
     [self getPagingData];
     [self refreshToken];
+    
+    // 更新缓存
+    NAppManager.isLogined ? [NAppManager cacheAudioData:YES] : nil;
 }
 
 - (void)headerRereshing {

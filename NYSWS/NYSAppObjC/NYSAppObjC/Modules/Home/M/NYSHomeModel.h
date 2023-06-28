@@ -6,6 +6,7 @@
 //
 
 #import <NYSUIKit/NYSUIKit.h>
+#import "NYSCourseModel.h"
 
 @interface NYSHomeModel : NYSBaseObject
 @end
@@ -26,6 +27,11 @@
 @property (nonatomic, strong) NSString * subtitle;
 @end
 
+@interface NYSChapterContentModel : NYSBaseObject
+@property (nonatomic , copy) NSArray<NYSCatalogModel *> * word_list;
+@property (nonatomic , copy) NSArray<NYSCatalogModel *> * statement_list;
+@end
+
 @interface NYSChapter : NYSBaseObject
 @property (nonatomic , assign) NSInteger              ID;
 @property (nonatomic , copy) NSString              * title;
@@ -34,6 +40,7 @@
 @property (nonatomic , assign) NSInteger              sort;
 @property (nonatomic , copy) NSString              * is_try;
 
+@property (nonatomic , strong) NYSChapterContentModel * content;
 @end
 
 @interface NYSHomeCourseModel : NYSBaseObject

@@ -66,8 +66,8 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define DefaultSecretKey @"" // 小鹅通申请的秘钥
 #define DefaultSourceUrl @"https://app5wtzrduk4143.h5.xiaoeknow.com" //小鹅店铺首页链接
 
-// 互联外卖
-#define HLWMUrl                 @"https://ddg.568lao.com/addons/we7_wmall/template/vue/index.html?menu=#/pages/home/index?map=baidu&dr=kip&i=3"
+// 互连外卖
+#define HLWMUrl                 @"https://ddg.568lao.com/addons/we7_wmall/template/vue/index.html?menu=pFR#/pages/home/index?map=baidu&dr=kip&i=3&wxref=mp.weixin.qq.com%23wechat_redirect"
 // 内测自动更新
 #define FirApiToken             @"b4c29398b061073cb43ab65cf518be9c"
 

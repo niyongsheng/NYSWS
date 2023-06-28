@@ -174,6 +174,7 @@
 #pragma mark -- 网络状态变化 --
 - (void)netWorkStateChange:(NSNotification *)notification {
     NSInteger netStatus = [notification.object integerValue];
+    NAppManager.netStatus = netStatus;
     switch (netStatus) {
         case -1: {
             [[JDStatusBarNotificationPresenter sharedPresenter] presentWithText:NLocalizedStr(@"NetworkUnknown") dismissAfterDelay:1.1f includedStyle:JDStatusBarNotificationIncludedStyleError];
@@ -186,14 +187,16 @@
             if (NAppManager.isLogined) {
                 NYSNetAlertView *alertView = [[NYSNetAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(220))];
                 alertView.block = ^(id obj) {
-                    [FFPopup dismissAllPopups];
                     if ([obj isEqual:@"1"]) {
                         NYSMyCourseListVC *hVC = [[NYSMyCourseListVC alloc] init];
                         hVC.index = @"1";
+                        hVC.isOffLine = YES;
                         hVC.navigationItem.title = NLocalizedStr(@"Purchased");
                         NYSBaseNavigationController *nav = [[NYSBaseNavigationController alloc] initWithRootViewController:hVC];
                         nav.modalPresentationStyle = UIModalPresentationFullScreen;
                         [NRootViewController presentViewController:nav animated:YES completion:nil];
+                    } else {
+                        [FFPopup dismissAllPopups];
                     }
                 };
                 FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];

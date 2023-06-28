@@ -267,14 +267,14 @@ NYSMoneyItemViewDelegate
     }
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNoCheckNetworkRequestWithMethod:@"POST"
                                           url:@"/index/Order/create"
                                        argument:argument
                                              remark:@"下单调起支付"
                                             success:^(id response) {
         @strongify(self)
         if (self.payType == 0) {
-            NSString *url = [NSString stringWithFormat:@"weixin://%@", response];
+            NSString *url = [NSString stringWithFormat:@"weixin://%@", response[@"start_time"]];
             BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
             if (canOpen) {
 //                PayReq *request = [[PayReq alloc] init];
@@ -295,19 +295,22 @@ NYSMoneyItemViewDelegate
             }
             
         } else if (self.payType == 1) {
-            NSString *url = [NSString stringWithFormat:@"alipay://%@", response];
-            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
-            if (canOpen) {
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
-                
-            } else {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallAlipay") preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
-                [alert addAction:cancelAction];
-                [self.superVC presentViewController:alert animated:YES completion:nil];
-            }
+//            NSString *url = [NSString stringWithFormat:@"alipay://%@", response];
+//            BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]];
+//            if (canOpen) {
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+//
+//            } else {
+//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"UninstallAlipay") preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NLocalizedStr(@"OK") style:UIAlertActionStyleCancel handler:nil];
+//                [alert addAction:cancelAction];
+//                [self.superVC presentViewController:alert animated:YES completion:nil];
+//            }
+            SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:response[@"expend"][@"pay_info"]]];
+            [self.superVC presentViewController:sfVC animated:YES completion:nil];
+            
         } else if (self.payType == 2) {
-            SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:response[@"url"]]];
+            SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:response[@"data"][@"url"]]];
             [self.superVC presentViewController:sfVC animated:YES completion:nil];
             
         }  else if (self.payType == 3) {

@@ -356,7 +356,7 @@ static void handelError(NSError * _Nullable error) {
         [NYSTools showToast:@"无法连接到服务器"];
         
     } else if (error.code == -1009) {
-        [NYSTools showToast:@"您似乎断开了网络连接，请前往【设置】-【无线数据】打开WLAN或者蜂窝网络"];
+        [NYSTools showToast:@"网络不可用"];
         
     } else if (error.code == -1011) {
         [NYSTools showToast:@"服务暂时不可用"];

@@ -47,6 +47,9 @@ typedef void (^NYSLoadUserInfoCompletion)(BOOL success, NYSUserInfo *userInfo, N
 /** 请求序列号 */
 @property (nonatomic, assign) NSInteger seq;
 
+/// 网络状态
+@property (assign, nonatomic) NSInteger netStatus;
+
 /// 登录处理
 /// @param loginType 登录方式
 /// @param authInfo 鉴权信息
@@ -68,4 +71,6 @@ typedef void (^NYSLoadUserInfoCompletion)(BOOL success, NYSUserInfo *userInfo, N
 - (void)loadUserInfoCompletion:(NYSLoadUserInfoCompletion)completion;
 - (void)loadUserInfo:(NSString *)token completion:(NYSLoadUserInfoCompletion)completion;
 
+/// 缓存已购课程数据
+- (void)cacheAudioData:(BOOL)isShowProcess;
 @end

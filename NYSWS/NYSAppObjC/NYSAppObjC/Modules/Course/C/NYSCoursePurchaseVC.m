@@ -84,6 +84,9 @@
         FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
         [popup showWithLayout:layout];
         
+        // 更新缓存
+        [NAppManager cacheAudioData:YES];
+        
     } failed:^(NSError * _Nullable error) {
         
     }];
