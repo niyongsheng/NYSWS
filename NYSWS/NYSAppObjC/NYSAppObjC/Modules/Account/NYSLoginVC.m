@@ -10,6 +10,7 @@
 #import "NYSResetPwdVC.h"
 #import "NYSRegisterVC.h"
 #import "NYSProtocolDetailVC.h"
+#import "NYSAgrementAlertView.h"
 
 @interface NYSLoginVC () <UITextViewDelegate, UITextFieldDelegate>
 
@@ -112,8 +113,24 @@
     }
     
     if (!self.protocolBtn.selected) {
-        [NYSTools showToast:NLocalizedStr(@"TipsProtocol")];
-        [NYSTools shakToShow:self.protocolBtn];
+        
+        @weakify(self)
+        NYSAgrementAlertView *alertView = [[NYSAgrementAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(220))];
+        alertView.block = ^(id obj) {
+            @strongify(self)
+            [FFPopup dismissAllPopups];
+            
+            if ([obj isEqual:@"1"]) {
+                self.protocolBtn.selected = YES;
+                [self loginBtnOnclicked:[UIButton new]];
+            }
+        };
+        FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+        FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
+        [popup showWithLayout:layout];
+        
+//        [NYSTools showToast:NLocalizedStr(@"TipsProtocol")];
+//        [NYSTools shakToShow:self.protocolBtn];
         return;
     }
     

@@ -98,6 +98,12 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     [self getDetailData:@"1"];
 }
 
+- (void)textFieldDidChangeSelection:(UITextField *)textField {
+    _pageNo = 0;
+    [self.dataSourceArr removeAllObjects];
+    [self getDetailData:@"1"];
+}
+
 #pragma mark - 网络加载数据
 - (void)footerRereshing {
     [super footerRereshing];

@@ -110,6 +110,8 @@
 		C85A34FE2A0E449A00E42C6B /* ImageSelectedSmallOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C85A34D42A0E449A00E42C6B /* ImageSelectedSmallOn@2x.png */; };
 		C85A35082A0E450E00E42C6B /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A35022A0E450E00E42C6B /* DALabeledCircularProgressView.m */; };
 		C85A35092A0E450E00E42C6B /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85A35032A0E450E00E42C6B /* DACircularProgressView.m */; };
+		C879FE4A2A4C2B3C00B2CC0B /* NYSAgrementAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C879FE472A4C2B3C00B2CC0B /* NYSAgrementAlertView.m */; };
+		C879FE4C2A4C2FA800B2CC0B /* NYSAgrementAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C879FE4E2A4C2FA800B2CC0B /* NYSAgrementAlertView.xib */; };
 		C87D6DB92A14E12B009033A5 /* NYSCatalogSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */; };
 		C87D6DBA2A14E12B009033A5 /* NYSCatalogSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */; };
 		C87D6DBE2A161572009033A5 /* CKAudioPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C87D6DBC2A161572009033A5 /* CKAudioPlayerHelper.m */; };
@@ -421,6 +423,11 @@
 		C85A35032A0E450E00E42C6B /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		C85A35042A0E450E00E42C6B /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
 		C85A35052A0E450E00E42C6B /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		C879FE472A4C2B3C00B2CC0B /* NYSAgrementAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSAgrementAlertView.m; sourceTree = "<group>"; };
+		C879FE492A4C2B3C00B2CC0B /* NYSAgrementAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSAgrementAlertView.h; sourceTree = "<group>"; };
+		C879FE4D2A4C2FA800B2CC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSAgrementAlertView.xib; sourceTree = "<group>"; };
+		C879FE502A4C2FB500B2CC0B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSAgrementAlertView.strings"; sourceTree = "<group>"; };
+		C879FE522A4C2FB600B2CC0B /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSAgrementAlertView.strings"; sourceTree = "<group>"; };
 		C87D6DB62A14E12B009033A5 /* NYSCatalogSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSCatalogSearchViewController.m; sourceTree = "<group>"; };
 		C87D6DB72A14E12B009033A5 /* NYSCatalogSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSCatalogSearchViewController.xib; sourceTree = "<group>"; };
 		C87D6DB82A14E12B009033A5 /* NYSCatalogSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSCatalogSearchViewController.h; sourceTree = "<group>"; };
@@ -871,6 +878,16 @@
 			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
+		C879FE462A4C2ACF00B2CC0B /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C879FE492A4C2B3C00B2CC0B /* NYSAgrementAlertView.h */,
+				C879FE472A4C2B3C00B2CC0B /* NYSAgrementAlertView.m */,
+				C879FE4E2A4C2FA800B2CC0B /* NYSAgrementAlertView.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		C87D6DBB2A161572009033A5 /* CKAudioPlayerHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1199,6 +1216,7 @@
 		C8EE7E572A08996E000E3A3A /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				C879FE462A4C2ACF00B2CC0B /* V */,
 				C8EE7E582A089995000E3A3A /* NYSLoginVC.h */,
 				C8EE7E592A089995000E3A3A /* NYSLoginVC.m */,
 				C80648982A149A6F003397CD /* NYSLoginVC.xib */,
@@ -1382,6 +1400,7 @@
 				C85A34F72A0E449A00E42C6B /* ImageSelectedOff@3x.png in Resources */,
 				C85A34E52A0E449A00E42C6B /* PlayButtonOverlayLargeTap@2x.png in Resources */,
 				C80648C72A14A06D003397CD /* NYSAlertView.xib in Resources */,
+				C879FE4C2A4C2FA800B2CC0B /* NYSAgrementAlertView.xib in Resources */,
 				C8DBA6952A0F14C400F2656D /* TZImagePickerController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1462,6 +1481,7 @@
 				C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */,
 				C85A34942A0E40EA00E42C6B /* LLImagePickerCell.m in Sources */,
 				C85A34982A0E40EA00E42C6B /* UIView+LLExtension.m in Sources */,
+				C879FE4A2A4C2B3C00B2CC0B /* NYSAgrementAlertView.m in Sources */,
 				C8B7482D29FBB2AD00673B75 /* AppDelegate+PushService.m in Sources */,
 				C85A34D72A0E449A00E42C6B /* MWZoomingScrollView.m in Sources */,
 				C8DBA69A2A0F14C400F2656D /* TZImagePickerController.m in Sources */,
@@ -1810,6 +1830,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		C879FE4E2A4C2FA800B2CC0B /* NYSAgrementAlertView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C879FE4D2A4C2FA800B2CC0B /* Base */,
+				C879FE502A4C2FB500B2CC0B /* zh-Hans */,
+				C879FE522A4C2FB600B2CC0B /* lo-LA */,
+			);
+			name = NYSAgrementAlertView.xib;
+			sourceTree = "<group>";
+		};
 		C8EE7EB02A08E9AD000E3A3A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1978,7 +2008,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2025,7 +2055,7 @@
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/SDKExport",
 					"$(PROJECT_DIR)/NYSAppObjC/Modules/SDK/wxSDK",
 				);
-				MARKETING_VERSION = 1.1.8;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.laike.xueyidian;
 				PRODUCT_NAME = "学易点";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

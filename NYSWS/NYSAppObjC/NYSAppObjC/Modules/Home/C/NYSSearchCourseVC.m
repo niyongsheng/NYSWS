@@ -144,8 +144,8 @@ static NSString *CellID = @"NYSCourseCell";
         @"keyword": _searchTF.text
     }.mutableCopy;
     if ([self.type isEqualToString:@"2"] || [self.type isEqualToString:@"3"]) {
-//        [argument setValue:@1 forKey:@"is_recommend"];
         [argument setValue:_classId forKey:@"class_id"];
+        [argument setValue:@1 forKey:@"is_recommend"];
     }
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:[self.type isEqualToString:@"1"] ? @"/index/Course/select_coures" : @"/index/Course/list"
@@ -198,6 +198,10 @@ static NSString *CellID = @"NYSCourseCell";
     _pageNo = 0;
     [self.dataSourceArr removeAllObjects];
     [self footerRereshing];
+}
+
+- (void)textFieldDidChangeSelection:(UITextField *)textField {
+    [self headerRereshing];
 }
 
 #pragma mark - tableview delegate / dataSource

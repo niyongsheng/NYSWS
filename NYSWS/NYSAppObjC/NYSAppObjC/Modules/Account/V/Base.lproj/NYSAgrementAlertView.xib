@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSAgrementAlertView">
+            <connections>
+                <outlet property="agreeBtn" destination="aJ5-HB-lHT" id="ux8-RG-zKB"/>
+                <outlet property="agrementTV" destination="71e-4g-Nlu" id="yQP-yD-NwB"/>
+                <outlet property="cancelBtn" destination="Zqi-OR-dic" id="b00-Pe-7r2"/>
+                <outlet property="commitBtn" destination="DPI-gW-YOP" id="Aq0-Zh-6sT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="314" height="291"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="if4-nI-VZD">
+                    <rect key="frame" x="15" y="236" width="284" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqi-OR-dic">
+                            <rect key="frame" x="0.0" y="0.0" width="127" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="NzM-IK-c6e"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.26259681579999999" green="0.53335267310000001" blue="0.99997872109999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelBtnOnclicked:" destination="-1" eventType="touchUpInside" id="DqE-Jv-kQY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-gW-YOP">
+                            <rect key="frame" x="157" y="0.0" width="127" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="rsJ-gB-h9y"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" red="0.26259681579999999" green="0.53335267310000001" blue="0.99997872109999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="commitBtnOnclicked:" destination="-1" eventType="touchUpInside" id="eC0-Jg-OoJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="DPI-gW-YOP" firstAttribute="width" secondItem="Zqi-OR-dic" secondAttribute="width" id="9uU-po-eyo"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-HB-lHT">
+                    <rect key="frame" x="60" y="129.66666666666666" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="aJ5-HB-lHT" secondAttribute="height" multiplier="1:1" id="0C8-wF-fzU"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="agrement_icon"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="我已阅读并同意《服务协议》、《隐私政策》" translatesAutoresizingMaskIntoConstraints="NO" id="71e-4g-Nlu">
+                    <rect key="frame" x="87" y="125.66666666666669" width="200" height="40"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="0rt-d2-Bw9"/>
+                        <constraint firstAttribute="width" constant="200" id="mtL-H2-0Ii"/>
+                    </constraints>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否同意协议" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naV-A2-ukS">
+                    <rect key="frame" x="102" y="20" width="110.33333333333331" height="21.666666666666671"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="aJ5-HB-lHT" firstAttribute="centerY" secondItem="71e-4g-Nlu" secondAttribute="centerY" constant="-5" id="2xp-IT-z7Z"/>
+                <constraint firstItem="71e-4g-Nlu" firstAttribute="leading" secondItem="aJ5-HB-lHT" secondAttribute="trailing" constant="5" id="6h5-i0-OQF"/>
+                <constraint firstItem="naV-A2-ukS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8QI-nb-1ic"/>
+                <constraint firstItem="71e-4g-Nlu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JPp-Il-sue"/>
+                <constraint firstItem="naV-A2-ukS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Mjf-ur-fci"/>
+                <constraint firstItem="aJ5-HB-lHT" firstAttribute="width" secondItem="aJ5-HB-lHT" secondAttribute="height" multiplier="1:1" id="N4D-Ks-5SD"/>
+                <constraint firstItem="if4-nI-VZD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="P71-c6-sfS"/>
+                <constraint firstItem="71e-4g-Nlu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="30" id="gTX-R8-yIL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="if4-nI-VZD" secondAttribute="trailing" constant="15" id="nfH-0o-pwe"/>
+                <constraint firstAttribute="bottom" secondItem="if4-nI-VZD" secondAttribute="bottom" constant="20" id="xlF-9E-ezz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="79.389312977099237" y="-144.01408450704227"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="agrement_icon" width="12" height="12"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

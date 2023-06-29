@@ -57,7 +57,7 @@ NYSMoneyItemViewDelegate
     [NYSTools addRoundedCorners:self corners:UIRectCornerTopLeft|UIRectCornerTopRight radius:10];
     
     // 默认第一种支付方式
-    [self payWayBtnOnclicked:self.payWayBtn0];
+//    [self payWayBtnOnclicked:self.payWayBtn0];
     
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
@@ -122,8 +122,16 @@ NYSMoneyItemViewDelegate
     } failed:^(NSError * _Nullable error) {
 
     }];
+}
+
+- (void)layoutSubviews {
+    @weakify(self)
     
-    
+    self.payWayV0.hidden = YES;
+    self.payWayV1.hidden = YES;
+    self.payWayV2.hidden = YES;
+    self.payWayV3.hidden = YES;
+    self.payWayV4.hidden = YES;
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
                                             url:@"/index/Member/get_pay"
                                        argument:nil
@@ -131,18 +139,42 @@ NYSMoneyItemViewDelegate
                                         success:^(id response) {
         @strongify(self)
         NSArray *dataArray = [NSArray modelArrayWithClass:[NYSPayWayModel class] json:response];
+        BOOL payWayV0Hidden = YES;
+        BOOL payWayV1Hidden = YES;
         for (NYSPayWayModel *model in dataArray) {
             if ([model.config isEqualToString:@"wechat_pay"]) {
-                self.payWayV0.hidden = NO;
+                if ([model.value isEqual:@"0"]) {
+                    payWayV0Hidden = NO;
+                    self.payWayV0.hidden = NO;
+                }
             } else if ([model.config isEqualToString:@"alipay"]) {
-                self.payWayV1.hidden = NO;
+                if ([model.value isEqual:@"0"]) {
+                    payWayV1Hidden = NO;
+                    self.payWayV1.hidden = NO;
+                }
             } else if ([model.config isEqualToString:@"foreign_pay"]) {
-                self.payWayV2.hidden = NO;
+                if ([model.value isEqual:@"0"]) {
+                    self.payWayV2.hidden = NO;
+                }
             } else if ([model.config isEqualToString:@"bank_pay"]) {
-                self.payWayV3.hidden = NO;
+                if ([model.value isEqual:@"0"])
+                    self.payWayV3.hidden = NO;
             } else if ([model.config isEqualToString:@"apple_pay"]) {
-                self.payWayV4.hidden = NO;
+                if ([model.value isEqual:@"0"])
+                    self.payWayV4.hidden = NO;
             }
+        }
+        
+        if (payWayV0Hidden) {
+            self.payWayV1.left = 0;
+            self.payWayV2.left = self.payWayV1.right + 10;
+        }
+        if (payWayV0Hidden && payWayV1Hidden) {
+            self.payWayV2.left = 0;
+        } else if (payWayV0Hidden && !payWayV1Hidden) {
+            self.payWayV2.left = self.payWayV1.right + 10;
+        } else if (!payWayV0Hidden && payWayV1Hidden) {
+            self.payWayV2.left = self.payWayV0.right + 10;
         }
 
     } failed:^(NSError * _Nullable error) {
@@ -306,8 +338,13 @@ NYSMoneyItemViewDelegate
 //                [alert addAction:cancelAction];
 //                [self.superVC presentViewController:alert animated:YES completion:nil];
 //            }
-            SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:response[@"expend"][@"pay_info"]]];
-            [self.superVC presentViewController:sfVC animated:YES completion:nil];
+            
+            if ([response[@"status"] isEqualToString:@"succeeded"]) {
+                SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:response[@"expend"][@"pay_info"]]];
+                [self.superVC presentViewController:sfVC animated:YES completion:nil];
+            } else {
+                [NYSTools showToast:response[@"error_msg"]];
+            }
             
         } else if (self.payType == 2) {
             SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:response[@"data"][@"url"]]];

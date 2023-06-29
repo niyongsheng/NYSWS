@@ -51,6 +51,21 @@
     _protocolT.linkTextAttributes = @{NSForegroundColorAttributeName:NAppThemeColor};
     [_protocolT setDelegate:self];
     [_protocolT setAttributedText:attString];
+    
+    // 获取剪贴板中的邀请码
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSError *error = nil;
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        NSString *jsonStr = pasteboard.string;
+        if ([jsonStr isNotBlank]) {
+            NSData *jsonData = [pasteboard.string dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+            if (!error && [dictionary[@"code"] isNotBlank]) {
+                self.InvitationCodeTF.text = dictionary[@"code"];
+                self.InvitationCodeTF.enabled = NO;
+            }
+        }
+    });
 }
 
 - (IBAction)securityQuestionBtnOnclicked:(UIButton *)sender {
@@ -120,6 +135,8 @@
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
+    [self.view endEditing:YES];
+    
     if (![self.nicknameTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"TipsLoginName")];
         [NYSTools shakeAnimation:self.nicknameTF.layer];

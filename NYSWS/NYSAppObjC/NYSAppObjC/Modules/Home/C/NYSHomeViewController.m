@@ -71,7 +71,7 @@ NYSHomeCourseVCDelegate
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
+//    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
 }
 
 - (void)viewDidLoad {
@@ -87,7 +87,6 @@ NYSHomeCourseVCDelegate
     [self setupNav];
     [self getPagingData];
     [self refreshToken];
-    
     // 更新缓存
     NAppManager.isLogined ? [NAppManager cacheAudioData:YES] : nil;
 }
@@ -114,7 +113,7 @@ NYSHomeCourseVCDelegate
             [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
         }
     } failed:^(NSError * _Nullable error) {
-
+        
     }];
 }
 
@@ -447,7 +446,6 @@ NYSHomeCourseVCDelegate
 
 - (NSMutableArray<NYSHomeCourseModel *> *)recommendedArray {
     if (!_recommendedArray) {
-        NYSHomeCourseModel *billboard = [NYSHomeCourseModel new];
         _recommendedArray = @[].mutableCopy;
     }
     return _recommendedArray;

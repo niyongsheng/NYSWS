@@ -36,16 +36,17 @@
 - (IBAction)securityQuestionBtnOnclicked:(UIButton *)sender {
     [self.view endEditing:YES];
     
-    if (self.nicknameTF.text.length != 11) {
-        [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
-        [NYSTools shakeAnimation:self.nicknameTF.layer];
-        return;
-    }
+//    if (self.nicknameTF.text.length != 11) {
+//        [NYSTools showToast:NLocalizedStr(@"TipsPhoneFormat")];
+//        [NYSTools shakeAnimation:self.nicknameTF.layer];
+//        return;
+//    }
     
     [self textFieldDidChangeSelection:self.nicknameTF];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
+    [self.view endEditing:YES];
     
     if (![self.nicknameTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"TipsLoginName")];
@@ -133,22 +134,24 @@
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidChangeSelection:(UITextField *)textField {
-    if (textField.text.length == 11) {
-        @weakify(self)
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                                url:@"/index/Member/confidentiality"
-                                           argument:@{@"phone" : textField.text}
-                                             remark:@"获取密保问题"
-                                            success:^(id response) {
-            @strongify(self)
-            if ([response[@"security_question"] isNotBlank]) {
-                self.securityQuestionTF.text = response[@"security_question"];
-            }
-
-        } failed:^(NSError * _Nullable error) {
-
-        }];
+    if ([textField.text isNotBlank]) {
+        self.securityQuestionTF.text = @"";
     }
+    
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Member/confidentiality"
+                                       argument:@{@"nickname" : textField.text}
+                                         remark:@"获取密保问题"
+                                        success:^(id response) {
+        @strongify(self)
+        if ([response[@"security_question"] isNotBlank]) {
+            self.securityQuestionTF.text = response[@"security_question"];
+        }
+        
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 - (IBAction)consultBtnOnclicked:(UIButton *)sender {
