@@ -284,7 +284,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 
 #pragma mark - CKAudioPlayerHelperDelegate
 - (void)didAudioPlayerFinishPlay:(AVAudioPlayer*)audioPlayer pathName:(NSString *)pathName {
-    if ([pathName isEqualToString:[self.urlArray firstObject]]) {
+    if ([pathName isEqualToString:[self.urlArray firstObject]] && self.urlArray.count > 1) {
         [[CKAudioPlayerHelper shareInstance] managerAudioWithUrlPath:[self.urlArray lastObject] playOrPause:YES];
     }
 }

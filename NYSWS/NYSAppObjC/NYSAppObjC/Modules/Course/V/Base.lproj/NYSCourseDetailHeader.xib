@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,7 +44,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DN7-bO-vX4">
                     <rect key="frame" x="0.0" y="0.0" width="364" height="177"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plaholder_image_fillet" translatesAutoresizingMaskIntoConstraints="NO" id="7KR-MM-p6h">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plaholder_image_fillet" translatesAutoresizingMaskIntoConstraints="NO" id="7KR-MM-p6h">
                             <rect key="frame" x="15" y="10" width="100" height="157"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="BRP-2l-Vfx"/>
@@ -56,7 +57,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WV-c8-8LA">
-                            <rect key="frame" x="125" y="112" width="150" height="50"/>
+                            <rect key="frame" x="125" y="117" width="150" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更新时间：0000-00-00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KZ-gl-FgQ">
                                     <rect key="frame" x="10" y="10" width="130" height="11"/>
@@ -84,10 +85,10 @@
                             </constraints>
                         </view>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_coin" translatesAutoresizingMaskIntoConstraints="NO" id="asf-cZ-Bsc">
-                            <rect key="frame" x="292.5" y="128" width="17" height="18"/>
+                            <rect key="frame" x="292.5" y="133" width="17" height="18"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsL-c1-aBc">
-                            <rect key="frame" x="311.5" y="126.5" width="37.5" height="21"/>
+                            <rect key="frame" x="311.5" y="131.5" width="37.5" height="21"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" systemColor="systemRedColor"/>
                             <nil key="highlightedColor"/>
@@ -112,7 +113,7 @@
                         <constraint firstAttribute="trailing" secondItem="QO3-ck-mNr" secondAttribute="trailing" constant="15" id="SAS-B9-lux"/>
                         <constraint firstItem="RsL-c1-aBc" firstAttribute="leading" secondItem="asf-cZ-Bsc" secondAttribute="trailing" constant="2" id="Ub3-hw-XwB"/>
                         <constraint firstItem="asf-cZ-Bsc" firstAttribute="centerY" secondItem="6WV-c8-8LA" secondAttribute="centerY" id="VjB-Ou-2xj"/>
-                        <constraint firstItem="6WV-c8-8LA" firstAttribute="bottom" secondItem="7KR-MM-p6h" secondAttribute="bottom" constant="-5" id="lbB-1u-10Q"/>
+                        <constraint firstItem="6WV-c8-8LA" firstAttribute="bottom" secondItem="7KR-MM-p6h" secondAttribute="bottom" id="lbB-1u-10Q"/>
                         <constraint firstItem="6WV-c8-8LA" firstAttribute="leading" secondItem="1tb-Ps-i8Z" secondAttribute="leading" id="oao-oa-lW6"/>
                         <constraint firstItem="QO3-ck-mNr" firstAttribute="leading" secondItem="1tb-Ps-i8Z" secondAttribute="leading" id="rKd-xC-iPD"/>
                         <constraint firstAttribute="height" constant="177" id="viy-wI-9ja"/>

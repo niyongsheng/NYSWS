@@ -588,7 +588,7 @@
                                                                 <constraint firstItem="vve-5N-jfK" firstAttribute="centerY" secondItem="FTT-bC-FCp" secondAttribute="centerY" constant="-5" id="zaV-zk-0p7"/>
                                                             </constraints>
                                                         </view>
-                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-Jk-nvh">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-Jk-nvh">
                                                             <rect key="frame" x="82.666666666666686" y="0.0" width="82.333333333333314" height="90"/>
                                                             <subviews>
                                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzJ-ev-kPO">
@@ -598,10 +598,10 @@
                                                                         <action selector="otherBtnOnclicked:" destination="-1" eventType="touchUpInside" id="vK0-Md-aCP"/>
                                                                     </connections>
                                                                 </button>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_other_iocn" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-Pf-VIZ">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="function_9" translatesAutoresizingMaskIntoConstraints="NO" id="BtG-Pf-VIZ">
                                                                     <rect key="frame" x="31.666666666666671" y="30.666666666666629" width="19" height="19"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="互连外卖" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-Z9-bKR">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中老同城" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqZ-Z9-bKR">
                                                                     <rect key="frame" x="14.333333333333332" y="59.666666666666622" width="53.333333333333343" height="15.666666666666664"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <color key="textColor" red="0.4927835176" green="0.4927835176" blue="0.4927835176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -720,11 +720,11 @@
         <image name="function_6" width="19" height="20"/>
         <image name="function_7" width="19" height="19"/>
         <image name="function_8" width="19" height="19"/>
+        <image name="function_9" width="19" height="19"/>
         <image name="gold_coin" width="17" height="17.666666030883789"/>
         <image name="icon_test_pass" width="160" height="160"/>
         <image name="mine_bg_item0" width="173.66667175292969" height="75"/>
         <image name="mine_bg_item1" width="173.66667175292969" height="75"/>
-        <image name="mine_other_iocn" width="19" height="19"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

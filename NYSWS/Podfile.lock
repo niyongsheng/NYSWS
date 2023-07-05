@@ -43,7 +43,6 @@ PODS:
   - IQKeyboardManagerSwift (6.5.11)
   - JCore (2.7.1)
   - JDStatusBarNotification (2.0.7)
-  - JGProgressHUD (2.2)
   - JPush (3.7.4):
     - JCore (< 3.0.0, >= 2.0.0)
   - Masonry (1.1.0)
@@ -87,7 +86,6 @@ DEPENDENCIES:
   - IQKeyboardManager (= 6.5.11)
   - IQKeyboardManagerSwift (= 6.5.11)
   - JDStatusBarNotification
-  - JGProgressHUD
   - JPush (= 3.7.4)
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
@@ -120,7 +118,6 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - JCore
     - JDStatusBarNotification
-    - JGProgressHUD
     - JPush
     - Masonry
     - MBProgressHUD
@@ -154,7 +151,6 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   JCore: 9d5bda3a172c65bbe14f2806ab0f6246f8a06065
   JDStatusBarNotification: 92e7ebdc628db36e1e8e96f0f77c8ce6d1627ec3
-  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   JPush: e455ad2a7b854bca8149df085772d6c4f79b2416
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -176,6 +172,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: 99434c27361a84f81eed56d51325f6e0355e8c22
+PODFILE CHECKSUM: 2759bd74f06f9b3ec4cc8f4d244c09e31e28149f
 
 COCOAPODS: 1.11.3

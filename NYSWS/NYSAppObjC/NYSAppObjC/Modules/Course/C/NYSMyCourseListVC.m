@@ -45,7 +45,7 @@
         }
     } else {
         // 更新缓存
-        [NAppManager cacheAudioData:YES];
+        [NAppManager cacheAudioData:YES isRecache:NO];
         
         // 分页加载
         [self footerRereshing];

@@ -47,7 +47,6 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   pod 'WMZBanner', '1.2.0'
   pod 'SGPagingView', '1.7.2'
   pod 'MBProgressHUD', '1.2.0'
-  pod 'JGProgressHUD'
   pod 'JDStatusBarNotification'
   
   pod 'JPush', '3.7.4'

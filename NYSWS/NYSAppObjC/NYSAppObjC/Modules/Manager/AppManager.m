@@ -212,7 +212,7 @@
 }
 
 #pragma mark - 缓存已购课程数据
-- (void)cacheAudioData:(BOOL)isShowProcess {
+- (void)cacheAudioData:(BOOL)isShowProcess isRecache:(BOOL)isRecache {
     if (self.netStatus == 0) return;
     
     NSDictionary *argument = @{
@@ -225,7 +225,7 @@
                                          remark:@"缓存已购列表"
                                         success:^(id _Nullable response) {
         id cacheResponse = [NUserDefaults valueForKey:@"User_Purchased_List"];
-        if ([cacheResponse count] == [response count]) return;
+        if ([cacheResponse count] == [response count] && !isRecache) return;
         
         if (isShowProcess) [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@1, @"progress":@0}];
         
@@ -253,8 +253,7 @@
                             catalogModel.url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
-                            NSString *filePath = [NSString stringWithFormat:@"%@/%f.caf", dirPath, timeinterval];
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
                             [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.url_path = filePath;
                             //                        });
@@ -269,8 +268,7 @@
                             catalogModel.content_url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
-                            NSString *filePath = [NSString stringWithFormat:@"%@/%.0f.caf", dirPath, timeinterval];
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
                             [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.content_url_path = filePath;
                             //                        });
@@ -289,8 +287,7 @@
                             catalogModel.url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
-                            NSString *filePath = [NSString stringWithFormat:@"%@/%f.caf", dirPath, timeinterval];
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
                             [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.url_path = filePath;
                             //                        });
@@ -305,8 +302,7 @@
                             catalogModel.content_url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-                            NSTimeInterval timeinterval = floor([[NSDate date] timeIntervalSince1970]);
-                            NSString *filePath = [NSString stringWithFormat:@"%@/%.0f.caf", dirPath, timeinterval];
+                            NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
                             [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.content_url_path = filePath;
                             //                        });

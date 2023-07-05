@@ -6,6 +6,7 @@
 //
 
 #import "NYSCoursePurchaseVC.h"
+#import "NYSRechargeAlertView.h"
 
 @interface NYSCoursePurchaseVC ()
 @property (weak, nonatomic) IBOutlet UIView *contentV;
@@ -15,10 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *coinL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *infoL;
+@property (weak, nonatomic) IBOutlet UILabel *balanceL;
 
 @property (weak, nonatomic) IBOutlet UIButton *payTypeBtn0;
 
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
+@property (strong, nonatomic) NYSRechargeAlertView *rechargeAlertView;
 @end
 
 @implementation NYSCoursePurchaseVC
@@ -36,6 +39,7 @@
     ViewRadius(_commitBtn, 22.5);
     self.timeL.adjustsFontSizeToFitWidth = YES;
     self.infoL.adjustsFontSizeToFitWidth = YES;
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
 
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [btn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
@@ -53,6 +57,7 @@
     self.timeL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"UpdateTime"), [NYSTools transformTimestampToTime:self.detailModel.updatetime * 1000 format:nil]];
     self.infoL.text = [NSString stringWithFormat:@"%@：%.2fMB   %@：%@",
                        NLocalizedStr(@"CourseSize"), self.detailModel.size, NLocalizedStr(@"CourseVersion"), self.detailModel.version];
+    self.balanceL.text = [NSString stringWithFormat:@"%@%.2f", NLocalizedStr(@"MyBalance"), NAppManager.userInfo.balance.floatValue];
 }
 
 - (IBAction)commitBtnOnclicked:(UIButton *)sender {
@@ -62,34 +67,58 @@
         @"course_id": @(self.detailModel.ID)
     }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:@"/index/Course/purchase"
-                                       argument:params
-                                         remark:@"购买课程"
-                                        success:^(id response) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NNotificationReloadData" object:nil];
-        
-        @strongify(self)
-        NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(220))];
-        alertView.cancelBtn.hidden = YES;
-        alertView.titleL.text = NLocalizedStr(@"BuySuccess");
-        alertView.block = ^(id obj) {
-            [FFPopup dismissAllPopups];
+    [NYSNetRequest jsonNoCheckNetworkRequestWithMethod:@"POST"
+                                                   url:@"/index/Course/purchase"
+                                              argument:params
+                                                remark:@"购买课程"
+                                               success:^(id response) {
+        if ([response[@"code"] integerValue] == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NNotificationReloadData" object:nil];
             
-            if ([obj isEqual:@"1"]) {
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            }
-        };
-        FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
-        FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
-        [popup showWithLayout:layout];
-        
-        // 更新缓存
-        [NAppManager cacheAudioData:YES];
+            @strongify(self)
+            NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(220))];
+            alertView.cancelBtn.hidden = YES;
+            alertView.titleL.text = NLocalizedStr(@"BuySuccess");
+            alertView.block = ^(id obj) {
+                [FFPopup dismissAllPopups];
+                
+                if ([obj isEqual:@"1"]) {
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }
+            };
+            FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+            FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
+            [popup showWithLayout:layout];
+            
+            // 更新缓存
+            [NAppManager cacheAudioData:YES isRecache:YES];
+            
+        } else {
+            NSString *msg = [response stringValueForKey:@"msg" default:@""];
+            [NYSTools showToast:msg];
+            [NYSTools dismissWithDelay:1.f completion:^{
+                if ([msg containsString:@"余额不足"]) {
+                    // 充值弹框
+                    self.rechargeAlertView.superVC = self;
+                    FFPopup *popup = [FFPopup popupWithContentView:self.rechargeAlertView showType:FFPopupShowType_BounceInFromBottom dismissType:FFPopupDismissType_BounceOutToBottom maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
+                    FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Left, FFPopupVerticalLayout_Bottom);
+                    [popup showWithLayout:layout];
+                }
+            }];
+        }
         
     } failed:^(NSError * _Nullable error) {
         
     }];
+}
+
+- (NYSRechargeAlertView *)rechargeAlertView {
+    if (!_rechargeAlertView) {
+        CGFloat width = NScreenWidth;
+        CGFloat height = 570 + NBottomHeight;
+        _rechargeAlertView = [[NYSRechargeAlertView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    }
+    return _rechargeAlertView;
 }
 
 @end

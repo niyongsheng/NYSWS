@@ -19,6 +19,15 @@
 
 @implementation NYSTabbarViewController
 
+- (instancetype)initWithIsRecache:(BOOL)isRecache {
+    self = [super init];
+    if (self) {
+        _isRecache = isRecache;
+        [NAppManager cacheAudioData:YES isRecache:YES];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
       
@@ -51,6 +60,9 @@
     mineVC.tabBarItem.image = [UIImage imageNamed:@"mine_normal_icon"];
     mineVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"mine_selected_icon"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     [self addChildViewController:[[NYSBaseNavigationController alloc] initWithRootViewController:mineVC]];
+    
+    // 更新缓存
+    NAppManager.isLogined ? [NAppManager cacheAudioData:YES isRecache:NO] : nil;
 }
 
 @end

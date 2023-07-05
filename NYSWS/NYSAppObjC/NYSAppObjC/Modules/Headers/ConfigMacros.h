@@ -68,6 +68,8 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 
 // 互连外卖
 #define HLWMUrl                 @"https://ddg.568lao.com/addons/we7_wmall/template/vue/index.html?menu=pFR#/pages/home/index?map=baidu&dr=kip&i=3&wxref=mp.weixin.qq.com%23wechat_redirect"
+// 互连外卖
+#define CityUrl                 @"https://tc.598lao.com/plugin.php?id=tom_tongcheng&site=1&mod=index"
 // 内测自动更新
 #define FirApiToken             @"b4c29398b061073cb43ab65cf518be9c"
 

@@ -185,7 +185,9 @@
         [self presentViewController:sfVC animated:YES completion:nil];
         
     } else {
-        [self.navigationController pushViewController:NYSBaseViewController.new animated:YES];
+        
+        SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:CityUrl]];
+        [self presentViewController:sfVC animated:YES completion:nil];
     }
 }
 

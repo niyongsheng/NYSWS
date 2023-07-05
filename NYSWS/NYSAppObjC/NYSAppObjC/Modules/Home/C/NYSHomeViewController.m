@@ -78,17 +78,43 @@ NYSHomeCourseVCDelegate
     [super viewDidLoad];
     
     self.navigationItem.title = NLocalizedStr(@"CFBundleDisplayName");
+    [self setupNav];
     
     // 刷新课程数据
+    @weakify(self)
     [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"NNotificationReloadData" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-        [self headerRereshing];
+        @strongify(self)
+        if (self->_bannerContainerView) {
+            [self headerRereshing];
+        } else {
+            [self getPagingData];
+        }
     }];
     
-    [self setupNav];
-    [self getPagingData];
-    [self refreshToken];
-    // 更新缓存
-    NAppManager.isLogined ? [NAppManager cacheAudioData:YES] : nil;
+    // 刷新token后加载数据，绘制页面
+    if (NAppManager.isLogined) {
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Member/refresh"
+                                           argument:nil
+                                             remark:@"刷新Token"
+                                            success:^(id response) {
+            @strongify(self)
+            if ([response isNotBlank]) {
+                [NUserDefaults setValue:response forKey:NUserTokenKey];
+                [NUserDefaults synchronize];
+                NAppManager.token = nil;
+                [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
+                
+                [self getPagingData];
+            }
+        } failed:^(NSError * _Nullable error) {
+            @strongify(self)
+            [self getPagingData];
+        }];
+        
+    } else {
+        [self getPagingData];
+    }
 }
 
 - (void)headerRereshing {
@@ -98,23 +124,6 @@ NYSHomeCourseVCDelegate
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.containerScrollView.refreshControl endRefreshing];
     });
-}
-
-- (void)refreshToken {
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                            url:@"/index/Member/refresh"
-                                       argument:nil
-                                         remark:@"刷新Token"
-                                        success:^(id response) {
-        if ([response isNotBlank]) {
-            [NUserDefaults setValue:response forKey:NUserTokenKey];
-            [NUserDefaults synchronize];
-            NAppManager.token = nil;
-            [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
-        }
-    } failed:^(NSError * _Nullable error) {
-        
-    }];
 }
 
 - (void)getPagingData {
@@ -196,7 +205,6 @@ NYSHomeCourseVCDelegate
     } failed:^(NSError * _Nullable error) {
         
     }];
-
 }
 
 - (PopTableListView *)popListView{
@@ -269,6 +277,8 @@ NYSHomeCourseVCDelegate
 }
 
 - (void)setupUI:(NSMutableArray *)titleArr valueArr:(NSMutableArray *)valueArr {
+    [self.view removeAllSubviews];
+    
     CGFloat h = 0;
     
     self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];

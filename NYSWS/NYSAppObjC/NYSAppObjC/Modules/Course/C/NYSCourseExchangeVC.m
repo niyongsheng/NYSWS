@@ -39,6 +39,7 @@
     ViewRadius(_commitBtn, 22.5);
     self.timeL.adjustsFontSizeToFitWidth = YES;
     self.infoL.adjustsFontSizeToFitWidth = YES;
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [btn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
@@ -90,6 +91,9 @@
         FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_BounceIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
         FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
         [popup showWithLayout:layout];
+        
+        // 更新缓存
+        [NAppManager cacheAudioData:YES isRecache:YES];
         
     } failed:^(NSError * _Nullable error) {
         

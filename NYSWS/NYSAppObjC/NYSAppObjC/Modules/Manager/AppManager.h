@@ -72,5 +72,5 @@ typedef void (^NYSLoadUserInfoCompletion)(BOOL success, NYSUserInfo *userInfo, N
 - (void)loadUserInfo:(NSString *)token completion:(NYSLoadUserInfoCompletion)completion;
 
 /// 缓存已购课程数据
-- (void)cacheAudioData:(BOOL)isShowProcess;
+- (void)cacheAudioData:(BOOL)isShowProcess isRecache:(BOOL)isRecache;
 @end

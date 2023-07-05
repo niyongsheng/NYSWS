@@ -10,7 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSTabbarViewController : NYSBaseTabBarController
-
+/// 是否强制刷新缓存
+@property (assign, nonatomic) BOOL isRecache;
+- (instancetype)initWithIsRecache:(BOOL)isRecache;
 @end
 
 NS_ASSUME_NONNULL_END

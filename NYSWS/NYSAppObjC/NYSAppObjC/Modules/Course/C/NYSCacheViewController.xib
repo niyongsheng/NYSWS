@@ -92,18 +92,18 @@
                     <rect key="frame" x="15" y="139" width="363" height="619"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_bg" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-NJ-4LG">
-                    <rect key="frame" x="228" y="768" width="150" height="40"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_bg_y" translatesAutoresizingMaskIntoConstraints="NO" id="BA8-NJ-4LG">
+                    <rect key="frame" x="228" y="765.66666666666663" width="150" height="45"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="6wO-2x-Ivv"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjL-ZR-qv7">
-                    <rect key="frame" x="278" y="782" width="70" height="12"/>
+                    <rect key="frame" x="238" y="781" width="100" height="14.333333333333371"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="qGa-xW-zdc"/>
+                        <constraint firstAttribute="width" constant="100" id="qGa-xW-zdc"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -111,7 +111,7 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="AjL-ZR-qv7" firstAttribute="trailing" secondItem="BA8-NJ-4LG" secondAttribute="trailing" constant="-30" id="05k-cg-JYb"/>
+                <constraint firstItem="AjL-ZR-qv7" firstAttribute="trailing" secondItem="BA8-NJ-4LG" secondAttribute="trailing" constant="-40" id="05k-cg-JYb"/>
                 <constraint firstItem="8Ai-OL-daJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="6Dp-9s-iQz"/>
                 <constraint firstItem="Dig-Fm-Lai" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9cT-T4-iZR"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Mah-5R-ZUE" secondAttribute="bottom" constant="15" id="GlA-WK-EFN"/>
@@ -134,7 +134,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ad_bg" width="153.5" height="40"/>
+        <image name="ad_bg_y" width="160" height="45"/>
         <image name="catalog_bg" width="375" height="810"/>
         <image name="left_btn_icon" width="32" height="32"/>
         <image name="left_btn_icon_height" width="32" height="32"/>
