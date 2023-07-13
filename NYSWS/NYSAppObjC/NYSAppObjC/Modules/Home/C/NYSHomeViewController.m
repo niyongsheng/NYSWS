@@ -115,6 +115,11 @@ NYSHomeCourseVCDelegate
     } else {
         [self getPagingData];
     }
+    
+    // 更新缓存
+    if (NAppManager.isLogined) {
+        [NAppManager cacheAudioData:YES isRecache:YES];
+    }
 }
 
 - (void)headerRereshing {

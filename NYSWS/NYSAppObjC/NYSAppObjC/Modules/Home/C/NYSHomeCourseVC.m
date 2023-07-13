@@ -156,6 +156,11 @@
     for (NYSHomeCourseModel *model in self.dataSourceArr) {
         h += [self getCellHeight:model];
     }
+    
+    // 占位图高度
+    if (h == 0)
+        h += 150;
+    
     self.tableViewHeight = h;
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(NScreenWidth, h + 15));

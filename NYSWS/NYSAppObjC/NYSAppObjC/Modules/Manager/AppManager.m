@@ -23,6 +23,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appManager = [[AppManager alloc] init];
+        appManager.netStatus = -1;
         
         [NNotificationCenter addObserverForName:@"CacheAudioDataNotification" object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             NSDictionary *obj = note.object;
@@ -224,12 +225,14 @@
                                        argument:argument
                                          remark:@"缓存已购列表"
                                         success:^(id _Nullable response) {
+        if ([response count] == 0) return;
+
         id cacheResponse = [NUserDefaults valueForKey:@"User_Purchased_List"];
         if ([cacheResponse count] == [response count] && !isRecache) return;
         
         if (isShowProcess) [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@1, @"progress":@0}];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             NSArray<NYSHomeCourseModel *> *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
             float total = 0;
@@ -240,38 +243,36 @@
                     total += chapterModel.content.statement_list.count;
                 }
             }
-            //            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             for (NYSHomeCourseModel *courseModel in array) {
                 for (NYSChapter *chapterModel in courseModel.chapter) {
                     for (NYSCatalogModel *catalogModel in chapterModel.content.word_list) {
                         NSString *path = catalogModel.url;
                         if ([path isNotBlank]) {
-                            //                        dispatch_async(queue, ^{
                             path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
-                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(path)];
-                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-                            catalogModel.url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
                             NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
-                            [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.url_path = filePath;
-                            //                        });
+                            
+                            dispatch_async(queue, ^{
+                                NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(path)];
+                                [mp3Data writeToFile:filePath atomically:YES];
+                            });
                         }
                         
                         NSString *contentPath = catalogModel.content_url;
                         if ([contentPath isNotBlank]) {
-                            //                        dispatch_async(queue, ^{
                             contentPath = [contentPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
-                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(contentPath)];
-                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-                            catalogModel.content_url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
                             NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
-                            [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.content_url_path = filePath;
-                            //                        });
+                            
+                            dispatch_async(queue, ^{
+                                NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(contentPath)];
+                                [mp3Data writeToFile:filePath atomically:YES];
+                            });
                         }
                         
                         index++;
@@ -280,32 +281,30 @@
                     for (NYSCatalogModel *catalogModel in chapterModel.content.statement_list) {
                         NSString *path = catalogModel.url;
                         if ([path isNotBlank]) {
-                            //                        dispatch_async(queue, ^{
                             path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
-                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(path)];
-                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-                            catalogModel.url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
                             NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
-                            [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.url_path = filePath;
-                            //                        });
+                            
+                            dispatch_async(queue, ^{
+                                NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(path)];
+                                [mp3Data writeToFile:filePath atomically:YES];
+                            });
                         }
                         
                         NSString *contentPath = catalogModel.content_url;
                         if ([contentPath isNotBlank]) {
-                            //                        dispatch_async(queue, ^{
                             contentPath = [contentPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#^{}\"[]|\\<> "].invertedSet];
-                            NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(contentPath)];
-                            NSString *encodedStr = [mp3Data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-                            catalogModel.content_url_base64 = encodedStr;
                             
                             NSString *dirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
                             NSString *filePath = [NSString stringWithFormat:@"%@/%@.caf", dirPath, [NSString stringWithUUID]];
-                            [mp3Data writeToFile:filePath atomically:YES];
                             catalogModel.content_url_path = filePath;
-                            //                        });
+                            
+                            dispatch_async(queue, ^{
+                                NSData *mp3Data = [NSData dataWithContentsOfURL:NCDNURL(contentPath)];
+                                [mp3Data writeToFile:filePath atomically:YES];
+                            });
                         }
                         
                         index++;
@@ -319,7 +318,7 @@
             
             [NNotificationCenter postNotificationName:@"CacheAudioDataNotification" object:@{@"isShow":@0, @"progress":@1}];
             
-        });
+//        });
     } failed:^(NSError * _Nullable error) {
         
     }];
