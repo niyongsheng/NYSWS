@@ -1,0 +1,28 @@
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "2DW-k5-Sag"; */
+"2DW-k5-Sag.text" = "0.00";
+
+/* Class = "UILabel"; text = "*提现申请将在1个工作日到账，非工作日延后 "; ObjectID = "46R-e9-dTQ"; */
+"46R-e9-dTQ.text" = "*ການຖອນເງີນໃຊ້ເວລາ 1 ວັນລັດຖະການເຂົ້າບັນຊີ, ເລື່ອນການຊໍາລະສະສາງວັນພັກວຽກ ";
+
+/* Class = "UITextField"; placeholder = "请输入提现金额"; ObjectID = "HOj-T0-h4t"; */
+"HOj-T0-h4t.placeholder" = "ກະລຸນາໃສ່ຊື່ທ່ານ";
+"uJl-EV-5ZR.placeholder" = "ກະລຸນາໃສ່ວຍຄວາມຈຳນວຍຄວາມສະດວກ";
+
+/* Class = "UILabel"; text = "支付宝"; ObjectID = "QsR-sY-3Yv"; */
+"QsR-sY-3Yv.text" = "Ali Pay";
+
+/* Class = "UILabel"; text = "提现说明"; ObjectID = "Wiq-qY-ME1"; */
+"Wiq-qY-ME1.text" = "ຕົວເຕັບຄຳບຄຸມລະບົບ";
+
+/* Class = "UIButton"; normalTitle = "立即提现"; ObjectID = "ck7-Cs-xRI"; */
+"ck7-Cs-xRI.normalTitle" = "ແຕກຕ່າງຖອດຖອນ";
+
+/* Class = "UILabel"; text = "余额"; ObjectID = "dkZ-ej-gkL"; */
+"dkZ-ej-gkL.text" = "Ln";
+
+/* Class = "UITextField"; placeholder = "请输入支付宝账号"; ObjectID = "skM-7M-AsW"; */
+"skM-7M-AsW.placeholder" = "ກະລຸນາໃສ່ແຜ່ນ Alipay ບັນຊີຜູ້ໃຊ້";
+
+/* Class = "UILabel"; text = "提现方式"; ObjectID = "tK5-ud-O5H"; */
+"tK5-ud-O5H.text" = "ຂໍ້ມູນທຶກ";

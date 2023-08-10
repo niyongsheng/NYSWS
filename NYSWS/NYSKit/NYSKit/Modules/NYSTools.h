@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+typedef void (^NYSToolsDismissCompletion)(void);
 
 /// 工具类
 @interface NYSTools : NSObject
@@ -59,15 +59,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取当前时间戳（单位：秒）
 + (NSString *)getNowTimeTimestamp;
 
+/// 将时间戳转换成格式化的时间字符串
+/// @param timestamp 时间戳
+/// @param format 默认格式 "YYYY-MM-dd HH:mm:ss"
++ (NSString *)transformTimestampToTime:(NSTimeInterval)timestamp format:(NSString *)format;
+
 /// 将某个时间转化成 时间戳
 /// @param formatTime 时间z字符串
-/// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-+ (NSInteger)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format;
-
-/// 将某个时间戳转化成 时间
-/// @param timestamp 时间戳
-/// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-+ (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format;
+/// @param format 默认格式"YYYY-MM-dd HH:mm:ss"
++ (NSTimeInterval)transformTimeToTimestamp:(NSString *)formatTime format:(NSString *)format;
 
 /**
  时间戳转换成XX分钟之前
@@ -151,6 +151,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset;
 
++ (void)dismissWithCompletion:(NYSToolsDismissCompletion)completion;
+
++ (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion;
+
 #pragma mark - 其他
 /**
  系统分享
@@ -161,5 +165,3 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)systemShare:(NSArray *)items controller:(UIViewController *)controller completion:(UIActivityViewControllerCompletionWithItemsHandler)completion;
 
 @end
-
-NS_ASSUME_NONNULL_END

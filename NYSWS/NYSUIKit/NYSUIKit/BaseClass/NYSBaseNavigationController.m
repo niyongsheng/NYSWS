@@ -38,8 +38,12 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    NYSBaseViewController *vc = (NYSBaseViewController *)self.topViewController;
-    return [vc customStatusBarStyle];
+    id vc = self.topViewController;
+    if ([vc isKindOfClass:NYSBaseViewController.class]) {
+        return [vc customStatusBarStyle];
+    } else {
+        return UIStatusBarStyleDefault;
+    }
 }
 
 /// theme config

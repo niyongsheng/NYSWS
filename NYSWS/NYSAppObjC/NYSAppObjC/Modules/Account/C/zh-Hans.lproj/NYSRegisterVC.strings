@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "手机号"; ObjectID = "1ps-q8-7TK"; */
+"1ps-q8-7TK.text" = "手机号";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "2Ke-uK-vtU"; */
+"2Ke-uK-vtU.text" = "*";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "3bP-h3-IhO"; */
+"3bP-h3-IhO.text" = "*";
+
+/* Class = "UILabel"; text = "密码"; ObjectID = "5La-9Z-IjP"; */
+"5La-9Z-IjP.text" = "密码";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "5Y2-gB-tgl"; */
+"5Y2-gB-tgl.text" = "*";
+
+/* Class = "UITextField"; placeholder = "请选择"; ObjectID = "7QP-uD-626"; */
+"7QP-uD-626.placeholder" = "请选择";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "8yW-0O-F8o"; */
+"8yW-0O-F8o.placeholder" = "请输入";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "Cjp-XP-MMB"; */
+"Cjp-XP-MMB.placeholder" = "请输入";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "OCL-2W-h7R"; */
+"OCL-2W-h7R.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "密保答案"; ObjectID = "UwM-PC-CCg"; */
+"UwM-PC-CCg.text" = "密保答案";
+
+/* Class = "UILabel"; text = "邀请码"; ObjectID = "W3m-Lm-iqY"; */
+"W3m-Lm-iqY.text" = "邀请码";
+
+/* Class = "UILabel"; text = "重复密码"; ObjectID = "Xte-oA-edf"; */
+"Xte-oA-edf.text" = "重复密码";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "YZ3-Go-Wuo"; */
+"YZ3-Go-Wuo.text" = "*";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "bcR-a1-wUB"; */
+"bcR-a1-wUB.text" = "*";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "eJI-qV-gfi"; */
+"eJI-qV-gfi.normalTitle" = "注册";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "gu6-IK-uZ3"; */
+"gu6-IK-uZ3.placeholder" = "请输入";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "h5F-HU-rch"; */
+"h5F-HU-rch.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "登录名"; ObjectID = "heG-Fn-uiI"; */
+"heG-Fn-uiI.text" = "登录名";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "j55-oC-7iT"; */
+"j55-oC-7iT.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "lNU-n4-wy1"; */
+"lNU-n4-wy1.text" = "*";
+
+/* Class = "UILabel"; text = "密保问题"; ObjectID = "qYx-B4-Gyj"; */
+"qYx-B4-Gyj.text" = "密保问题";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "xx9-GH-Jhj"; */
+"xx9-GH-Jhj.text" = "*";

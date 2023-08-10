@@ -13,6 +13,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 #define TimeoutInterval 15
+#define ShowDelayLoading 4.5f
 
 @interface NYSNetRequest ()
 
@@ -24,11 +25,22 @@
     static AFHTTPSessionManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
         manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:manager.responseSerializer.acceptableContentTypes];
+        [contentTypes addObject:@"text/html"];
+        [contentTypes addObject:@"text/plain"];
+        [contentTypes addObject:@"application/json"];
+        [contentTypes addObject:@"image/jpeg"];
+        [contentTypes addObject:@"image/jpg"];
+        [contentTypes addObject:@"application/octet-stream"];
+//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         [manager.requestSerializer setTimeoutInterval:TimeoutInterval];
+        
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationNetworkChange object:@(status)];
+        }];
     });
     return manager;
 }
@@ -59,7 +71,9 @@
             
         case GET: {
             [[self sharedManager] GET:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"GET", header, argument, responseObject, NO);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -71,7 +85,9 @@
             
         case POST: {
             [[self sharedManager] POST:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -83,7 +99,9 @@
             
         case PUT: {
             [[self sharedManager] PUT:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"PUT", header, argument, responseObject, NO);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -95,7 +113,9 @@
             
         case DELTTE: {
             [[self sharedManager] DELETE:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"DELTTE", header, argument, responseObject, NO);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
                     failed(error);
@@ -110,12 +130,12 @@
     }
 }
 
-#pragma mark - 图片上传
+#pragma mark - 文件上传
 + (void)uploadImagesWithType:(NYSNetRequestType)type
                        url:(NSString * _Nonnull)url
                   argument:(id)argument
                       name:(NSString *)name
-                    images:(NSArray<UIImage *> *)images
+                    files:(NSArray *)files
                  fileNames:(NSArray<NSString *> *)fileNames
                 imageScale:(CGFloat)imageScale
                  imageType:(NSString *)imageType
@@ -128,14 +148,14 @@
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
     
     [[self sharedManager] POST:urlStr parameters:argument headers:header constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        for (NSUInteger i = 0; i < images.count; i++) {
+        for (NSUInteger i = 0; i < files.count; i++) {
             // 图片经过等比压缩后得到的二进制文件
-            NSData *imageData = UIImageJPEGRepresentation(images[i], imageScale ? : 1.0f);
-            // 默认图片的文件名, 若fileNames为nil就使用
+            NSData *imageData = UIImageJPEGRepresentation(files[i], imageScale ? : 1.0f);
+            // 生成文件名
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyy_MM_ddHH:mm:ss";
+            formatter.dateFormat = @"yyyy-MM-dd_HH:mm:ss";
             NSString *str = [formatter stringFromDate:[NSDate date]];
-            NSString *imageFileName = [NSString stringWithFormat:@"%@%ld.%@",str,i,imageType?:@"jpg"];
+            NSString *imageFileName = [NSString stringWithFormat:@"%@_%ld.%@",str,i+1,imageType?:@"png"];
             
             [formData appendPartWithFileData:imageData
                                         name:name
@@ -151,8 +171,12 @@
             process ? process(uploadProgress) : nil;
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO);
         handelResponse(argument, failed, remark, responseObject, success, urlStr);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD dismiss];
         if (failed) {
             failed(error);
             handelError(error);
@@ -192,6 +216,7 @@
             process ? process(uploadProgress) : nil;
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        handelLog(remark, urlStr, @"POST", nil, argument, responseObject, NO);
         handelResponse(argument, failed, remark, responseObject, success, urlStr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failed) {
@@ -212,9 +237,9 @@
 
 + (void)jsonRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id)argument isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
     // 加载动画-延时执行
-    [self performSelector:@selector(delayLoadingMethod) withObject:nil afterDelay:2.0f];
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [self performSelector:@selector(delayLoadingMethod) withObject:nil afterDelay:ShowDelayLoading];
+    // 监听网络状态
+    [self sharedManager];
     
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
     if ([url containsString:@"http"]) {
@@ -223,6 +248,11 @@
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlStr parameters:argument error:nil];
     [request setAllHTTPHeaderFields:[self headers]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    // 设置cookie
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [request setValue:[NSString stringWithFormat:@"%@=%@", [defaults objectForKey:@"cookie.name"], [defaults objectForKey:@"cookie.value"]] forHTTPHeaderField:@"Cookie"];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request
                                                uploadProgress:nil
                                              downloadProgress:nil
@@ -230,8 +260,19 @@
         [SVProgressHUD dismissWithDelay:1.0f];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayLoadingMethod) object:nil];
         
-        DBGLog(@"\n[%@]\n%@\n参数:\n%@\n返回结果:\n%@", remark, urlStr, [self jsonPrettyStringEncoded:argument], [self jsonPrettyStringEncoded:responseObject]);
+        handelLog(remark, urlStr, @"POST", [request allHTTPHeaderFields], argument, responseObject, YES);
         if (!error) {
+            // 获取cookie
+            NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+                if ([cookie.name isEqualToString:@"PHPSESSID"]) {
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:cookie.name forKey:@"cookie.name"];
+                    [defaults setObject:cookie.value forKey:@"cookie.value"];
+                    [defaults synchronize];
+                }
+            }
+            
             if (isCheck) {
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
             } else {
@@ -241,7 +282,7 @@
             }
             
         } else {
-            DBGLog(@"\n[%@]\n%@", @"错误", error.localizedDescription);
+            DBGLog(@"\n[%@]\n%@", @"❌错误", error.localizedDescription);
             if (failed) {
                 failed(error);
                 handelError(error);
@@ -253,7 +294,7 @@
 }
 
 + (NSString *)jsonPrettyStringEncoded:(NSDictionary *)dict {
-    if ([NSJSONSerialization isValidJSONObject:self]) {
+    if ([NSJSONSerialization isValidJSONObject:dict]) {
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
         NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -268,30 +309,41 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         success(responseObject);
         return;
     }
-    
     NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-    NSString *status = [responseObject objectForKey:@"status"];
-    if (code == 200) {
+    NSString *msg = @"unknown error";
+    for (NSString *key in [[[NYSKitManager sharedNYSKitManager] msgKey] componentsSeparatedByString:@","]) {
+        NSString *message = [responseObject objectForKey:key];
+        if (![NYSTools stringIsNull:message]) {
+            msg = message;
+            break;
+        }
+    }
+    
+    NSArray *normalCodeArray = [[[NYSKitManager sharedNYSKitManager] normalCode] componentsSeparatedByString:@","];
+    BOOL isNormal = [normalCodeArray containsObject:[NSString stringWithFormat:@"%ld", code]];
+    if (isNormal) { // 正常返回
         NSDictionary *data = [responseObject objectForKey:@"data"];
         if (success) {
             success(data);
         }
-    } else if (code == 403) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:nil];
-    } else if ([status isEqualToString:@"SUCCESS"]) {
-        if (success) {
-            success(responseObject);
-        }
-    } else {
-        NSString *msg = [responseObject objectForKey:@"msg"];
-        if ([NYSTools stringIsNull:msg]) {
-            msg = [responseObject objectForKey:@"error_msg"];
+    } else if (code == [[[NYSKitManager sharedNYSKitManager] kickedCode] integerValue]) { // 强制下线
+        [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:msg];
+        
+    } else if (code == [[[NYSKitManager sharedNYSKitManager] tokenInvalidCode] integerValue]) { // token失效
+        if ([msg containsString:[[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]]) { // 防止后端token失效的code不唯一
+            [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:msg];
         }
         [NYSTools showBottomToast:msg];
+    } else { // 其他错误
         if (failed) {
             NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
             failed(error);
+        } else {
+            [NYSTools showBottomToast:msg];
         }
+        
+        if ([[NYSKitManager sharedNYSKitManager] isAlwaysShowErrorMsg])
+            [NYSTools showBottomToast:msg];
     }
 }
 
@@ -302,27 +354,40 @@ static void handelError(NSError * _Nullable error) {
         [NYSTools showToast:@"请求超时，请检查网络！"];
         
     } else if (error.code == -1004) {
-        [NYSTools showToast:@"无法连接服务器"];
+        [NYSTools showToast:@"无法连接到服务器"];
         
     } else if (error.code == -1009) {
-        [NYSTools showToast:@"您似乎断开了网络连接，请前往【设置】-【无线数据】打开WLAN或者蜂窝网络"];
+        [NYSTools showToast:@"网络不可用"];
         
     } else if (error.code == -1011) {
-        [NYSTools showToast:@"服务器暂时不可用"];
+        [NYSTools showToast:@"服务暂时不可用"];
         
     } else {
         [NYSTools showToast:error.localizedDescription];
-#ifdef DEBUG
-        NSLog(@"%@", error);
-#endif
     }
+#ifdef DEBUG
+    NSLog(@"❌%@", error);
+#endif
+}
+
+#pragma mark - 日志打印
+static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDictionary *header, NSDictionary *argument, id responseObject, BOOL isJsosn) {
+    id resp = nil;
+    if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        resp = [NYSNetRequest jsonPrettyStringEncoded:responseObject];
+    } else {
+        resp = responseObject;
+    }
+    
+    DBGLog(@"[%@]%@->📩:\n%@\n[Header]请求头:\n%@\n[%@]传参:\n%@\n[Response]响应:\n%@", type, remark, urlStr, header, isJsosn ? @"Json" : @"Form", [NYSNetRequest jsonPrettyStringEncoded:argument], resp);
 }
 
 /// 数据加载中
 + (void)delayLoadingMethod {
-    [SVProgressHUD setDefaultAnimationType:(SVProgressHUDAnimationTypeFlat)];
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"Loading..."];
 }
 
 @end

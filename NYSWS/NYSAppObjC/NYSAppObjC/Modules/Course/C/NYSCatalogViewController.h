@@ -10,7 +10,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSCatalogViewController : NYSBaseViewController
+@property (strong, nonatomic) NSArray<NYSChapter *> *chapterArray;
+@property (assign, nonatomic) NSInteger index;
+@property (assign, nonatomic) NSInteger courseId;
+@property (assign, nonatomic) BOOL isFromTry;
 
+/// 传递广告胶囊
+@property (strong, nonatomic) NYSHomeCourseModel *courseModel;
 @end
 
 NS_ASSUME_NONNULL_END

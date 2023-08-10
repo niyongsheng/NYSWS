@@ -23,6 +23,9 @@ typedef void (^checkServiceCompletion)(BOOL isNormal);
 /** 初始化导航栏 */
 - (void)initNavBar;
 
+/** 初始化 IQKM */
+- (void)initIQKeyboardManager;
+
 /** 初始化友盟 */
 - (void)initUMeng;
 

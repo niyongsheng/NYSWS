@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "共计--章"; ObjectID = "IcQ-mF-3Br"; */
+"IcQ-mF-3Br.text" = "共计--章";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "Lds-je-eSO"; */
+"Lds-je-eSO.text" = "00";
+
+/* Class = "UILabel"; text = "课件大小"; ObjectID = "MhS-3u-Clj"; */
+"MhS-3u-Clj.text" = "ພື້ນຖານ";
+
+/* Class = "UILabel"; text = "介绍"; ObjectID = "Urx-4u-Zd1"; */
+"Urx-4u-Zd1.text" = "ພົນສົ່ງອອກ";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "j2D-Cr-8mm"; */
+"j2D-Cr-8mm.text" = "----";
+
+/* Class = "UILabel"; text = "MB"; ObjectID = "oFQ-Dn-tHc"; */
+"oFQ-Dn-tHc.text" = "MB";
+
+/* Class = "UILabel"; text = "0000-00-00"; ObjectID = "uPU-Wh-ISp"; */
+"uPU-Wh-ISp.text" = "0000-00-00";
+
+/* Class = "UILabel"; text = "目录"; ObjectID = "xCe-lO-khH"; */
+"xCe-lO-khH.text" = "ເຂດຂໍ້ມູນ";
+
+/* Class = "UILabel"; text = "更新时间"; ObjectID = "yF3-9W-3zW"; */
+"yF3-9W-3zW.text" = "ໃຫມ່ລະຫວ່າງກ";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "zDF-9Z-meQ"; */
+"zDF-9Z-meQ.text" = "1.0";
+
+/* Class = "UILabel"; text = "版本"; ObjectID = "zr4-70-bkH"; */
+"zr4-70-bkH.text" = "ສະແດງ";

@@ -1,12 +1,12 @@
 
 /* Class = "UILabel"; text = "密保设置"; ObjectID = "Doj-bA-vC6"; */
-"Doj-bA-vC6.text" = "密保设置";
+"Doj-bA-vC6.text" = "ຕັ້ງຄ່າຄວາມສະດວກ";
 
 /* Class = "UIButton"; normalTitle = "退出登录"; ObjectID = "Jct-Nr-exD"; */
-"Jct-Nr-exD.normalTitle" = "退出登录";
+"Jct-Nr-exD.normalTitle" = "ກຳລັງຂັ້ງອອກ";
 
 /* Class = "UILabel"; text = "修改密码"; ObjectID = "bR0-Qe-tt7"; */
-"bR0-Qe-tt7.text" = "修改密码";
+"bR0-Qe-tt7.text" = "ປ້ຽນລະຫັດຜ່ານ";
 
 /* Class = "UILabel"; text = "编辑资料"; ObjectID = "su0-fN-FSU"; */
-"su0-fN-FSU.text" = "编辑资料";
+"su0-fN-FSU.text" = "ແກ້ໄຂຂໍ້ມູ";

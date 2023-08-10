@@ -7,13 +7,13 @@
 
 #import "NYSMyCourseListVC.h"
 #import "NYSMyCourseCell.h"
+#import "NYSCourseDetailVC.h"
+#import "NYSPurchasedCourseDetailVC.h"
 
 @interface NYSMyCourseListVC ()
 {
     NSInteger _pageNo;
 }
-
-
 @end
 
 @implementation NYSMyCourseListVC
@@ -22,59 +22,94 @@
     [super viewDidLoad];
     
     _tableviewStyle = UITableViewStylePlain;
-       [self.view addSubview:self.tableView];
-       self.tableView.refreshControl = nil;
-       self.tableView.showsVerticalScrollIndicator = NO;
-       self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-       self.tableView.backgroundColor = [UIColor whiteColor];
-   //    self.tableView.delegate = self;
-   //    self.tableView.dataSource = self;
-       [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.top.mas_equalTo(self.view.mas_top).offset(0);
-           make.left.mas_equalTo(self.view.mas_left);
-           make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
-       }];
+    [self.view addSubview:self.tableView];
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top).offset(0);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
+    }];
+    
+    if (self.isOffLine) {
+        self.tableView.mj_footer = nil;
+        id response = [NUserDefaults valueForKey:@"User_Purchased_List"];
+        if (response) {
+            NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView reloadData];
+            
+        } else {
+            self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:@"暂无缓存数据" reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
+        }
+    } else {
+        // 更新缓存
+//        [NAppManager cacheAudioData:YES isRecache:NO];
+        
+        // 分页加载
+        [self footerRereshing];
+    }
 }
 
 #pragma mark - 网络加载数据
+- (void)headerRereshing {
+    [super headerRereshing];
+    
+    _pageNo = 0;
+    [self footerRereshing];
+}
+
 - (void)footerRereshing {
     [super footerRereshing];
     _pageNo ++;
     
     NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": DefaultPageSize,
+        @"status": _index,
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
       };
-    WS(weakSelf)
+    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
+                                          url:@"/index/Course/user_activation"
                                       argument:argument
-                                             remark:@"课程搜索列表"
+                                             remark:@"已购/已学列表"
                                             success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response[@"records"]];
+        @strongify(self)
+        if (self->_pageNo == 1) {
+            [self.dataSourceArr removeAllObjects];
+        }
+
+        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
-            [weakSelf.dataSourceArr addObjectsFromArray:array];
-            [weakSelf.tableView.mj_footer endRefreshing];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView reloadData];
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
         
     } failed:^(NSError * _Nullable error) {
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     _pageNo = 1;
     [self footerRereshing];
@@ -93,7 +128,9 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 160 + h;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,6 +150,12 @@
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
 
+    NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+    vc.model = model;
+    
+    vc.isOffLine = self.isOffLine;
+    vc.detailModel = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

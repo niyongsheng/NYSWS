@@ -1,8 +1,8 @@
 
-/* Class = "UILabel"; text = "互联外卖"; ObjectID = "1KA-xu-USt"; */
-"1KA-xu-USt.text" = "ຮູ້ລຽນໄວໄມ";
+/* Class = "UILabel"; text = "Item0"; ObjectID = "1KA-xu-USt"; */
+"1KA-xu-USt.text" = "Item0";
 
-/* Class = "UILabel"; text = "其他"; ObjectID = "24A-By-fYC"; */
+/* Class = "UILabel"; text = "推荐"; ObjectID = "24A-By-fYC"; */
 "24A-By-fYC.text" = "ອື່ນໆ";
 
 /* Class = "UILabel"; text = "意见反馈"; ObjectID = "AdK-OV-Ufs"; */
@@ -41,8 +41,8 @@
 /* Class = "UILabel"; text = "我的课程"; ObjectID = "nUy-cR-c1q"; */
 "nUy-cR-c1q.text" = "ບົດຮຽນຂອງຂ້ອຍ";
 
-/* Class = "UILabel"; text = "互联外卖"; ObjectID = "oqZ-Z9-bKR"; */
-"oqZ-Z9-bKR.text" = "ຮູ້ລຽນໄວໄມ";
+/* Class = "UILabel"; text = "Item1"; ObjectID = "oqZ-Z9-bKR"; */
+"oqZ-Z9-bKR.text" = "Item1";
 
 /* Class = "UILabel"; text = "消息中心"; ObjectID = "tUm-gj-YM6"; */
 "tUm-gj-YM6.text" = "ສູນບໍລິການຂໍ້ມູນ";

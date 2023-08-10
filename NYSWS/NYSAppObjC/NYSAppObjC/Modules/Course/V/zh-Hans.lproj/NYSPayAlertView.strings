@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "请在支付宝支付完成后， 返回APP确认金币到账情况"; ObjectID = "FcZ-ev-Hqb"; */
+"FcZ-ev-Hqb.text" = "请在支付宝支付完成后， 返回APP确认金币到账情况";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "M6K-kV-kgf"; */
+"M6K-kV-kgf.normalTitle" = "确定";
+
+/* Class = "UILabel"; text = "温馨提示"; ObjectID = "cxT-8Y-FtI"; */
+"cxT-8Y-FtI.text" = "温馨提示";

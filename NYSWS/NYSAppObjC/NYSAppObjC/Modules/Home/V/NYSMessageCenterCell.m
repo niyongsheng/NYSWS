@@ -7,6 +7,13 @@
 
 #import "NYSMessageCenterCell.h"
 
+@interface NYSMessageCenterCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
+@property (weak, nonatomic) IBOutlet UILabel *titleL;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleL;
+
+@end
+
 @implementation NYSMessageCenterCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -20,6 +27,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setModel:(NYSMessageCenterModel *)model {
+    _model = model;
+    
+    self.titleL.text = model.title;
+    self.subtitleL.text = [NYSTools transformTimestampToTime:model.createtime * 1000 format:nil];
 }
 
 @end

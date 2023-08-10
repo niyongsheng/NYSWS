@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		501F11C88469654CEE4828E1 /* libPods-NYSKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4415296B9166FA0F238636 /* libPods-NYSKit.a */; };
-		C85979F329F4FB07008BEE7F /* NYSKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = C85979F229F4FB07008BEE7F /* NYSKit.docc */; };
 		C85979F429F4FB07008BEE7F /* NYSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C85979F129F4FB07008BEE7F /* NYSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8597AB229F51B35008BEE7F /* NYSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AAB29F51B34008BEE7F /* NYSTools.m */; };
 		C8597AB329F51B35008BEE7F /* NYSKeyChain.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AAC29F51B34008BEE7F /* NYSKeyChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +28,6 @@
 		910C80FD2F1655B4DC58FD73 /* Pods-NYSKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSKit.release.xcconfig"; path = "Target Support Files/Pods-NYSKit/Pods-NYSKit.release.xcconfig"; sourceTree = "<group>"; };
 		C85979EE29F4FB07008BEE7F /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85979F129F4FB07008BEE7F /* NYSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSKit.h; sourceTree = "<group>"; };
-		C85979F229F4FB07008BEE7F /* NYSKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NYSKit.docc; sourceTree = "<group>"; };
 		C8597AAB29F51B34008BEE7F /* NYSTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSTools.m; sourceTree = "<group>"; };
 		C8597AAC29F51B34008BEE7F /* NYSKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSKeyChain.h; sourceTree = "<group>"; };
 		C8597AAD29F51B35008BEE7F /* NYSTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSTools.h; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				C8597ACA29F52AB0008BEE7F /* Modules */,
-				C85979F229F4FB07008BEE7F /* NYSKit.docc */,
 				C85979F129F4FB07008BEE7F /* NYSKit.h */,
 				C8B7480829FB964B00673B75 /* PublicHeader.h */,
 			);
@@ -250,7 +247,6 @@
 			files = (
 				C8597AB229F51B35008BEE7F /* NYSTools.m in Sources */,
 				C8597AB629F51B35008BEE7F /* NYSKeyChain.m in Sources */,
-				C85979F329F4FB07008BEE7F /* NYSKit.docc in Sources */,
 				C8597ACD29F52DA6008BEE7F /* NYSNetRequest.m in Sources */,
 				C8597AB729F51B35008BEE7F /* NYSRegularCheck.m in Sources */,
 				C8597AD329F546B5008BEE7F /* NYSKitManager.m in Sources */,

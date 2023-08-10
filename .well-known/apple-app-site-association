@@ -1,0 +1,16 @@
+{
+    "webcredentials": {
+        "apps": [
+		          "F9J739W8Y4.com.ios.nysws"
+                ]
+    },
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "F9J739W8Y4.com.ios.nysws",
+                "paths": [ "*" ]
+            }
+        ]
+    }
+}

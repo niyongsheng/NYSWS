@@ -5,7 +5,20 @@
   Created by niyongsheng on 2023/5/8.
   
 */
-CFBundleDisplayName="易学点";
+NoMore="没有更多了";
+NoData="暂无数据";
+NetErr="网络错误";
+Retry="重试";
+Loading="加载中...";
+TipsAppUpdate="新测试版本";
+AppUpdate="立即更新";
+
+NetworkUnknown="❗️网络状态未知";
+NetworkNotReachable="⚠️ 网络不可用";
+NetworkWWAN="📶 移动蜂窝网络";
+NetworkWiFi="🌐 WiFi网络";
+
+CFBundleDisplayName="NYSWS";
 Home="首页";
 Course="课程";
 Mine="我的";
@@ -18,8 +31,137 @@ Language="语言";
 Consult="咨询客服";
 Recommend="推荐有礼";
 Message="消息中心";
-Interconnect="互联外卖";
+Interconnect="互联互通";
 
 Search="搜一搜";
-NoData="暂无数据";
-NetErr="网络错误";
+
+Copy="复制";
+Highlight="高亮";
+CancelHighlight="取消高亮";
+Copied="已复制";
+Wechat="微信";
+
+CustomerServiceEmail="客服邮箱";
+MobilePhone="手机电话";
+TelPhone="座机电话";
+Tease="我要吐槽...";
+
+Login="登录";
+LoginSuccess="登录成功";
+ProtocolDesc="我已阅读并同意《服务协议》、《隐私政策》";
+UserProtocol="《服务协议》";
+PrivacyProtocol="《隐私政策》";
+PlaceholderAccout="请输入账号";
+PlaceholderPwd="请输入密码";
+TipsProtocol="请阅读并同意协议";
+ForgetPwd="忘记密码";
+ConsultServer="咨询客服";
+
+Regist="注册";
+RegistSuccess="注册成功";
+ResetSuccess="重置成功";
+TipsLoginName="请输入登录名";
+TipsPhone="请输入手机号";
+TipsPhoneFormat="请输入格式正确的手机号";
+TipsRepwd="请输入重复密码";
+TipsRepwdError="两次密码不一致";
+TipsSecurityQuestion="请选择密保问题";
+TipsSecurityQuestionAnswer="请输入密保答案";
+TipsInviteCode="请输入邀请码";
+
+TipsPwdLength="密码长度(6~16)";
+TipsNicknameLength="昵称长度(1~13)";
+TipsSecurityQuestionAnswerLength="密保答案长度(1~16)";
+
+ActivationExchange="激活兑换";
+ImmediateAudition="立即试听";
+Activated="已激活";
+
+MessageCenter="消息中心";
+Service="客服";
+
+UpdateTime="更新时间";
+CourseSize="课件大小";
+CourseVersion="版本";
+Total="共计";
+Section="章";
+
+PurchasedCourse="已购买";
+Purchased="已购";
+Learned="已学";
+Detail="详情";
+Pay="支付";
+WaitPay="待支付";
+Payed="已支付";
+Active="激活";
+SearchWord="搜索词";
+SearchTitle="搜索";
+NoAudioInfo="暂无音频信息";
+PleaseBuy="请先购买";
+CanNotSearch="试听模式不能搜索";
+
+ActiveSuccess="激活成功";
+TipsConvertCode="请输入兑换码";
+BuySuccess="购买成功";
+
+Cancel="取消";
+Commit="确定";
+Tips="提示";
+TipsSubtitle="您确定要退出登录吗 ?";
+LogoutSuccess="登出成功";
+LogoutFail="登出失败";
+MySetting="我的设置";
+AboutOur="关于我们";
+HelpCenter="帮助中心";
+MyInfo="我的资料";
+MyWallet="我的钱包";
+BillDetail="账单详情";
+SecurityQuestion="密保问题";
+Withdraw="提现";
+Feedback="意见反馈";
+ModifyPassword="修改密码";
+HowToWithdraw="如何提现";
+HowLongReceived="申请提现多久到账";
+
+TipsNickname="请输入昵称";
+Updated="已更新";
+UninstallAlipay="你尚未安装支付宝APP";
+UninstallWechat="你尚未安装微信APP";
+OK="知道了";
+
+WeChat="微信";
+AliPay="支付宝";
+Apple="苹果";
+BankCard="银行卡";
+Foreign="国外";
+
+PassVerification="验证通过";
+TipsAliPayAccount="请输入支付宝账户";
+TipsMoney="请输入提现金额";
+TipsName="请输入姓名";
+WithdrawalSubmitted="已提交提现申请";
+
+Commited="已提交";
+
+TipsFeedbackType="请选择反馈类型";
+TipsFeedbackContent="请输入反馈内容";
+TipsImg="请选择图片";
+
+TipsOldPwd="请输入旧密码";
+TipsNewPwd="请输入新密码";
+
+Activation="兑换激活";
+Purchase="立即购买";
+
+SecurityQuestionTitle="密保问题";
+SecurityQuestion1="您母亲的姓名";
+SecurityQuestion2="您父亲的姓名";
+SecurityQuestion3="您的出生地";
+SecurityQuestion4="您高中班主任姓名是";
+SecurityQuestion5="您的生日是";
+
+Share="分享朋友圈";
+Unlogin="未登录";
+
+CacheDownloading="缓存更新中";
+MyBalance="我的余额：";

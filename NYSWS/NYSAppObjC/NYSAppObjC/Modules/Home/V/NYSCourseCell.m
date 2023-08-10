@@ -8,6 +8,7 @@
 #import "NYSCourseCell.h"
 
 @interface NYSCourseCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgV;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleL;
@@ -28,10 +29,36 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.contentView.backgroundColor = UIColor.whiteColor;
-    ViewRadius(self.contentView, 7);
-    ViewRadius(self.iconIV, 5);
+    self.getBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
+    ViewRadius(self.bgV, 10);
+    ViewRadius(self.iconIV, 10);
     ViewRadius(self.getBtn, 15);
+    
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
+    self.priceL.adjustsFontSizeToFitWidth = YES;
+}
+
+- (void)setModel:(NYSHomeCourseModel *)model {
+    _model = model;
+    
+    [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
+    self.titleL.text = model.name;
+    self.subtitleL.text = model.subtitle;
+    self.priceL.text = model.price;
+    [_getBtn setTitle:NLocalizedStr(@"ActivationExchange") forState:UIControlStateNormal];
+    
+    if (!model.is_try.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"ImmediateAudition") forState:UIControlStateNormal];
+    }
+    
+    if (!model.is_course.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"PurchasedCourse") forState:UIControlStateNormal];
+    }
+    
+    if (!model.is_activation.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"Activated") forState:UIControlStateNormal];
+    }
 }
 
 @end

@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = " 微信:----"; ObjectID = "3NP-kn-ZJh"; */
+"3NP-kn-ZJh.normalTitle" = " 微信:----";
+
+/* Class = "UIButton"; normalTitle = " QQ:----"; ObjectID = "6QE-hg-dE8"; */
+"6QE-hg-dE8.normalTitle" = " QQ:----";
+
+/* Class = "UILabel"; text = "联系客服"; ObjectID = "Bay-uu-qrL"; */
+"Bay-uu-qrL.text" = "联系客服";
+
+/* Class = "UILabel"; text = "如果您账号密码遗忘，联系客服进行 修改，我们会尽快为您解决！"; ObjectID = "YbA-qb-gqV"; */
+"YbA-qb-gqV.text" = "如果您账号密码遗忘，联系客服进行 修改，我们会尽快为您解决！";

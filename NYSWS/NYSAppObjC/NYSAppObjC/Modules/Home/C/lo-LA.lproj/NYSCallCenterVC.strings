@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "---省---市---区---街道"; ObjectID = "B9R-d0-PBD"; */
+"B9R-d0-PBD.text" = "---ພື້ນຖານ---d---ເຂດຂໍ້ມູນ---ແຟ້ມ";
+
+/* Class = "UILabel"; text = "手机电话： "; ObjectID = "FV5-nW-Ab3"; */
+"FV5-nW-Ab3.text" = "ໂປຣເເກຣມໂປຣເເກຣມ： ";
+
+/* Class = "UILabel"; text = "客服邮箱："; ObjectID = "JNw-W2-azi"; */
+"JNw-W2-azi.text" = "ອີເມວລ໌：";
+
+/* Class = "UILabel"; text = "座机电话："; ObjectID = "Jhe-g8-fOk"; */
+"Jhe-g8-fOk.text" = "ໂປຣເເກຣມຫ້ອງການ：";
+
+/* Class = "UILabel"; text = "联系我们"; ObjectID = "cZD-u3-KyD"; */
+"cZD-u3-KyD.text" = "ຕິດຕໍ່ກັບພວກເຮົາ";

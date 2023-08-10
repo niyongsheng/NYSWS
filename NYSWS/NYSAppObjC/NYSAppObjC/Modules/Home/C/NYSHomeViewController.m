@@ -13,6 +13,7 @@
 #import "PopTableListView.h"
 
 #import "NYSSearchCourseVC.h"
+#import "NYSCatalogSearchViewController.h"
 #import "NYSHomeCourseVC.h"
 
 #import "NYSCallCenterVC.h"
@@ -21,7 +22,6 @@
 
 #import "NYSCourseDetailVC.h"
 #import "NYSPurchasedCourseDetailVC.h"
-#import "NYSCatalogViewController.h"
 
 #import "ThirdViewController.h"
 
@@ -34,7 +34,8 @@ PopTableCellDelegate,
 UIScrollViewDelegate,
 SGPageTitleViewDelegate,
 SGPageContentCollectionViewDelegate,
-NYSBusinessViewDelegate
+NYSBusinessViewDelegate,
+NYSHomeCourseVCDelegate
 >
 @property (nonatomic, strong) UIScrollView *containerScrollView;
 @property (nonatomic, strong) UIView *bannerContainerView;
@@ -54,24 +55,161 @@ NYSBusinessViewDelegate
 /// 菜单栏
 @property (nonatomic, strong) NSMutableArray<NYSBusinessModel *> *businessArray;
 /// 推荐课程
-@property (nonatomic, strong) NSMutableArray<NYSRecommendedModel *> *recommendedArray;
+@property (nonatomic, strong) NSMutableArray<NYSHomeCourseModel *> *recommendedArray;
 
 @property (nonatomic, strong) SGPageTitleView *pageTitleView;
 @property (nonatomic, strong) SGPageContentCollectionView *pageContentCollectionView;
 
 @property (nonatomic, strong) PopView *popView;
 @property (nonatomic, strong) PopTableListView *popListView;
+
+@property (nonatomic, strong) NSMutableArray *childVCs;
 @end
 
 @implementation NYSHomeViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+//    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationItem.title = NLocalizedStr(@"CFBundleDisplayName");
-    
     [self setupNav];
-    [self setupUI];
+    
+    // 刷新课程数据
+    @weakify(self)
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"NNotificationReloadData" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self)
+        if (self->_bannerContainerView) {
+            [self headerRereshing];
+        } else {
+            [self getPagingData];
+        }
+    }];
+    
+    // 刷新token后加载数据，绘制页面
+    if (NAppManager.isLogined) {
+        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                                url:@"/index/Member/refresh"
+                                           argument:nil
+                                             remark:@"刷新Token"
+                                            success:^(id response) {
+            @strongify(self)
+            if ([response isNotBlank]) {
+                [NUserDefaults setValue:response forKey:NUserTokenKey];
+                [NUserDefaults synchronize];
+                NAppManager.token = nil;
+                [[NYSKitManager sharedNYSKitManager] setToken:NAppManager.token];
+                
+                [self getPagingData];
+                
+                // 更新缓存
+                if (NAppManager.isLogined) {
+                    [NAppManager cacheAudioData:YES isRecache:YES];
+                }
+            }
+        } failed:^(NSError * _Nullable error) {
+            @strongify(self)
+            [self getPagingData];
+        }];
+        
+    } else {
+        [self getPagingData];
+    }
+}
+
+- (void)headerRereshing {
+    [self getData];
+    [self.pageTitleView setResetSelectedIndex:0];
+    [NNotificationCenter postNotificationName:@"HomeRefreshNotification" object:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.containerScrollView.refreshControl endRefreshing];
+    });
+}
+
+- (void)getPagingData {
+    NSMutableArray *valueArr = [NSMutableArray array];
+    NSMutableArray *titleArr = [NSMutableArray array];
+    [valueArr addObject:@""];
+    [titleArr addObject:NSLocalizedStringFromTable(@"All", @"InfoPlist", nil)];
+    
+    @weakify(self)
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Courseclass/list"
+                                       argument:nil
+                                         remark:@"课程分类"
+                                        success:^(id response) {
+        @strongify(self)
+        [NUserDefaults setValue:response forKey:@"Course_Class_List"];
+        [NUserDefaults synchronize];
+        for (NSDictionary *dict in response) {
+            [valueArr addObject:dict[@"id"]];
+            [titleArr addObject:dict[@"name"]];
+        }
+        [self setupUI:titleArr valueArr:valueArr];
+        [self getData];
+        
+    } failed:^(NSError * _Nullable error) {
+        @strongify(self)
+        id response = [NUserDefaults valueForKey:@"Course_Class_List"];
+        if (response) {
+            for (NSDictionary *dict in response) {
+                [valueArr addObject:dict[@"id"]];
+                [titleArr addObject:dict[@"name"]];
+            }
+            [self setupUI:titleArr valueArr:valueArr];
+            [self getData];
+        }
+    }];
+}
+
+- (void)getData {
+    @weakify(self)
+    
+    // 轮播图
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Index/banner"
+                                       argument:@{ @"page": @1, @"limit": @999 }
+                                         remark:@"轮播图"
+                                        success:^(id response) {
+        @strongify(self)
+        self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
+        self.bannerParam.wDataSet(self.bannerArray);
+        [self.bannerView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+    
+    // 推荐课程
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:@"/index/Course/recommend_list"
+                                       argument:@{ @"page": @1, @"limit": @999 }
+                                         remark:@"推荐课程"
+                                        success:^(id response) {
+        @strongify(self)
+        CGFloat h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
+        self.recommendedArray = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response].mutableCopy;
+        if (self.recommendedArray.count == 0) {
+            self.recommendedView.height = 0;
+            self.recommendedView.hidden = YES;
+            
+            h = self.bannerContainerView.bottom + NNormalSpace;
+        } else {
+            self.recommendedView.height = HomeRecommendedHeight;
+            self.recommendedView.hidden = NO;
+        }
+        self.pageTitleView.top = h;
+        self.pageContentCollectionView.top = h + 44;
+        
+        self.recommendedParam.wDataSet(self.recommendedArray);
+        [self.recommendedView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 - (PopTableListView *)popListView{
@@ -87,30 +225,36 @@ NYSBusinessViewDelegate
 #pragma mark - PopTableCellDelegate
 - (void)cellOnclick:(NSIndexPath *)indexPath tag:(NSInteger)tag {
     [PopView hidenPopView];
-    
+
     if (indexPath.row == 0) {
         [self showHUDCompletion:^{
             [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
+            NRootViewController = [NYSTabbarViewController new];
         }];
+        
     } else {
         [self showHUDCompletion:^{
-            [NYSUIKitUtilities setUserLanguage:@"lo"];
+            [NYSUIKitUtilities setUserLanguage:@"lo-LA"];
+            NRootViewController = [NYSTabbarViewController new];
         }];
     }
-
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    UIWindow *window = app.window;
-    [UIView animateWithDuration:1.0f animations:^{
-        window.alpha = 0.5;
-    } completion:^(BOOL finished) {
-        exit(0);
-    }];
-
+    
+//    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//    UIWindow *window = app.window;
+//    [UIView animateWithDuration:1.5f animations:^{
+//        window.alpha = 0.15;
+//    } completion:^(BOOL finished) {
+//        exit(0);
+//    }];
 }
 
 - (void)showHUDCompletion:(void (^ __nullable)(void))completion {
     ThirdViewController *vc = [[ThirdViewController alloc] init];
-    [self presentViewController:vc animated:NO completion:completion];
+    [self presentViewController:vc animated:NO completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].delegate.window.rootViewController = [[NYSTabbarViewController alloc] init];
+        [vc dismissViewControllerAnimated:NO completion:completion ?: nil];
+    });
 }
 
 - (void)rightBtnOnclicked:(UIButton *)sender {
@@ -137,10 +281,16 @@ NYSBusinessViewDelegate
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
-- (void)setupUI {
+- (void)setupUI:(NSMutableArray *)titleArr valueArr:(NSMutableArray *)valueArr {
+    [self.view removeAllSubviews];
+    
     CGFloat h = 0;
     
     self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = NAppThemeColor;
+    [refreshControl addTarget:self action:@selector(headerRereshing) forControlEvents:UIControlEventValueChanged];
+    self.containerScrollView.refreshControl = refreshControl;
     [self.view addSubview:self.containerScrollView];
     
     self.bannerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, HomeBannerHeight + 500)];
@@ -181,10 +331,14 @@ NYSBusinessViewDelegate
     [searchView addSubview:self.searchTF];
     
     UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
-//    [searchBtn setBackgroundColor:UIColor.redColor];
     [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
-        [self.navigationController pushViewController:searchVC animated:YES];
+//        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
+//        searchVC.type = @"1";
+//        [self.navigationController pushViewController:searchVC animated:YES];
+        
+        NYSCatalogSearchViewController *vc = NYSCatalogSearchViewController.new;
+        vc.isHomeSearch = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     [searchView addSubview:searchBtn];
     
@@ -199,11 +353,11 @@ NYSBusinessViewDelegate
     h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
     
     // 分页栏
-    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
-                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
-                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
-                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
-    NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
+//    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
+//                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
+//                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
+//                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
+//    NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
     SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
     segmentConfigure.indicatorColor = NAppThemeColor;
@@ -216,7 +370,7 @@ NYSBusinessViewDelegate
     segmentConfigure.titleTextZoom = YES;
     segmentConfigure.titleTextZoomRatio = .6f;
 
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, h, kScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
+    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(NNormalSpace, h, kScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
     self.pageTitleView.backgroundColor = [UIColor clearColor];
     self.pageTitleView
     .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {
@@ -226,13 +380,14 @@ NYSBusinessViewDelegate
     });
     [self.containerScrollView addSubview:_pageTitleView];
     
-    NSMutableArray *childVCs = [NSMutableArray array];
+    self.childVCs = [NSMutableArray array];
     for (NSString *valueStr in valueArr) {
         NYSHomeCourseVC *hVC = [[NYSHomeCourseVC alloc] init];
+        hVC.delegate = self;
         hVC.index = valueStr;
-        [childVCs addObject:hVC];
+        [self.childVCs addObject:hVC];
     }
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
+    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, 100000) parentVC:self childVCs:self.childVCs];
     self.pageContentCollectionView.delegatePageContentCollectionView = self;
     [self.containerScrollView addSubview:_pageContentCollectionView];
     
@@ -243,10 +398,27 @@ NYSBusinessViewDelegate
 #pragma mark - SGPagingViewDelegate
 - (void)pageTitleView:(SGPageTitleView *)pageTitleView selectedIndex:(NSInteger)selectedIndex {
     [self.pageContentCollectionView setPageContentCollectionViewCurrentIndex:selectedIndex];
+    
+    NYSHomeCourseVC *hVC = self.childVCs[selectedIndex];
+    [self tableviewHeight:hVC.tableViewHeight];
 }
 
 - (void)pageContentCollectionView:(SGPageContentCollectionView *)pageContentCollectionView progress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
     [self.pageTitleView setPageTitleViewWithProgress:progress originalIndex:originalIndex targetIndex:targetIndex];
+    
+    if (progress == 1) {
+        NYSHomeCourseVC *hVC = self.childVCs[targetIndex];
+        [self tableviewHeight:hVC.tableViewHeight];
+    }
+}
+
+#pragma mark - NYSHomeCourseVCDelegate
+- (void)tableviewHeight:(CGFloat)height {
+    CGFloat h = self.pageTitleView.bottom + height + NNormalSpace;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.containerScrollView.contentSize = CGSizeMake(0, h);
+    }];
 }
 
 #pragma mark - NYSBusinessViewDelegate
@@ -261,15 +433,16 @@ NYSBusinessViewDelegate
         [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
         
     } else if ([model.title isEqual:NLocalizedStr(@"Interconnect")]) {
-        [self.navigationController pushViewController:[NYSMessageCenterVC new] animated:YES];
+        SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:ExternalUrl]];
+        [self presentViewController:sfVC animated:YES completion:nil];
     }
 }
 
 #pragma mark - Setter/Getter
 - (NSMutableArray<NYSBannerModel *> *)bannerArray {
     if (!_bannerArray) {
-        NYSBannerModel *banner1 = [NYSBannerModel modelWithJSON:@{@"bannerUrl":@"/1656128373097OBS552bef2e2dc41c6af769c32707c1be.jpeg"}];
-        NYSBannerModel *banner2 = [NYSBannerModel modelWithJSON:@{@"bannerUrl":@"/1656128409034OBS694f38bb873ecd6910acbb2b494bb8.jpeg"}];
+        NYSBannerModel *banner1 = [NYSBannerModel modelWithJSON:@{@"image":@"/1656128373097OBS552bef2e2dc41c6af769c32707c1be.jpeg"}];
+        NYSBannerModel *banner2 = [NYSBannerModel modelWithJSON:@{@"image":@"/1656128409034OBS694f38bb873ecd6910acbb2b494bb8.jpeg"}];
         _bannerArray = @[banner1, banner2].mutableCopy;
     }
     return _bannerArray;
@@ -286,10 +459,9 @@ NYSBusinessViewDelegate
     return _businessArray;
 }
 
-- (NSMutableArray<NYSRecommendedModel *> *)recommendedArray {
+- (NSMutableArray<NYSHomeCourseModel *> *)recommendedArray {
     if (!_recommendedArray) {
-        NYSRecommendedModel *billboard = [NYSRecommendedModel new];
-        _recommendedArray = @[billboard, billboard, billboard].mutableCopy;
+        _recommendedArray = @[].mutableCopy;
     }
     return _recommendedArray;
 }
@@ -330,24 +502,22 @@ NYSBusinessViewDelegate
             return cell;
         })
         .wEventClickSet(^(id anyID, NSInteger index) {
-            if (index == 0) {
-                NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
-                [self.navigationController pushViewController:vc animated:YES];
-                
-            } else if (index == 1) {
-                
+            NYSHomeCourseModel *model = self.recommendedArray[index];
+            
+            if ([model.is_activation isEqual:@"0"] || [model.is_course isEqual:@"0"]) {
                 NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+                vc.model = model;
                 [self.navigationController pushViewController:vc animated:YES];
                 
             } else {
-                
-                NYSCatalogViewController *vc = NYSCatalogViewController.new;
+                NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+                vc.model = model;
                 [self.navigationController pushViewController:vc animated:YES];
             }
         })
         .wFrameSet(CGRectMake(0, 0, NScreenWidth, HomeRecommendedHeight))
         .wItemSizeSet(CGSizeMake(kScreenWidth * 0.85, HomeRecommendedHeight))
-        .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, 0))
+        .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, NNormalSpace))
         .wLineSpacingSet(20)
         .wHideBannerControlSet(YES)
         .wDataSet(self.recommendedArray);

@@ -9,6 +9,7 @@
 #import "NYSCourseCell.h"
 #import "NYSBannerCell.h"
 #import "NYSCourseDetailVC.h"
+#import "NYSPurchasedCourseDetailVC.h"
 
 #define HomeBannerHeight        RealValue(120)
 
@@ -28,25 +29,35 @@ UITextFieldDelegate
 @end
 
 @implementation NYSSearchCourseVC
+static NSString *CellID = @"NYSCourseCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"搜索";
+    self.navigationItem.title = NLocalizedStr(@"SearchTitle");
     
     [self setupSearchView];
+    if ([self.type isEqualToString:@"2"])
+        [self footerRereshing];
+    
+    // 刷新课程数据
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"NNotificationReloadData" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        [self headerRereshing];
+    }];
 }
 
 - (void)setupSearchView {
     
     _tableviewStyle = UITableViewStylePlain;
     [self.view addSubview:self.tableView];
-    self.tableView.refreshControl = nil;
+    //    self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor whiteColor];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
+    
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.tableView registerNib:[UINib nibWithNibName:CellID bundle:nil] forCellReuseIdentifier:CellID];
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
         make.left.mas_equalTo(self.view.mas_left);
@@ -55,8 +66,9 @@ UITextFieldDelegate
     
     
     CGFloat searchViewH = 40;
-    if (_isShowBanner) searchViewH += (HomeBannerHeight + 2 * NNormalSpace);
+    if ([self.type isEqualToString:@"2"]) searchViewH += (HomeBannerHeight + 2 * NNormalSpace);
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, searchViewH + NNormalSpace)];
+    headerView.backgroundColor = [UIColor whiteColor];
     
     // 搜索框
     UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(NNormalSpace, NNormalSpace/2, kScreenWidth - 2 * NNormalSpace, 40)];
@@ -75,62 +87,121 @@ UITextFieldDelegate
     self.searchTF.returnKeyType = UIReturnKeySearch;
     [searchView addSubview:self.searchTF];
     
+    
     // 轮播图
-    if (_isShowBanner) {
+    if ([self.type isEqualToString:@"2"]) {
+        self.searchTF.userInteractionEnabled = NO;
+        UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
+        [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
+            NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
+            searchVC.type = @"3";
+            searchVC.classId = self.classId;
+            [self.navigationController pushViewController:searchVC animated:YES];
+        }];
+        [searchView addSubview:searchBtn];
+
         self.bannerView = [[WMZBannerView alloc] initConfigureWithModel:self.bannerParam withView:headerView];
         self.bannerView.top = searchView.bottom + NNormalSpace;
         self.bannerView.centerX = headerView.centerX;
     }
     
-    
     self.tableView.tableHeaderView = headerView;
 }
 
 #pragma mark - 网络加载数据
+- (void)headerRereshing {
+    [super headerRereshing];
+    
+    _pageNo = 1;
+    [self getData:YES];
+}
+
 - (void)footerRereshing {
     [super footerRereshing];
     _pageNo ++;
-    
-    NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": DefaultPageSize,
-        @"keyword": _searchTF.text,
-      };
-    WS(weakSelf)
+    [self getData:NO];
+}
+
+- (void)getData:(BOOL)isHeader {
+    // 加载轮播数据
+    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
-                                      argument:argument
-                                             remark:@"课程搜索列表"
-                                            success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response[@"records"]];
+                                            url:@"/index/Index/banner"
+                                       argument:@{ @"page": @1, @"limit": @999 }
+                                         remark:@"轮播图"
+                                        success:^(id response) {
+        @strongify(self)
+        self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
+        self.bannerParam.wDataSet(self.bannerArray);
+        [self.bannerView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+    
+    NSMutableDictionary *argument = @{
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
+        @"keyword": _searchTF.text
+    }.mutableCopy;
+    if ([self.type isEqualToString:@"2"] || [self.type isEqualToString:@"3"]) {
+        [argument setValue:_classId forKey:@"class_id"];
+        [argument setValue:@1 forKey:@"is_recommend"];
+    }
+    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+                                            url:[self.type isEqualToString:@"1"] ? @"/index/Course/select_coures" : @"/index/Course/list"
+                                       argument:argument
+                                         remark:@"搜索"
+                                        success:^(id response) {
+        @strongify(self)
+        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
         if (array.count > 0) {
-            [weakSelf.dataSourceArr addObjectsFromArray:array];
-            [weakSelf.tableView.mj_footer endRefreshing];
+            if (isHeader) {
+                [self.dataSourceArr removeAllObjects];
+            }
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView reloadData];
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
         
     } failed:^(NSError * _Nullable error) {
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    _pageNo = 1;
+    _pageNo = 0;
+    [self.dataSourceArr removeAllObjects];
     [self footerRereshing];
     
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    _pageNo = 0;
+    [self.dataSourceArr removeAllObjects];
+    [self footerRereshing];
+}
+
+- (void)textFieldDidChangeSelection:(UITextField *)textField {
+    [self headerRereshing];
 }
 
 #pragma mark - tableview delegate / dataSource
@@ -142,17 +213,14 @@ UITextFieldDelegate
     return self.dataSourceArr.count;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
+    CGFloat h = [model.subtitle heightForFont:[UIFont systemFontOfSize:15] width:kScreenWidth - 170];
+    return 160 + h;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"NYSCourseCell";
-    NYSCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:ID owner:self options:nil] firstObject];
-    }
+    NYSCourseCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellID];
     cell.model = self.dataSourceArr[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -163,8 +231,17 @@ UITextFieldDelegate
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSHomeCourseModel *model = self.dataSourceArr[indexPath.row];
-    NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([model.is_activation isEqual:@"0"] || [model.is_course isEqual:@"0"]) {
+        NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } else {
+        NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - Setter/Getter
@@ -180,26 +257,26 @@ UITextFieldDelegate
 - (WMZBannerParam *)bannerParam {
     if (!_bannerParam) {
         _bannerParam = BannerParam()
-        .wMyCellClassNameSet(@"NYSBannerCell")
-        .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView, NSArray *dataArr) {
-            NYSBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSBannerCell class]) forIndexPath:indexPath];
-            cell.isCourseBanner = YES;
-            cell.bannerModel = model;
-            return cell;
-        })
-        .wEventClickSet(^(id anyID, NSInteger index) {
-            
-        })
-        .wFrameSet(CGRectMake(0, 0, NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
-        .wItemSizeSet(CGSizeMake(NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
-        .wScaleFactorSet(0.15f)
-        .wScaleSet(NO)
-        .wLineSpacingSet(NNormalSpace)
-        .wRepeatSet(YES)
-        .wAutoScrollSet(YES)
-        .wAutoScrollSecondSet(5.0f)
-        .wHideBannerControlSet(YES)
-        .wDataSet(self.bannerArray);
+            .wMyCellClassNameSet(@"NYSBannerCell")
+            .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView, NSArray *dataArr) {
+                NYSBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSBannerCell class]) forIndexPath:indexPath];
+                cell.isCourseBanner = YES;
+                cell.bannerModel = model;
+                return cell;
+            })
+            .wEventClickSet(^(id anyID, NSInteger index) {
+                
+            })
+            .wFrameSet(CGRectMake(0, 0, NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
+            .wItemSizeSet(CGSizeMake(NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
+            .wScaleFactorSet(0.15f)
+            .wScaleSet(NO)
+            .wLineSpacingSet(NNormalSpace)
+            .wRepeatSet(YES)
+            .wAutoScrollSet(YES)
+            .wAutoScrollSecondSet(5.0f)
+            .wHideBannerControlSet(YES)
+            .wDataSet(self.bannerArray);
     }
     return _bannerParam;
 }

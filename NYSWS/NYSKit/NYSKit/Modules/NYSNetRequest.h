@@ -12,6 +12,8 @@
 #define NNotificationOnKick                     @"KNotificationOnKick"
 // 令牌失效
 #define NNotificationTokenInvalidation          @"KNotificationTokenInvalidation"
+// 网络状态
+#define NNotificationNetworkChange              @"KNotificationNetworkChange"
 
 typedef enum : NSUInteger {
     GET,
@@ -32,12 +34,12 @@ typedef void(^NYSNetRequestFailed)(NSError * _Nullable error);
 
 + (void)jsonNoCheckNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
-/// 图片上传
+/// 文件上传
 + (void)uploadImagesWithType:(NYSNetRequestType)type
                        url:(NSString * _Nonnull)url
                   argument:(id _Nullable)argument
                       name:(NSString * _Nonnull)name
-                    images:(NSArray<UIImage *> * _Nonnull)images
+                       files:(NSArray * _Nonnull)files
                  fileNames:(NSArray<NSString *> *_Nullable)fileNames
                 imageScale:(CGFloat)imageScale
                  imageType:(NSString * _Nullable)imageType

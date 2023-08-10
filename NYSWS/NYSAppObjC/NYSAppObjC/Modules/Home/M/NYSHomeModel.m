@@ -16,10 +16,24 @@
 @implementation NYSBusinessModel
 @end
 
-@implementation NYSRecommendedModel
+@implementation NYSChapterContentModel
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+        @"word_list" : [NYSCatalogModel class],
+        @"statement_list" : [NYSCatalogModel class]
+    };
+}
+@end
+
+@implementation NYSChapter
 @end
 
 @implementation NYSHomeCourseModel
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{
+        @"chapter" : [NYSChapter class]
+    };
+}
 @end
 
 @implementation NYSMessageCenterModel

@@ -1,0 +1,21 @@
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "7xC-oR-xOq"; */
+"7xC-oR-xOq.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "旧密码"; ObjectID = "AGV-hJ-mbb"; */
+"AGV-hJ-mbb.text" = "旧密码";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "JeB-Nx-VAN"; */
+"JeB-Nx-VAN.placeholder" = "请输入";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "PZ0-Lt-Emb"; */
+"PZ0-Lt-Emb.placeholder" = "请输入";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "Tay-6A-gWZ"; */
+"Tay-6A-gWZ.normalTitle" = "确定";
+
+/* Class = "UILabel"; text = "重复新密码"; ObjectID = "XdU-01-9u6"; */
+"XdU-01-9u6.text" = "重复新密码";
+
+/* Class = "UILabel"; text = "新密码"; ObjectID = "nxc-GZ-H27"; */
+"nxc-GZ-H27.text" = "新密码";

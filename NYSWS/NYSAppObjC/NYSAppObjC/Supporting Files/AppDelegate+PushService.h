@@ -15,7 +15,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AppDelegate (PushService) <UNUserNotificationCenterDelegate, JPUSHRegisterDelegate>
+@interface AppDelegate (PushService)
+<
+UNUserNotificationCenterDelegate,
+JPUSHRegisterDelegate
+>
 
 /// 初始化推送服务
 - (void)initPush:(NSDictionary *)launchOptions application:(UIApplication *)application;

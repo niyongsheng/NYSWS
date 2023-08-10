@@ -7,6 +7,7 @@
 
 #import "NYSMessageCenterVC.h"
 #import "NYSMessageCenterCell.h"
+#import "NYSMessageDetailVC.h"
 
 @interface NYSMessageCenterVC ()
 <
@@ -23,9 +24,10 @@ UITextFieldDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"消息中心";
+    self.navigationItem.title = NLocalizedStr(@"MessageCenter");
     
     [self setupSearchView];
+    [self footerRereshing];
 }
 
 - (void)setupSearchView {
@@ -34,7 +36,7 @@ UITextFieldDelegate
     [self.view addSubview:self.tableView];
     self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#F0F0F0"];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view.mas_top).offset(0);
@@ -70,40 +72,47 @@ UITextFieldDelegate
     _pageNo ++;
     
     NSDictionary *argument = @{
-        @"pageNo": @(_pageNo),
-        @"pageSize": DefaultPageSize,
+        @"page": @(_pageNo),
+        @"limit": DefaultPageSize,
         @"keyword": _searchTF.text,
       };
-    WS(weakSelf)
+    @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
-                                          url:@""
+                                          url:@"/index/Member/lists"
                                       argument:argument
                                              remark:@"消息中心列表"
                                             success:^(id response) {
-        NSArray *array = [NSArray modelArrayWithClass:[NYSMessageCenterModel class] json:response[@"records"]];
+        @strongify(self)
+        NSArray *array = [NSArray modelArrayWithClass:[NYSMessageCenterModel class] json:response];
         if (array.count > 0) {
-            [weakSelf.dataSourceArr addObjectsFromArray:array];
-            [weakSelf.tableView.mj_footer endRefreshing];
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
             
         } else {
             if (self->_pageNo == 1) {
-                weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"null"];
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView reloadData];
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
         
     } failed:^(NSError * _Nullable error) {
-        [weakSelf.tableView.refreshControl endRefreshing];
-        [weakSelf.tableView.mj_footer endRefreshing];
-        weakSelf.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NetErr") reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
 }
 
 #pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     _pageNo = 1;
     [self footerRereshing];
@@ -122,7 +131,7 @@ UITextFieldDelegate
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NCellHeight;
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,7 +150,9 @@ UITextFieldDelegate
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NYSMessageCenterModel *model = self.dataSourceArr[indexPath.row];
-
+    NYSMessageDetailVC *vc = [NYSMessageDetailVC new];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

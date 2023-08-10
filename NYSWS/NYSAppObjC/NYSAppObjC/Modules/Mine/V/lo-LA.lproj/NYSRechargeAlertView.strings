@@ -1,0 +1,63 @@
+
+/* Class = "UILabel"; text = "20"; ObjectID = "8M3-Hc-2K5"; */
+"8M3-Hc-2K5.text" = "20";
+
+/* Class = "UIButton"; normalTitle = "立即支付"; ObjectID = "9Uh-EY-xAp"; */
+"9Uh-EY-xAp.normalTitle" = "ສຳເລັບຜູ້ຊ່ຽວຊານ";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "AjA-h0-qOL"; */
+"AjA-h0-qOL.text" = "20";
+
+/* Class = "UILabel"; text = "980"; ObjectID = "BiV-aR-HWu"; */
+"BiV-aR-HWu.text" = "980";
+
+/* Class = "UILabel"; text = "￥20.00"; ObjectID = "CZ8-36-ZZw"; */
+"CZ8-36-ZZw.text" = "￥20.00";
+
+/* Class = "UILabel"; text = "￥20.00"; ObjectID = "EeD-Fo-gdL"; */
+"EeD-Fo-gdL.text" = "￥20.00";
+
+/* Class = "UILabel"; text = "60"; ObjectID = "EnB-cE-GGx"; */
+"EnB-cE-GGx.text" = "60";
+
+/* Class = "UILabel"; text = "￥980"; ObjectID = "Kik-DC-8LT"; */
+"Kik-DC-8LT.text" = "￥980";
+
+/* Class = "UILabel"; text = "微信支付"; ObjectID = "LN4-OR-kXY"; */
+"LN4-OR-kXY.text" = "Wechat Pay";
+
+/* Class = "UITextField"; placeholder = "自定义金额"; ObjectID = "Qju-vR-vH7"; */
+"Qju-vR-vH7.placeholder" = "ກຳນົດຍອດເງິນເອງ";
+
+/* Class = "UILabel"; text = "￥20"; ObjectID = "a9b-sh-Jca"; */
+"a9b-sh-Jca.text" = "￥20";
+
+/* Class = "UILabel"; text = "----"; ObjectID = "gbv-JK-nlD"; */
+"gbv-JK-nlD.text" = "--";
+
+/* Class = "UILabel"; text = "苹果支付"; ObjectID = "gck-f8-NN6"; */
+"gck-f8-NN6.text" = "ApplePay";
+
+/* Class = "UILabel"; text = "支付方式"; ObjectID = "hwV-uc-yDW"; */
+"hwV-uc-yDW.text" = "ຊ່ອງທາງການຊໍາລະ";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "jGN-hd-3Sv"; */
+"jGN-hd-3Sv.text" = "20";
+
+/* Class = "UILabel"; text = "￥20.00"; ObjectID = "o8z-Hq-QkG"; */
+"o8z-Hq-QkG.text" = "￥20.00";
+
+/* Class = "UILabel"; text = "￥60"; ObjectID = "oyu-OW-CeV"; */
+"oyu-OW-CeV.text" = "￥60";
+
+/* Class = "UILabel"; text = "20"; ObjectID = "s9G-T2-Lhe"; */
+"s9G-T2-Lhe.text" = "20";
+
+/* Class = "UILabel"; text = "国外支付"; ObjectID = "tDa-Tq-D2X"; */
+"tDa-Tq-D2X.text" = "PayPal";
+
+/* Class = "UILabel"; text = "支付宝"; ObjectID = "thb-a9-cDn"; */
+"thb-a9-cDn.text" = "Ali Pay";
+
+/* Class = "UILabel"; text = "银行卡支付"; ObjectID = "vIH-8C-rNu"; */
+"vIH-8C-rNu.text" = "Bank Pay";

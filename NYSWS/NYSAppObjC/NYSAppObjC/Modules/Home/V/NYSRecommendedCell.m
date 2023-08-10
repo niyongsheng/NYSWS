@@ -29,15 +29,35 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.getBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.titleL.adjustsFontSizeToFitWidth = YES;
+    self.subtitleL.adjustsFontSizeToFitWidth = YES;
     self.contentView.backgroundColor = UIColor.whiteColor;
-    ViewRadius(self.contentView, 7);
-    ViewRadius(self.iconIV, 5);
+    ViewRadius(self.contentView, 10);
+    ViewRadius(self.iconIV, 10);
     ViewRadius(self.getBtn, 15);
 }
 
-- (void)setModel:(NYSRecommendedModel *)model {
+- (void)setModel:(NYSHomeCourseModel *)model {
     _model = model;
     
+    [self.iconIV setImageWithURL:NCDNURL(model.image) placeholder:NPImageFillet];
+    self.titleL.text = model.name;
+    self.subtitleL.text = model.subtitle;
+    self.priceL.text = model.price;
+    [_getBtn setTitle:NLocalizedStr(@"ActivationExchange") forState:UIControlStateNormal];
+    
+    if (!model.is_try.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"ImmediateAudition") forState:UIControlStateNormal];
+    }
+    
+    if (!model.is_course.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"PurchasedCourse") forState:UIControlStateNormal];
+    }
+    
+    if (!model.is_activation.boolValue) {
+        [_getBtn setTitle:NLocalizedStr(@"Activated") forState:UIControlStateNormal];
+    }
 }
 
 

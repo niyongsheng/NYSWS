@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "设置昵称"; ObjectID = "FIy-8r-sOT"; */
+"FIy-8r-sOT.text" = "设置昵称";
+
+/* Class = "UILabel"; text = "头像设置"; ObjectID = "Pgq-PS-Plt"; */
+"Pgq-PS-Plt.text" = "头像设置";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "QVe-mW-YlL"; */
+"QVe-mW-YlL.placeholder" = "请输入";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "aZu-9W-rQf"; */
+"aZu-9W-rQf.normalTitle" = "确定";
+
+"Szh-0d-RD5.text" = "我的邀请码";
+

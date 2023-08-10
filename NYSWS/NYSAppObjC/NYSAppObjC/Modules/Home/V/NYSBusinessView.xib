@@ -22,8 +22,8 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_item_00" translatesAutoresizingMaskIntoConstraints="NO" id="Wgk-Mg-9PD">
                     <rect key="frame" x="108.5" y="75.5" width="54" height="54"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-Aa-Hex">
-                    <rect key="frame" x="122.5" y="144.5" width="26" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-Aa-Hex">
+                    <rect key="frame" x="5" y="144.5" width="261" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -33,8 +33,10 @@
             <constraints>
                 <constraint firstItem="Wgk-Mg-9PD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3F9-7a-mZj"/>
                 <constraint firstItem="Wgk-Mg-9PD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="87a-vT-3hz"/>
+                <constraint firstAttribute="trailing" secondItem="P6k-Aa-Hex" secondAttribute="trailing" constant="5" id="ESf-cV-ZpH"/>
                 <constraint firstItem="P6k-Aa-Hex" firstAttribute="top" secondItem="Wgk-Mg-9PD" secondAttribute="bottom" constant="15" id="bC3-O1-aYP"/>
                 <constraint firstItem="P6k-Aa-Hex" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kQc-uX-5Sr"/>
+                <constraint firstItem="P6k-Aa-Hex" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="tiq-Df-3xH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="83.333333333333343" y="143.63839285714286"/>

@@ -145,10 +145,26 @@
     return timeSp;
 }
 
+/// 将时间戳转换成格式化的时间字符串
+/// @param timestamp 时间戳
+/// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
++ (NSString *)transformTimestampToTime:(NSTimeInterval)timestamp format:(NSString *)format {
+    if (!format) format = @"YYYY-MM-dd HH:mm:ss";
+    
+    NSTimeInterval interval = timestamp / 1000.0;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+    NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
+    [objDateformat setDateFormat:format];
+    NSString * timeStr = [NSString stringWithFormat:@"%@",[objDateformat stringFromDate: date]];
+    return timeStr;
+}
+
 /// 将某个时间转化成 时间戳
 /// @param formatTime 时间z字符串
 /// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-+ (NSInteger)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format {
++ (NSTimeInterval)transformTimeToTimestamp:(NSString *)formatTime format:(NSString *)format {
+    if (!format) format = @"YYYY-MM-dd HH:mm:ss";
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -161,7 +177,7 @@
     NSDate* date = [formatter dateFromString:formatTime];
     
     // 时间转时间戳的方法:
-    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+    NSTimeInterval timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
     return timeSp;
 }
 
@@ -363,9 +379,9 @@
         return [preStr stringByAppendingString:@"***"];
     }
     
-    if (6 < string.length && string.length < 11) {
+    if (6 < string.length && string.length <= 11) {
         NSString *preStr = [string substringToIndex:3];
-        NSString *sufStr = [string substringFromIndex:8];
+        NSString *sufStr = [string substringFromIndex:7];
         return [NSString stringWithFormat:@"%@****%@", preStr, sufStr];
         
     } else {
@@ -399,7 +415,7 @@
     [SVProgressHUD setOffsetFromCenter:offset];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD showImage:[UIImage imageNamed:name] status:msg];
-    [SVProgressHUD dismissWithDelay:1.7 completion:nil];
+    [SVProgressHUD dismissWithDelay:1.25f completion:nil];
 }
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset {
@@ -413,6 +429,14 @@
     } else {
         [SVProgressHUD showInfoWithStatus:msg];
     }
+}
+
++ (void)dismissWithCompletion:(NYSToolsDismissCompletion)completion {
+    [SVProgressHUD dismissWithDelay:1.1f completion:completion];
+}
+
++ (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion {
+    [SVProgressHUD dismissWithDelay:delay completion:completion];
 }
 
 #pragma mark - 其他

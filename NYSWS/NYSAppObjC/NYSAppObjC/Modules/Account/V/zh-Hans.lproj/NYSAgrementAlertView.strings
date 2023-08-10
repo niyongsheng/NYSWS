@@ -1,0 +1,12 @@
+
+/* Class = "UITextView"; text = "我已阅读并同意《服务协议》、《隐私政策》"; ObjectID = "71e-4g-Nlu"; */
+"71e-4g-Nlu.text" = "我已阅读并同意《服务协议》、《隐私政策》";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "DPI-gW-YOP"; */
+"DPI-gW-YOP.normalTitle" = "确定";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "Zqi-OR-dic"; */
+"Zqi-OR-dic.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "是否同意协议"; ObjectID = "naV-A2-ukS"; */
+"naV-A2-ukS.text" = "是否同意协议";

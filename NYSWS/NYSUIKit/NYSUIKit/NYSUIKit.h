@@ -28,6 +28,7 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/PopAnimationTool.h>
 #import <NYSUIKit/WSScrollLabel.h>
 #import <NYSUIKit/TableViewAnimationKit.h>
+#import <NYSUIKit/FIRVersionCheck.h>
 
 
 #import <NYSUIKit/NSDictionary+NilSafe.h>

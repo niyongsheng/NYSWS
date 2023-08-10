@@ -1,0 +1,28 @@
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "2DW-k5-Sag"; */
+"2DW-k5-Sag.text" = "0.00";
+
+/* Class = "UILabel"; text = "*提现申请将在1个工作日到账，非工作日延后 "; ObjectID = "46R-e9-dTQ"; */
+"46R-e9-dTQ.text" = "*提现申请将在1个工作日到账，非工作日延后 ";
+
+/* Class = "UITextField"; placeholder = "请输入提现金额"; ObjectID = "HOj-T0-h4t"; */
+"HOj-T0-h4t.placeholder" = "请输入姓名";
+"uJl-EV-5ZR.placeholder" = "请输入提现金额";
+
+/* Class = "UILabel"; text = "支付宝"; ObjectID = "QsR-sY-3Yv"; */
+"QsR-sY-3Yv.text" = "支付宝";
+
+/* Class = "UILabel"; text = "提现说明"; ObjectID = "Wiq-qY-ME1"; */
+"Wiq-qY-ME1.text" = "提现说明";
+
+/* Class = "UIButton"; normalTitle = "立即提现"; ObjectID = "ck7-Cs-xRI"; */
+"ck7-Cs-xRI.normalTitle" = "立即提现";
+
+/* Class = "UILabel"; text = "余额"; ObjectID = "dkZ-ej-gkL"; */
+"dkZ-ej-gkL.text" = "余额";
+
+/* Class = "UITextField"; placeholder = "请输入支付宝账号"; ObjectID = "skM-7M-AsW"; */
+"skM-7M-AsW.placeholder" = "请输入支付宝账号";
+
+/* Class = "UILabel"; text = "提现方式"; ObjectID = "tK5-ud-O5H"; */
+"tK5-ud-O5H.text" = "提现方式";

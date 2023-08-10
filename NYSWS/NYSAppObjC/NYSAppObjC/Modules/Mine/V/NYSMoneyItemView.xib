@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSMoneyItemView">
+            <connections>
+                <outlet property="contentV" destination="NmH-Ke-7zw" id="PHc-y0-VDK"/>
+                <outlet property="iconIV" destination="shY-W5-xwj" id="u0h-Cx-4T5"/>
+                <outlet property="subtitleL" destination="Hcr-hD-GUJ" id="hdk-em-YNe"/>
+                <outlet property="titleL" destination="YFo-fW-c6Z" id="2rk-eD-liU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="271" height="245"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NmH-Ke-7zw">
+                    <rect key="frame" x="0.0" y="0.0" width="271" height="245"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="879-Is-byJ">
+                            <rect key="frame" x="5" y="132" width="261" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="e0s-Qr-WVf"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcr-hD-GUJ">
+                            <rect key="frame" x="116.5" y="143" width="38" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFo-fW-c6Z">
+                            <rect key="frame" x="119.5" y="82.5" width="32" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" red="0.98829799890000003" green="0.52545261379999997" blue="0.2392994463" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold_coin" translatesAutoresizingMaskIntoConstraints="NO" id="shY-W5-xwj">
+                            <rect key="frame" x="127" y="104.5" width="17" height="17.5"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Hcr-hD-GUJ" firstAttribute="top" secondItem="879-Is-byJ" secondAttribute="bottom" constant="10" id="Kfe-Cl-lMf"/>
+                        <constraint firstItem="879-Is-byJ" firstAttribute="top" secondItem="shY-W5-xwj" secondAttribute="bottom" constant="10" id="fYA-Vn-bXc"/>
+                        <constraint firstItem="879-Is-byJ" firstAttribute="centerY" secondItem="NmH-Ke-7zw" secondAttribute="centerY" constant="10" id="i0v-SK-LlR"/>
+                        <constraint firstItem="shY-W5-xwj" firstAttribute="centerX" secondItem="NmH-Ke-7zw" secondAttribute="centerX" id="jyP-ZG-EpD"/>
+                        <constraint firstItem="shY-W5-xwj" firstAttribute="top" secondItem="YFo-fW-c6Z" secondAttribute="bottom" constant="5" id="jzc-kF-TfN"/>
+                        <constraint firstItem="Hcr-hD-GUJ" firstAttribute="centerX" secondItem="NmH-Ke-7zw" secondAttribute="centerX" id="kCG-Jr-xfA"/>
+                        <constraint firstItem="YFo-fW-c6Z" firstAttribute="centerX" secondItem="NmH-Ke-7zw" secondAttribute="centerX" id="mRY-ET-EMU"/>
+                        <constraint firstItem="879-Is-byJ" firstAttribute="leading" secondItem="NmH-Ke-7zw" secondAttribute="leading" constant="5" id="oes-mZ-AW1"/>
+                        <constraint firstAttribute="trailing" secondItem="879-Is-byJ" secondAttribute="trailing" constant="5" id="rFY-Sg-Y6J"/>
+                        <constraint firstItem="879-Is-byJ" firstAttribute="centerX" secondItem="NmH-Ke-7zw" secondAttribute="centerX" id="ziX-yW-Msp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="NmH-Ke-7zw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="30c-tf-aaR"/>
+                <constraint firstAttribute="trailing" secondItem="NmH-Ke-7zw" secondAttribute="trailing" id="RX4-ne-EFv"/>
+                <constraint firstAttribute="bottom" secondItem="NmH-Ke-7zw" secondAttribute="bottom" id="cbH-an-59I"/>
+                <constraint firstItem="NmH-Ke-7zw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yeP-M3-4u3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="83.333333333333343" y="143.63839285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gold_coin" width="17" height="17.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

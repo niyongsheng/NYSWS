@@ -26,8 +26,9 @@ SGPageContentCollectionViewDelegate
     [super viewDidLoad];
 
     // 1.分页栏配置
-    NSArray *titleArr = @[@"已购", @"已学"];
-    NSArray *valueArr = @[@"0", @"1"];
+//    NSArray *titleArr = @[@"已购", @"已学"];
+    NSArray *titleArr = @[NLocalizedStr(@"Purchased"), NLocalizedStr(@"Learned")];
+    NSArray *valueArr = @[@"1", @"0"];
     SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     segmentConfigure.indicatorStyle = SGIndicatorStyleCover;
     segmentConfigure.indicatorColor = NAppThemeColor;
@@ -35,13 +36,14 @@ SGPageContentCollectionViewDelegate
     segmentConfigure.titleColor = NAppThemeColor;
     segmentConfigure.titleSelectedColor = [UIColor whiteColor];
     segmentConfigure.indicatorHeight = 30;
+    segmentConfigure.indicatorCornerRadius = 15;
     segmentConfigure.indicatorAdditionalWidth = 120;
     
     // 2.分页栏view
     self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth*0.5, 30) delegate:self titleNames:titleArr configure:segmentConfigure];
     _pageTitleView.layer.borderWidth = 1;
     _pageTitleView.layer.borderColor = [NAppThemeColor CGColor];
-    _pageTitleView.layer.cornerRadius = 3;
+    _pageTitleView.layer.cornerRadius = 15;
     _pageTitleView.layer.masksToBounds = YES;
     self.pageTitleView.backgroundColor = [UIColor clearColor];
 

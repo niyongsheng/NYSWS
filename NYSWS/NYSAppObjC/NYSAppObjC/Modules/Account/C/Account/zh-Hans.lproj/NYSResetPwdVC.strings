@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "联系客服"; ObjectID = "1NA-rP-uSx"; */
+"1NA-rP-uSx.text" = "联系客服";
+
+/* Class = "UILabel"; text = "登录名"; ObjectID = "1ps-q8-7TK"; */
+"1ps-q8-7TK.text" = "登录名";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "2Ke-uK-vtU"; */
+"2Ke-uK-vtU.text" = "*";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "3bP-h3-IhO"; */
+"3bP-h3-IhO.text" = "*";
+
+/* Class = "UILabel"; text = "密码"; ObjectID = "5La-9Z-IjP"; */
+"5La-9Z-IjP.text" = "密码";
+
+/* Class = "UITextField"; placeholder = "请选择"; ObjectID = "7QP-uD-626"; */
+"7QP-uD-626.placeholder" = "请选择";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "Cjp-XP-MMB"; */
+"Cjp-XP-MMB.placeholder" = "请输入";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "OCL-2W-h7R"; */
+"OCL-2W-h7R.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "密保答案"; ObjectID = "UwM-PC-CCg"; */
+"UwM-PC-CCg.text" = "密保答案";
+
+/* Class = "UILabel"; text = "重复密码"; ObjectID = "Xte-oA-edf"; */
+"Xte-oA-edf.text" = "重复密码";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "YZ3-Go-Wuo"; */
+"YZ3-Go-Wuo.text" = "*";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "eJI-qV-gfi"; */
+"eJI-qV-gfi.normalTitle" = "确定";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "gu6-IK-uZ3"; */
+"gu6-IK-uZ3.placeholder" = "请输入";
+
+/* Class = "UITextField"; placeholder = "请输入"; ObjectID = "j55-oC-7iT"; */
+"j55-oC-7iT.placeholder" = "请输入";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "lNU-n4-wy1"; */
+"lNU-n4-wy1.text" = "*";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "qYH-Oc-Q1J"; */
+"qYH-Oc-Q1J.normalTitle" = "";
+
+/* Class = "UILabel"; text = "密保问题"; ObjectID = "qYx-B4-Gyj"; */
+"qYx-B4-Gyj.text" = "密保问题";
+
+/* Class = "UILabel"; text = "*"; ObjectID = "xx9-GH-Jhj"; */
+"xx9-GH-Jhj.text" = "*";
