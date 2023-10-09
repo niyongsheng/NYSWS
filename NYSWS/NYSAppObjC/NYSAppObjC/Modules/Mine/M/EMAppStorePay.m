@@ -3,7 +3,7 @@
 //  MobileFixCar
 //
 //  Created by Wcting on 2018/4/11.
-//  Copyright © 2018年 XXX有限公司. All rights reserved.
+//  Copyright © 2018年 NYS. All rights reserved.
 //
 
 #import "EMAppStorePay.h"
@@ -72,7 +72,7 @@
     NSData *receiptData = [NSURLConnection sendSynchronousRequest:appstoreRequest returningResponse:nil error:&error];
     // 20 BASE64 常用的编码方案，通常用于数据传输，以及加密算法的基础算法，传输过程中能够保证数据传输的稳定性 21 BASE64是可以编码和解码的 22
     transactionReceiptString = [receiptData base64EncodedStringWithOptions:0];//[receiptData base64EncodedStringWithOptions:0];
-    NSLog(@"requestContentstr:%@",transactionReceiptString);
+    NLog(@"requestContentstr:%@",transactionReceiptString);
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(EMAppStorePay:responseAppStorePaySuccess:error:)]) {
         [self.delegate EMAppStorePay:self responseAppStorePaySuccess:@{@"value":transactionReceiptString} error:nil];
@@ -95,11 +95,11 @@
     
     SKProduct *requestProduct = nil;
     for (SKProduct *pro in product) {
-        NSLog(@"%@", [pro description]);
-        NSLog(@"%@", [pro localizedTitle]);
-        NSLog(@"%@", [pro localizedDescription]);
-        NSLog(@"%@", [pro price]);
-        NSLog(@"%@", [pro productIdentifier]);
+        NLog(@"%@", [pro description]);
+        NLog(@"%@", [pro localizedTitle]);
+        NLog(@"%@", [pro localizedDescription]);
+        NLog(@"%@", [pro price]);
+        NLog(@"%@", [pro productIdentifier]);
         // 11.如果后台消费条目的ID与我这里需要请求的一样（用于确保订单的正确性）
         if([pro.productIdentifier isEqualToString:self.goodsId]){
             requestProduct = pro;
@@ -114,12 +114,12 @@
 // 请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"error:%@", error);
+    NLog(@"error:%@", error);
 }
 // 反馈请求的产品信息结束后
 - (void)requestDidFinish:(SKRequest *)request
 {
-    NSLog(@"信息反馈结束");
+    NLog(@"信息反馈结束");
 }
 
     
@@ -132,30 +132,30 @@
 
     for (SKPaymentTransaction *tran in transaction) {
 
-        NSLog(@"%@",tran.payment.applicationUsername);
+        NLog(@"%@",tran.payment.applicationUsername);
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:{
-                NSLog(@"交易完成");
+                NLog(@"交易完成");
                 [self completeTransaction:tran];
             }
                 break;
                 
             case SKPaymentTransactionStatePurchasing:
-                NSLog(@"商品添加进列表");
+                NLog(@"商品添加进列表");
                 break;
                 
             case SKPaymentTransactionStateRestored:
-                NSLog(@"已经购买过商品");
+                NLog(@"已经购买过商品");
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
                 
             case SKPaymentTransactionStateFailed:
-                NSLog(@"交易失败");
+                NLog(@"交易失败");
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
                 
             case SKPaymentTransactionStateDeferred:
-                NSLog(@"交易还在队列里面，但最终状态还没有决定");
+                NLog(@"交易还在队列里面，但最终状态还没有决定");
                 break;
                 
             default:

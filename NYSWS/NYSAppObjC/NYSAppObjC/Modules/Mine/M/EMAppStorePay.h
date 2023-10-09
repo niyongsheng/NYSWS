@@ -3,12 +3,8 @@
 //  MobileFixCar
 //
 //  Created by Wcting on 2018/4/11.
-//  Copyright © 2018年 XXX有限公司. All rights reserved.
+//  Copyright © 2018年 NYS. All rights reserved.
 //
-
-/*
- wct20180917 内购支付类，短视频e豆购买用到。
- */
 
 #import <Foundation/Foundation.h>
 

@@ -34,11 +34,8 @@
 		C8B747A729FA775400673B75 /* UINavigationController+FDFullscreenPopGesture.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7477A29FA775300673B75 /* UINavigationController+FDFullscreenPopGesture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747A829FA775400673B75 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7477B29FA775300673B75 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		C8B747B329FA775400673B75 /* TableViewAnimationKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7478929FA775400673B75 /* TableViewAnimationKit.m */; };
-		C8B747B429FA775400673B75 /* TableViewAnimationKitHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7478A29FA775400673B75 /* TableViewAnimationKitHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8B747B529FA775400673B75 /* UITableView+XSAnimationKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7478B29FA775400673B75 /* UITableView+XSAnimationKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747B629FA775400673B75 /* TableViewAnimationKitConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7478C29FA775400673B75 /* TableViewAnimationKitConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747B729FA775400673B75 /* TableViewAnimationKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7478D29FA775400673B75 /* TableViewAnimationKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8B747B829FA775400673B75 /* UITableView+XSAnimationKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7478E29FA775400673B75 /* UITableView+XSAnimationKit.m */; };
 		C8B747B929FA775400673B75 /* WSScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7479029FA775400673B75 /* WSScrollLabel.m */; };
 		C8B747BA29FA775400673B75 /* WSScrollLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7479129FA775400673B75 /* WSScrollLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747BB29FA775400673B75 /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7479329FA775400673B75 /* CMPopTipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -135,11 +132,8 @@
 		C8B7477A29FA775300673B75 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		C8B7477B29FA775300673B75 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		C8B7478929FA775400673B75 /* TableViewAnimationKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewAnimationKit.m; sourceTree = "<group>"; };
-		C8B7478A29FA775400673B75 /* TableViewAnimationKitHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAnimationKitHeaders.h; sourceTree = "<group>"; };
-		C8B7478B29FA775400673B75 /* UITableView+XSAnimationKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+XSAnimationKit.h"; sourceTree = "<group>"; };
 		C8B7478C29FA775400673B75 /* TableViewAnimationKitConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAnimationKitConfig.h; sourceTree = "<group>"; };
 		C8B7478D29FA775400673B75 /* TableViewAnimationKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewAnimationKit.h; sourceTree = "<group>"; };
-		C8B7478E29FA775400673B75 /* UITableView+XSAnimationKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+XSAnimationKit.m"; sourceTree = "<group>"; };
 		C8B7479029FA775400673B75 /* WSScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSScrollLabel.m; sourceTree = "<group>"; };
 		C8B7479129FA775400673B75 /* WSScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSScrollLabel.h; sourceTree = "<group>"; };
 		C8B7479329FA775400673B75 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
@@ -352,9 +346,6 @@
 				C8B7478D29FA775400673B75 /* TableViewAnimationKit.h */,
 				C8B7478929FA775400673B75 /* TableViewAnimationKit.m */,
 				C8B7478C29FA775400673B75 /* TableViewAnimationKitConfig.h */,
-				C8B7478A29FA775400673B75 /* TableViewAnimationKitHeaders.h */,
-				C8B7478B29FA775400673B75 /* UITableView+XSAnimationKit.h */,
-				C8B7478E29FA775400673B75 /* UITableView+XSAnimationKit.m */,
 			);
 			path = TableViewAnimationKit;
 			sourceTree = "<group>";
@@ -491,7 +482,6 @@
 			files = (
 				C8B747D429FA7DF700673B75 /* NSDictionary+NilSafe.h in Headers */,
 				C8B7479A29FA775400673B75 /* NYSLoadingButton.h in Headers */,
-				C8B747B529FA775400673B75 /* UITableView+XSAnimationKit.h in Headers */,
 				C8B747D629FA7DF700673B75 /* UIButton+NYS.h in Headers */,
 				C8B7479D29FA775400673B75 /* LEETheme.h in Headers */,
 				C8B747F729FA818900673B75 /* NYSJSHandler.h in Headers */,
@@ -517,7 +507,6 @@
 				C8B7480329FA818900673B75 /* NYSBaseObject.h in Headers */,
 				C8B747A429FA775400673B75 /* PopView.h in Headers */,
 				C8B7480229FA818900673B75 /* NYSBaseNavigationController.h in Headers */,
-				C8B747B429FA775400673B75 /* TableViewAnimationKitHeaders.h in Headers */,
 				C8B747BB29FA775400673B75 /* CMPopTipView.h in Headers */,
 				C8B747D929FA7DF700673B75 /* UITextField+NYS.h in Headers */,
 				C8597AC829F52192008BEE7F /* NYSLabel.h in Headers */,
@@ -681,7 +670,6 @@
 				C8B747D529FA7DF700673B75 /* UIView+Tools.m in Sources */,
 				C8597AC729F52192008BEE7F /* NYSLabel.m in Sources */,
 				C8B7481329FBA8FA00673B75 /* NYSUIKitUtilities.m in Sources */,
-				C8B747B829FA775400673B75 /* UITableView+XSAnimationKit.m in Sources */,
 				C8B7480129FA818900673B75 /* NYSBaseWindow.m in Sources */,
 				C8B747A629FA775400673B75 /* NYSIconLeftButton.m in Sources */,
 			);

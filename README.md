@@ -6,9 +6,9 @@ NYSWS
 > ios简洁的组件化方案架构。<br>
 > ios simple componentized solution framework.
 
-## APP
+<!-- ## APP
 ------------ 
-<img src="./home.png" width="125" height="270"> 
+<img src="./home.png" width="125" height="270">  -->
 
 
 ## Architecture
@@ -49,7 +49,6 @@ NYSWS
 ## Podfile
 ```ruby
 platform :ios, '13.0'
-#use_frameworks!
 inhibit_all_warnings!
 
 workspace './NYSWS.xcworkspace'
@@ -80,6 +79,7 @@ end
 
 # Object-C 项目
 target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
+  use_frameworks! :linkage => :static
   
   commonPods
   pod 'FMDB', '2.7.5'
@@ -93,7 +93,6 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   pod 'BRPickerView', '2.8.0'
   pod 'IQKeyboardManager', '6.5.11'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
-#  pod 'TZImagePickerController', '3.4.3'
   pod 'WMZBanner', '1.2.0'
   pod 'SGPagingView', '1.7.2'
   pod 'MBProgressHUD', '1.2.0'
@@ -133,6 +132,26 @@ target 'NYSKit' do project './NYSKit/NYSKit.xcodeproj'
   pod 'SVProgressHUD', '2.2.5'
 end
 
+```
+
+## apple-app-site-association
+```json
+{
+    "webcredentials": {
+        "apps": [
+		          "F9J739W8Y4.com.ios.nysws"
+                ]
+    },
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "F9J739W8Y4.com.ios.nysws",
+                "paths": [ "*" ]
+            }
+        ]
+    }
+}
 ```
 
 ## AppDelegate

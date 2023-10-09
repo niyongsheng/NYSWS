@@ -415,7 +415,7 @@
     [SVProgressHUD setOffsetFromCenter:offset];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD showImage:[UIImage imageNamed:name] status:msg];
-    [SVProgressHUD dismissWithDelay:1.25f completion:nil];
+    [SVProgressHUD dismissWithDelay:5.0f completion:nil];
 }
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset {
@@ -432,7 +432,7 @@
 }
 
 + (void)dismissWithCompletion:(NYSToolsDismissCompletion)completion {
-    [SVProgressHUD dismissWithDelay:1.1f completion:completion];
+    [SVProgressHUD dismissWithDelay:0.75f completion:completion];
 }
 
 + (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion {

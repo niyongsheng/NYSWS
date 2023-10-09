@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "NSError+NYS.h"
-#import "UITableView+XSAnimationKit.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

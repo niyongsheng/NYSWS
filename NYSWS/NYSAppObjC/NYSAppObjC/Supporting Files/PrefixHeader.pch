@@ -15,11 +15,11 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <WRNavigationBar/WRNavigationBar.h>
-#import <ZLPhotoBrowser-objc/ZLPhotoBrowser.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <JDStatusBarNotification/JDStatusBarNotification.h>
+@import ZLPhotoBrowser_objc;
 
 #pragma mark -- 宏定义 --
 #import "CommonMacros.h"

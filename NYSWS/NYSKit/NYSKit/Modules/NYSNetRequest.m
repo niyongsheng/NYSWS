@@ -12,6 +12,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
 
+#define isShowTimes NO
 #define TimeoutInterval 15
 #define ShowDelayLoading 4.5f
 
@@ -26,14 +27,14 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:manager.responseSerializer.acceptableContentTypes];
-        [contentTypes addObject:@"text/html"];
-        [contentTypes addObject:@"text/plain"];
-        [contentTypes addObject:@"application/json"];
-        [contentTypes addObject:@"image/jpeg"];
         [contentTypes addObject:@"image/jpg"];
+        [contentTypes addObject:@"text/plain"];
+        [contentTypes addObject:@"image/jpeg"];
+        [contentTypes addObject:@"application/json"];
         [contentTypes addObject:@"application/octet-stream"];
-//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+        manager.responseSerializer.acceptableContentTypes = contentTypes;
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
         [manager.requestSerializer setTimeoutInterval:TimeoutInterval];
         
@@ -59,8 +60,9 @@
     return headerDic;
 }
 
-#pragma mark - 常用请求
+#pragma mark - Form表单网络请求
 + (void)requestNetworkWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url argument:(id)argument remark:(NSString *)remark success:(NYSNetRequestSuccess _Nullable )success failed:(NYSNetRequestFailed _Nullable )failed {
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
     NSDictionary *header = [self headers];
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
@@ -71,7 +73,7 @@
             
         case GET: {
             [[self sharedManager] GET:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"GET", header, argument, responseObject, NO);
+                handelLog(remark, urlStr, @"GET", header, argument, responseObject, NO, timeStamp);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -85,7 +87,7 @@
             
         case POST: {
             [[self sharedManager] POST:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO);
+                handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO, timeStamp);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -99,7 +101,7 @@
             
         case PUT: {
             [[self sharedManager] PUT:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"PUT", header, argument, responseObject, NO);
+                handelLog(remark, urlStr, @"PUT", header, argument, responseObject, NO, timeStamp);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -113,7 +115,7 @@
             
         case DELTTE: {
             [[self sharedManager] DELETE:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"DELTTE", header, argument, responseObject, NO);
+                handelLog(remark, urlStr, @"DELTTE", header, argument, responseObject, NO, timeStamp);
                 handelResponse(argument, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -143,6 +145,7 @@
                   progress:(nullable void (^)(NSProgress * _Nonnull))process
                    success:(NYSNetRequestSuccess _Nullable )success
                     failed:(NYSNetRequestFailed _Nullable )failed {
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
     NSDictionary *header = [self headers];
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
@@ -172,7 +175,7 @@
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO);
+        handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO, timeStamp);
         handelResponse(argument, failed, remark, responseObject, success, urlStr);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -196,6 +199,7 @@
                   progress:(nullable void (^)(NSProgress * _Nonnull))process
                    success:(NYSNetRequestSuccess _Nullable )success
                     failed:(NYSNetRequestFailed _Nullable )failed {
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
     [[self sharedManager] POST:urlStr parameters:argument headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 
@@ -216,7 +220,7 @@
             process ? process(uploadProgress) : nil;
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        handelLog(remark, urlStr, @"POST", nil, argument, responseObject, NO);
+        handelLog(remark, urlStr, @"POST", nil, argument, responseObject, NO, timeStamp);
         handelResponse(argument, failed, remark, responseObject, success, urlStr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failed) {
@@ -236,6 +240,8 @@
 }
 
 + (void)jsonRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id)argument isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    
     // 加载动画-延时执行
     [self performSelector:@selector(delayLoadingMethod) withObject:nil afterDelay:ShowDelayLoading];
     // 监听网络状态
@@ -260,7 +266,7 @@
         [SVProgressHUD dismissWithDelay:1.0f];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayLoadingMethod) object:nil];
         
-        handelLog(remark, urlStr, @"POST", [request allHTTPHeaderFields], argument, responseObject, YES);
+        handelLog(remark, urlStr, @"POST", [request allHTTPHeaderFields], argument, responseObject, YES, timeStamp);
         if (!error) {
             // 获取cookie
             NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -371,7 +377,7 @@ static void handelError(NSError * _Nullable error) {
 }
 
 #pragma mark - 日志打印
-static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDictionary *header, NSDictionary *argument, id responseObject, BOOL isJsosn) {
+static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDictionary *header, NSDictionary *argument, id responseObject, BOOL isJsosn, NSTimeInterval timeStamp) {
     id resp = nil;
     if ([responseObject isKindOfClass:[NSDictionary class]]) {
         resp = [NYSNetRequest jsonPrettyStringEncoded:responseObject];
@@ -380,6 +386,15 @@ static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDict
     }
     
     DBGLog(@"[%@]%@->📩:\n%@\n[Header]请求头:\n%@\n[%@]传参:\n%@\n[Response]响应:\n%@", type, remark, urlStr, header, isJsosn ? @"Json" : @"Form", [NYSNetRequest jsonPrettyStringEncoded:argument], resp);
+    
+    if (isShowTimes) {
+        NSDate *date = [NSDate date];
+        NSTimeInterval times = [date timeIntervalSince1970] - timeStamp;
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:remark message:[NSString stringWithFormat:@"\n耗时：%.2f毫秒\n\n接口：%@", times *1000, urlStr] preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 /// 数据加载中

@@ -210,7 +210,7 @@
 		C8F4B94E2A0CBBA500719AF2 /* NYSResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4B94C2A0CBBA500719AF2 /* NYSResetPwdViewController.m */; };
 		C8FC1A112A3C22D600E28323 /* NYSResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FC1A102A3C22D600E28323 /* NYSResetPwdVC.m */; };
 		C8FC1A142A3C22DF00E28323 /* NYSResetPwdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8FC1A122A3C22DF00E28323 /* NYSResetPwdVC.xib */; };
-		E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */; };
+		E276FB06AABC664200498496 /* Pods_NYSAppObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFE630A95E1877865922C8D /* Pods_NYSAppObjC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -228,7 +228,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AFE630A95E1877865922C8D /* Pods_NYSAppObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58F95B0D4613D82244763B3 /* Pods-NYSAppObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppObjC.debug.xcconfig"; path = "Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		C80648972A149A6F003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSLoginVC.xib; sourceTree = "<group>"; };
 		C806489A2A149A76003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSLoginVC.strings"; sourceTree = "<group>"; };
@@ -624,8 +624,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8EEC54F2A80CA690090EDAB /* StoreKit.framework in Frameworks */,
-				E6758FBB3618872B182E6E77 /* libPods-NYSAppObjC.a in Frameworks */,
 				C8EEC5922A823CE50090EDAB /* NYSUIKit.framework in Frameworks */,
+				E276FB06AABC664200498496 /* Pods_NYSAppObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,7 +717,7 @@
 				C8EEC54E2A80CA690090EDAB /* StoreKit.framework */,
 				C8599BB02A03B18E00DEA603 /* NYSKit.framework */,
 				C8597AA529F5194A008BEE7F /* NYSUIKit.framework */,
-				8CF660E1E00DCD701F855376 /* libPods-NYSAppObjC.a */,
+				3AFE630A95E1877865922C8D /* Pods_NYSAppObjC.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

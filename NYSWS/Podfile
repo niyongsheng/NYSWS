@@ -1,5 +1,4 @@
 platform :ios, '13.0'
-#use_frameworks!
 inhibit_all_warnings!
 
 workspace './NYSWS.xcworkspace'
@@ -30,6 +29,7 @@ end
 
 # Object-C 项目
 target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
+  use_frameworks! :linkage => :static
   
   commonPods
   pod 'FMDB', '2.7.5'

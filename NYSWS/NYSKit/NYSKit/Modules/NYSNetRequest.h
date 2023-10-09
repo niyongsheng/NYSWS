@@ -27,11 +27,13 @@ typedef void(^NYSNetRequestFailed)(NSError * _Nullable error);
 
 @interface NYSNetRequest : NSObject
 
+/// Form表单网络请求
 + (void)requestNetworkWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
 /// JSON传参网络请求
 + (void)jsonNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
+/// JSON传参网络请求(不统一检查接口返回数据的合法性)
 + (void)jsonNoCheckNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
 /// 文件上传
