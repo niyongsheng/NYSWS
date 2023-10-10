@@ -216,7 +216,7 @@
 
 - (void)check {
     [self.loginBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
-    [self.loginBtn setBackgroundColor:NAppThemeColor];
+//    [self.loginBtn setBackgroundColor:NAppThemeColor];
     [self.loginBtn setEnabled:YES];
     
 //    if (self.accountTF.text.length >= 4 && self.passwordTF.text.length >= 6) {

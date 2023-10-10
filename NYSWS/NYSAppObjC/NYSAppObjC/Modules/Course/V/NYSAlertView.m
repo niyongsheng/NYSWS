@@ -12,8 +12,8 @@
 - (void)setupView {
     ViewRadius(self, 10);
     
-    ViewBorderRadius(self.cancelBtn, 15, 1, NAppThemeColor);
-    ViewRadius(self.commitBtn, 15);
+    ViewBorderRadius(self.cancelBtn, 20, 1, NAppThemeColor);
+    ViewRadius(self.commitBtn, 20);
     [self.cancelBtn setTitleColor:NAppThemeColor forState:UIControlStateNormal];
     [self.commitBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     self.commitBtn.backgroundColor = NAppThemeColor;

@@ -21,7 +21,7 @@
 #import "NYSMyCourseListVC.h"
 
 #define isMustLogin     NO
-#define isNeedLoginTips NO
+#define isNeedLoginTips YES
 
 @implementation AppDelegate (AppService)
 
@@ -150,23 +150,22 @@
     [NAppManager logout:^(BOOL success, id obj) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (isNeedLoginTips) {
-                NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.7, RealValue(205))];
+                NYSAlertView *alertView = [[NYSAlertView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.75, RealValue(180))];
                 alertView.titleL.text = NLocalizedStr(@"Tips");
-                alertView.subtitleL.text = @"您还没有登陆";
-                alertView.iconIV.image = [UIImage imageNamed:@"img_alert_lingdang"];
+                alertView.subtitleL.text = @"您还没有登陆！";
+                alertView.subtitleL.font = [UIFont systemFontOfSize:16];
+                alertView.iconIV.image = [[UIImage imageNamed:@"message_icon"] imageByResizeToSize:CGSizeMake(25, 25)];
                 [alertView.commitBtn setTitle:@"去登录" forState:UIControlStateNormal];
-                alertView.block = ^(id obj) {
-                    if ([obj isEqual:@"1"]) {
-                        NYSBaseNavigationController *loginVC = [[NYSBaseNavigationController alloc] initWithRootViewController:[NYSLoginVC new]];
-                        [NRootViewController presentViewController:loginVC animated:YES completion:nil];
-                    }
-                    [FFPopup dismissAllPopups];
-                };
-                FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_GrowIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:NO dismissOnContentTouch:NO];
+                FFPopup *popup = [FFPopup popupWithContentView:alertView showType:FFPopupShowType_GrowIn dismissType:FFPopupDismissType_ShrinkOut maskType:FFPopupMaskType_Dimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
                 popup.showInDuration = 0.5f;
                 popup.maskType = FFPopupMaskType_Dimmed;
-                FFPopupLayout layout = FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center);
-                [popup showWithLayout:layout];
+                [popup showWithLayout:FFPopupLayoutMake(FFPopupHorizontalLayout_Center, FFPopupVerticalLayout_Center)];
+                alertView.block = ^(id obj) {
+                    if ([obj isEqual:@"1"]) {
+                        NPostNotification(NNotificationLoginStateChange, @NO)
+                    }
+                    [popup dismissAnimated:YES];
+                };
                 
             } else {
                 NPostNotification(NNotificationLoginStateChange, @NO)

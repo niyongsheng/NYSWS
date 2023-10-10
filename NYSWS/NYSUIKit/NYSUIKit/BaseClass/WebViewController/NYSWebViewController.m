@@ -22,18 +22,20 @@
 - (instancetype)initWithUrlStr:(NSString *)urlStr {
     self = [super init];
     if (self) {
-        [self setUrlStr:urlStr];
+        [self loadWebUrl:urlStr];
     }
     return self;
 }
 
 - (void)setUrlStr:(NSString *)urlStr {
-    if (_urlStr != urlStr) {
-        _urlStr = urlStr;
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_urlStr]];
-        [self.webView loadRequest:request];
-    }
+    _urlStr = urlStr;
+    
+    [self loadWebUrl:urlStr];
+}
+
+-  (void)loadWebUrl:(NSString *)urlStr {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    [self.webView loadRequest:request];
 }
 
 - (void)setAutoTitle:(BOOL)autoTitle {
@@ -78,8 +80,8 @@
 - (UIProgressView *)progressView {
     if (!_progressView) {
         _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        CGFloat h = [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height;
-        _progressView.frame = CGRectMake(0, h, [[UIScreen mainScreen] bounds].size.width, 0);
+        CGFloat h = [NYSUIKitUtilities nys_statusBarHeight] + [NYSUIKitUtilities nys_navigationHeight];
+        _progressView.frame = CGRectMake(0, h, [[UIScreen mainScreen] bounds].size.width, 1.15f);
         _progressView.transform = CGAffineTransformMakeScale(1.0, 0.5);
         _progressView.trackTintColor = [UIColor clearColor];
     }

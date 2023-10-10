@@ -33,12 +33,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="if4-nI-VZD">
-                    <rect key="frame" x="15" y="241" width="284" height="30"/>
+                    <rect key="frame" x="15" y="231" width="284" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqi-OR-dic">
-                            <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="127" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="NzM-IK-c6e"/>
+                                <constraint firstAttribute="height" constant="40" id="NzM-IK-c6e"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="取消">
@@ -49,9 +49,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-gW-YOP">
-                            <rect key="frame" x="157" y="0.0" width="127" height="30"/>
+                            <rect key="frame" x="157" y="0.0" width="127" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="rsJ-gB-h9y"/>
+                                <constraint firstAttribute="height" constant="40" id="rsJ-gB-h9y"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="确定">

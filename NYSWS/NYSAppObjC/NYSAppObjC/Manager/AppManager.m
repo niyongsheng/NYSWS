@@ -161,11 +161,6 @@
     
     // 4.清空数据缓存
     [NUserDefaults removeObjectForKey:NUserTokenKey];
-    [self.userCache removeAllObjectsWithBlock:^{
-        if (completion) {
-            completion(YES, nil);
-        }
-    }];
     
     // 5.清空当前用户信息
     self.seq = 0;
@@ -193,6 +188,12 @@
     
     // 通知刷新UI
     [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationReloadUserDetailInfo object:nil];
+    
+    [self.userCache removeAllObjectsWithBlock:^{
+        if (completion) {
+            completion(YES, nil);
+        }
+    }];
 }
 
 #pragma mark —- 被踢下线 —-

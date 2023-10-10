@@ -244,8 +244,6 @@
     
     // 加载动画-延时执行
     [self performSelector:@selector(delayLoadingMethod) withObject:nil afterDelay:ShowDelayLoading];
-    // 监听网络状态
-    [self sharedManager];
     
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
     if ([url containsString:@"http"]) {
@@ -316,7 +314,7 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         return;
     }
     NSInteger code = [[responseObject objectForKey:@"code"] integerValue];
-    NSString *msg = @"unknown error";
+    NSString *msg = @"unknown error"; // 错误信息
     for (NSString *key in [[[NYSKitManager sharedNYSKitManager] msgKey] componentsSeparatedByString:@","]) {
         NSString *message = [responseObject objectForKey:key];
         if (![NYSTools stringIsNull:message]) {
@@ -331,6 +329,7 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         NSDictionary *data = [responseObject objectForKey:@"data"];
         if (success) {
             success(data);
+            return;
         }
     } else if (code == [[[NYSKitManager sharedNYSKitManager] kickedCode] integerValue]) { // 强制下线
         [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationOnKick object:msg];
@@ -339,17 +338,17 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
         if ([msg containsString:[[NYSKitManager sharedNYSKitManager] tokenInvalidMessage]]) { // 防止后端token失效的code不唯一
             [[NSNotificationCenter defaultCenter] postNotificationName:NNotificationTokenInvalidation object:msg];
         }
-        [NYSTools showBottomToast:msg];
-    } else { // 其他错误
-        if (failed) {
-            NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
-            failed(error);
-        } else {
-            [NYSTools showBottomToast:msg];
-        }
+//        [NYSTools showBottomToast:msg];
         
+    } else {
+        // 错误Toast
         if ([[NYSKitManager sharedNYSKitManager] isAlwaysShowErrorMsg])
             [NYSTools showBottomToast:msg];
+    }
+    
+    if (failed) {
+        NSError *error = [NSError errorWithDomain:@"NYSNetRequestErrorDomain" code:code userInfo:@{NSLocalizedDescriptionKey:msg}];
+        failed(error);
     }
 }
 

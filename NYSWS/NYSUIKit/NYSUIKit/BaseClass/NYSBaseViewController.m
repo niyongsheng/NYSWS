@@ -38,7 +38,6 @@ DZNEmptyDataSetDelegate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NLog(@"%@", [NSString stringWithFormat:@"【控制器：%@】---> viewDidLoad", NSStringFromClass(self.class)]);
     
     // 配置主题
     [self configTheme];

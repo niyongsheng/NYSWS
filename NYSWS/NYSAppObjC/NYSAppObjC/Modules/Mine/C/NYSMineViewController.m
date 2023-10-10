@@ -185,13 +185,17 @@
 - (IBAction)otherBtnOnclicked:(UIButton *)sender {
     if (sender.tag == 1) {
         
-        SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:ExternalUrl]];
-        [self presentViewController:sfVC animated:YES completion:nil];
+        NYSWebViewController *webVC = [NYSWebViewController new];
+        webVC.autoTitle = YES;
+        webVC.urlStr = NYSPagesUrl;
+        [self.navigationController pushViewController:webVC animated:YES];
         
     } else {
         
-        SFSafariViewController *sfVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:ExternalUrl]];
-        [self presentViewController:sfVC animated:YES completion:nil];
+        NYSWebViewController *webVC = [NYSWebViewController new];
+        webVC.autoTitle = YES;
+        webVC.urlStr = NYSPagesUrl;
+        [self.navigationController pushViewController:webVC animated:YES];
     }
 }
 

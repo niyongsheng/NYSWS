@@ -61,6 +61,7 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 #define OrganizationID  @"c3485b27-4b20-53a3-8f81-07c03a9f949b"
 // 外部链接
 #define ExternalUrl     @"https://github.com/niyongsheng/NYSWS"
+#define NYSPagesUrl     @"https://niyongsheng.github.io"
 
 // 小鹅通
 #define DefaultClientId  @"" // client ID

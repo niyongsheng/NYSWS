@@ -38,10 +38,6 @@
 
 /// 初始化气泡
 - (void)initBubble:(UIWindow *)window {
-    if (@available(iOS 13.0, *)) {
-        // 关闭跟随系统暗黑模式切换
-//        [UIApplication sharedApplication].keyWindow.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
-    }
     
     LEEBubble *bubble = [[LEEBubble alloc] initWithFrame:CGRectMake(CGRectGetWidth(window.frame) - 58, CGRectGetHeight(window.frame) - 200, 48, 48)];
     bubble.edgeInsets = UIEdgeInsetsMake(64, 0 , 0 , 0);
