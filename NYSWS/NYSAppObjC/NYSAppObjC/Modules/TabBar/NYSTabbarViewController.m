@@ -10,7 +10,6 @@
 #import "NYSCourseListVC.h"
 #import "NYSMineViewController.h"
 
-#define TintColor    [UIColor colorWithHexString:@"#EB5E20"]
 #define NormalColor  [UIColor colorWithHexString:@"#8E8E8E"]
 
 @interface NYSTabbarViewController ()
@@ -33,11 +32,11 @@
       
     if (@available(iOS 13.0, *)) {
         self.tabBar.unselectedItemTintColor = NormalColor;
-        self.tabBar.tintColor = TintColor;
+        self.tabBar.tintColor = NAppThemeColor;
         
     } else {
         [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : NormalColor} forState:UIControlStateSelected];
-        [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : TintColor} forState:UIControlStateSelected];
+        [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : NAppThemeColor} forState:UIControlStateSelected];
     }
     
     // 点击动画

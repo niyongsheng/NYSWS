@@ -107,6 +107,7 @@
                 self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
             }
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer setHidden:self.dataSourceArr.count == 0];
         }
         
         [self.tableView.refreshControl endRefreshing];

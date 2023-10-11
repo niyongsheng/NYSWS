@@ -51,11 +51,19 @@
     self.shearUrl = [NSString stringWithFormat:@"%@?tj_code=%@&os=ios", ShareUrl, NAppUser.invite_code];
     UIImageView *qrIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.45, kScreenWidth * 0.45)];
     qrIV.contentMode = UIViewContentModeScaleToFill;
-    qrIV.image = [SGGenerateQRCode generateQRCodeWithData:self.shearUrl size:RealValue(200) logoImage:[UIImage imageNamed:@"icon_logo"] ratio:NRadius];
+    qrIV.image = [UIImage imageNamed:@"qr_code_bg"];
     [self.inviteIV addSubview:qrIV];
-
     qrIV.centerX = kScreenWidth * 0.5;
     qrIV.centerY = kScreenHeight * 0.65;
+    
+    // 异步加载二维码
+    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(backgroundQueue, ^{
+        UIImage *image = [SGGenerateQRCode generateQRCodeWithData:self.shearUrl size:RealValue(200) logoImage:[UIImage imageNamed:@"icon_logo"] ratio:NRadius];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            qrIV.image = image;
+        });
+    });
     
     @weakify(self)
     [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
