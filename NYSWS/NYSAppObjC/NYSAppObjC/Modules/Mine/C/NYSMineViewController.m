@@ -194,7 +194,7 @@
         
         NYSWebViewController *webVC = [NYSWebViewController new];
         webVC.autoTitle = YES;
-        webVC.urlStr = NYSPagesUrl;
+        webVC.urlStr = NYSPixelUrl;
         [self.navigationController pushViewController:webVC animated:YES];
     }
 }

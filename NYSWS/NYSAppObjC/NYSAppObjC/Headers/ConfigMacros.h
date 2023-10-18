@@ -10,8 +10,8 @@
 #if DevelopSever
 /** 接口前缀-开发服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";
-static NSString *const APP_BASE_URL         = @"http://dev.app.cn";
-static NSString *const APP_CDN_URL          = @"http://cdn.app.cn";
+static NSString *const APP_BASE_URL         = @"https://dev.app.cn";
+static NSString *const APP_CDN_URL          = @"https://cdn.app.cn";
 static NSString *const APP_FEEDBACK_URL     = @"";
 #elif TestSever
 /** 接口前缀-测试服务器*/
@@ -62,6 +62,7 @@ static NSString *const APP_FEEDBACK_URL     = @"";
 // 外部链接
 #define ExternalUrl     @"https://github.com/niyongsheng/NYSWS"
 #define NYSPagesUrl     @"https://niyongsheng.github.io"
+#define NYSPixelUrl     @"https://niyongsheng.github.io/pixel_homepage/"
 
 // 小鹅通
 #define DefaultClientId  @"" // client ID
