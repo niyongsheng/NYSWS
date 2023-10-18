@@ -10,8 +10,8 @@
 #if DevelopSever
 /** 接口前缀-开发服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";
-static NSString *const APP_BASE_URL         = @"http://xyd.app12345.cn";
-static NSString *const APP_CDN_URL          = @"http://xyd.app12345.cn";
+static NSString *const APP_BASE_URL         = @"http://dev.app.cn";
+static NSString *const APP_CDN_URL          = @"http://cdn.app.cn";
 static NSString *const APP_FEEDBACK_URL     = @"";
 #elif TestSever
 /** 接口前缀-测试服务器*/
