@@ -28,7 +28,7 @@
 /**
  *  点击气泡Block
  */
-@property (nonatomic , copy ) void(^clickBubbleBlock)(void);
+@property (nonatomic , copy ) void(^clickBubbleBlock)();
 
 /**
  *  添加动画

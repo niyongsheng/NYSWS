@@ -11,11 +11,11 @@
 
 @interface NYSCourseListVC ()
 <
-SGPageTitleViewDelegate,
-SGPageContentCollectionViewDelegate
+SGPagingTitleViewDelegate,
+SGPagingContentViewDelegate
 >
-@property (nonatomic, strong) SGPageTitleView *pageTitleView;
-@property (nonatomic, strong) SGPageContentCollectionView *pageContentCollectionView;
+@property (nonatomic, strong) SGPagingTitleView *pageTitleView;
+@property (nonatomic, strong) SGPagingContentCollectionView *pageContentCollectionView;
 
 @end
 
@@ -72,26 +72,27 @@ SGPageContentCollectionViewDelegate
 //                              NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
 //                              NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
 //        NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
-    SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
-    segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
+    SGPagingTitleViewConfigure *segmentConfigure = [[SGPagingTitleViewConfigure alloc] init];
+    segmentConfigure.indicatorType = IndicatorTypeDefault;
     segmentConfigure.indicatorColor = NAppThemeColor;
     segmentConfigure.showBottomSeparator = NO;
     segmentConfigure.indicatorHeight = 4;
     segmentConfigure.indicatorCornerRadius = 2;
     segmentConfigure.indicatorToBottomDistance = 10;
-    segmentConfigure.indicatorScrollStyle = SGIndicatorScrollStyleDefault;
-    segmentConfigure.titleFont = [UIFont boldSystemFontOfSize:15.0];
-    segmentConfigure.titleTextZoom = YES;
-    segmentConfigure.titleTextZoomRatio = .6f;
+    segmentConfigure.indicatorScrollStyle = IndicatorScrollStyleDefault;
+    segmentConfigure.font = [UIFont boldSystemFontOfSize:15.0];
+    segmentConfigure.textZoom = YES;
+    segmentConfigure.textZoomRatio = .6f;
     
     // 2.分页栏view
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
+    self.pageTitleView = [[SGPagingTitleView alloc] initWithFrame:CGRectMake(0, 0, NScreenWidth * 0.75, 44) titles:titleArr configure:segmentConfigure];
+    self.pageTitleView.delegate = self;
     self.pageTitleView.backgroundColor = [UIColor clearColor];
     self.pageTitleView
-    .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {
-        [item resetTitleColor:[UIColor blackColor] titleSelectedColor:NAppThemeColor];
-    }).LeeAddCustomConfig(NIGHT, ^(SGPageTitleView *item) {
-        [item resetTitleColor:[UIColor lightGrayColor] titleSelectedColor:NAppThemeColor];
+    .lee_theme.LeeAddCustomConfig(DAY, ^(SGPagingTitleView *item) {
+        [item resetTitleWithColor:[UIColor blackColor] selectedColor:NAppThemeColor];
+    }).LeeAddCustomConfig(NIGHT, ^(SGPagingTitleView *item) {
+        [item resetTitleWithColor:[UIColor lightGrayColor] selectedColor:NAppThemeColor];
     });
     LayoutFittingView *LFView = [[LayoutFittingView alloc] initWithFrame:CGRectMake(0, 0, NScreenWidth, 44)];
     [LFView addSubview:self.pageTitleView];
@@ -105,18 +106,19 @@ SGPageContentCollectionViewDelegate
         hVC.classId = valueStr;
         [childVCs addObject:hVC];
     }
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
-    self.pageContentCollectionView.delegatePageContentCollectionView = self;
+    self.pageContentCollectionView = [[SGPagingContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
+        self.pageContentCollectionView.delegate = self;
     [self.view addSubview:self.pageContentCollectionView];
 }
 
-#pragma mark - SGPagingViewDelegate
-- (void)pageTitleView:(SGPageTitleView *)pageTitleView selectedIndex:(NSInteger)selectedIndex {
-    [self.pageContentCollectionView setPageContentCollectionViewCurrentIndex:selectedIndex];
+#pragma mark - SGPagingTitleViewDelegate
+- (void)pagingTitleViewWithTitleView:(SGPagingTitleView *)titleView index:(NSInteger)index {
+    [self.pageContentCollectionView setPagingContentViewWithIndex:index];
 }
 
-- (void)pageContentCollectionView:(SGPageContentCollectionView *)pageContentCollectionView progress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
-    [self.pageTitleView setPageTitleViewWithProgress:progress originalIndex:originalIndex targetIndex:targetIndex];
+#pragma mark - SGPagingContentViewDelegate
+- (void)pagingContentViewWithContentView:(SGPagingContentView *)contentView progress:(CGFloat)progress currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex {
+    [self.pageTitleView setPagingTitleViewWithProgress:progress currentIndex:currentIndex targetIndex:targetIndex];
 }
 
 @end

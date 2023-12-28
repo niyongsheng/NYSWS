@@ -31,18 +31,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 是否使用系统下拉刷新样式UIRefreshControl     default :YES
 @property (nonatomic, assign) BOOL isUseUIRefreshControl;
-/// empty view error info
+/// Empty \ Error info
 @property (nonatomic, strong) NSError *emptyError;
 
-#pragma mark - 设置主题
+/** Theme config, allow overridden */
 - (void)configTheme;
 
-/** 默认返回按钮的点击事件，默认是返回，子类可重写 */
+/** Default pop back, allow overridden */
 - (void)backBtnClicked;
 
-/// pull down refresh handler
+/// Pull down refresh handler
 - (void)headerRereshing;
-/// pull up refresh handler
+/// Pull up refresh handler
 - (void)footerRereshing;
 
 /**
@@ -67,6 +67,19 @@ NS_ASSUME_NONNULL_BEGIN
  @param tags tags数组 回调区分用
  */
 - (void)addNavigationItemWithImageNames:(NSArray *)imageNames isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray<NSString *> *)tags;
+
+
+#pragma mark - tableview delegate / dataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+
+#pragma mark - collectionView delegate / dataSource
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+#pragma mark - DZNEmptyDataSetSource
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView;
 
 @end
 

@@ -11,7 +11,6 @@
 #import <MJRefresh/MJRefresh.h>
 #import <WMZBanner/WMZBannerView.h>
 #import <BRPickerView/BRPickerView.h>
-#import <SGPagingView/SGPagingView.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <WRNavigationBar/WRNavigationBar.h>
@@ -19,7 +18,9 @@
 #import <SafariServices/SFSafariViewController.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <JDStatusBarNotification/JDStatusBarNotification.h>
+//#import "NYSAppObjC-Swift.h"
 @import ZLPhotoBrowser_objc;
+@import SGPagingView;
 
 #pragma mark -- 宏定义 --
 #import "CommonMacros.h"

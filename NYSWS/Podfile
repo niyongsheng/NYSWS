@@ -8,14 +8,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 # 项目公共依赖
 def commonPods
   pod 'YYKit', '1.0.9'
+  pod 'SGPagingView', '2.1.0'
 end
 
 # Swift 项目
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
+  use_modular_headers!
+  use_frameworks! :linkage => :static
   
   commonPods
   pod 'FMDB', '2.7.5'
-  pod 'YYKit', '1.0.9'
   pod 'FlexLib', '3.1.6'
   pod 'FFPopup', '1.1.5'
   pod 'XHLaunchAd', '3.9.12'
@@ -25,10 +27,16 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   pod 'IQKeyboardManagerSwift', '6.5.11'
   pod 'ZLPhotoBrowser', '4.4.0'
   
+#  pod 'Closures'
+  pod 'Then', '3.0.0'
+  pod 'RxSwift', '6.6.0'
+  pod 'lottie-ios', '2.5.3'
+  
 end
 
 # Object-C 项目
 target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
+  use_modular_headers!
   use_frameworks! :linkage => :static
   
   commonPods
@@ -45,7 +53,6 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
 #  pod 'TZImagePickerController', '3.4.3'
   pod 'WMZBanner', '1.2.0'
-  pod 'SGPagingView', '1.7.2'
   pod 'MBProgressHUD', '1.2.0'
   pod 'JDStatusBarNotification'
   

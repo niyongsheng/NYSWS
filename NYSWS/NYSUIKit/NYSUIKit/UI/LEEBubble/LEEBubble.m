@@ -53,7 +53,7 @@
         
         //初始化背景视图
         
-        _backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+        _backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         
         _backgroundView.layer.cornerRadius = _backgroundView.frame.size.width / 2;
         
@@ -68,7 +68,7 @@
         
         //初始化图片背景视图
         
-        _imageBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(5, 5, CGRectGetWidth(self.frame) - 10, CGRectGetHeight(self.frame) - 10)];
+        _imageBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(5, 5, CGRectGetWidth(self.frame) - 10, CGRectGetHeight(self.frame) - 10)];
         
         _imageBackgroundView.layer.cornerRadius = _imageBackgroundView.frame.size.width / 2;
         
@@ -82,7 +82,7 @@
         
         //初始化图片
         
-        _imageView = [[UIImageView alloc] init];
+        _imageView = [[UIImageView alloc]init];
         
         _imageView.frame = CGRectMake(0, 0, 24, 24);
         

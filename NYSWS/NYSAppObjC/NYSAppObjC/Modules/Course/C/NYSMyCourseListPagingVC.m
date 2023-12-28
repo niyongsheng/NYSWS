@@ -11,11 +11,11 @@
 
 @interface NYSMyCourseListPagingVC ()
 <
-SGPageTitleViewDelegate,
-SGPageContentCollectionViewDelegate
+SGPagingTitleViewDelegate,
+SGPagingContentViewDelegate
 >
-@property (nonatomic, strong) SGPageTitleView *pageTitleView;
-@property (nonatomic, strong) SGPageContentCollectionView *pageContentCollectionView;
+@property (nonatomic, strong) SGPagingTitleView *pageTitleView;
+@property (nonatomic, strong) SGPagingContentCollectionView *pageContentCollectionView;
 
 
 @end
@@ -29,18 +29,19 @@ SGPageContentCollectionViewDelegate
 //    NSArray *titleArr = @[@"已购", @"已学"];
     NSArray *titleArr = @[NLocalizedStr(@"Purchased"), NLocalizedStr(@"Learned")];
     NSArray *valueArr = @[@"1", @"0"];
-    SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
-    segmentConfigure.indicatorStyle = SGIndicatorStyleCover;
+    SGPagingTitleViewConfigure *segmentConfigure = [[SGPagingTitleViewConfigure alloc] init];
+    segmentConfigure.indicatorType = IndicatorTypeCover;
     segmentConfigure.indicatorColor = NAppThemeColor;
-    segmentConfigure.titleFont = [UIFont boldSystemFontOfSize:15];
-    segmentConfigure.titleColor = NAppThemeColor;
-    segmentConfigure.titleSelectedColor = [UIColor whiteColor];
+    segmentConfigure.font = [UIFont boldSystemFontOfSize:15];
+    segmentConfigure.color = NAppThemeColor;
+    segmentConfigure.selectedColor = [UIColor whiteColor];
     segmentConfigure.indicatorHeight = 30;
     segmentConfigure.indicatorCornerRadius = 15;
     segmentConfigure.indicatorAdditionalWidth = 120;
     
     // 2.分页栏view
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, NScreenWidth*0.5, 30) delegate:self titleNames:titleArr configure:segmentConfigure];
+    self.pageTitleView = [[SGPagingTitleView alloc] initWithFrame:CGRectMake(0, 0, NScreenWidth*0.5, 30) titles:titleArr configure:segmentConfigure];
+    _pageTitleView.delegate = self;
     _pageTitleView.layer.borderWidth = 1;
     _pageTitleView.layer.borderColor = [NAppThemeColor CGColor];
     _pageTitleView.layer.cornerRadius = 15;
@@ -56,19 +57,19 @@ SGPageContentCollectionViewDelegate
         hVC.index = valueStr;
         [childVCs addObject:hVC];
     }
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
-    self.pageContentCollectionView.delegatePageContentCollectionView = self;
+    self.pageContentCollectionView = [[SGPagingContentCollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) parentVC:self childVCs:childVCs];
+    self.pageContentCollectionView.delegate = self;
     [self.view addSubview:_pageContentCollectionView];
 }
 
-#pragma mark - SGPageTitleViewDelegate
-- (void)pageTitleView:(SGPageTitleView *)pageTitleView selectedIndex:(NSInteger)selectedIndex {
-    [self.pageContentCollectionView setPageContentCollectionViewCurrentIndex:selectedIndex];
+#pragma mark - SGPagingTitleViewDelegate
+- (void)pagingTitleViewWithTitleView:(SGPagingTitleView *)titleView index:(NSInteger)index {
+    [self.pageContentCollectionView setPagingContentViewWithIndex:index];
 }
 
-#pragma mark - SGPageContentCollectionViewDelegate
-- (void)pageContentCollectionView:(SGPageContentCollectionView *)pageContentCollectionView progress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
-    [self.pageTitleView setPageTitleViewWithProgress:progress originalIndex:originalIndex targetIndex:targetIndex];
+#pragma mark - SGPagingContentViewDelegate
+- (void)pagingContentViewWithContentView:(SGPagingContentView *)contentView progress:(CGFloat)progress currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex {
+    [self.pageTitleView setPagingTitleViewWithProgress:progress currentIndex:currentIndex targetIndex:targetIndex];
 }
 
 @end

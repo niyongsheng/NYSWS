@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 <
 WXApiDelegate
 >
-/// 初始化推送服务
+/// 初始化微信SDK
 - (void)initWXApi:(NSDictionary *)launchOptions application:(UIApplication *)application;
 @end
 

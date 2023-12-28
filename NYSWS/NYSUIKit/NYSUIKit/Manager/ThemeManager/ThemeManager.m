@@ -36,7 +36,7 @@
     [LEETheme defaultTheme:DAY];
 }
 
-/// 初始化气泡
+/// 初始化气泡主题按钮
 - (void)initBubble:(UIWindow *)window {
     
     LEEBubble *bubble = [[LEEBubble alloc] initWithFrame:CGRectMake(CGRectGetWidth(window.frame) - 58, CGRectGetHeight(window.frame) - 200, 48, 48)];
@@ -68,20 +68,35 @@
 }
 
 - (void)changeTheme:(UIWindow *)window {
+    if (window == nil) {
+        if (@available(iOS 13, *)) {
+            for (UIWindowScene* windowScene in [UIApplication sharedApplication].connectedScenes) {
+                if (windowScene.activationState == UISceneActivationStateForegroundActive) {
+                    window = windowScene.windows.firstObject;
+                    break;
+                }
+            }
+        } else {
+            window = [UIApplication sharedApplication].delegate.window;
+        }
+    }
+
     // 覆盖截图（获取当前window的快照视图）
     UIView *tempView = [window snapshotViewAfterScreenUpdates:NO];
     [window addSubview:tempView];
     
     // 切换主题
     if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
-        [LEETheme startTheme:NIGHT];
         if (@available(iOS 13.0, *)) {
-            [[UIApplication sharedApplication].delegate.window setOverrideUserInterfaceStyle:UIUserInterfaceStyleDark];
+            [window setOverrideUserInterfaceStyle:UIUserInterfaceStyleDark];
+        } else {
+            [LEETheme startTheme:NIGHT];
         }
     } else {
-        [LEETheme startTheme:DAY];
         if (@available(iOS 13.0, *)) {
-            [[UIApplication sharedApplication].delegate.window setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+            [window setOverrideUserInterfaceStyle:UIUserInterfaceStyleLight];
+        } else {
+            [LEETheme startTheme:DAY];
         }
     }
     

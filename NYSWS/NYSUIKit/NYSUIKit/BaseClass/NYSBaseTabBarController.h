@@ -21,7 +21,10 @@ typedef NS_ENUM(NSInteger, NYSBaseTabBarInteractionEffectStyle) {
 /// 点击动画类型
 @property (nonatomic, assign) NYSBaseTabBarInteractionEffectStyle tabBarInteractionEffectStyle;
 /// 是否启用渐变切换
-@property (nonatomic, assign) BOOL isUserGradualAnimation;
+@property (nonatomic, assign) BOOL isOpenGradualAnimation;
+/// 是否重置tabBarItem样式
+@property (nonatomic, assign) BOOL isResetTabBarItemStyle;
+
 @end
 
 NS_ASSUME_NONNULL_END

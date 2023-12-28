@@ -45,16 +45,19 @@ PODS:
   - JDStatusBarNotification (2.0.7)
   - JPush (3.7.4):
     - JCore (< 3.0.0, >= 2.0.0)
+  - lottie-ios (2.5.3)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - ReactiveObjC (3.1.1)
+  - RxSwift (6.6.0)
   - SDWebImage (5.17.0):
     - SDWebImage/Core (= 5.17.0)
   - SDWebImage/Core (5.17.0)
-  - SGPagingView (1.7.2)
+  - SGPagingView (2.1.0)
   - SGQRCode (4.1.0)
   - SVProgressHUD (2.2.5)
+  - Then (3.0.0)
   - UMAPM (1.8.3)
   - UMCCommon (7.3.7):
     - UMAPM
@@ -88,13 +91,16 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (= 6.5.11)
   - JDStatusBarNotification
   - JPush (= 3.7.4)
+  - lottie-ios (= 2.5.3)
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
   - MJRefresh (= 3.7.5)
   - ReactiveObjC (= 3.1.1)
-  - SGPagingView (= 1.7.2)
+  - RxSwift (= 6.6.0)
+  - SGPagingView (= 2.1.0)
   - SGQRCode (= 4.1.0)
   - SVProgressHUD (= 2.2.5)
+  - Then (= 3.0.0)
   - UMAPM
   - UMCCommon
   - UMCCommonLog (= 2.0.2)
@@ -121,14 +127,17 @@ SPEC REPOS:
     - JCore
     - JDStatusBarNotification
     - JPush
+    - lottie-ios
     - Masonry
     - MBProgressHUD
     - MJRefresh
     - ReactiveObjC
+    - RxSwift
     - SDWebImage
     - SGPagingView
     - SGQRCode
     - SVProgressHUD
+    - Then
     - UMAPM
     - UMCCommon
     - UMCCommonLog
@@ -155,14 +164,17 @@ SPEC CHECKSUMS:
   JCore: 9d5bda3a172c65bbe14f2806ab0f6246f8a06065
   JDStatusBarNotification: 92e7ebdc628db36e1e8e96f0f77c8ce6d1627ec3
   JPush: e455ad2a7b854bca8149df085772d6c4f79b2416
+  lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
-  SGPagingView: 0b91bd360370e56a6496b06df9b3e28bc3f075cc
+  SGPagingView: fb90c03c809363ea340189053c5635a128e1ef84
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   UMAPM: 221bfc98b8d2fdcf300ffb4f65e16d8a9ce32eb9
   UMCCommon: aac337052f23b0e08c0f3cf021d3bb209f2c49bd
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
@@ -176,6 +188,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: b776429726ed683f3e5e028bc0a39baf66acd887
+PODFILE CHECKSUM: a62a0de59f8f23ec670a99c9fccd6e2246b7514e
 
 COCOAPODS: 1.12.0

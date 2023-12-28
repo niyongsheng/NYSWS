@@ -32,8 +32,8 @@
 <
 PopTableCellDelegate,
 UIScrollViewDelegate,
-SGPageTitleViewDelegate,
-SGPageContentCollectionViewDelegate,
+SGPagingTitleViewDelegate,
+SGPagingContentViewDelegate,
 NYSBusinessViewDelegate,
 NYSHomeCourseVCDelegate
 >
@@ -57,8 +57,8 @@ NYSHomeCourseVCDelegate
 /// 推荐课程
 @property (nonatomic, strong) NSMutableArray<NYSHomeCourseModel *> *recommendedArray;
 
-@property (nonatomic, strong) SGPageTitleView *pageTitleView;
-@property (nonatomic, strong) SGPageContentCollectionView *pageContentCollectionView;
+@property (nonatomic, strong) SGPagingTitleView *pageTitleView;
+@property (nonatomic, strong) SGPagingContentCollectionView *pageContentCollectionView;
 
 @property (nonatomic, strong) PopView *popView;
 @property (nonatomic, strong) PopTableListView *popListView;
@@ -71,7 +71,7 @@ NYSHomeCourseVCDelegate
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
+    //    NAppManager.isLogined ? [NAppManager loadUserInfoCompletion:nil] : nil;
 }
 
 - (void)viewDidLoad {
@@ -124,7 +124,7 @@ NYSHomeCourseVCDelegate
 
 - (void)headerRereshing {
     [self getData];
-    [self.pageTitleView setResetSelectedIndex:0];
+    [self.pageTitleView resetWithIndex:0];
     [NNotificationCenter postNotificationName:@"HomeRefreshNotification" object:nil];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.containerScrollView.refreshControl endRefreshing];
@@ -225,7 +225,7 @@ NYSHomeCourseVCDelegate
 #pragma mark - PopTableCellDelegate
 - (void)cellOnclick:(NSIndexPath *)indexPath tag:(NSInteger)tag {
     [PopView hidenPopView];
-
+    
     if (indexPath.row == 0) {
         [self showHUDCompletion:^{
             [NYSUIKitUtilities setUserLanguage:@"zh-Hans"];
@@ -239,13 +239,13 @@ NYSHomeCourseVCDelegate
         }];
     }
     
-//    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//    UIWindow *window = app.window;
-//    [UIView animateWithDuration:1.5f animations:^{
-//        window.alpha = 0.15;
-//    } completion:^(BOOL finished) {
-//        exit(0);
-//    }];
+    //    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    //    UIWindow *window = app.window;
+    //    [UIView animateWithDuration:1.5f animations:^{
+    //        window.alpha = 0.15;
+    //    } completion:^(BOOL finished) {
+    //        exit(0);
+    //    }];
 }
 
 - (void)showHUDCompletion:(void (^ __nullable)(void))completion {
@@ -302,13 +302,13 @@ NYSHomeCourseVCDelegate
     self.bannerView.top = NNormalSpace;
     self.bannerView.centerX = self.bannerContainerView.centerX;
     h = HomeBannerHeight + 2 * NNormalSpace;
-
+    
     // 菜单图
     CGFloat businessW = (kScreenWidth - 2 * NNormalSpace) / 4;
     for (int i = 0; i < self.businessArray.count; i ++) {
         NYSBusinessModel *businessModel = self.businessArray[i];
         NYSBusinessView *cell = [[NYSBusinessView alloc] initWithFrame:CGRectMake(NNormalSpace + i * businessW, h, businessW, businessW)];
-        cell.delegate = self; 
+        cell.delegate = self;
         cell.businessModel = businessModel;
         [self.bannerContainerView addSubview:cell];
     }
@@ -332,9 +332,9 @@ NYSHomeCourseVCDelegate
     
     UIButton *searchBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 2 * NNormalSpace, searchViewH)];
     [searchBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-//        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
-//        searchVC.type = @"1";
-//        [self.navigationController pushViewController:searchVC animated:YES];
+        //        NYSSearchCourseVC *searchVC = [NYSSearchCourseVC new];
+        //        searchVC.type = @"1";
+        //        [self.navigationController pushViewController:searchVC animated:YES];
         
         NYSCatalogSearchViewController *vc = NYSCatalogSearchViewController.new;
         vc.isHomeSearch = YES;
@@ -353,31 +353,32 @@ NYSHomeCourseVCDelegate
     h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
     
     // 分页栏
-//    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
-//                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
-//                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
-//                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
-//    NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
-    SGPageTitleViewConfigure *segmentConfigure = [SGPageTitleViewConfigure pageTitleViewConfigure];
-    segmentConfigure.indicatorStyle = SGIndicatorStyleDefault;
+    //    NSArray *titleArr = @[NSLocalizedStringFromTable(@"All", @"InfoPlist", nil),
+    //                          NSLocalizedStringFromTable(@"Laos", @"InfoPlist", nil),
+    //                          NSLocalizedStringFromTable(@"Chinese", @"InfoPlist", nil),
+    //                          NSLocalizedStringFromTable(@"English", @"InfoPlist", nil)];
+    //    NSArray *valueArr = @[@"0", @"1", @"2", @"3"];
+    SGPagingTitleViewConfigure *segmentConfigure = [[SGPagingTitleViewConfigure alloc] init];
+    segmentConfigure.indicatorType = IndicatorTypeDefault;
     segmentConfigure.indicatorColor = NAppThemeColor;
     segmentConfigure.showBottomSeparator = NO;
     segmentConfigure.indicatorHeight = 4;
     segmentConfigure.indicatorCornerRadius = 2;
     segmentConfigure.indicatorToBottomDistance = 10;
-    segmentConfigure.indicatorScrollStyle = SGIndicatorScrollStyleDefault;
-    segmentConfigure.titleFont = [UIFont boldSystemFontOfSize:15.0];
-    segmentConfigure.titleTextZoom = YES;
-    segmentConfigure.titleTextZoomRatio = .6f;
-
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(NNormalSpace, h, kScreenWidth * 0.75, 44) delegate:self titleNames:titleArr configure:segmentConfigure];
+    segmentConfigure.indicatorScrollStyle = IndicatorScrollStyleDefault;
+    segmentConfigure.font = [UIFont boldSystemFontOfSize:15.0];
+    segmentConfigure.textZoom = YES;
+    segmentConfigure.textZoomRatio = .6f;
+    
+    self.pageTitleView = [[SGPagingTitleView alloc] initWithFrame:CGRectMake(NNormalSpace, h, kScreenWidth * 0.75, 44) titles:titleArr configure:segmentConfigure];
+    _pageTitleView.delegate = self;
     self.pageTitleView.backgroundColor = [UIColor clearColor];
     self.pageTitleView
-    .lee_theme.LeeAddCustomConfig(DAY, ^(SGPageTitleView *item) {
-        [item resetTitleColor:[UIColor blackColor] titleSelectedColor:NAppThemeColor];
-    }).LeeAddCustomConfig(NIGHT, ^(SGPageTitleView *item) {
-        [item resetTitleColor:[UIColor lightGrayColor] titleSelectedColor:NAppThemeColor];
-    });
+        .lee_theme.LeeAddCustomConfig(DAY, ^(SGPagingTitleView *item) {
+            [item resetTitleWithColor:[UIColor blackColor] selectedColor:NAppThemeColor];
+        }).LeeAddCustomConfig(NIGHT, ^(SGPagingTitleView *item) {
+            [item resetTitleWithColor:[UIColor lightGrayColor] selectedColor:NAppThemeColor];
+        });
     [self.containerScrollView addSubview:_pageTitleView];
     
     self.childVCs = [NSMutableArray array];
@@ -387,24 +388,25 @@ NYSHomeCourseVCDelegate
         hVC.index = valueStr;
         [self.childVCs addObject:hVC];
     }
-    self.pageContentCollectionView = [[SGPageContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, 100000) parentVC:self childVCs:self.childVCs];
-    self.pageContentCollectionView.delegatePageContentCollectionView = self;
+    self.pageContentCollectionView = [[SGPagingContentCollectionView alloc] initWithFrame:CGRectMake(0, h+44, kScreenWidth, 100000) parentVC:self childVCs:self.childVCs];
+    self.pageContentCollectionView.delegate = self;
     [self.containerScrollView addSubview:_pageContentCollectionView];
     
     // 可滚动范围
     self.containerScrollView.contentSize = CGSizeMake(0, self.pageContentCollectionView.bottom + NNormalSpace);
 }
 
-#pragma mark - SGPagingViewDelegate
-- (void)pageTitleView:(SGPageTitleView *)pageTitleView selectedIndex:(NSInteger)selectedIndex {
-    [self.pageContentCollectionView setPageContentCollectionViewCurrentIndex:selectedIndex];
+#pragma mark - SGPagingTitleViewDelegate
+- (void)pagingTitleViewWithTitleView:(SGPagingTitleView *)titleView index:(NSInteger)index {
+    [self.pageContentCollectionView setPagingContentViewWithIndex:index];
     
-    NYSHomeCourseVC *hVC = self.childVCs[selectedIndex];
+    NYSHomeCourseVC *hVC = self.childVCs[index];
     [self tableviewHeight:hVC.tableViewHeight];
 }
 
-- (void)pageContentCollectionView:(SGPageContentCollectionView *)pageContentCollectionView progress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
-    [self.pageTitleView setPageTitleViewWithProgress:progress originalIndex:originalIndex targetIndex:targetIndex];
+#pragma mark - SGPagingContentViewDelegate
+- (void)pagingContentViewWithContentView:(SGPagingContentView *)contentView progress:(CGFloat)progress currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex {
+    [self.pageTitleView setPagingTitleViewWithProgress:progress currentIndex:currentIndex targetIndex:targetIndex];
     
     if (progress == 1) {
         NYSHomeCourseVC *hVC = self.childVCs[targetIndex];
@@ -471,25 +473,25 @@ NYSHomeCourseVCDelegate
 - (WMZBannerParam *)bannerParam {
     if (!_bannerParam) {
         _bannerParam = BannerParam()
-        .wMyCellClassNameSet(@"NYSBannerCell")
-        .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView, NSArray *dataArr) {
-            NYSBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSBannerCell class]) forIndexPath:indexPath];
-            cell.bannerModel = model;
-            return cell;
-        })
-        .wEventClickSet(^(id anyID, NSInteger index) {
-            
-        })
-        .wFrameSet(CGRectMake(0, 0, NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
-        .wItemSizeSet(CGSizeMake(NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
-        .wScaleFactorSet(0.15f)
-        .wScaleSet(NO)
-        .wLineSpacingSet(NNormalSpace)
-        .wRepeatSet(YES)
-        .wAutoScrollSet(YES)
-        .wAutoScrollSecondSet(5.0f)
-        .wHideBannerControlSet(YES)
-        .wDataSet(self.bannerArray);
+            .wMyCellClassNameSet(@"NYSBannerCell")
+            .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView, NSArray *dataArr) {
+                NYSBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSBannerCell class]) forIndexPath:indexPath];
+                cell.bannerModel = model;
+                return cell;
+            })
+            .wEventClickSet(^(id anyID, NSInteger index) {
+                
+            })
+            .wFrameSet(CGRectMake(0, 0, NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
+            .wItemSizeSet(CGSizeMake(NScreenWidth - 2 * NNormalSpace, HomeBannerHeight))
+            .wScaleFactorSet(0.15f)
+            .wScaleSet(NO)
+            .wLineSpacingSet(NNormalSpace)
+            .wRepeatSet(YES)
+            .wAutoScrollSet(YES)
+            .wAutoScrollSecondSet(5.0f)
+            .wHideBannerControlSet(YES)
+            .wDataSet(self.bannerArray);
     }
     return _bannerParam;
 }
@@ -497,32 +499,32 @@ NYSHomeCourseVCDelegate
 - (WMZBannerParam *)recommendedParam {
     if (!_recommendedParam) {
         _recommendedParam = BannerParam()
-        .wMyCellClassNameSet(@"NYSRecommendedCell")
-        .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView ,NSArray*dataArr) {
-            NYSRecommendedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSRecommendedCell class]) forIndexPath:indexPath];
-            cell.model = self.recommendedArray[indexPath.row];
-            return cell;
-        })
-        .wEventClickSet(^(id anyID, NSInteger index) {
-            NYSHomeCourseModel *model = self.recommendedArray[index];
-            
-            if ([model.is_activation isEqual:@"0"] || [model.is_course isEqual:@"0"]) {
-                NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
-                vc.model = model;
-                [self.navigationController pushViewController:vc animated:YES];
+            .wMyCellClassNameSet(@"NYSRecommendedCell")
+            .wMyCellSet(^UICollectionViewCell *(NSIndexPath *indexPath, UICollectionView *collectionView, id model, UIImageView *bgImageView ,NSArray*dataArr) {
+                NYSRecommendedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([NYSRecommendedCell class]) forIndexPath:indexPath];
+                cell.model = self.recommendedArray[indexPath.row];
+                return cell;
+            })
+            .wEventClickSet(^(id anyID, NSInteger index) {
+                NYSHomeCourseModel *model = self.recommendedArray[index];
                 
-            } else {
-                NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
-                vc.model = model;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-        })
-        .wFrameSet(CGRectMake(0, 0, NScreenWidth, HomeRecommendedHeight))
-        .wItemSizeSet(CGSizeMake(kScreenWidth * 0.85, HomeRecommendedHeight))
-        .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, NNormalSpace))
-        .wLineSpacingSet(20)
-        .wHideBannerControlSet(YES)
-        .wDataSet(self.recommendedArray);
+                if ([model.is_activation isEqual:@"0"] || [model.is_course isEqual:@"0"]) {
+                    NYSPurchasedCourseDetailVC *vc = NYSPurchasedCourseDetailVC.new;
+                    vc.model = model;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                } else {
+                    NYSCourseDetailVC *vc = NYSCourseDetailVC.new;
+                    vc.model = model;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+            })
+            .wFrameSet(CGRectMake(0, 0, NScreenWidth, HomeRecommendedHeight))
+            .wItemSizeSet(CGSizeMake(kScreenWidth * 0.85, HomeRecommendedHeight))
+            .wSectionInsetSet(UIEdgeInsetsMake(0, NNormalSpace, 0, NNormalSpace))
+            .wLineSpacingSet(20)
+            .wHideBannerControlSet(YES)
+            .wDataSet(self.recommendedArray);
     }
     return _recommendedParam;
 }

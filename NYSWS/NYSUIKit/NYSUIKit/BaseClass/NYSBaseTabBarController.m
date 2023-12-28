@@ -9,6 +9,7 @@
 #import "NYSBaseTabBarController.h"
 #import "NYSBaseNavigationController.h"
 #import "LEETheme.h"
+#import "PublicHeader.h"
 
 @interface NYSBaseTabBarController () <UITabBarControllerDelegate>
 
@@ -28,29 +29,27 @@
 }
 
 - (void)configTheme {
-    
-    if ([[UIDevice currentDevice] systemVersion].floatValue < 13.0) {
-        // push\pop导航栏右上角阴影
+    if (@available(iOS 13.0, *)) {
+        self.tabBar.lee_theme.LeeConfigTintColor(@"app_theme_color");
+    } else {
         self.view.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_1");
-        
         self.tabBar.lee_theme
             .LeeConfigBarTintColor(@"common_bg_color_2")
-            .LeeConfigTintColor(@"app_theme_color");
-    } else {
-        self.tabBar.lee_theme
             .LeeConfigTintColor(@"app_theme_color");
     }
 }
 
 - (void)addChildViewController:(UIViewController *)childController {
     [super addChildViewController:childController];
-    
-    UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
-    appearance.backgroundColor = [UIColor whiteColor]; // 背景色
-    appearance.shadowImage = [self imageWithColor:UIColor.clearColor size:CGSizeMake(1, 1)];
-    childController.tabBarItem.standardAppearance = appearance;
-    if (@available(iOS 15.0, *)) {
-        childController.tabBarItem.scrollEdgeAppearance = appearance;
+
+    if (self.isResetTabBarItemStyle) {
+        UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
+        appearance.backgroundColor = [UIColor whiteColor];
+        appearance.shadowImage = [self imageWithColor:UIColor.clearColor size:CGSizeMake(1, 1)];
+        childController.tabBarItem.standardAppearance = appearance;
+        if (@available(iOS 15.0, *)) {
+            childController.tabBarItem.scrollEdgeAppearance = appearance;
+        }
     }
 }
 
@@ -72,7 +71,7 @@
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (self.isUserGradualAnimation) {
+    if (self.isOpenGradualAnimation) {
         CATransition *animation = [CATransition animation];
         [animation setDuration:0.75f];
         [animation setType:@"rippleEffect"];

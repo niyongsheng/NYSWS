@@ -1,10 +1,11 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#pragma mark -- 三方框架 --
+//
+// Swift 项目默认是不支持 .pch 预编译头文件的，因为 Swift 模块系统的设计就是为了避免这种全局引入的方式。但是，如果你的 Swift 项目中有 Objective-C 代码，并且你想在这些 Objective-C 代码中使用 .pch 文件
+//
 
-
-#pragma mark -- 模型 --
+#import <UIKit/UIKit.h>
 
 
 #endif /* PrefixHeader_pch */

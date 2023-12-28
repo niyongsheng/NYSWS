@@ -1,8 +1,7 @@
-
-/*!
+/*
  *  @header LEETheme.h
  *
- *  ┌─┐      ┌───────┐ ┌───────┐ 帅™
+ *  ┌─┐      ┌───────┐ ┌───────┐
  *  │ │      │ ┌─────┘ │ ┌─────┘
  *  │ │      │ └─────┐ │ └─────┐
  *  │ │      │ ┌─────┘ │ ┌─────┘
@@ -12,11 +11,12 @@
  *  @brief  LEE主题管理
  *
  *  @author LEE
- *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
- *  @version    V1.1.10
+ *  @copyright    Copyright © 2016 - 2020年 lee. All rights reserved.
+ *  @version    V1.1.11
  */
 
 #import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
 
 #import "LEEThemeHelper.h"

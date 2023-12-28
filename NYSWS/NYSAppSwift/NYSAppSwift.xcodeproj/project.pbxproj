@@ -8,17 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		0DEE117A21D7E3356FCE4E82 /* libPods-NYSAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */; };
+		C83C18692B33E438002FD985 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18652B33E438002FD985 /* bill.json */; };
+		C83C186A2B33E438002FD985 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18662B33E438002FD985 /* service.json */; };
+		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
+		C83C186C2B33E438002FD985 /* myself.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18682B33E438002FD985 /* myself.json */; };
 		C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8597A8129F5119E008BEE7F /* AppDelegate.swift */; };
 		C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8597A8529F5119E008BEE7F /* ViewController.swift */; };
 		C8597A8929F5119E008BEE7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8729F5119E008BEE7F /* Main.storyboard */; };
 		C8597A8B29F511A0008BEE7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8A29F511A0008BEE7F /* Assets.xcassets */; };
 		C8597A8E29F511A0008BEE7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8C29F511A0008BEE7F /* LaunchScreen.storyboard */; };
-		C8597AA029F5191A008BEE7F /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; };
+		C8621DE82B316F5A00F90DF0 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C8621DE72B316F5A00F90DF0 /* LaunchImage.png */; };
+		C8621DEE2B31845300F90DF0 /* NYSTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */; };
+		C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; };
+		C8621DF02B31B23100F90DF0 /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */; };
+		C88BC8AC2B3CF90900676632 /* NYSScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88BC8AA2B3CF90900676632 /* NYSScrollViewController.xib */; };
+		C8BC5E952B3A84B100814C2B /* NYSHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5E942B3A84B100814C2B /* NYSHomeViewController.swift */; };
+		C8BC5E982B3A852200814C2B /* NYSMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5E962B3A852200814C2B /* NYSMineViewController.swift */; };
+		C8BC5E992B3A852200814C2B /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8BC5E972B3A852200814C2B /* NYSMineViewController.xib */; };
+		C8BC5E9C2B3A9E9400814C2B /* NYSSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5E9B2B3A9E9400814C2B /* NYSSearchView.swift */; };
+		C8BC5EA02B3AA41200814C2B /* NYSAdaptScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5E9F2B3AA41200814C2B /* NYSAdaptScreen.swift */; };
+		C8BC5EA22B3AA6C400814C2B /* UIDevice+Expension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5EA12B3AA6C400814C2B /* UIDevice+Expension.swift */; };
+		C8BC5EA42B3AAEA500814C2B /* UIView+Expension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5EA32B3AAEA500814C2B /* UIView+Expension.swift */; };
+		C8BC5EA62B3AB14400814C2B /* APPConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5EA52B3AB14400814C2B /* APPConfig.swift */; };
+		C8BC5EAD2B3AC1FD00814C2B /* themejson_night.json in Resources */ = {isa = PBXBuildFile; fileRef = C8BC5EAB2B3AC1FC00814C2B /* themejson_night.json */; };
+		C8BC5EAE2B3AC1FD00814C2B /* themejson_day.json in Resources */ = {isa = PBXBuildFile; fileRef = C8BC5EAC2B3AC1FC00814C2B /* themejson_day.json */; };
+		C8D3E21C2B3BB1E700B77DEA /* NYSHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D3E21B2B3BB1E700B77DEA /* NYSHomeListViewController.swift */; };
+		C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D3E21E2B3BC6F800B77DEA /* NYSRootWindow.swift */; };
+		C8D3E2212B3BEAAF00B77DEA /* NYSMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */; };
+		C8D3E2232B3BEB6700B77DEA /* NYSServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D3E2222B3BEB6700B77DEA /* NYSServiceViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8621DF12B31B23100F90DF0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8621DF02B31B23100F90DF0 /* NYSUIKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.release.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C83C18652B33E438002FD985 /* bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bill.json; sourceTree = "<group>"; };
+		C83C18662B33E438002FD985 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
+		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
+		C83C18682B33E438002FD985 /* myself.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = myself.json; sourceTree = "<group>"; };
 		C8597A7E29F5119E008BEE7F /* NYSAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYSAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A8129F5119E008BEE7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8597A8529F5119E008BEE7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +69,25 @@
 		C8597A8F29F511A0008BEE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597AC929F522D9008BEE7F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C8621DE72B316F5A00F90DF0 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		C8621DEC2B3182EE00F90DF0 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSTabBarViewController.swift; sourceTree = "<group>"; };
+		C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSScrollViewController.swift; sourceTree = "<group>"; };
+		C88BC8AA2B3CF90900676632 /* NYSScrollViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSScrollViewController.xib; sourceTree = "<group>"; };
+		C8BC5E942B3A84B100814C2B /* NYSHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeViewController.swift; sourceTree = "<group>"; };
+		C8BC5E962B3A852200814C2B /* NYSMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSMineViewController.swift; sourceTree = "<group>"; };
+		C8BC5E972B3A852200814C2B /* NYSMineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSMineViewController.xib; sourceTree = "<group>"; };
+		C8BC5E9B2B3A9E9400814C2B /* NYSSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSSearchView.swift; sourceTree = "<group>"; };
+		C8BC5E9F2B3AA41200814C2B /* NYSAdaptScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSAdaptScreen.swift; sourceTree = "<group>"; };
+		C8BC5EA12B3AA6C400814C2B /* UIDevice+Expension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Expension.swift"; sourceTree = "<group>"; };
+		C8BC5EA32B3AAEA500814C2B /* UIView+Expension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Expension.swift"; sourceTree = "<group>"; };
+		C8BC5EA52B3AB14400814C2B /* APPConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPConfig.swift; sourceTree = "<group>"; };
+		C8BC5EAB2B3AC1FC00814C2B /* themejson_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_night.json; sourceTree = "<group>"; };
+		C8BC5EAC2B3AC1FC00814C2B /* themejson_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_day.json; sourceTree = "<group>"; };
+		C8D3E21B2B3BB1E700B77DEA /* NYSHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeListViewController.swift; sourceTree = "<group>"; };
+		C8D3E21E2B3BC6F800B77DEA /* NYSRootWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootWindow.swift; sourceTree = "<group>"; };
+		C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSMissionViewController.swift; sourceTree = "<group>"; };
+		C8D3E2222B3BEB6700B77DEA /* NYSServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSServiceViewController.swift; sourceTree = "<group>"; };
 		F86D932ED806A9BFD9FF6C44 /* Pods-NYSAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.debug.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -36,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8597AA029F5191A008BEE7F /* NYSUIKit.framework in Frameworks */,
+				C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */,
 				0DEE117A21D7E3356FCE4E82 /* libPods-NYSAppSwift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +112,17 @@
 			);
 			name = Pods;
 			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		C83C18642B33E438002FD985 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C83C18652B33E438002FD985 /* bill.json */,
+				C83C18662B33E438002FD985 /* service.json */,
+				C83C18672B33E438002FD985 /* goods.json */,
+				C83C18682B33E438002FD985 /* myself.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		C8597A7529F5119E008BEE7F = {
@@ -75,29 +146,29 @@
 		C8597A8029F5119E008BEE7F /* NYSAppSwift */ = {
 			isa = PBXGroup;
 			children = (
-				C8597A8F29F511A0008BEE7F /* Info.plist */,
-				C8597A9729F51250008BEE7F /* Modules */,
+				C8D3E21D2B3BC6CA00B77DEA /* RootClass */,
+				C8BC5E9E2B3AA3A400814C2B /* Utils */,
+				C8621DE92B31744D00F90DF0 /* Modules */,
 				C8597A9829F51257008BEE7F /* Supporting Files */,
 			);
 			path = NYSAppSwift;
 			sourceTree = "<group>";
 		};
-		C8597A9729F51250008BEE7F /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
 		C8597A9829F51257008BEE7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C83C18642B33E438002FD985 /* Resources */,
+				C8BC5EAC2B3AC1FC00814C2B /* themejson_day.json */,
+				C8BC5EAB2B3AC1FC00814C2B /* themejson_night.json */,
 				C8597AC929F522D9008BEE7F /* PrefixHeader.pch */,
+				C8621DEC2B3182EE00F90DF0 /* Bridging-Header.h */,
 				C8597A8129F5119E008BEE7F /* AppDelegate.swift */,
 				C8597A8529F5119E008BEE7F /* ViewController.swift */,
 				C8597A8729F5119E008BEE7F /* Main.storyboard */,
-				C8597A8A29F511A0008BEE7F /* Assets.xcassets */,
 				C8597A8C29F511A0008BEE7F /* LaunchScreen.storyboard */,
+				C8597A8F29F511A0008BEE7F /* Info.plist */,
+				C8597A8A29F511A0008BEE7F /* Assets.xcassets */,
+				C8621DE72B316F5A00F90DF0 /* LaunchImage.png */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -109,6 +180,98 @@
 				5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8621DE92B31744D00F90DF0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C8BC5E912B3A839B00814C2B /* Mine */,
+				C8BC5E902B3A82E700814C2B /* Service */,
+				C8BC5E8F2B3A82DC00814C2B /* Mission */,
+				C8621DEB2B3175CC00F90DF0 /* TarBar */,
+				C8621DEA2B31745A00F90DF0 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C8621DEA2B31745A00F90DF0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C8BC5E9A2B3A9CD900814C2B /* V */,
+				C8BC5E942B3A84B100814C2B /* NYSHomeViewController.swift */,
+				C8D3E21B2B3BB1E700B77DEA /* NYSHomeListViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C8621DEB2B3175CC00F90DF0 /* TarBar */ = {
+			isa = PBXGroup;
+			children = (
+				C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */,
+			);
+			path = TarBar;
+			sourceTree = "<group>";
+		};
+		C88BC8A82B3CF8E200676632 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */,
+				C88BC8AA2B3CF90900676632 /* NYSScrollViewController.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		C8BC5E8F2B3A82DC00814C2B /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */,
+			);
+			path = Mission;
+			sourceTree = "<group>";
+		};
+		C8BC5E902B3A82E700814C2B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C8D3E2222B3BEB6700B77DEA /* NYSServiceViewController.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C8BC5E912B3A839B00814C2B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				C8BC5E962B3A852200814C2B /* NYSMineViewController.swift */,
+				C8BC5E972B3A852200814C2B /* NYSMineViewController.xib */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		C8BC5E9A2B3A9CD900814C2B /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C8BC5E9B2B3A9E9400814C2B /* NYSSearchView.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		C8BC5E9E2B3AA3A400814C2B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C8BC5E9F2B3AA41200814C2B /* NYSAdaptScreen.swift */,
+				C8BC5EA12B3AA6C400814C2B /* UIDevice+Expension.swift */,
+				C8BC5EA32B3AAEA500814C2B /* UIView+Expension.swift */,
+				C8BC5EA52B3AB14400814C2B /* APPConfig.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C8D3E21D2B3BC6CA00B77DEA /* RootClass */ = {
+			isa = PBXGroup;
+			children = (
+				C88BC8A82B3CF8E200676632 /* xib */,
+				C8D3E21E2B3BC6F800B77DEA /* NYSRootWindow.swift */,
+			);
+			path = RootClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +286,7 @@
 				C8597A7B29F5119E008BEE7F /* Frameworks */,
 				C8597A7C29F5119E008BEE7F /* Resources */,
 				AC772B460248A30C2480CD89 /* [CP] Copy Pods Resources */,
+				C8621DF12B31B23100F90DF0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,6 +304,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = NYS;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
@@ -171,9 +336,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C88BC8AC2B3CF90900676632 /* NYSScrollViewController.xib in Resources */,
+				C8621DE82B316F5A00F90DF0 /* LaunchImage.png in Resources */,
 				C8597A8E29F511A0008BEE7F /* LaunchScreen.storyboard in Resources */,
+				C8BC5EAE2B3AC1FD00814C2B /* themejson_day.json in Resources */,
 				C8597A8B29F511A0008BEE7F /* Assets.xcassets in Resources */,
+				C83C186C2B33E438002FD985 /* myself.json in Resources */,
+				C83C186B2B33E438002FD985 /* goods.json in Resources */,
+				C8BC5E992B3A852200814C2B /* NYSMineViewController.xib in Resources */,
+				C8BC5EAD2B3AC1FD00814C2B /* themejson_night.json in Resources */,
 				C8597A8929F5119E008BEE7F /* Main.storyboard in Resources */,
+				C83C18692B33E438002FD985 /* bill.json in Resources */,
+				C83C186A2B33E438002FD985 /* service.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +400,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8BC5E952B3A84B100814C2B /* NYSHomeViewController.swift in Sources */,
+				C8D3E21C2B3BB1E700B77DEA /* NYSHomeListViewController.swift in Sources */,
+				C8D3E2212B3BEAAF00B77DEA /* NYSMissionViewController.swift in Sources */,
+				C8BC5EA42B3AAEA500814C2B /* UIView+Expension.swift in Sources */,
 				C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */,
+				C8D3E2232B3BEB6700B77DEA /* NYSServiceViewController.swift in Sources */,
+				C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */,
+				C8BC5EA02B3AA41200814C2B /* NYSAdaptScreen.swift in Sources */,
+				C8BC5E982B3A852200814C2B /* NYSMineViewController.swift in Sources */,
+				C8BC5EA62B3AB14400814C2B /* APPConfig.swift in Sources */,
+				C8621DEE2B31845300F90DF0 /* NYSTabBarViewController.swift in Sources */,
+				C8BC5EA22B3AA6C400814C2B /* UIDevice+Expension.swift in Sources */,
 				C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */,
+				C8BC5E9C2B3A9E9400814C2B /* NYSSearchView.swift in Sources */,
+				C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -357,7 +544,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -375,16 +562,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = F9J739W8Y4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppSwift/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NYSAppSwift/Info.plist;
+				INFOPLIST_FILE = "NYSAppSwift/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -394,6 +581,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NYSAppSwift/Supporting Files/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -407,16 +595,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = F9J739W8Y4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppSwift/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NYSAppSwift/Info.plist;
+				INFOPLIST_FILE = "NYSAppSwift/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -426,6 +614,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSAppSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NYSAppSwift/Supporting Files/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
