@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DEE117A21D7E3356FCE4E82 /* libPods-NYSAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */; };
+		56ECABF0A775F8FC7A6144C8 /* libPods-NYSAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F52BF276C3DBC21909EF4A3 /* libPods-NYSAppSwift.a */; };
 		C83C18692B33E438002FD985 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18652B33E438002FD985 /* bill.json */; };
 		C83C186A2B33E438002FD985 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18662B33E438002FD985 /* service.json */; };
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
@@ -55,7 +55,7 @@
 
 /* Begin PBXFileReference section */
 		4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.release.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.release.xcconfig"; sourceTree = "<group>"; };
-		5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F52BF276C3DBC21909EF4A3 /* libPods-NYSAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83C18652B33E438002FD985 /* bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bill.json; sourceTree = "<group>"; };
 		C83C18662B33E438002FD985 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */,
-				0DEE117A21D7E3356FCE4E82 /* libPods-NYSAppSwift.a in Frameworks */,
+				56ECABF0A775F8FC7A6144C8 /* libPods-NYSAppSwift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */,
-				5EC145E8EDE73E4B8AF9FEA3 /* libPods-NYSAppSwift.a */,
+				8F52BF276C3DBC21909EF4A3 /* libPods-NYSAppSwift.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -577,8 +577,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSAppSwift;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nys.appSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NYSAppSwift/Supporting Files/Bridging-Header.h";
@@ -610,8 +610,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ws.NYSAppSwift;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nys.appSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/NYSAppSwift/Supporting Files/Bridging-Header.h";

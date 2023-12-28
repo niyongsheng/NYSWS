@@ -18,7 +18,7 @@ NetworkNotReachable="⚠️ 网络不可用";
 NetworkWWAN="📶 移动蜂窝网络";
 NetworkWiFi="🌐 WiFi网络";
 
-CFBundleDisplayName="NYSWS";
+CFBundleDisplayName="NYSAppObjC";
 Home="首页";
 Course="课程";
 Mine="我的";

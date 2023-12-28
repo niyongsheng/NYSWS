@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1510"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C8597A1829F51052008BEE7F"
-               BuildableName = "NYSWS.app"
+               BuildableName = "NYSAppObjC.app"
                BlueprintName = "NYSAppObjC"
                ReferencedContainer = "container:NYSAppObjC.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "zh-Hans"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8597A1829F51052008BEE7F"
-            BuildableName = "NYSWS.app"
+            BuildableName = "NYSAppObjC.app"
             BlueprintName = "NYSAppObjC"
             ReferencedContainer = "container:NYSAppObjC.xcodeproj">
          </BuildableReference>
@@ -62,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8597A1829F51052008BEE7F"
-            BuildableName = "NYSWS.app"
+            BuildableName = "NYSAppObjC.app"
             BlueprintName = "NYSAppObjC"
             ReferencedContainer = "container:NYSAppObjC.xcodeproj">
          </BuildableReference>
