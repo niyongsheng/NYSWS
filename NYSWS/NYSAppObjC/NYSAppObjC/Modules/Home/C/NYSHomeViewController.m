@@ -364,11 +364,11 @@ NYSHomeCourseVCDelegate
     segmentConfigure.showBottomSeparator = NO;
     segmentConfigure.indicatorHeight = 4;
     segmentConfigure.indicatorCornerRadius = 2;
-    segmentConfigure.indicatorToBottomDistance = 10;
     segmentConfigure.indicatorScrollStyle = IndicatorScrollStyleDefault;
     segmentConfigure.font = [UIFont boldSystemFontOfSize:15.0];
     segmentConfigure.textZoom = YES;
-    segmentConfigure.textZoomRatio = .6f;
+    segmentConfigure.textZoomRatio = .4f;
+    segmentConfigure.indicatorToBottomDistance = 4;
     
     self.pageTitleView = [[SGPagingTitleView alloc] initWithFrame:CGRectMake(NNormalSpace, h, kScreenWidth * 0.75, 44) titles:titleArr configure:segmentConfigure];
     _pageTitleView.delegate = self;

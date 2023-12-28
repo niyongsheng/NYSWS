@@ -131,8 +131,8 @@ DZNEmptyDataSetDelegate
             _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, CGFLOAT_MIN)];
         }
         if (@available(iOS 11.0, *)) {
-            // 导航栏或者工具栏覆盖在 UIScrollView上的内容不自动向下或向上移动以避开导航栏或工具栏
-            //            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            // 覆盖在UIScrollView上的内容不自动向下或向上移动以避开导航栏或工具栏(*建议在业务代码中自行控制)
+//            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         if (@available(iOS 15.0, *)) {
             _tableView.sectionHeaderTopPadding = 0;
@@ -493,12 +493,6 @@ DZNEmptyDataSetDelegate
 - (void)addNavigationItemWithImageNames:(NSArray *)imageNames isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray<NSString *> *)tags {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
-    // 调整按钮位置
-    UIBarButtonItem* spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    // 将宽度设为负值
-    spaceItem.width= -5;
-    [items addObject:spaceItem];
-    
     NSInteger i = 0;
     for (NSString *imageName in imageNames) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -543,11 +537,6 @@ DZNEmptyDataSetDelegate
 - (NSMutableArray<UIBarButtonItem *> *)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray<NSString *> *)tags {
     
     NSMutableArray * items = [[NSMutableArray alloc] init];
-    
-    // 调整按钮位置
-    UIBarButtonItem* spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    spaceItem.width= -5;
-    [items addObject:spaceItem];
     
     NSMutableArray * buttonArray = [NSMutableArray array];
     NSInteger i = 0;
@@ -628,7 +617,7 @@ DZNEmptyDataSetDelegate
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self removeObserver:self forKeyPath:@"dataSource"];
+//    [self removeObserver:self forKeyPath:@"dataSource"];
 }
 
 @end

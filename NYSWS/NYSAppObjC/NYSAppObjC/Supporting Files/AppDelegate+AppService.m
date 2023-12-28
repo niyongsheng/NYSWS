@@ -60,7 +60,7 @@
 
 #pragma mark —- 初始化window --
 - (void)initWindow {
-    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window = [[NYSBaseWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     if ([NAppManager isLogined]) {
         self.window.rootViewController = [[NYSTabbarViewController alloc] init];
     } else {

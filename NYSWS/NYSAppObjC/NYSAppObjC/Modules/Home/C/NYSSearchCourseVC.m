@@ -49,6 +49,10 @@ static NSString *CellID = @"NYSCourseCell";
     
     _tableviewStyle = UITableViewStylePlain;
     [self.view addSubview:self.tableView];
+    if (@available(iOS 11.0, *)) {
+        // 不自动向下或向上移动以避开导航栏或工具栏
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     //    self.tableView.refreshControl = nil;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f0f0f0"];
@@ -59,9 +63,9 @@ static NSString *CellID = @"NYSCourseCell";
     [self.tableView registerNib:[UINib nibWithNibName:CellID bundle:nil] forCellReuseIdentifier:CellID];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).offset(0);
+        make.top.mas_equalTo(self.view.mas_top).offset(NTopHeight);
         make.left.mas_equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight));
+        make.size.mas_equalTo(CGSizeMake(NScreenWidth, NScreenHeight - NTopHeight - NTabBarHeight));
     }];
     
     

@@ -29,18 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-      
-    if (@available(iOS 13.0, *)) {
-        self.tabBar.unselectedItemTintColor = NormalColor;
-        self.tabBar.tintColor = NAppThemeColor;
-        
-    } else {
-        [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : NormalColor} forState:UIControlStateSelected];
-        [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : NAppThemeColor} forState:UIControlStateSelected];
-    }
     
     // 点击动画
     self.tabBarInteractionEffectStyle = NYSBaseTabBar_InteractionEffectStyleSpring;
+    self.isResetTabBarItemStyle = YES;
     
     NYSHomeViewController *homeVC = [NYSHomeViewController new];
     homeVC.tabBarItem.title = NSLocalizedStringFromTable(@"Home", @"InfoPlist", nil);

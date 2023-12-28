@@ -78,11 +78,11 @@ SGPagingContentViewDelegate
     segmentConfigure.showBottomSeparator = NO;
     segmentConfigure.indicatorHeight = 4;
     segmentConfigure.indicatorCornerRadius = 2;
-    segmentConfigure.indicatorToBottomDistance = 10;
     segmentConfigure.indicatorScrollStyle = IndicatorScrollStyleDefault;
     segmentConfigure.font = [UIFont boldSystemFontOfSize:15.0];
     segmentConfigure.textZoom = YES;
-    segmentConfigure.textZoomRatio = .6f;
+    segmentConfigure.textZoomRatio = .4f;
+    segmentConfigure.indicatorToBottomDistance = 4;
     
     // 2.分页栏view
     self.pageTitleView = [[SGPagingTitleView alloc] initWithFrame:CGRectMake(0, 0, NScreenWidth * 0.75, 44) titles:titleArr configure:segmentConfigure];

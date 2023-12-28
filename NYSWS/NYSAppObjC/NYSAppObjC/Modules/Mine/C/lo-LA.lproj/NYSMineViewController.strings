@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Item0"; ObjectID = "1KA-xu-USt"; */
-"1KA-xu-USt.text" = "Item0";
+"1KA-xu-USt.text" = "Custom";
 
 /* Class = "UILabel"; text = "推荐"; ObjectID = "24A-By-fYC"; */
 "24A-By-fYC.text" = "ອື່ນໆ";
@@ -42,7 +42,7 @@
 "nUy-cR-c1q.text" = "ບົດຮຽນຂອງຂ້ອຍ";
 
 /* Class = "UILabel"; text = "Item1"; ObjectID = "oqZ-Z9-bKR"; */
-"oqZ-Z9-bKR.text" = "Item1";
+"oqZ-Z9-bKR.text" = "Custom";
 
 /* Class = "UILabel"; text = "消息中心"; ObjectID = "tUm-gj-YM6"; */
 "tUm-gj-YM6.text" = "ສູນບໍລິການຂໍ້ມູນ";

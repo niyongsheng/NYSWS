@@ -2011,7 +2011,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = F9J739W8Y4;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppObjC/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2063,6 +2063,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = F9J739W8Y4;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NYSAppObjC/Supporting Files/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;

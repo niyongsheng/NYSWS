@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 键盘高度控件
         IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 20.0
         
 
