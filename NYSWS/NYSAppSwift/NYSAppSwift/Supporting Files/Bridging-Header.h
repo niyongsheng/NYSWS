@@ -9,4 +9,3 @@
 #import <YYKit/YYKit.h>
 #import <Lottie/Lottie.h>
 #import <BRPickerView/BRPickerView.h>
-#import <WRNavigationBar/WRNavigationBar.h>

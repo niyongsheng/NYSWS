@@ -22,8 +22,8 @@
 #define NCrossLineColor             [[UIColor lightGrayColor] colorWithAlphaComponent:0.4f]
 
 #pragma mark -- 占位图 --
-#define NPImage                     [UIImage imageNamed:@"plaholder_image"]
-#define NPImageFillet               [UIImage imageNamed:@"plaholder_image_fillet"]
+#define NPImage                     [UIImage imageNamed:@"placeholder_image"]
+#define NPImageFillet               [UIImage imageNamed:@"placeholder_image_fillet"]
 
 #pragma mark -- 字体区 --
 #define NFontSize12                 [UIFont systemFontOfSize:12.0f]

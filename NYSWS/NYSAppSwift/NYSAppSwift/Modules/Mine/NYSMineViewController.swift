@@ -24,6 +24,7 @@ class NYSMineViewController: NYSBaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var oneSV: UIStackView!
     @IBOutlet weak var twoSV: UIStackView!
     @IBOutlet weak var threeSV: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,9 +40,9 @@ class NYSMineViewController: NYSBaseViewController, UIScrollViewDelegate {
     override func configTheme() {
         self.scrollView.contentInsetAdjustmentBehavior = .never
         
-        self.wr_setNavBarBackgroundAlpha(0)
-        self.wr_setNavBarTintColor(UIColor.white)
-        self.wr_setNavBarBarTintColor(UIColor.white)
+        self.navBarBackgroundAlpha = 0
+        self.navBarTintColor = .clear
+        self.navBarTitleColor = .clear
         
         _ = self.contenView.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
             (item as! UIView).backgroundColor = UIColor.init(hexString: "#F0F0F0")
@@ -55,15 +56,33 @@ class NYSMineViewController: NYSBaseViewController, UIScrollViewDelegate {
         let offsetY = scrollView.contentOffset.y
         if offsetY > NAVBAR_COLORCHANGE_POINT {
             let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NTopHeight
-            self.wr_setNavBarBackgroundAlpha(alpha)
-            self.wr_setNavBarTintColor(UIColor.black.withAlphaComponent(alpha))
-            self.wr_setNavBarTitleColor(UIColor.black.withAlphaComponent(alpha))
-            self.wr_setStatusBarStyle(.default)
+            self.navBarBackgroundAlpha = alpha
+            self.navBarTintColor = UIColor.black.withAlphaComponent(alpha)
+            self.navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
+            self.statusBarStyle = .default
         } else {
-            self.wr_setNavBarBackgroundAlpha(0)
-            self.wr_setNavBarTintColor(UIColor.white)
-            self.wr_setNavBarTitleColor(UIColor.black)
-            self.wr_setStatusBarStyle(.lightContent)
+            self.navBarBackgroundAlpha = 0
+            self.navBarTintColor = .clear
+            self.navBarTitleColor = .clear
+            self.statusBarStyle = .lightContent
         }
     }
+    
+    @IBAction func itemOnclicked(_ sender: UIButton) {
+        if sender.tag == 0 {
+            let alertVC = UIAlertController.init(title: "退出登录", message: "确定要退出登录吗？", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+            let okAction = UIAlertAction.init(title: "确定", style: .destructive) { (action) in
+                let rootVC = NYSAccountViewController.init()
+                let navVC = NYSBaseNavigationController.init(rootViewController: rootVC)
+                UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = navVC
+            }
+            alertVC.addAction(cancelAction)
+            alertVC.addAction(okAction)
+            self.present(alertVC, animated: true, completion: nil)
+        } else {
+            
+        }
+    }
+    
 }
