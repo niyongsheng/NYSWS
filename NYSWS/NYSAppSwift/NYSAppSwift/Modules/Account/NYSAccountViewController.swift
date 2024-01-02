@@ -26,7 +26,7 @@ class NYSAccountViewController: NYSRootViewController {
     override func setupUI() {
         super.setupUI()
         
-        self.isHidenNaviBar = true
+        navBarBackgroundAlpha = 0
         self.scrollView.contentInsetAdjustmentBehavior = .never
         
         self.oneKeyBtn.addRadius(10)

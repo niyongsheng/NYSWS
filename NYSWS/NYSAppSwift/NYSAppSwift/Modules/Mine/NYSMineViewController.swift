@@ -70,10 +70,10 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NTopHeight
         if offsetY > NAVBAR_COLORCHANGE_POINT {
             self.navBarBackgroundAlpha = alpha
-            if (LEETheme.currentThemeTag().contains(DAY)) {
+            if LEETheme.currentThemeTag().contains(DAY) {
                 self.navBarTintColor = UIColor.black.withAlphaComponent(alpha)
                 self.navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
-            } else {
+            } else if LEETheme.currentThemeTag().contains(NIGHT) {
                 self.navBarTintColor = UIColor.white.withAlphaComponent(alpha)
                 self.navBarTitleColor = UIColor.white.withAlphaComponent(alpha)
             }

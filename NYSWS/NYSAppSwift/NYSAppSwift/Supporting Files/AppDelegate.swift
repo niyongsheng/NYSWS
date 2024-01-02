@@ -33,8 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 初始化窗口
         ThemeManager.shared().configTheme()
         window = NYSBaseWindow(frame: UIScreen.main.bounds)
-        let rootVC = NYSAccountViewController()
-        window?.rootViewController = NYSBaseNavigationController.init(rootViewController: rootVC)
+//        let rootVC = NYSAccountViewController()
+//        let rootNavVC = NYSBaseNavigationController.init(rootViewController: rootVC)
+        window?.rootViewController = NYSTabBarViewController()
         window?.makeKeyAndVisible()
         ThemeManager.shared().initBubble(window!)
 

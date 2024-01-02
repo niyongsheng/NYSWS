@@ -34,7 +34,7 @@
     } else {
         self.view.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
         self.tabBar.lee_theme
-            .LeeConfigBarTintColor(@"common_bg_color_2")
+            .LeeConfigBarTintColor(@"normal_corner_style_bg_color")
             .LeeConfigTintColor(@"app_theme_color");
     }
 }

@@ -20,13 +20,10 @@ class NYSRootScrollViewController: NYSRootViewController {
     }
     
     override func configTheme() {
+        super.configTheme()
+        
         // 主题适配
-        _ = self.scrollView?.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
-            (item as! UIView).backgroundColor = .red
-        })
-        _ = self.scrollView?.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
-            (item as! UIView).backgroundColor = .green
-        })
+        
     }
     
 
@@ -52,7 +49,7 @@ class NYSRootScrollViewController: NYSRootViewController {
     }
     
     deinit {
-        print("BaseSubProVC")
+        print("NYSRootScrollViewController")
     }
     
 }
