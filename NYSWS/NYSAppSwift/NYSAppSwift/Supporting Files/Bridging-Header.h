@@ -8,5 +8,6 @@
 
 #pragma mark -- 三方框架 --
 #import <Lottie/Lottie.h>
+#import <YYModel/YYModel.h>
 #import <SDWebImage/SDWebImage.h>
 #import <BRPickerView/BRPickerView.h>

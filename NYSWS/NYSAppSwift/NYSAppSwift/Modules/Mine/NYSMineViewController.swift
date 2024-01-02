@@ -48,7 +48,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     }
 
     override func configTheme() {
-//        super.configTheme()
+        super.configTheme()
         
         _ = self.lineV.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
             (item as! UIView).backgroundColor = UIColor.init(hexString: "#F0F0F0")
@@ -70,8 +70,13 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NTopHeight
         if offsetY > NAVBAR_COLORCHANGE_POINT {
             self.navBarBackgroundAlpha = alpha
-            self.navBarTintColor = UIColor.black.withAlphaComponent(alpha)
-            self.navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
+            if (LEETheme.currentThemeTag().contains(DAY)) {
+                self.navBarTintColor = UIColor.black.withAlphaComponent(alpha)
+                self.navBarTitleColor = UIColor.black.withAlphaComponent(alpha)
+            } else {
+                self.navBarTintColor = UIColor.white.withAlphaComponent(alpha)
+                self.navBarTitleColor = UIColor.white.withAlphaComponent(alpha)
+            }
         
         } else {
             self.navBarBackgroundAlpha = 0
