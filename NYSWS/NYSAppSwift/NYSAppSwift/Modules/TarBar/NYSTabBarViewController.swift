@@ -13,6 +13,7 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isOpenGradualAnimation = false
         
         self.delegate = self
         self.viewControllers = self.createTabBarViewControllers()

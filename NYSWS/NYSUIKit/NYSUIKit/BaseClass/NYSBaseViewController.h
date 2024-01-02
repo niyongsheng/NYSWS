@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Theme config, allow overridden */
 - (void)configTheme;
+- (void)setupUI;
 
 /** Default pop back, allow overridden */
 - (void)backBtnClicked;

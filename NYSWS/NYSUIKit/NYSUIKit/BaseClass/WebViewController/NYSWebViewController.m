@@ -226,7 +226,7 @@
 - (void)configTheme {
     [super configTheme];
     
-    self.webView.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_1");
+    self.webView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
     __weak typeof(self) weakSelf = self;
     self.webView.lee_theme
     .LeeAddCustomConfig(DAY, ^(id  _Nonnull item) {

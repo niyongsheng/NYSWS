@@ -1,8 +1,9 @@
 //
-//  UIDevice+Expension.swift
+//  UIDevice+Extension.swift
 //  NYSAppSwift
 //
-//  Created by niyongsheng on 2023/12/26.
+//  Created by Nico http://github.com/niyongsheng
+//  Copyright © 2023 NYS. ALL rights reserved.
 //
 
 import UIKit
@@ -10,12 +11,12 @@ import UIKit
 extension UIDevice {
     
     /// 是否iphoneX之后机型
-    public func nys_isIPhoneXMore() -> Bool {
-        var isMore = false
+    public func nys_isIphoneX() -> Bool {
+        var isAfterX = false
         if #available(iOS 11.0, *) {
-            isMore = UIApplication.shared.windows.first { $0.isKeyWindow }?.safeAreaInsets.bottom ?? 0.0 > 0.0
+            isAfterX = UIApplication.shared.windows.first { $0.isKeyWindow }?.safeAreaInsets.bottom ?? 0.0 > 0.0
         }
-        return isMore
+        return isAfterX
     }
     
     /// 顶部安全区高度

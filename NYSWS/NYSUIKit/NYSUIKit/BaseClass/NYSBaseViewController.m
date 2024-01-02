@@ -51,6 +51,9 @@ DZNEmptyDataSetDelegate
     // 默认错误信息
     [self addObserver:self forKeyPath:@"dataSource" options:NSKeyValueObservingOptionNew context:nil]; // KVO
     self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"error"];
+    
+    // UI
+    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,6 +81,11 @@ DZNEmptyDataSetDelegate
     }
 }
 
+#pragma mark - UI
+- (void)setupUI {
+    
+}
+
 #pragma mark - Theme
 - (void)configTheme {
     // 默认显示返回按钮
@@ -86,8 +94,8 @@ DZNEmptyDataSetDelegate
     // 默认显示状态栏样式
     self.customStatusBarStyle = UIStatusBarStyleDefault;
     
-    // 背景色
-    self.view.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_0");
+    // 控制器背景色
+    self.view.lee_theme.LeeConfigBackgroundColor(@"controller_view_bg_color");
     
     // 关闭拓展全屏布局，等效于automaticallyAdjustsScrollViewInsets = NO;
     //    self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -100,13 +108,13 @@ DZNEmptyDataSetDelegate
     
 #else
     // 导航栏适配
-    if (@available(iOS 13.0, *)) {
-        UINavigationBarAppearance *barApp = [UINavigationBarAppearance new];
-        barApp.shadowColor = [UIColor clearColor];
-        barApp.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5]; // 背景色
-        self.navigationController.navigationBar.scrollEdgeAppearance = barApp;
-        self.navigationController.navigationBar.standardAppearance = barApp;
-    }
+//    if (@available(iOS 13.0, *)) {
+//        UINavigationBarAppearance *barApp = [UINavigationBarAppearance new];
+//        barApp.shadowColor = [UIColor clearColor];
+//        barApp.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5]; // 背景色
+//        self.navigationController.navigationBar.scrollEdgeAppearance = barApp;
+//        self.navigationController.navigationBar.standardAppearance = barApp;
+//    }
 #endif
     
 }
@@ -138,9 +146,9 @@ DZNEmptyDataSetDelegate
             _tableView.sectionHeaderTopPadding = 0;
         }
 #ifdef NAppRoundStyle
-        _tableView.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_2");
+        _tableView.lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
 #else
-        _tableView.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_1");
+        _tableView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
 #endif
         
         _tableView.estimatedRowHeight = 0;
@@ -169,7 +177,7 @@ DZNEmptyDataSetDelegate
             footter.refreshingTitleHidden = YES;
             footter.loadingView.color = NAppThemeColor;
             footter.loadingView.transform = CGAffineTransformMakeScale(1.5, 1.5);
-            footter.stateLabel.lee_theme.LeeConfigTextColor(@"common_font_color_1");
+            footter.stateLabel.lee_theme.LeeConfigTextColor(@"footer_state_label_color");
             footter.stateLabel.font = [UIFont fontWithName:@"DOUYU Font" size:12.0f];
             [footter setTitle:@"" forState:MJRefreshStateIdle];
             [footter setTitle:endStr forState:MJRefreshStateNoMoreData];
@@ -202,7 +210,7 @@ DZNEmptyDataSetDelegate
             // footer refresh
             MJRefreshAutoGifFooter *footter = [MJRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
             footter.refreshingTitleHidden = YES;
-            footter.stateLabel.lee_theme.LeeConfigTextColor(@"common_font_color_1");
+            footter.stateLabel.lee_theme.LeeConfigTextColor(@"footer_state_label_color");
             footter.stateLabel.font = [UIFont fontWithName:@"DOUYU Font" size:12.0f];
             [footter setTitle:@"" forState:MJRefreshStateIdle];
             [footter setTitle:endStr forState:MJRefreshStateNoMoreData];
@@ -256,9 +264,9 @@ DZNEmptyDataSetDelegate
             _collectionView.contentInset = UIEdgeInsetsMake(NTopHeight, 0, 0, 0);
         }
 #ifdef NAppRoundStyle
-        _collectionView.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_2");
+        _collectionView.lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
 #else
-        _collectionView.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_1");
+        _collectionView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
 #endif
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -280,7 +288,7 @@ DZNEmptyDataSetDelegate
             footter.refreshingTitleHidden = YES;
             footter.loadingView.color = NAppThemeColor;
             footter.loadingView.transform = CGAffineTransformMakeScale(1.5, 1.5);
-            footter.stateLabel.lee_theme.LeeConfigTextColor(@"common_font_color_1");
+            footter.stateLabel.lee_theme.LeeConfigTextColor(@"footer_state_label_color");
             footter.stateLabel.font = [UIFont fontWithName:@"DOUYU Font" size:12.0f];
             [footter setTitle:@"" forState:MJRefreshStateIdle];
             [footter setTitle:endStr forState:MJRefreshStateNoMoreData];
@@ -312,7 +320,7 @@ DZNEmptyDataSetDelegate
             // footer refresh
             MJRefreshAutoGifFooter *footter = [MJRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
             footter.refreshingTitleHidden = YES;
-            footter.stateLabel.lee_theme.LeeConfigTextColor(@"common_font_color_1");
+            footter.stateLabel.lee_theme.LeeConfigTextColor(@"footer_state_label_color");
             footter.stateLabel.font = [UIFont fontWithName:@"DOUYU Font" size:12.0f];
             [footter setTitle:@"" forState:MJRefreshStateIdle];
             [footter setTitle:endStr forState:MJRefreshStateNoMoreData];
@@ -546,7 +554,6 @@ DZNEmptyDataSetDelegate
         [btn setTitle:title forState:UIControlStateNormal];
         [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
         btn.titleLabel.font = [UIFont systemFontOfSize:16.f];
-        btn.lee_theme.LeeConfigButtonTitleColor(@"common_nav_font_color_1", UIControlStateNormal);
         btn.tag = [tags[i++] integerValue];
         [btn sizeToFit];
         

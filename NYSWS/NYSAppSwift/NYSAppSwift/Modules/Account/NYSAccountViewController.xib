@@ -99,7 +99,7 @@
                                         <action selector="appleBtnOnclicked:" destination="-1" eventType="touchUpInside" id="0b0-vg-wyd"/>
                                     </connections>
                                 </button>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="阅读并同意《服务协议》《隐私政策》" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0xh-fw-Qph">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="阅读并同意《服务协议》《隐私政策》" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0xh-fw-Qph">
                                     <rect key="frame" x="90" y="639" width="253" height="70"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>

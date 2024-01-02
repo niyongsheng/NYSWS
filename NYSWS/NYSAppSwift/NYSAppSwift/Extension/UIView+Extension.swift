@@ -1,13 +1,68 @@
 //
-//  UIView+Expension.swift
+//  UIView+Extension.swift
 //  NYSAppSwift
 //
-//  Created by niyongsheng on 2023/12/26.
+//  Created by Nico http://github.com/niyongsheng
+//  Copyright © 2023 NYS. ALL rights reserved.
 //
 
 import UIKit
 
 extension UIView {
+    
+    var top: CGFloat {
+        get {
+            return frame.origin.y
+        }
+        set {
+            frame.origin.y = newValue
+        }
+    }
+    
+    var bottom: CGFloat {
+        get {
+            return frame.origin.y + frame.size.height
+        }
+        set {
+            frame.origin.y = newValue - frame.size.height
+        }
+    }
+    
+    var left: CGFloat {
+        get {
+            return frame.origin.x
+        }
+        set {
+            frame.origin.x = newValue
+        }
+    }
+    
+    var right: CGFloat {
+        get {
+            return frame.origin.x + frame.size.width
+        }
+        set {
+            frame.origin.x = newValue - frame.size.width
+        }
+    }
+    
+    var centerX: CGFloat {
+        get {
+            return center.x
+        }
+        set {
+            center.x = newValue
+        }
+    }
+    
+    var centerY: CGFloat {
+        get {
+            return center.y
+        }
+        set {
+            center.y = newValue
+        }
+    }
     
     /// 添加圆角
     /// - Parameter radius: 圆角半径

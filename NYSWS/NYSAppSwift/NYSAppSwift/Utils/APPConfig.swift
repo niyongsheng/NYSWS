@@ -2,7 +2,8 @@
 //  APPConfig.swift
 //  NYSAppSwift
 //
-//  Created by niyongsheng on 2023/12/26.
+//  Created by Nico http://github.com/niyongsheng
+//  Copyright © 2023 NYS. ALL rights reserved.
 //
 
 import Foundation

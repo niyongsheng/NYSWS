@@ -5,31 +5,32 @@ workspace './NYSWS.xcworkspace'
 source 'https://github.com/CocoaPods/Specs.git'
 #source 'https://gitee.com/mirrors/CocoaPods-Specs.git'
 
-# 项目公共依赖
+# 公共依赖库
 def commonPods
-  pod 'YYKit', '1.0.9'
+  pod 'FMDB', '2.7.5'
+  pod 'FFPopup', '1.1.5'
+  pod 'SGQRCode', '4.1.0'
   pod 'SGPagingView', '2.1.0'
+  pod 'BRPickerView', '2.8.0'
 end
 
 # Swift 示例项目
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   
   commonPods
-  pod 'FMDB', '2.7.5'
-  pod 'FlexLib', '3.1.6'
-  pod 'FFPopup', '1.1.5'
-  pod 'SnapKit', '5.6.0'
   pod 'Alamofire', '5.8.0'
   pod 'lottie-ios', '2.5.3'
-  pod 'XHLaunchAd', '3.9.12'
-  pod 'SGQRCode', '4.1.0'
+  pod 'SDWebImage', '5.18.3'
   pod 'ZCycleView', '1.0.4'
-  pod 'BRPickerView', '2.8.0'
   pod 'ZLPhotoBrowser', '4.4.0'
   pod 'IQKeyboardManagerSwift', '6.5.11'
   
+#  pod 'YYKit', '1.0.9'
   pod 'RxSwift', '6.6.0'
-  pod 'ReactiveCocoa'
+  pod 'FlexLib', '3.1.6'
+  pod 'SnapKit', '5.6.0'
+  pod 'TangramKit', '1.4.2'
+
   
 end
 
@@ -39,19 +40,16 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   use_frameworks! :linkage => :static
   
   commonPods
-  pod 'FMDB', '2.7.5'
+  pod 'YYKit', '1.0.9'
   pod 'Masonry', '1.1.0'
   pod 'FlexLib', '3.1.6'
-  pod 'FFPopup', '1.1.5'
-  pod 'XHLaunchAd', '3.9.12'
   pod 'ReactiveObjC', '3.1.1'
   pod 'WRNavigationBar', '1.4.0'
-  pod 'SGQRCode', '4.1.0'
-  pod 'BRPickerView', '2.8.0'
   pod 'IQKeyboardManager', '6.5.11'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
 #  pod 'TZImagePickerController', '3.4.3'
   pod 'WMZBanner', '1.2.0'
+  pod 'XHLaunchAd', '3.9.12'
   pod 'MBProgressHUD', '1.2.0'
   pod 'JDStatusBarNotification'
   

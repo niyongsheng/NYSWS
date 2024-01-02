@@ -17,7 +17,7 @@ class NYSSearchView: UIView, UITextFieldDelegate {
     var placeholderText: String = "请输入搜索内容" {
         didSet {
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor.init(hexString: "#C7CBDB") as Any,
+                .foregroundColor: UIColor.init(hexString: "#C7CBDB"),
                 .font: UIFont.systemFont(ofSize: 14)
             ]
             let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)

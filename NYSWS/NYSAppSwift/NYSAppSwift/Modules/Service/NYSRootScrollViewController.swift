@@ -12,7 +12,7 @@ let NNProSubScrollViewDidScroll = "NNProSubScrollViewDidScroll"
 
 let pro_subScrollViewContentOffsetY: CGFloat = pro_headerViewHeight + pro_pagingTitleViewHeight
 
-class NYSRootScrollViewController: NYSBaseViewController {
+class NYSRootScrollViewController: NYSRootViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

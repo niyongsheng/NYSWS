@@ -16,7 +16,7 @@ let pro_pagingTitleViewHeight: CGFloat = 40
 
 let navHeight: CGFloat = 44 + UIScreen.statusBarHeight
 
-class NYSServiceViewController: NYSBaseViewController {
+class NYSServiceViewController: NYSRootViewController {
     
     lazy var pagingTitleView: SGPagingTitleView = {
         let titles = ["服务一", "服务二", "服务三"]

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NYSScrollViewController: NYSBaseViewController {
+class NYSScrollViewController: NYSRootViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contenView: UIView!

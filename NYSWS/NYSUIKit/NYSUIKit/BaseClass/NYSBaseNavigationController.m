@@ -19,7 +19,7 @@
 
 + (void)initialize {
     UINavigationBar *navBar = [UINavigationBar appearance];
-//    [navBar setBackgroundImage:[[UIImage imageWithColor:[UIColor whiteColor ]] imageByBlurRadius:40 tintColor:nil tintMode:0 saturation:1 maskImage:nil] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    //[navBar setBackgroundImage:[[UIImage imageWithColor:[UIColor whiteColor]] imageByBlurRadius:40 tintColor:nil tintMode:0 saturation:1 maskImage:nil] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     
     // delete bottom line
     [navBar setShadowImage:[UIImage new]];

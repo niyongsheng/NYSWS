@@ -317,7 +317,7 @@ extension UINavigationController: WRFatherAwakeProtocol
         var displayLink:CADisplayLink? = CADisplayLink(target: self, selector: #selector(popNeedDisplay))
         // UITrackingRunLoopMode: 界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响
         // NSRunLoopCommonModes contains kCFRunLoopDefaultMode and UITrackingRunLoopMode
-        displayLink?.add(to: RunLoop.main, forMode: .tracking)
+        displayLink?.add(to: RunLoop.main, forMode: .default)
         CATransaction.setCompletionBlock {
             displayLink?.invalidate()
             displayLink = nil
@@ -334,7 +334,7 @@ extension UINavigationController: WRFatherAwakeProtocol
     @objc func wr_popToRootViewControllerAnimated(_ animated: Bool) -> [UIViewController]?
     {
         var displayLink:CADisplayLink? = CADisplayLink(target: self, selector: #selector(popNeedDisplay))
-        displayLink?.add(to: RunLoop.main, forMode: .tracking)
+        displayLink?.add(to: RunLoop.main, forMode: .default)
         CATransaction.setCompletionBlock {
             displayLink?.invalidate()
             displayLink = nil
@@ -381,7 +381,7 @@ extension UINavigationController: WRFatherAwakeProtocol
     @objc func wr_pushViewController(_ viewController: UIViewController, animated: Bool)
     {
         var displayLink:CADisplayLink? = CADisplayLink(target: self, selector: #selector(pushNeedDisplay))
-        displayLink?.add(to: RunLoop.main, forMode: .tracking)
+        displayLink?.add(to: RunLoop.main, forMode: .default)
         CATransaction.setCompletionBlock {
             displayLink?.invalidate()
             displayLink = nil
@@ -622,8 +622,8 @@ extension UIViewController: WRAwakeProtocol
             objc_setAssociatedObject(self, &AssociatedKeys.navBarTintColor, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if customNavBar.isKind(of: UINavigationBar.self) {
-//                let navBar = customNavBar as! UINavigationBar
-//                navBar.tintColor = newValue
+                let navBar = customNavBar as! UINavigationBar
+                navBar.tintColor = newValue
             }
             else
             {
@@ -932,13 +932,42 @@ class WRNavigationBar
 extension WRNavigationBar
 {
     class func isIphoneX() -> Bool {
-        return UIScreen.main.bounds.equalTo(CGRect(x: 0, y: 0, width: 375, height: 812))
+        var isAfterX = false
+        if #available(iOS 11.0, *) {
+            isAfterX = UIApplication.shared.windows.first { $0.isKeyWindow }?.safeAreaInsets.bottom ?? 0.0 > 0.0
+        }
+        return isAfterX
+    }
+    class func statusBarHeight() -> CGFloat {
+        var statusBarHeight: CGFloat = 0
+        if #available(iOS 13.0, *) {
+            let scene = UIApplication.shared.connectedScenes.first
+            guard let windowScene = scene as? UIWindowScene else { return 0 }
+            guard let statusBarManager = windowScene.statusBarManager else { return 0 }
+            statusBarHeight = statusBarManager.statusBarFrame.height
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
+        return statusBarHeight
+    }
+    class func safeDistanceBottom() -> CGFloat {
+        if #available(iOS 13.0, *) {
+            let scene = UIApplication.shared.connectedScenes.first
+            guard let windowScene = scene as? UIWindowScene else { return 0 }
+            guard let window = windowScene.windows.first else { return 0 }
+            return window.safeAreaInsets.bottom
+        }
+        if #available(iOS 11.0, *) {
+            guard let window = UIApplication.shared.windows.first else { return 0 }
+            return window.safeAreaInsets.bottom
+        }
+        return 0;
     }
     class func navBarBottom() -> Int {
-        return self.isIphoneX() ? 88 : 64;
+        return Int(self.statusBarHeight() + 44);
     }
     class func tabBarHeight() -> Int {
-        return self.isIphoneX() ? 83 : 49;
+        return Int(self.safeDistanceBottom() + 49);
     }
     class func screenWidth() -> Int {
         return Int(UIScreen.main.bounds.size.width)

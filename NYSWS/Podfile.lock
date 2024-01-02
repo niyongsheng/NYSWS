@@ -50,10 +50,7 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
-  - ReactiveCocoa (12.0.0):
-    - ReactiveSwift (~> 7.0)
   - ReactiveObjC (3.1.1)
-  - ReactiveSwift (7.1.1)
   - RxSwift (6.6.0)
   - SDWebImage (5.18.3):
     - SDWebImage/Core (= 5.18.3)
@@ -62,6 +59,7 @@ PODS:
   - SGQRCode (4.1.0)
   - SnapKit (5.6.0)
   - SVProgressHUD (2.2.5)
+  - TangramKit (1.4.2)
   - UMAPM (1.8.4)
   - UMCCommon (7.3.7):
     - UMAPM
@@ -101,13 +99,14 @@ DEPENDENCIES:
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
   - MJRefresh (= 3.7.5)
-  - ReactiveCocoa
   - ReactiveObjC (= 3.1.1)
   - RxSwift (= 6.6.0)
+  - SDWebImage (= 5.18.3)
   - SGPagingView (= 2.1.0)
   - SGQRCode (= 4.1.0)
   - SnapKit (= 5.6.0)
   - SVProgressHUD (= 2.2.5)
+  - TangramKit (= 1.4.2)
   - UMAPM
   - UMCCommon
   - UMCCommonLog (= 2.0.2)
@@ -140,15 +139,14 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
-    - ReactiveCocoa
     - ReactiveObjC
-    - ReactiveSwift
     - RxSwift
     - SDWebImage
     - SGPagingView
     - SGQRCode
     - SnapKit
     - SVProgressHUD
+    - TangramKit
     - UMAPM
     - UMCCommon
     - UMCCommonLog
@@ -181,15 +179,14 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
-  ReactiveCocoa: 5d10386f0ce09f922006efbf784881c5fade27c5
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  ReactiveSwift: 477d3f5bc2eb3cbbba1c1636505752b83bef93b1
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
   SGPagingView: fb90c03c809363ea340189053c5635a128e1ef84
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TangramKit: aad3ab8f9617418c9da96d59cddd71134ae8af83
   UMAPM: f3d56b9a9c445af10a74f0cdbf5417045d2ab4f2
   UMCCommon: aac337052f23b0e08c0f3cf021d3bb209f2c49bd
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
@@ -204,6 +201,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: b379c887ca852c0ebb7b389c1b8f93c07fcf7dc9
+PODFILE CHECKSUM: cfa14908cf3f9dd112ff7de0f3033e7f4ba8e36d
 
 COCOAPODS: 1.12.0

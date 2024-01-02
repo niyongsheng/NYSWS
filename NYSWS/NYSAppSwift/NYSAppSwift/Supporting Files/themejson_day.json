@@ -2,29 +2,25 @@
     "color": {
         "app_theme_color" : "#008D5E",
         
-        "common_font_color_0" : "#2B2B2B",
-        "common_font_color_1" : "#B5B5B5",
-        "common_font_color_2" : "#000000",
+        "title_label_color"             : "#4B4B4B",
+        "subtitle_label_color"          : "#A0A0A0",
+        "footer_state_label_color"      : "#B5B5B5",
+        "text_field_placeholder_color"  : "#F8F8F8",
         
-        "common_bg_color_0" : "#FEFEFE",
-        "common_bg_color_1" : "#ffffff",
-        "common_bg_color_2" : "#f6f6f6",
+        "controller_view_bg_color"      : "#FEFEFE",
+        "normal_corner_style_bg_color"  : "#ffffff",
+        "rounded_corner_style_bg_color" : "#f6f6f6",
         
-        "common_bg_color_3" : "#fefefe",
-        "common_bg_color_4" : "#F6F4F5",
-        "common_bg_coloer_ph" : "#F8F8F8",
-        
-        "common_nav_font_color_1"   : "#2D65FE",
-        "common_separator_color_1"  : "#bbbbbb",
-        "common_tabar_line_color_1" : "#bbbbbb",
-        
+        "default_nav_bar_bar_tint_color": "#2D65FE",
+        "default_nav_bar_tint_color"    : "#bbbbbb",
+        "default_nav_bar_title_color"   : "#bbbbbb",
     },
     
     "image": {
-        
-        "dark_mode_btn_image" : "day",
-        "nav_btn_image" : "",
-        "test_image": "icon_center_letter",
+        "prefix_image"          : "day_",
+        "no_data_image"         : "no_data_image",
+        "loading_image"         : "loading_image",
+        "placeholder_image"     : "placeholder_image",
     },
     
     "other": {

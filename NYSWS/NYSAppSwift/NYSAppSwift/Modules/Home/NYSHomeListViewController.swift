@@ -7,11 +7,18 @@
 
 import UIKit
 
-class NYSHomeListViewController: NYSBaseViewController {
+class NYSHomeListViewController: NYSRootViewController {
+    
+    var indexStr: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func setupUI() {
+        super.setupUI()
+        
         view.addSubview(self.tableView)
     }
 

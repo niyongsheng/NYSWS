@@ -32,7 +32,7 @@
     if (@available(iOS 13.0, *)) {
         self.tabBar.lee_theme.LeeConfigTintColor(@"app_theme_color");
     } else {
-        self.view.lee_theme.LeeConfigBackgroundColor(@"common_bg_color_1");
+        self.view.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
         self.tabBar.lee_theme
             .LeeConfigBarTintColor(@"common_bg_color_2")
             .LeeConfigTintColor(@"app_theme_color");

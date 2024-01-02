@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NYSAccountViewController: NYSBaseViewController {
+class NYSAccountViewController: NYSRootViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contenView: UIView!
@@ -20,12 +20,30 @@ class NYSAccountViewController: NYSBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    override func setupUI() {
+        super.setupUI()
+        
         self.isHidenNaviBar = true
         self.scrollView.contentInsetAdjustmentBehavior = .never
         
         self.oneKeyBtn.addRadius(10)
         self.otherAccountBtn.addCornerRadius(10, borderWidth: 1, borderColor: .lightGray)
+    }
+    
+    override func configTheme() {
+//        super.configTheme()
+        
+        _ = self.oneKeyBtn.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
+            (item as! UIButton).backgroundColor = .black
+            (item as! UIButton).setTitleColor(.white, for: .normal)
+        })
+        _ = self.oneKeyBtn.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
+            (item as! UIButton).backgroundColor = UIColor.init(hexString: "#f0f0f0")
+            (item as! UIButton).setTitleColor(.darkGray, for: .normal)
+        })
     }
     
     @IBAction func oneKeyBtnOnclicked(_ sender: UIButton) {

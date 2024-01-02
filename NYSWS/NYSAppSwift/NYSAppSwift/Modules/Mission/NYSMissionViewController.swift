@@ -8,7 +8,7 @@
 import UIKit
 import NYSUIKit
 
-class NYSMissionViewController: NYSBaseViewController {
+class NYSMissionViewController: NYSRootViewController {
     
     lazy var imageViewBg: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: 140))
@@ -77,7 +77,12 @@ class NYSMissionViewController: NYSBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.isHidenNaviBar = true;
+    }
+    
+    override func setupUI() {
+        super.setupUI()
         
         imageViewBg.addSubview(searchView)
         imageViewBg.addSubview(shippingOrigin)
@@ -87,8 +92,8 @@ class NYSMissionViewController: NYSBaseViewController {
         
         self.tableView.frame = CGRect(x: 0, y: imageViewBg.bottom, width: NScreenWidth, height: NScreenHeight - imageViewBg.bottom - NBottomHeight)
         self.view.addSubview(self.tableView)
-        
     }
+
     
     func showAddressPicker(button: UIButton) {
         let style = BRPickerStyle(themeColor: NAppThemeColor)
