@@ -57,7 +57,7 @@ extension AppManager {
     
     typealias AppManagerCompletion = (Bool, NYSUserInfo?, Error?) -> Void
     
-    func loginHandler(loginType: AppLoginType) {
+    func loginHandler(loginType: AppLoginType, params: [String: Any]) {
         // 1.获取用户信息
         
         // 2.保存用户信息

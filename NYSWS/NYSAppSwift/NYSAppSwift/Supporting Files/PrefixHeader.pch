@@ -6,6 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <SGQRCode/SGQRCode.h>
 
 #endif /* PrefixHeader_pch */

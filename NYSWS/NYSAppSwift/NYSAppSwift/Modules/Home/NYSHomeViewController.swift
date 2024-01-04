@@ -13,7 +13,7 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.isHidenNaviBar = true
+        self.isHidenNaviBar = true
         navBarBackgroundAlpha = 0
     }
     

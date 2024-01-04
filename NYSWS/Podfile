@@ -18,7 +18,6 @@ end
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   
   commonPods
-  pod 'YYModel', '1.0.4'
   pod 'Alamofire', '5.8.0'
   pod 'lottie-ios', '2.5.3'
   pod 'SDWebImage', '5.18.3'

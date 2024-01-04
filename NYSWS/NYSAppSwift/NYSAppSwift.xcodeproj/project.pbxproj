@@ -14,6 +14,9 @@
 		C80EE9ED2B439E3B00F79AD0 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9EC2B439E3B00F79AD0 /* UIControl+Extension.swift */; };
 		C821AAAF2B4694C4003C0968 /* AppAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C821AAAD2B4694C4003C0968 /* AppAlertView.xib */; };
 		C821AAB02B4694C4003C0968 /* AppAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C821AAAE2B4694C4003C0968 /* AppAlertView.swift */; };
+		C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB22B46B29E003C0968 /* NYSScanViewController.m */; };
+		C821AAB72B46B2CA003C0968 /* NYSToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB52B46B2CA003C0968 /* NYSToolBar.m */; };
+		C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */; };
 		C83C18692B33E438002FD985 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18652B33E438002FD985 /* bill.json */; };
 		C83C186A2B33E438002FD985 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18662B33E438002FD985 /* service.json */; };
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
@@ -84,6 +87,11 @@
 		C80EE9EC2B439E3B00F79AD0 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		C821AAAD2B4694C4003C0968 /* AppAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppAlertView.xib; sourceTree = "<group>"; };
 		C821AAAE2B4694C4003C0968 /* AppAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAlertView.swift; sourceTree = "<group>"; };
+		C821AAB12B46B29E003C0968 /* NYSScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSScanViewController.h; sourceTree = "<group>"; };
+		C821AAB22B46B29E003C0968 /* NYSScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSScanViewController.m; sourceTree = "<group>"; };
+		C821AAB52B46B2CA003C0968 /* NYSToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSToolBar.m; sourceTree = "<group>"; };
+		C821AAB62B46B2CA003C0968 /* NYSToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSToolBar.h; sourceTree = "<group>"; };
+		C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSQRCodeViewController.swift; sourceTree = "<group>"; };
 		C83C18652B33E438002FD985 /* bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bill.json; sourceTree = "<group>"; };
 		C83C18662B33E438002FD985 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
@@ -168,6 +176,15 @@
 				C87CAB772B4679B600C84E8E /* String+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C821AAB42B46B2CA003C0968 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C821AAB62B46B2CA003C0968 /* NYSToolBar.h */,
+				C821AAB52B46B2CA003C0968 /* NYSToolBar.m */,
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 		C83C18642B33E438002FD985 /* Resources */ = {
@@ -295,6 +312,9 @@
 		C86DB2102B3E8CE8002126F5 /* Scan */ = {
 			isa = PBXGroup;
 			children = (
+				C821AAB42B46B2CA003C0968 /* V */,
+				C821AAB12B46B29E003C0968 /* NYSScanViewController.h */,
+				C821AAB22B46B29E003C0968 /* NYSScanViewController.m */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -386,6 +406,7 @@
 				C8BC5E972B3A852200814C2B /* NYSMineViewController.xib */,
 				C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */,
 				C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */,
+				C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -560,6 +581,7 @@
 			files = (
 				C8BC5E952B3A84B100814C2B /* NYSHomeViewController.swift in Sources */,
 				C8C5D2432B3E628600117F58 /* NYSBannerCollectionViewCell.swift in Sources */,
+				C821AAB72B46B2CA003C0968 /* NYSToolBar.m in Sources */,
 				C87CAB7D2B467C8E00C84E8E /* NYSUserInfo.swift in Sources */,
 				C8C5D2372B3E48EB00117F58 /* NYSRootScrollViewController.swift in Sources */,
 				C86DB21F2B3E9E22002126F5 /* WRNavigationBar.swift in Sources */,
@@ -568,12 +590,14 @@
 				C8D3E2212B3BEAAF00B77DEA /* NYSMissionViewController.swift in Sources */,
 				C87CAB7A2B467B2900C84E8E /* AppManager.swift in Sources */,
 				C87CAB782B4679B600C84E8E /* String+Extension.swift in Sources */,
+				C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */,
 				C86DB2192B3E8DBC002126F5 /* NYSAccountViewController.swift in Sources */,
 				C8BC5EA42B3AAEA500814C2B /* UIView+Extension.swift in Sources */,
 				C80EE9EB2B43963800F79AD0 /* UIColor+Extension.swift in Sources */,
 				C8A00F272B464CBD00245D94 /* Transform.swift in Sources */,
 				C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */,
 				C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */,
+				C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */,
 				C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */,
 				C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */,
 				C86DB2202B3E9E22002126F5 /* WRCustomNavigationBar.swift in Sources */,

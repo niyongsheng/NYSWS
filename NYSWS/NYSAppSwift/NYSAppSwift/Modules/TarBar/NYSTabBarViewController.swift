@@ -38,21 +38,21 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-//        if viewController.tabBarItem.title == "" { // 扫码
-//            let scanVC = NYSRootViewController()
-//            scanVC.modalPresentationStyle = .fullScreen
-//            self.present(scanVC, animated: true, completion: nil)
-//            return false
-//        }
+        if viewController.tabBarItem.title == "" { // 扫码
+            let scanVC = NYSBaseNavigationController.init(rootViewController: NYSScanViewController())
+            scanVC.modalPresentationStyle = .fullScreen
+            self.present(scanVC, animated: true, completion: nil)
+            return false
+        }
         return true
     }
     
+    /// 转场动画
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transform.selectedIndex = tabBarController.viewControllers!.firstIndex(of: toVC)!
         transform.preIndex = tabBarController.viewControllers!.firstIndex(of: fromVC)!
         return transform
     }
-    
     
     
     /// Stop Lottie Animation
@@ -98,7 +98,7 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
         twoVC.tabBarItem.selectedImage = UIImage.init(named: "Find-green")?.withRenderingMode(.alwaysOriginal)
         let twoNav = NYSBaseNavigationController.init(rootViewController: twoVC)
         
-        let threeVC = NYSBaseViewController()
+        let threeVC = NYSScanViewController()
         threeVC.tabBarItem.title = ""
         threeVC.tabBarItem.image = UIImage.init(named: "Scan-green")?.withRenderingMode(.alwaysOriginal)
         threeVC.tabBarItem.selectedImage = UIImage.init(named: "Scan-green")?.withRenderingMode(.alwaysOriginal)

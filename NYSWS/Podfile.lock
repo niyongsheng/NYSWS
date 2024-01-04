@@ -81,7 +81,6 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
-  - YYModel (1.0.4)
   - ZCycleView (1.0.4)
   - ZLPhotoBrowser (4.4.0):
     - ZLPhotoBrowser/Core (= 4.4.0)
@@ -106,7 +105,7 @@ DEPENDENCIES:
   - MBProgressHUD (= 1.2.0)
   - MJRefresh (= 3.7.5)
   - ReactiveObjC (= 3.1.1)
-  - RxCocoa
+  - RxCocoa (= 6.6.0)
   - RxSwift (= 6.6.0)
   - SDWebImage (= 5.18.3)
   - SGPagingView (= 2.1.0)
@@ -123,7 +122,6 @@ DEPENDENCIES:
   - WRNavigationBar (= 1.4.0)
   - XHLaunchAd (= 3.9.12)
   - YYKit (= 1.0.9)
-  - YYModel (= 1.0.4)
   - ZCycleView (= 1.0.4)
   - ZLPhotoBrowser (= 4.4.0)
   - ZLPhotoBrowser-objc (= 1.0.4)
@@ -167,7 +165,6 @@ SPEC REPOS:
     - XHLaunchAd
     - Yoga
     - YYKit
-    - YYModel
     - ZCycleView
     - ZLPhotoBrowser
     - ZLPhotoBrowser-objc
@@ -210,11 +207,10 @@ SPEC CHECKSUMS:
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
-  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZCycleView: 7826fb8439486339ed099b0979d9b564a2937ab0
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: cdb9d8b12f0ec1f583240718c6023f85efbe2098
+PODFILE CHECKSUM: fde93bc4a1e785808c2763a2e837dbf877783865
 
 COCOAPODS: 1.12.0

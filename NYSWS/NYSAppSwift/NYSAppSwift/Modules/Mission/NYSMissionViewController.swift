@@ -78,7 +78,7 @@ class NYSMissionViewController: NYSRootViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.isHidenNaviBar = true;
+        self.isHidenNaviBar = true;
         navBarBackgroundAlpha = 0
     }
     

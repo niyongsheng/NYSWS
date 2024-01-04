@@ -6,9 +6,11 @@
 //#import <NYSKit/NYSKit.h>
 #import <NYSUIKit/NYSUIkit.h>
 
+#pragma mark -- OC混编 --
+#import "NYSScanViewController.h"
+
 #pragma mark -- 三方框架 --
 #import <Lottie/Lottie.h>
-//#import <YYModel/YYModel.h>
 #import <FFPopup/FFPopup.h>
 #import <SDWebImage/SDWebImage.h>
 #import <BRPickerView/BRPickerView.h>

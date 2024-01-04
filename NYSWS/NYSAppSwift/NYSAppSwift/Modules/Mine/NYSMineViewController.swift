@@ -13,7 +13,6 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     let NAVBAR_COLORCHANGE_POINT:CGFloat = 100
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contenView: UIView!
-    @IBOutlet weak var contentViewH: NSLayoutConstraint!
     
     @IBOutlet weak var iconIV: UIButton!
     @IBOutlet weak var titleL: UILabel!
