@@ -18,7 +18,7 @@ class NYSMissionViewController: NYSRootViewController {
     }()
     
     lazy var searchView: NYSSearchView = {
-        let view = NYSSearchView(frame: CGRect(x: NSpaceNormal, y: NStatusBarHeight, width: NScreenWidth - 2 * NSpaceNormal, height: RealValueX(x: 40)))
+        let view = NYSSearchView(frame: CGRect(x: NAppSpace, y: NStatusBarHeight, width: NScreenWidth - 2 * NAppSpace, height: RealValueX(x: 40)))
         view.placeholderText = "发货方/收货方"
         view.delegate = self
         return view
@@ -30,7 +30,7 @@ class NYSMissionViewController: NYSRootViewController {
         let iconWidth: CGFloat = 30
         button.titleRect = CGRect(x: 0, y: 0, width: width - iconWidth, height: 50)
         button.imageRect = CGRect(x: width - iconWidth, y: 10, width: iconWidth, height: iconWidth)
-        button.frame = CGRect(x: NSpaceNormal, y: searchView.bottom, width: width, height: 50)
+        button.frame = CGRect(x: NAppSpace, y: searchView.bottom, width: width, height: 50)
         button.setImage(UIImage(named: "icon_16px_downarrow_nor"), for: .normal)
         button.setTitle("全国", for: .normal)
         button.titleLabel?.textAlignment = .center
@@ -99,13 +99,13 @@ class NYSMissionViewController: NYSRootViewController {
     func showAddressPicker(button: UIButton) {
         let style = BRPickerStyle(themeColor: NAppThemeColor)
         style.selectRowTextColor = NAppThemeColor
-        style.topCornerRadius = 10
+        style.topCornerRadius = Int(NAppRadius)
         
         let addressPickerView = BRAddressPickerView()
         addressPickerView.pickerMode = .area
         addressPickerView.title = "请选择地区"
         addressPickerView.pickerStyle = style
-        addressPickerView.isAutoSelect = true
+        addressPickerView.isAutoSelect = false
         addressPickerView.resultBlock = { province, city, area in
             button.setTitle(area?.name, for: .normal)
         }

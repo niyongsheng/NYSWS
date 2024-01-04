@@ -29,8 +29,8 @@ class NYSAccountViewController: NYSRootViewController {
         navBarBackgroundAlpha = 0
         self.scrollView.contentInsetAdjustmentBehavior = .never
         
-        self.oneKeyBtn.addRadius(10)
-        self.otherAccountBtn.addCornerRadius(10, borderWidth: 1, borderColor: .lightGray)
+        self.oneKeyBtn.addRadius(NAppRadius)
+        self.otherAccountBtn.addCornerRadius(NAppRadius, borderWidth: 1, borderColor: .lightGray)
     }
     
     override func configTheme() {

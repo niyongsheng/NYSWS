@@ -28,8 +28,6 @@ let NBottomHeight = UIDevice.nys_tabBarFullHeight()
 /// Iphone6
 let NBaseWidth:CGFloat = 375.0
 let NBaseHeight:CGFloat = 667.0
-/// 正常间隔
-let NSpaceNormal:CGFloat = 15.0
 
 /// 水平缩放
 /// - Returns: 比例

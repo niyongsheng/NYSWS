@@ -33,6 +33,7 @@
     // 点击动画
     self.tabBarInteractionEffectStyle = NYSBaseTabBar_InteractionEffectStyleSpring;
     self.isResetTabBarItemStyle = YES;
+    self.isOpenGradualAnimation = YES;
     
     NYSHomeViewController *homeVC = [NYSHomeViewController new];
     homeVC.tabBarItem.title = NSLocalizedStringFromTable(@"Home", @"InfoPlist", nil);

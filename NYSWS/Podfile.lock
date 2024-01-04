@@ -51,6 +51,11 @@ PODS:
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - ReactiveObjC (3.1.1)
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
   - SDWebImage (5.18.3):
     - SDWebImage/Core (= 5.18.3)
@@ -101,6 +106,7 @@ DEPENDENCIES:
   - MBProgressHUD (= 1.2.0)
   - MJRefresh (= 3.7.5)
   - ReactiveObjC (= 3.1.1)
+  - RxCocoa
   - RxSwift (= 6.6.0)
   - SDWebImage (= 5.18.3)
   - SGPagingView (= 2.1.0)
@@ -142,6 +148,8 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - ReactiveObjC
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - SDWebImage
     - SGPagingView
@@ -183,6 +191,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
   SGPagingView: fb90c03c809363ea340189053c5635a128e1ef84
@@ -205,6 +215,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: 08df2803e8f80e7c6e61b012b1ade35bbffc6451
+PODFILE CHECKSUM: cdb9d8b12f0ec1f583240718c6023f85efbe2098
 
 COCOAPODS: 1.12.0

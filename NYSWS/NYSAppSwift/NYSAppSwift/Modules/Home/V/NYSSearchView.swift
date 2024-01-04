@@ -47,7 +47,7 @@ class NYSSearchView: UIView, UITextFieldDelegate {
             (item as! UIView).backgroundColor = .init(hexString: "#2B2B2B")
         })
         
-        addRadius(5)
+        addRadius(NAppRadius/2)
         addSubview(searchField)
         searchField.delegate = self
     }

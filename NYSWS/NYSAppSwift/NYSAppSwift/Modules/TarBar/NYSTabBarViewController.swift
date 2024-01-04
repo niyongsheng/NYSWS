@@ -11,6 +11,8 @@ import NYSUIKit
 class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelegate {
     var curSelectedIndex:Int = 0
     
+    lazy var transform = Transform()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isOpenGradualAnimation = false
@@ -34,6 +36,24 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
         playTabBarAnimation()
         self.curSelectedIndex = self.selectedIndex
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        if viewController.tabBarItem.title == "" { // 扫码
+//            let scanVC = NYSRootViewController()
+//            scanVC.modalPresentationStyle = .fullScreen
+//            self.present(scanVC, animated: true, completion: nil)
+//            return false
+//        }
+        return true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transform.selectedIndex = tabBarController.viewControllers!.firstIndex(of: toVC)!
+        transform.preIndex = tabBarController.viewControllers!.firstIndex(of: fromVC)!
+        return transform
+    }
+    
+    
     
     /// Stop Lottie Animation
     func stopTabBarAnimation() {

@@ -37,10 +37,10 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     override func setupUI() {
         super.setupUI()
         
-        bannerBgV.addRadius(10)
-        oneSV.addRadius(10)
-        twoSV.addRadius(10)
-        threeSV.addRadius(10)
+        bannerBgV.addRadius(NAppRadius)
+        oneSV.addRadius(NAppRadius)
+        twoSV.addRadius(NAppRadius)
+        threeSV.addRadius(NAppRadius)
         
         navBarBackgroundAlpha = 0
         navBarTintColor = .clear
@@ -87,8 +87,12 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     }
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
-        if sender.tag == 102 {
+        if sender.tag == 101 {
+            AppManager.shared.showLogin()
+            
+        } else if sender.tag == 102 {
             self.navigationController?.pushViewController(NYSSettingViewController.init(), animated: true)
+            
         } else {
             let alertVC = UIAlertController.init(title: "退出登录", message: "确定要退出登录吗？", preferredStyle: .actionSheet)
             let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)

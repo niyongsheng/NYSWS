@@ -32,9 +32,9 @@ class NYSLoginViewController: NYSRootViewController {
     override func setupUI() {
         super.setupUI()
 
-        self.loginBtn.addRadius(10)
-        self.accountView.addCornerRadius(7, borderWidth: 1, borderColor: .lightGray)
-        self.passwordView.addCornerRadius(7, borderWidth: 1, borderColor: .lightGray)
+        self.loginBtn.addRadius(NAppRadius)
+        self.accountView.addCornerRadius(NAppRadius/2, borderWidth: 1, borderColor: .lightGray)
+        self.passwordView.addCornerRadius(NAppRadius/2, borderWidth: 1, borderColor: .lightGray)
     }
     
     override func configTheme() {

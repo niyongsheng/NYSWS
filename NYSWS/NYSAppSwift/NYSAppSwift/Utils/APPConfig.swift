@@ -27,8 +27,24 @@ let APPSECRET       :String      =        ""
 // 友盟+
 let UMengKey        :String      =        ""
 
-// 默认分页大小
-let DefaultPageSize :Int         =        10
+// pragma mark - APP Style
 
+/// APP主题色
 let NAppThemeColor  :UIColor = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "app_theme_color") as! UIColor
 
+/// APP默认分页大小
+let DefaultPageSize :Int = 10
+
+/// APP间隔
+let NAppSpace:CGFloat = 15.0
+
+/// APP圆角
+let NAppRadius:CGFloat = 10.0
+
+// pragma mark - UserDefaults Key
+let kUsername = "kUsername"
+let kRole = "kRole"
+let kToken = "kToken"
+
+
+// pragma mark - APP API

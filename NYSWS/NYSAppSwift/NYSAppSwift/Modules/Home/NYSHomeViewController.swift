@@ -33,7 +33,7 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
     }
     
     lazy var searchView: NYSSearchView = {
-        let view = NYSSearchView(frame: CGRect(x: NSpaceNormal, y: NStatusBarHeight, width: NScreenWidth - 2 * NSpaceNormal, height: RealValueX(x: 40)))
+        let view = NYSSearchView(frame: CGRect(x: NAppSpace, y: NStatusBarHeight, width: NScreenWidth - 2 * NAppSpace, height: RealValueX(x: 40)))
         view.placeholderText = "搜索起始地/目的地"
         view.delegate = self
         return view

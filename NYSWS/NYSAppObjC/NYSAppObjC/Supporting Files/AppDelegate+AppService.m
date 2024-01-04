@@ -61,6 +61,7 @@
 #pragma mark —- 初始化window --
 - (void)initWindow {
     self.window = [[NYSBaseWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.lee_theme.LeeConfigBackgroundColor(@"white_black_color");
     if ([NAppManager isLogined]) {
         self.window.rootViewController = [[NYSTabbarViewController alloc] init];
     } else {

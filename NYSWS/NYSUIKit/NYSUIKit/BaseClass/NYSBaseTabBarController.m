@@ -73,7 +73,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     if (self.isOpenGradualAnimation) {
         CATransition *animation = [CATransition animation];
-        [animation setDuration:0.75f];
+        [animation setDuration:0.5f];
         [animation setType:@"rippleEffect"];
         [animation setSubtype:kCATransitionFromRight];
         [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];

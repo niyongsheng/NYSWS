@@ -27,6 +27,7 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   pod 'IQKeyboardManagerSwift', '6.5.11'
   
   pod 'RxSwift', '6.6.0'
+  pod 'RxCocoa', '6.6.0'
   pod 'FlexLib', '3.1.6'
   pod 'SnapKit', '5.6.0'
   pod 'TangramKit', '1.4.2'
