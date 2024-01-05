@@ -9,12 +9,13 @@
         
         "white_black_color"             : "#FFFFFF",
         "controller_view_bg_color"      : "#FEFEFE",
+        "alert_view_bg_color"           : "#FFFFFF",
         "normal_corner_style_bg_color"  : "#ffffff",
         "rounded_corner_style_bg_color" : "#f6f6f6",
         
         "default_nav_bar_bar_tint_color": "#2D65FE",
         "default_nav_bar_tint_color"    : "#bbbbbb",
-        "default_nav_bar_title_color"   : "#bbbbbb",
+        "default_nav_bar_title_color"   : "#4B4B4B",
     },
     
     "image": {

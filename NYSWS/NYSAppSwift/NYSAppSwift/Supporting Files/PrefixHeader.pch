@@ -7,5 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import <SGQRCode/SGQRCode.h>
+#import "NYSAppSwift-Swift.h"
 
 #endif /* PrefixHeader_pch */

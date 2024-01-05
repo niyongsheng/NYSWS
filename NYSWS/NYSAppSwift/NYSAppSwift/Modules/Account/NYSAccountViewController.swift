@@ -26,28 +26,23 @@ class NYSAccountViewController: NYSRootViewController {
     override func setupUI() {
         super.setupUI()
         
+        self.isHidenNaviBar = true
         navBarBackgroundAlpha = 0
         self.scrollView.contentInsetAdjustmentBehavior = .never
         
         self.oneKeyBtn.addRadius(NAppRadius)
-        self.otherAccountBtn.addCornerRadius(NAppRadius, borderWidth: 1, borderColor: .lightGray)
+        self.oneKeyBtn.backgroundColor = NAppThemeColor
+        self.otherAccountBtn.setTitleColor(NAppThemeColor, for: .normal)
+        self.otherAccountBtn.addCornerRadius(NAppRadius, borderWidth: 1, borderColor: NAppThemeColor)
     }
     
     override func configTheme() {
-//        super.configTheme()
+        super.configTheme()
         
-        _ = self.oneKeyBtn.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
-            (item as! UIButton).backgroundColor = .black
-            (item as! UIButton).setTitleColor(.white, for: .normal)
-        })
-        _ = self.oneKeyBtn.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
-            (item as! UIButton).backgroundColor = UIColor.init(hexString: "#f0f0f0")
-            (item as! UIButton).setTitleColor(.darkGray, for: .normal)
-        })
     }
     
     @IBAction func oneKeyBtnOnclicked(_ sender: UIButton) {
-        
+        AppManager.shared.showAlert(title: "未检测到SIM卡")
     }
     
     @IBAction func otherAccountBtnOnclicked(_ sender: UIButton) {

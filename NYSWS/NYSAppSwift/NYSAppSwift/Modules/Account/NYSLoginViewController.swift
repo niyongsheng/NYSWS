@@ -33,21 +33,14 @@ class NYSLoginViewController: NYSRootViewController {
         super.setupUI()
 
         self.loginBtn.addRadius(NAppRadius)
-        self.accountView.addCornerRadius(NAppRadius/2, borderWidth: 1, borderColor: .lightGray)
-        self.passwordView.addCornerRadius(NAppRadius/2, borderWidth: 1, borderColor: .lightGray)
+        self.loginBtn.backgroundColor = NAppThemeColor
+        self.accountView.addCornerRadius(NAppRadius/2, borderWidth: 1, borderColor: NAppThemeColor)
+        self.passwordView.addCornerRadius(NAppRadius/2, borderWidth: 1, borderColor: NAppThemeColor)
     }
     
     override func configTheme() {
         super.configTheme()
         
-        _ = self.loginBtn.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
-            (item as! UIButton).backgroundColor = .black
-            (item as! UIButton).setTitleColor(.white, for: .normal)
-        })
-        _ = self.loginBtn.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
-            (item as! UIButton).backgroundColor = UIColor.init(hexString: "#f0f0f0")
-            (item as! UIButton).setTitleColor(.darkGray, for: .normal)
-        })
     }
     
     @IBAction func seeBtnOnclicked(_ sender: UIButton) {
@@ -56,6 +49,8 @@ class NYSLoginViewController: NYSRootViewController {
     }
 
     @IBAction func loginBtnOnclicked(_ sender: UIButton) {
+        NYSTools.zoom(toShow: sender.layer)
+        
         let rootVC = NYSTabBarViewController()
         if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
             UIView.transition(with: keyWindow, duration: 0.5, options: .transitionCrossDissolve, animations: {

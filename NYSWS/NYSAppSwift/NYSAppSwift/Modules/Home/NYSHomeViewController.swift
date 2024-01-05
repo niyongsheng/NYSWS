@@ -84,7 +84,7 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
     }
     
     func pagingContentViewDidEndDecelerating() {
-//        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
 

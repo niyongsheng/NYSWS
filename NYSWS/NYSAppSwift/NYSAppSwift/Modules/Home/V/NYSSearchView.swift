@@ -29,6 +29,7 @@ class NYSSearchView: UIView, UITextFieldDelegate {
         let field = UITextField()
         field.returnKeyType = .search
         field.leftViewMode = .always
+        field.clearButtonMode = .whileEditing
         
         let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
         imageView.tintColor = .init(hexString: "#C7CBDB")

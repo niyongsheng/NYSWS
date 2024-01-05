@@ -117,6 +117,14 @@ DZNEmptyDataSetDelegate
 //    }
 #endif
     
+#ifdef NAppRoundStyle
+    if (_tableView) _tableView.lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
+    if (_collectionView) _collectionView.lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
+#else
+    if (_tableView) _tableView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
+    if (_collectionView) _collectionView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
+#endif
+    
 }
 
 /// Lazy load主数据源
@@ -145,11 +153,6 @@ DZNEmptyDataSetDelegate
         if (@available(iOS 15.0, *)) {
             _tableView.sectionHeaderTopPadding = 0;
         }
-#ifdef NAppRoundStyle
-        _tableView.lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
-#else
-        _tableView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
-#endif
         
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
@@ -263,11 +266,7 @@ DZNEmptyDataSetDelegate
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
             _collectionView.contentInset = UIEdgeInsetsMake(NTopHeight, 0, 0, 0);
         }
-#ifdef NAppRoundStyle
-        _collectionView.lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
-#else
-        _collectionView.lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
-#endif
+
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         

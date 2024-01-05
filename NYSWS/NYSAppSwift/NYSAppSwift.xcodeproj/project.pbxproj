@@ -22,6 +22,8 @@
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
 		C83C186C2B33E438002FD985 /* myself.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18682B33E438002FD985 /* myself.json */; };
 		C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8474E522B43DD54001DE04A /* NYSRootViewController.swift */; };
+		C858480E2B4797FC00B27086 /* NYSQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */; };
+		C85848102B47A40D00B27086 /* NYSInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */; };
 		C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8597A8129F5119E008BEE7F /* AppDelegate.swift */; };
 		C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8597A8529F5119E008BEE7F /* ViewController.swift */; };
 		C8597A8929F5119E008BEE7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8597A8729F5119E008BEE7F /* Main.storyboard */; };
@@ -97,6 +99,8 @@
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
 		C83C18682B33E438002FD985 /* myself.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = myself.json; sourceTree = "<group>"; };
 		C8474E522B43DD54001DE04A /* NYSRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootViewController.swift; sourceTree = "<group>"; };
+		C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSQRCodeViewController.xib; sourceTree = "<group>"; };
+		C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSInstructionViewController.swift; sourceTree = "<group>"; };
 		C8597A7E29F5119E008BEE7F /* NYSAppSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYSAppSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A8129F5119E008BEE7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8597A8529F5119E008BEE7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 				C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */,
 				C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */,
 				C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */,
+				C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */,
+				C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				C8597A8929F5119E008BEE7F /* Main.storyboard in Resources */,
 				C86DB2172B3E8DBC002126F5 /* NYSLoginViewController.xib in Resources */,
 				C83C18692B33E438002FD985 /* bill.json in Resources */,
+				C858480E2B4797FC00B27086 /* NYSQRCodeViewController.xib in Resources */,
 				C83C186A2B33E438002FD985 /* service.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +590,7 @@
 				C8C5D2432B3E628600117F58 /* NYSBannerCollectionViewCell.swift in Sources */,
 				C821AAB72B46B2CA003C0968 /* NYSToolBar.m in Sources */,
 				C87CAB7D2B467C8E00C84E8E /* NYSUserInfo.swift in Sources */,
+				C85848102B47A40D00B27086 /* NYSInstructionViewController.swift in Sources */,
 				C8C5D2372B3E48EB00117F58 /* NYSRootScrollViewController.swift in Sources */,
 				C86DB21F2B3E9E22002126F5 /* WRNavigationBar.swift in Sources */,
 				C8D3E21C2B3BB1E700B77DEA /* NYSHomeListViewController.swift in Sources */,

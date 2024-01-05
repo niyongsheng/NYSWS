@@ -41,7 +41,7 @@
 - (IBAction)logoutBtnOnclicked0:(UIButton *)sender {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NLocalizedStr(@"Tips") message:NLocalizedStr(@"TipsSubtitle") preferredStyle:UIAlertControllerStyleActionSheet];
     if (CurrentSystemVersion < 13.0) {
-        [UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]].lee_theme.LeeConfigBackgroundColor(@"normal_corner_style_bg_color");
+        [UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]].lee_theme.LeeConfigBackgroundColor(@"rounded_corner_style_bg_color");
         alertController.view.layer.cornerRadius = 15.0f;
         alertController.view.layer.masksToBounds = YES;
     }

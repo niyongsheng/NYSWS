@@ -252,8 +252,8 @@ static NSString *CellID = @"NYSCourseCell";
 #pragma mark - Setter/Getter
 - (NSMutableArray<NYSBannerModel *> *)bannerArray {
     if (!_bannerArray) {
-        NYSBannerModel *banner1 = [NYSBannerModel modelWithJSON:@{@"bannerUrl":@"https:///i.postimg.cc/4y2b2Mg1/1-3x.png"}];
-        NYSBannerModel *banner2 = [NYSBannerModel modelWithJSON:@{@"bannerUrl":@"https:///i.postimg.cc/4y2b2Mg1/1-3x.png"}];
+        NYSBannerModel *banner1 = [NYSBannerModel modelWithJSON:@{@"bannerUrl":@"https://i.postimg.cc/4y2b2Mg1/1-3x.png"}];
+        NYSBannerModel *banner2 = [NYSBannerModel modelWithJSON:@{@"bannerUrl":@"https://i.postimg.cc/4y2b2Mg1/1-3x.png"}];
         _bannerArray = @[banner1, banner2].mutableCopy;
     }
     return _bannerArray;

@@ -14,8 +14,9 @@ class AppAlertView: UIView {
         case cancel
         case close
     }
-    typealias AppAlertComplete = (AppAlertAction, Any?) -> Void
+    typealias AppAlertComplete = (_ popup: FFPopup, _ action: AppAlertAction, _ obj: Any?) -> Void
     var complete: AppAlertComplete?
+    var popup: FFPopup?
     
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -38,6 +39,7 @@ class AppAlertView: UIView {
     
     private func configureXIB() {
         guard let view = loadViewFromNib() else { return }
+        view.backgroundColor = .clear
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
@@ -63,6 +65,9 @@ class AppAlertView: UIView {
         
         confirmBtn.addRadius(NAppRadius)
         cancelBtn.addCornerRadius(NAppRadius, borderWidth: 1, borderColor: NAppThemeColor)
+
+        _ = self.lee_theme.leeConfigBackgroundColor("alert_view_bg_color")
+        _ = self.titleL.lee_theme.leeConfigTextColor("default_nav_bar_title_color")
     }
     
     override var intrinsicContentSize: CGSize {
@@ -75,20 +80,27 @@ class AppAlertView: UIView {
     }
     
     @IBAction func closeBtnOnclicked(_ sender: UIButton) {
+        popup?.dismiss(animated: true)
+        
         if let complete = complete {
-            complete(.close, nil)
+            complete(popup!, .close, "")
         }
     }
     
     @IBAction func cancelBtnOnclicked(_ sender: UIButton) {
+        popup?.dismiss(animated: true)
+        
         if let complete = complete {
-            complete(.cancel, "")
+            complete(popup!, .cancel, "")
         }
     }
     
     @IBAction func confirmBtnOnclicked(_ sender: UIButton) {
+        
         if let complete = complete {
-            complete(.confirm, "")
+            complete(popup!, .confirm, "")
+        } else {
+            popup?.dismiss(animated: true)
         }
     }
 }
@@ -99,6 +111,8 @@ extension AppAlertView {
         titleL.text = title
         contentL.text = content
         iconIV.image = icon
+        confirmBtn.isHidden = confirmButtonTitle == nil
+        cancelBtn.isHidden = cancelBtnTitle == nil
         confirmBtn.setTitle(confirmButtonTitle, for: .normal)
         cancelBtn.setTitle(cancelBtnTitle, for: .normal)
     }

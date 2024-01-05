@@ -7,7 +7,6 @@
 
 #import "NYSScanViewController.h"
 #import "NYSToolBar.h"
-#import "NYSAppSwift-Swift.h"
 
 @interface NYSScanViewController () <SGScanCodeDelegate, SGScanCodeSampleBufferDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
@@ -21,7 +20,6 @@
 @implementation NYSScanViewController
 
 - (void)dealloc {
-    NSLog(@"WCQRCodeVC - dealloc");
     
     [self stop];
 }
@@ -44,8 +42,8 @@
 }
 
 - (void)stop {
-    [scanCode stopRunning];
-    [self.scanView stopScanning];
+    if (scanCode) [scanCode stopRunning];
+    if (_scanView) [self.scanView stopScanning];
 }
 
 - (void)viewDidLoad {
@@ -57,6 +55,10 @@
 }
 
 - (void)configUI {
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    
     [self.view addSubview:self.scanView];
     
     [self.view addSubview:self.bottomView];
@@ -166,10 +168,7 @@
         if (status == SGPermissionStatusNotDetermined) {
             [permission request:^(BOOL granted) {
                 if (granted) {
-                    NSLog(@"第一次授权成功");
                     [self _enterImagePickerController];
-                } else {
-                    NSLog(@"第一次授权失败");
                 }
             }];
         } else if (status == SGPermissionStatusAuthorized) {

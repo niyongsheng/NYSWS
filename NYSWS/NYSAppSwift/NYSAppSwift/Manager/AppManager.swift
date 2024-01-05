@@ -13,11 +13,9 @@ final class AppManager {
     private(set) var isLogin: Bool = false
     
     /// 登录弹窗
-    private lazy var unloginAlert: AppAlertView = {
-        let unloginAlert = AppAlertView(frame: CGRect(x: 0, y: 0, width: NScreenWidth * 0.8, height: RealValueX(x: 165)))
-        unloginAlert.configure(title: "温馨提示", content: "您还没有登陆！", icon: nil, confirmButtonTitle: "去登录", cancelBtnTitle: "取消")
-        unloginAlert.layoutIfNeeded()
-        return unloginAlert
+    private lazy var appAlertView: AppAlertView = {
+        let appAlertView = AppAlertView(frame: CGRect(x: 0, y: 0, width: NScreenWidth * 0.8, height: RealValueX(x: 165)))
+        return appAlertView
     }()
     
     /// 用户名
@@ -91,13 +89,12 @@ extension AppManager {
     
 }
 
+/// App弹框提醒
 extension AppManager {
     
     func showLogin() {
-        let popup = FFPopup(contentView: unloginAlert, showType: .bounceIn, dismissType: .shrinkOut, maskType: .dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
-        unloginAlert.complete = { (action, _) in
+        showAlert(title: "温馨提示", content: "您还没有登陆！", icon: nil, confirmButtonTitle: "去登录", cancelBtnTitle: "取消") { popup, action, obj in
             if action == .confirm {
-                
                 let rootVC = NYSAccountViewController.init()
                 let navVC = NYSBaseNavigationController.init(rootViewController: rootVC)
                 if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
@@ -105,12 +102,31 @@ extension AppManager {
                         keyWindow.rootViewController = navVC
                     }, completion: nil)
                 }
-                
-            } else {
-                popup.dismiss(animated: true)
             }
         }
+    }
+    
+    func showAlert(title: String?) {
+        showAlert(title: title, content: nil, icon: nil, confirmButtonTitle: "确定", cancelBtnTitle: nil, complete: nil)
+    }
+
+    func showAlert(title: String?, complete: ((FFPopup, AppAlertView.AppAlertAction, Any?) -> Void)? = nil) {
+        showAlert(title: title, content: nil, icon: nil, confirmButtonTitle: "确定", cancelBtnTitle: nil, complete: complete)
+    }
+
+    func showAlert(title: String?, content: String?, icon: UIImage?, confirmButtonTitle: String?, cancelBtnTitle: String?, complete: ((FFPopup, AppAlertView.AppAlertAction, Any?) -> Void)? = nil) {
+        
+        let popup = FFPopup(contentView: appAlertView, showType: .bounceIn, dismissType: .shrinkOut, maskType: .dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
         popup.show(layout: FFPopupLayout(horizontal: .center, vertical: .center))
+        
+        appAlertView.popup = popup
+        appAlertView.complete = complete
+        appAlertView.configure(title: title, content: content, icon: icon, confirmButtonTitle: confirmButtonTitle, cancelBtnTitle: cancelBtnTitle)
+        
+        let w = appAlertView.width - 30.0
+        let titleHeight = title?.heightWithConstrainedWidth(width: w, font: UIFont.boldSystemFont(ofSize: 16)) ?? 0
+        let contentHeight = content?.heightWithConstrainedWidth(width: w, font: UIFont.systemFont(ofSize: 17)) ?? 0
+        appAlertView.height = 125.0 + (icon?.size.height ?? 0) + titleHeight + contentHeight
     }
     
 }

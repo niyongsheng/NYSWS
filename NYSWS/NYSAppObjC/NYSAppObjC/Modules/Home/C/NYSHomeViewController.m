@@ -287,6 +287,7 @@ NYSHomeCourseVCDelegate
     CGFloat h = 0;
     
     self.containerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    self.containerScrollView.backgroundColor = [UIColor colorWithHexString:@"#EEEEEE"];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = NAppThemeColor;
     [refreshControl addTarget:self action:@selector(headerRereshing) forControlEvents:UIControlEventValueChanged];
