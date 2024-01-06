@@ -18,18 +18,21 @@ end
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   
   commonPods
+  pod 'RxSwift', '6.6.0'
+  pod 'RxCocoa', '6.6.0'
+  pod 'AcknowList', '3.0.1'
   pod 'Alamofire', '5.8.0'
+  pod 'Kingfisher', '7.10.1'
   pod 'lottie-ios', '2.5.3'
-  pod 'SDWebImage', '5.18.3'
   pod 'ZCycleView', '1.0.4'
   pod 'ZLPhotoBrowser', '4.4.0'
   pod 'IQKeyboardManagerSwift', '6.5.11'
   
-  pod 'RxSwift', '6.6.0'
-  pod 'RxCocoa', '6.6.0'
+  # Layout
   pod 'FlexLib', '3.1.6'
   pod 'SnapKit', '5.6.0'
   pod 'TangramKit', '1.4.2'
+  pod 'CocoaDebug', :configurations => ['Debug']
 
   pod 'JPush'
 end

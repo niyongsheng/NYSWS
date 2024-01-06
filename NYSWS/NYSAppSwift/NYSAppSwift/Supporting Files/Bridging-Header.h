@@ -13,5 +13,5 @@
 #import <Lottie/Lottie.h>
 #import <FFPopup/FFPopup.h>
 #import <SGQRCode/SGQRCode.h>
-#import <SDWebImage/SDWebImage.h>
+#import <MJRefresh/MJRefresh.h>
 #import <BRPickerView/BRPickerView.h>

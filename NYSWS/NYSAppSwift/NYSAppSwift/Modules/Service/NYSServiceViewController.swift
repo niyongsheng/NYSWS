@@ -53,7 +53,7 @@ class NYSServiceViewController: NYSRootViewController {
         return pagingContent
     }()
     
-    var bannerImageArr = ["https:///i.postimg.cc/4y2b2Mg1/1-3x.png", "https:///i.postimg.cc/4y2b2Mg1/1-3x.png"]
+    var bannerImageArr = ["https://example.com/image.png", "https://example.com/image.png"]
     lazy var headerView: UIView = {
         let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: pro_headerViewHeight))
         let h = pro_headerViewHeight - NTopHeight

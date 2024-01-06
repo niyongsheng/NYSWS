@@ -62,6 +62,14 @@ extension AppManager {
         
         // 3.保存登录状态
         isLogin = true
+        
+        // 4.加载主页
+        let rootVC = NYSTabBarViewController()
+        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+            UIView.transition(with: keyWindow, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                keyWindow.rootViewController = rootVC
+            }, completion: nil)
+        }
     }
     
     func refreshUserInfo(completion: AppManagerCompletion) {
@@ -84,9 +92,15 @@ extension AppManager {
         isLogin = false
         
         // 3.加载登录页
-        
+        let rootVC = NYSAccountViewController.init()
+        let navVC = NYSBaseNavigationController.init(rootViewController: rootVC)
+        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+//            UIView.transition(with: keyWindow, duration: 0.75, options: .transitionCrossDissolve, animations: {
+//                keyWindow.rootViewController = navVC
+//            }, completion: nil)
+            keyWindow.rootViewController?.present(navVC, animated: true, completion: nil)
+        }
     }
-    
 }
 
 /// App弹框提醒
@@ -95,13 +109,7 @@ extension AppManager {
     func showLogin() {
         showAlert(title: "温馨提示", content: "您还没有登陆！", icon: nil, confirmButtonTitle: "去登录", cancelBtnTitle: "取消") { popup, action, obj in
             if action == .confirm {
-                let rootVC = NYSAccountViewController.init()
-                let navVC = NYSBaseNavigationController.init(rootViewController: rootVC)
-                if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                    UIView.transition(with: keyWindow, duration: 0.75, options: .transitionCrossDissolve, animations: {
-                        keyWindow.rootViewController = navVC
-                    }, completion: nil)
-                }
+                self.logoutHandler()
             }
         }
     }

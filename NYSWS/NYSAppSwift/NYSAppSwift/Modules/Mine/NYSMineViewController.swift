@@ -33,6 +33,19 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         self.scrollView.contentInsetAdjustmentBehavior = .never
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateNav(self.scrollView)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navBarBackgroundAlpha = 1
+        navBarBarTintColor = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "default_nav_bar_bar_tint_color") as! UIColor
+        navBarTintColor = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "default_nav_bar_tint_color") as! UIColor
+        navBarTitleColor = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "default_nav_bar_title_color") as! UIColor
+    }
+    
     override func setupUI() {
         super.setupUI()
         
@@ -63,8 +76,13 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             (item as! UIView).backgroundColor = UIColor.init(hexString: "#101010")
         })
     }
+
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateNav(scrollView)
+    }
+    
+    private func updateNav(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let alpha = (offsetY - NAVBAR_COLORCHANGE_POINT) / NTopHeight
         if offsetY > NAVBAR_COLORCHANGE_POINT {
@@ -76,24 +94,28 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
                 self.navBarTintColor = UIColor.white.withAlphaComponent(alpha)
                 self.navBarTitleColor = UIColor.white.withAlphaComponent(alpha)
             }
-        
+            
         } else {
             self.navBarBackgroundAlpha = 0
             self.navBarTintColor = .clear
             self.navBarTitleColor = .clear
         }
-//        print("offsetY: \(offsetY)   alpha: \(alpha)")
     }
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
         if sender.tag == 100 {
-            self.navigationController?.pushViewController(NYSInstructionViewController.init(), animated: true)
-            
+            let webVC = NYSWebViewController.init()
+            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
+            self.navigationController?.pushViewController(webVC, animated: true)
+             
         } else if sender.tag == 101 {
             self.navigationController?.pushViewController(NYSQRCodeViewController.init(), animated: true)
             
         } else if sender.tag == 102 {
             self.navigationController?.pushViewController(NYSSettingViewController.init(), animated: true)
+            
+        } else if sender.tag == 103 {
+
             
         } else {
             AppManager.shared.showLogin()

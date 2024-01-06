@@ -13,7 +13,7 @@
         "normal_corner_style_bg_color"  : "#101010",
         "rounded_corner_style_bg_color" : "#000000",
         
-        "default_nav_bar_bar_tint_color": "#2D65FE",
+        "default_nav_bar_bar_tint_color": "#000000",
         "default_nav_bar_tint_color"    : "#ffffff",
         "default_nav_bar_title_color"   : "#ffffff",
     },

@@ -24,6 +24,8 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/LEETheme.h>
 #import <NYSUIKit/NYSIconLeftButton.h>
 #import <NYSUIKit/NYSLabel.h>
+#import <NYSUIKit/YYFPSLabel.h>
+#import <NYSUIKit/NYSMemoryLabel.h>
 #import <NYSUIKit/NYSLoadingButton.h>
 #import <NYSUIKit/PopView.h>
 #import <NYSUIKit/PopAnimationTool.h>

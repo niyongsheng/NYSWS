@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (3.0.1)
   - AFNetworking (4.0.1):
     - AFNetworking/NSURLSession (= 4.0.1)
     - AFNetworking/Reachability (= 4.0.1)
@@ -27,6 +28,7 @@ PODS:
     - BRPickerView/Base
   - BRPickerView/StringPickerView (2.8.1):
     - BRPickerView/Base
+  - CocoaDebug (1.7.7)
   - DZNEmptyDataSet (1.8.1)
   - FFPopup (1.1.5)
   - FLAnimatedImage (1.0.17)
@@ -46,6 +48,7 @@ PODS:
   - JDStatusBarNotification (2.0.9)
   - JPush (3.7.4):
     - JCore (< 3.0.0, >= 2.0.0)
+  - Kingfisher (7.10.1)
   - lottie-ios (2.5.3)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -57,9 +60,9 @@ PODS:
   - RxRelay (6.6.0):
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
-  - SDWebImage (5.18.3):
-    - SDWebImage/Core (= 5.18.3)
-  - SDWebImage/Core (5.18.3)
+  - SDWebImage (5.18.8):
+    - SDWebImage/Core (= 5.18.8)
+  - SDWebImage/Core (5.18.8)
   - SGPagingView (2.1.0)
   - SGQRCode (4.1.0)
   - SnapKit (5.6.0)
@@ -89,9 +92,11 @@ PODS:
   - ZLPhotoBrowser/Core (4.4.0)
 
 DEPENDENCIES:
+  - AcknowList (= 3.0.1)
   - AFNetworking (= 4.0.1)
   - Alamofire (= 5.8.0)
   - BRPickerView (= 2.8.1)
+  - CocoaDebug
   - DZNEmptyDataSet (= 1.8.1)
   - FFPopup (= 1.1.5)
   - FlexLib (= 3.1.6)
@@ -100,6 +105,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (= 6.5.11)
   - JDStatusBarNotification
   - JPush
+  - Kingfisher (= 7.10.1)
   - lottie-ios (= 2.5.3)
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
@@ -107,7 +113,6 @@ DEPENDENCIES:
   - ReactiveObjC (= 3.1.1)
   - RxCocoa (= 6.6.0)
   - RxSwift (= 6.6.0)
-  - SDWebImage (= 5.18.3)
   - SGPagingView (= 2.1.0)
   - SGQRCode (= 4.1.0)
   - SnapKit (= 5.6.0)
@@ -128,9 +133,11 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - AcknowList
     - AFNetworking
     - Alamofire
     - BRPickerView
+    - CocoaDebug
     - DZNEmptyDataSet
     - FFPopup
     - FLAnimatedImage
@@ -141,6 +148,7 @@ SPEC REPOS:
     - JCore
     - JDStatusBarNotification
     - JPush
+    - Kingfisher
     - lottie-ios
     - Masonry
     - MBProgressHUD
@@ -170,9 +178,11 @@ SPEC REPOS:
     - ZLPhotoBrowser-objc
 
 SPEC CHECKSUMS:
+  AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
   BRPickerView: 2531a2d4d0fea0b57a1c738de215af0f88863a2f
+  CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
@@ -183,6 +193,7 @@ SPEC CHECKSUMS:
   JCore: 9d5bda3a172c65bbe14f2806ab0f6246f8a06065
   JDStatusBarNotification: c3565464c8f199d7afdb903ff28b118d47666c7d
   JPush: e455ad2a7b854bca8149df085772d6c4f79b2416
+  Kingfisher: bc5abe80a8e0144537ef1dd5a0b2621b04f7f439
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -191,7 +202,7 @@ SPEC CHECKSUMS:
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
-  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
+  SDWebImage: a81bbb3ba4ea5f810f4069c68727cb118467a04a
   SGPagingView: fb90c03c809363ea340189053c5635a128e1ef84
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
@@ -211,6 +222,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: fde93bc4a1e785808c2763a2e837dbf877783865
+PODFILE CHECKSUM: 133448c037deb3cc776c3eff64d4c78dbf725e56
 
 COCOAPODS: 1.12.0

@@ -6,25 +6,20 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NYSBannerCollectionViewCell: UICollectionViewCell {
     
     private lazy var bannerIV: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .center
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
     var urlStr: String = "" {
         didSet {
             if let url = URL(string: urlStr) {
-                DispatchQueue.global(qos: .background).async {
-                    self.bannerIV.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder_image_fillet"))
-                    
-                    DispatchQueue.main.async {
-                        // 在主线程中更新UI或处理任务结果
-                    }
-                }
+                self.bannerIV.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_image"))
             }
         }
     }

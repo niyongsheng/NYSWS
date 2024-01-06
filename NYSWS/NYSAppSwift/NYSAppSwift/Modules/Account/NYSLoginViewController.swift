@@ -51,12 +51,7 @@ class NYSLoginViewController: NYSRootViewController {
     @IBAction func loginBtnOnclicked(_ sender: UIButton) {
         NYSTools.zoom(toShow: sender.layer)
         
-        let rootVC = NYSTabBarViewController()
-        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            UIView.transition(with: keyWindow, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                keyWindow.rootViewController = rootVC
-            }, completion: nil)
-        }
+        AppManager.shared.loginHandler(loginType: .unknown, params: ["": ""])
     }
     
     @IBAction func forgetPwdBtnOnclicked(_ sender: UIButton) {

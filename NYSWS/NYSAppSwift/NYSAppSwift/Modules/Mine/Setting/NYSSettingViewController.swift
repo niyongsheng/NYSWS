@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AcknowList
 
 class NYSSettingViewController: NYSRootViewController {
 
@@ -24,16 +25,27 @@ class NYSSettingViewController: NYSRootViewController {
         let alertVC = UIAlertController.init(title: "退出登录", message: "确定要退出登录吗？", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction.init(title: "确定", style: .destructive) { (action) in
-            let rootVC = NYSAccountViewController.init()
-            let navVC = NYSBaseNavigationController.init(rootViewController: rootVC)
-            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                UIView.transition(with: keyWindow, duration: 0.75, options: .transitionCrossDissolve, animations: {
-                    keyWindow.rootViewController = navVC
-                }, completion: nil)
-            }
+            AppManager.shared.logoutHandler()
         }
         alertVC.addAction(cancelAction)
         alertVC.addAction(okAction)
         self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func itemOnclicked(_ sender: UIButton) {
+        if sender.tag == 100 {
+            let navVC = NYSBaseNavigationController.init(rootViewController: AcknowListViewController.init(fileNamed: "Pods-NYSAppSwift-acknowledgements"))
+            self.present(navVC, animated: true)
+             
+        } else if sender.tag == 101 {
+            
+            
+        } else if sender.tag == 102 {
+           
+            
+        } else if sender.tag == 103 {
+            self.navigationController?.pushViewController(NYSThirdPartyViewController.init(), animated: true)
+            
+        }
     }
 }

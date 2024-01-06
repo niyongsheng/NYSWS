@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD7-rm-DOZ">
-                    <rect key="frame" x="263" y="15" width="13" height="22"/>
+                    <rect key="frame" x="268" y="10" width="13" height="22"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="close_icon"/>
                     <connections>
@@ -36,13 +36,13 @@
                     <rect key="frame" x="136" y="20.666666666666664" width="19" height="19.333333333333336"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-ev-Hqb">
-                    <rect key="frame" x="15" y="60.333333333333336" width="261" height="19.333333333333336"/>
+                    <rect key="frame" x="15" y="55.333333333333336" width="261" height="19.333333333333336"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYc-0D-t4e">
-                    <rect key="frame" x="15" y="89.666666666666671" width="261" height="20.333333333333329"/>
+                    <rect key="frame" x="15" y="84.666666666666671" width="261" height="20.333333333333329"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -87,19 +87,19 @@
             <constraints>
                 <constraint firstItem="qYc-0D-t4e" firstAttribute="top" secondItem="FcZ-ev-Hqb" secondAttribute="bottom" constant="10" id="0ad-TG-64N"/>
                 <constraint firstItem="qYc-0D-t4e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="3nb-LW-9bb"/>
-                <constraint firstItem="hD7-rm-DOZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="998-bD-Biy"/>
+                <constraint firstItem="hD7-rm-DOZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="998-bD-Biy"/>
                 <constraint firstItem="Un2-iP-cdF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Cjt-o1-lCJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qYc-0D-t4e" secondAttribute="trailing" constant="15" id="Mk3-g9-4hg"/>
                 <constraint firstItem="if4-nI-VZD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="P71-c6-sfS"/>
                 <constraint firstItem="if4-nI-VZD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qYc-0D-t4e" secondAttribute="bottom" constant="10" id="c41-Ia-HxM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FcZ-ev-Hqb" secondAttribute="trailing" constant="15" id="j15-dt-6Yd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="if4-nI-VZD" secondAttribute="trailing" constant="20" id="nfH-0o-pwe"/>
-                <constraint firstItem="FcZ-ev-Hqb" firstAttribute="top" secondItem="Un2-iP-cdF" secondAttribute="bottom" constant="20" id="o7j-rY-tVp"/>
+                <constraint firstItem="FcZ-ev-Hqb" firstAttribute="top" secondItem="Un2-iP-cdF" secondAttribute="bottom" constant="15" id="o7j-rY-tVp"/>
                 <constraint firstItem="FcZ-ev-Hqb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oQm-Zc-vZP"/>
                 <constraint firstItem="FcZ-ev-Hqb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="pqh-tk-2QW"/>
                 <constraint firstItem="Un2-iP-cdF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rhZ-UW-jDA"/>
                 <constraint firstAttribute="bottom" secondItem="if4-nI-VZD" secondAttribute="bottom" constant="20" id="xlF-9E-ezz"/>
-                <constraint firstAttribute="trailing" secondItem="hD7-rm-DOZ" secondAttribute="trailing" constant="15" id="yVg-zY-cvq"/>
+                <constraint firstAttribute="trailing" secondItem="hD7-rm-DOZ" secondAttribute="trailing" constant="10" id="yVg-zY-cvq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="61.832061068702288" y="-176.7605633802817"/>

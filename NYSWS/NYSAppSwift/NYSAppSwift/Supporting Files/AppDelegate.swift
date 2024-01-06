@@ -8,6 +8,9 @@
 import UIKit
 import NYSUIKit
 import IQKeyboardManagerSwift
+#if DEBUG
+import CocoaDebug
+#endif
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,34 +55,63 @@ extension AppDelegate {
         _ = window?.lee_theme.leeConfigBackgroundColor("white_black_color")
         window?.rootViewController = NYSTabBarViewController()
         window?.makeKeyAndVisible()
+        #if DEBUG
         ThemeManager.shared().initBubble(window!) // 主题气泡按钮
+        showMemory() // 显示内存
+        showFPS() // 显示FPS
+        #endif
     }
+    
+    func showFPS() {
+        let fpsLabel = YYFPSLabel.init()
+        fpsLabel.bottom = NScreenHeight - NBottomHeight - 40
+        fpsLabel.right = NScreenWidth - 10
+        fpsLabel.sizeToFit()
+        window?.addSubview(fpsLabel)
+    }
+
+    func showMemory() {
+        let memLabel = NYSMemoryLabel.init()
+        memLabel.bottom = NScreenHeight - NBottomHeight - 10
+        memLabel.right = NScreenWidth - 10
+        memLabel.sizeToFit()
+        window?.addSubview(memLabel)
+    }
+
+}
+
+
+extension AppDelegate {
     
     /// 获取当前显示的控制器
     func getCurrentViewController() -> UIViewController? {
         var result: UIViewController?
-        var window = UIApplication.shared.keyWindow
-        if window?.windowLevel != UIWindow.Level.normal {
-            let windows = UIApplication.shared.windows
-            for tmpWin in windows {
-                if tmpWin.windowLevel == UIWindow.Level.normal {
-                    window = tmpWin
-                    break
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            
+            let fromView = window.subviews[0]
+            
+            if let nextResponder = fromView.next {
+                if nextResponder.isKind(of: UIViewController.self) {
+                    result = nextResponder as? UIViewController
+                    
+                    if result?.navigationController != nil {
+                        result = result?.navigationController
+                    }
+                } else {
+                    result = window.rootViewController
                 }
-            }
-        }
-        let fromView = window?.subviews[0]
-        if let nextResponder = fromView?.next {
-            if nextResponder.isKind(of: UIViewController.self) {
-                result = nextResponder as? UIViewController
-                if result?.navigationController != nil {
-                    result = result?.navigationController
-                }
-            } else {
-                result = window?.rootViewController
             }
         }
         return result
     }
     
+    //MARK: - override Swift `print` method
+    public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .red) {
+#if DEBUG
+        Swift.print(message)
+        _SwiftLogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+#endif
+    }
 }

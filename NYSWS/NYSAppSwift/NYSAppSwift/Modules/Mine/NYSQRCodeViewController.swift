@@ -30,36 +30,6 @@ class NYSQRCodeViewController: NYSRootViewController, UIScrollViewDelegate {
             }
         }
     }
-
-    private func generateQRCode(withData data: String, size: CGFloat, color: UIColor, backgroundColor: UIColor) -> UIImage? {
-        guard let stringData = data.data(using: .utf8),
-              let filter = CIFilter(name: "CIQRCodeGenerator"),
-              let ciImage = filter.outputImage else {
-            return nil
-        }
-        
-        filter.setValue(stringData, forKey: "inputMessage")
-        filter.setValue("H", forKey: "inputCorrectionLevel")
-        
-        guard let colorFilter = CIFilter(name: "CIFalseColor"),
-              let outputImage = colorFilter.outputImage else {
-            return nil
-        }
-        
-        colorFilter.setValue(ciImage, forKey: "inputImage")
-        colorFilter.setValue(CIColor(cgColor: color.cgColor), forKey: "inputColor0")
-        colorFilter.setValue(CIColor(cgColor: backgroundColor.cgColor), forKey: "inputColor1")
-        
-        let scale = size / outputImage.extent.size.width
-        let scaledImage = outputImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-        
-        guard let cgImage = CIContext().createCGImage(scaledImage, from: scaledImage.extent) else {
-            return nil
-        }
-        
-        let qrCodeImage = UIImage(cgImage: cgImage)
-        return qrCodeImage
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

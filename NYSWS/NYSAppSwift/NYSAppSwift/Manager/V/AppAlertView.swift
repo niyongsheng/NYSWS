@@ -67,7 +67,7 @@ class AppAlertView: UIView {
         cancelBtn.addCornerRadius(NAppRadius, borderWidth: 1, borderColor: NAppThemeColor)
 
         _ = self.lee_theme.leeConfigBackgroundColor("alert_view_bg_color")
-        _ = self.titleL.lee_theme.leeConfigTextColor("default_nav_bar_title_color")
+        _ = self.titleL.lee_theme.leeConfigTextColor("title_label_color")
     }
     
     override var intrinsicContentSize: CGSize {

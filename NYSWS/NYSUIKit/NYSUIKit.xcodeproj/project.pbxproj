@@ -79,6 +79,10 @@
 		C8B7484129FBBE7D00673B75 /* ThemeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7483C29FBBE7D00673B75 /* ThemeManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B7484229FBBE7D00673B75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C8B7483D29FBBE7D00673B75 /* README.md */; };
 		C8B7484329FBBE7D00673B75 /* ThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7483E29FBBE7D00673B75 /* ThemeManager.m */; };
+		C8D0AF872B49438F002C18E6 /* NYSMemoryLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D0AF822B49438F002C18E6 /* NYSMemoryLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D0AF882B49438F002C18E6 /* NYSMemoryLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D0AF832B49438F002C18E6 /* NYSMemoryLabel.m */; };
+		C8D0AF892B49438F002C18E6 /* YYFPSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D0AF852B49438F002C18E6 /* YYFPSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8D0AF8A2B49438F002C18E6 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D0AF862B49438F002C18E6 /* YYFPSLabel.m */; };
 		C8EE7E812A08C18D000E3A3A /* UINavigationController+NYSUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8EE7E7F2A08C18D000E3A3A /* UINavigationController+NYSUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8EE7E822A08C18D000E3A3A /* UINavigationController+NYSUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */; };
 		C8EEC58F2A823CDD0090EDAB /* NYSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B7475929FA753300673B75 /* NYSKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -177,6 +181,10 @@
 		C8B7483C29FBBE7D00673B75 /* ThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeManager.h; sourceTree = "<group>"; };
 		C8B7483D29FBBE7D00673B75 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C8B7483E29FBBE7D00673B75 /* ThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeManager.m; sourceTree = "<group>"; };
+		C8D0AF822B49438F002C18E6 /* NYSMemoryLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSMemoryLabel.h; sourceTree = "<group>"; };
+		C8D0AF832B49438F002C18E6 /* NYSMemoryLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSMemoryLabel.m; sourceTree = "<group>"; };
+		C8D0AF852B49438F002C18E6 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		C8D0AF862B49438F002C18E6 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		C8EE7E7F2A08C18D000E3A3A /* UINavigationController+NYSUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NYSUIKit.h"; sourceTree = "<group>"; };
 		C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NYSUIKit.m"; sourceTree = "<group>"; };
 		C8EEC5952A8323450090EDAB /* NYSUIKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NYSUIKit.xcassets; sourceTree = "<group>"; };
@@ -274,6 +282,8 @@
 				C8B7475F29FA775300673B75 /* LEEBubble */,
 				C8B7476A29FA775300673B75 /* LEETheme */,
 				C8B7477629FA775300673B75 /* NYSIconLeftButton */,
+				C8D0AF842B49438F002C18E6 /* FPS */,
+				C8D0AF812B49438F002C18E6 /* Memory */,
 				C8597AC429F52192008BEE7F /* NYSLabel */,
 				C8B7476729FA775300673B75 /* NYSLoadingButton */,
 				C8B7477129FA775300673B75 /* PopView */,
@@ -473,6 +483,24 @@
 			path = ThemeManager;
 			sourceTree = "<group>";
 		};
+		C8D0AF812B49438F002C18E6 /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				C8D0AF822B49438F002C18E6 /* NYSMemoryLabel.h */,
+				C8D0AF832B49438F002C18E6 /* NYSMemoryLabel.m */,
+			);
+			path = Memory;
+			sourceTree = "<group>";
+		};
+		C8D0AF842B49438F002C18E6 /* FPS */ = {
+			isa = PBXGroup;
+			children = (
+				C8D0AF852B49438F002C18E6 /* YYFPSLabel.h */,
+				C8D0AF862B49438F002C18E6 /* YYFPSLabel.m */,
+			);
+			path = FPS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -513,6 +541,8 @@
 				C8B7484129FBBE7D00673B75 /* ThemeManager.h in Headers */,
 				C8B7481229FBA8FA00673B75 /* NYSUIKitUtilities.h in Headers */,
 				C8EE7E812A08C18D000E3A3A /* UINavigationController+NYSUIKit.h in Headers */,
+				C8D0AF872B49438F002C18E6 /* NYSMemoryLabel.h in Headers */,
+				C8D0AF892B49438F002C18E6 /* YYFPSLabel.h in Headers */,
 				C85F4E642A189217007DAADC /* FIRVersionCheck.h in Headers */,
 				C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */,
 				C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */,
@@ -664,6 +694,7 @@
 				C8B747FD29FA818900673B75 /* NYSBaseObject.m in Sources */,
 				C8B747CE29FA7DF700673B75 /* NSDictionary+NilSafe.m in Sources */,
 				C8B747F929FA818900673B75 /* NYSBaseView.m in Sources */,
+				C8D0AF8A2B49438F002C18E6 /* YYFPSLabel.m in Sources */,
 				C8B7480429FA818900673B75 /* NYSBaseTabBarController.m in Sources */,
 				C8B7479B29FA775400673B75 /* NYSLoadingButton.m in Sources */,
 				C8B747F229FA818900673B75 /* NYSBasePresenter.m in Sources */,
@@ -671,6 +702,7 @@
 				C8597AC729F52192008BEE7F /* NYSLabel.m in Sources */,
 				C8B7481329FBA8FA00673B75 /* NYSUIKitUtilities.m in Sources */,
 				C8B7480129FA818900673B75 /* NYSBaseWindow.m in Sources */,
+				C8D0AF882B49438F002C18E6 /* NYSMemoryLabel.m in Sources */,
 				C8B747A629FA775400673B75 /* NYSIconLeftButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
