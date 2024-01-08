@@ -24,7 +24,7 @@ class NYSHomeViewModel: NYSRootViewModel {
                 "type": String.randomString(length: 10),
                 "date": formattedDate,
                 "title": String.randomString(length: 20),
-                "content": String.randomString(length: 200)
+                "content": String.randomString(length: Int.random(in: 1...1024))
             ]
             dataArray.append(randomDataEntry)
         }

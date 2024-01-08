@@ -23,7 +23,7 @@ class NYSRootViewModel {
     var className: String { String(describing: self) }
     
     deinit {
-        print("被销毁了")
+        print("VM被销毁了")
     }
 }
 
@@ -32,7 +32,7 @@ extension NYSRootViewModel: HasDisposeBag {}
 extension NYSRootViewModel {
     
     /// - Parameter event: SingleEvent
-    func processRxMoyaRequestEvent(event: SingleEvent<some Codable>) {
+    func processRxRequestEvent(event: SingleEvent<some Codable>) {
         networkError.onNext(event.netError)
     }}
 
@@ -42,7 +42,9 @@ extension SingleEvent {
         case .success(_):
             return nil
         case .failure(let error):
-            guard let netError = error as? NSError else { return nil }
+            guard let netError = error as? NSError else {
+                return NSError(domain: "未知错误", code: -1, userInfo: nil)
+            }
             
             return netError
         }

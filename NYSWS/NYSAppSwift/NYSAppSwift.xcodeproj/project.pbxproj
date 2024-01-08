@@ -150,6 +150,7 @@
 		C8A4BE3D2B4BD45400152E14 /* NYSHomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeCodable.swift; sourceTree = "<group>"; };
 		C8A4BE402B4BDE9100152E14 /* NYSHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeViewModel.swift; sourceTree = "<group>"; };
 		C8A4BE422B4BDF4300152E14 /* NYSRootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootViewModel.swift; sourceTree = "<group>"; };
+		C8A4BE442B4BF16D00152E14 /* NYSAppSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYSAppSwift.entitlements; sourceTree = "<group>"; };
 		C8BC5E942B3A84B100814C2B /* NYSHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeViewController.swift; sourceTree = "<group>"; };
 		C8BC5E962B3A852200814C2B /* NYSMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSMineViewController.swift; sourceTree = "<group>"; };
 		C8BC5E972B3A852200814C2B /* NYSMineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSMineViewController.xib; sourceTree = "<group>"; };
@@ -250,6 +251,7 @@
 		C8597A8029F5119E008BEE7F /* NYSAppSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4BE442B4BF16D00152E14 /* NYSAppSwift.entitlements */,
 				C87CAB722B465D0F00C84E8E /* Manager */,
 				C80EE9E92B43954400F79AD0 /* Extension */,
 				C86DB21B2B3E9E0C002126F5 /* Lib */,
@@ -876,6 +878,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NYSAppSwift/NYSAppSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -909,6 +912,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NYSAppSwift/NYSAppSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

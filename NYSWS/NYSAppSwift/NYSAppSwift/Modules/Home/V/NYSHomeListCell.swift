@@ -10,25 +10,26 @@ import UIKit
 @objc(NYSHomeListCell)
 class NYSHomeListCell: FlexBaseTableCell {
 
-    @objc var head : UIImageView!
-    @objc var name : UILabel!
-    @objc var type : UILabel!
-    @objc var date : UILabel!
-    @objc var title : UILabel!
-    @objc var content : UILabel!
+    @objc private var head : UIImageView!
+    @objc private var name : UILabel!
+    @objc private var type : UILabel!
+    @objc private var date : UILabel!
+    @objc private var title : UILabel!
+    @objc private var content : UILabel!
+    
+    var model: NYSHomeListModel! {
+        didSet {
+            name.text = model.name
+            type.text = model.type
+            date.text = model.date
+            title.text = model.title
+            content.text = model.content
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    func setData(data : NYSHomeListModel, height:Bool) -> Void {
-        if(!height){
-            name.text = data.name
-            type.text = data.type
-            date.text = data.date
-            title.text = data.title
-        }
-        content.text = data.content
-    }
+    
 }

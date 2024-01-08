@@ -48,3 +48,4 @@ let kToken = "kToken"
 
 
 // pragma mark - APP API
+let AppBaseUrl = ""

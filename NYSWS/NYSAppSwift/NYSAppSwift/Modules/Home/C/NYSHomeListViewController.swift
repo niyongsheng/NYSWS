@@ -10,8 +10,8 @@ import UIKit
 class NYSHomeListViewController: NYSRootViewController {
     
     var indexStr: String = ""
-    var _cell : NYSHomeListCell!
-    @objc var content : UILabel!
+    private var _cell : NYSHomeListCell!
+    @objc private var content : UILabel!
     
     private func tableHeaderFrameChange() -> Void {
         self.tableView.beginUpdates()
@@ -72,8 +72,8 @@ class NYSHomeListViewController: NYSRootViewController {
             _cell = NYSHomeListCell(flex:nil,reuseIdentifier:nil)
         }
         
-        _cell.setData(data: self.dataSourceArr[indexPath.row] as! NYSHomeListModel,height: true)
-        return (_cell?.height(forWidth: tableView.frame.size.width))!
+        _cell.model = self.dataSourceArr[indexPath.row] as? NYSHomeListModel
+        return (_cell?.height(forWidth: NScreenWidth))!
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,9 +81,9 @@ class NYSHomeListViewController: NYSRootViewController {
         var cell : NYSHomeListCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? NYSHomeListCell
         
         if cell == nil {
-            cell = NYSHomeListCell(flex:nil,reuseIdentifier:identifier)
+            cell = NYSHomeListCell(flex:nil, reuseIdentifier:identifier)
         }
-        cell?.setData(data: self.dataSourceArr[indexPath.row] as! NYSHomeListModel,height: false)
+        cell?.model = self.dataSourceArr[indexPath.row] as? NYSHomeListModel
         return cell!;
     }
     

@@ -14,5 +14,6 @@
 #import <FlexLib/FlexLib.h>
 #import <FFPopup/FFPopup.h>
 #import <SGQRCode/SGQRCode.h>
+#import <JPush/JPUSHService.h>
 #import <MJRefresh/MJRefresh.h>
 #import <BRPickerView/BRPickerView.h>

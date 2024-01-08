@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: NYSBaseWindow?
     
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // 初始化导航栏
         initNavigationBar()
@@ -25,8 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 初始化键盘
         initIQKeyboard()
         
+        // 初始化网络
+        initNetwork()
+        
         // 初始化窗口
         initWindow()
+        
+        // 初始化极光推送
+        initJPush(launchOptions)
 
         return true
     }
@@ -59,7 +65,38 @@ extension AppDelegate {
         ThemeManager.shared().initBubble(window!) // 主题气泡按钮
         showMemory() // 显示内存
         showFPS() // 显示FPS
+        FIRVersionCheck.setAPIToken(FirApiToken)
+        FIRVersionCheck.setTargetController(self.window?.rootViewController)
+        FIRVersionCheck.check()
         #endif
+    }
+    
+    func initJPush(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        let entity = JPUSHRegisterEntity()
+        entity.types = NSInteger(UNAuthorizationOptions.alert.rawValue) |
+        NSInteger(UNAuthorizationOptions.sound.rawValue) |
+        NSInteger(UNAuthorizationOptions.badge.rawValue) |
+        NSInteger(UNAuthorizationOptions.provisional.rawValue)
+        
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        JPUSHService.setInMessageDelegate(self)
+        JPUSHService.setup(withOption: launchOptions, appKey: JPUSH_APPKEY, channel: JPUSH_CHANNEl, apsForProduction: IS_Prod, advertisingIdentifier: nil)
+        JPUSHService .registrationIDCompletionHandler { resCode, registrationID in
+            if resCode == 0 {
+                self.print("registrationID获取成功：\(String(describing: registrationID))")
+            } else {
+                self.print("registrationID获取失败，code：\(String(describing: registrationID))")
+            }
+        }
+    }
+    
+    func initNetwork() {
+        NYSKitManager.shared().host = AppBaseUrl
+        NYSKitManager.shared().token = AppManager.shared.token
+        NYSKitManager.shared().normalCode = "200,0"
+        NYSKitManager.shared().tokenInvalidCode = "500"
+        NYSKitManager.shared().msgKey = "msg"
+        NYSKitManager.shared().isAlwaysShowErrorMsg = true
     }
     
     func showFPS() {
@@ -80,9 +117,7 @@ extension AppDelegate {
 
 }
 
-
 extension AppDelegate {
-    
     /// 获取当前显示的控制器
     func getCurrentViewController() -> UIViewController? {
         var result: UIViewController?
@@ -113,5 +148,42 @@ extension AppDelegate {
         Swift.print(message)
         _SwiftLogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 #endif
+    }
+}
+
+extension AppDelegate: JPUSHRegisterDelegate, JPushInMessageDelegate {
+    
+    // MARK - JPUSHRegisterDelegate
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: (() -> Void)) {
+        let userInfo = response.notification.request.content.userInfo
+        let request = response.notification.request
+        if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) == true) {
+            JPUSHService.handleRemoteNotification(userInfo)
+        }
+        completionHandler()
+    }
+    
+    // 前台得到的的通知
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: ((Int) -> Void)) {
+        let userInfo = notification.request.content.userInfo
+        let request = notification.request
+        if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) == true) {
+            JPUSHService.handleRemoteNotification(userInfo)
+        }
+        
+        completionHandler(Int(UNNotificationPresentationOptions.badge.rawValue | UNNotificationPresentationOptions.sound.rawValue | UNNotificationPresentationOptions.alert.rawValue))
+    }
+    
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification) {
+        
+    }
+    
+    func jpushNotificationAuthorization(_ status: JPAuthorizationStatus, withInfo info: [AnyHashable : Any]?) {
+        print("receive notification authorization status:\(status), info:\(String(describing: info))")
+    }
+    
+    // MARK - JPushInMessageDelegate
+    func jPushInMessageIsAllowedInMessagePop() -> Bool {
+        return true
     }
 }
