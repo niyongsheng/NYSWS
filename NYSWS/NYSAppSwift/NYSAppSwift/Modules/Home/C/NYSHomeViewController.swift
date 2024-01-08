@@ -51,7 +51,7 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
         configure.indicatorColor = NAppThemeColor
         configure.indicatorToBottomDistance = 0
         
-        let frame = CGRect.init(x: 0, y: searchView.bottom + 10, width: UIScreen.width, height: 44)
+        let frame = CGRect.init(x: 0, y: searchView.bottom + 10, width: UIScreen.width, height: RealValueX(x: 40))
         let titles = ["待确认", "待装货", "待卸货", "待签收", "已完成"]
         let pagingTitle = SGPagingTitleView(frame: frame, titles: titles, configure: configure)
         pagingTitle.backgroundColor = .clear
@@ -69,7 +69,7 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
         }
         
         let y: CGFloat = pagingTitleView.frame.maxY
-        let tempRect: CGRect = CGRect.init(x: 0, y: y, width: UIScreen.width, height: UIScreen.height - y)
+        let tempRect: CGRect = CGRect.init(x: 0, y: y, width: UIScreen.width, height: UIScreen.height - y - NBottomHeight)
         let pagingContent = SGPagingContentCollectionView(frame: tempRect, parentVC: self, childVCs: vcs)
         pagingContent.delegate = self
         return pagingContent

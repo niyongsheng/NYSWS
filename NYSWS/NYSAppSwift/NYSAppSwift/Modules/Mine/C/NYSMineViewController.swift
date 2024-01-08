@@ -115,7 +115,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             self.navigationController?.pushViewController(NYSSettingViewController.init(), animated: true)
             
         } else if sender.tag == 103 {
-
+            AppManager.shared.showShare(content: nil)
             
         } else {
             AppManager.shared.showLogin()

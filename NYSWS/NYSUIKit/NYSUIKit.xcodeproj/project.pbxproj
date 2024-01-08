@@ -10,12 +10,14 @@
 		C2DFE84E2D681925071B28BF /* libPods-NYSUIKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C55F36F242B015CD4EB52A29 /* libPods-NYSUIKit.a */; };
 		C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8464AA02A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C8464A9E2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m */; };
-		C8464AB82A0A3353003CD376 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8464ABA2A0A3353003CD376 /* InfoPlist.strings */; };
 		C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597A0729F4FDC5008BEE7F /* NYSUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8597AC729F52192008BEE7F /* NYSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AC529F52192008BEE7F /* NYSLabel.m */; };
 		C8597AC829F52192008BEE7F /* NYSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AC629F52192008BEE7F /* NYSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C85F4E642A189217007DAADC /* FIRVersionCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = C85F4E622A189217007DAADC /* FIRVersionCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C85F4E652A189217007DAADC /* FIRVersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = C85F4E632A189217007DAADC /* FIRVersionCheck.m */; };
+		C8A4BE332B4BC52A00152E14 /* NYSUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8A4BE322B4BC52A00152E14 /* NYSUIKit.bundle */; };
+		C8A4BE362B4BC7D200152E14 /* NSBundle+NYSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C8A4BE342B4BC7D200152E14 /* NSBundle+NYSFramework.h */; };
+		C8A4BE372B4BC7D200152E14 /* NSBundle+NYSFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE352B4BC7D200152E14 /* NSBundle+NYSFramework.m */; };
 		C8B7479529FA775400673B75 /* LEEBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7476029FA775300673B75 /* LEEBubble.m */; };
 		C8B7479629FA775400673B75 /* LEEBubble.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7476129FA775300673B75 /* LEEBubble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B7479A29FA775400673B75 /* NYSLoadingButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7476829FA775300673B75 /* NYSLoadingButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -108,15 +110,15 @@
 		C55F36F242B015CD4EB52A29 /* libPods-NYSUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSUIKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+NYSLanguageSwitch.h"; sourceTree = "<group>"; };
 		C8464A9E2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+NYSLanguageSwitch.m"; sourceTree = "<group>"; };
-		C8464AB92A0A3353003CD376 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C8464ABB2A0A3357003CD376 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		C8464ABC2A0A335C003CD376 /* lo */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lo; path = lo.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C8597A0429F4FDC5008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597A0729F4FDC5008BEE7F /* NYSUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSUIKit.h; sourceTree = "<group>"; };
 		C8597AC529F52192008BEE7F /* NYSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSLabel.m; sourceTree = "<group>"; };
 		C8597AC629F52192008BEE7F /* NYSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSLabel.h; sourceTree = "<group>"; };
 		C85F4E622A189217007DAADC /* FIRVersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRVersionCheck.h; sourceTree = "<group>"; };
 		C85F4E632A189217007DAADC /* FIRVersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIRVersionCheck.m; sourceTree = "<group>"; };
+		C8A4BE322B4BC52A00152E14 /* NYSUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NYSUIKit.bundle; sourceTree = "<group>"; };
+		C8A4BE342B4BC7D200152E14 /* NSBundle+NYSFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+NYSFramework.h"; sourceTree = "<group>"; };
+		C8A4BE352B4BC7D200152E14 /* NSBundle+NYSFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+NYSFramework.m"; sourceTree = "<group>"; };
 		C8B7475929FA753300673B75 /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7476029FA775300673B75 /* LEEBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEBubble.m; sourceTree = "<group>"; };
 		C8B7476129FA775300673B75 /* LEEBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEBubble.h; sourceTree = "<group>"; };
@@ -399,6 +401,8 @@
 				C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */,
 				C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */,
 				C8464A9E2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m */,
+				C8A4BE342B4BC7D200152E14 /* NSBundle+NYSFramework.h */,
+				C8A4BE352B4BC7D200152E14 /* NSBundle+NYSFramework.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -449,8 +453,8 @@
 		C8B7480A29FBA74500673B75 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4BE322B4BC52A00152E14 /* NYSUIKit.bundle */,
 				C8EEC5952A8323450090EDAB /* NYSUIKit.xcassets */,
-				C8464ABA2A0A3353003CD376 /* InfoPlist.strings */,
 				C8B7480D29FBA7D300673B75 /* douyuFont.otf */,
 			);
 			path = Resources;
@@ -533,6 +537,7 @@
 				C8B747BA29FA775400673B75 /* WSScrollLabel.h in Headers */,
 				C8B747CD29FA7DF700673B75 /* UIView+Tools.h in Headers */,
 				C8B7480329FA818900673B75 /* NYSBaseObject.h in Headers */,
+				C8A4BE362B4BC7D200152E14 /* NSBundle+NYSFramework.h in Headers */,
 				C8B747A429FA775400673B75 /* PopView.h in Headers */,
 				C8B7480229FA818900673B75 /* NYSBaseNavigationController.h in Headers */,
 				C8B747BB29FA775400673B75 /* CMPopTipView.h in Headers */,
@@ -612,7 +617,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8464AB82A0A3353003CD376 /* InfoPlist.strings in Resources */,
+				C8A4BE332B4BC52A00152E14 /* NYSUIKit.bundle in Resources */,
 				C8B747F529FA818900673B75 /* webloaderrorview.png in Resources */,
 				C8B7480E29FBA7D300673B75 /* douyuFont.otf in Resources */,
 				C8EEC5962A8323450090EDAB /* NYSUIKit.xcassets in Resources */,
@@ -679,6 +684,7 @@
 				C85F4E652A189217007DAADC /* FIRVersionCheck.m in Sources */,
 				C8B7479529FA775400673B75 /* LEEBubble.m in Sources */,
 				C8B747BC29FA775400673B75 /* CMPopTipView.m in Sources */,
+				C8A4BE372B4BC7D200152E14 /* NSBundle+NYSFramework.m in Sources */,
 				C8B7484329FBBE7D00673B75 /* ThemeManager.m in Sources */,
 				C8464AA02A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.m in Sources */,
 				C8B747CF29FA7DF700673B75 /* UIButton+NYS.m in Sources */,
@@ -708,19 +714,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C8464ABA2A0A3353003CD376 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8464AB92A0A3353003CD376 /* en */,
-				C8464ABB2A0A3357003CD376 /* zh-Hans */,
-				C8464ABC2A0A335C003CD376 /* lo */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C8597A0B29F4FDC5008BEE7F /* Debug */ = {

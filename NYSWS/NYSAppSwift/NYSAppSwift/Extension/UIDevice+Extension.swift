@@ -11,7 +11,7 @@ import UIKit
 extension UIDevice {
     
     /// 是否iphoneX之后机型
-    public func nys_isIphoneX() -> Bool {
+    static func nys_isIphoneX() -> Bool {
         var isAfterX = false
         if #available(iOS 11.0, *) {
             isAfterX = UIApplication.shared.windows.first { $0.isKeyWindow }?.safeAreaInsets.bottom ?? 0.0 > 0.0

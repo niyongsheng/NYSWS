@@ -22,6 +22,8 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   commonPods
   pod 'RxSwift', '6.6.0'
   pod 'RxCocoa', '6.6.0'
+  pod 'NSObject+Rx'
+  
   pod 'AcknowList', '3.0.1'
   pod 'Alamofire', '5.8.0'
   pod 'Kingfisher', '7.10.1'

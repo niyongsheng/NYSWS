@@ -11,6 +11,7 @@
 
 #pragma mark -- 三方框架 --
 #import <Lottie/Lottie.h>
+#import <FlexLib/FlexLib.h>
 #import <FFPopup/FFPopup.h>
 #import <SGQRCode/SGQRCode.h>
 #import <MJRefresh/MJRefresh.h>

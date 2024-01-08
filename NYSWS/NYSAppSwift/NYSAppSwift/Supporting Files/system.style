@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<styles>
+    <style name="themeColor">
+        <attr name="color">#008D5E</attr>
+    </style>
+
+    <style name="themeColorBg">
+        <attr name="bgColor">#008D5E</attr>
+    </style>
+    
+    <style name="lineSep">
+        <attr name="height">1</attr>
+        <attr name="bgColor">#e6e6e6</attr>
+    </style>
+    
+    <style name="filterRow">
+        <attr name="height">44</attr>
+        <attr name="flexDirection">row</attr>
+        <attr name="alignItems">center</attr>
+        <attr name="paddingLeft">14</attr>
+        <attr name="paddingRight">8</attr>
+        <attr name="justifyContent">space-between</attr>
+    </style>
+    
+    <style name="button">
+        <attr name="height">44</attr>
+        <attr name="width">150</attr>
+        <attr name="borderRadius">22</attr>
+        <attr name="clipsToBounds">true</attr>
+        <attr name="alignItems">center</attr>
+        <attr name="justifyContent">center</attr>
+        <attr name="margin">20</attr>
+    </style>
+    
+</styles>

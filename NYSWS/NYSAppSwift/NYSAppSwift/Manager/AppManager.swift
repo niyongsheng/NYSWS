@@ -18,6 +18,13 @@ final class AppManager {
         return appAlertView
     }()
     
+    /// 分享弹窗
+    private lazy var appShareView: AppShareView = {
+        let appShareView = AppShareView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: RealValueX(x: 265)))
+        return appShareView
+    }()
+    
+    
     /// 用户名
     @UserDefault(key: kUsername, defaultValue: nil)
     private(set) var username: String?
@@ -119,6 +126,7 @@ extension AppManager {
     func showAlert(title: String?, content: String?, icon: UIImage?, confirmButtonTitle: String?, cancelBtnTitle: String?, complete: ((FFPopup, AppAlertView.AppAlertAction, Any?) -> Void)? = nil) {
         
         let popup = FFPopup(contentView: appAlertView, showType: .bounceIn, dismissType: .shrinkOut, maskType: .dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
+        popup.showInDuration = 0.3
         popup.show(layout: FFPopupLayout(horizontal: .center, vertical: .center))
         
         appAlertView.popup = popup
@@ -131,4 +139,18 @@ extension AppManager {
         appAlertView.height = 125.0 + (icon?.size.height ?? 0) + titleHeight + contentHeight
     }
     
+    func showShare(content: Any?) {
+        showShare(content: content, icon: nil, confirmButtonTitle: "分享", complete: nil)
+    }
+    
+    func showShare(content: Any?, icon: UIImage?, confirmButtonTitle: String?, complete: ((FFPopup, AppShareView.AppShareAction, AppShareView.AppShareType, Any?) -> Void)? = nil) {
+        
+        let popup = FFPopup(contentView: appShareView, showType: .slideInFromBottom, dismissType: .slideOutToBottom, maskType: .dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
+        popup.showInDuration = 0.3
+        popup.show(layout: FFPopupLayout(horizontal: .center, vertical: .bottom))
+        
+        appShareView.popup = popup
+        appShareView.complete = complete
+        appShareView.configure(content: nil, icon: nil, confirmButtonTitle: "立即分享")
+    }
 }

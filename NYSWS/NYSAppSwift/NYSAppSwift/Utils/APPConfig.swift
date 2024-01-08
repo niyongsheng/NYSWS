@@ -33,7 +33,7 @@ let UMengKey        :String      =        ""
 let NAppThemeColor  :UIColor = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "app_theme_color") as! UIColor
 
 /// APP默认分页大小
-let DefaultPageSize :Int = 10
+let NAppPageSize :Int = 10
 
 /// APP间隔
 let NAppSpace:CGFloat = 15.0

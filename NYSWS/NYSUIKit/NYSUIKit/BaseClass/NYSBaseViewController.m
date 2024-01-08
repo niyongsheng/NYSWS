@@ -11,11 +11,15 @@
 #import "WSScrollLabel.h"
 #import "PublicHeader.h"
 #import "LEETheme.h"
+#import "NSBundle+NYSFramework.h"
 
 #import <MJRefresh/MJRefresh.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
-#define NTopHeight [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height
+#define NYSTopHeight [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height
+
+#define NYSFrameworkLocalizedString(key, comment) \
+NSLocalizedStringFromTableInBundle(key, nil, [NSBundle bundleForClass:[self class]], comment)
 
 @interface NYSBaseViewController ()
 <
@@ -50,7 +54,11 @@ DZNEmptyDataSetDelegate
     
     // 默认错误信息
     [self addObserver:self forKeyPath:@"dataSource" options:NSKeyValueObservingOptionNew context:nil]; // KVO
-    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"error"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
+                             description:[NSBundle nys_localizedStringForKey:@"NoData"]
+                                  reason:@""
+                              suggestion:[NSBundle nys_localizedStringForKey:@"Retry"]
+                          placeholderImg:@"error"];
     
     // UI
     [self setupUI];
@@ -76,9 +84,12 @@ DZNEmptyDataSetDelegate
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context {
-    if (_dataSourceArr.count == 0) {
-        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"error"];
-    }
+    if (_dataSourceArr.count == 0)
+        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
+                                 description:[NSBundle nys_localizedStringForKey:@"NoData"]
+                                      reason:@""
+                                  suggestion:[NSBundle nys_localizedStringForKey:@"Retry"]
+                              placeholderImg:@"error"];
 }
 
 #pragma mark - UI
@@ -167,7 +178,7 @@ DZNEmptyDataSetDelegate
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
-        NSString *endStr = NSLocalizedStringFromTable(@"NoMore", @"InfoPlist", nil);
+        NSString *endStr = [NSBundle nys_localizedStringForKey:@"NoMore"];
         if (self.isUseUIRefreshControl) {
             // header refresh
             UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -264,16 +275,16 @@ DZNEmptyDataSetDelegate
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) collectionViewLayout:flow];
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-            _collectionView.contentInset = UIEdgeInsetsMake(NTopHeight, 0, 0, 0);
+            _collectionView.contentInset = UIEdgeInsetsMake(NYSTopHeight, 0, 0, 0);
         }
-
+        
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         
         _collectionView.emptyDataSetSource = self;
         _collectionView.emptyDataSetDelegate = self;
         
-        NSString *endStr = NSLocalizedStringFromTable(@"NoMore", @"InfoPlist", nil);
+        NSString *endStr = [NSBundle nys_localizedStringForKey:@"NoMore"];
         if (self.isUseUIRefreshControl) {
             // header refresh
             UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -355,7 +366,11 @@ DZNEmptyDataSetDelegate
 
 #pragma mark - MJRefresh Methods
 - (void)headerRereshing {
-    self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NSLocalizedStringFromTable(@"Loading", @"InfoPlist", nil) reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
+                             description:[NSBundle nys_localizedStringForKey:@"Loading"]
+                                  reason:@""
+                              suggestion:@""
+                          placeholderImg:@"linkedin_binding_magnifier"];
     
     __weak __typeof(self)weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -369,12 +384,20 @@ DZNEmptyDataSetDelegate
             [weakSelf.collectionView.refreshControl endRefreshing];
         }
         
-        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"error"];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
+                                 description:[NSBundle nys_localizedStringForKey:@"NoData"]
+                                      reason:@""
+                                  suggestion:[NSBundle nys_localizedStringForKey:@"Retry"]
+                              placeholderImg:@"error"];
     });
 }
 
 - (void)footerRereshing {
-    self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NSLocalizedStringFromTable(@"Loading", @"InfoPlist", nil) reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
+    self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
+                             description:[NSBundle nys_localizedStringForKey:@"Loading"]
+                                  reason:@""
+                              suggestion:@""
+                          placeholderImg:@"linkedin_binding_magnifier"];
     
     __weak __typeof(self)weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -384,7 +407,11 @@ DZNEmptyDataSetDelegate
         if (self->_collectionView)
             [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
         
-        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow description:NSLocalizedStringFromTable(@"NoData", @"InfoPlist", nil) reason:@"" suggestion:NSLocalizedStringFromTable(@"Retry", @"InfoPlist", nil) placeholderImg:@"error"];
+        self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
+                                 description:[NSBundle nys_localizedStringForKey:@"NoData"]
+                                      reason:@""
+                                  suggestion:[NSBundle nys_localizedStringForKey:@"Retry"]
+                              placeholderImg:@"error"];
     });
 }
 
@@ -418,7 +445,7 @@ DZNEmptyDataSetDelegate
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
-    NSString *str = self.emptyError.localizedRecoverySuggestion;
+    NSString *str = self.emptyError.localizedRecoverySuggestion;    
     NSMutableAttributedString *buttonAttStr = [[NSMutableAttributedString alloc] initWithString:str];
     [buttonAttStr addAttribute:NSForegroundColorAttributeName value:NAppThemeColor range:NSMakeRange(0, str.length)];
     [buttonAttStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17] range:NSMakeRange(0, str.length)];
@@ -429,7 +456,7 @@ DZNEmptyDataSetDelegate
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
     UIEdgeInsets insets = scrollView.contentInset;
-    return insets.top == 0 ? -NTopHeight - 44 : 0;
+    return insets.top == 0 ? -(NYSTopHeight + 44) : 0;
 }
 
 #pragma mark - DZNEmptyDataSetDelegate
