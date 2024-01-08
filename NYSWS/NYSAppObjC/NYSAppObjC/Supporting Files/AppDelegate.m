@@ -44,6 +44,11 @@
     // 初始化微信SDK
     [self initWXApi:launchOptions application:application];
     
+#ifdef DEBUG
+    [self showFPS];
+    [self showMemory];
+#endif
+    
     return YES;
 }
 

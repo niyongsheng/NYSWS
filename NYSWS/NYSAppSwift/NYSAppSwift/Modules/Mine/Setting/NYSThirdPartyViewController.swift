@@ -25,6 +25,8 @@ class NYSThirdPartyViewController: NYSRootViewController {
         
         let list = AcknowParser.defaultAcknowList()?.acknowledgements ?? []
         self.dataSourceArr.addObjects(from: list)
+        self.tableView.reloadData()
+        TableViewAnimationKit.show(with: .alpha, tableView: self.tableView)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

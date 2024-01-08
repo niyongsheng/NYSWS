@@ -25,7 +25,7 @@ IB_DESIGNABLE
 @property (assign) LoadingType animationType;
 
 /// start loading
-- (void)startLoading:(LoadingType) loadingType;
+- (void)startLoading:(LoadingType)loadingType;
 ///stop loading
 - (void)endAndDeleteLoading;
 /// update filling background - percent like 1,20...100

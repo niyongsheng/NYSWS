@@ -16,6 +16,7 @@
                 <outlet property="contentViewH" destination="d4g-2B-UxR" id="FUq-fh-p8L"/>
                 <outlet property="oneKeyBtn" destination="GPI-7R-6jV" id="6UO-h8-bna"/>
                 <outlet property="otherAccountBtn" destination="934-hl-94V" id="cep-q3-n4o"/>
+                <outlet property="protocolT" destination="0xh-fw-Qph" id="h9Z-3l-Wr0"/>
                 <outlet property="scrollView" destination="Svp-Ls-rLO" id="Lxq-NM-Bc6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

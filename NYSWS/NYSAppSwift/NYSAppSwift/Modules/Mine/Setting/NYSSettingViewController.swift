@@ -34,18 +34,21 @@ class NYSSettingViewController: NYSRootViewController {
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
         if sender.tag == 100 {
-            let navVC = NYSBaseNavigationController.init(rootViewController: AcknowListViewController.init(fileNamed: "Pods-NYSAppSwift-acknowledgements"))
-            self.present(navVC, animated: true)
+            self.navigationController?.pushViewController(NYSThirdPartyViewController.init(), animated: true)
              
         } else if sender.tag == 101 {
-            
+            let webVC = NYSWebViewController.init()
+            webVC.urlStr = "https://example.com/"
+            self.navigationController?.pushViewController(webVC, animated: true)
             
         } else if sender.tag == 102 {
-           
+            let webVC = NYSWebViewController.init()
+            webVC.urlStr = "https://example.com/"
+            self.navigationController?.pushViewController(webVC, animated: true)
             
         } else if sender.tag == 103 {
-            self.navigationController?.pushViewController(NYSThirdPartyViewController.init(), animated: true)
-            
+            let navVC = NYSBaseNavigationController.init(rootViewController: AcknowListViewController.init(fileNamed: "Pods-NYSAppSwift-acknowledgements"))
+            self.present(navVC, animated: true)
         }
     }
 }

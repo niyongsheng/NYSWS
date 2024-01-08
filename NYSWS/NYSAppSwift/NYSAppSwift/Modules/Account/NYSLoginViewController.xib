@@ -37,7 +37,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-top-bg" translatesAutoresizingMaskIntoConstraints="NO" id="pP2-Pr-pCP">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCf-F3-NeN">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCf-F3-NeN" customClass="NYSLoadingButton">
                                     <rect key="frame" x="15" y="402" width="363" height="46"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -166,6 +166,11 @@
             <point key="canvasLocation" x="125.95419847328243" y="-11.267605633802818"/>
         </view>
     </objects>
+    <designables>
+        <designable name="UCf-F3-NeN">
+            <size key="intrinsicContentSize" width="33" height="32"/>
+        </designable>
+    </designables>
     <resources>
         <image name="can-see" width="16" height="16"/>
         <image name="login-top-bg" width="375" height="220"/>

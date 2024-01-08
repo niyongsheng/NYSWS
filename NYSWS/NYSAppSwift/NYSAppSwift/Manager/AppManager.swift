@@ -53,9 +53,9 @@ extension AppManager {
         case verification          // 一键认证
     }
     
-    typealias AppManagerCompletion = (Bool, NYSUserInfo?, Error?) -> Void
+    typealias AppManagerCompletion = (_ isSuccess:Bool, _ userInfo:NYSUserInfo?, _ error:Error?) -> Void
     
-    func loginHandler(loginType: AppLoginType, params: [String: Any]) {
+    func loginHandler(loginType: AppLoginType, params: [String: Any], completion: AppManagerCompletion) {
         // 1.获取用户信息
         
         // 2.保存用户信息
@@ -63,13 +63,8 @@ extension AppManager {
         // 3.保存登录状态
         isLogin = true
         
-        // 4.加载主页
-        let rootVC = NYSTabBarViewController()
-        if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            UIView.transition(with: keyWindow, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                keyWindow.rootViewController = rootVC
-            }, completion: nil)
-        }
+        // 4.执行闭包
+        completion(true, userInfo, nil)
     }
     
     func refreshUserInfo(completion: AppManagerCompletion) {
@@ -94,10 +89,8 @@ extension AppManager {
         // 3.加载登录页
         let rootVC = NYSAccountViewController.init()
         let navVC = NYSBaseNavigationController.init(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
         if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-//            UIView.transition(with: keyWindow, duration: 0.75, options: .transitionCrossDissolve, animations: {
-//                keyWindow.rootViewController = navVC
-//            }, completion: nil)
             keyWindow.rootViewController?.present(navVC, animated: true, completion: nil)
         }
     }
@@ -109,6 +102,7 @@ extension AppManager {
     func showLogin() {
         showAlert(title: "温馨提示", content: "您还没有登陆！", icon: nil, confirmButtonTitle: "去登录", cancelBtnTitle: "取消") { popup, action, obj in
             if action == .confirm {
+                popup.dismiss(animated: true)
                 self.logoutHandler()
             }
         }

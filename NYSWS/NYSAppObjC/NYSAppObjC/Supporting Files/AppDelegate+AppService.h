@@ -32,6 +32,12 @@ typedef void (^checkServiceCompletion)(BOOL isNormal);
 /** 监听网络状态 */
 - (void)initNetwork;
 
+/** APP运行时帧率 */
+- (void)showFPS;
+
+ /** APP运行时内存占用 */
+- (void)showMemory;
+
 @end
 
 NS_ASSUME_NONNULL_END

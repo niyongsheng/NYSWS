@@ -121,6 +121,25 @@
     [UMConfigure setAnalyticsEnabled:YES];
 }
 
+#pragma mark -- APP运行时帧率 --
+- (void)showFPS {
+    // 显示FPS
+    YYFPSLabel *_fpsLabel = [YYFPSLabel new];
+    _fpsLabel.bottom = NScreenHeight - (isIphonex ? RealValue(115) : RealValue(80));
+    _fpsLabel.right = NScreenWidth - 10;
+    _fpsLabel.alpha = 0.8f;
+    [NRootViewController.view addSubview:_fpsLabel];
+}
+
+#pragma mark -- APP运行时内存占用 --
+- (void)showMemory {
+    NYSMemoryLabel *_memLabel = [NYSMemoryLabel new];
+    [_memLabel sizeToFit];
+    _memLabel.bottom = NScreenHeight - (isIphonex ? RealValue(90) : RealValue(55));
+    _memLabel.right = NScreenWidth - 10;
+    [NRootViewController.view addSubview:_memLabel];
+}
+
 #pragma mark -- 登录状态变化 --
 - (void)loginStateChange:(NSNotification *)notification {
     BOOL loginSuccess = [notification.object boolValue];

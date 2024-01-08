@@ -39,9 +39,17 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.tabBarItem.title == "" { // 扫码
-            let scanVC = NYSBaseNavigationController.init(rootViewController: NYSScanViewController())
-            scanVC.modalPresentationStyle = .fullScreen
-            self.present(scanVC, animated: true, completion: nil)
+            let scanVC = NYSScanViewController.init()
+            let navVC = NYSBaseNavigationController.init(rootViewController: scanVC)
+            navVC.modalPresentationStyle = .fullScreen
+            
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.fade
+            transition.subtype = CATransitionSubtype.fromBottom
+            view.window?.layer.add(transition, forKey: kCATransition)
+            
+            self.present(navVC, animated: false, completion: nil)
             return false
         }
         return true

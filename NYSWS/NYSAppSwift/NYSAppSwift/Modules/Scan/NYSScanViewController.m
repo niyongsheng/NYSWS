@@ -27,12 +27,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self setIsHidenNaviBar:YES];
     [self start];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    [self setIsHidenNaviBar:NO];
     [self stop];
 }
 
@@ -54,23 +56,28 @@
     [self configUI];
     
     [self configScanCode];
+    
+//    [self configNavigationBar];
 }
 
 - (void)configUI {
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     
     [self.view addSubview:self.scanView];
     
     [self.view addSubview:self.bottomView];
     
     [self.view addSubview:self.toolBar];
-    
+}
+
+- (void)configNavigationBar {
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [btn addTarget:self action:@selector(cancelBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
     [btn setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 - (void)cancelBtnOnclicked:(UIButton *)sender {
@@ -255,9 +262,25 @@
         lab.textAlignment = NSTextAlignmentCenter;
         lab.textColor = [UIColor whiteColor];
         lab.frame = CGRectMake(0, 0, w, h - 34);
-        [_bottomView addSubview:lab];
+//        [_bottomView addSubview:lab];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setBackgroundImage:[UIImage imageNamed:@"delete_icon"] forState:UIControlStateNormal];
+        btn.frame = CGRectMake(0, 0, 40, 40);
+        btn.center = CGPointMake(w/2, h/2);
+        [btn addTarget:self action:@selector(close_action) forControlEvents:UIControlEventTouchUpInside];
+        [_bottomView addSubview:btn];
     }
     return _bottomView;
+}
+
+- (void)close_action {
+    if (self.navigationController.viewControllers.count == 1) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

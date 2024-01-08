@@ -107,7 +107,7 @@ extension AppDelegate {
         return result
     }
     
-    //MARK: - override Swift `print` method
+    // MARK: - override Swift `print` method
     public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .red) {
 #if DEBUG
         Swift.print(message)

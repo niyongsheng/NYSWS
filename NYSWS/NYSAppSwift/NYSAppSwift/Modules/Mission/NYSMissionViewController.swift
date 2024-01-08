@@ -97,6 +97,8 @@ class NYSMissionViewController: NYSRootViewController {
 
     
     func showAddressPicker(button: UIButton) {
+        self.view.endEditing(true)
+        
         let style = BRPickerStyle(themeColor: NAppThemeColor)
         style.selectRowTextColor = NAppThemeColor
         style.topCornerRadius = Int(NAppRadius)

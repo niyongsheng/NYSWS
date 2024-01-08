@@ -20,12 +20,15 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="d3i-Nn-ren">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@github.com/niyongsheng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbf-zJ-dxC">
-                                <rect key="frame" x="110.66666666666669" y="786" width="172" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2023 NYS. All Rights Reserved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbf-zJ-dxC">
+                                <rect key="frame" x="55.666666666666657" y="786" width="281.66666666666674" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand" translatesAutoresizingMaskIntoConstraints="NO" id="YaA-pL-won">
+                                <rect key="frame" x="146.66666666666666" y="376" width="100" height="100"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,9 +36,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d3i-Nn-ren" secondAttribute="trailing" id="EzG-uZ-WNb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mbf-zJ-dxC" secondAttribute="bottom" constant="15" id="F39-Jx-EPw"/>
                             <constraint firstItem="d3i-Nn-ren" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="H4U-Zm-gsU"/>
+                            <constraint firstItem="YaA-pL-won" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NIP-um-Vue"/>
                             <constraint firstItem="d3i-Nn-ren" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Q6O-EW-SHH"/>
                             <constraint firstAttribute="bottom" secondItem="d3i-Nn-ren" secondAttribute="bottom" id="Ze7-Qg-stY"/>
                             <constraint firstItem="mbf-zJ-dxC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cny-l4-ZwO"/>
+                            <constraint firstItem="YaA-pL-won" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jkR-OY-DCn"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,6 +51,7 @@
     </scenes>
     <resources>
         <image name="LaunchImage.png" width="1020" height="1725"/>
+        <image name="hand" width="100" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
