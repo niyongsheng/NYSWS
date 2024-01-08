@@ -8,17 +8,20 @@ NYSWS
 
 <!-- ## APP
 ------------ 
-<img src="./home.png" width="125" height="270">  -->
+<img src="./images/home.png" width="125" height="270">  -->
 
+
+## Framework
+<img src="./images/nysws.drawio.png">
 
 ## Architecture
 ```text
 NYSWS
 ├─ NYSAppObjC
-│    └─ NYSAppObjC(oc项目)
+│    └─ NYSAppObjC(obj_c示例项目)
 │    
 ├─ NYSAppSwift
-│    └─ NYSAppSwift(swift项目)
+│    └─ NYSAppSwift(swift示例项目)
 │    
 ├─ NYSKit
 │    ├─ NYSKit
@@ -53,52 +56,60 @@ inhibit_all_warnings!
 
 workspace './NYSWS.xcworkspace'
 source 'https://github.com/CocoaPods/Specs.git'
-#source 'https://gitee.com/mirrors/CocoaPods-Specs.git'
 
-# 项目公共依赖
+# 公共依赖库
 def commonPods
-  pod 'YYKit', '1.0.9'
+  pod 'FMDB', '2.7.5'
+  pod 'FFPopup', '1.1.5'
+  pod 'SGQRCode', '4.1.0'
+  pod 'SGPagingView', '2.1.0'
+  pod 'BRPickerView', '2.8.1'
+  pod 'JDStatusBarNotification'
+  pod 'CocoaDebug', :configurations => ['Debug']
 end
 
-# Swift 项目
+# Swift 示例项目
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   
   commonPods
-  pod 'FMDB', '2.7.5'
-  pod 'YYKit', '1.0.9'
-  pod 'FlexLib', '3.1.6'
-  pod 'FFPopup', '1.1.5'
-  pod 'XHLaunchAd', '3.9.12'
-  pod 'WRNavigationBar', '1.4.0'
-  pod 'SGQRCode', '4.1.0'
-  pod 'BRPickerView', '2.8.0'
-  pod 'IQKeyboardManagerSwift', '6.5.11'
-  pod 'ZLPhotoBrowser', '4.4.0'
+  pod 'RxSwift', '6.6.0'
+  pod 'RxCocoa', '6.6.0'
+  pod 'NSObject+Rx'
   
+  pod 'AcknowList', '3.0.1'
+  pod 'Alamofire', '5.8.0'
+  pod 'Kingfisher', '7.10.1'
+  pod 'lottie-ios', '2.5.3'
+  pod 'ZCycleView', '1.0.4'
+  pod 'ZLPhotoBrowser', '4.4.0'
+  pod 'IQKeyboardManagerSwift', '6.5.11'
+  
+  # Layout
+  pod 'FlexLib', '3.1.6'
+  pod 'SnapKit', '5.6.0'
+  pod 'TangramKit', '1.4.2'
+  
+  pod 'JPush'
 end
 
-# Object-C 项目
+# Object-C 示例项目
 target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
+  use_modular_headers!
   use_frameworks! :linkage => :static
   
   commonPods
-  pod 'FMDB', '2.7.5'
+  pod 'YYKit', '1.0.9'
   pod 'Masonry', '1.1.0'
   pod 'FlexLib', '3.1.6'
-  pod 'FFPopup', '1.1.5'
-  pod 'XHLaunchAd', '3.9.12'
   pod 'ReactiveObjC', '3.1.1'
   pod 'WRNavigationBar', '1.4.0'
-  pod 'SGQRCode', '4.1.0'
-  pod 'BRPickerView', '2.8.0'
   pod 'IQKeyboardManager', '6.5.11'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
   pod 'WMZBanner', '1.2.0'
-  pod 'SGPagingView', '1.7.2'
+  pod 'XHLaunchAd', '3.9.12'
   pod 'MBProgressHUD', '1.2.0'
-  pod 'JDStatusBarNotification'
   
-  pod 'JPush', '3.7.4'
+  pod 'JPush'
   pod 'UMDevice'
   pod 'UMAPM'
   pod 'UMCCommon'
@@ -132,6 +143,7 @@ target 'NYSKit' do project './NYSKit/NYSKit.xcodeproj'
   pod 'SVProgressHUD', '2.2.5'
 end
 
+
 ```
 
 ## apple-app-site-association
@@ -151,41 +163,6 @@ end
             }
         ]
     }
-}
-```
-
-## AppDelegate
-```object-C
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    // 初始化友盟统计
-    [self initUMeng];
-    
-    // 初始化网络
-    [self initNetwork];
-    
-    // 初始化window
-    [self initWindow];
-      
-    // 初始化app服务
-    [self initService];
-    
-    // 初始化导航栏样式
-    [self initNavBar];
-    
-    // 初始化 IQKM
-    [self initIQKeyboardManager];
-    
-    // 初始化主题
-    [[ThemeManager sharedThemeManager] configTheme];
-    
-    // 初始化极光推送
-    [self initPush:launchOptions application:application];
-
-    // 初始化微信SDK
-    [self initWXApi:launchOptions application:application];
-    
-    return YES;
 }
 ```
 
