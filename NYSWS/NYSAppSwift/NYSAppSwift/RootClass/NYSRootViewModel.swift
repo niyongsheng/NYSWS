@@ -7,7 +7,7 @@
 
 import Foundation
 import RxSwift
-import NSObject_Rx
+import Alamofire
 
 class NYSRootViewModel {
     /// inputs修饰前缀
@@ -23,11 +23,11 @@ class NYSRootViewModel {
     var className: String { String(describing: self) }
     
     deinit {
-        print("VM被销毁了")
+        print("\(classNameWithoutNamespace)被销毁了")
     }
 }
 
-extension NYSRootViewModel: HasDisposeBag {}
+extension NYSRootViewModel: TypeNameProtocol {}
 
 extension NYSRootViewModel {
     

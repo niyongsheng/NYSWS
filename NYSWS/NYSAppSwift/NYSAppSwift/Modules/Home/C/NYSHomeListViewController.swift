@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import RxSwift
 
 class NYSHomeListViewController: NYSRootViewController {
     
     var indexStr: String = ""
+    
+    private let bag = DisposeBag()
+    private let vm = NYSHomeViewModel()
+    
     private var _cell : NYSHomeListCell!
     @objc private var content : UILabel!
     
@@ -38,32 +43,28 @@ class NYSHomeListViewController: NYSRootViewController {
         self.tableView.frame = CGRectMake(0, 0, NScreenWidth, NScreenHeight - NBottomHeight - RealValueX(x: 80))
         self.tableView.tableHeaderView = header;
         view.addSubview(self.tableView)
+        
+        // 数据绑定
+        vm.refresh.bind(to: self.tableView.rx.refreshAction).disposed(by: bag)
+        vm.homeItems.subscribe(onNext: { [weak self] (items: [NYSHomeListModel]) in
+            self?.dataSourceArr = NSMutableArray(array: items)
+            self?.tableView.reloadData(animationType: .moveSpring)
+        }, onError: { (error) in
+            print(error)
+        }).disposed(by: bag)
     }
 
     override func headerRereshing() {
         content.text = "This is tableview header " + String.randomString(length: 150)
-
-        NYSHomeViewModel().getDataList(success: { [weak self] data in
-            self?.dataSourceArr = NSMutableArray(array: data)
-            self?.tableView.reloadData(animationType: .moveSpring)
-            self?.tableView.refreshControl?.endRefreshing()
-        })
+        vm.fetchHomeDataItemes(headerRefresh: true, params: [:])
     }
     
     override func footerRereshing() {
-        NYSHomeViewModel().getDataList(success: { [weak self] data in
-            if data.count == 0 {
-                self?.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            } else {
-                
-                self?.dataSourceArr.addObjects(from: data)
-                self?.tableView.reloadData()
-                self?.tableView.mj_footer?.endRefreshing()
-            }
-        })
+        vm.fetchHomeDataItemes(headerRefresh: false, params: [:])
     }
     
     override func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        // 占位偏移量
         return -100;
     }
     

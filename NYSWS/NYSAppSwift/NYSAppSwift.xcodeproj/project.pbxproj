@@ -17,6 +17,8 @@
 		C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB22B46B29E003C0968 /* NYSScanViewController.m */; };
 		C821AAB72B46B2CA003C0968 /* NYSToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB52B46B2CA003C0968 /* NYSToolBar.m */; };
 		C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */; };
+		C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */; };
+		C83162A72B4CE5160014CFE1 /* UIScrollView+RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */; };
 		C83C18692B33E438002FD985 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18652B33E438002FD985 /* bill.json */; };
 		C83C186A2B33E438002FD985 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18662B33E438002FD985 /* service.json */; };
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
@@ -54,7 +56,7 @@
 		C8A4BE2D2B4B9E7900152E14 /* NYSHomeListCell.xml in Resources */ = {isa = PBXBuildFile; fileRef = C8A4BE2C2B4B9E7900152E14 /* NYSHomeListCell.xml */; };
 		C8A4BE2F2B4BA0F100152E14 /* TableHeader.xml in Resources */ = {isa = PBXBuildFile; fileRef = C8A4BE2E2B4BA0F100152E14 /* TableHeader.xml */; };
 		C8A4BE312B4BBA1800152E14 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE302B4BBA1700152E14 /* UITableView+Extension.swift */; };
-		C8A4BE3E2B4BD45400152E14 /* NYSHomeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE3D2B4BD45400152E14 /* NYSHomeCodable.swift */; };
+		C8A4BE3E2B4BD45400152E14 /* NYSHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE3D2B4BD45400152E14 /* NYSHomeModel.swift */; };
 		C8A4BE412B4BDE9100152E14 /* NYSHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE402B4BDE9100152E14 /* NYSHomeViewModel.swift */; };
 		C8A4BE432B4BDF4300152E14 /* NYSRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE422B4BDF4300152E14 /* NYSRootViewModel.swift */; };
 		C8BC5E952B3A84B100814C2B /* NYSHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BC5E942B3A84B100814C2B /* NYSHomeViewController.swift */; };
@@ -107,6 +109,8 @@
 		C821AAB52B46B2CA003C0968 /* NYSToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSToolBar.m; sourceTree = "<group>"; };
 		C821AAB62B46B2CA003C0968 /* NYSToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSToolBar.h; sourceTree = "<group>"; };
 		C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSQRCodeViewController.swift; sourceTree = "<group>"; };
+		C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameProtocol.swift; sourceTree = "<group>"; };
+		C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+RxSwift.swift"; sourceTree = "<group>"; };
 		C83C18652B33E438002FD985 /* bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bill.json; sourceTree = "<group>"; };
 		C83C18662B33E438002FD985 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
@@ -147,7 +151,7 @@
 		C8A4BE2C2B4B9E7900152E14 /* NYSHomeListCell.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NYSHomeListCell.xml; sourceTree = "<group>"; };
 		C8A4BE2E2B4BA0F100152E14 /* TableHeader.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TableHeader.xml; sourceTree = "<group>"; };
 		C8A4BE302B4BBA1700152E14 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		C8A4BE3D2B4BD45400152E14 /* NYSHomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeCodable.swift; sourceTree = "<group>"; };
+		C8A4BE3D2B4BD45400152E14 /* NYSHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeModel.swift; sourceTree = "<group>"; };
 		C8A4BE402B4BDE9100152E14 /* NYSHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeViewModel.swift; sourceTree = "<group>"; };
 		C8A4BE422B4BDF4300152E14 /* NYSRootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootViewModel.swift; sourceTree = "<group>"; };
 		C8A4BE442B4BF16D00152E14 /* NYSAppSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NYSAppSwift.entitlements; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		C80EE9E92B43954400F79AD0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C83162A52B4CE4F70014CFE1 /* RxSwift */,
 				C8BC5EA12B3AA6C400814C2B /* UIDevice+Extension.swift */,
 				C8BC5EA32B3AAEA500814C2B /* UIView+Extension.swift */,
 				C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */,
@@ -217,6 +222,14 @@
 				C821AAB52B46B2CA003C0968 /* NYSToolBar.m */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		C83162A52B4CE4F70014CFE1 /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */,
+			);
+			path = RxSwift;
 			sourceTree = "<group>";
 		};
 		C83C18642B33E438002FD985 /* Resources */ = {
@@ -417,7 +430,7 @@
 		C8A4BE382B4BD2FD00152E14 /* M */ = {
 			isa = PBXGroup;
 			children = (
-				C8A4BE3D2B4BD45400152E14 /* NYSHomeCodable.swift */,
+				C8A4BE3D2B4BD45400152E14 /* NYSHomeModel.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -518,6 +531,7 @@
 				C8A00F262B464CBD00245D94 /* Transform.swift */,
 				C87CAB732B46773600C84E8E /* PropertyWrapper.swift */,
 				C87CAB742B46773600C84E8E /* Rx+Operators.swift */,
+				C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -710,10 +724,12 @@
 				C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */,
 				C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */,
 				C8A4BE2B2B4B9E5600152E14 /* NYSHomeListCell.swift in Sources */,
+				C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */,
 				C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */,
 				C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */,
 				C8A4BE312B4BBA1800152E14 /* UITableView+Extension.swift in Sources */,
 				C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */,
+				C83162A72B4CE5160014CFE1 /* UIScrollView+RxSwift.swift in Sources */,
 				C8D0AF7B2B4923C3002C18E6 /* NYSThirdPartyDetailViewController.swift in Sources */,
 				C86DB2202B3E9E22002126F5 /* WRCustomNavigationBar.swift in Sources */,
 				C8BC5EA02B3AA41200814C2B /* NYSAdaptScreen.swift in Sources */,
@@ -723,7 +739,7 @@
 				C87CAB762B46773600C84E8E /* Rx+Operators.swift in Sources */,
 				C874B9A72B4B8BB8009CC627 /* AppShareView.swift in Sources */,
 				C8621DEE2B31845300F90DF0 /* NYSTabBarViewController.swift in Sources */,
-				C8A4BE3E2B4BD45400152E14 /* NYSHomeCodable.swift in Sources */,
+				C8A4BE3E2B4BD45400152E14 /* NYSHomeModel.swift in Sources */,
 				C8C5D23B2B3E4FF800117F58 /* NYSSubScrollViewController.swift in Sources */,
 				C8BC5EA22B3AA6C400814C2B /* UIDevice+Extension.swift in Sources */,
 				C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */,

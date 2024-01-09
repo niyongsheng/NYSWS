@@ -53,8 +53,6 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
-  - "NSObject+Rx (5.2.2)":
-    - RxSwift (~> 6.2)
   - ReactiveObjC (3.1.1)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
@@ -112,7 +110,6 @@ DEPENDENCIES:
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
   - MJRefresh (= 3.7.5)
-  - "NSObject+Rx"
   - ReactiveObjC (= 3.1.1)
   - RxCocoa (= 6.6.0)
   - RxSwift (= 6.6.0)
@@ -156,7 +153,6 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
-    - "NSObject+Rx"
     - ReactiveObjC
     - RxCocoa
     - RxRelay
@@ -202,7 +198,6 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
-  "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
@@ -227,6 +222,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: d55b3d61fdaf1c0d6529dec148aa78447ea6e756
+PODFILE CHECKSUM: cb62da4f8830c43530306ac840ddcbe95abbf67f
 
 COCOAPODS: 1.12.0

@@ -6,9 +6,9 @@ NYSWS
 > ios简洁的组件化方案架构。<br>
 > ios simple componentized solution framework.
 
-<!-- ## APP
------------- 
-<img src="./images/home.png" width="125" height="270">  -->
+## APP
+
+<img src="./images/app_swift.gif" width="260" style="radius:15px"> 
 
 
 ## Framework

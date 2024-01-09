@@ -25,12 +25,12 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
         view.addSubview(pagingContentView)
     }
     
-    override func configTheme() {
-//        super.configTheme()
-            
-        _ = self.view.lee_theme.leeConfigBackgroundColor("controller_view_bg_color")
-        
-    }
+//    override func configTheme() {
+////        super.configTheme()
+//            
+//        _ = self.view.lee_theme.leeConfigBackgroundColor("controller_view_bg_color")
+//        
+//    }
     
     lazy var searchView: NYSSearchView = {
         let view = NYSSearchView(frame: CGRect(x: NAppSpace, y: NStatusBarHeight, width: NScreenWidth - 2 * NAppSpace, height: RealValueX(x: 40)))

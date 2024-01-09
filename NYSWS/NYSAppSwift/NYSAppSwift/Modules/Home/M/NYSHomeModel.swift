@@ -5,9 +5,9 @@
 //  Created by niyongsheng on 2024/1/8.
 //
 
-import UIKit
+import Foundation
 
-struct NYSHomeCodable: Codable {
+struct NYSHomeModel: Codable {
 
 }
 

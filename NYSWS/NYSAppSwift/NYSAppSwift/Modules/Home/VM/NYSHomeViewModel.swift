@@ -6,11 +6,66 @@
 //
 
 import Foundation
+import RxSwift
 
 class NYSHomeViewModel: NYSRootViewModel {
+
+    let homeItems = BehaviorSubject<[NYSHomeListModel]>(value: [])
     
-    // 随机生成测试数据
-    func generateRandomDataArray(length: Int) -> [ [String: String] ] {
+    let refresh = PublishSubject<MJRefreshAction>()
+    
+    /// RxSwift方式数据加载
+    /// - Parameter params: 参数
+    /// - Parameter headerRefresh: 是否头部刷新
+    func fetchHomeDataItemes(headerRefresh: Bool, params: [String: Any]) {
+        let randomDataArray = generateRandomDataArray(length: NAppPageSize)
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])
+            let items = try JSONDecoder().decode([NYSHomeListModel].self, from: jsonData)
+            if headerRefresh {
+                homeItems.onNext(items)
+                refresh.onNext(.stopRefresh)
+                refresh.onNext(.resetNomoreData)
+            } else {
+                if items.count > 0 {
+                    let updatedItems = try homeItems.value() + items
+                    homeItems.onNext(updatedItems)
+                    refresh.onNext(.stopLoadmore)
+                } else {
+                    refresh.onNext(.showNomoreData)
+                }
+            }
+        } catch {
+            homeItems.onError(error)
+            AppManager.shared.showAlert(title: "解码失败：\(error)")
+        }
+//        homeItems.onCompleted()
+    }
+    
+    /// 闭包方式数据加载
+    /// - Parameters:
+    ///   - params: 参数
+    ///   - success: 回调
+    /// - Returns: 返回
+    func fetchHomeDataItemes(params: [String: Any], success : @escaping (_ data : [NYSHomeListModel]) -> ()) -> Void {
+        let randomDataArray = generateRandomDataArray(length: NAppPageSize)
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])
+            let items = try JSONDecoder().decode([NYSHomeListModel].self, from: jsonData)
+            success(items)
+        } catch {
+            print("解码失败：\(error)")
+        }
+    }
+    
+}
+
+extension NYSHomeViewModel {
+    
+    /// 随机生成测试数据
+    /// - Parameter length: 数据长度
+    /// - Returns: 测试数据
+    private func generateRandomDataArray(length: Int) -> [ [String: String] ] {
         var dataArray = [[String: String]]()
         
         let currentDate = Date()
@@ -28,19 +83,6 @@ class NYSHomeViewModel: NYSRootViewModel {
             ]
             dataArray.append(randomDataEntry)
         }
-        
         return dataArray
     }
-    
-    func getDataList(success : @escaping (_ data : [NYSHomeListModel]) -> ()) -> Void {
-        let randomDataArray = generateRandomDataArray(length: NAppPageSize)
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])
-            let list = try JSONDecoder().decode([NYSHomeListModel].self, from: jsonData)
-            success(list)
-        } catch {
-            print("解码失败：\(error)")
-        }
-    }
-    
 }
