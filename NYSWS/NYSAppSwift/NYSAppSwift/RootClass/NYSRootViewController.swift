@@ -16,11 +16,6 @@ class NYSRootViewController: NYSBaseViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func setupUI() {
-        super.setupUI()
-        
-    }
-    
     override func configTheme() {
         super.configTheme()
         
@@ -35,6 +30,15 @@ class NYSRootViewController: NYSBaseViewController {
             (item as! NYSRootViewController).navBarTitleColor = .white
         })
         
+    }
+    
+    override func setupUI() {
+        super.setupUI()
+        
+    }
+    
+    override func bindViewModel() {
+        super.bindViewModel()
     }
     
 }

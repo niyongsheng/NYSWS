@@ -8,7 +8,7 @@ NYSWS
 
 ## APP
 
-<img src="./images/app_swift.gif" width="260" style="radius:15px"> 
+<img src="./images/app_swift.gif" width="260" style="border-radius: 45px;"> 
 
 
 ## Framework

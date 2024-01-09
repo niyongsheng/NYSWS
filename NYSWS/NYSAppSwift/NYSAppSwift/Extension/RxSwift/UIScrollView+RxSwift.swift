@@ -2,7 +2,8 @@
 //  UIScrollView+RxSwift.swift
 //  NYSAppSwift
 //
-//  Created by niyongsheng on 2024/1/9.
+//  Created by Nico http://github.com/niyongsheng
+//  Copyright © 2023 NYS. ALL rights reserved.
 //
 
 import Foundation
@@ -25,7 +26,7 @@ enum MJRefreshAction {
     case resetNomoreData
 }
 
-//MARK: - Refresh
+// MARK: - Refresh
 extension Reactive where Base: UIScrollView {
     
     /// 执行的操作类型

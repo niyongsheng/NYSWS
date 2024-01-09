@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UIView layout="padding:14" attr="">
-    <UILabel name="content" layout="width:100%" attr="fontSize:18,color:#333333,text:This is header,linesNum:0,lineBreakMode:truncatingTail"/>
+<UIView layout="padding:15" attr="">
+    <UILabel name="content" layout="width:100%" attr="fontSize:18,color:#333333,text:,linesNum:0,lineBreakMode:truncatingTail"/>
+<!--    <UIView name="xx" class="button" layout="flex:1,paddingHorizontal:20" attr="">-->
 </UIView>

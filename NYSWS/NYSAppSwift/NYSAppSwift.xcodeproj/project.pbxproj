@@ -19,6 +19,7 @@
 		C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */; };
 		C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */; };
 		C83162A72B4CE5160014CFE1 /* UIScrollView+RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */; };
+		C83162A92B4D180F0014CFE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C83162A82B4D180F0014CFE1 /* README.md */; };
 		C83C18692B33E438002FD985 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18652B33E438002FD985 /* bill.json */; };
 		C83C186A2B33E438002FD985 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18662B33E438002FD985 /* service.json */; };
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
@@ -111,6 +112,7 @@
 		C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSQRCodeViewController.swift; sourceTree = "<group>"; };
 		C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameProtocol.swift; sourceTree = "<group>"; };
 		C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+RxSwift.swift"; sourceTree = "<group>"; };
+		C83162A82B4D180F0014CFE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C83C18652B33E438002FD985 /* bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bill.json; sourceTree = "<group>"; };
 		C83C18662B33E438002FD985 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		C83162A52B4CE4F70014CFE1 /* RxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C87CAB742B46773600C84E8E /* Rx+Operators.swift */,
 				C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */,
 			);
 			path = RxSwift;
@@ -264,6 +267,7 @@
 		C8597A8029F5119E008BEE7F /* NYSAppSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C83162A82B4D180F0014CFE1 /* README.md */,
 				C8A4BE442B4BF16D00152E14 /* NYSAppSwift.entitlements */,
 				C87CAB722B465D0F00C84E8E /* Manager */,
 				C80EE9E92B43954400F79AD0 /* Extension */,
@@ -530,7 +534,6 @@
 				C8BC5EA52B3AB14400814C2B /* APPConfig.swift */,
 				C8A00F262B464CBD00245D94 /* Transform.swift */,
 				C87CAB732B46773600C84E8E /* PropertyWrapper.swift */,
-				C87CAB742B46773600C84E8E /* Rx+Operators.swift */,
 				C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */,
 			);
 			path = Utils;
@@ -636,6 +639,7 @@
 				C8BC5EAE2B3AC1FD00814C2B /* themejson_day.json in Resources */,
 				C8D0AF7D2B492998002C18E6 /* Pods-NYSAppSwift-acknowledgements.plist in Resources */,
 				C874B9A82B4B8BB8009CC627 /* AppShareView.xib in Resources */,
+				C83162A92B4D180F0014CFE1 /* README.md in Resources */,
 				C8597A8B29F511A0008BEE7F /* Assets.xcassets in Resources */,
 				C8A4BE2F2B4BA0F100152E14 /* TableHeader.xml in Resources */,
 				C821AAAF2B4694C4003C0968 /* AppAlertView.xib in Resources */,

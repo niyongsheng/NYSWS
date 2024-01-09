@@ -22,6 +22,8 @@ class NYSSettingViewController: NYSRootViewController {
     }
 
     @IBAction func logoutBtnOnclicked(_ sender: UIButton) {
+        NYSTools.zoom(toShow: sender.layer)
+        
         let alertVC = UIAlertController.init(title: "退出登录", message: "确定要退出登录吗？", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction.init(title: "确定", style: .destructive) { (action) in

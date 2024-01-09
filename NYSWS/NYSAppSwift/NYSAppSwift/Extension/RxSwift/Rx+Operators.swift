@@ -4,7 +4,15 @@
 //
 //  Created by Krunoslav Zaher on 12/6/15.
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//  Rx的双向绑定运算符,并没有实战,是从RxSwift的源码中的RxExample中拿过来的
+//  Rx的双向绑定运算符<->,RxSwift的源码RxExample
+/**
+ // 示例：假设有一个名为textField的UITextField实例和一个名为textRelay的BehaviorRelay<String>实例
+
+ // 将textField和textRelay进行双向绑定
+ textField <-> textRelay
+
+ // 现在，无论textField还是textRelay的值发生变化，另一个都会自动更新
+ */
 
 import RxSwift
 import RxCocoa

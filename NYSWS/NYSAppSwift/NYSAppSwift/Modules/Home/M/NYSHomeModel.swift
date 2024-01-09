@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct NYSHomeModel: Codable {
-
+class NYSHomeModel: NSObject, Codable {
+    
 }
 
 struct NYSHomeListModel: Codable {

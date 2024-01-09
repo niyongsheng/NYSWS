@@ -41,6 +41,7 @@ class NYSMissionViewController: NYSRootViewController {
         button.setTitleColor(NAppThemeColor, for: .selected)
         button.addBlock(for: .touchUpInside, block: { (sender: Any) in
             (sender as! UIButton).isSelected = true
+            self.receiptOrigin.isSelected = false
             self.showAddressPicker(button: (sender as! UIButton))
         })
         return button
@@ -70,6 +71,7 @@ class NYSMissionViewController: NYSRootViewController {
         button.setTitleColor(NAppThemeColor, for: .selected)
         button.addBlock(for: .touchUpInside, block: { (sender: Any) in
             (sender as! UIButton).isSelected = true
+            self.shippingOrigin.isSelected = false
             self.showAddressPicker(button: (sender as! UIButton))
         })
         return button

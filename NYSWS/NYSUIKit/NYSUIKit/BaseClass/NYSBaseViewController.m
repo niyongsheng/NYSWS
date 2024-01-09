@@ -62,6 +62,7 @@ DZNEmptyDataSetDelegate
     
     // UI
     [self setupUI];
+    [self bindViewModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -94,6 +95,9 @@ DZNEmptyDataSetDelegate
 
 #pragma mark - UI
 - (void)setupUI {
+    
+}
+- (void)bindViewModel {
     
 }
 

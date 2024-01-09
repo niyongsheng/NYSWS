@@ -192,8 +192,12 @@
             
             NSString *messageString = [NSString stringWithFormat:@"[前往：设置 - 隐私 - 照片 - %@] 允许应用访问", app_Name];
             UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:messageString preferredStyle:(UIAlertControllerStyleAlert)];
-            UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
-            
+            UIAlertAction *alertA = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+                // 跳转应用设置
+                UIApplication *application = [UIApplication sharedApplication];
+                NSURL *URL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [application openURL:URL options:@{} completionHandler:nil];
+            }];
             [alertC addAction:alertA];
             [self presentViewController:alertC animated:YES completion:nil];
         } else if (status == SGPermissionStatusRestricted) {

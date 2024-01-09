@@ -56,15 +56,22 @@ extension AppDelegate {
     }
     
     func initWindow() {
+        FlexRestorePreviewSetting()
+        if let path = Bundle.main.path(forResource: "system", ofType: "style") {
+            FlexStyleMgr.instance().loadClassStyle(path)
+        }
+        
         ThemeManager.shared().configTheme()
         window = NYSBaseWindow(frame: UIScreen.main.bounds)
         _ = window?.lee_theme.leeConfigBackgroundColor("white_black_color")
         window?.rootViewController = NYSTabBarViewController()
         window?.makeKeyAndVisible()
+        
         #if DEBUG
         ThemeManager.shared().initBubble(window!) // 主题气泡按钮
         showMemory() // 显示内存
         showFPS() // 显示FPS
+        // 内测更新提醒
         FIRVersionCheck.setAPIToken(FirApiToken)
         FIRVersionCheck.setTargetController(self.window?.rootViewController)
         FIRVersionCheck.check()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UIView layout=" flexDirection: row,margin:8" attr="">
+<UIView layout=" flexDirection:row, margin:8" attr="">
     <UIImageView layout="width:40,height:40,marginLeft:10,marginRight:10"  attr="source:hand"/>
     <UIView layout="flex:1">
         <UIView layout="flexDirection:row">

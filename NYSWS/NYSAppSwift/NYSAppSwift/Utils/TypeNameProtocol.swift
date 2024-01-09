@@ -2,7 +2,8 @@
 //  TypeNameProtocol.swift
 //  NYSAppSwift
 //
-//  Created by niyongsheng on 2024/1/9.
+//  Created by Nico http://github.com/niyongsheng
+//  Copyright © 2023 NYS. ALL rights reserved.
 //
 
 import Foundation
