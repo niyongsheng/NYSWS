@@ -71,14 +71,14 @@ extension NYSHomeViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = dateFormatter.string(from: currentDate)
-        
+        let letters = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
         for _ in 0..<length {
             let randomDataEntry = [
                 "name": String.randomString(length: 5),
-                "type": String.randomString(length: 10),
+                "type": String.randomString(letters: letters, length: 10),
                 "date": formattedDate,
                 "title": String.randomString(length: 20),
-                "content": String.randomString(length: Int.random(in: 1...1024))
+                "content": String.randomString(letters: letters, length: Int.random(in: 1...1024))
             ]
             dataArray.append(randomDataEntry)
         }

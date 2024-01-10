@@ -72,6 +72,10 @@ DZNEmptyDataSetDelegate
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];    
     // 视图绑定
     [self bindViewModel];
 }
