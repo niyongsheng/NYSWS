@@ -62,7 +62,6 @@ DZNEmptyDataSetDelegate
     
     // UI
     [self setupUI];
-    [self bindViewModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,6 +72,8 @@ DZNEmptyDataSetDelegate
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    // 视图绑定
+    [self bindViewModel];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -94,12 +95,8 @@ DZNEmptyDataSetDelegate
 }
 
 #pragma mark - UI
-- (void)setupUI {
-    
-}
-- (void)bindViewModel {
-    
-}
+- (void)setupUI {}
+- (void)bindViewModel {}
 
 #pragma mark - Theme
 - (void)configTheme {

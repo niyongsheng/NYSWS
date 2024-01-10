@@ -39,7 +39,6 @@ class NYSHomeViewModel: NYSRootViewModel {
             homeItems.onError(error)
             AppManager.shared.showAlert(title: "解码失败：\(error)")
         }
-        homeItems.onCompleted()
     }
     
     /// 闭包方式数据加载
