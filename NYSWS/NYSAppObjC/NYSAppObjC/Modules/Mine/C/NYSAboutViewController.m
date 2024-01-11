@@ -30,9 +30,9 @@ SKStoreProductViewControllerDelegate
     _versionL.text = [NSString stringWithFormat:@"%@：%@", NLocalizedStr(@"CourseVersion"), [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Index/about_us"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"关于我们"
                                         success:^(id response) {
         @strongify(self)
@@ -45,9 +45,9 @@ SKStoreProductViewControllerDelegate
 
 - (IBAction)itemViewOnclicked1:(UIButton *)sender {
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_user_agreement"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"服务协议"
                                         success:^(id response) {
         @strongify(self)
@@ -69,9 +69,9 @@ SKStoreProductViewControllerDelegate
 
 - (IBAction)itemViewOnclicked2:(UIButton *)sender {
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_privacy_agreement"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"隐私协议"
                                         success:^(id response) {
         @strongify(self)

@@ -74,9 +74,9 @@ EMAppStorePayDelegate
 /// 加载充值金额数据
 - (void)getMoneyData {
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_money"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"获取充值固定金额"
                                         success:^(id response) {
         NSArray *dataArray = [NSArray modelArrayWithClass:[NYSMoneyItemModel class] json:response];
@@ -236,9 +236,9 @@ EMAppStorePayDelegate
     self.payWayV2.hidden = YES;
     self.payWayV3.hidden = YES;
     self.payWayV4.hidden = YES;
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_pay"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"获取支付方式"
                                         success:^(id response) {
         @strongify(self)
@@ -427,9 +427,9 @@ EMAppStorePayDelegate
     
     
     @weakify(self)
-    [NYSNetRequest jsonNoCheckNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNoCheckNetworkRequestWithType:POST
                                                    url:@"/index/Order/create"
-                                              argument:argument
+                                              parameters:argument
                                                 remark:@"下单调起支付"
                                                success:^(id response) {
         @strongify(self)
@@ -502,9 +502,9 @@ EMAppStorePayDelegate
 #else
     [argument setValue:@(false) forKey:@"sandbox"];
 #endif
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                                    url:@"/index/Adapay/ios_notify"
-                                              argument:argument
+                                              parameters:argument
                                                 remark:@"校验内购支付结果"
                                         success:^(NSDictionary * _Nullable response) {
         [NYSTools showToast:@"充值成功"];

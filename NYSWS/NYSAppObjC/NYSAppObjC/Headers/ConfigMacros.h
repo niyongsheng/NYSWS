@@ -6,7 +6,7 @@
 #define DevelopSever 1
 #define TestSever    0
 #define ProductSever 0
-
+#define SV_APP_EXTENSIONS
 #if DevelopSever
 /** 接口前缀-开发服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";

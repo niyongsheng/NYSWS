@@ -70,9 +70,9 @@
         @"course_id": @(self.detailModel.ID)
     }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/activation"
-                                       argument:params
+                                       parameters:params
                                          remark:@"激活课程"
                                         success:^(id response) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NNotificationReloadData" object:nil];

@@ -195,9 +195,9 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         @"chapter_id": @([self.chapterArray[self.index] ID]),
     };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/chapter_info"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"章节详情"
                                         success:^(id response) {
         @strongify(self)
@@ -435,9 +435,9 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
     NSDictionary *argument = @{
         @"course_id": @(self.courseId),
     };
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/learned"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"标记已学"
                                         success:^(id response) {
         

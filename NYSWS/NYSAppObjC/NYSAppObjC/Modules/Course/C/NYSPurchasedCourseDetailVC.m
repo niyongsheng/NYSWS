@@ -92,9 +92,9 @@
         @"course_id": @(self.model.ID),
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Course/info"
-                                      argument:params
+                                      parameters:params
                                              remark:@"课程详情"
                                             success:^(id response) {
         @strongify(self)
@@ -126,9 +126,9 @@
         @"limit": DefaultPageSize,
     };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@""
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"课程章节列表"
                                         success:^(id response) {
         @strongify(self)

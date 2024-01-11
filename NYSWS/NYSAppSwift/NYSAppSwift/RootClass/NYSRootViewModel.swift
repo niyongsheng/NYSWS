@@ -7,7 +7,6 @@
 
 import Foundation
 import RxSwift
-import Alamofire
 
 class NYSRootViewModel {
     /// inputs修饰前缀

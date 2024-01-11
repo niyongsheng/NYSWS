@@ -66,9 +66,9 @@
     });
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_xuanchuanyu"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"获取分享宣传语"
                                         success:^(id response) {
         @strongify(self)

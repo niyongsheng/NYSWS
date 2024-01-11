@@ -53,9 +53,9 @@
         @"limit": DefaultPageSize,
     };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Index/news_list"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"帮助中心列表"
                                         success:^(id response) {
         @strongify(self)

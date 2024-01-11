@@ -38,9 +38,9 @@ SGPagingContentViewDelegate
     [titleArr addObject:NSLocalizedStringFromTable(@"All", @"InfoPlist", nil)];
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Courseclass/list"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"课程分类"
                                         success:^(id response) {
         @strongify(self)

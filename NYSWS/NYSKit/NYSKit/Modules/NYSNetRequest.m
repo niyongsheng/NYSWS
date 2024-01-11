@@ -61,7 +61,7 @@
 }
 
 #pragma mark - Form表单网络请求
-+ (void)requestNetworkWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url argument:(id)argument remark:(NSString *)remark success:(NYSNetRequestSuccess _Nullable )success failed:(NYSNetRequestFailed _Nullable )failed {
++ (void)requestNetworkWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id)parameters remark:(NSString *)remark success:(NYSNetRequestSuccess _Nullable )success failed:(NYSNetRequestFailed _Nullable )failed {
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
     NSDictionary *header = [self headers];
@@ -72,9 +72,9 @@
     switch (type) {
             
         case GET: {
-            [[self sharedManager] GET:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"GET", header, argument, responseObject, NO, timeStamp);
-                handelResponse(argument, failed, remark, responseObject, success, urlStr);
+            [[self sharedManager] GET:urlStr parameters:parameters headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"GET", header, parameters, responseObject, NO, timeStamp);
+                handelResponse(parameters, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
@@ -86,9 +86,9 @@
             break;
             
         case POST: {
-            [[self sharedManager] POST:urlStr parameters:argument headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO, timeStamp);
-                handelResponse(argument, failed, remark, responseObject, success, urlStr);
+            [[self sharedManager] POST:urlStr parameters:parameters headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"POST", header, parameters, responseObject, NO, timeStamp);
+                handelResponse(parameters, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
@@ -100,9 +100,9 @@
             break;
             
         case PUT: {
-            [[self sharedManager] PUT:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"PUT", header, argument, responseObject, NO, timeStamp);
-                handelResponse(argument, failed, remark, responseObject, success, urlStr);
+            [[self sharedManager] PUT:urlStr parameters:parameters headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"PUT", header, parameters, responseObject, NO, timeStamp);
+                handelResponse(parameters, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
@@ -113,10 +113,10 @@
         }
             break;
             
-        case DELTTE: {
-            [[self sharedManager] DELETE:urlStr parameters:argument headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                handelLog(remark, urlStr, @"DELTTE", header, argument, responseObject, NO, timeStamp);
-                handelResponse(argument, failed, remark, responseObject, success, urlStr);
+        case DELETE: {
+            [[self sharedManager] DELETE:urlStr parameters:parameters headers:header success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                handelLog(remark, urlStr, @"DELETE", header, parameters, responseObject, NO, timeStamp);
+                handelResponse(parameters, failed, remark, responseObject, success, urlStr);
                 
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if (failed) {
@@ -135,7 +135,7 @@
 #pragma mark - 文件上传
 + (void)uploadImagesWithType:(NYSNetRequestType)type
                        url:(NSString * _Nonnull)url
-                  argument:(id)argument
+                  parameters:(id)parameters
                       name:(NSString *)name
                     files:(NSArray *)files
                  fileNames:(NSArray<NSString *> *)fileNames
@@ -150,7 +150,7 @@
     NSDictionary *header = [self headers];
     NSString *urlStr = [[[NYSKitManager sharedNYSKitManager] host] stringByAppendingString:url];
     
-    [[self sharedManager] POST:urlStr parameters:argument headers:header constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [[self sharedManager] POST:urlStr parameters:parameters headers:header constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (NSUInteger i = 0; i < files.count; i++) {
             // 图片经过等比压缩后得到的二进制文件
             NSData *imageData = UIImageJPEGRepresentation(files[i], imageScale ? : 1.0f);
@@ -175,8 +175,8 @@
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        handelLog(remark, urlStr, @"POST", header, argument, responseObject, NO, timeStamp);
-        handelResponse(argument, failed, remark, responseObject, success, urlStr);
+        handelLog(remark, urlStr, @"POST", header, parameters, responseObject, NO, timeStamp);
+        handelResponse(parameters, failed, remark, responseObject, success, urlStr);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
@@ -189,7 +189,7 @@
 
 #pragma mark - 阿里云OSS图片上传
 + (void)ossUploadImageWithuUrlStr:(NSString *)urlStr
-                         argument:(id)argument
+                         parameters:(id)parameters
                       name:(NSString *)name
                     image:(UIImage *)image
                  imageName:(NSString *)imageName
@@ -201,7 +201,7 @@
                     failed:(NYSNetRequestFailed _Nullable )failed {
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
-    [[self sharedManager] POST:urlStr parameters:argument headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [[self sharedManager] POST:urlStr parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             formatter.dateFormat = @"yyyy_MM_ddHH:mm:ss";
@@ -220,8 +220,8 @@
             process ? process(uploadProgress) : nil;
         });
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        handelLog(remark, urlStr, @"POST", nil, argument, responseObject, NO, timeStamp);
-        handelResponse(argument, failed, remark, responseObject, success, urlStr);
+        handelLog(remark, urlStr, @"POST", nil, parameters, responseObject, NO, timeStamp);
+        handelResponse(parameters, failed, remark, responseObject, success, urlStr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failed) {
             failed(error);
@@ -231,15 +231,15 @@
 }
 
 #pragma mark - JSON传参网络请求
-+ (void)jsonNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
-    [self jsonRequestWithMethod:method url:url argument:argument isCheck:YES remark:remark success:success failed:failed];
++ (void)jsonNetworkRequestWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id)parameters remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
+    [self jsonRequestWithType:type url:url parameters:parameters isCheck:YES remark:remark success:success failed:failed];
 }
 
-+ (void)jsonNoCheckNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
-    [self jsonRequestWithMethod:method url:url argument:argument isCheck:NO remark:remark success:success failed:failed];
++ (void)jsonNoCheckNetworkRequestWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id)parameters remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
+    [self jsonRequestWithType:type url:url parameters:parameters isCheck:NO remark:remark success:success failed:failed];
 }
 
-+ (void)jsonRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id)argument isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
++ (void)jsonRequestWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id)parameters isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
     // 加载动画-延时执行
@@ -249,7 +249,25 @@
     if ([url containsString:@"http"]) {
         urlStr = url;
     }
-    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlStr parameters:argument error:nil];
+    
+    NSString *method = @"";
+    switch (type) {
+        case GET:
+            method = @"GET";
+            break;
+        case POST:
+            method = @"POST";
+            break;
+        case PUT:
+            method = @"PUT";
+            break;
+        case DELETE:
+            method = @"DELETE";
+            break;
+        default:
+            break;
+    }
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:method URLString:urlStr parameters:parameters error:nil];
     [request setAllHTTPHeaderFields:[self headers]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     // 设置cookie
@@ -264,7 +282,7 @@
         [SVProgressHUD dismissWithDelay:1.0f];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayLoadingMethod) object:nil];
         
-        handelLog(remark, urlStr, @"POST", [request allHTTPHeaderFields], argument, responseObject, YES, timeStamp);
+        handelLog(remark, urlStr, @"POST", [request allHTTPHeaderFields], parameters, responseObject, YES, timeStamp);
         if (!error) {
             // 获取cookie
             NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -278,7 +296,7 @@
             }
             
             if (isCheck) {
-                handelResponse(argument, failed, remark, responseObject, success, urlStr);
+                handelResponse(parameters, failed, remark, responseObject, success, urlStr);
             } else {
                 if (success) {
                     success(responseObject);
@@ -308,7 +326,7 @@
 }
 
 #pragma mark - 响应体处理
-static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, NSString *remark, id  _Nullable responseObject, NYSNetRequestSuccess  _Nullable success, NSString * _Nonnull url) {
+static void handelResponse(id parameters, NYSNetRequestFailed  _Nullable failed, NSString *remark, id  _Nullable responseObject, NYSNetRequestSuccess  _Nullable success, NSString * _Nonnull url) {
     if ([responseObject isKindOfClass:NSData.class]) {
         success(responseObject);
         return;
@@ -354,29 +372,31 @@ static void handelResponse(id argument, NYSNetRequestFailed  _Nullable failed, N
 
 #pragma mark - 错误码处理
 static void handelError(NSError * _Nullable error) {
-    
-    if (error.code == -1001) {
-        [NYSTools showToast:@"请求超时，请检查网络！"];
-        
-    } else if (error.code == -1004) {
-        [NYSTools showToast:@"无法连接到服务器"];
-        
-    } else if (error.code == -1009) {
-        [NYSTools showToast:@"网络不可用"];
-        
-    } else if (error.code == -1011) {
-        [NYSTools showToast:@"服务暂时不可用"];
-        
-    } else {
-        [NYSTools showToast:error.localizedDescription];
+    NSString *msg = nil;
+    switch (error.code) {
+        case -1001:
+            msg = @"请求超时，请检查网络！";
+            break;
+        case -1004:
+            msg = @"无法连接到服务器";
+            break;
+        case -1009:
+            msg = @"网络不可用";
+            break;
+        case -1011:
+            msg = @"服务暂时不可用";
+            break;
+        default:
+            msg = error.localizedDescription;
     }
+    [NYSTools showBottomToast:msg];
 #ifdef DEBUG
     NSLog(@"❌%@", error);
 #endif
 }
 
 #pragma mark - 日志打印
-static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDictionary *header, NSDictionary *argument, id responseObject, BOOL isJsosn, NSTimeInterval timeStamp) {
+static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDictionary *header, NSDictionary *parameters, id responseObject, BOOL isJsosn, NSTimeInterval timeStamp) {
     id resp = nil;
     if ([responseObject isKindOfClass:[NSDictionary class]]) {
         resp = [NYSNetRequest jsonPrettyStringEncoded:responseObject];
@@ -384,7 +404,7 @@ static void handelLog(NSString *remark, NSString *urlStr, NSString *type, NSDict
         resp = responseObject;
     }
     
-    DBGLog(@"[%@]%@->📩:\n%@\n[Header]请求头:\n%@\n[%@]传参:\n%@\n[Response]响应:\n%@", type, remark, urlStr, header, isJsosn ? @"Json" : @"Form", [NYSNetRequest jsonPrettyStringEncoded:argument], resp);
+    DBGLog(@"[%@]%@->📩:\n%@\n[Header]请求头:\n%@\n[%@]传参:\n%@\n[Response]响应:\n%@", type, remark, urlStr, header, isJsosn ? @"Json" : @"Form", [NYSNetRequest jsonPrettyStringEncoded:parameters], resp);
     
     if (isShowTimes) {
         NSDate *date = [NSDate date];

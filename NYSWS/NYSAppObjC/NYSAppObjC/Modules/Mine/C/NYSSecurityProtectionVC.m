@@ -81,9 +81,9 @@
         @"security_answer": _answerTF.text,
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Member/update_security"
-                                      argument:params
+                                      parameters:params
                                              remark:@"修改密保答案"
                                             success:^(id response) {
         @strongify(self)

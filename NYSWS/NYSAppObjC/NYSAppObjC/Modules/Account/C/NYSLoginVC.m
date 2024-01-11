@@ -138,9 +138,9 @@
                                @"password": _passwordTF.text,
     };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/login"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"登录"
                                         success:^(id response) {
         @strongify(self)
@@ -174,9 +174,9 @@
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
     if ([[URL scheme] isEqualToString:@"user"]) {
         @weakify(self)
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+        [NYSNetRequest jsonNetworkRequestWithType:POST
                                                 url:@"/index/Member/get_user_agreement"
-                                           argument:nil
+                                           parameters:nil
                                              remark:@"服务协议"
                                             success:^(id response) {
             @strongify(self)
@@ -191,9 +191,9 @@
         
     } else {
         @weakify(self)
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+        [NYSNetRequest jsonNetworkRequestWithType:POST
                                                 url:@"/index/Member/get_privacy_agreement"
-                                           argument:nil
+                                           parameters:nil
                                              remark:@"隐私协议"
                                             success:^(id response) {
             @strongify(self)

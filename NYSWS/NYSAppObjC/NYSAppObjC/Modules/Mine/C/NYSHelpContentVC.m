@@ -24,9 +24,9 @@
     self.navigationItem.title = self.model.name;
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Index/news_info"
-                                       argument:@{@"id" : @(self.model.ID)}
+                                       parameters:@{@"id" : @(self.model.ID)}
                                          remark:@"帮助详情"
                                         success:^(id response) {
         @strongify(self)

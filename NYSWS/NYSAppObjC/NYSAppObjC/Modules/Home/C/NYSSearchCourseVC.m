@@ -129,9 +129,9 @@ static NSString *CellID = @"NYSCourseCell";
 - (void)getData:(BOOL)isHeader {
     // 加载轮播数据
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Index/banner"
-                                       argument:@{ @"page": @1, @"limit": @999 }
+                                       parameters:@{ @"page": @1, @"limit": @999 }
                                          remark:@"轮播图"
                                         success:^(id response) {
         @strongify(self)
@@ -151,9 +151,9 @@ static NSString *CellID = @"NYSCourseCell";
         [argument setValue:_classId forKey:@"class_id"];
         [argument setValue:@1 forKey:@"is_recommend"];
     }
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:[self.type isEqualToString:@"1"] ? @"/index/Course/select_coures" : @"/index/Course/list"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"搜索"
                                         success:^(id response) {
         @strongify(self)

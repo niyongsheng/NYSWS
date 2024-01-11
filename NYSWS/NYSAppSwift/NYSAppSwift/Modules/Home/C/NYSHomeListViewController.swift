@@ -56,11 +56,11 @@ class NYSHomeListViewController: NYSRootViewController {
 
     override func headerRereshing() {
         content.text = "This is tableview header " + String.randomString(length: Int.random(in: 1...100))
-        vm.fetchHomeDataItemes(headerRefresh: true, params: [:])
+        vm.fetchHomeDataItemes(headerRefresh: true, parameters: nil)
     }
     
     override func footerRereshing() {
-        vm.fetchHomeDataItemes(headerRefresh: false, params: [:])
+        vm.fetchHomeDataItemes(headerRefresh: false, parameters: nil)
     }
 }
 

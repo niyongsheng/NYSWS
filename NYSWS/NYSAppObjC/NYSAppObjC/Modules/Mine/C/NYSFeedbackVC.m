@@ -137,7 +137,7 @@
     for (UIImage *image in images) {
         [NYSNetRequest uploadImagesWithType:POST
                                         url:@"/index/Index/upload"
-                                   argument:nil
+                                   parameters:nil
                                        name:@"file"
                                      files:@[image]
                                   fileNames:nil
@@ -166,9 +166,9 @@
         @"images": [self.selectedImagesUrlArray componentsJoinedByString:@","]
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Feedback/index"
-                                      argument:params
+                                      parameters:params
                                              remark:@"意见反馈"
                                             success:^(id response) {
         

@@ -93,9 +93,9 @@ NYSHomeCourseVCDelegate
     
     // 刷新token后加载数据，绘制页面
     if (NAppManager.isLogined) {
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+        [NYSNetRequest jsonNetworkRequestWithType:POST
                                                 url:@"/index/Member/refresh"
-                                           argument:nil
+                                           parameters:nil
                                              remark:@"刷新Token"
                                             success:^(id response) {
             @strongify(self)
@@ -138,9 +138,9 @@ NYSHomeCourseVCDelegate
     [titleArr addObject:NSLocalizedStringFromTable(@"All", @"InfoPlist", nil)];
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Courseclass/list"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"课程分类"
                                         success:^(id response) {
         @strongify(self)
@@ -171,9 +171,9 @@ NYSHomeCourseVCDelegate
     @weakify(self)
     
     // 轮播图
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Index/banner"
-                                       argument:@{ @"page": @1, @"limit": @999 }
+                                       parameters:@{ @"page": @1, @"limit": @999 }
                                          remark:@"轮播图"
                                         success:^(id response) {
         @strongify(self)
@@ -185,9 +185,9 @@ NYSHomeCourseVCDelegate
     }];
     
     // 推荐课程
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/recommend_list"
-                                       argument:@{ @"page": @1, @"limit": @999 }
+                                       parameters:@{ @"page": @1, @"limit": @999 }
                                          remark:@"推荐课程"
                                         success:^(id response) {
         @strongify(self)

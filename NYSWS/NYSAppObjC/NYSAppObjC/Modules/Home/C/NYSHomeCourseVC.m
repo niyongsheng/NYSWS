@@ -61,9 +61,9 @@
         @"class_id": _index,
     };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/list"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"（首页）课程分类列表"
                                         success:^(id response) {
         @strongify(self)

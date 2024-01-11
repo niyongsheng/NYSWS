@@ -38,9 +38,9 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_service"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"获取客服"
                                         success:^(id response) {
         @strongify(self)

@@ -62,7 +62,7 @@
     @weakify(self)
     [NYSNetRequest uploadImagesWithType:POST
                                     url:@"/index/Index/upload"
-                               argument:nil
+                               parameters:nil
                                    name:@"file"
                                  files:images
                               fileNames:nil
@@ -103,9 +103,9 @@
         @"avatar": _iconUrl
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Member/update_information"
-                                      argument:params
+                                      parameters:params
                                              remark:@"修改个人资料"
                                             success:^(id response) {
         // 刷新用户信息

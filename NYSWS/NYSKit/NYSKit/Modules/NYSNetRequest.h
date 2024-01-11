@@ -16,9 +16,9 @@
 #define NNotificationNetworkChange              @"KNotificationNetworkChange"
 
 typedef enum : NSUInteger {
-    GET,
+    GET = 0,
     POST,
-    DELTTE,
+    DELETE,
     PUT
 } NYSNetRequestType;
 
@@ -28,18 +28,18 @@ typedef void(^NYSNetRequestFailed)(NSError * _Nullable error);
 @interface NYSNetRequest : NSObject
 
 /// Form表单网络请求
-+ (void)requestNetworkWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
++ (void)requestNetworkWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id _Nullable)parameters remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
 /// JSON传参网络请求
-+ (void)jsonNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
++ (void)jsonNetworkRequestWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id _Nullable)parameters remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
 /// JSON传参网络请求(不统一检查接口返回数据的合法性)
-+ (void)jsonNoCheckNetworkRequestWithMethod:(NSString * _Nonnull)method url:(NSString * _Nonnull)url argument:(id _Nullable)argument remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
++ (void)jsonNoCheckNetworkRequestWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id _Nullable)parameters remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
 /// 文件上传
 + (void)uploadImagesWithType:(NYSNetRequestType)type
                        url:(NSString * _Nonnull)url
-                  argument:(id _Nullable)argument
+                  parameters:(id _Nullable)parameters
                       name:(NSString * _Nonnull)name
                        files:(NSArray * _Nonnull)files
                  fileNames:(NSArray<NSString *> *_Nullable)fileNames
@@ -52,7 +52,7 @@ typedef void(^NYSNetRequestFailed)(NSError * _Nullable error);
 
 /// 阿里云OSS图片上传
 + (void)ossUploadImageWithuUrlStr:(NSString * _Nonnull)urlStr
-                         argument:(id _Nullable)argument
+                         parameters:(id _Nullable)parameters
                       name:(NSString * _Nonnull)name
                     image:(UIImage * _Nonnull)image
                  imageName:(NSString * _Nonnull)imageName

@@ -123,9 +123,9 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
 //        [argument setValue:@([self.chapterArray[self.index] ID]) forKey:@"chapter_id"];
     }
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:self.isHomeSearch ? @"/index/Course/select_index_content" : @"/index/Course/select_content"
-                                       argument:argument
+                                       parameters:argument
                                          remark:self.isHomeSearch ? @"首页关键词搜索" : @"章节关键词搜索"
                                         success:^(id response) {
         @strongify(self)

@@ -15,7 +15,7 @@ import CocoaDebug
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var window: NYSBaseWindow?
+    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -98,7 +98,7 @@ extension AppDelegate {
     }
     
     func initNetwork() {
-        NYSKitManager.shared().host = AppBaseUrl
+        NYSKitManager.shared().host = Api_Base_Url
         NYSKitManager.shared().token = AppManager.shared.token
         NYSKitManager.shared().normalCode = "200,0"
         NYSKitManager.shared().tokenInvalidCode = "500"

@@ -15,9 +15,9 @@ class NYSHomeViewModel: NYSRootViewModel {
     let refresh = PublishSubject<MJRefreshAction>()
     
     /// RxSwift方式数据加载
-    /// - Parameter params: 参数
+    /// - Parameter parameters: 参数
     /// - Parameter headerRefresh: 是否头部刷新
-    func fetchHomeDataItemes(headerRefresh: Bool, params: [String: Any]) {
+    func fetchHomeDataItemes(headerRefresh: Bool, parameters: [String: Any]?) {
         let randomDataArray = generateRandomDataArray(length: NAppPageSize)
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])
@@ -43,10 +43,10 @@ class NYSHomeViewModel: NYSRootViewModel {
     
     /// 闭包方式数据加载
     /// - Parameters:
-    ///   - params: 参数
+    ///   - parameters: 参数
     ///   - success: 回调
     /// - Returns: 返回
-    func fetchHomeDataItemes(params: [String: Any], success : @escaping (_ data : [NYSHomeListModel]) -> ()) -> Void {
+    func fetchHomeDataItemes(parameters: [String: Any]?, success : @escaping (_ data : [NYSHomeListModel]) -> ()) -> Void {
         let randomDataArray = generateRandomDataArray(length: NAppPageSize)
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])

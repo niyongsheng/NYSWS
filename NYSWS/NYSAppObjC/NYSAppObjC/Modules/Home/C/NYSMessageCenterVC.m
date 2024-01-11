@@ -77,9 +77,9 @@ UITextFieldDelegate
         @"keyword": _searchTF.text,
       };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Member/lists"
-                                      argument:argument
+                                      parameters:argument
                                              remark:@"消息中心列表"
                                             success:^(id response) {
         @strongify(self)

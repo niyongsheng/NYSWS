@@ -76,9 +76,9 @@
         @"course_id": @(self.detailModel.ID)
     }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNoCheckNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNoCheckNetworkRequestWithType:POST
                                                    url:@"/index/Course/purchase"
-                                              argument:params
+                                              parameters:params
                                                 remark:@"购买课程"
                                                success:^(id response) {
         NSString *msg = [response stringValueForKey:@"msg" default:@""];

@@ -59,9 +59,9 @@
         @"new_password": _renewPwdTF.text,
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Member/update_password"
-                                      argument:params
+                                      parameters:params
                                              remark:@"修改密码"
                                             success:^(id response) {
         @strongify(self)

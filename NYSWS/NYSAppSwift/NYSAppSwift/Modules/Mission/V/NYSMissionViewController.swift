@@ -7,8 +7,14 @@
 
 import UIKit
 import NYSUIKit
+import RxSwift
 
 class NYSMissionViewController: NYSRootViewController {
+    
+    private let bag = DisposeBag()
+    private let vm = NYSMissionViewModel()
+    
+    private var city = "北京"
     
     lazy var imageViewBg: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: 140))
@@ -93,6 +99,7 @@ class NYSMissionViewController: NYSRootViewController {
         imageViewBg.addSubview(receiptOrigin)
         view.addSubview(imageViewBg)
         
+        self.tableView.mj_footer = nil
         self.tableView.frame = CGRect(x: 0, y: imageViewBg.bottom, width: NScreenWidth, height: NScreenHeight - imageViewBg.bottom - NBottomHeight)
         self.view.addSubview(self.tableView)
     }
@@ -111,6 +118,10 @@ class NYSMissionViewController: NYSRootViewController {
         addressPickerView.pickerStyle = style
         addressPickerView.isAutoSelect = false
         addressPickerView.resultBlock = { province, city, area in
+            if let cityModel = city {
+                self.city = String(cityModel.name!.prefix(cityModel.name!.count - 1))
+            }
+            
             button.setTitle(area?.name, for: .normal)
         }
         addressPickerView.show()
@@ -121,4 +132,32 @@ extension NYSMissionViewController: NYSSearchViewDelegate {
     func didChangeKeyword(_ keyword: String) {
         
     }
+}
+
+extension NYSMissionViewController {
+    
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        vm.refresh.bind(to: self.tableView.rx.refreshAction).disposed(by: bag)
+        vm.weatherSubject.subscribe(onNext: { [weak self] (item: NYSWeater) in
+                    self?.dataSourceArr = NSMutableArray(array: [item])
+//                    self?.tableView.reloadData(animationType: .moveSpring)
+                }, onError: { (error) in
+                    print("Error: \(error)")
+                }).disposed(by: bag)
+    }
+    
+    override func headerRereshing() {
+        let parameters = [
+            "unescape": 1,
+            "version": "v1",
+            "appid": 43656176,
+            "appsecret": "I42og6Lm",
+            "city": city
+        ] as [String : Any]
+        vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
+    }
+    
+    
 }

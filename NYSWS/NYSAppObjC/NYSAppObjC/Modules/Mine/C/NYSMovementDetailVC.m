@@ -28,9 +28,9 @@
         @"order_id": self.model.order_id,
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Order/info"
-                                      argument:params
+                                      parameters:params
                                              remark:@"订单详情"
                                             success:^(id response) {
         @strongify(self)

@@ -89,9 +89,9 @@
         @"limit": DefaultPageSize,
     };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/balance_record"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"资金变动列表"
                                         success:^(id response) {
         @strongify(self)

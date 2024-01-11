@@ -103,18 +103,18 @@
     argument[@"security_answer"] = _securityAnswerTF.text;
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/confirm_security"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"验证密保答案"
                                         success:^(id response) {
         @strongify(self)
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[@"nickname"] = self.nicknameTF.text;
         params[@"password"] = self.passwordTF.text;
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+        [NYSNetRequest jsonNetworkRequestWithType:POST
                                                 url:@"/index/Member/update_pass"
-                                           argument:params
+                                           parameters:params
                                              remark:@"重置密码"
                                             success:^(id response) {
             @strongify(self)
@@ -139,9 +139,9 @@
     }
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/confidentiality"
-                                       argument:@{@"nickname" : textField.text}
+                                       parameters:@{@"nickname" : textField.text}
                                          remark:@"获取密保问题"
                                         success:^(id response) {
         @strongify(self)

@@ -49,9 +49,9 @@
         @"ali_account": _alipayAcccountTF.text
       }.mutableCopy;
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Member/withdrawal"
-                                      argument:params
+                                      parameters:params
                                              remark:@"提现"
                                             success:^(id response) {
         

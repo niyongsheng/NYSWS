@@ -63,9 +63,9 @@
 
 - (void)loadUserInfo:(NSString *)token completion:(NYSLoadUserInfoCompletion)completion {
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/info"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"用户信息"
                                         success:^(id response) {
         @strongify(self)
@@ -114,9 +114,9 @@
     
     // 1.退出登录接口
     if (IsNeedLogout) {
-        [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+        [NYSNetRequest jsonNetworkRequestWithType:POST
                                                 url:@"/logout"
-                                           argument:nil
+                                           parameters:nil
                                              remark:@"登出"
                                             success:^(NSDictionary * _Nullable response) {
             
@@ -218,9 +218,9 @@
         @"status": @1,
         @"is_page": @1
     };
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/user_activation"
-                                       argument:argument
+                                       parameters:argument
                                          remark:@"缓存已购列表"
                                         success:^(id _Nullable response) {
         //        if ([response count] == 0) return;

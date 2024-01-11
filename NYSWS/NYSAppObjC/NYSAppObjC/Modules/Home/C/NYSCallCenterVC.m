@@ -33,9 +33,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Index/contact_us"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"联系我们"
                                         success:^(id response) {
         @strongify(self)
@@ -51,9 +51,9 @@
 
     }];
     
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Member/get_service"
-                                       argument:nil
+                                       parameters:nil
                                          remark:@"获取客服"
                                         success:^(id response) {
         @strongify(self)

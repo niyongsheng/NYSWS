@@ -70,9 +70,9 @@
         @"limit": DefaultPageSize,
       };
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithMethod:@"POST"
+    [NYSNetRequest jsonNetworkRequestWithType:POST
                                           url:@"/index/Course/user_activation"
-                                      argument:argument
+                                      parameters:argument
                                              remark:@"已购/已学列表"
                                             success:^(id response) {
         @strongify(self)

@@ -12,6 +12,13 @@
 		C80EE9E62B3ECE2900F79AD0 /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */; };
 		C80EE9EB2B43963800F79AD0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */; };
 		C80EE9ED2B439E3B00F79AD0 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9EC2B439E3B00F79AD0 /* UIControl+Extension.swift */; };
+		C816B6652B4F7B6F00256E58 /* NYSWeaterAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B65F2B4F7B6E00256E58 /* NYSWeaterAlarm.swift */; };
+		C816B6662B4F7B6F00256E58 /* NYSWeaterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B6602B4F7B6E00256E58 /* NYSWeaterData.swift */; };
+		C816B6672B4F7B6F00256E58 /* NYSWeaterIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B6612B4F7B6F00256E58 /* NYSWeaterIndex.swift */; };
+		C816B6682B4F7B6F00256E58 /* NYSWeaterHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B6622B4F7B6F00256E58 /* NYSWeaterHour.swift */; };
+		C816B6692B4F7B6F00256E58 /* NYSWeaterAqi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B6632B4F7B6F00256E58 /* NYSWeaterAqi.swift */; };
+		C816B66A2B4F7B6F00256E58 /* NYSWeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B6642B4F7B6F00256E58 /* NYSWeater.swift */; };
+		C816B66E2B4F7C4E00256E58 /* NYSMissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816B66D2B4F7C4E00256E58 /* NYSMissionViewModel.swift */; };
 		C821AAAF2B4694C4003C0968 /* AppAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C821AAAD2B4694C4003C0968 /* AppAlertView.xib */; };
 		C821AAB02B4694C4003C0968 /* AppAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C821AAAE2B4694C4003C0968 /* AppAlertView.swift */; };
 		C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB22B46B29E003C0968 /* NYSScanViewController.m */; };
@@ -24,6 +31,7 @@
 		C83C186A2B33E438002FD985 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18662B33E438002FD985 /* service.json */; };
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
 		C83C186C2B33E438002FD985 /* myself.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18682B33E438002FD985 /* myself.json */; };
+		C83EC4942B4FB1F3008FBE68 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EC4932B4FB1F3008FBE68 /* API.swift */; };
 		C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8474E522B43DD54001DE04A /* NYSRootViewController.swift */; };
 		C858480E2B4797FC00B27086 /* NYSQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */; };
 		C85848102B47A40D00B27086 /* NYSInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */; };
@@ -103,6 +111,13 @@
 		C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
 		C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C80EE9EC2B439E3B00F79AD0 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		C816B65F2B4F7B6E00256E58 /* NYSWeaterAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NYSWeaterAlarm.swift; sourceTree = "<group>"; };
+		C816B6602B4F7B6E00256E58 /* NYSWeaterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NYSWeaterData.swift; sourceTree = "<group>"; };
+		C816B6612B4F7B6F00256E58 /* NYSWeaterIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NYSWeaterIndex.swift; sourceTree = "<group>"; };
+		C816B6622B4F7B6F00256E58 /* NYSWeaterHour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NYSWeaterHour.swift; sourceTree = "<group>"; };
+		C816B6632B4F7B6F00256E58 /* NYSWeaterAqi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NYSWeaterAqi.swift; sourceTree = "<group>"; };
+		C816B6642B4F7B6F00256E58 /* NYSWeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NYSWeater.swift; sourceTree = "<group>"; };
+		C816B66D2B4F7C4E00256E58 /* NYSMissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSMissionViewModel.swift; sourceTree = "<group>"; };
 		C821AAAD2B4694C4003C0968 /* AppAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppAlertView.xib; sourceTree = "<group>"; };
 		C821AAAE2B4694C4003C0968 /* AppAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAlertView.swift; sourceTree = "<group>"; };
 		C821AAB12B46B29E003C0968 /* NYSScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSScanViewController.h; sourceTree = "<group>"; };
@@ -117,6 +132,7 @@
 		C83C18662B33E438002FD985 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
 		C83C18682B33E438002FD985 /* myself.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = myself.json; sourceTree = "<group>"; };
+		C83EC4932B4FB1F3008FBE68 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C8474E522B43DD54001DE04A /* NYSRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootViewController.swift; sourceTree = "<group>"; };
 		C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSQRCodeViewController.xib; sourceTree = "<group>"; };
 		C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSInstructionViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +231,35 @@
 				C8A4BE302B4BBA1700152E14 /* UITableView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C816B65E2B4F7A8E00256E58 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				C816B6642B4F7B6F00256E58 /* NYSWeater.swift */,
+				C816B65F2B4F7B6E00256E58 /* NYSWeaterAlarm.swift */,
+				C816B6632B4F7B6F00256E58 /* NYSWeaterAqi.swift */,
+				C816B6602B4F7B6E00256E58 /* NYSWeaterData.swift */,
+				C816B6622B4F7B6F00256E58 /* NYSWeaterHour.swift */,
+				C816B6612B4F7B6F00256E58 /* NYSWeaterIndex.swift */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		C816B66B2B4F7BFB00256E58 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		C816B66C2B4F7C0300256E58 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				C816B66D2B4F7C4E00256E58 /* NYSMissionViewModel.swift */,
+			);
+			path = VM;
 			sourceTree = "<group>";
 		};
 		C821AAB42B46B2CA003C0968 /* V */ = {
@@ -493,7 +538,9 @@
 		C8BC5E8F2B3A82DC00814C2B /* Mission */ = {
 			isa = PBXGroup;
 			children = (
-				C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */,
+				C816B65E2B4F7A8E00256E58 /* M */,
+				C816B66B2B4F7BFB00256E58 /* V */,
+				C816B66C2B4F7C0300256E58 /* VM */,
 			);
 			path = Mission;
 			sourceTree = "<group>";
@@ -530,9 +577,10 @@
 		C8BC5E9E2B3AA3A400814C2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C8BC5E9F2B3AA41200814C2B /* NYSAdaptScreen.swift */,
+				C83EC4932B4FB1F3008FBE68 /* API.swift */,
 				C8BC5EA52B3AB14400814C2B /* APPConfig.swift */,
 				C8A00F262B464CBD00245D94 /* Transform.swift */,
+				C8BC5E9F2B3AA41200814C2B /* NYSAdaptScreen.swift */,
 				C87CAB732B46773600C84E8E /* PropertyWrapper.swift */,
 				C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */,
 			);
@@ -709,9 +757,11 @@
 				C8BC5E952B3A84B100814C2B /* NYSHomeViewController.swift in Sources */,
 				C8C5D2432B3E628600117F58 /* NYSBannerCollectionViewCell.swift in Sources */,
 				C821AAB72B46B2CA003C0968 /* NYSToolBar.m in Sources */,
+				C816B6662B4F7B6F00256E58 /* NYSWeaterData.swift in Sources */,
 				C87CAB7D2B467C8E00C84E8E /* NYSUserInfo.swift in Sources */,
 				C85848102B47A40D00B27086 /* NYSInstructionViewController.swift in Sources */,
 				C8C5D2372B3E48EB00117F58 /* NYSRootScrollViewController.swift in Sources */,
+				C816B6672B4F7B6F00256E58 /* NYSWeaterIndex.swift in Sources */,
 				C86DB21F2B3E9E22002126F5 /* WRNavigationBar.swift in Sources */,
 				C8D3E21C2B3BB1E700B77DEA /* NYSHomeListViewController.swift in Sources */,
 				C8D0AF792B49222A002C18E6 /* NYSThirdPartyViewController.swift in Sources */,
@@ -720,10 +770,12 @@
 				C87CAB7A2B467B2900C84E8E /* AppManager.swift in Sources */,
 				C8A4BE412B4BDE9100152E14 /* NYSHomeViewModel.swift in Sources */,
 				C87CAB782B4679B600C84E8E /* String+Extension.swift in Sources */,
+				C816B6652B4F7B6F00256E58 /* NYSWeaterAlarm.swift in Sources */,
 				C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */,
 				C86DB2192B3E8DBC002126F5 /* NYSAccountViewController.swift in Sources */,
 				C8BC5EA42B3AAEA500814C2B /* UIView+Extension.swift in Sources */,
 				C80EE9EB2B43963800F79AD0 /* UIColor+Extension.swift in Sources */,
+				C816B66A2B4F7B6F00256E58 /* NYSWeater.swift in Sources */,
 				C8A00F272B464CBD00245D94 /* Transform.swift in Sources */,
 				C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */,
 				C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */,
@@ -741,10 +793,14 @@
 				C8BC5EA62B3AB14400814C2B /* APPConfig.swift in Sources */,
 				C87CAB752B46773600C84E8E /* PropertyWrapper.swift in Sources */,
 				C87CAB762B46773600C84E8E /* Rx+Operators.swift in Sources */,
+				C816B6692B4F7B6F00256E58 /* NYSWeaterAqi.swift in Sources */,
+				C816B66E2B4F7C4E00256E58 /* NYSMissionViewModel.swift in Sources */,
 				C874B9A72B4B8BB8009CC627 /* AppShareView.swift in Sources */,
 				C8621DEE2B31845300F90DF0 /* NYSTabBarViewController.swift in Sources */,
 				C8A4BE3E2B4BD45400152E14 /* NYSHomeModel.swift in Sources */,
+				C83EC4942B4FB1F3008FBE68 /* API.swift in Sources */,
 				C8C5D23B2B3E4FF800117F58 /* NYSSubScrollViewController.swift in Sources */,
+				C816B6682B4F7B6F00256E58 /* NYSWeaterHour.swift in Sources */,
 				C8BC5EA22B3AA6C400814C2B /* UIDevice+Extension.swift in Sources */,
 				C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */,
 				C86DB21A2B3E8DBC002126F5 /* NYSLoginViewController.swift in Sources */,
