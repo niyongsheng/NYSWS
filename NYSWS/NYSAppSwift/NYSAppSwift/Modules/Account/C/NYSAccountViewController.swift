@@ -94,12 +94,14 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "service" {
-            let webVC = NYSWebViewController.init()
+            let webVC = NYSRootWebViewController.init()
+            webVC.title = "服务协议"
             webVC.urlStr = "https://example.com/"
             self.navigationController?.pushViewController(webVC, animated: true)
             
         } else if URL.scheme == "privacy" {
-            let webVC = NYSWebViewController.init()
+            let webVC = NYSRootWebViewController.init()
+            webVC.title = "隐私政策"
             webVC.urlStr = "https://example.com/"
             self.navigationController?.pushViewController(webVC, animated: true)
         }

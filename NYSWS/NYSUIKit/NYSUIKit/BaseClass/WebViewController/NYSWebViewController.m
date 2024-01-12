@@ -47,12 +47,19 @@
     
     [self.view addSubview:self.webView];
     
-    UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightItemOnclicked:)];
-    self.navigationItem.rightBarButtonItems = @[rightItem1];
+    UIBarButtonItem *rightReloadItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightReloadItemOnclicked:)];
+    UIBarButtonItem *rightShareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(rightShareItemOnclicked:)];
+    self.navigationItem.rightBarButtonItems = @[/*rightReloadItem,*/ rightShareItem];
 }
 
-- (void)rightItemOnclicked:(id)sender {
+- (void)rightReloadItemOnclicked:(id)sender {
     [self.webView reload];
+}
+
+- (void)rightShareItemOnclicked:(id)sender {
+    [NYSTools systemShare:@[self.webView.URL] controller:self completion:^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        
+    }];
 }
 
 #pragma mark - webview
@@ -73,8 +80,18 @@
         [_webView addSubview:self.progressView];
         // 监听进度条
         [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+        
+        _webView.scrollView.refreshControl = self.refreshControl;
     }
     return _webView;
+}
+
+- (UIRefreshControl *)refreshControl {
+    if (!_refreshControl) {
+        _refreshControl = [[UIRefreshControl alloc] init];
+        [_refreshControl addTarget:self action:@selector(rightReloadItemOnclicked:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _refreshControl;
 }
 
 - (UIProgressView *)progressView {
@@ -119,6 +136,7 @@
         self.title = webView.title;
     }
     [self updateProgress:webView.estimatedProgress];
+    [self.refreshControl endRefreshing];
     
     if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
         [self dayThemeJS:webView];
@@ -220,6 +238,10 @@
 
 - (void)nightThemeJS:(WKWebView *)webview {
     [webview evaluateJavaScript:@"document.body.style.backgroundColor=\"#000000\"" completionHandler:nil];
+}
+
+- (void)grayThemeJS:(WKWebView *)webview {
+    [webview evaluateJavaScript:@"var filter = '-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%); -ms-filter:grayscale(100%); -o-filter:grayscale(100%) filter:grayscale(100%);';document.getElementsByTagName('html')[0].style.filter = 'grayscale(100%)';" completionHandler:nil];
 }
 
 /// 设置主题

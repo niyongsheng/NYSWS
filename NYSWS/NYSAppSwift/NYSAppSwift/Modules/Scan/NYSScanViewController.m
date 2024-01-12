@@ -103,7 +103,7 @@
     
     [scanCode playSoundEffect:@"SGQRCode.bundle/scan_end_sound.caf"];
     
-    NYSWebViewController *jumpVC = [[NYSWebViewController alloc] init];
+    NYSRootWebViewController *jumpVC = [[NYSRootWebViewController alloc] init];
     [self.navigationController pushViewController:jumpVC animated:YES];
     
     if ([result hasPrefix:@"http"]) {
@@ -238,7 +238,7 @@
             [self->scanCode playSoundEffect:@"SGQRCode.bundle/scan_end_sound.caf"];
             
             [self dismissViewControllerAnimated:YES completion:^{
-                NYSWebViewController *jumpVC = [[NYSWebViewController alloc] init];
+                NYSRootWebViewController *jumpVC = [[NYSRootWebViewController alloc] init];
                 [self.navigationController pushViewController:jumpVC animated:YES];
                 
                 if ([result hasPrefix:@"http"]) {

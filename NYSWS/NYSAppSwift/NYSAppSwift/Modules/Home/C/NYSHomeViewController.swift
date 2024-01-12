@@ -16,17 +16,18 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.isHidenNaviBar = true
+        navBarBackgroundAlpha = 0
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.isHidenNaviBar = false
+        navBarBackgroundAlpha = 1
     }
     
     override func setupUI() {
         super.setupUI()
         
+        self.isHidenNaviBar = true
         searchView.delegate = self
         view.addSubview(searchView)
         view.addSubview(pagingTitleView)

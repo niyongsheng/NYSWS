@@ -39,12 +39,12 @@ class NYSSettingViewController: NYSRootViewController {
             self.navigationController?.pushViewController(NYSThirdPartyViewController.init(), animated: true)
              
         } else if sender.tag == 101 {
-            let webVC = NYSWebViewController.init()
+            let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://example.com/"
             self.navigationController?.pushViewController(webVC, animated: true)
             
         } else if sender.tag == 102 {
-            let webVC = NYSWebViewController.init()
+            let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://example.com/"
             self.navigationController?.pushViewController(webVC, animated: true)
             

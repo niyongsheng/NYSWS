@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, weak) WKWebViewConfiguration *webConfiguration;
 @property (nonatomic, copy) NSString *urlStr;
 @property (nonatomic, assign) BOOL autoTitle;
@@ -30,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// JS主题适配
 - (void)dayThemeJS:(WKWebView *)webview;
 - (void)nightThemeJS:(WKWebView *)webview;
+/// 灰色
+- (void)grayThemeJS:(WKWebView *)webview;
 
 @end
 

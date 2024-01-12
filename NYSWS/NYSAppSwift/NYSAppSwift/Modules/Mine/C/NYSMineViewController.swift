@@ -104,7 +104,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
         if sender.tag == 100 {
-            let webVC = NYSWebViewController.init()
+            let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
             self.navigationController?.pushViewController(webVC, animated: true)
              
