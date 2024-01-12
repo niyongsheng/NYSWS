@@ -55,11 +55,13 @@ class NYSHomeListViewController: NYSRootViewController {
     }
 
     override func headerRereshing() {
+        super.headerRereshing()
         content.text = "This is tableview header " + String.randomString(length: Int.random(in: 1...100))
         vm.fetchHomeDataItemes(headerRefresh: true, parameters: nil)
     }
     
     override func footerRereshing() {
+        super.footerRereshing()
         vm.fetchHomeDataItemes(headerRefresh: false, parameters: nil)
     }
 }
@@ -95,8 +97,9 @@ extension NYSHomeListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let model = self.dataSourceArr[indexPath.row] as! NYSHomeListModel
-        let vc:NYSRootViewController = NYSRootViewController()
-        vc.title = model.title
+        let vc:NYSContentViewController = NYSContentViewController()
+        vc.titleL.text = model.title
+        vc.contentL.text = model.content
         navigationController?.pushViewController(vc, animated: true)
     }
     

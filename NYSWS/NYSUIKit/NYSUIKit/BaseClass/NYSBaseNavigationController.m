@@ -48,34 +48,26 @@
 
 /// theme config
 - (void)configTheme {
-//    if ([[UIDevice currentDevice] systemVersion].floatValue < 13.0) {
-//        self.navigationBar.lee_theme
-//        .LeeConfigBarTintColor(@"common_bg_color_2")
-//        .LeeConfigTintColor(@"app_theme_color");
-//    } else {
-//        self.navigationBar.lee_theme
-//        .LeeConfigTintColor(@"app_theme_color");
-//    }
-//    
-//    self.navigationBar.lee_theme
-//    .LeeAddCustomConfig(DAY, ^(UINavigationBar *bar) {
-//      
-//        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
-//        if (@available(iOS 11.0, *)) {
-//            bar.largeTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor],
-//            NSFontAttributeName : [UIFont fontWithName:@"DOUYU Font" size:30.0f]
-//            };
-//        }
-//    })
-//    .LeeAddCustomConfig(NIGHT, ^(UINavigationBar *bar) {
-//        
-//        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor lightGrayColor]};
-//        if (@available(iOS 11.0, *)) {
-//            bar.largeTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor lightGrayColor],
-//                                             NSFontAttributeName : [UIFont fontWithName:@"DOUYU Font" size:30.0f]
-//            };
-//        }
-//    });
+    
+    self.navigationBar.lee_theme
+    .LeeAddCustomConfig(DAY, ^(UINavigationBar *bar) {
+      
+        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+        if (@available(iOS 11.0, *)) {
+            bar.largeTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor],
+            NSFontAttributeName : [UIFont fontWithName:@"DOUYU Font" size:30.0f]
+            };
+        }
+    })
+    .LeeAddCustomConfig(NIGHT, ^(UINavigationBar *bar) {
+        
+        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor lightGrayColor]};
+        if (@available(iOS 11.0, *)) {
+            bar.largeTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor lightGrayColor],
+                                             NSFontAttributeName : [UIFont fontWithName:@"DOUYU Font" size:30.0f]
+            };
+        }
+    });
 }
 
 #pragma mark - UINavigationBarDelegate

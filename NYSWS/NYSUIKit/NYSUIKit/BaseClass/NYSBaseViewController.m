@@ -62,6 +62,8 @@ DZNEmptyDataSetDelegate
     
     // UI
     [self setupUI];
+    // VM
+    [self bindViewModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -74,10 +76,12 @@ DZNEmptyDataSetDelegate
     [super viewDidAppear:animated];
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+}
+
 - (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];    
-    // 视图绑定
-    [self bindViewModel];
+    [super viewDidLayoutSubviews];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -179,6 +183,9 @@ DZNEmptyDataSetDelegate
         
         _tableView.emptyDataSetSource = self;
         _tableView.emptyDataSetDelegate = self;
+        _tableView.lee_theme.LeeThemeChangingBlock(^(NSString * _Nonnull tag, id  _Nonnull item) {
+            [item reloadEmptyDataSet];
+        });
         
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -256,9 +263,8 @@ DZNEmptyDataSetDelegate
     return self.dataSourceArr.count;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return tableView.rowHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -285,6 +291,9 @@ DZNEmptyDataSetDelegate
         
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+        _collectionView.lee_theme.LeeThemeChangingBlock(^(NSString * _Nonnull tag, id  _Nonnull item) {
+            [item reloadEmptyDataSet];
+        });
         
         _collectionView.emptyDataSetSource = self;
         _collectionView.emptyDataSetDelegate = self;

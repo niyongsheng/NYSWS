@@ -12,23 +12,30 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.isHidenNaviBar = true
-        navBarBackgroundAlpha = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.isHidenNaviBar = false
     }
     
     override func setupUI() {
         super.setupUI()
         
+        searchView.delegate = self
         view.addSubview(searchView)
         view.addSubview(pagingTitleView)
         view.addSubview(pagingContentView)
     }
     
-    lazy var searchView: NYSSearchView = {
+    let searchView: NYSSearchView = {
         let view = NYSSearchView(frame: CGRect(x: NAppSpace, y: NStatusBarHeight, width: NScreenWidth - 2 * NAppSpace, height: RealValueX(x: 40)))
         view.placeholderText = "搜索起始地/目的地"
-        view.delegate = self
         return view
     }()
     

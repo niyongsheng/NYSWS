@@ -24,7 +24,6 @@ class NYSMissionViewModel: NYSRootViewModel {
             parameters: parameters,
             remark: "天气数据",
             success: { [weak self] response in
-                self?.refresh.onNext(.stopRefresh)
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: response as Any, options: [])
                     let weather = try JSONDecoder().decode(NYSWeater.self, from: jsonData)
@@ -33,8 +32,10 @@ class NYSMissionViewModel: NYSRootViewModel {
                     print("Error: \(error)")
                     self?.weatherSubject.onError(error)
                 }
-            }, failed:{ error in
-                self.refresh.onNext(.stopRefresh)
+                self?.refresh.onNext(.stopRefresh)
+                
+            }, failed:{ [weak self] error in
+                self?.refresh.onNext(.stopRefresh)
                 print("Error: \(String(describing: error))")
             })
     }

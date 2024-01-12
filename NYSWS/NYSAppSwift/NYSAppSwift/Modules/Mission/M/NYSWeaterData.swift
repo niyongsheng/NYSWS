@@ -27,7 +27,7 @@ struct NYSWeaterData : Codable {
 	let wea : String?
 	let weaDay : String?
 	let weaDayImg : String?
-	let weaImg : String?
+	let wea_img : String?
 	let weaNight : String?
 	let weaNightImg : String?
 	let week : String?

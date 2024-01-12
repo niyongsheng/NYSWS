@@ -96,13 +96,13 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
     func createTabBarViewControllers() -> [UINavigationController] {
         let oneVC = NYSHomeViewController()
         oneVC.tabBarItem.title = "首页"
-        oneVC.tabBarItem.image = UIImage.init(named: "Waybill-white")?.withRenderingMode(.alwaysOriginal)
+        oneVC.tabBarItem.image = UIImage.init(named: "Waybill-white")
         oneVC.tabBarItem.selectedImage = UIImage.init(named: "Waybill-green")?.withRenderingMode(.alwaysOriginal)
         let oneNav = NYSBaseNavigationController.init(rootViewController: oneVC)
         
         let twoVC = NYSMissionViewController()
         twoVC.tabBarItem.title = "货源"
-        twoVC.tabBarItem.image = UIImage.init(named: "Find-white")?.withRenderingMode(.alwaysOriginal)
+        twoVC.tabBarItem.image = UIImage.init(named: "Find-white")
         twoVC.tabBarItem.selectedImage = UIImage.init(named: "Find-green")?.withRenderingMode(.alwaysOriginal)
         let twoNav = NYSBaseNavigationController.init(rootViewController: twoVC)
         
@@ -114,13 +114,13 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
         
         let fourVC = NYSServiceViewController()
         fourVC.tabBarItem.title = "服务"
-        fourVC.tabBarItem.image = UIImage.init(named: "service-white")?.withRenderingMode(.alwaysOriginal)
+        fourVC.tabBarItem.image = UIImage.init(named: "service-white")
         fourVC.tabBarItem.selectedImage = UIImage.init(named: "service-green")?.withRenderingMode(.alwaysOriginal)
         let fourNav = NYSBaseNavigationController.init(rootViewController: fourVC)
         
         let fiveVC = NYSMineViewController()
         fiveVC.tabBarItem.title = "我的"
-        fiveVC.tabBarItem.image = UIImage.init(named: "user-white")?.withRenderingMode(.alwaysOriginal)
+        fiveVC.tabBarItem.image = UIImage.init(named: "user-white")
         fiveVC.tabBarItem.selectedImage = UIImage.init(named: "user-green")?.withRenderingMode(.alwaysOriginal)
         let fiveNav = NYSBaseNavigationController.init(rootViewController: fiveVC)
         

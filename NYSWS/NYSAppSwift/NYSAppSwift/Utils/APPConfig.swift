@@ -31,6 +31,8 @@ let UMengKey        :String      =        ""
 
 /// APP主题色
 let NAppThemeColor  :UIColor = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "app_theme_color") as! UIColor
+let NAppPImg        :UIImage = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "placeholder_image") as! UIImage
+let NAppPImgFill    :UIImage = LEETheme.getValueWithTag(LEETheme.currentThemeTag(), identifier: "placeholder_image_fillet") as! UIImage
 
 /// APP默认分页大小
 let NAppPageSize :Int = 10

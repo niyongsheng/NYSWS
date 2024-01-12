@@ -19,6 +19,18 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
     @IBOutlet weak var otherAccountBtn: UIButton!
     @IBOutlet weak var agreeBtnBtn: UIButton!
     
+    private let tipV: CMPopTipView = {
+        let tipV = CMPopTipView()
+        tipV.backgroundColor = NAppThemeColor
+        tipV.preferredPointDirection = .up
+        tipV.borderColor = .clear
+        tipV.titleColor = .white
+        tipV.hasGradientBackground = false
+        tipV.hasShadow = false
+        tipV.has3DStyle = false
+        return tipV
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +72,9 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
     @IBAction func otherAccountBtnOnclicked(_ sender: UIButton) {
         if !self.agreeBtnBtn.isSelected {
             NYSTools.shakeAnimation(self.agreeBtnBtn.layer)
+            tipV.message = "请勾选"
+            tipV.autoDismiss(animated: true, atTimeInterval: 2)
+            tipV.presentPointing(at: self.agreeBtnBtn, in: view, animated: true)
             return
         }
         self.navigationController?.pushViewController(NYSLoginViewController(), animated: true)

@@ -32,6 +32,9 @@
 		C83C186B2B33E438002FD985 /* goods.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18672B33E438002FD985 /* goods.json */; };
 		C83C186C2B33E438002FD985 /* myself.json in Resources */ = {isa = PBXBuildFile; fileRef = C83C18682B33E438002FD985 /* myself.json */; };
 		C83EC4942B4FB1F3008FBE68 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EC4932B4FB1F3008FBE68 /* API.swift */; };
+		C83EC4962B50CB8C008FBE68 /* NYSWeaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EC4952B50CB8C008FBE68 /* NYSWeaterCell.swift */; };
+		C8469F002B50FB6F00B8A1E4 /* NYSContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8469EFF2B50FB6F00B8A1E4 /* NYSContentViewController.swift */; };
+		C8469F022B5103F400B8A1E4 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8469F012B5103F400B8A1E4 /* MarqueeLabel.swift */; };
 		C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8474E522B43DD54001DE04A /* NYSRootViewController.swift */; };
 		C858480E2B4797FC00B27086 /* NYSQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */; };
 		C85848102B47A40D00B27086 /* NYSInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */; };
@@ -133,6 +136,9 @@
 		C83C18672B33E438002FD985 /* goods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = goods.json; sourceTree = "<group>"; };
 		C83C18682B33E438002FD985 /* myself.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = myself.json; sourceTree = "<group>"; };
 		C83EC4932B4FB1F3008FBE68 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C83EC4952B50CB8C008FBE68 /* NYSWeaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSWeaterCell.swift; sourceTree = "<group>"; };
+		C8469EFF2B50FB6F00B8A1E4 /* NYSContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSContentViewController.swift; sourceTree = "<group>"; };
+		C8469F012B5103F400B8A1E4 /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		C8474E522B43DD54001DE04A /* NYSRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootViewController.swift; sourceTree = "<group>"; };
 		C858480D2B4797FC00B27086 /* NYSQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSQRCodeViewController.xib; sourceTree = "<group>"; };
 		C858480F2B47A40D00B27086 /* NYSInstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSInstructionViewController.swift; sourceTree = "<group>"; };
@@ -249,7 +255,9 @@
 		C816B66B2B4F7BFB00256E58 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				C83EC4952B50CB8C008FBE68 /* NYSWeaterCell.swift */,
 				C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */,
+				C8469EFF2B50FB6F00B8A1E4 /* NYSContentViewController.swift */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -583,6 +591,7 @@
 				C8BC5E9F2B3AA41200814C2B /* NYSAdaptScreen.swift */,
 				C87CAB732B46773600C84E8E /* PropertyWrapper.swift */,
 				C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */,
+				C8469F012B5103F400B8A1E4 /* MarqueeLabel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -765,6 +774,7 @@
 				C86DB21F2B3E9E22002126F5 /* WRNavigationBar.swift in Sources */,
 				C8D3E21C2B3BB1E700B77DEA /* NYSHomeListViewController.swift in Sources */,
 				C8D0AF792B49222A002C18E6 /* NYSThirdPartyViewController.swift in Sources */,
+				C8469F022B5103F400B8A1E4 /* MarqueeLabel.swift in Sources */,
 				C8C5D2392B3E490C00117F58 /* NYSServiceViewController.swift in Sources */,
 				C8D3E2212B3BEAAF00B77DEA /* NYSMissionViewController.swift in Sources */,
 				C87CAB7A2B467B2900C84E8E /* AppManager.swift in Sources */,
@@ -782,6 +792,7 @@
 				C8A4BE2B2B4B9E5600152E14 /* NYSHomeListCell.swift in Sources */,
 				C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */,
 				C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */,
+				C8469F002B50FB6F00B8A1E4 /* NYSContentViewController.swift in Sources */,
 				C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */,
 				C8A4BE312B4BBA1800152E14 /* UITableView+Extension.swift in Sources */,
 				C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */,
@@ -802,6 +813,7 @@
 				C8C5D23B2B3E4FF800117F58 /* NYSSubScrollViewController.swift in Sources */,
 				C816B6682B4F7B6F00256E58 /* NYSWeaterHour.swift in Sources */,
 				C8BC5EA22B3AA6C400814C2B /* UIDevice+Extension.swift in Sources */,
+				C83EC4962B50CB8C008FBE68 /* NYSWeaterCell.swift in Sources */,
 				C8597A8229F5119E008BEE7F /* AppDelegate.swift in Sources */,
 				C86DB21A2B3E8DBC002126F5 /* NYSLoginViewController.swift in Sources */,
 				C80EE9ED2B439E3B00F79AD0 /* UIControl+Extension.swift in Sources */,

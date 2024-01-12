@@ -19,7 +19,7 @@ class NYSBannerCollectionViewCell: UICollectionViewCell {
     var urlStr: String = "" {
         didSet {
             if let url = URL(string: urlStr) {
-                self.bannerIV.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_image"))
+                self.bannerIV.kf.setImage(with: url, placeholder: NAppPImgFill)
             }
         }
     }

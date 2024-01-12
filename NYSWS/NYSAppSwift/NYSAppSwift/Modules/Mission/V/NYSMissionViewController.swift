@@ -87,7 +87,16 @@ class NYSMissionViewController: NYSRootViewController {
         super.viewDidLoad()
 
         self.isHidenNaviBar = true;
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navBarBackgroundAlpha = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navBarBackgroundAlpha = 1
     }
     
     override func setupUI() {
@@ -100,6 +109,7 @@ class NYSMissionViewController: NYSRootViewController {
         view.addSubview(imageViewBg)
         
         self.tableView.mj_footer = nil
+        self.tableView.separatorStyle = .singleLine
         self.tableView.frame = CGRect(x: 0, y: imageViewBg.bottom, width: NScreenWidth, height: NScreenHeight - imageViewBg.bottom - NBottomHeight)
         self.view.addSubview(self.tableView)
     }
@@ -118,11 +128,11 @@ class NYSMissionViewController: NYSRootViewController {
         addressPickerView.pickerStyle = style
         addressPickerView.isAutoSelect = false
         addressPickerView.resultBlock = { province, city, area in
-            if let cityModel = city {
-                self.city = String(cityModel.name!.prefix(cityModel.name!.count - 1))
+            if let cityName = city?.name, cityName.count > 0  {
+                self.city = String(cityName.prefix(cityName.count - 1))
+                button.setTitle(area?.name, for: .normal)
+                self.headerRereshing()
             }
-            
-            button.setTitle(area?.name, for: .normal)
         }
         addressPickerView.show()
     }
@@ -141,14 +151,16 @@ extension NYSMissionViewController {
         
         vm.refresh.bind(to: self.tableView.rx.refreshAction).disposed(by: bag)
         vm.weatherSubject.subscribe(onNext: { [weak self] (item: NYSWeater) in
-                    self?.dataSourceArr = NSMutableArray(array: [item])
-//                    self?.tableView.reloadData(animationType: .moveSpring)
-                }, onError: { (error) in
-                    print("Error: \(error)")
-                }).disposed(by: bag)
+            self?.dataSourceArr.insert(item, at: 0)
+            self?.tableView.reloadData(animationType: .rote)
+        }, onError: { (error) in
+            print("Error: \(error)")
+        }).disposed(by: bag)
     }
     
     override func headerRereshing() {
+        super.headerRereshing()
+        
         let parameters = [
             "unescape": 1,
             "version": "v1",
@@ -159,5 +171,36 @@ extension NYSMissionViewController {
         vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier : String = "NYSWeaterCell"
+        var cell : NYSWeaterCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? NYSWeaterCell
+        
+        if cell == nil {
+            cell = NYSWeaterCell(style: .default, reuseIdentifier: "EventCellIdentifier")
+        }
+        cell?.model = self.dataSourceArr[indexPath.row] as? NYSWeater
+        return cell!;
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let model = self.dataSourceArr[indexPath.row] as! NYSWeater
+        let vc:NYSContentViewController = NYSContentViewController()
+        vc.titleL.text = model.city
+        vc.contentL.text = model.data?.description
+//        do {
+//            let data = try JSONSerialization.data(withJSONObject: model, options: .prettyPrinted)
+//            let jsonString = String(data: data, encoding: .utf8)
+//            vc.label.text = jsonString
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

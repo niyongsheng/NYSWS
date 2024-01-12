@@ -6,10 +6,16 @@ NYSWS
 > ios简洁的组件化方案架构。<br>
 > ios simple componentized solution framework.
 
+## Feature
+- [x] [mvvm/mvc]()
+- [x] [dark theme]()
+- [x] [localization]()
+- [x] [app/ad/qr/cache/net/mock manager]()
+
 ## APP
-
-<img src="./images/app_swift.gif" width="260" style="border-radius: 45px;"> 
-
+<img src="./images/swift_one_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_light.PNG" width="200" style="border-radius: 15px;"> 
+--- | --- | --- | --- | ---
+<img src="./images/swift_one_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_dark.PNG" width="200" style="border-radius: 15px;"> 
 
 ## Framework
 <img src="./images/nysws.drawio.png">

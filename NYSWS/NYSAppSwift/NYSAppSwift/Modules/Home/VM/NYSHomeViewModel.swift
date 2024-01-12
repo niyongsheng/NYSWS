@@ -75,9 +75,9 @@ extension NYSHomeViewModel {
         for _ in 0..<length {
             let randomDataEntry = [
                 "name": String.randomString(length: 5),
-                "type": String.randomString(letters: letters, length: 10),
+                "type": String.randomString(length: 10),
                 "date": formattedDate,
-                "title": String.randomString(length: 20),
+                "title": String.randomString(letters: "🍔🍤🍖🍟🌭🍕", length: 15),
                 "content": String.randomString(letters: letters, length: Int.random(in: 1...1024))
             ]
             dataArray.append(randomDataEntry)

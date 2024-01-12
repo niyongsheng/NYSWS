@@ -20,9 +20,10 @@
     
     "image": {
         "prefix_image"          : "night_",
-        "no_data_image"         : "no_data_image",
-        "loading_image"         : "loading_image",
+        "no_data_image"         : "error_dark",
+        "loading_image"         : "linkedin_binding_magnifier_dark",
         "placeholder_image"     : "placeholder_image",
+        "placeholder_image_fillet"     : "placeholder_image_fillet",
     },
     
     "other": {

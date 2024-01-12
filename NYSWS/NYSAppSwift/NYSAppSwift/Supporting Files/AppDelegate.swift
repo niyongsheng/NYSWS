@@ -71,6 +71,9 @@ extension AppDelegate {
         ThemeManager.shared().initBubble(window!) // 主题气泡按钮
         showMemory() // 显示内存
         showFPS() // 显示FPS
+        // CocoaDebug
+        CocoaDebugSettings.shared.enableLogMonitoring = true
+        CocoaDebugSettings.shared.mainColor = NAppThemeColor.toHexString()
         // 内测更新提醒
         FIRVersionCheck.setAPIToken(FirApiToken)
         FIRVersionCheck.setTargetController(self.window?.rootViewController)
@@ -150,7 +153,7 @@ extension AppDelegate {
     }
     
     // MARK: - override Swift `print` method
-    public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .red) {
+    public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
 #if DEBUG
         Swift.print(message)
         _SwiftLogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
@@ -167,6 +170,7 @@ extension AppDelegate: JPUSHRegisterDelegate, JPushInMessageDelegate {
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) == true) {
             JPUSHService.handleRemoteNotification(userInfo)
         }
+        print(request)
         completionHandler()
     }
     
@@ -177,7 +181,7 @@ extension AppDelegate: JPUSHRegisterDelegate, JPushInMessageDelegate {
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) == true) {
             JPUSHService.handleRemoteNotification(userInfo)
         }
-        
+        print(request)
         completionHandler(Int(UNNotificationPresentationOptions.badge.rawValue | UNNotificationPresentationOptions.sound.rawValue | UNNotificationPresentationOptions.alert.rawValue))
     }
     

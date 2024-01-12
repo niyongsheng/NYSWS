@@ -6,7 +6,12 @@
 //  Copyright © 2023 NYS. ALL rights reserved.
 //
 
-import Foundation
+import UIKit
+
+enum GradientDirection {
+    case horizontal
+    case vertical
+}
 
 extension UIColor {
     
@@ -38,5 +43,39 @@ extension UIColor {
         }
     }
     
-
+    /// 转换为其十六进制表示
+    func toHexString() -> String {
+        guard let components = self.cgColor.components else {
+            return "#000000"
+        }
+        
+        let red = Int(components[0] * 255.0)
+        let green = Int(components[1] * 255.0)
+        let blue = Int(components[2] * 255.0)
+        
+        return String(format: "#%02X%02X%02X", red, green, blue)
+    }
+    
+    /// 渐变色
+    /// - Parameters:
+    ///   - startColor: 开始色
+    ///   - endColor: 结束色
+    ///   - direction: 方向
+    /// - Returns: 渐变色
+    static func gradient(from startColor: UIColor, to endColor: UIColor, direction: GradientDirection) -> CAGradientLayer {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        
+        switch direction {
+        case .horizontal:
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        case .vertical:
+            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        }
+        
+        return gradientLayer
+    }
+    
 }
