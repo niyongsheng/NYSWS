@@ -1,9 +1,8 @@
 //
 //  NYSBlugeTabBar.h
-//  NYSTK
 //
-//  Created by 倪永胜 on 2018/10/26.
-//  Copyright © 2018 NYS. ALL rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -1,3 +1,10 @@
+//
+//  NSBundle+NYSFramework.m
+//
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
+//
+
 #import "NSBundle+NYSFramework.h"
 #import "NYSUIKit/NYSUIKitUtilities.h"
 

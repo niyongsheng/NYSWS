@@ -1,8 +1,7 @@
 //
 //  NYSSignHandleKeyChain.m
-//  DaoCaoDui_IOS
 //
-//  Created by 倪永胜 on 2020/1/24.
+//  NYSKit http://github.com/niyongsheng
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 

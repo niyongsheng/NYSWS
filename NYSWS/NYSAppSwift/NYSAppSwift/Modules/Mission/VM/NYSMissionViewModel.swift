@@ -25,7 +25,7 @@ class NYSMissionViewModel: NYSRootViewModel {
             remark: "天气数据",
             success: { [weak self] response in
                 do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: response as Any, options: [])
+                    let jsonData = try JSONSerialization.data(withJSONObject: response?["list"] as Any, options: [])
                     let weather = try JSONDecoder().decode(NYSWeater.self, from: jsonData)
                     self?.weatherSubject.onNext(weather)
                 } catch {
@@ -40,5 +40,25 @@ class NYSMissionViewModel: NYSRootViewModel {
             })
     }
     
-    
+    /// Mock天气数据
+    func mockWeatherData(headerRefresh: Bool, parameters: String) {
+        NYSNetRequest.mockRequest(withParameters: parameters,
+                                  isCheck: false,
+                                  remark: "天气数据",
+                                  success: { [weak self] response in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response as Any, options: [])
+                let weather = try JSONDecoder().decode(NYSWeater.self, from: jsonData)
+                self?.weatherSubject.onNext(weather)
+            } catch {
+                print("Error: \(error)")
+                self?.weatherSubject.onError(error)
+            }
+            self?.refresh.onNext(.stopRefresh)
+            
+        }, failed:{ [weak self] error in
+            self?.refresh.onNext(.stopRefresh)
+            print("Error: \(String(describing: error))")
+        })
+    }
 }

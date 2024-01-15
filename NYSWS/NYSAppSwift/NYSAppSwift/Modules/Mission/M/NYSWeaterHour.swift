@@ -13,5 +13,4 @@ struct NYSWeaterHour : Codable {
 	let win : String?
 	let winSpeed : String?
 
-
 }

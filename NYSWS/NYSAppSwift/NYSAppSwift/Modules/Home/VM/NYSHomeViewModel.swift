@@ -11,7 +11,6 @@ import RxSwift
 class NYSHomeViewModel: NYSRootViewModel {
 
     let homeItems = BehaviorSubject<[NYSHomeListModel]>(value: [])
-    
     let refresh = PublishSubject<MJRefreshAction>()
     
     /// RxSwift方式数据加载

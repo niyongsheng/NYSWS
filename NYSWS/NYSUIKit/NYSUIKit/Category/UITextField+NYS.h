@@ -1,9 +1,8 @@
 //
 //  UITextField+NYS.h
-//  LKBusinessCollege
 //
-//  Created by niyongsheng on 2022/8/29.
-//  Copyright © 2022 niyongsheng. All rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>

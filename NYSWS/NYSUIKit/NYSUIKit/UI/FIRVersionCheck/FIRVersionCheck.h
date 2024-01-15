@@ -1,8 +1,8 @@
 //
 //  FIRVersionCheck.h
-//  QDYY
 //
-//  Created by niyongsheng on 2022/10/11.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <Foundation/Foundation.h>

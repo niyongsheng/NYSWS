@@ -1,8 +1,8 @@
 //
 //  FIRVersionCheck.m
-//  QDYY
 //
-//  Created by niyongsheng on 2022/10/11.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -48,6 +48,11 @@
         idString = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
     }
     NSString *apiToken = [FIRVersionCheck sharedInstance].firAPIToken;
+    if (!apiToken) {
+        NSLog(@"FIR - 请先设置API Token");
+        return;
+    }
+    
     NSString *idUrlString = [NSString stringWithFormat:@"http://api.bq04.com/apps/latest/%@?api_token=%@" ,idString, apiToken];
     
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);

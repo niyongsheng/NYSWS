@@ -1,8 +1,7 @@
 //
 //  NYSBasePresenter.m
-//  BaseIOS
 //
-//  Created by 倪永胜 on 2020/7/18.
+//  NYSUIKit http://github.com/niyongsheng
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 

@@ -1,9 +1,8 @@
 //
 //  NYSMemoryLabel.m
-//  BaseIOS
 //
-//  Created by 倪永胜 on 2020/7/13.
-//  Copyright © 2020 niyongsheng. All rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NYSMemoryLabel.h"

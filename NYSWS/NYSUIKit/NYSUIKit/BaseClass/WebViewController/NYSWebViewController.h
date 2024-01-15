@@ -1,8 +1,7 @@
 //
 //  NYSWebViewController.h
-//  BaseIOS
 //
-//  Created by 倪永胜 on 2020/7/11.
+//  NYSUIKit http://github.com/niyongsheng
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 

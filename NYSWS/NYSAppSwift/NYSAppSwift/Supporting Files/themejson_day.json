@@ -19,11 +19,11 @@
     },
     
     "image": {
-        "prefix_image"          : "day_",
-        "no_data_image"         : "error",
-        "loading_image"         : "linkedin_binding_magnifier",
-        "placeholder_image"     : "placeholder_image",
-        "placeholder_image_fillet"     : "placeholder_image_fillet",
+        "prefix_image"                  : "day_",
+        "no_data_image"                 : "error",
+        "loading_image"                 : "linkedin_binding_magnifier",
+        "placeholder_image"             : "placeholder_image",
+        "placeholder_image_fillet"      : "placeholder_image_fillet",
     },
     
     "other": {

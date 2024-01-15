@@ -1,9 +1,8 @@
 //
 //  UIView+Tools.h
-//  oatos-token
 //
-//  Created by QYY on 2017/6/16.
-//  Copyright © 2017年 李少游. All rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>

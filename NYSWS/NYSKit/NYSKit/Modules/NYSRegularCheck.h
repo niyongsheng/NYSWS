@@ -1,9 +1,8 @@
 //
 //  NYSRegularCheck.h
-//  ICMSClient
 //
-//  Created by niyongsheng.github.io on 2021/8/18.
-//  Copyright © 2021 NYS. ALL rights reserved.
+//  NYSKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //  ⚠️建议后端做校验，降低多端开发调试成本
 
 /**

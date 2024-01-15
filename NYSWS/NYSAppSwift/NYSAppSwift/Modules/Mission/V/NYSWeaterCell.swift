@@ -91,7 +91,8 @@ class NYSWeaterCell: UITableViewCell {
     
     var model: NYSWeater! {
         didSet {
-            var iconName = ""
+            var iconName: String = ""
+            
             switch model.data?[0].wea_img ?? "" {
             case "qing":
                 iconName = "clear-day"
@@ -121,7 +122,7 @@ class NYSWeaterCell: UITableViewCell {
                 iconName = "snow"
                 break
             default:
-                iconName = "clear-night"
+                iconName = "clear-day"
             }
             iconImageView.image = UIImage(named: iconName)
             titleLabel.text = model.data?[0].wea ?? ""

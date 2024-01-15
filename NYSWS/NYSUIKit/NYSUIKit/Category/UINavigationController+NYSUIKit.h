@@ -1,8 +1,8 @@
 //
 //  UINavigationController+NYSUIKit.h
-//  NYSUIKit
 //
-//  Created by niyongsheng on 2023/5/8.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>

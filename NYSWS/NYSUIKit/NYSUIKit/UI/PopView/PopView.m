@@ -28,7 +28,13 @@
 
 static  NSInteger const popViewTag              = 364;
 + (instancetype)getCurrentPopView{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIWindow *window = nil;
+    for (UIWindow *win in [UIApplication sharedApplication].windows) {
+        if (win.isKeyWindow) {
+            window = win;
+            break;
+        }
+    }
     PopView *oldPopView = (PopView *)[window viewWithTag:popViewTag];
     return oldPopView;
 }
@@ -46,7 +52,13 @@ static  NSInteger const popViewTag              = 364;
                         offset:(CGFloat)offset
                   triangleView:(UIView *)triangleView
                      animation:(BOOL)animation{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIWindow *window = nil;
+    for (UIWindow *win in [UIApplication sharedApplication].windows) {
+        if (win.isKeyWindow) {
+            window = win;
+            break;
+        }
+    }
     PopView *oldPopView = [self getCurrentPopView];
     PopView *newPopView = [[PopView alloc] initWithFrame:window.bounds
                                                   direct:direct
@@ -110,7 +122,13 @@ static  NSInteger const popViewTag              = 364;
 + (instancetype)popContentView:(UIView *)contentView
                      showAnimation:(CABasicAnimation *)showAnimation
                     hidenAnimation:(CABasicAnimation *)hidenAnimation{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIWindow *window = nil;
+    for (UIWindow *win in [UIApplication sharedApplication].windows) {
+        if (win.isKeyWindow) {
+            window = win;
+            break;
+        }
+    }
     PopView *oldPopView = (PopView *)[window viewWithTag:popViewTag];
     PopView *newPopView = [[PopView alloc] initWithFrame:window.bounds
                                                   direct:PopViewDirection_PopUpNone
@@ -169,7 +187,13 @@ static  NSInteger const popViewTag              = 364;
     CGRect onViewFrame = [self.onView convertRect:self.onView.bounds toView:nil];
     
     CGPoint anchorPoint = CGPointMake(.5, .5);
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIWindow *window = nil;
+    for (UIWindow *win in [UIApplication sharedApplication].windows) {
+        if (win.isKeyWindow) {
+            window = win;
+            break;
+        }
+    }
     switch (self.direct) {
         case PopViewDirection_PopUpBottom:
             //1、计算在window上的位置
@@ -354,7 +378,12 @@ static  NSInteger const popViewTag              = 364;
             [PopView hidenPopView];
         }
     }
-    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        if (window.isKeyWindow) {
+            [window endEditing:YES];
+            break;
+        }
+    }
 }
 
 //处理响应者链
@@ -376,7 +405,12 @@ static  NSInteger const popViewTag              = 364;
     responseView = [super hitTest:point withEvent:event];
     //不是两个输入框切换的时候
     if (![responseView isKindOfClass:[UITextView class]] && ![responseView isKindOfClass:[UITextField class]] && responseView != self.backCtl) {
-         [[UIApplication sharedApplication].keyWindow endEditing:YES];
+        for (UIWindow *window in [UIApplication sharedApplication].windows) {
+            if (window.isKeyWindow) {
+                [window endEditing:YES];
+                break;
+            }
+        }
     }
     return responseView;
 }
@@ -408,10 +442,21 @@ static  NSInteger const popViewTag              = 364;
 
 + (void)hidenPopView{
     if (keyboardShow) {
-        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    }else{
-        UIView *superView = [UIApplication sharedApplication].keyWindow;
-        PopView *popView = (PopView *)[superView viewWithTag:popViewTag];
+        for (UIWindow *window in [UIApplication sharedApplication].windows) {
+            if (window.isKeyWindow) {
+                [window endEditing:YES];
+                break;
+            }
+        }
+    } else {
+        UIWindow *window = nil;
+        for (UIWindow *win in [UIApplication sharedApplication].windows) {
+            if (win.isKeyWindow) {
+                window = win;
+                break;
+            }
+        }
+        PopView *popView = (PopView *)[window viewWithTag:popViewTag];
         if (popView && ![popView.popContainerView.layer animationForKey:@"hiddenAnimation"]) {
             if (popView.willRemovedFromeSuperView) {
                 popView.willRemovedFromeSuperView();
@@ -463,7 +508,13 @@ static CGRect popViewOriginRect;
     CGFloat animationDuration = [[userInfo valueForKey:@"UIKeyboardAnimationDurationUserInfoKey"] floatValue];
     UIView *responsInputView = [self responsInputViewOnView:self.popContainerView];
     if (responsInputView) {
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        UIWindow *window = nil;
+        for (UIWindow *win in [UIApplication sharedApplication].windows) {
+            if (win.isKeyWindow) {
+                window = win;
+                break;
+            }
+        }
         CGRect inputViewFrame = [responsInputView convertRect:responsInputView.bounds toView:window];
         if (CGRectGetMaxY(inputViewFrame)+self.keyBoardMargin>=keyBoardEndY) {
             [UIView animateWithDuration:animationDuration animations:^{

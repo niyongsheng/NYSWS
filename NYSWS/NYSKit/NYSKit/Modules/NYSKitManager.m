@@ -1,8 +1,8 @@
 //
 //  NYSKitManager.m
-//  NYSKit
 //
-//  Created by niyongsheng on 2023/4/23.
+//  NYSKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NYSKitManager.h"

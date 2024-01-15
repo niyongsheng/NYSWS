@@ -168,7 +168,9 @@ extension NYSMissionViewController {
             "appsecret": "I42og6Lm",
             "city": city
         ] as [String : Any]
-        vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
+//        vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
+        // pragma mark - Mock测试
+        vm.mockWeatherData(headerRefresh: true, parameters: "weatherData.json")
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -190,17 +192,45 @@ extension NYSMissionViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let model = self.dataSourceArr[indexPath.row] as! NYSWeater
+        
+        // 状态栏通知
+        let image = UIImageView(image: UIImage(systemName: "person.icloud.fill"))
+        NotificationPresenter.shared().present(title: "出行建议", subtitle: model.data?[0].air_tips ?? "")
+        NotificationPresenter.shared().displayLeftView(image)
+        NotificationPresenter.shared().dismiss(afterDelay: 1.5) { presenter in
+            
+        }
+        
         let vc:NYSContentViewController = NYSContentViewController()
         vc.titleL.text = model.city
-        vc.contentL.text = model.data?.description
-//        do {
-//            let data = try JSONSerialization.data(withJSONObject: model, options: .prettyPrinted)
-//            let jsonString = String(data: data, encoding: .utf8)
-//            vc.label.text = jsonString
-//        } catch {
-//            print(error.localizedDescription)
-//        }
+        do {
+            let data = try JSONEncoder().encode(model)
+            let jsonString = String(data: data, encoding: .utf8)
+            vc.contentL.text = jsonString
+        } catch {
+            print("Error encoding the model to JSON: \(error)")
+        }
         navigationController?.pushViewController(vc, animated: true)
+        
+        // 子线程结构化json
+//        let vc: NYSContentViewController = NYSContentViewController()
+//        vc.titleL.text = model.city
+//        DispatchQueue.global(qos: .background).async {
+//            do {
+//                let data = try JSONEncoder().encode(model)
+//                let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers, // 解析出来数组和字典是可变的
+//                                                                                        .mutableLeaves, // 解析出来的字符串是可变的
+//                                                                                        .allowFragments]) // 允许不是键值对的单独值
+//                let formattedJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+//                let jsonString = String(data: formattedJsonData, encoding: .utf8)
+//                DispatchQueue.main.async {
+//                    vc.contentL.text = jsonString
+//                }
+//            } catch {
+//                print("Error encoding or decoding JSON: \(error)")
+//            }
+//        }
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

@@ -1,9 +1,8 @@
 //
 //  NYSJSHandler.m
-//  DaoCaoDui_IOS
 //
-//  Created by 倪永胜 on 2019/5/29.
-//  Copyright © 2019 NYS. ALL rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NYSJSHandler.h"

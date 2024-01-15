@@ -1,8 +1,7 @@
 //
 //  NYSLoadingButton.h
-//  BaseIOS
 //
-//  Created by 倪永胜 on 2020/7/13.
+//  NYSUIKit http://github.com/niyongsheng
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 
@@ -18,7 +17,6 @@
 @end
 
 @implementation NYSLoadingButton
-
 
 - (instancetype)init {
     self = [super init];
@@ -44,12 +42,24 @@
  cache the button before any animation,we keep a reference to data so we can restore everything to the first place
  */
 - (void)copyBeforeAnyChanges {
-    _cacheButtonBeforeAnimation = [UIButton new];
-    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: self];
-    _cacheButtonBeforeAnimation = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+    // Archive the current object with requiring secure coding
+    NSError *archiveError = nil;
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:YES error:&archiveError];
+
+    if (archiveError) {
+        // Handle the error, if any
+        NSLog(@"Error archiving data: %@", archiveError);
+    } else {
+        // Unarchive the data to create a copy
+        NSError *unarchiveError = nil;
+        _cacheButtonBeforeAnimation = [NSKeyedUnarchiver unarchivedObjectOfClass:[self class] fromData:archivedData error:&unarchiveError];
+
+        if (unarchiveError) {
+            // Handle the error, if any
+            NSLog(@"Error unarchiving data: %@", unarchiveError);
+        }
+    }
 }
-
-
 
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {

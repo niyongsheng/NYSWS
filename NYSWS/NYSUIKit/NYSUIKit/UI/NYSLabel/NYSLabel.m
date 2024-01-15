@@ -1,9 +1,8 @@
 //
 //  NYSLabel.m
-//  LKBusinessCollege
 //
-//  Created by niyongsheng.github.io on 2022/7/30.
-//  Copyright © 2022 NYS. ALL rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NYSLabel.h"
@@ -17,39 +16,28 @@
 @implementation NYSLabel
 
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if(self = [super initWithFrame:frame])
-    {
-        self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+- (instancetype)initWithFrame:(CGRect)frame edgeInsets:(UIEdgeInsets)edgeInsets {
+    if (self = [super initWithFrame:frame]) {
+        self.edgeInsets = edgeInsets;
     }
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder edgeInsets:(UIEdgeInsets)edgeInsets {
     if (self = [super initWithCoder:aDecoder]) {
-        self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        self.edgeInsets = edgeInsets;
     }
     return self;
 }
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    self.edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-}
-
-+ (UIEdgeInsets)edgeInsets
-{
++ (UIEdgeInsets)edgeInsets {
     /*- (CGRect)boundingRectWithSize:(CGSize)size options:(NSStringDrawingOptions)options attributes:(nullable NSDictionary<NSString *, id> *)attributes context:(nullable NSStringDrawingContext *)context NS_AVAILABLE(10_11, 7_0);
      方法计算label的大小时，由于不会调用textRectForBounds方法，并不会计算自己通过edgeInsets插入的内边距，而是实际的大小，因此手动返回进行修正*/
     return UIEdgeInsetsMake(25, 0, 25, 0);
 }
 
 
-+ (NSDictionary *)textLabelArrtibute
-{
++ (NSDictionary *)textLabelArrtibute {
 //    可以通过 NSMutableParagraphStyle修改左边内边距
     NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
     attribute[NSFontAttributeName] = [UIFont systemFontOfSize:16];
@@ -62,8 +50,7 @@
 
 
 #pragma mark 设置第一行和最后一行距离label的距离
--(CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines
-{
+- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
     //注意传入的UIEdgeInsetsInsetRect(bounds, self.edgeInsets),bounds是真正的绘图区域
     CGRect rect = [super textRectForBounds:UIEdgeInsetsInsetRect(bounds, self.edgeInsets) limitedToNumberOfLines:numberOfLines];
     rect.origin.x -= self.edgeInsets.left;
@@ -73,9 +60,7 @@
     return rect;
 }
 
-- (void)drawTextInRect:(CGRect)rect
-{
-
+- (void)drawTextInRect:(CGRect)rect {
     [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.edgeInsets)];
 }
 

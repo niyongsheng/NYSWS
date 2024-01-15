@@ -1,9 +1,8 @@
 //
 //  NYSBaseView.m
-//  ICMSClient
 //
-//  Created by niyongsheng.github.io on 2021/8/9.
-//  Copyright © 2021 NYS. ALL rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 /*

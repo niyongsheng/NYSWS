@@ -1,8 +1,7 @@
 //
 //  NYSTools.m
-//  DaoCaoDui_IOS
 //
-//  Created by 倪永胜 on 2019/6/3.
+//  NYSKit http://github.com/niyongsheng
 //  Copyright © 2019 NYS. ALL rights reserved.
 //
 

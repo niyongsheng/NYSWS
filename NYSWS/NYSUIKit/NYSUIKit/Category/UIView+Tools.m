@@ -1,9 +1,8 @@
 //
 //  UIView+Tools.m
-//  oatos-token
 //
-//  Created by QYY on 2017/6/16.
-//  Copyright © 2017年 李少游. All rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "UIView+Tools.h"
@@ -37,9 +36,15 @@
 }
 
 + (UIView*)loadingAnimation {
-    UIWindow *keywodow = UIApplication.sharedApplication.keyWindow;
-    CGFloat  width =  UIApplication.sharedApplication.keyWindow.frame.size.width;
-    CGFloat height = UIApplication.sharedApplication.keyWindow.frame.size.height;
+    UIWindow *keywindow = nil;
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        if (window.isKeyWindow) {
+            keywindow = window;
+            break;
+        }
+    }
+    CGFloat width = keywindow.frame.size.width;
+    CGFloat height = keywindow.frame.size.height;
     UIView *animationBg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     animationBg.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     UIImageView *animation = [[UIImageView alloc] init];
@@ -49,13 +54,19 @@
     NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"loading_gif_plane" withExtension:@"gif"];
 //    [animation setImageURL:gifImageUrl];
     animationBg.tag = 1000001;
-    [keywodow addSubview:animationBg];
+    [keywindow addSubview:animationBg];
     return animationBg;
 }
 
-+ (void)removeLoadingAnimation{
-    UIWindow *keywodow = UIApplication.sharedApplication.keyWindow;
-    UIView *animationBg = [keywodow viewWithTag:1000001];
++ (void)removeLoadingAnimation {
+    UIWindow *keywindow = nil;
+    for (UIWindow *window in [UIApplication sharedApplication].windows) {
+        if (window.isKeyWindow) {
+            keywindow = window;
+            break;
+        }
+    }
+    UIView *animationBg = [keywindow viewWithTag:1000001];
     [animationBg removeFromSuperview];
 }
 

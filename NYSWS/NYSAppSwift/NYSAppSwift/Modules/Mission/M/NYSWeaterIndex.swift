@@ -10,5 +10,4 @@ struct NYSWeaterIndex : Codable {
 	let level : String?
 	let title : String?
 
-
 }

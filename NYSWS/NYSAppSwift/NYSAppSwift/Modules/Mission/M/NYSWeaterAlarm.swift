@@ -10,5 +10,4 @@ struct NYSWeaterAlarm : Codable {
 	let alarmLevel : String?
 	let alarmType : String?
 
-
 }

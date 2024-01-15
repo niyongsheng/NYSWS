@@ -1,9 +1,8 @@
 //
 //  NYSRequestManager.h
-//  ICMSClient
 //
-//  Created by niyongsheng.github.io on 2021/12/30.
-//  Copyright © 2021 NYS. ALL rights reserved.
+//  NYSKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -62,5 +61,15 @@ typedef void(^NYSNetRequestFailed)(NSError * _Nullable error);
                   progress:(nullable void (^)(NSProgress * _Nullable))process
                    success:(NYSNetRequestSuccess _Nullable )success
                           failed:(NYSNetRequestFailed _Nullable )failed;
+
+#pragma mark - Mock
+/// Mock网络请求
+/// - Parameters:
+///   - parameters: 参数：文件名xxx.json || 路径xx/xx/xxx.txt
+///   - isCheck: 是否校验
+///   - remark: 备注
+///   - success: 读取成功回调
+///   - failed: 读取失败回调
++ (void)mockRequestWithParameters:(NSString * _Nonnull)parameters isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed;
 
 @end

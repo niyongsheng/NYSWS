@@ -1,8 +1,7 @@
 //
 //  NYSBaseViewController.m
-//  BaseIOS
 //
-//  Created by 倪永胜 on 2020/7/10.
+//  NYSUIKit http://github.com/niyongsheng
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 
@@ -375,7 +374,7 @@ DZNEmptyDataSetDelegate
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [collectionView deselectItemAtIndexPath:indexPath animated:true];
 }
 
 #pragma mark - MJRefresh Methods
@@ -416,10 +415,10 @@ DZNEmptyDataSetDelegate
     __weak __typeof(self)weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self->_tableView)
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            [weakSelf.tableView.mj_footer endRefreshing];
         
         if (self->_collectionView)
-            [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
+            [weakSelf.collectionView.mj_footer endRefreshing];
         
         self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
                                  description:[NSBundle nys_localizedStringForKey:@"NoData"]

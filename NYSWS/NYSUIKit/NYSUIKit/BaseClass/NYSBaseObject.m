@@ -1,9 +1,8 @@
 //
 //  NYSBaseObject.m
-//  ICMSClient
 //
-//  Created by niyongsheng.github.io on 2021/8/7.
-//  Copyright © 2021 NYS. ALL rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NYSBaseObject.h"

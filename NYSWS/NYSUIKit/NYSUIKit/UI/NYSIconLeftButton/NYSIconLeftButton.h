@@ -1,9 +1,8 @@
 //
 //  NYSIconLeftButton.h
-//  ICMSClient
 //
-//  Created by niyongsheng.github.io on 2021/11/25.
-//  Copyright © 2021 NYS. ALL rights reserved.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -17,3 +17,4 @@
 #import <JPush/JPUSHService.h>
 #import <MJRefresh/MJRefresh.h>
 #import <BRPickerView/BRPickerView.h>
+#import <JDStatusBarNotification/JDStatusBarNotification.h>

@@ -33,5 +33,4 @@ struct NYSWeaterAqi : Codable {
 	let waichu : String?
 	let yundong : String?
 
-
 }

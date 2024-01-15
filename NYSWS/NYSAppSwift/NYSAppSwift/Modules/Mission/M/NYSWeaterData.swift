@@ -8,7 +8,7 @@ struct NYSWeaterData : Codable {
 
 	let air : String?
 	let airLevel : String?
-	let airTips : String?
+	let air_tips : String?
 	let alarm : NYSWeaterAlarm?
 	let date : String?
 	let day : String?
@@ -34,6 +34,5 @@ struct NYSWeaterData : Codable {
 	let win : [String]?
 	let winMeter : String?
 	let winSpeed : String?
-
 
 }

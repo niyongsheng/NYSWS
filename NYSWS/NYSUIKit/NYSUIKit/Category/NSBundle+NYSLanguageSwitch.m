@@ -1,8 +1,8 @@
 //
 //  NSBundle+NYSLanguageSwitch.m
-//  NYSUIKit
 //
-//  Created by niyongsheng on 2023/5/9.
+//  NYSUIKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NSBundle+NYSLanguageSwitch.h"

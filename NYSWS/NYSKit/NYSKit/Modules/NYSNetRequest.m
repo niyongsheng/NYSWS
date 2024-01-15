@@ -1,9 +1,8 @@
 //
 //  NYSRequestManager.m
-//  ICMSClient
 //
-//  Created by niyongsheng.github.io on 2021/12/30.
-//  Copyright © 2021 NYS. ALL rights reserved.
+//  NYSKit http://github.com/niyongsheng
+//  Copyright © 2020 NYS. ALL rights reserved.
 //
 
 #import "NYSNetRequest.h"
@@ -313,6 +312,44 @@
     }];
     
     [task resume];
+}
+
+#pragma mark - Mock
++ (void)mockRequestWithParameters:(NSString * _Nonnull)parameters isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess _Nullable)success failed:(NYSNetRequestFailed _Nullable)failed {
+    NSString *pattern = @"/|\\"; // 使用正则表达式判断是否包含斜杠或反斜杠
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
+    NSTextCheckingResult *isPath = [regex firstMatchInString:parameters options:0 range:NSMakeRange(0, parameters.length)];
+    NSString *filePath = nil;
+    if (isPath) {
+        filePath = parameters;
+    } else {
+        NSArray<NSString *> *file =  [parameters componentsSeparatedByString:@"."];
+        filePath = [[NSBundle mainBundle] pathForResource:file.firstObject ofType:file.lastObject];
+    }
+    NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
+    if (jsonData) {
+        NSError *error = nil;
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+        if (error) {
+            DBGLog(@"\n[%@]\n%@", @"❌错误", error.localizedDescription);
+            if (failed) {
+                failed(error);
+                handelError(error);
+            }
+        } else {
+            if (isCheck) {
+                handelResponse(parameters, failed, remark, jsonDictionary, success, @"Mock");
+            } else {
+                DBGLog(@"%@->📩:\nMock参数:\n%@\n[Data]:\n%@", remark, parameters, [NYSNetRequest jsonPrettyStringEncoded:jsonDictionary]);
+                if (success)
+                    success(jsonDictionary);
+            }
+        }
+    } else {
+        if (failed)
+            failed(nil);
+        DBGLog(@"\n[%@]\n%@", @"❌错误", @"Failed to read JSON file.");
+    }
 }
 
 + (NSString *)jsonPrettyStringEncoded:(NSDictionary *)dict {

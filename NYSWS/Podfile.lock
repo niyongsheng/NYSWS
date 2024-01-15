@@ -30,6 +30,7 @@ PODS:
     - BRPickerView/Base
   - CocoaDebug (1.7.7)
   - DZNEmptyDataSet (1.8.1)
+  - ExCodable (0.6.0)
   - FFPopup (1.1.5)
   - FLAnimatedImage (1.0.17)
   - FlexLib (3.1.6):
@@ -98,6 +99,7 @@ DEPENDENCIES:
   - BRPickerView (= 2.8.1)
   - CocoaDebug
   - DZNEmptyDataSet (= 1.8.1)
+  - ExCodable
   - FFPopup (= 1.1.5)
   - FlexLib (= 3.1.6)
   - FMDB (= 2.7.5)
@@ -139,6 +141,7 @@ SPEC REPOS:
     - BRPickerView
     - CocoaDebug
     - DZNEmptyDataSet
+    - ExCodable
     - FFPopup
     - FLAnimatedImage
     - FlexLib
@@ -184,6 +187,7 @@ SPEC CHECKSUMS:
   BRPickerView: 2531a2d4d0fea0b57a1c738de215af0f88863a2f
   CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  ExCodable: bffaf3d9623fc0ee464a07441a1711ea9860c0f7
   FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
   FlexLib: 11124863c7f197423b46d0593f2cd95c7ca0c0a5
@@ -222,6 +226,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: cb62da4f8830c43530306ac840ddcbe95abbf67f
+PODFILE CHECKSUM: 6d1abff2c0e0522cdaa507166087c77c0aea3e85
 
 COCOAPODS: 1.12.0
