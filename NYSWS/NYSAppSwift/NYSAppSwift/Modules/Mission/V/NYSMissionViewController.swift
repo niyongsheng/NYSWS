@@ -170,7 +170,7 @@ extension NYSMissionViewController {
         ] as [String : Any]
 //        vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
         // pragma mark - Mock测试
-        vm.mockWeatherData(headerRefresh: true, parameters: "weatherData.json")
+        vm.mockWeatherData(headerRefresh: true, parameters: "weather_data.json")
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

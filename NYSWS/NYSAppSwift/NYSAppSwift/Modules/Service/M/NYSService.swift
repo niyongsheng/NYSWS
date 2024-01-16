@@ -14,6 +14,7 @@ struct NYSService: Equatable {
     private(set) var name: String!
     private(set) var desc: String!
     private(set) var url: String!
+    private(set) var isRecommend: Bool = false
     
 }
 
@@ -25,6 +26,7 @@ extension NYSService: ExCodable {
         KeyMap(\.name, to: "name"),
         KeyMap(\.desc, to: "desc"),
         KeyMap(\.url, to: "url"),
+        KeyMap(\.isRecommend, to: "isRecommend")
     ]
     
     init(from decoder: Decoder) throws {

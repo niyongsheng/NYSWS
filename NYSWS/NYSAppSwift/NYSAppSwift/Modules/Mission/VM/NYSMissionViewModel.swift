@@ -24,6 +24,11 @@ class NYSMissionViewModel: NYSRootViewModel {
             parameters: parameters,
             remark: "天气数据",
             success: { [weak self] response in
+                if response!["errcode"] as? Int == 100 {
+                    AppManager.shared.showAlert(title: response!["errmsg"] as? String)
+                    return
+                }
+                
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: response?["list"] as Any, options: [])
                     let weather = try JSONDecoder().decode(NYSWeater.self, from: jsonData)

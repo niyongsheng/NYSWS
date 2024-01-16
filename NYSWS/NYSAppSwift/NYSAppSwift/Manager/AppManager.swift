@@ -6,11 +6,25 @@
 //
 
 import UIKit
+import NYSKit
+import RxSwift
+import ExCodable
 
 final class AppManager {
     
     /// 是否登录
-    private(set) var isLogin: Bool = false
+    var isLogin: Bool {
+        return !String.isBlank(string: self.token)
+    }
+    
+    /// 秘钥
+    @UserDefault(key: kToken, defaultValue: nil)
+    private(set) var token: String?
+    
+    /// 用户信息
+    private(set) var userInfo: NYSUserInfo?
+    var seq: Int = 0
+    let userinfoSubject = PublishSubject<NYSUserInfo>()
     
     /// 登录弹窗
     private lazy var appAlertView: AppAlertView = {
@@ -23,22 +37,6 @@ final class AppManager {
         let appShareView = AppShareView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: RealValueX(x: 265)))
         return appShareView
     }()
-    
-    
-    /// 用户名
-    @UserDefault(key: kUsername, defaultValue: nil)
-    private(set) var username: String?
-    
-    /// 角色
-    @UserDefault(key: kRole, defaultValue: nil)
-    private(set) var role: String?
-    
-    /// 秘钥
-    @UserDefault(key: kToken, defaultValue: nil)
-    private(set) var token: String?
-    
-    /// 用户信息
-    private(set) var userInfo: NYSUserInfo?
     
     /// 单例
     static let shared = AppManager()
@@ -60,38 +58,68 @@ extension AppManager {
         case verification          // 一键认证
     }
     
-    typealias AppManagerCompletion = (_ isSuccess:Bool, _ userInfo:NYSUserInfo?, _ error:Error?) -> Void
+    typealias AppManagerCompletion = ((_ isSuccess:Bool, _ userInfo:NYSUserInfo?, _ error:Error?) -> Void)?
     
     func loginHandler(loginType: AppLoginType, params: [String: Any], completion: AppManagerCompletion) {
-        // 1.获取用户信息
-        
-        // 2.保存用户信息
-        
-        // 3.保存登录状态
-        isLogin = true
-        
-        // 4.执行闭包
-        completion(true, userInfo, nil)
+    
+        NYSNetRequest.mockRequest(withParameters: "login_data.json", 
+                                  isCheck: true,
+                                  remark: "登录",
+                                  success: { [weak self] response in
+            self?.token = response!["token"] as? String
+            completion?(true, nil, nil)
+            
+        }, failed:{ error in
+            completion?(false, nil, nil)
+            print("Error: \(String(describing: error))")
+        })
     }
     
     func refreshUserInfo(completion: AppManagerCompletion) {
-        // 在此处执行加载用户信息的操作
+        if !isLogin {
+            completion?(false, nil, nil)
+            return
+        }
         
-        // 假设加载成功，获取到了 userInfo 对象
-        //        userInfo = NYSUserInfo(from: <#Decoder#>)
-        
-        // 调用闭包，并传递加载结果和用户信息
-        completion(true, userInfo, nil)
+        NYSNetRequest.mockRequest(withParameters: "userinfo_data.json",
+                                  isCheck: true,
+                                  remark: "登录",
+                                  success: { [weak self] response in
+            
+            do {
+                let userinfo = try response?.decoded() as NYSUserInfo?
+                self?.userInfo = userinfo
+    
+                let tagSet: Set<String> = Set(userinfo!.tagArr)
+                JPUSHService.setTags(tagSet, completion: { resultCode, tags, seq in
+                    print("设置标签：\(resultCode == 0 ? "成功" : "失败")")
+                }, seq: self?.seq ?? 0)
+
+                JPUSHService.setAlias(userinfo!.aliasArr.first, completion: { resultCode, tags, seq in
+                    print("设置别名：\(resultCode == 0 ? "成功" : "失败")")
+                }, seq: self?.seq ?? 0)
+                
+                self?.userinfoSubject.onNext(userinfo!)
+                completion?(true, self?.userInfo, nil)
+                
+            } catch {
+                self?.userinfoSubject.onError(error)
+                AppManager.shared.showAlert(title: "解码失败：\(error)")
+            }
+            
+        }, failed:{ error in
+            completion?(false, nil, nil)
+            print("Error: \(String(describing: error))")
+        })
     }
     
     func logoutHandler() {
-        // 1.清除用户信息
-        $username.remove()
-        $role.remove()
+        // 1.清除Token
         $token.remove()
         
-        // 2.清除登录状态
-        isLogin = false
+        // 2.清除标签别名
+        JPUSHService.cleanTags(nil, seq: self.seq)
+        JPUSHService.deleteAlias(nil, seq: self.seq)
         
         // 3.加载登录页
         let rootVC = NYSAccountViewController.init()

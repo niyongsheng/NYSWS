@@ -44,8 +44,6 @@ let NAppSpace:CGFloat = 15.0
 let NAppRadius:CGFloat = 10.0
 
 // pragma mark - UserDefaults Key
-let kUsername = "kUsername"
-let kRole = "kRole"
 let kToken = "kToken"
 
 

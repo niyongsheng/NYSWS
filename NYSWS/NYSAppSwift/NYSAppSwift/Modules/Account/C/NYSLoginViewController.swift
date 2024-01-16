@@ -50,13 +50,11 @@ class NYSLoginViewController: NYSRootViewController {
 
     @IBAction func loginBtnOnclicked(_ sender: NYSLoadingButton) {
         sender.start(LoadingType(rawValue: 2))
-        // 模拟登陆
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            AppManager.shared.loginHandler(loginType: .unknown, params: ["": ""]) { isSuccess, userInfo, error in
-                if isSuccess {
-                    sender.endAndDeleteLoading()
-                    self.dismiss(animated: true, completion: nil)
-                }
+        
+        AppManager.shared.loginHandler(loginType: .unknown, params: ["": ""]) { isSuccess, userInfo, error in
+            if isSuccess {
+                sender.endAndDeleteLoading()
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }

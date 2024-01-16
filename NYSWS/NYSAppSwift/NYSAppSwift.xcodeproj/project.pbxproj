@@ -47,6 +47,9 @@
 		C8621DEE2B31845300F90DF0 /* NYSTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */; };
 		C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; };
 		C8621DF02B31B23100F90DF0 /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C86B02AF2B56017C00B359EA /* login_data.json in Resources */ = {isa = PBXBuildFile; fileRef = C86B02AE2B56017C00B359EA /* login_data.json */; };
+		C86B02B12B56028B00B359EA /* userinfo_data.json in Resources */ = {isa = PBXBuildFile; fileRef = C86B02B02B56028B00B359EA /* userinfo_data.json */; };
+		C86B02B72B56487500B359EA /* douyuFont.otf in Resources */ = {isa = PBXBuildFile; fileRef = C86B02B62B56487500B359EA /* douyuFont.otf */; };
 		C86DB2122B3E8D61002126F5 /* NYSScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86DB2112B3E8D61002126F5 /* NYSScrollViewController.xib */; };
 		C86DB2172B3E8DBC002126F5 /* NYSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86DB2132B3E8DBB002126F5 /* NYSLoginViewController.xib */; };
 		C86DB2182B3E8DBC002126F5 /* NYSAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C86DB2142B3E8DBB002126F5 /* NYSAccountViewController.xib */; };
@@ -92,9 +95,9 @@
 		C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D3E21E2B3BC6F800B77DEA /* NYSRootWindow.swift */; };
 		C8D3E2212B3BEAAF00B77DEA /* NYSMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */; };
 		C8ED6DDB2B51494D000F2268 /* NYSRootWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED6DDA2B51494D000F2268 /* NYSRootWebViewController.swift */; };
-		C8ED6DDD2B54CD14000F2268 /* weatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = C8ED6DDC2B54CD13000F2268 /* weatherData.json */; };
+		C8ED6DDD2B54CD14000F2268 /* weather_data.json in Resources */ = {isa = PBXBuildFile; fileRef = C8ED6DDC2B54CD13000F2268 /* weather_data.json */; };
 		C8ED6DE02B550A61000F2268 /* NYSRootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED6DDF2B550A61000F2268 /* NYSRootCodable.swift */; };
-		C8ED6DE42B5513C6000F2268 /* serviceData.json in Resources */ = {isa = PBXBuildFile; fileRef = C8ED6DE32B5513C6000F2268 /* serviceData.json */; };
+		C8ED6DE42B5513C6000F2268 /* service_data.json in Resources */ = {isa = PBXBuildFile; fileRef = C8ED6DE32B5513C6000F2268 /* service_data.json */; };
 		C8ED6DE62B55164F000F2268 /* NYSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED6DE52B55164F000F2268 /* NYSService.swift */; };
 		C8ED6DE92B551939000F2268 /* NYSServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED6DE72B551939000F2268 /* NYSServiceCollectionViewCell.swift */; };
 		C8ED6DEA2B551939000F2268 /* NYSServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8ED6DE82B551939000F2268 /* NYSServiceCollectionViewCell.xib */; };
@@ -163,6 +166,9 @@
 		C8621DE72B316F5A00F90DF0 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		C8621DEC2B3182EE00F90DF0 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSTabBarViewController.swift; sourceTree = "<group>"; };
+		C86B02AE2B56017C00B359EA /* login_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login_data.json; sourceTree = "<group>"; };
+		C86B02B02B56028B00B359EA /* userinfo_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userinfo_data.json; sourceTree = "<group>"; };
+		C86B02B62B56487500B359EA /* douyuFont.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = douyuFont.otf; sourceTree = "<group>"; };
 		C86DB2112B3E8D61002126F5 /* NYSScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSScrollViewController.xib; sourceTree = "<group>"; };
 		C86DB2132B3E8DBB002126F5 /* NYSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSLoginViewController.xib; sourceTree = "<group>"; };
 		C86DB2142B3E8DBB002126F5 /* NYSAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSAccountViewController.xib; sourceTree = "<group>"; };
@@ -209,9 +215,9 @@
 		C8D3E21E2B3BC6F800B77DEA /* NYSRootWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootWindow.swift; sourceTree = "<group>"; };
 		C8D3E2202B3BEAAF00B77DEA /* NYSMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSMissionViewController.swift; sourceTree = "<group>"; };
 		C8ED6DDA2B51494D000F2268 /* NYSRootWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootWebViewController.swift; sourceTree = "<group>"; };
-		C8ED6DDC2B54CD13000F2268 /* weatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weatherData.json; sourceTree = "<group>"; };
+		C8ED6DDC2B54CD13000F2268 /* weather_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weather_data.json; sourceTree = "<group>"; };
 		C8ED6DDF2B550A61000F2268 /* NYSRootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootCodable.swift; sourceTree = "<group>"; };
-		C8ED6DE32B5513C6000F2268 /* serviceData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = serviceData.json; sourceTree = "<group>"; };
+		C8ED6DE32B5513C6000F2268 /* service_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = service_data.json; sourceTree = "<group>"; };
 		C8ED6DE52B55164F000F2268 /* NYSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSService.swift; sourceTree = "<group>"; };
 		C8ED6DE72B551939000F2268 /* NYSServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8ED6DE82B551939000F2268 /* NYSServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSServiceCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -354,6 +360,7 @@
 		C8597A9829F51257008BEE7F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C86B02B52B56487500B359EA /* Fonts */,
 				C83C18642B33E438002FD985 /* Resources */,
 				C8BC5EAC2B3AC1FC00814C2B /* themejson_day.json */,
 				C8BC5EAB2B3AC1FC00814C2B /* themejson_night.json */,
@@ -412,6 +419,14 @@
 				C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */,
 			);
 			path = TarBar;
+			sourceTree = "<group>";
+		};
+		C86B02B52B56487500B359EA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C86B02B62B56487500B359EA /* douyuFont.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C86DB20E2B3E8CA9002126F5 /* M */ = {
@@ -655,8 +670,10 @@
 		C8ED6DDE2B54F657000F2268 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				C8ED6DDC2B54CD13000F2268 /* weatherData.json */,
-				C8ED6DE32B5513C6000F2268 /* serviceData.json */,
+				C8ED6DDC2B54CD13000F2268 /* weather_data.json */,
+				C8ED6DE32B5513C6000F2268 /* service_data.json */,
+				C86B02AE2B56017C00B359EA /* login_data.json */,
+				C86B02B02B56028B00B359EA /* userinfo_data.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -748,12 +765,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8A4BE2D2B4B9E7900152E14 /* NYSHomeListCell.xml in Resources */,
-				C8ED6DE42B5513C6000F2268 /* serviceData.json in Resources */,
+				C8ED6DE42B5513C6000F2268 /* service_data.json in Resources */,
 				C8A4BE292B4B99E500152E14 /* system.style in Resources */,
+				C86B02B72B56487500B359EA /* douyuFont.otf in Resources */,
 				C86DB2122B3E8D61002126F5 /* NYSScrollViewController.xib in Resources */,
 				C8621DE82B316F5A00F90DF0 /* LaunchImage.png in Resources */,
 				C8597A8E29F511A0008BEE7F /* LaunchScreen.storyboard in Resources */,
 				C8BC5EAE2B3AC1FD00814C2B /* themejson_day.json in Resources */,
+				C86B02AF2B56017C00B359EA /* login_data.json in Resources */,
 				C8D0AF7D2B492998002C18E6 /* Pods-NYSAppSwift-acknowledgements.plist in Resources */,
 				C874B9A82B4B8BB8009CC627 /* AppShareView.xib in Resources */,
 				C83162A92B4D180F0014CFE1 /* README.md in Resources */,
@@ -768,8 +787,9 @@
 				C8ED6DEA2B551939000F2268 /* NYSServiceCollectionViewCell.xib in Resources */,
 				C86DB2182B3E8DBC002126F5 /* NYSAccountViewController.xib in Resources */,
 				C8597A8929F5119E008BEE7F /* Main.storyboard in Resources */,
+				C86B02B12B56028B00B359EA /* userinfo_data.json in Resources */,
 				C86DB2172B3E8DBC002126F5 /* NYSLoginViewController.xib in Resources */,
-				C8ED6DDD2B54CD14000F2268 /* weatherData.json in Resources */,
+				C8ED6DDD2B54CD14000F2268 /* weather_data.json in Resources */,
 				C83C18692B33E438002FD985 /* bill.json in Resources */,
 				C858480E2B4797FC00B27086 /* NYSQRCodeViewController.xib in Resources */,
 				C83C186A2B33E438002FD985 /* service.json in Resources */,

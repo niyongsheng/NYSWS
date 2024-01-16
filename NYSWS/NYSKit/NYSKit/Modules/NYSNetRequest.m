@@ -14,6 +14,7 @@
 #define isShowTimes NO
 #define TimeoutInterval 15
 #define ShowDelayLoading 4.5f
+#define MockDelayLoading 0.5f
 
 @interface NYSNetRequest ()
 
@@ -337,13 +338,15 @@
                 handelError(error);
             }
         } else {
-            if (isCheck) {
-                handelResponse(parameters, failed, remark, jsonDictionary, success, @"Mock");
-            } else {
-                DBGLog(@"%@->📩:\nMock参数:\n%@\n[Data]:\n%@", remark, parameters, [NYSNetRequest jsonPrettyStringEncoded:jsonDictionary]);
-                if (success)
-                    success(jsonDictionary);
-            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MockDelayLoading * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (isCheck) {
+                    handelResponse(parameters, failed, remark, jsonDictionary, success, @"Mock");
+                } else {
+                    DBGLog(@"%@->📩:\nMock参数:\n%@\n[Data]:\n%@", remark, parameters, [NYSNetRequest jsonPrettyStringEncoded:jsonDictionary]);
+                    if (success)
+                        success(jsonDictionary);
+                }
+            });
         }
     } else {
         if (failed)

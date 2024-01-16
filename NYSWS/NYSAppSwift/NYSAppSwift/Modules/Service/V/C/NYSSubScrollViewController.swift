@@ -56,7 +56,7 @@ class NYSSubScrollViewController: NYSRootScrollViewController, NYSWaterfallLayou
     
     override func footerRereshing() {
         super.footerRereshing()
-        vm.mockServiceData(headerRefresh: false, parameters: "serviceData.json")
+        vm.mockServiceData(headerRefresh: false, parameters: "service_data.json")
     }
     
     func waterfallLayout(_ waterfallLayout: NYSWaterfallLayout, itemHeightForWidth itemWidth: CGFloat, at indexPath: IndexPath) -> CGFloat {

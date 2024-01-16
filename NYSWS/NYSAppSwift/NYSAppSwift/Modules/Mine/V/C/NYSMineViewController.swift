@@ -7,8 +7,13 @@
 
 import UIKit
 import NYSUIKit
+import RxSwift
+import Kingfisher
 
 class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
+    
+    private let bag = DisposeBag()
+    private let userinfoSubject = AppManager.shared.userinfoSubject
 
     let NAVBAR_COLORCHANGE_POINT:CGFloat = 100
     @IBOutlet weak var scrollView: UIScrollView!
@@ -25,6 +30,9 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     @IBOutlet weak var twoSV: UIStackView!
     @IBOutlet weak var threeSV: UIStackView!
     
+    @IBOutlet weak var serviceL: UILabel!
+    @IBOutlet weak var serviceTelBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +44,22 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateNav(self.scrollView)
+        AppManager.shared.refreshUserInfo(completion: { isSuccess, userInfo, error in
+            if isSuccess {
+                self.titleL.text = userInfo?.nickname
+                if let firstRole = userInfo?.roleArr.first {
+                    self.subtitleL.text = firstRole + " >"
+                }
+                self.serviceTelBtn.setTitle(userInfo?.tel, for: .normal)
+            
+            } else {
+                self.titleL.text = "未登录"
+                self.subtitleL.text = "去认证 >"
+                self.serviceTelBtn.setTitle("400-000-0000", for: .normal)
+            }
+            
+            self.iconIV.kf.setImage(with: URL(string: userInfo?.icon ?? ""), for: .normal, placeholder: UIImage.init(named: "pic_48px_def_touxiang"))
+        })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -53,10 +77,17 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         oneSV.addRadius(NAppRadius)
         twoSV.addRadius(NAppRadius)
         threeSV.addRadius(NAppRadius)
+        iconIV.addRadius(30)
         
         navBarBackgroundAlpha = 0
         navBarTintColor = .clear
         navBarTitleColor = .clear
+        
+        if let customFont = UIFont(name: "DOUYU Font", size: 15) {
+            serviceL.font = customFont
+            serviceTelBtn.titleLabel?.font = customFont
+        }
+        
     }
 
     override func configTheme() {
@@ -103,6 +134,11 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     }
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
+        if AppManager.shared.isLogin == false {
+            AppManager.shared.showLogin()
+            return
+        }
+        
         if sender.tag == 100 {
             let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
@@ -118,7 +154,13 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             AppManager.shared.showShare(content: nil)
             
         } else {
-            AppManager.shared.showLogin()
+            AppManager.shared.showAlert(title: "未定义")
+        }
+    }
+    
+    @IBAction func serviceTelBtnOnclicked(_ sender: UIButton) {
+        if let telURL = URL(string: "tel://" + (AppManager.shared.userInfo?.tel ?? "")) {
+            UIApplication.shared.open(telURL, options: [:], completionHandler: nil)
         }
     }
     
