@@ -83,7 +83,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         navBarTintColor = .clear
         navBarTitleColor = .clear
         
-        if let customFont = UIFont(name: "DOUYU Font", size: 15) {
+        if let customFont = UIFont(name: "DOUYU Font", size: 14) {
             serviceL.font = customFont
             serviceTelBtn.titleLabel?.font = customFont
         }

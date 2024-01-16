@@ -19,6 +19,8 @@
 		C8597ACE29F52DA6008BEE7F /* NYSNetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597ACC29F52DA6008BEE7F /* NYSNetRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8597AD229F546B5008BEE7F /* NYSKitManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C8597AD029F546B5008BEE7F /* NYSKitManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8597AD329F546B5008BEE7F /* NYSKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8597AD129F546B5008BEE7F /* NYSKitManager.m */; };
+		C86B02BA2B56609D00B359EA /* NYSError.h in Headers */ = {isa = PBXBuildFile; fileRef = C86B02B82B56609D00B359EA /* NYSError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C86B02BB2B56609D00B359EA /* NYSError.m in Sources */ = {isa = PBXBuildFile; fileRef = C86B02B92B56609D00B359EA /* NYSError.m */; };
 		C8B7480929FB964B00673B75 /* PublicHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7480829FB964B00673B75 /* PublicHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		C8597ACC29F52DA6008BEE7F /* NYSNetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSNetRequest.h; sourceTree = "<group>"; };
 		C8597AD029F546B5008BEE7F /* NYSKitManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSKitManager.h; sourceTree = "<group>"; };
 		C8597AD129F546B5008BEE7F /* NYSKitManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSKitManager.m; sourceTree = "<group>"; };
+		C86B02B82B56609D00B359EA /* NYSError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSError.h; sourceTree = "<group>"; };
+		C86B02B92B56609D00B359EA /* NYSError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSError.m; sourceTree = "<group>"; };
 		C8B7480829FB964B00673B75 /* PublicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +116,8 @@
 				C8597ACB29F52DA5008BEE7F /* NYSNetRequest.m */,
 				C8597AD029F546B5008BEE7F /* NYSKitManager.h */,
 				C8597AD129F546B5008BEE7F /* NYSKitManager.m */,
+				C86B02B82B56609D00B359EA /* NYSError.h */,
+				C86B02B92B56609D00B359EA /* NYSError.m */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -129,6 +135,7 @@
 				C8597AB829F51B35008BEE7F /* NYSRegularCheck.h in Headers */,
 				C85979F429F4FB07008BEE7F /* NYSKit.h in Headers */,
 				C8B7480929FB964B00673B75 /* PublicHeader.h in Headers */,
+				C86B02BA2B56609D00B359EA /* NYSError.h in Headers */,
 				C8597AB429F51B35008BEE7F /* NYSTools.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8597AB229F51B35008BEE7F /* NYSTools.m in Sources */,
+				C86B02BB2B56609D00B359EA /* NYSError.m in Sources */,
 				C8597AB629F51B35008BEE7F /* NYSKeyChain.m in Sources */,
 				C8597ACD29F52DA6008BEE7F /* NYSNetRequest.m in Sources */,
 				C8597AB729F51B35008BEE7F /* NYSRegularCheck.m in Sources */,

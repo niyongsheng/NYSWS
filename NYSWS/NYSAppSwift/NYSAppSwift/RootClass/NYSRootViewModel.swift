@@ -2,11 +2,13 @@
 //  NYSRootViewModel.swift
 //  NYSAppSwift
 //
-//  Created by niyongsheng on 2024/1/8.
+//  Created by Nico http://github.com/niyongsheng
+//  Copyright © 2023 NYS. ALL rights reserved.
 //
 
 import Foundation
 import RxSwift
+import NYSKit
 
 class NYSRootViewModel {
     /// inputs修饰前缀
@@ -41,7 +43,7 @@ extension SingleEvent {
         case .success(_):
             return nil
         case .failure(let error):
-            guard let netError = error as? NSError else {
+            guard let netError = error as? NYSError else {
                 return NSError(domain: "未知错误", code: -1, userInfo: nil)
             }
             
