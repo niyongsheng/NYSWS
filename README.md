@@ -5,6 +5,7 @@ NYSWS
 ===
 > ios简洁的组件化方案架构。<br>
 > ios simple componentized solution framework.
+<img src="./images/nysws.drawio.png">
 
 ## Feature
 - [x] [mvvm/mvc]()
@@ -16,9 +17,6 @@ NYSWS
 <img src="./images/swift_one_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_light.PNG" width="200" style="border-radius: 15px;"> 
 --- | --- | --- | --- | ---
 <img src="./images/swift_one_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_dark.PNG" width="200" style="border-radius: 15px;"> 
-
-## Framework
-<img src="./images/nysws.drawio.png">
 
 ## Architecture
 ```text
@@ -82,6 +80,7 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   pod 'RxCocoa', '6.6.0'
   pod 'AcknowList', '3.0.1'
   pod 'Alamofire', '5.8.0'
+  pod 'ExCodable'
   pod 'Kingfisher', '7.10.1'
   pod 'lottie-ios', '2.5.3'
   pod 'ZCycleView', '1.0.4'
