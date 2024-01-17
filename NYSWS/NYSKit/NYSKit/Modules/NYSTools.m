@@ -95,19 +95,13 @@
  */
 + (void)shakToShow:(UIButton *)button {
     CGFloat t = 4.0;
-    CGAffineTransform translateRight  = CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
-    CGAffineTransform translateLeft = CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
+    CGAffineTransform translateRight = CGAffineTransformTranslate(CGAffineTransformIdentity, t, 0.0);
+    CGAffineTransform translateLeft = CGAffineTransformTranslate(CGAffineTransformIdentity, -t, 0.0);
     button.transform = translateLeft;
+    
     [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat animations:^{
-        [UIView setAnimationRepeatCount:2.0];
         button.transform = translateRight;
-    } completion:^(BOOL finished){
-        if(finished){
-            [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                button.transform =CGAffineTransformIdentity;
-            } completion:NULL];
-        }
-    }];
+    } completion:nil];
     
     UIImpactFeedbackGenerator *feedBackGenertor = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
     if (@available(iOS 13.0, *)) {
@@ -115,6 +109,12 @@
     } else {
         [feedBackGenertor impactOccurred];
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.1 animations:^{
+            button.transform = CGAffineTransformIdentity;
+        }];
+    });
 }
 
 /**
@@ -175,30 +175,10 @@
     [formatter setTimeZone:timeZone];
     NSDate* date = [formatter dateFromString:formatTime];
     
-    // 时间转时间戳的方法:
+    // 日期转时间戳
     NSTimeInterval timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
-    NSInteger currentTimeMillis = (NSInteger)(timeSp * 1000);
-    return timeSp;
+    return timeSp * 1000;
 }
-
-///// 将某个时间戳转化成 时间
-///// @param timestamp 时间戳
-///// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-//+ (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format {
-//    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    
-//    [formatter setDateStyle:NSDateFormatterMediumStyle];
-//    [formatter setTimeStyle:NSDateFormatterShortStyle];
-//    [formatter setDateFormat:format];
-//    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
-//    [formatter setTimeZone:timeZone];
-//    
-//    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp];
-//    NSString *confromTimespStr = [formatter stringFromDate:confromTimesp];
-//    
-//    return confromTimespStr;
-//}
 
 /**
  时间戳转换成XX分钟之前
@@ -410,7 +390,7 @@
 
 + (void)showToast:(NSString *)msg imageNamed:(NSString *)name offset:(UIOffset)offset {
     [SVProgressHUD setHapticsEnabled:YES];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [SVProgressHUD setDefaultAnimationType:(SVProgressHUDAnimationTypeNative)];
     [SVProgressHUD setOffsetFromCenter:offset];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
@@ -479,7 +459,7 @@
         [dateFormatter setDateFormat:@"HH:mm:ss.SSSSSSZ"];
         NSString *timeStr = [dateFormatter stringFromDate:[NSDate date]];
 
-        printf("⏰TIME:%s Layer:%s Name:%s\n⛷️Stack:%s\n☕Log:%s\n", [timeStr UTF8String], [infoArr.firstObject UTF8String], [infoArr[1] UTF8String], [infoArr.lastObject UTF8String], [text UTF8String]);
+        printf("⏰TIME:%s Layer:%s Name:%s\n⛷️Stack:%s\n☕Log:%s\n----------------\n", [timeStr UTF8String], [infoArr.firstObject UTF8String], [infoArr[1] UTF8String], [infoArr.lastObject UTF8String], [text UTF8String]);
     } else {
         printf("Unable to retrieve caller info.");
     }

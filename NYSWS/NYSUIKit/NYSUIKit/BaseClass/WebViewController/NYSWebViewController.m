@@ -45,10 +45,11 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.webView];
-    
-    UIBarButtonItem *rightReloadItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightReloadItemOnclicked:)];
-    UIBarButtonItem *rightShareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(rightShareItemOnclicked:)];
-    self.navigationItem.rightBarButtonItems = @[/*rightReloadItem,*/ rightShareItem];
+
+    self.navigationItem.rightBarButtonItems = @[
+        /*[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightReloadItemOnclicked:)],*/
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(rightShareItemOnclicked:)]
+    ];
 }
 
 - (void)rightReloadItemOnclicked:(id)sender {

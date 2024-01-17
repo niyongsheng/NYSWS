@@ -98,7 +98,6 @@
 /// @param sender btn
 - (IBAction)loginBtnOnclicked:(UIButton *)sender {
     [self.view endEditing:YES];
-    [NYSTools zoomToShow:sender.layer];
 
     if (![_accountTF.text isNotBlank]) {
         [NYSTools showToast:NLocalizedStr(@"PlaceholderAccout")];
@@ -112,6 +111,7 @@
         return;
     }
     
+    [NYSTools zoomToShow:sender.layer];
     if (!self.protocolBtn.selected) {
         
         @weakify(self)

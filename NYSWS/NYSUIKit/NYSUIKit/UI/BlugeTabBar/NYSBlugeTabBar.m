@@ -6,6 +6,7 @@
 //
 
 #import "NYSBlugeTabBar.h"
+#import "NYSUIKit/NYSUIKitUtilities.h"
 
 @interface NYSBlugeTabBar ()
 
@@ -82,7 +83,7 @@
     for (UIView *subView in self.subviews) {
         if ([subView isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
             if (index == self.subviews.count / 2) {
-                CGFloat temp = [self statusBarHeight] > 20 ? 0 : self.centerTabBarItemY;
+                CGFloat temp = [NYSUIKitUtilities nys_statusBarHeight] > 20 ? 0 : self.centerTabBarItemY;
                 btnY = self.centerTabBarItemY;
                 btnH = self.frame.size.height - temp;
             } else {
@@ -94,16 +95,6 @@
             index++;
         }
     }
-}
-
-- (CGFloat)statusBarHeight {
-    CGFloat statusBarHeight = 0;
-    if (@available(iOS 13.0, *)) {
-        statusBarHeight = [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height;
-    } else {
-        statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-    }
-    return statusBarHeight;
 }
 
 @end

@@ -71,7 +71,7 @@ extension AppManager {
             
         }, failed:{ error in
             completion?(false, nil, nil)
-            print("Error: \(String(describing: error))")
+            NYSTools.log("Error: \(String(describing: error))")
         })
     }
     
@@ -92,11 +92,11 @@ extension AppManager {
     
                 let tagSet: Set<String> = Set(userinfo!.tagArr)
                 JPUSHService.setTags(tagSet, completion: { resultCode, tags, seq in
-                    print("设置标签：\(resultCode == 0 ? "成功" : "失败")")
+                    NYSTools.log("设置标签：\(resultCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
 
                 JPUSHService.setAlias(userinfo!.aliasArr.first, completion: { resultCode, tags, seq in
-                    print("设置别名：\(resultCode == 0 ? "成功" : "失败")")
+                    NYSTools.log("设置别名：\(resultCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
                 
                 self?.userinfoSubject.onNext(userinfo!)
@@ -109,7 +109,7 @@ extension AppManager {
             
         }, failed:{ error in
             completion?(false, nil, nil)
-            print("Error: \(String(describing: error))")
+            NYSTools.log("Error: \(String(describing: error))")
         })
     }
     

@@ -51,7 +51,7 @@
     animation.frame = CGRectMake(0, 0, 80, 80);
     animation.center = animationBg.center;
     [animationBg addSubview:animation];
-    NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"loading_gif_plane" withExtension:@"gif"];
+//    NSURL *gifImageUrl = [[NSBundle mainBundle] URLForResource:@"loading_gif_plane" withExtension:@"gif"];
 //    [animation setImageURL:gifImageUrl];
     animationBg.tag = 1000001;
     [keywindow addSubview:animationBg];

@@ -378,7 +378,7 @@
 	// Size of rounded rect
 	CGFloat rectWidth;
 
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         // iPad
         if (self.maxWidth) {
             if (self.maxWidth < containerView.frame.size.width) {
@@ -556,18 +556,25 @@
     finalFrame = CGRectIntegral(finalFrame);
 
 
-	if (animated) {
+    if (animated) {
         if (self.animation == CMPopTipAnimationFade) {
             self.alpha = 0;
             self.frame = finalFrame;
-        }
-        else if (self.animation == CMPopTipAnimationSlide) {
+
+            [UIView animateWithDuration:0.15 animations:^{
+                self.alpha = 1.0;
+            }];
+        } else if (self.animation == CMPopTipAnimationSlide) {
             self.alpha = 0.0;
             CGRect startFrame = finalFrame;
             startFrame.origin.y += 10;
             self.frame = startFrame;
-        }
-		else if (self.animation == CMPopTipAnimationPop) {
+
+            [UIView animateWithDuration:0.15 animations:^{
+                self.alpha = 1.0;
+                self.frame = finalFrame;
+            }];
+        } else if (self.animation == CMPopTipAnimationPop) {
             self.frame = finalFrame;
             self.alpha = 0.5;
 
@@ -575,28 +582,14 @@
             self.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
 
             // animate to a bigger size
-            [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDidStopSelector:@selector(popAnimationDidStop:finished:context:)];
-            [UIView setAnimationDuration:0.15f];
-            self.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-            self.alpha = 1.0;
-            [UIView commitAnimations];
-        }
-
-		[self setNeedsDisplay];
-		if (self.animation == CMPopTipAnimationFade) {
             [UIView animateWithDuration:0.15 animations:^{
+                self.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
                 self.alpha = 1.0;
             }];
         }
-		else if (self.animation == CMPopTipAnimationSlide) {
-			[UIView beginAnimations:nil context:nil];
-			self.alpha = 1.0;
-			self.frame = finalFrame;
-			[UIView commitAnimations];
-		}
-	}
+
+        [self setNeedsDisplay];
+    }
 	else {
 		// Not animated
 		[self setNeedsDisplay];
@@ -638,30 +631,34 @@
 }
 
 - (void)dismissAnimated:(BOOL)animated {
-
-	if (animated) {
+    if (animated) {
         if (self.animation == CMPopTipAnimationFade) {
-            [UIView beginAnimations:nil context:nil];
-            self.alpha = 0.0;
-            [UIView setAnimationDuration:0.3];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDidStopSelector:@selector(dismissAnimationDidStop:finished:context:)];
-            [UIView commitAnimations];
+            [UIView animateWithDuration:0.3 animations:^{
+                self.alpha = 0.0;
+            } completion:^(BOOL finished) {
+                [self dismissAnimationDidStop:finished];
+            }];
         } else {
             CGRect frame = self.frame;
             frame.origin.y += 10.0;
 
-            [UIView beginAnimations:nil context:nil];
-            self.alpha = 0.0;
-            self.frame = frame;
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDidStopSelector:@selector(dismissAnimationDidStop:finished:context:)];
-            [UIView commitAnimations];
+            [UIView animateWithDuration:0.3 animations:^{
+                self.alpha = 0.0;
+                self.frame = frame;
+            } completion:^(BOOL finished) {
+                [self dismissAnimationDidStop:finished];
+            }];
         }
-	}
-	else {
-		[self finaliseDismiss];
-	}
+    } else {
+        [self finaliseDismiss];
+    }
+}
+
+- (void)dismissAnimationDidStop:(BOOL)finished {
+    // 在动画结束时执行必要的操作
+    if (finished) {
+        [self finaliseDismiss];
+    }
 }
 
 - (void)autoDismissAnimatedDidFire:(NSTimer *)theTimer {
@@ -721,13 +718,13 @@
 	[self notifyDelegatePopTipViewWasDismissedByUser];
 }
 
-- (void)popAnimationDidStop:(__unused NSString *)animationID finished:(__unused NSNumber *)finished context:(__unused void *)context
-{
-    // at the end set to normal size
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.1f];
-	self.transform = CGAffineTransformIdentity;
-	[UIView commitAnimations];
+- (void)popAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    // 在动画结束时执行必要的操作
+    if ([finished boolValue]) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.transform = CGAffineTransformIdentity;
+        }];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame

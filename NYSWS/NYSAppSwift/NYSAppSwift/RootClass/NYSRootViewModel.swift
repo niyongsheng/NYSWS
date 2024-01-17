@@ -24,7 +24,7 @@ class NYSRootViewModel {
     var className: String { String(describing: self) }
     
     deinit {
-        print("\(classNameWithoutNamespace)被销毁了")
+        NYSTools.log("\(classNameWithoutNamespace)被销毁了")
     }
 }
 

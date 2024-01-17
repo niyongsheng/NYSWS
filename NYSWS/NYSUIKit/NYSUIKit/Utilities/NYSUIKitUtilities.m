@@ -33,14 +33,13 @@ static NSString *const NYSUserLanguageKey = @"NYSUserLanguageKey";
 
 + (CGFloat)nys_statusBarHeight {
     if (@available(iOS 13.0, *)) {
-        NSSet *set = [UIApplication sharedApplication].connectedScenes;
-        UIWindowScene *windowScene = [set anyObject];
+        NSSet *connectedScenes = [UIApplication sharedApplication].connectedScenes;
+        UIWindowScene *windowScene = [connectedScenes anyObject];
         UIStatusBarManager *statusBarManager = windowScene.statusBarManager;
-        CGFloat h = statusBarManager.statusBarFrame.size.height;
-        return h;
+        CGFloat height = statusBarManager.statusBarFrame.size.height;
+        return height;
     } else {
-        CGFloat h = [UIApplication sharedApplication].statusBarFrame.size.height;
-        return h;
+        return [UIApplication sharedApplication].statusBarFrame.size.height;
     }
 }
 
