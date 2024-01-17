@@ -134,18 +134,17 @@
 
 
 #pragma mark - 时间相关
-/// 获取当前时间戳（单位：秒）
+/// 获取当前时间戳（单位：毫秒）
 + (NSString *)getNowTimeTimestamp {
-
-    NSDate *datenow = [NSDate date];
-
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
-
+    NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+    NSInteger currentTimeMillis = (NSInteger)(currentTimeInterval * 1000);
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", currentTimeMillis];
+    
     return timeSp;
 }
 
 /// 将时间戳转换成格式化的时间字符串
-/// @param timestamp 时间戳
+/// @param timestamp 时间戳（单位：毫秒）
 /// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
 + (NSString *)transformTimestampToTime:(NSTimeInterval)timestamp format:(NSString *)format {
     if (!format) format = @"YYYY-MM-dd HH:mm:ss";
@@ -153,14 +152,15 @@
     NSTimeInterval interval = timestamp / 1000.0;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
     NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
+    [objDateformat setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Beijing"]];
     [objDateformat setDateFormat:format];
     NSString * timeStr = [NSString stringWithFormat:@"%@",[objDateformat stringFromDate: date]];
     return timeStr;
 }
 
-/// 将某个时间转化成 时间戳
-/// @param formatTime 时间z字符串
-/// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+/// 将某个时间转化成 时间戳（单位：毫秒）
+/// @param formatTime 时间字符串
+/// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制.
 + (NSTimeInterval)transformTimeToTimestamp:(NSString *)formatTime format:(NSString *)format {
     if (!format) format = @"YYYY-MM-dd HH:mm:ss";
     
@@ -177,36 +177,37 @@
     
     // 时间转时间戳的方法:
     NSTimeInterval timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+    NSInteger currentTimeMillis = (NSInteger)(timeSp * 1000);
     return timeSp;
 }
 
-/// 将某个时间戳转化成 时间
-/// @param timestamp 时间戳
-/// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
-+ (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format {
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
-    [formatter setDateFormat:format];
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
-    [formatter setTimeZone:timeZone];
-    
-    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    NSString *confromTimespStr = [formatter stringFromDate:confromTimesp];
-    
-    return confromTimespStr;
-}
+///// 将某个时间戳转化成 时间
+///// @param timestamp 时间戳
+///// @param format 格式（@"YYYY-MM-dd hh:mm:ss"）----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+//+ (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format {
+//    
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    
+//    [formatter setDateStyle:NSDateFormatterMediumStyle];
+//    [formatter setTimeStyle:NSDateFormatterShortStyle];
+//    [formatter setDateFormat:format];
+//    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+//    [formatter setTimeZone:timeZone];
+//    
+//    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp];
+//    NSString *confromTimespStr = [formatter stringFromDate:confromTimesp];
+//    
+//    return confromTimespStr;
+//}
 
 /**
  时间戳转换成XX分钟之前
- @param timestamp 时间戳
+ @param timestamp 时间戳（单位：毫秒）
  */
 + (NSString *)timeBeforeInfoWithTimestamp:(NSInteger)timestamp {
     // 获取此时时间戳长度
     NSTimeInterval nowTimeinterval = [[NSDate date] timeIntervalSince1970];
-    int timeInt = nowTimeinterval - timestamp; // 时间差
+    int timeInt = nowTimeinterval - timestamp/1000; // 时间差
     
     int year = timeInt / (3600 * 24 * 30 *12);
     int month = timeInt / (3600 * 24 * 30);
@@ -451,6 +452,39 @@
     activityVC.modalInPresentation = YES;
     activityVC.completionWithItemsHandler = completion;
     [controller presentViewController:activityVC animated:YES completion:nil];
+}
+
+/// 日志打印
+/// @param text log
++ (void)log:(NSString *)text {
+    [self log:text layer:2];
+}
+
+/// 日志打印
+/// @param text log
+/// @param layer 层级
++ (void)log:(NSString *)text layer:(NSInteger)layer {
+#ifdef DEBUG
+    // 获取调用栈信息
+    NSArray *callStackSymbols = [NSThread callStackSymbols];
+    if (callStackSymbols.count > layer) {
+        NSString *callerInfo = callStackSymbols[layer];
+        NSArray<NSString *> *infoArr = [callerInfo componentsSeparatedByString:@"   "];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+        [dateFormatter setTimeZone:timeZone];
+        [dateFormatter setDateFormat:@"HH:mm:ss.SSSSSSZ"];
+        NSString *timeStr = [dateFormatter stringFromDate:[NSDate date]];
+
+        printf("⏰TIME:%s Layer:%s Name:%s\n⛷️Stack:%s\n☕Log:%s\n", [timeStr UTF8String], [infoArr.firstObject UTF8String], [infoArr[1] UTF8String], [infoArr.lastObject UTF8String], [text UTF8String]);
+    } else {
+        printf("Unable to retrieve caller info.");
+    }
+#endif
+//    DBGLog(@"%@", text);
 }
 
 @end

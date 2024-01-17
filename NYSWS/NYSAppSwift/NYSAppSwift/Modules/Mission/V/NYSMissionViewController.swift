@@ -161,16 +161,20 @@ extension NYSMissionViewController {
     override func headerRereshing() {
         super.headerRereshing()
         
-        let parameters = [
-            "unescape": 1,
-            "version": "v1",
-            "appid": 43656176,
-            "appsecret": "I42og6Lm",
-            "city": city
-        ] as [String : Any]
+//        let parameters = [
+//            "unescape": 1,
+//            "version": "v1",
+//            "appid": 43656176,
+//            "appsecret": "I42og6Lm",
+//            "city": city
+//        ] as [String : Any]
 //        vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
         // pragma mark - Mock测试
         vm.mockWeatherData(headerRefresh: true, parameters: "weather_data.json")
+    }
+    
+    override func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return -80;
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

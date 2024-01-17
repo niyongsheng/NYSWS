@@ -15,7 +15,7 @@
 /// 请求地址
 @property (nonatomic, strong) NSString * _Nonnull host;
 /// 授权令牌
-@property (nonatomic, strong) NSString * token;
+@property (nonatomic, strong) NSString * _Nullable token;
 /// 正常返回代码
 @property (nonatomic, strong) NSString * _Nonnull normalCode;
 /// 令牌失效错误码

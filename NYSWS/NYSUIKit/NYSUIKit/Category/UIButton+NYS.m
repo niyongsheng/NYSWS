@@ -8,6 +8,8 @@
 #import "UIButton+NYS.h"
 #import <objc/runtime.h>
 
+static const void *kButtonTapBlockKey = &kButtonTapBlockKey;
+
 @interface UIButton()
 /**bool 类型 YES 不允许点击   NO 允许点击   设置是否执行点UI方法*/
 @property (nonatomic, assign) BOOL isIgnoreEvent;
@@ -106,6 +108,26 @@ static char edgeKey;
 }
 - (void)resetState{
     [self setIsIgnoreEvent:NO];
+}
+
+
+- (ButtonBlock)tapBlock {
+    return objc_getAssociatedObject(self, kButtonTapBlockKey);
+}
+
+- (void)setTapBlock:(ButtonBlock)tapBlock {
+    objc_setAssociatedObject(self, kButtonTapBlockKey, tapBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void)handleControlEvent:(UIControlEvents)event withBlock:(ButtonBlock)block {
+    self.tapBlock = block;
+    [self addTarget:self action:@selector(buttonTapped) forControlEvents:event];
+}
+
+- (void)buttonTapped {
+    if (self.tapBlock) {
+        self.tapBlock(self);
+    }
 }
 
 @end

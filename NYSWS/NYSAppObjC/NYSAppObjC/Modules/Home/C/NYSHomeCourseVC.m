@@ -61,6 +61,46 @@
         @"class_id": _index,
     };
     @weakify(self)
+    
+#ifdef MockData
+    [NYSNetRequest mockRequestWithParameters:@"index_Course_list.json"
+                                     isCheck:true 
+                                      remark:@"课程分类列表"
+                                     success:^(NSDictionary * _Nullable response) {
+        @strongify(self)
+        if (self->_pageNo == 1) {
+            [self.dataSourceArr removeAllObjects];
+        }
+        
+        NSArray *array = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response];
+        if (array.count > 0) {
+            [self.dataSourceArr addObjectsFromArray:array];
+            [self.tableView.mj_footer endRefreshing];
+            
+        } else {
+            if (self->_pageNo == 1) {
+                self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:NLocalizedStr(@"NoData") reason:@"" suggestion:@"" placeholderImg:@"linkedin_binding_magnifier"];
+            }
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer setHidden:self.dataSourceArr.count == 0];
+        }
+        
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView reloadData];
+        [self changeTableviewHeight:self.dataSourceArr];
+        
+    } failed:^(NSError * _Nullable error) {
+        @strongify(self)
+        [self.tableView.refreshControl endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        
+        NSString *description = error.localizedDescription;
+        if (![description isNotBlank]) {
+            description = NLocalizedStr(@"NetErr");
+        }
+        self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
+    }];
+#else
     [NYSNetRequest jsonNetworkRequestWithType:POST
                                             url:@"/index/Course/list"
                                        parameters:argument
@@ -99,6 +139,7 @@
         }
         self.emptyError = [NSError errorCode:NSNYSErrorCodefailed description:description reason:error.localizedFailureReason suggestion:@"" placeholderImg:@"error"];
     }];
+#endif
 }
 
 #pragma mark - tableview delegate / dataSource

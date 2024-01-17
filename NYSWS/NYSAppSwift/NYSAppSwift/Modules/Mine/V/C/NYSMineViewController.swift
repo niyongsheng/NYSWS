@@ -141,7 +141,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         
         if sender.tag == 100 {
             let webVC = NYSRootWebViewController.init()
-            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
+            webVC.urlStr = "https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppSwift/NYSAppSwift"
             self.navigationController?.pushViewController(webVC, animated: true)
              
         } else if sender.tag == 101 {
@@ -153,14 +153,27 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         } else if sender.tag == 103 {
             AppManager.shared.showShare(content: nil)
             
+        } else if sender.tag == 104 {
+            let webVC = NYSRootWebViewController.init()
+            webVC.urlStr = "https://github.com/niyongsheng/NYSWS/issues/new"
+            self.navigationController?.pushViewController(webVC, animated: true)
+            
         } else {
-            AppManager.shared.showAlert(title: "未定义")
+            let webVC = NYSRootWebViewController.init()
+            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
+            self.navigationController?.pushViewController(webVC, animated: true)
         }
     }
     
     @IBAction func serviceTelBtnOnclicked(_ sender: UIButton) {
-        if let telURL = URL(string: "tel://" + (AppManager.shared.userInfo?.tel ?? "")) {
+        guard let telURL = URL(string: "tel://" + (AppManager.shared.userInfo?.tel ?? ""))  else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(telURL) {
             UIApplication.shared.open(telURL, options: [:], completionHandler: nil)
+        } else {
+            print("无法呼叫电话")
         }
     }
     

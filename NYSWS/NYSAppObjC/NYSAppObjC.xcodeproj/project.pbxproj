@@ -34,6 +34,10 @@
 		C8464AAF2A0A2E88003CD376 /* NYSMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8464AB12A0A2E88003CD376 /* NYSMineViewController.xib */; };
 		C8464AC02A0B7B91003CD376 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8464ABF2A0B7B91003CD376 /* AppManager.m */; };
 		C8464AC32A0B7C21003CD376 /* NYSUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C8464AC22A0B7C21003CD376 /* NYSUserInfo.m */; };
+		C8549F772B575EC900B3FE8E /* index_Courseclass_list.json in Resources */ = {isa = PBXBuildFile; fileRef = C8549F762B575EC900B3FE8E /* index_Courseclass_list.json */; };
+		C8549F7B2B575FBD00B3FE8E /* index_Course_list.json in Resources */ = {isa = PBXBuildFile; fileRef = C8549F782B575FBD00B3FE8E /* index_Course_list.json */; };
+		C8549F7C2B575FBD00B3FE8E /* index_Course_recommend_list.json in Resources */ = {isa = PBXBuildFile; fileRef = C8549F792B575FBD00B3FE8E /* index_Course_recommend_list.json */; };
+		C8549F7D2B575FBD00B3FE8E /* index_Index_banner.json in Resources */ = {isa = PBXBuildFile; fileRef = C8549F7A2B575FBD00B3FE8E /* index_Index_banner.json */; };
 		C8587E3B2A132B2700DE6587 /* UIButton+General.m in Sources */ = {isa = PBXBuildFile; fileRef = C8587E392A132B2700DE6587 /* UIButton+General.m */; };
 		C8587E3F2A14760400DE6587 /* NYSWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8587E3D2A14760400DE6587 /* NYSWordCell.m */; };
 		C8587E402A14760400DE6587 /* NYSWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8587E3E2A14760400DE6587 /* NYSWordCell.xib */; };
@@ -306,6 +310,10 @@
 		C8464ABF2A0B7B91003CD376 /* AppManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		C8464AC12A0B7C21003CD376 /* NYSUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSUserInfo.h; sourceTree = "<group>"; };
 		C8464AC22A0B7C21003CD376 /* NYSUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSUserInfo.m; sourceTree = "<group>"; };
+		C8549F762B575EC900B3FE8E /* index_Courseclass_list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = index_Courseclass_list.json; sourceTree = "<group>"; };
+		C8549F782B575FBD00B3FE8E /* index_Course_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = index_Course_list.json; sourceTree = "<group>"; };
+		C8549F792B575FBD00B3FE8E /* index_Course_recommend_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = index_Course_recommend_list.json; sourceTree = "<group>"; };
+		C8549F7A2B575FBD00B3FE8E /* index_Index_banner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = index_Index_banner.json; sourceTree = "<group>"; };
 		C8587E392A132B2700DE6587 /* UIButton+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+General.m"; sourceTree = "<group>"; };
 		C8587E3A2A132B2700DE6587 /* UIButton+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+General.h"; sourceTree = "<group>"; };
 		C8587E3C2A14760400DE6587 /* NYSWordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSWordCell.h; sourceTree = "<group>"; };
@@ -643,6 +651,17 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		C8549F752B575E9500B3FE8E /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				C8549F762B575EC900B3FE8E /* index_Courseclass_list.json */,
+				C8549F782B575FBD00B3FE8E /* index_Course_list.json */,
+				C8549F792B575FBD00B3FE8E /* index_Course_recommend_list.json */,
+				C8549F7A2B575FBD00B3FE8E /* index_Index_banner.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		C8597A1029F51052008BEE7F = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +721,7 @@
 		C8597A9629F5124A008BEE7F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8549F752B575E9500B3FE8E /* Mock */,
 				C8B950B22A8495C8009E7128 /* TabBar */,
 				C8EE7E572A08996E000E3A3A /* Account */,
 				C8B7484629FBC31500673B75 /* Home */,
@@ -1338,6 +1358,7 @@
 				C85A34E22A0E449A00E42C6B /* UIBarButtonItemGrid@2x.png in Resources */,
 				C85A34DE2A0E449A00E42C6B /* UIBarButtonItemArrowLeft.png in Resources */,
 				C85A34EE2A0E449A00E42C6B /* ImageError.png in Resources */,
+				C8549F7D2B575FBD00B3FE8E /* index_Index_banner.json in Resources */,
 				C85A34FA2A0E449A00E42C6B /* ImageSelectedSmallOn@3x.png in Resources */,
 				C80648A42A149C60003397CD /* NYSRegisterVC.xib in Resources */,
 				C806491D2A14A3DE003397CD /* NYSFeedbackVC.xib in Resources */,
@@ -1370,6 +1391,7 @@
 				C8587E452A14762C00DE6587 /* NYSStatementCell.xib in Resources */,
 				C85A34ED2A0E449A00E42C6B /* VideoOverlay@3x.png in Resources */,
 				C85A34F92A0E449A00E42C6B /* UIBarButtonItemArrowRight@2x.png in Resources */,
+				C8549F772B575EC900B3FE8E /* index_Courseclass_list.json in Resources */,
 				C85A34EB2A0E449A00E42C6B /* PlayButtonOverlayLargeTap@3x.png in Resources */,
 				C80648F32A14A250003397CD /* NYSAboutViewController.xib in Resources */,
 				C8599BA72A038BF200DEA603 /* NYSBusinessView.xib in Resources */,
@@ -1406,9 +1428,11 @@
 				C85A34DF2A0E449A00E42C6B /* UIBarButtonItemGrid@3x.png in Resources */,
 				C80649162A14A350003397CD /* NYSWithdrawViewController.xib in Resources */,
 				C806489D2A149C15003397CD /* NYSConsultVC.xib in Resources */,
+				C8549F7C2B575FBD00B3FE8E /* index_Course_recommend_list.json in Resources */,
 				C8887BAF2A4AC9EC0015F75A /* NYSCacheViewController.xib in Resources */,
 				C8597A2729F51052008BEE7F /* Main.storyboard in Resources */,
 				C8C750382A04D35C00A91AAE /* NYSMessageCenterCell.xib in Resources */,
+				C8549F7B2B575FBD00B3FE8E /* index_Course_list.json in Resources */,
 				C85A34F42A0E449A00E42C6B /* VideoOverlay.png in Resources */,
 				C85A34F72A0E449A00E42C6B /* ImageSelectedOff@3x.png in Resources */,
 				C85A34E52A0E449A00E42C6B /* PlayButtonOverlayLargeTap@2x.png in Resources */,

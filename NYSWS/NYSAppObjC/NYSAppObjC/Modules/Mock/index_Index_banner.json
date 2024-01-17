@@ -1,0 +1,24 @@
+{
+  "msg" : "",
+  "data" : [
+    {
+      "content" : "",
+      "id" : 12,
+      "image" : "http:\/\/xyd.app12345.cn\/upload\/images\/75\/d9e3bb2a0db8f2f10c25784ecb9789.jpg",
+      "create_time" : "2023-08-24 15:13:38",
+      "type" : 0,
+      "name" : "幻灯片2",
+      "image_name" : "\/upload\/images\/75\/d9e3bb2a0db8f2f10c25784ecb9789.jpg"
+    },
+    {
+      "content" : "",
+      "id" : 2,
+      "image" : "http:\/\/xyd.app12345.cn\/upload\/images\/8b\/e5aaf106ae9f114f80449c549992d1.jpg",
+      "create_time" : null,
+      "type" : 0,
+      "name" : "幻灯片1",
+      "image_name" : "\/upload\/images\/8b\/e5aaf106ae9f114f80449c549992d1.jpg"
+    }
+  ],
+  "code" : 200
+}

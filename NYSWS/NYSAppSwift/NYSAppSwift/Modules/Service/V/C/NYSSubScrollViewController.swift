@@ -69,7 +69,8 @@ class NYSSubScrollViewController: NYSRootScrollViewController, NYSWaterfallLayou
 extension NYSSubScrollViewController {
     
     override func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
-        return -100;
+        let offset = (850 - scrollView.height) * 2 // 适配iphoneX
+        return offset
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

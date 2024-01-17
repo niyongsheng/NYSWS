@@ -10,15 +10,13 @@
 #import "WSScrollLabel.h"
 #import "PublicHeader.h"
 #import "LEETheme.h"
+#import "UIButton+NYS.h"
 #import "NSBundle+NYSFramework.h"
 
 #import <MJRefresh/MJRefresh.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 #define NYSTopHeight [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager.statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height
-
-#define NYSFrameworkLocalizedString(key, comment) \
-NSLocalizedStringFromTableInBundle(key, nil, [NSBundle bundleForClass:[self class]], comment)
 
 @interface NYSBaseViewController ()
 <
@@ -469,7 +467,7 @@ DZNEmptyDataSetDelegate
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
     UIEdgeInsets insets = scrollView.contentInset;
-    return insets.top == 0 ? -(NYSTopHeight + 44) : 0;
+    return insets.top / 2;
 }
 
 #pragma mark - DZNEmptyDataSetDelegate
@@ -509,9 +507,22 @@ DZNEmptyDataSetDelegate
     _isShowLiftBack = isShowLiftBack;
     
     NSInteger VCCount = self.navigationController.viewControllers.count;
-    // 当VC所在的导航控制器栈中的VC个数大于1 或者 是present出来的VC时，才展示返回按钮，其他情况不展示
+    // 当控制器不在导航栈顶 或者 控制器是被present出来的 -> 展示返回按钮
     if (isShowLiftBack && ( VCCount > 1 || self.navigationController.presentingViewController != nil || self.tabBarController == nil)) {
-        [self addNavigationItemWithImageNames:@[@"back_icon"] isLeft:YES target:self action:@selector(backBtnClicked) tags:@[@"1"]];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.lee_theme
+            .LeeAddCustomConfig(DAY, ^(id  _Nonnull item) {
+                [(UIButton *)item setImage:[NYSUIKitUtilities imageNamed:@"back_icon_day"] forState:UIControlStateNormal];
+            })
+            .LeeAddCustomConfig(NIGHT, ^(id  _Nonnull item) {
+                [(UIButton *)item setImage:[NYSUIKitUtilities imageNamed:@"back_icon_night"] forState:UIControlStateNormal];
+            });
+        btn.frame = CGRectMake(0, 0, 30, 30);
+        [btn addTarget:self action:@selector(backBtnOnclicked:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+        
     } else {
         self.navigationItem.hidesBackButton = YES;
         UIBarButtonItem *NULLBar = [[UIBarButtonItem alloc] initWithCustomView:[UIView new]];
@@ -519,7 +530,7 @@ DZNEmptyDataSetDelegate
     }
 }
 
-- (void)backBtnClicked {
+- (void)backBtnOnclicked:(UIButton *)sender {
     if (self.presentingViewController) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
@@ -527,92 +538,76 @@ DZNEmptyDataSetDelegate
     }
 }
 
-#pragma mark — 导航栏添加图片按钮方法
-/**
- 导航栏添加图标按钮
- 
- @param imageNames 图标数组
- @param isLeft 是否是左边 非左即右
- @param target 目标控制器
- @param action 点击方法
- @param tags tags数组 回调区分用
- */
-- (void)addNavigationItemWithImageNames:(NSArray *)imageNames isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray<NSString *> *)tags {
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    
-    NSInteger i = 0;
-    for (NSString *imageName in imageNames) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.lee_theme
-            .LeeAddCustomConfig(DAY, ^(id  _Nonnull item) {
-                [(UIButton *)item setImage:[NYSUIKitUtilities imageNamed:[imageName stringByAppendingString:@"_day"]] forState:UIControlStateNormal];
-            })
-            .LeeAddCustomConfig(NIGHT, ^(id  _Nonnull item) {
-                [(UIButton *)item setImage:[NYSUIKitUtilities imageNamed:[imageName stringByAppendingString:@"_night"]] forState:UIControlStateNormal];
-            });
-        btn.frame = CGRectMake(0, 0, 30, 30);
-        [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-        
-        if (isLeft) {
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
-        } else {
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-        }
-        
-        btn.tag = [tags[i++] integerValue];
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-        [items addObject:item];
-    }
-    if (isLeft) {
-        self.navigationItem.leftBarButtonItems = items;
-    } else {
-        self.navigationItem.rightBarButtonItems = items;
-    }
-}
+#pragma mark — 导航栏添加按钮方法
 
-#pragma mark — 导航栏添加文字按钮方法
-/**
- 导航栏添加文字按钮
- 
- @param titles 文字数组
- @param isLeft 是否是左边 非左即右
- @param target 目标控制器
- @param action 点击方法
- @param tags tags数组 回调区分用
- @return 文字按钮数组
- */
-- (NSMutableArray<UIBarButtonItem *> *)addNavigationItemWithTitles:(NSArray *)titles isLeft:(BOOL)isLeft target:(id)target action:(SEL)action tags:(NSArray<NSString *> *)tags {
-    
-    NSMutableArray * items = [[NSMutableArray alloc] init];
-    
-    NSMutableArray * buttonArray = [NSMutableArray array];
-    NSInteger i = 0;
-    for (NSString * title in titles) {
-        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+/// 导航栏添加文字按钮
+/// - Parameters:
+///   - titles: 文字数组
+///   - alignment: 靠左\靠右
+///   - completion: 点击回调
+- (void)addNavigationItemWithTitles:(NSArray<NSString *> *)titles alignment:(NYSNavItemAlignment)alignment completion:(NYSNavItemCompletion)completion {
+    NSMutableArray *buttonArray = [NSMutableArray array];
+    for (int i = 0; i < titles.count; i ++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(0, 0, 30, 30);
-        [btn setTitle:title forState:UIControlStateNormal];
-        [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:titles[i] forState:UIControlStateNormal];
+        btn.lee_theme.LeeConfigButtonTitleColor(@"default_nav_bar_tint_color", UIControlStateNormal);
         btn.titleLabel.font = [UIFont systemFontOfSize:16.f];
-        btn.tag = [tags[i++] integerValue];
+        [btn setTag:i];
         [btn sizeToFit];
-        
-        // 设置偏移
-        if (isLeft) {
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
-        } else {
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
-        }
-        
-        UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-        [items addObject:item];
         [buttonArray addObject:btn];
     }
-    if (isLeft) {
-        self.navigationItem.leftBarButtonItems = items;
-    } else {
-        self.navigationItem.rightBarButtonItems = items;
+    [self addNavigationItems:buttonArray alignment:alignment completion:completion];
+}
+
+/// 导航栏添加图标按钮
+/// - Parameters:
+///   - images: 图标数组
+///   - alignment: 靠左\靠右
+///   - completion: 点击回调
+- (void)addNavigationItemWithImages:(NSArray<UIImage *> *)images alignment:(NYSNavItemAlignment)alignment completion:(NYSNavItemCompletion)completion {
+    NSMutableArray *buttonArray = [NSMutableArray array];
+    for (int i = 0; i < images.count; i ++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, 30, 30);
+        [btn setImage:images[i] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:16.f];
+        [btn setTag:i];
+        [btn sizeToFit];
+        [buttonArray addObject:btn];
     }
-    return buttonArray;
+    [self addNavigationItems:buttonArray alignment:alignment completion:completion];
+}
+
+/// 导航栏添加按钮(*指定tag值*)
+/// - Parameters:
+///   - buttonArray: 按钮数组
+///   - alignment: 靠左\靠右
+///   - completion: 点击回调
+- (void)addNavigationItems:(NSArray<UIButton *> *)buttonArray alignment:(NYSNavItemAlignment)alignment completion:(NYSNavItemCompletion)completion {
+    NSMutableArray<UIBarButtonItem *> *items = [[NSMutableArray alloc] init];
+    for (int i = 0; i < buttonArray.count; i ++) {
+        UIButton *button = buttonArray[i];
+        [button handleControlEvent:UIControlEventTouchUpInside withBlock:^(UIButton *button) {
+            if (completion)
+                completion(button, button.tag);
+        }];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
+        [items addObject:item];
+    }
+    
+    switch (alignment) {
+        case NYSNavItemAlignmentRight:
+            self.navigationItem.rightBarButtonItems = items;
+            break;
+            
+        case NYSNavItemAlignmentLeft:
+            self.navigationItem.leftBarButtonItems = items;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 /// 修改图片大小

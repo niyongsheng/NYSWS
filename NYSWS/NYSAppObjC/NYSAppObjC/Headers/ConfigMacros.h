@@ -3,10 +3,14 @@
 #define CommonMacros_h
 
 #pragma mark -- 网络相关 --
+#define MockData // 是否使用模拟数据
+//#define SV_APP_EXTENSIONS
+
+// 服务器
 #define DevelopSever 1
 #define TestSever    0
 #define ProductSever 0
-#define SV_APP_EXTENSIONS
+
 #if DevelopSever
 /** 接口前缀-开发服务器*/
 static NSString *const APP_CONTENT_PATH     = @"";

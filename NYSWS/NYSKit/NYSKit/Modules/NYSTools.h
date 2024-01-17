@@ -55,22 +55,22 @@ typedef void (^NYSToolsDismissCompletion)(void);
 
 
 #pragma mark - 时间相关
-/// 获取当前时间戳（单位：秒）
+/// 获取当前时间戳（单位：毫秒）
 + (NSString *)getNowTimeTimestamp;
 
 /// 将时间戳转换成格式化的时间字符串
-/// @param timestamp 时间戳
+/// @param timestamp 时间戳（单位：毫秒）
 /// @param format 默认格式 "YYYY-MM-dd HH:mm:ss"
 + (NSString *)transformTimestampToTime:(NSTimeInterval)timestamp format:(NSString *)format;
 
-/// 将某个时间转化成 时间戳
-/// @param formatTime 时间z字符串
+/// 将某个时间转化成 时间戳（单位：毫秒）
+/// @param formatTime 时间字符串
 /// @param format 默认格式"YYYY-MM-dd HH:mm:ss"
 + (NSTimeInterval)transformTimeToTimestamp:(NSString *)formatTime format:(NSString *)format;
 
 /**
  时间戳转换成XX分钟之前
- @param timestamp 时间戳
+ @param timestamp 时间戳（单位：毫秒）
  */
 + (NSString *)timeBeforeInfoWithTimestamp:(NSInteger)timestamp;
 
@@ -162,5 +162,14 @@ typedef void (^NYSToolsDismissCompletion)(void);
  @param completion 回调
  */
 + (void)systemShare:(NSArray *)items controller:(UIViewController *)controller completion:(UIActivityViewControllerCompletionWithItemsHandler)completion;
+
+/// 日志打印
+/// @param text log
++ (void)log:(NSString *)text;
+
+/// 日志打印
+/// @param text log
+/// @param layer 层级
++ (void)log:(NSString *)text layer:(NSInteger)layer;
 
 @end

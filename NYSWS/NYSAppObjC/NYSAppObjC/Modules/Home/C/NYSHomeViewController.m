@@ -169,13 +169,12 @@ NYSHomeCourseVCDelegate
 
 - (void)getData {
     @weakify(self)
-    
-    // 轮播图
-    [NYSNetRequest jsonNetworkRequestWithType:POST
-                                            url:@"/index/Index/banner"
-                                       parameters:@{ @"page": @1, @"limit": @999 }
-                                         remark:@"轮播图"
-                                        success:^(id response) {
+
+#ifdef MockData
+    [NYSNetRequest mockRequestWithParameters:@"index_Index_banner.json"
+                                     isCheck:true
+                                      remark:@"轮播图"
+                                     success:^(id response) {
         @strongify(self)
         self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
         self.bannerParam.wDataSet(self.bannerArray);
@@ -184,12 +183,10 @@ NYSHomeCourseVCDelegate
         
     }];
     
-    // 推荐课程
-    [NYSNetRequest jsonNetworkRequestWithType:POST
-                                            url:@"/index/Course/recommend_list"
-                                       parameters:@{ @"page": @1, @"limit": @999 }
-                                         remark:@"推荐课程"
-                                        success:^(id response) {
+    [NYSNetRequest mockRequestWithParameters:@"index_Course_recommend_list.json"
+                                     isCheck:true
+                                      remark:@"推荐课程"
+                                     success:^(id response) {
         @strongify(self)
         CGFloat h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
         self.recommendedArray = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response].mutableCopy;
@@ -210,6 +207,46 @@ NYSHomeCourseVCDelegate
     } failed:^(NSError * _Nullable error) {
         
     }];
+#else
+    [NYSNetRequest jsonNetworkRequestWithType:POST
+                                            url:@"/index/Index/banner"
+                                       parameters:@{ @"page": @1, @"limit": @999 }
+                                         remark:@"轮播图"
+                                        success:^(id response) {
+        @strongify(self)
+        self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
+        self.bannerParam.wDataSet(self.bannerArray);
+        [self.bannerView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+    
+    [NYSNetRequest jsonNetworkRequestWithType:POST
+                                          url:@"/index/Course/recommend_list"
+                                   parameters:@{ @"page": @1, @"limit": @999 }
+                                       remark:@"推荐课程"
+                                      success:^(id response) {
+        @strongify(self)
+        CGFloat h = self.bannerContainerView.bottom + HomeRecommendedHeight + 2 * NNormalSpace;
+        self.recommendedArray = [NSArray modelArrayWithClass:[NYSHomeCourseModel class] json:response].mutableCopy;
+        if (self.recommendedArray.count == 0) {
+            self.recommendedView.height = 0;
+            self.recommendedView.hidden = YES;
+            
+            h = self.bannerContainerView.bottom + NNormalSpace;
+        } else {
+            self.recommendedView.height = HomeRecommendedHeight;
+            self.recommendedView.hidden = NO;
+        }
+        self.pageTitleView.top = h;
+        self.pageContentCollectionView.top = h + 44;
+        
+        self.recommendedParam.wDataSet(self.recommendedArray);
+        [self.recommendedView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+#endif
 }
 
 - (PopTableListView *)popListView{

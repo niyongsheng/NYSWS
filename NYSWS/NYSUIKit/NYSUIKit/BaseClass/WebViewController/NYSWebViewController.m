@@ -211,13 +211,13 @@
     return nil;
 }
 
-- (void)backBtnClicked {
+- (void)backBtnOnclicked:(UIButton *)sender {
     [self.webView stopLoading];
     
     if ([self.webView canGoBack]) {
         [self.webView goBack];
     } else {
-        [super backBtnClicked];
+        [super backBtnOnclicked:sender];
     }
 }
 

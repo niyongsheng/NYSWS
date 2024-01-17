@@ -129,11 +129,12 @@ static NSString *CellID = @"NYSCourseCell";
 - (void)getData:(BOOL)isHeader {
     // 加载轮播数据
     @weakify(self)
-    [NYSNetRequest jsonNetworkRequestWithType:POST
-                                            url:@"/index/Index/banner"
-                                       parameters:@{ @"page": @1, @"limit": @999 }
-                                         remark:@"轮播图"
-                                        success:^(id response) {
+    
+#ifdef MockData
+    [NYSNetRequest mockRequestWithParameters:@"index_Index_banner.json"
+                                     isCheck:true
+                                      remark:@"轮播图"
+                                     success:^(id response) {
         @strongify(self)
         self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
         self.bannerParam.wDataSet(self.bannerArray);
@@ -141,6 +142,20 @@ static NSString *CellID = @"NYSCourseCell";
     } failed:^(NSError * _Nullable error) {
         
     }];
+#else
+    [NYSNetRequest jsonNetworkRequestWithType:POST
+                                          url:@"/index/Index/banner"
+                                   parameters:@{ @"page": @1, @"limit": @999 }
+                                       remark:@"轮播图"
+                                      success:^(id response) {
+        @strongify(self)
+        self.bannerArray = [NSArray modelArrayWithClass:[NYSBannerModel class] json:response].mutableCopy;
+        self.bannerParam.wDataSet(self.bannerArray);
+        [self.bannerView updateUI];
+    } failed:^(NSError * _Nullable error) {
+        
+    }];
+#endif
     
     NSMutableDictionary *argument = @{
         @"page": @(_pageNo),
@@ -207,6 +222,11 @@ static NSString *CellID = @"NYSCourseCell";
 
 - (void)textFieldDidChangeSelection:(UITextField *)textField {
     [self headerRereshing];
+}
+
+#pragma mark - DZNEmptyDataSetSource
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
+    return 100;
 }
 
 #pragma mark - tableview delegate / dataSource

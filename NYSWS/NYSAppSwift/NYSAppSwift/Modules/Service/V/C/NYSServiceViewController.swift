@@ -86,6 +86,14 @@ class NYSServiceViewController: NYSRootViewController {
         
         // 监听子视图发出的通知
         NotificationCenter.default.addObserver(self, selector: #selector(subTableViewDidScroll), name: NSNotification.Name(NNProSubScrollViewDidScroll), object: nil)
+        
+        NYSTools.log("test log content")
+//        self.addNavigationItem(withTitles: ["测试", "搜索"], alignment: .right) { sender, index in
+//            
+//        }
+//        self.addNavigationItem(with: [UIImage(named: "pic_32px_def_touxiang")!, UIImage(named: "pic_48px_def_touxiang")!], alignment: .left) { sender, index in
+//            
+//        }
     }
     
     var tempSubScrollView: UIScrollView?
