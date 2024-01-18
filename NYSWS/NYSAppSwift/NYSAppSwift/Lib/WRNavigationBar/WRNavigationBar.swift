@@ -261,10 +261,10 @@ extension UINavigationController: WRFatherAwakeProtocol
         setNeedsNavigationBarUpdate(tintColor: newTintColor)
         
         // change navBarTitleColor
-//        let fromTitleColor = fromVC?.navBarTitleColor ?? WRNavigationBar.defaultNavBarTitleColor
-//        let toTitleColor = toVC?.navBarTitleColor ?? WRNavigationBar.defaultNavBarTitleColor
-//        let newTitleColor = WRNavigationBar.middleColor(fromColor: fromTitleColor, toColor: toTitleColor, percent: progress)
-//        setNeedsNavigationBarUpdate(titleColor: newTitleColor)
+        let fromTitleColor = fromVC?.navBarTitleColor ?? WRNavigationBar.defaultNavBarTitleColor
+        let toTitleColor = toVC?.navBarTitleColor ?? WRNavigationBar.defaultNavBarTitleColor
+        let newTitleColor = WRNavigationBar.middleColor(fromColor: fromTitleColor, toColor: toTitleColor, percent: progress)
+        setNeedsNavigationBarUpdate(titleColor: newTitleColor)
         
         // change navBar _UIBarBackground alpha
         let fromBarBackgroundAlpha = fromVC?.navBarBackgroundAlpha ?? WRNavigationBar.defaultBackgroundAlpha
@@ -543,15 +543,15 @@ extension UIViewController: WRAwakeProtocol
             }
             return bgImage
         }
-//        set {
-//            if customNavBar.isKind(of: UINavigationBar.self) {
-//                let navBar = customNavBar as! UINavigationBar
-//                navBar.wr_setBackgroundImage(image: newValue!)
-//            }
-//            else {
-//                objc_setAssociatedObject(self, &AssociatedKeys.navBarBackgroundImage, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//            }
-//        }
+        set {
+            if customNavBar.isKind(of: UINavigationBar.self) {
+                let navBar = customNavBar as! UINavigationBar
+                navBar.wr_setBackgroundImage(image: newValue!)
+            }
+            else {
+                objc_setAssociatedObject(self, &AssociatedKeys.navBarBackgroundImage, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
     }
     
     // navigationBar barTintColor
@@ -565,15 +565,15 @@ extension UIViewController: WRAwakeProtocol
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.navBarBarTintColor, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
-//            if customNavBar.isKind(of: UINavigationBar.self) {
-//                let navBar = customNavBar as! UINavigationBar
-//                navBar.wr_setBackgroundColor(color: newValue)
-//            }
-//            else {
+            if customNavBar.isKind(of: UINavigationBar.self) {
+                let navBar = customNavBar as! UINavigationBar
+                navBar.wr_setBackgroundColor(color: newValue)
+            }
+            else {
                 if canUpdateNavBarBarTintColorOrBackgroundAlpha == true {
                     navigationController?.setNeedsNavigationBarUpdate(barTintColor: newValue)
                 }
-//            }
+            }
         }
     }
 
@@ -589,8 +589,8 @@ extension UIViewController: WRAwakeProtocol
             objc_setAssociatedObject(self, &AssociatedKeys.navBarBackgroundAlpha, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if customNavBar.isKind(of: UINavigationBar.self) {
-//                let navBar = customNavBar as! UINavigationBar
-//                navBar.wr_setBackgroundAlpha(alpha: newValue)
+                let navBar = customNavBar as! UINavigationBar
+                navBar.wr_setBackgroundAlpha(alpha: newValue)
             }
             else {
                 if canUpdateNavBarBarTintColorOrBackgroundAlpha == true {
@@ -622,8 +622,8 @@ extension UIViewController: WRAwakeProtocol
             objc_setAssociatedObject(self, &AssociatedKeys.navBarTintColor, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if customNavBar.isKind(of: UINavigationBar.self) {
-//                let navBar = customNavBar as! UINavigationBar
-//                navBar.tintColor = newValue
+                let navBar = customNavBar as! UINavigationBar
+                navBar.tintColor = newValue
             }
             else
             {
@@ -646,8 +646,8 @@ extension UIViewController: WRAwakeProtocol
             objc_setAssociatedObject(self, &AssociatedKeys.navBarTitleColor, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if customNavBar.isKind(of: UINavigationBar.self) {
-//                let navBar = customNavBar as! UINavigationBar
-//                navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:newValue]
+                let navBar = customNavBar as! UINavigationBar
+                navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:newValue]
             }
             else
             {

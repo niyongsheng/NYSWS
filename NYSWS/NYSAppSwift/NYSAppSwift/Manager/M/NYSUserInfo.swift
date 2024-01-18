@@ -12,7 +12,7 @@ struct NYSUserInfo: Equatable {
     private(set) var id : Int = 0
     private(set) var isBan : Bool = false
     private(set) var tagArr : [String] = []
-    private(set) var aliasArr : [String] = []
+    private(set) var alias : String?
     private(set) var roleArr : [String] = []
     private(set) var permissionArr : [String] = []
     private(set) var email : String?
@@ -32,7 +32,7 @@ extension NYSUserInfo: ExCodable {
         KeyMap(\.id, to: "id"),
         KeyMap(\.isBan, to: "isBan"),
         KeyMap(\.tagArr, to: "tagArr"),
-        KeyMap(\.aliasArr, to: "aliasArr"),
+        KeyMap(\.alias, to: "alias"),
         KeyMap(\.roleArr, to: "roleArr"),
         KeyMap(\.permissionArr, to: "permissionArr"),
         KeyMap(\.email, to: "email"),

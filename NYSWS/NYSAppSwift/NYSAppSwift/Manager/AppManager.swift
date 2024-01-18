@@ -95,7 +95,7 @@ extension AppManager {
                     NYSTools.log("设置标签：\(resultCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
 
-                JPUSHService.setAlias(userinfo!.aliasArr.first, completion: { resultCode, tags, seq in
+                JPUSHService.setAlias(userinfo!.alias, completion: { resultCode, tags, seq in
                     NYSTools.log("设置别名：\(resultCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
                 
