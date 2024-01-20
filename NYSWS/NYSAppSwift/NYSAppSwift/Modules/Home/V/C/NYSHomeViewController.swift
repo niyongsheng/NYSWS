@@ -51,10 +51,14 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
         configure.selectedColor = NAppThemeColor
         configure.indicatorColor = NAppThemeColor
         configure.indicatorToBottomDistance = 0
+        configure.badgeHeight = 15
+        configure.badgeCornerRadius = 7.5
+        configure.badgeOff = CGPoint(x: -10, y: 5)
         
         let frame = CGRect.init(x: 0, y: searchView.bottom + 10, width: UIScreen.width, height: RealValueX(x: 40))
         let titles = ["待确认", "待装货", "待卸货", "待签收", "已完成"]
         let pagingTitle = SGPagingTitleView(frame: frame, titles: titles, configure: configure)
+        pagingTitle.addBadge(text: "99+", index: 0)
         pagingTitle.backgroundColor = .clear
         pagingTitle.delegate = self
         return pagingTitle
