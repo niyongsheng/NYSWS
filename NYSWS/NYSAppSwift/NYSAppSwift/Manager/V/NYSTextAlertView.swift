@@ -9,6 +9,7 @@ import UIKit
 
 class NYSTextAlertView: NYSRootAlertView {
 
+    @IBOutlet weak var iconIV: UIImageView!
     @IBOutlet weak var contentTV: UITextView!
     @IBOutlet weak var closeBtn: UIButton!
     
@@ -19,7 +20,7 @@ class NYSTextAlertView: NYSRootAlertView {
     override func setupView() {
         super.setupView()
         
-        self.addRadius(NAppSpace)
+        self.addCornerRadius(NAppRadius, borderWidth: 0.75, borderColor: .white)
     }
     
     @IBAction func closeBtnOnclicked(_ sender: UIButton) {

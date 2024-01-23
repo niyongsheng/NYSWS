@@ -143,7 +143,7 @@ extension AppAlertManager {
         appOverdueAlertView.tag = index ?? 0
         let popup = FFPopup(contentView: appOverdueAlertView, showType: .bounceInFromBottom, dismissType: .bounceOutToBottom, maskType: .dimmed, dismissOnBackgroundTouch: false, dismissOnContentTouch: false)
         popup.maskType = .none
-        popup.showInDuration = showInDuration
+        popup.showInDuration = showInDuration * 1.5
         popup.dismissOutDuration = dismissOutDuration
         
         var targetView: UIView
@@ -187,6 +187,7 @@ extension AppAlertManager {
         textAlertView.popup = popup
         textAlertView.complete = complete
         textAlertView.contentTV.attributedText = attributedText
+        textAlertView.iconIV.image = UIImage(named: imageName)
     }
     
 }
