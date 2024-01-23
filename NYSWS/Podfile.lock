@@ -29,6 +29,7 @@ PODS:
   - BRPickerView/StringPickerView (2.8.1):
     - BRPickerView/Base
   - CocoaDebug (1.7.7)
+  - Disk (0.6.4)
   - DZNEmptyDataSet (1.8.1)
   - ExCodable (0.6.0)
   - FFPopup (1.1.5)
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - Alamofire (= 5.8.0)
   - BRPickerView (= 2.8.1)
   - CocoaDebug
+  - Disk (= 0.6.4)
   - DZNEmptyDataSet (= 1.8.1)
   - ExCodable
   - FFPopup (= 1.1.5)
@@ -130,7 +132,7 @@ DEPENDENCIES:
   - WRNavigationBar (= 1.4.0)
   - XHLaunchAd (= 3.9.12)
   - YYKit (= 1.0.9)
-  - YYModel
+  - YYModel (= 1.0.4)
   - ZCycleView (= 1.0.4)
   - ZLPhotoBrowser (= 4.4.0)
   - ZLPhotoBrowser-objc (= 1.0.4)
@@ -142,6 +144,7 @@ SPEC REPOS:
     - Alamofire
     - BRPickerView
     - CocoaDebug
+    - Disk
     - DZNEmptyDataSet
     - ExCodable
     - FFPopup
@@ -189,6 +192,7 @@ SPEC CHECKSUMS:
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
   BRPickerView: 2531a2d4d0fea0b57a1c738de215af0f88863a2f
   CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
+  Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ExCodable: bffaf3d9623fc0ee464a07441a1711ea9860c0f7
   FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
@@ -230,6 +234,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: f0c1c6aa01b42980b892015fffa4fd212fe71862
+PODFILE CHECKSUM: ae13ff9511ab3d3c5434cb4c22b5ce711d78ddd7
 
 COCOAPODS: 1.12.0

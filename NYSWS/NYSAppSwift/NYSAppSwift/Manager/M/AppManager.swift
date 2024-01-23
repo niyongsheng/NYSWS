@@ -11,11 +11,23 @@ import NYSKit
 import NYSUIKit
 import RxSwift
 import ExCodable
+import Disk
 
 final class AppManager {
     
     /// 用户信息
-    private(set) var userInfo: NYSUserInfo?
+    private(set) var userInfo: NYSUserInfo = {
+        if let userinfo = try? Disk.retrieve("userinfo.json", from: .documents, as: NYSUserInfo.self) {
+            return userinfo
+        }
+        return NYSUserInfo()
+    }() {
+        didSet {
+            try? Disk.save(userInfo, to: .documents, as: "userinfo.json")
+            userinfoSubject.onNext(userInfo)
+        }
+    }
+    
     var seq: Int = 0
     let userinfoSubject = PublishSubject<NYSUserInfo>()
     private let disposeBag = DisposeBag()
@@ -56,6 +68,7 @@ extension AppManager {
     
     typealias AppManagerCompletion = ((_ isSuccess:Bool, _ userInfo:NYSUserInfo?, _ error:Error?) -> Void)?
     
+    /// 登入
     func loginHandler(loginType: AppLoginType, params: [String: Any], completion: AppManagerCompletion) {
     
         NYSNetRequest.mockRequest(withParameters: "login_data.json", 
@@ -71,9 +84,12 @@ extension AppManager {
         })
     }
     
+    /// 登出
     func logoutHandler() {
         // 1.清除Token
         $token.remove()
+        NYSKitManager.shared().token = nil
+        try? Disk.clear(.documents)
         
         // 2.清除标签别名
         JPUSHService.cleanTags(nil, seq: self.seq)
@@ -106,7 +122,7 @@ extension AppManager {
             
             do {
                 let userinfo = try response?.decoded() as NYSUserInfo?
-                self?.userInfo = userinfo
+                self?.userInfo = userinfo ?? NYSUserInfo()
     
                 let tagSet: Set<String> = Set(userinfo!.tagArr)
                 JPUSHService.setTags(tagSet, completion: { resultCode, tags, seq in
@@ -117,11 +133,9 @@ extension AppManager {
                     NYSTools.log("设置别名：\(resultCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
                 
-                self?.userinfoSubject.onNext(userinfo!)
                 completion?(true, self?.userInfo, nil)
                 
             } catch {
-                self?.userinfoSubject.onError(error)
                 AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
             }
             

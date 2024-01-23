@@ -60,10 +60,10 @@ inhibit_all_warnings!
 
 workspace './NYSWS.xcworkspace'
 source 'https://github.com/CocoaPods/Specs.git'
+#source 'https://gitee.com/mirrors/CocoaPods-Specs.git'
 
 # 公共依赖库
 def commonPods
-  pod 'FMDB', '2.7.5'
   pod 'FFPopup', '1.1.5'
   pod 'SGQRCode', '4.1.0'
   pod 'SGPagingView', '2.1.0'
@@ -74,13 +74,16 @@ end
 
 # Swift 示例项目
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
+  use_frameworks!
   
   commonPods
+  pod 'Disk', '0.6.4'
   pod 'RxSwift', '6.6.0'
   pod 'RxCocoa', '6.6.0'
   pod 'AcknowList', '3.0.1'
   pod 'Alamofire', '5.8.0'
   pod 'ExCodable'
+  pod 'YYModel', '1.0.4'
   pod 'Kingfisher', '7.10.1'
   pod 'lottie-ios', '2.5.3'
   pod 'ZCycleView', '1.0.4'
@@ -101,6 +104,7 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   use_frameworks! :linkage => :static
   
   commonPods
+  pod 'FMDB', '2.7.5'
   pod 'YYKit', '1.0.9'
   pod 'Masonry', '1.1.0'
   pod 'FlexLib', '3.1.6'
@@ -145,8 +149,6 @@ target 'NYSKit' do project './NYSKit/NYSKit.xcodeproj'
   pod 'AFNetworking', '4.0.1'
   pod 'SVProgressHUD', '2.2.5'
 end
-
-
 ```
 
 ## apple-app-site-association

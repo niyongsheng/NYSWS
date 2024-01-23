@@ -175,7 +175,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     }
     
     @IBAction func serviceTelBtnOnclicked(_ sender: UIButton) {
-        guard let telURL = URL(string: "tel://" + (AppManager.shared.userInfo?.tel ?? ""))  else {
+        guard let telURL = URL(string: "tel://" + (AppManager.shared.userInfo.tel ?? ""))  else {
             return
         }
         

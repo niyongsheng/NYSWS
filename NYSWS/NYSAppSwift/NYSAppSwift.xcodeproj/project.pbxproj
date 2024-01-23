@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56ECABF0A775F8FC7A6144C8 /* libPods-NYSAppSwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F52BF276C3DBC21909EF4A3 /* libPods-NYSAppSwift.a */; };
+		9759DA7CC6DDFDC2398D1956 /* Pods_NYSAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */; };
 		C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */; };
 		C80EE9E62B3ECE2900F79AD0 /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */; };
 		C80EE9EB2B43963800F79AD0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */; };
@@ -128,8 +128,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.release.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.release.xcconfig"; sourceTree = "<group>"; };
-		8F52BF276C3DBC21909EF4A3 /* libPods-NYSAppSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NYSAppSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSSettingViewController.swift; sourceTree = "<group>"; };
 		C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
 		C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */,
-				56ECABF0A775F8FC7A6144C8 /* libPods-NYSAppSwift.a in Frameworks */,
+				9759DA7CC6DDFDC2398D1956 /* Pods_NYSAppSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */,
-				8F52BF276C3DBC21909EF4A3 /* libPods-NYSAppSwift.a */,
+				42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -737,8 +737,8 @@
 				C8597A7A29F5119E008BEE7F /* Sources */,
 				C8597A7B29F5119E008BEE7F /* Frameworks */,
 				C8597A7C29F5119E008BEE7F /* Resources */,
-				AC772B460248A30C2480CD89 /* [CP] Copy Pods Resources */,
 				C8621DF12B31B23100F90DF0 /* Embed Frameworks */,
+				8AC14BD5FBCF21C9D1920DB7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -825,21 +825,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AC772B460248A30C2480CD89 /* [CP] Copy Pods Resources */ = {
+		8AC14BD5FBCF21C9D1920DB7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C1831D385453AAE0FFB3790E /* [CP] Check Pods Manifest.lock */ = {

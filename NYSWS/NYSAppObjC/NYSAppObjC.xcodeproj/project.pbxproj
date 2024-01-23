@@ -27,6 +27,7 @@
 		C80649162A14A350003397CD /* NYSWithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80649182A14A350003397CD /* NYSWithdrawViewController.xib */; };
 		C806491D2A14A3DE003397CD /* NYSFeedbackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C806491F2A14A3DE003397CD /* NYSFeedbackVC.xib */; };
 		C80649242A14A3E7003397CD /* NYSResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80649262A14A3E7003397CD /* NYSResetPwdViewController.xib */; };
+		C8200B262B5F976C00580A1F /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C8200B252B5F976C00580A1F /* DBManager.m */; };
 		C8427CA32A20B34300220171 /* NYSShareAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8427CA02A20B34200220171 /* NYSShareAlertView.m */; };
 		C8427CA42A20B34300220171 /* NYSShareAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8427CA12A20B34300220171 /* NYSShareAlertView.xib */; };
 		C8464AA12A0A268F003CD376 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8464AA32A0A268F003CD376 /* ThirdViewController.xib */; };
@@ -295,6 +296,8 @@
 		C80649252A14A3E7003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSResetPwdViewController.xib; sourceTree = "<group>"; };
 		C80649282A14A3EA003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSResetPwdViewController.strings"; sourceTree = "<group>"; };
 		C806492A2A14A3EB003397CD /* lo-LA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lo-LA"; path = "lo-LA.lproj/NYSResetPwdViewController.strings"; sourceTree = "<group>"; };
+		C8200B242B5F976C00580A1F /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		C8200B252B5F976C00580A1F /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		C8427CA02A20B34200220171 /* NYSShareAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSShareAlertView.m; sourceTree = "<group>"; };
 		C8427CA12A20B34300220171 /* NYSShareAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSShareAlertView.xib; sourceTree = "<group>"; };
 		C8427CA22A20B34300220171 /* NYSShareAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSShareAlertView.h; sourceTree = "<group>"; };
@@ -649,6 +652,8 @@
 				C8464AC22A0B7C21003CD376 /* NYSUserInfo.m */,
 				C8464ABE2A0B7B91003CD376 /* AppManager.h */,
 				C8464ABF2A0B7B91003CD376 /* AppManager.m */,
+				C8200B242B5F976C00580A1F /* DBManager.h */,
+				C8200B252B5F976C00580A1F /* DBManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1520,6 +1525,7 @@
 				C87D6DBE2A161572009033A5 /* CKAudioPlayerHelper.m in Sources */,
 				C8DBA6932A0F14C400F2656D /* UIView+Layout.m in Sources */,
 				C8C750432A04DED500A91AAE /* NYSCourseModel.m in Sources */,
+				C8200B262B5F976C00580A1F /* DBManager.m in Sources */,
 				C8B7481629FBAD0D00673B75 /* NYSTabbarViewController.m in Sources */,
 				C85A34942A0E40EA00E42C6B /* LLImagePickerCell.m in Sources */,
 				C85A34982A0E40EA00E42C6B /* UIView+LLExtension.m in Sources */,

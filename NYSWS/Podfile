@@ -7,7 +7,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 # 公共依赖库
 def commonPods
-  pod 'FMDB', '2.7.5'
   pod 'FFPopup', '1.1.5'
   pod 'SGQRCode', '4.1.0'
   pod 'SGPagingView', '2.1.0'
@@ -18,8 +17,10 @@ end
 
 # Swift 示例项目
 target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
+  use_frameworks!
   
   commonPods
+  pod 'Disk', '0.6.4'
   pod 'RxSwift', '6.6.0'
   pod 'RxCocoa', '6.6.0'
   pod 'AcknowList', '3.0.1'
@@ -47,6 +48,7 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   use_frameworks! :linkage => :static
   
   commonPods
+  pod 'FMDB', '2.7.5'
   pod 'YYKit', '1.0.9'
   pod 'Masonry', '1.1.0'
   pod 'FlexLib', '3.1.6'
