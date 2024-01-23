@@ -58,6 +58,10 @@
 
 #pragma mark - 富文本转换
 + (NSMutableAttributedString *)getAttributedString:(NSString *)string {
+    if (!string || string.length == 0) {
+        return nil;
+    }
+    
     NSMutableAttributedString *oneString = [[NSMutableAttributedString alloc]initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
     
     oneString.font = [UIFont systemFontOfSize:13];
@@ -85,6 +89,10 @@
 
 #pragma mark - 富文本尺寸计算
 + (CGRect)getAttributedStringFrame:(NSMutableAttributedString *)aString width:(CGFloat)width {
+    if (aString == nil) {
+        return CGRectZero;
+    }
+    
     YYTextContainer *container = [YYTextContainer new];
     container.size = CGSizeMake(width, CGFLOAT_MAX);
     YYTextLayout *layout = [YYTextLayout layoutWithContainer:container text:aString];

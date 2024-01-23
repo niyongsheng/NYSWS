@@ -59,7 +59,7 @@
     
     NSMutableAttributedString *aStr = [NYSCustomLabel getAttributedString:model.details];
     CGRect frame = [NYSCustomLabel getAttributedStringFrame:aStr width:kScreenWidth - 30];
-    self.label.attributedText = aStr;
+    if (aStr != nil) self.label.attributedText = aStr;
     self.label.frame = frame;
     self.descLHeight.constant = frame.size.height;
 
