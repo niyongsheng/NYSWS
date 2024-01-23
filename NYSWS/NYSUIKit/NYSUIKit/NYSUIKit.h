@@ -1,7 +1,8 @@
 //
 //  NYSUIKit.h
 //
-//  NYSUIKit http://github.com/niyongsheng
+//  NYSUIKit https://github.com/niyongsheng/NYSWS
+//  Document https://niyongsheng.github.io/Document/NYSWS/NYSUIKit/index.html
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 

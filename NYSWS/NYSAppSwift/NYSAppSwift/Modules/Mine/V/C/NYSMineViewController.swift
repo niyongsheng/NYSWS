@@ -141,7 +141,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         
         if sender.tag == 100 {
             let webVC = NYSRootWebViewController.init()
-            webVC.urlStr = "https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppSwift/NYSAppSwift"
+            webVC.urlStr = "https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/"
             self.navigationController?.pushViewController(webVC, animated: true)
              
         } else if sender.tag == 101 {

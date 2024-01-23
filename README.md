@@ -11,6 +11,7 @@ NYSWS
 - [x] [mvvm/mvc](https://en.wikipedia.org/wiki/Model–view–viewmodel)
 - [x] [dark theme](https://developer.apple.com/design/human-interface-guidelines/dark-mode)
 - [x] [localization](https://developer.apple.com/localization/)
+- [x] [swiftUI/codable](https://developer.apple.com/tutorials/sample-apps/)
 - [x] [app/ad/qr/cache/net/mock manager](https://github.com/niyongsheng/NYSWS/blob/main/NYSWS/NYSAppSwift/NYSAppSwift/README.md)
 
 ## APP
