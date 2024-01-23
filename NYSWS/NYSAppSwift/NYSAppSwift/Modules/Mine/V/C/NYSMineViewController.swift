@@ -135,7 +135,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
         if AppManager.shared.isLogin == false {
-            AppAlertManager.shared.showLogin()
+            AlertManager.shared.showLogin()
             return
         }
         
@@ -151,7 +151,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             self.navigationController?.pushViewController(NYSSettingViewController.init(), animated: true)
             
         } else if sender.tag == 103 {
-            AppAlertManager.shared.showShare(content: nil)
+            AlertManager.shared.showShare(content: nil)
             
         } else if sender.tag == 104 {
             let webVC = NYSRootWebViewController.init()
@@ -159,13 +159,13 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             self.navigationController?.pushViewController(webVC, animated: true)
             
         } else if sender.tag == 200 {
-            AppAlertManager.shared.showOverdueAlert(text: "未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,", index: 1, inView: nil)
+            AlertManager.shared.showOverdueAlert(text: "未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,", index: 1, inView: nil)
             
         } else if sender.tag == 201 {
-            AppAlertManager.shared.showOverdueAlert(text: "未完成驾驶信息认证", index: 2, inView: nil)
+            AlertManager.shared.showOverdueAlert(text: "未完成驾驶信息认证", index: 2, inView: nil)
             
         } else if sender.tag == 202 {
-            AppAlertManager.shared.showOverdueAlert(text: "未完成车辆信息认证", index: 3, inView: nil)
+            AlertManager.shared.showOverdueAlert(text: "未完成车辆信息认证", index: 3, inView: nil)
             
         } else {
             let webVC = NYSRootWebViewController.init()

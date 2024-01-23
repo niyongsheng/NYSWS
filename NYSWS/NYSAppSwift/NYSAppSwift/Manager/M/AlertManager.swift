@@ -1,5 +1,5 @@
 //
-//  AppAlertManager.swift
+//  AlertManager.swift
 //  NYSAppSwift
 //
 //  Created by niyongsheng on 2024/1/22.
@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-final class AppAlertManager {
+final class AlertManager {
     
     let delay = 1.5
     let showInDuration = 0.4
@@ -35,7 +35,7 @@ final class AppAlertManager {
     }()
     
     /// 单例
-    static let shared = AppAlertManager()
+    static let shared = AlertManager()
     
     /// 私有化初始化方法
     private init() {
@@ -76,7 +76,7 @@ final class AppAlertManager {
 }
 
 // pramga mark - 应用弹窗
-extension AppAlertManager {
+extension AlertManager {
     
     func showLogin() {
         showAlert(title: "温馨提示", content: "您还没有登陆！", icon: nil, confirmButtonTitle: "去登录", cancelBtnTitle: "取消") { popup, action, obj in
@@ -115,7 +115,7 @@ extension AppAlertManager {
 }
 
 // pramga mark - 分享弹窗
-extension AppAlertManager {
+extension AlertManager {
     
     func showShare(content: Any?) {
         showShare(content: content, icon: nil, confirmButtonTitle: "分享", complete: nil)
@@ -137,7 +137,7 @@ extension AppAlertManager {
 
 
 // pramga mark - 逾期弹窗
-extension AppAlertManager {
+extension AlertManager {
     
     fileprivate func showCustomAlert(_ appOverdueAlertView: NYSOverdueAlertView, _ index: Int?, _ duration: CGFloat, _ inView: UIView?, _ text: String?, _ complete: ((FFPopup, NYSRootAlertView.AppAlertAction, Any?) -> Void)?) {
         appOverdueAlertView.tag = index ?? 0
@@ -175,7 +175,7 @@ extension AppAlertManager {
 }
 
 // pramga mark - 富文本弹窗
-extension AppAlertManager {
+extension AlertManager {
     
     func showTextAlert(attributedText: NSAttributedString, imageName: String = "winner", complete: ((FFPopup, AppAlertView.AppAlertAction, Any?) -> Void)? = nil) {
         

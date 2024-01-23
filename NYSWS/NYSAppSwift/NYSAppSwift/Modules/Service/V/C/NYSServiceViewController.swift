@@ -96,7 +96,7 @@ class NYSServiceViewController: NYSRootViewController {
             attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                                           NSAttributedString.Key.foregroundColor: UIColor.darkGray],
                                          range: NSRange(location: 0, length: attributedText.length))
-            AppAlertManager.shared.showTextAlert(attributedText: attributedText)
+            AlertManager.shared.showTextAlert(attributedText: attributedText)
         }
     }
     

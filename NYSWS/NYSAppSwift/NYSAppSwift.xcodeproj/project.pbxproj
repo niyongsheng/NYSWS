@@ -38,7 +38,7 @@
 		C843D1532B5E5F40003B23B7 /* NYSRootAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C843D1522B5E5F40003B23B7 /* NYSRootAlertView.swift */; };
 		C843D1552B5E68CA003B23B7 /* NYSOverdueAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C843D1542B5E68CA003B23B7 /* NYSOverdueAlertView.swift */; };
 		C843D1572B5E6921003B23B7 /* NYSOverdueAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C843D1562B5E6921003B23B7 /* NYSOverdueAlertView.xib */; };
-		C843D1592B5E6FC1003B23B7 /* AppAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C843D1582B5E6FC0003B23B7 /* AppAlertManager.swift */; };
+		C843D1592B5E6FC1003B23B7 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C843D1582B5E6FC0003B23B7 /* AlertManager.swift */; };
 		C8469F002B50FB6F00B8A1E4 /* NYSContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8469EFF2B50FB6F00B8A1E4 /* NYSContentViewController.swift */; };
 		C8469F022B5103F400B8A1E4 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8469F012B5103F400B8A1E4 /* MarqueeLabel.swift */; };
 		C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8474E522B43DD54001DE04A /* NYSRootViewController.swift */; };
@@ -162,7 +162,7 @@
 		C843D1522B5E5F40003B23B7 /* NYSRootAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootAlertView.swift; sourceTree = "<group>"; };
 		C843D1542B5E68CA003B23B7 /* NYSOverdueAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSOverdueAlertView.swift; sourceTree = "<group>"; };
 		C843D1562B5E6921003B23B7 /* NYSOverdueAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSOverdueAlertView.xib; sourceTree = "<group>"; };
-		C843D1582B5E6FC0003B23B7 /* AppAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertManager.swift; sourceTree = "<group>"; };
+		C843D1582B5E6FC0003B23B7 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C8469EFF2B50FB6F00B8A1E4 /* NYSContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSContentViewController.swift; sourceTree = "<group>"; };
 		C8469F012B5103F400B8A1E4 /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		C8474E522B43DD54001DE04A /* NYSRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSRootViewController.swift; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 			children = (
 				C87CAB7C2B467C8E00C84E8E /* NYSUserInfo.swift */,
 				C87CAB792B467B2900C84E8E /* AppManager.swift */,
-				C843D1582B5E6FC0003B23B7 /* AppAlertManager.swift */,
+				C843D1582B5E6FC0003B23B7 /* AlertManager.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -936,7 +936,7 @@
 				C843D1532B5E5F40003B23B7 /* NYSRootAlertView.swift in Sources */,
 				C86DB21A2B3E8DBC002126F5 /* NYSLoginViewController.swift in Sources */,
 				C80EE9ED2B439E3B00F79AD0 /* UIControl+Extension.swift in Sources */,
-				C843D1592B5E6FC1003B23B7 /* AppAlertManager.swift in Sources */,
+				C843D1592B5E6FC1003B23B7 /* AlertManager.swift in Sources */,
 				C8BC5E9C2B3A9E9400814C2B /* NYSSearchView.swift in Sources */,
 				C8A4BE432B4BDF4300152E14 /* NYSRootViewModel.swift in Sources */,
 				C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */,

@@ -37,7 +37,7 @@ class NYSHomeViewModel: NYSRootViewModel {
             }
         } catch {
             homeItems.onError(error)
-            AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
+            AlertManager.shared.showAlert(title: "解码失败：\(error)")
         }
     }
     
@@ -63,7 +63,7 @@ class NYSHomeViewModel: NYSRootViewModel {
             }
         } catch {
             homeItems.onError(error)
-            AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
+            AlertManager.shared.showAlert(title: "解码失败：\(error)")
         }
     }
     

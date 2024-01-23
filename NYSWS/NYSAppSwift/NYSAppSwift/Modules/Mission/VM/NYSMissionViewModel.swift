@@ -27,7 +27,7 @@ class NYSMissionViewModel: NYSRootViewModel {
             success: { [weak self] response in
                 if response!["errcode"] as? Int == 100 {
                     let msg = response!["errmsg"] as! String
-                    AppAlertManager.shared.showAlert(title: msg)
+                    AlertManager.shared.showAlert(title: msg)
                     self?.errorSubject.onNext(NYSError(domain: msg, code: -1, userInfo: nil))
                     return
                 }

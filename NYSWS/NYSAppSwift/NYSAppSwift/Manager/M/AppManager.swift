@@ -13,24 +13,31 @@ import RxSwift
 import ExCodable
 import Disk
 
+let cacheJson: String = "userinfo.json"
 final class AppManager {
+    
+    var seq: Int = 0
+    private let disposeBag = DisposeBag()
+    let userinfoSubject = PublishSubject<NYSUserInfo>()
     
     /// 用户信息
     private(set) var userInfo: NYSUserInfo = {
-        if let userinfo = try? Disk.retrieve("userinfo.json", from: .documents, as: NYSUserInfo.self) {
-            return userinfo
+        var defaultUserInfo = NYSUserInfo()
+        if Disk.exists(cacheJson, in: .documents),
+           let userinfo = try? Disk.retrieve(cacheJson, from: .documents, as: NYSUserInfo.self) {
+            defaultUserInfo = userinfo
         }
-        return NYSUserInfo()
+        return defaultUserInfo
     }() {
         didSet {
-            try? Disk.save(userInfo, to: .documents, as: "userinfo.json")
-            userinfoSubject.onNext(userInfo)
+            do {
+                try Disk.save(userInfo, to: .documents, as: cacheJson)
+                userinfoSubject.onNext(userInfo)
+            } catch {
+                NYSTools.log("Failed to cache user info: \(error)")
+            }
         }
     }
-    
-    var seq: Int = 0
-    let userinfoSubject = PublishSubject<NYSUserInfo>()
-    private let disposeBag = DisposeBag()
     
     /// 是否登录
     var isLogin: Bool {
@@ -46,10 +53,10 @@ final class AppManager {
     
     /// 私有化初始化方法
     private init() {
-        _ = AppAlertManager.shared
-
+        _ = AlertManager.shared
+        
         NotificationCenter.default.rx.notification(Notification.Name(rawValue: NNotificationTokenInvalidation)).subscribe(onNext: { notification in
-            AppAlertManager.shared.showLogin()
+            AlertManager.shared.showLogin()
         }).disposed(by: disposeBag)
     }
 }
@@ -70,16 +77,18 @@ extension AppManager {
     
     /// 登入
     func loginHandler(loginType: AppLoginType, params: [String: Any], completion: AppManagerCompletion) {
-    
-        NYSNetRequest.mockRequest(withParameters: "login_data.json", 
+        NYSNetRequest.mockRequest(withParameters: "login_data.json",
                                   isCheck: true,
                                   remark: "登录",
                                   success: { [weak self] response in
-            self?.token = response!["token"] as? String
-            completion?(true, nil, nil)
-            
-        }, failed:{ error in
-            completion?(false, nil, nil)
+            if let token = response?["token"] as? String {
+                self?.token = token
+                completion?(true, nil, nil)
+            } else {
+                completion?(false, nil, NSError(domain: "AppManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Token not found in response"]))
+            }
+        }, failed: { error in
+            completion?(false, nil, error)
             NYSTools.log("Error: \(String(describing: error))")
         })
     }
@@ -136,7 +145,7 @@ extension AppManager {
                 completion?(true, self?.userInfo, nil)
                 
             } catch {
-                AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
+                AlertManager.shared.showAlert(title: "解码失败：\(error)")
             }
             
         }, failed:{ error in

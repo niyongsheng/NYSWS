@@ -40,7 +40,7 @@ class NYSServiceViewModel: NYSRootViewModel {
                 }
             } catch {
                 self?.serviceItems.onError(error)
-                AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
+                AlertManager.shared.showAlert(title: "解码失败：\(error)")
             }
             
         }, failed:{ [weak self] error in
