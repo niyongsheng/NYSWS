@@ -30,6 +30,9 @@ typedef void (^ButtonBlock)(UIButton *button);
 ///   - block: 回调
 - (void)handleControlEvent:(UIControlEvents)event withBlock:(ButtonBlock)block;
 
+/// 设置是否执行点UI方法  YES 不允许点击   NO 允许点击
+@property (nonatomic, assign) BOOL isIgnoreEvent;
+
 @end
 
 NS_ASSUME_NONNULL_END

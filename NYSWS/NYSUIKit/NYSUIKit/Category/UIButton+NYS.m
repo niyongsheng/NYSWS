@@ -10,12 +10,6 @@
 
 static const void *kButtonTapBlockKey = &kButtonTapBlockKey;
 
-@interface UIButton()
-/**bool 类型 YES 不允许点击   NO 允许点击   设置是否执行点UI方法*/
-@property (nonatomic, assign) BOOL isIgnoreEvent;
-
-@end
-
 @implementation UIButton (NYS)
 
 static char edgeKey;

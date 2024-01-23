@@ -3,15 +3,15 @@ NYSWS
 ===
 ![Pages](https://img.shields.io/badge/NYSWS-1.0.0-brightgreen.svg?style=flat-square)
 ===
-> ios简洁的组件化方案架构。<br>
-> ios simple componentized solution framework.
+> ios简洁的组件化方案[架构](#architecture)。<br>
+> ios simple componentized solution [framework](#architecture).
 <img src="./images/nysws.drawio.png">
 
 ## Feature
-- [x] [mvvm/mvc]()
-- [x] [dark theme]()
-- [x] [localization]()
-- [x] [app/ad/qr/cache/net/mock manager]()
+- [x] [mvvm/mvc](https://en.wikipedia.org/wiki/Model–view–viewmodel)
+- [x] [dark theme](https://developer.apple.com/design/human-interface-guidelines/dark-mode)
+- [x] [localization](https://developer.apple.com/localization/)
+- [x] [app/ad/qr/cache/net/mock manager](https://github.com/niyongsheng/NYSWS/blob/main/NYSWS/NYSAppSwift/NYSAppSwift/README.md)
 
 ## APP
 <img src="./images/swift_one_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_light.PNG" width="200" style="border-radius: 15px;"> 
@@ -19,6 +19,10 @@ NYSWS
 <img src="./images/swift_one_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_dark.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_dark.PNG" width="200" style="border-radius: 15px;"> 
 
 ## Architecture
+- [NYSAppObjC](https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppObjC/NYSAppObjC)
+- [NYSAppSwift](https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppSwift/NYSAppSwift)
+  - [NYSKit](https://niyongsheng.github.io/Document/NYSWS/NYSKit/index.html)
+  - [NYSUIKit](https://niyongsheng.github.io/Document/NYSWS/NYSUIKit/index.html)
 ```text
 NYSWS
 ├─ NYSAppObjC
