@@ -45,7 +45,8 @@ extension UIColor {
     
     /// 转换为其十六进制表示
     func toHexString() -> String {
-        guard let components = self.cgColor.components else {
+        guard let components = self.cgColor.components, components.count >= 3 else {
+            // 如果颜色没有RGBA组件或者长度小于3，返回默认黑色
             return "#000000"
         }
         

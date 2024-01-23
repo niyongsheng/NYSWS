@@ -135,7 +135,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
         if AppManager.shared.isLogin == false {
-            AppManager.shared.showLogin()
+            AppAlertManager.shared.showLogin()
             return
         }
         
@@ -151,12 +151,21 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             self.navigationController?.pushViewController(NYSSettingViewController.init(), animated: true)
             
         } else if sender.tag == 103 {
-            AppManager.shared.showShare(content: nil)
+            AppAlertManager.shared.showShare(content: nil)
             
         } else if sender.tag == 104 {
             let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://github.com/niyongsheng/NYSWS/issues/new"
             self.navigationController?.pushViewController(webVC, animated: true)
+            
+        } else if sender.tag == 200 {
+            AppAlertManager.shared.showOverdueAlert(text: "未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,", index: 1, inView: nil)
+            
+        } else if sender.tag == 201 {
+            AppAlertManager.shared.showOverdueAlert(text: "未完成驾驶信息认证", index: 2, inView: nil)
+            
+        } else if sender.tag == 202 {
+            AppAlertManager.shared.showOverdueAlert(text: "未完成车辆信息认证", index: 3, inView: nil)
             
         } else {
             let webVC = NYSRootWebViewController.init()

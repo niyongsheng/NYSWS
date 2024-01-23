@@ -24,9 +24,9 @@ class NYSServiceViewController: NYSRootViewController {
         configure.showBottomSeparator = false
         configure.indicatorAnimationTime = 0.05
         configure.indicatorType = .Fixed
-        configure.indicatorHeight = pro_pagingTitleViewHeight - 10
         configure.indicatorFixedWidth = (UIScreen.width - 150)/CGFloat(titles.count)
-        configure.indicatorCornerRadius = 10
+        configure.indicatorHeight = 30
+        configure.indicatorCornerRadius = 15
         configure.indicatorColor = NAppThemeColor
         configure.indicatorToBottomDistance = 5;
         configure.selectedColor = .white
@@ -87,13 +87,15 @@ class NYSServiceViewController: NYSRootViewController {
         // 监听子视图发出的通知
         NotificationCenter.default.addObserver(self, selector: #selector(subTableViewDidScroll), name: NSNotification.Name(NNProSubScrollViewDidScroll), object: nil)
         
-        NYSTools.log("test log content")
-//        self.addNavigationItem(withTitles: ["测试", "搜索"], alignment: .right) { sender, index in
-//            
+//        self.addNavigationItem(withTitles: ["测试", "搜索"], alignment: .left) { sender, index in
+//
 //        }
-//        self.addNavigationItem(with: [UIImage(named: "pic_32px_def_touxiang")!, UIImage(named: "pic_48px_def_touxiang")!], alignment: .left) { sender, index in
-//            
-//        }
+        let image = UIImage(named: "img_cdtx")!.resized(to: CGSizeMake(30, 30))!
+        self.addNavigationItem(with: [image], alignment: .right) { sender, index in
+            let attributedText = NSMutableAttributedString(string: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint")
+            attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.5)], range: NSRange(location: 0, length: attributedText.length))
+            AppAlertManager.shared.showTextAlert(attributedText: attributedText)
+        }
     }
     
     var tempSubScrollView: UIScrollView?

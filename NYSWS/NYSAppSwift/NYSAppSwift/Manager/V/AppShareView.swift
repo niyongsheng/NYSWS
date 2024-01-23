@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppShareView: UIView {
+class AppShareView: NYSRootAlertView {
     
     enum AppShareType {
         case none
@@ -18,11 +18,7 @@ class AppShareView: UIView {
         case system
     }
     
-    enum AppShareAction {
-        case confirm
-        case close
-    }
-    typealias AppShareComplete = (_ popup: FFPopup, _ action: AppShareAction, _ type:AppShareType, _ obj: Any?) -> Void
+    typealias AppShareComplete = (_ popup: FFPopup, _ action: AppAlertAction, _ type:AppShareType, _ obj: Any?) -> Void
     var complete: AppShareComplete?
     var popup: FFPopup?
     
@@ -32,43 +28,16 @@ class AppShareView: UIView {
     @IBOutlet weak var contentV: UIView!
     @IBOutlet weak var bottomH: NSLayoutConstraint!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureXIB()
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureXIB()
-        setupView()
-    }
-    
-    private func configureXIB() {
-        guard let view = loadViewFromNib() else { return }
-        view.backgroundColor = .clear
-        view.frame = bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-    }
-    
-    private func loadViewFromNib() -> UIView? {
-        let nibName = String(describing: type(of: self))
-        let bundle = Bundle(for: type(of: self))
+    override func setupView() {
+        super.setupView()
         
-        return bundle.loadNibNamed(nibName, owner: self, options: nil)?.first as? UIView
-    }
-    
-    func setupView() {
-        self.addRoundedCorners(corners: [.topLeft, .topRight], radius: 15, borderWidth: 0, borderColor: .clear)
+        self.addRoundedCorners(corners: [.topLeft, .topRight], radius: NAppRadius, borderWidth: 0, borderColor: .clear)
         
         iconIV.image = nil
         confirmBtn.backgroundColor = NAppThemeColor
         confirmBtn.setTitleColor(.white, for: .normal)
         confirmBtn.addRadius(NAppRadius*2)
         bottomH.constant = UIDevice.nys_isIphoneX() ? NSafeBottomHeight : 20
-        
-        _ = self.lee_theme.leeConfigBackgroundColor("alert_view_bg_color")
     }
     
     override var intrinsicContentSize: CGSize {

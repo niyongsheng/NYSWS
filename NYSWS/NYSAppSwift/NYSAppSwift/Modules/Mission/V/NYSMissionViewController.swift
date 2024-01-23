@@ -15,6 +15,7 @@ class NYSMissionViewController: NYSRootViewController {
     private let vm = NYSMissionViewModel()
     
     private var city = "北京"
+    private var isMock = false
     
     lazy var imageViewBg: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: 140))
@@ -156,21 +157,28 @@ extension NYSMissionViewController {
         }, onError: { (error) in
             print("Error: \(error)")
         }).disposed(by: bag)
+        // 网络出错时加载Mock数据，也可以尝试catchError
+        vm.errorSubject.subscribe(onNext: { [weak self] (item: NYSError) in
+            self?.isMock = true
+        }).disposed(by: bag)
     }
     
     override func headerRereshing() {
         super.headerRereshing()
         
-//        let parameters = [
-//            "unescape": 1,
-//            "version": "v1",
-//            "appid": 43656176,
-//            "appsecret": "I42og6Lm",
-//            "city": city
-//        ] as [String : Any]
-//        vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
-        // pragma mark - Mock测试
-        vm.mockWeatherData(headerRefresh: true, parameters: "weather_data.json")
+        if isMock {
+            // pragma mark - Mock测试
+            vm.mockWeatherData(headerRefresh: true, parameters: "weather_data.json")
+        } else {
+            let parameters = [
+                "unescape": 1,
+                "version": "v1",
+                "appid": 43656176,
+                "appsecret": "I42og6Lm",
+                "city": city
+            ] as [String : Any]
+            vm.fetchWeatherData(headerRefresh: true, parameters: parameters)
+        }
     }
     
     override func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
@@ -215,26 +223,6 @@ extension NYSMissionViewController {
             print("Error encoding the model to JSON: \(error)")
         }
         navigationController?.pushViewController(vc, animated: true)
-        
-        // 子线程结构化json
-//        let vc: NYSContentViewController = NYSContentViewController()
-//        vc.titleL.text = model.city
-//        DispatchQueue.global(qos: .background).async {
-//            do {
-//                let data = try JSONEncoder().encode(model)
-//                let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers, // 解析出来数组和字典是可变的
-//                                                                                        .mutableLeaves, // 解析出来的字符串是可变的
-//                                                                                        .allowFragments]) // 允许不是键值对的单独值
-//                let formattedJsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
-//                let jsonString = String(data: formattedJsonData, encoding: .utf8)
-//                DispatchQueue.main.async {
-//                    vc.contentL.text = jsonString
-//                }
-//            } catch {
-//                print("Error encoding or decoding JSON: \(error)")
-//            }
-//        }
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

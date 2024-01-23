@@ -240,6 +240,7 @@
 }
 
 + (void)jsonRequestWithType:(NYSNetRequestType)type url:(NSString * _Nonnull)url parameters:(id)parameters isCheck:(BOOL)isCheck remark:(NSString * _Nullable)remark success:(NYSNetRequestSuccess)success failed:(NYSNetRequestFailed)failed {
+    [self sharedManager];
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     
     // 加载动画-延时执行

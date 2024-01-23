@@ -10,17 +10,18 @@ import RxSwift
 
 class NYSHomeViewModel: NYSRootViewModel {
 
-    let homeItems = BehaviorSubject<[NYSHomeListModel]>(value: [])
+    let homeItems = BehaviorSubject<[NYSHomeList]>(value: [])
+    let homeModels = BehaviorSubject<[NYSHomeListModel]>(value: [])
     let refresh = PublishSubject<MJRefreshAction>()
     
-    /// RxSwift方式数据加载
+    /// RxSwift+Codable方式数据加载
     /// - Parameter parameters: 参数
     /// - Parameter headerRefresh: 是否头部刷新
     func fetchHomeDataItemes(headerRefresh: Bool, parameters: [String: Any]?) {
         let randomDataArray = generateRandomDataArray(length: NAppPageSize)
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])
-            let items = try JSONDecoder().decode([NYSHomeListModel].self, from: jsonData)
+            let items = try JSONDecoder().decode([NYSHomeList].self, from: jsonData)
             if headerRefresh {
                 homeItems.onNext(items)
                 refresh.onNext(.stopRefresh)
@@ -36,7 +37,33 @@ class NYSHomeViewModel: NYSRootViewModel {
             }
         } catch {
             homeItems.onError(error)
-            AppManager.shared.showAlert(title: "解码失败：\(error)")
+            AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
+        }
+    }
+    
+    /// RxSwift+YYModel方式数据加载
+    /// - Parameter parameters: 参数
+    /// - Parameter headerRefresh: 是否头部刷新
+    func fetchHomeDataModels(headerRefresh: Bool, parameters: [String: Any]?) {
+        let randomDataArray = generateRandomDataArray(length: NAppPageSize)
+        do {
+            let models = NSArray.yy_modelArray(with: NYSHomeListModel.self, json: randomDataArray) as! [NYSHomeListModel]
+            if headerRefresh {
+                homeModels.onNext(models)
+                refresh.onNext(.stopRefresh)
+                refresh.onNext(.resetNomoreData)
+            } else {
+                if models.count > 0 {
+                    let updatedItems = try homeModels.value() + models
+                    homeModels.onNext(updatedItems)
+                    refresh.onNext(.stopLoadmore)
+                } else {
+                    refresh.onNext(.showNomoreData)
+                }
+            }
+        } catch {
+            homeItems.onError(error)
+            AppAlertManager.shared.showAlert(title: "解码失败：\(error)")
         }
     }
     
@@ -45,11 +72,11 @@ class NYSHomeViewModel: NYSRootViewModel {
     ///   - parameters: 参数
     ///   - success: 回调
     /// - Returns: 返回
-    func fetchHomeDataItemes(parameters: [String: Any]?, success : @escaping (_ data : [NYSHomeListModel]) -> ()) -> Void {
+    func fetchHomeDataItemes(parameters: [String: Any]?, success : @escaping (_ data : [NYSHomeList]) -> ()) -> Void {
         let randomDataArray = generateRandomDataArray(length: NAppPageSize)
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: randomDataArray, options: [])
-            let items = try JSONDecoder().decode([NYSHomeListModel].self, from: jsonData)
+            let items = try JSONDecoder().decode([NYSHomeList].self, from: jsonData)
             success(items)
         } catch {
             print("解码失败：\(error)")

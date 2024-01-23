@@ -46,7 +46,7 @@ class NYSHomeListViewController: NYSRootViewController {
         super.bindViewModel()
         
         vm.refresh.bind(to: self.tableView.rx.refreshAction).disposed(by: bag)
-        vm.homeItems.subscribe(onNext: { [weak self] (items: [NYSHomeListModel]) in
+        vm.homeItems.subscribe(onNext: { [weak self] (items: [NYSHomeList]) in
             self?.dataSourceArr = NSMutableArray(array: items)
             self?.tableView.reloadData(animationType: .moveSpring)
         }, onError: { (error) in
@@ -78,7 +78,7 @@ extension NYSHomeListViewController {
             _cell = NYSHomeListCell(flex:nil,reuseIdentifier:nil)
         }
         
-        _cell.model = self.dataSourceArr[indexPath.row] as? NYSHomeListModel
+        _cell.model = self.dataSourceArr[indexPath.row] as? NYSHomeList
         return (_cell?.height(forWidth: NScreenWidth))!
     }
     
@@ -89,14 +89,14 @@ extension NYSHomeListViewController {
         if cell == nil {
             cell = NYSHomeListCell(flex:nil, reuseIdentifier:identifier)
         }
-        cell?.model = self.dataSourceArr[indexPath.row] as? NYSHomeListModel
+        cell?.model = self.dataSourceArr[indexPath.row] as? NYSHomeList
         return cell!;
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let model = self.dataSourceArr[indexPath.row] as! NYSHomeListModel
+        let model = self.dataSourceArr[indexPath.row] as! NYSHomeList
         let vc:NYSContentViewController = NYSContentViewController()
         vc.titleL.text = model.title
         vc.contentL.text = model.content

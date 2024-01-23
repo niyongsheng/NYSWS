@@ -7,16 +7,7 @@
 
 import UIKit
 
-class AppAlertView: UIView {
-    
-    enum AppAlertAction {
-        case confirm
-        case cancel
-        case close
-    }
-    typealias AppAlertComplete = (_ popup: FFPopup, _ action: AppAlertAction, _ obj: Any?) -> Void
-    var complete: AppAlertComplete?
-    var popup: FFPopup?
+class AppAlertView: NYSRootAlertView {
     
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -25,35 +16,14 @@ class AppAlertView: UIView {
     @IBOutlet weak var titleL: UILabel!
     @IBOutlet weak var contentL: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureXIB()
-        setupView()
-    }
+    typealias AppAlertComplete = (_ popup: FFPopup, _ action: AppAlertAction, _ obj: Any?) -> Void
+    var complete: AppAlertComplete?
+    var popup: FFPopup?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureXIB()
-        setupView()
-    }
-    
-    private func configureXIB() {
-        guard let view = loadViewFromNib() else { return }
-        view.backgroundColor = .clear
-        view.frame = bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-    }
-    
-    private func loadViewFromNib() -> UIView? {
-        let nibName = String(describing: type(of: self))
-        let bundle = Bundle(for: type(of: self))
+    override func setupView() {
+        super.setupView()
         
-        return bundle.loadNibNamed(nibName, owner: self, options: nil)?.first as? UIView
-    }
-    
-    func setupView() {
-        self.addRadius(15)
+        self.addRadius(NAppRadius)
         
         iconIV.image = nil
         titleL.text = nil
@@ -65,8 +35,7 @@ class AppAlertView: UIView {
         
         confirmBtn.addRadius(NAppRadius)
         cancelBtn.addCornerRadius(NAppRadius, borderWidth: 1, borderColor: NAppThemeColor)
-
-        _ = self.lee_theme.leeConfigBackgroundColor("alert_view_bg_color")
+        
         _ = self.titleL.lee_theme.leeConfigTextColor("title_label_color")
     }
     

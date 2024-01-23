@@ -66,7 +66,7 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
     }
     
     @IBAction func oneKeyBtnOnclicked(_ sender: UIButton) {
-        AppManager.shared.showAlert(title: "未检测到SIM卡")
+        AppAlertManager.shared.showAlert(title: "未检测到SIM卡")
     }
     
     @IBAction func otherAccountBtnOnclicked(_ sender: UIButton) {

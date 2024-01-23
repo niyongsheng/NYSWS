@@ -12,6 +12,7 @@ import RxSwift
 class NYSMissionViewModel: NYSRootViewModel {
     
     let weatherSubject = PublishSubject<NYSWeater>()
+    let errorSubject = PublishSubject<NYSError>()
     let refresh = PublishSubject<MJRefreshAction>()
     
     /// 天气数据加载
@@ -25,12 +26,14 @@ class NYSMissionViewModel: NYSRootViewModel {
             remark: "天气数据",
             success: { [weak self] response in
                 if response!["errcode"] as? Int == 100 {
-                    AppManager.shared.showAlert(title: response!["errmsg"] as? String)
+                    let msg = response!["errmsg"] as! String
+                    AppAlertManager.shared.showAlert(title: msg)
+                    self?.errorSubject.onNext(NYSError(domain: msg, code: -1, userInfo: nil))
                     return
                 }
                 
                 do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: response?["list"] as Any, options: [])
+                    let jsonData = try JSONSerialization.data(withJSONObject: response as Any, options: [])
                     let weather = try JSONDecoder().decode(NYSWeater.self, from: jsonData)
                     self?.weatherSubject.onNext(weather)
                 } catch {

@@ -68,9 +68,9 @@ extension AppDelegate {
         window?.makeKeyAndVisible()
         
         #if DEBUG
-        ThemeManager.shared().initBubble(window!) // 主题气泡按钮
-        showMemory() // 显示内存
+        ThemeManager.shared().initBubble(window!) // 悬浮球ThemeBtn
         showFPS() // 显示FPS
+        showMemory() // 显示MU
         // CocoaDebug
         CocoaDebugSettings.shared.enableLogMonitoring = true
         CocoaDebugSettings.shared.mainColor = NAppThemeColor.toHexString()
@@ -91,7 +91,7 @@ extension AppDelegate {
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         JPUSHService.setInMessageDelegate(self)
         JPUSHService.setup(withOption: launchOptions, appKey: JPUSH_APPKEY, channel: JPUSH_CHANNEl, apsForProduction: IS_Prod, advertisingIdentifier: nil)
-        JPUSHService .registrationIDCompletionHandler { resCode, registrationID in
+        JPUSHService.registrationIDCompletionHandler { resCode, registrationID in
             if resCode == 0 {
                 self.print("registrationID获取成功：\(String(describing: registrationID))")
             } else {

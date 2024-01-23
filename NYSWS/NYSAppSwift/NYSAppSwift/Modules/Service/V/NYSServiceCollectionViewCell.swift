@@ -21,7 +21,6 @@ class NYSServiceCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         infoBtn.addRadius(NAppRadius)
-        bgV.backgroundColor = .randomColor
 //        bgV.layer.addSublayer(UIColor.gradient(from: .randomColor, to: .randomColor, direction: .horizontal))
     }
     
@@ -30,6 +29,7 @@ class NYSServiceCollectionViewCell: UICollectionViewCell {
             titleL.text = model.name
             starL.text = "\(model.star)k"
             descL.text = model.desc
+            bgV.backgroundColor = UIColor.init(hexString: model.bgColor)
         }
     }
 

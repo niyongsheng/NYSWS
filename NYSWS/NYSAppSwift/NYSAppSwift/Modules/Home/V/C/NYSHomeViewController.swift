@@ -42,15 +42,19 @@ class NYSHomeViewController: NYSRootViewController, SGPagingTitleViewDelegate, S
     
     lazy var pagingTitleView: SGPagingTitleView = {
         let configure = SGPagingTitleViewConfigure()
-        configure.indicatorType = .Dynamic
+        configure.indicatorType = .Default
         configure.gradientEffect = true
         configure.showBottomSeparator = false
         configure.textZoom = true
         configure.textZoomRatio = 0.2
         configure.color = .darkGray
         configure.selectedColor = NAppThemeColor
-        configure.indicatorColor = NAppThemeColor
-        configure.indicatorToBottomDistance = 0
+        let size = CGSizeMake(48, 6)
+        let indicatorImage = UIImage(named: "changeBg")!.resized(to: size)!
+        configure.indicatorColor = UIColor.init(patternImage: indicatorImage)
+        configure.indicatorHeight = size.height
+        configure.indicatorDynamicWidth = size.width
+        configure.indicatorToBottomDistance = 10
         configure.badgeHeight = 15
         configure.badgeCornerRadius = 7.5
         configure.badgeOff = CGPoint(x: -10, y: 5)

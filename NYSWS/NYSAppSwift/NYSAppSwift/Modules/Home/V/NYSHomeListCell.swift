@@ -17,7 +17,7 @@ class NYSHomeListCell: FlexBaseTableCell {
     @objc private var title : UILabel!
     @objc private var content : UILabel!
     
-    var model: NYSHomeListModel! {
+    var model: NYSHomeList! {
         didSet {
             name.text = model.name
             type.text = model.type
