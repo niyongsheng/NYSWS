@@ -1324,6 +1324,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				CLASSPREFIX = NYS;
 				LastUpgradeCheck = 1420;
+				ORGANIZATIONNAME = niyongsheng;
 				TargetAttributes = {
 					C8597A1829F51052008BEE7F = {
 						CreatedOnToolsVersion = 14.2;

@@ -10,6 +10,9 @@
 
 #pragma mark -- 项目基类 --
 @class NYSRootAlertView;
+@class NYSRootViewModel;
+@class NYSRootViewController;
+@class NYSRootWebViewController;
 
 #pragma mark -- OC混编 --
 #import "NYSScanViewController.h"

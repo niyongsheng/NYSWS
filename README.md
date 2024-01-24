@@ -3,16 +3,16 @@ NYSWS
 ===
 ![Pages](https://img.shields.io/badge/NYSWS-1.0.0-brightgreen.svg?style=flat-square)
 ===
-> ios简洁的组件化方案[架构](#architecture)。<br>
+> ios简洁的组件化方案架构。<br>
 > ios simple componentized solution [framework](#architecture).
 <img src="./images/nysws.drawio.png">
 
 ## Feature
-- [x] [mvvm/mvc](https://en.wikipedia.org/wiki/Model–view–viewmodel)
-- [x] [dark theme](https://developer.apple.com/design/human-interface-guidelines/dark-mode)
+- [x] [mvvm](https://en.wikipedia.org/wiki/Model–view–viewmodel)
+- [x] [swiftUI](https://developer.apple.com/tutorials/sample-apps/)
+- [x] [dark-mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode/)
 - [x] [localization](https://developer.apple.com/localization/)
-- [x] [swiftUI/codable](https://developer.apple.com/tutorials/sample-apps/)
-- [x] [app/ad/qr/cache/net/mock manager](https://github.com/niyongsheng/NYSWS/blob/main/NYSWS/NYSAppSwift/NYSAppSwift/README.md)
+- [x] [ad/qr/nav/net/map/mock/codable/cache/theme manager](https://github.com/niyongsheng/NYSWS/blob/main/NYSWS/NYSAppSwift/NYSAppSwift/README.md)
 
 ## APP
 <img src="./images/swift_one_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_light.PNG" width="200" style="border-radius: 15px;"> 

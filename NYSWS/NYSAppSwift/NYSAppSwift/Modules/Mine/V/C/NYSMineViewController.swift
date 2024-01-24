@@ -29,6 +29,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     @IBOutlet weak var oneSV: UIStackView!
     @IBOutlet weak var twoSV: UIStackView!
     @IBOutlet weak var threeSV: UIStackView!
+    @IBOutlet weak var fourSV: UIStackView!
     
     @IBOutlet weak var serviceL: UILabel!
     @IBOutlet weak var serviceTelBtn: UIButton!
@@ -77,6 +78,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         oneSV.addRadius(NAppRadius)
         twoSV.addRadius(NAppRadius)
         threeSV.addRadius(NAppRadius)
+        fourSV.addRadius(NAppRadius)
         iconIV.addRadius(30)
         
         navBarBackgroundAlpha = 0
@@ -154,9 +156,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             AlertManager.shared.showShare(content: nil)
             
         } else if sender.tag == 104 {
-            let webVC = NYSRootWebViewController.init()
-            webVC.urlStr = "https://github.com/niyongsheng/NYSWS/issues/new"
-            self.navigationController?.pushViewController(webVC, animated: true)
+            self.navigationController?.pushViewController(NYSFeedbackViewController.init(), animated: true)
             
         } else if sender.tag == 200 {
             AlertManager.shared.showOverdueAlert(text: "未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,", index: 1, inView: nil)
@@ -166,6 +166,18 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             
         } else if sender.tag == 202 {
             AlertManager.shared.showOverdueAlert(text: "未完成车辆信息认证", index: 3, inView: nil)
+            
+        } else if sender.tag == 300 {
+            AlertManager.shared.showAlert(title: "强提醒信息弹窗")
+            
+        } else if sender.tag == 301 {
+            AlertManager.shared.showAlert(title: "标题", content: "强提醒信息弹窗内容", icon: nil, confirmButtonTitle: nil, cancelBtnTitle: "好的")
+            
+        } else if sender.tag == 302 {
+            AlertManager.shared.showAlert(title: "标题", content: "强提醒信息弹窗内容", icon: UIImage(named: "okay_icon")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "确定", cancelBtnTitle: nil)
+            
+        } else if sender.tag == 303 {
+            AlertManager.shared.showAlert(title: "自定义按钮标题", content: nil, icon: UIImage(named: "ic_88px_warm")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "知道了", cancelBtnTitle: "再想想")
             
         } else {
             let webVC = NYSRootWebViewController.init()

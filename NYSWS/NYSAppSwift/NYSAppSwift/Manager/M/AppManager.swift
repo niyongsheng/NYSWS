@@ -13,7 +13,7 @@ import RxSwift
 import ExCodable
 import Disk
 
-let cacheJson: String = "userinfo.json"
+let cachePath: String = "userinfo.json"
 final class AppManager {
     
     var seq: Int = 0
@@ -23,15 +23,15 @@ final class AppManager {
     /// 用户信息
     private(set) var userInfo: NYSUserInfo = {
         var defaultUserInfo = NYSUserInfo()
-        if Disk.exists(cacheJson, in: .documents),
-           let userinfo = try? Disk.retrieve(cacheJson, from: .documents, as: NYSUserInfo.self) {
+        if Disk.exists(cachePath, in: .documents),
+           let userinfo = try? Disk.retrieve(cachePath, from: .documents, as: NYSUserInfo.self) {
             defaultUserInfo = userinfo
         }
         return defaultUserInfo
     }() {
         didSet {
             do {
-                try Disk.save(userInfo, to: .documents, as: cacheJson)
+                try Disk.save(userInfo, to: .documents, as: cachePath)
                 userinfoSubject.onNext(userInfo)
             } catch {
                 NYSTools.log("Failed to cache user info: \(error)")

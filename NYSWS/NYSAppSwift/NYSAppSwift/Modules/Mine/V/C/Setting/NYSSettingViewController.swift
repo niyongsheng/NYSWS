@@ -14,7 +14,12 @@ class NYSSettingViewController: NYSRootViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    override func setupUI() {
+        super.setupUI()
+        
         self.navigationItem.title = "设置"
         
         self.logoutBtn.setTitleColor(NAppThemeColor, for: .normal)
@@ -36,7 +41,7 @@ class NYSSettingViewController: NYSRootViewController {
     
     @IBAction func itemOnclicked(_ sender: UIButton) {
         if sender.tag == 100 {
-            self.navigationController?.pushViewController(NYSThirdPartyViewController.init(), animated: true)
+            self.navigationController?.pushViewController(NYSLogoffViewController.init(), animated: true)
              
         } else if sender.tag == 101 {
             let webVC = NYSRootWebViewController.init()
@@ -49,8 +54,10 @@ class NYSSettingViewController: NYSRootViewController {
             self.navigationController?.pushViewController(webVC, animated: true)
             
         } else if sender.tag == 103 {
-            let navVC = NYSBaseNavigationController.init(rootViewController: AcknowListViewController.init(fileNamed: "Pods-NYSAppSwift-acknowledgements"))
-            self.present(navVC, animated: true)
+            self.navigationController?.pushViewController(NYSThirdPartyViewController.init(), animated: true)
+            
+//            let navVC = NYSBaseNavigationController.init(rootViewController: AcknowListViewController.init(fileNamed: "Pods-NYSAppSwift-acknowledgements"))
+//            self.present(navVC, animated: true)
         }
     }
 }
