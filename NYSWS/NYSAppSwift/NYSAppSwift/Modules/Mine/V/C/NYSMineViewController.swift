@@ -177,7 +177,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             AlertManager.shared.showAlert(title: "标题", content: "强提醒信息弹窗内容", icon: UIImage(named: "okay_icon")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "确定", cancelBtnTitle: nil)
             
         } else if sender.tag == 303 {
-            AlertManager.shared.showAlert(title: "自定义按钮标题", content: nil, icon: UIImage(named: "ic_88px_warm")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "知道了", cancelBtnTitle: "再想想")
+            AlertManager.shared.showAlert(title: "自定义按钮标题", content: nil, icon: UIImage(named: "ic_88px_warm")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "朕知道了", cancelBtnTitle: "退下吧")
             
         } else {
             let webVC = NYSRootWebViewController.init()
