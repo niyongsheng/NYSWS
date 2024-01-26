@@ -14,7 +14,7 @@
         </FlexTouchView>
         
         <FlexTouchView name="typeItem1" onPress="typeItem1Onpress" layout="padding:10/0/10/0, marginRight:15, height:45%" attr="@:system/roundedCorner">
-            <UILabel name="typeL1" layout="flex:1" attr="@:system/drakTextColor, text:使用建议, fontSize:15, textAlign:center" />
+            <UILabel name="typeL1" layout="flex:1" attr="@:system/drakTextColor, text:问题咨询, fontSize:15, textAlign:center" />
         </FlexTouchView>
         
         <FlexTouchView name="typeItem2" onPress="typeItem2Onpress" layout="padding:10/0/10/0, marginRight:15, height:45%" attr="@:system/roundedCorner">

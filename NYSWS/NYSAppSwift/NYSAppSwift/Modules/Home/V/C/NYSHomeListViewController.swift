@@ -45,7 +45,7 @@ class NYSHomeListViewController: NYSRootViewController {
     override func bindViewModel() {
         super.bindViewModel()
         
-        vm.refresh.bind(to: self.tableView.rx.refreshAction).disposed(by: bag)
+        vm.homeRefresh.bind(to: self.tableView.rx.refreshAction).disposed(by: bag)
         vm.homeItems.subscribe(onNext: { [weak self] (items: [NYSHomeList]) in
             self?.dataSourceArr = NSMutableArray(array: items)
             self?.tableView.reloadData(animationType: .moveSpring)

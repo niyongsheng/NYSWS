@@ -11,9 +11,9 @@ import RxSwift
 
 class NYSMissionViewModel: NYSRootViewModel {
     
-    let weatherSubject = PublishSubject<NYSWeater>()
     let errorSubject = PublishSubject<NYSError>()
-    let refresh = PublishSubject<MJRefreshAction>()
+    let weatherSubject = PublishSubject<NYSWeater>()
+    let weatherRefresh = PublishSubject<MJRefreshAction>()
     
     /// 天气数据加载
     /// - Parameter parameters: 参数
@@ -40,10 +40,10 @@ class NYSMissionViewModel: NYSRootViewModel {
                     print("Error: \(error)")
                     self?.weatherSubject.onError(error)
                 }
-                self?.refresh.onNext(.stopRefresh)
+                self?.weatherRefresh.onNext(.stopRefresh)
                 
             }, failed:{ [weak self] error in
-                self?.refresh.onNext(.stopRefresh)
+                self?.weatherRefresh.onNext(.stopRefresh)
                 print("Error: \(String(describing: error))")
             })
     }
@@ -62,10 +62,10 @@ class NYSMissionViewModel: NYSRootViewModel {
                 print("Error: \(error)")
                 self?.weatherSubject.onError(error)
             }
-            self?.refresh.onNext(.stopRefresh)
+            self?.weatherRefresh.onNext(.stopRefresh)
             
         }, failed:{ [weak self] error in
-            self?.refresh.onNext(.stopRefresh)
+            self?.weatherRefresh.onNext(.stopRefresh)
             print("Error: \(String(describing: error))")
         })
     }

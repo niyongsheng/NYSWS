@@ -6,30 +6,33 @@
 //
 
 import UIKit
+import NYSUIKit
 
 @objc(NYSHomeListCell)
 class NYSHomeListCell: FlexBaseTableCell {
 
-    @objc private var head : UIImageView!
-    @objc private var name : UILabel!
-    @objc private var type : UILabel!
-    @objc private var date : UILabel!
-    @objc private var title : UILabel!
-    @objc private var content : UILabel!
+    @objc private var headIV : UIImageView!
+    @objc private var nameL : UILabel!
+    @objc private var typeL : UILabel!
+    @objc private var dateL : UILabel!
+    @objc private var titleL : UILabel!
+    @objc private var contentL : UILabel!
     
     var model: NYSHomeList! {
         didSet {
-            name.text = model.name
-            type.text = model.type
-            date.text = model.date
-            title.text = model.title
-            content.text = model.content
+            nameL.text = model.name
+            typeL.text = model.type
+            dateL.text = model.date
+            titleL.text = model.title
+            contentL.text = model.content
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func onInit() {
+//        headIV.isUserInteractionEnabled = true
+        headIV.addTapAction { sender in
+            NYSTools.zoom(toShow: sender?.layer)
+        }
     }
     
 }

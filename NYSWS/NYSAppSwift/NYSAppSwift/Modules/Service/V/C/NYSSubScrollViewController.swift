@@ -45,7 +45,7 @@ class NYSSubScrollViewController: NYSRootScrollViewController, NYSWaterfallLayou
     override func bindViewModel() {
         super.bindViewModel()
         
-        vm.refresh.bind(to: self.collectionView.rx.refreshAction).disposed(by: bag)
+        vm.serviceRefresh.bind(to: self.collectionView.rx.refreshAction).disposed(by: bag)
         vm.serviceItems.subscribe(onNext: { [weak self] (items: [NYSService]) in
             self?.dataSourceArr = NSMutableArray(array: items)
             self?.collectionView.reloadData()

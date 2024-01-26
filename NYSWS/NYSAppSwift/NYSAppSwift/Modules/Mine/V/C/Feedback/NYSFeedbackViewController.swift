@@ -160,7 +160,7 @@ extension NYSFeedbackViewController {
         let photoPicker = ZLPhotoPreviewSheet()
         photoPicker.selectImageBlock = { [weak self] (results, _) in
             let images = results.map { $0.image }
-            self?.images.insert(contentsOf: images, at: 0)
+            self?.images.append(contentsOf: images)
             self?.layoutSelecteImages(images: images)
         }
         photoPicker.showPhotoLibrary(sender: self)
@@ -172,7 +172,7 @@ extension NYSFeedbackViewController {
         let image = itemV.selectedIV.image
         let index = self.images.firstIndex(of: image!)!
         
-        let previewVC = ZLImagePreviewController(datas: images, index: index, showSelectBtn: false)
+        let previewVC = ZLImagePreviewController(datas: self.images, index: index, showSelectBtn: false)
         previewVC.modalPresentationStyle = .fullScreen
         showDetailViewController(previewVC, sender: nil)
     }

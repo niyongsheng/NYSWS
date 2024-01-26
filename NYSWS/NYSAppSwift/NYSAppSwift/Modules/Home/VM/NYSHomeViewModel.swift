@@ -12,7 +12,7 @@ class NYSHomeViewModel: NYSRootViewModel {
 
     let homeItems = BehaviorSubject<[NYSHomeList]>(value: [])
     let homeModels = BehaviorSubject<[NYSHomeListModel]>(value: [])
-    let refresh = PublishSubject<MJRefreshAction>()
+    let homeRefresh = PublishSubject<MJRefreshAction>()
     
     /// RxSwift+Codable方式数据加载
     /// - Parameter parameters: 参数
@@ -24,15 +24,15 @@ class NYSHomeViewModel: NYSRootViewModel {
             let items = try JSONDecoder().decode([NYSHomeList].self, from: jsonData)
             if headerRefresh {
                 homeItems.onNext(items)
-                refresh.onNext(.stopRefresh)
-                refresh.onNext(.resetNomoreData)
+                homeRefresh.onNext(.stopRefresh)
+                homeRefresh.onNext(.resetNomoreData)
             } else {
                 if items.count > 0 {
                     let updatedItems = try homeItems.value() + items
                     homeItems.onNext(updatedItems)
-                    refresh.onNext(.stopLoadmore)
+                    homeRefresh.onNext(.stopLoadmore)
                 } else {
-                    refresh.onNext(.showNomoreData)
+                    homeRefresh.onNext(.showNomoreData)
                 }
             }
         } catch {
@@ -50,15 +50,15 @@ class NYSHomeViewModel: NYSRootViewModel {
             let models = NSArray.yy_modelArray(with: NYSHomeListModel.self, json: randomDataArray) as! [NYSHomeListModel]
             if headerRefresh {
                 homeModels.onNext(models)
-                refresh.onNext(.stopRefresh)
-                refresh.onNext(.resetNomoreData)
+                homeRefresh.onNext(.stopRefresh)
+                homeRefresh.onNext(.resetNomoreData)
             } else {
                 if models.count > 0 {
                     let updatedItems = try homeModels.value() + models
                     homeModels.onNext(updatedItems)
-                    refresh.onNext(.stopLoadmore)
+                    homeRefresh.onNext(.stopLoadmore)
                 } else {
-                    refresh.onNext(.showNomoreData)
+                    homeRefresh.onNext(.showNomoreData)
                 }
             }
         } catch {

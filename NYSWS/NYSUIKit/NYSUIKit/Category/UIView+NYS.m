@@ -1,14 +1,18 @@
 //
-//  UIView+Tools.m
+//  UIView+NYS.m
 //
 //  NYSUIKit http://github.com/niyongsheng
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 
-#import "UIView+Tools.h"
+#import "UIView+NYS.h"
 #define kLinePix ( 1 / [UIScreen mainScreen].scale)
 
-@implementation UIView (Tools)
+#import <objc/runtime.h>
+static const char *NYSTapActionKey = "NYSTapActionKey";
+
+@implementation UIView (NYS)
+
 #pragma mark - StoryBoard tool
 - (void)setBorderColor:(UIColor *)borderColor {
     self.layer.borderColor = borderColor.CGColor;
@@ -19,7 +23,7 @@
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth {
-    self.layer.borderWidth = borderWidth * kLinePix;
+    self.layer.borderWidth = borderWidth;
 }
 
 - (CGFloat)borderWidth {
@@ -28,13 +32,13 @@
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     self.layer.cornerRadius = cornerRadius;
-    self.layer.masksToBounds = YES;
 }
 
 - (CGFloat)cornerRadius {
     return self.layer.cornerRadius;
 }
 
+#pragma mark - Loading Animation
 + (UIView*)loadingAnimation {
     UIWindow *keywindow = nil;
     for (UIWindow *window in [UIApplication sharedApplication].windows) {
@@ -68,6 +72,28 @@
     }
     UIView *animationBg = [keywindow viewWithTag:1000001];
     [animationBg removeFromSuperview];
+}
+
+#pragma mark - Tap Action
+- (NYSTapActionBlock)tapActionBlock {
+    return objc_getAssociatedObject(self, NYSTapActionKey);
+}
+
+- (void)setTapActionBlock:(NYSTapActionBlock)tapActionBlock {
+    objc_setAssociatedObject(self, NYSTapActionKey, tapActionBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void)addTapActionWithBlock:(NYSTapActionBlock)block {
+    self.tapActionBlock = block;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [self addGestureRecognizer:tapGesture];
+    self.userInteractionEnabled = YES;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gesture {
+    if (self.tapActionBlock) {
+        self.tapActionBlock(self);
+    }
 }
 
 @end

@@ -25,14 +25,14 @@ class NYSLogoffViewController: NYSRootViewController {
         view.addSubview(logoutIcon)
         
         let titleLabel = UILabel()
-        titleLabel.text = "为了保证您的账户安全，请在注销账号前确定以下条件是否符合："
+        titleLabel.text = "为了保证您的信息安全，请在注销账号前确定以下条件是否符合："
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
         view.addSubview(titleLabel)
         
         let specialLabel = UILabel()
-        specialLabel.text = "·账号余额已提现成功\n·账号中没有未完成的运单"
+        specialLabel.text = "·账号金额已清算完成；\n·账号中没有未完成运单；"
         specialLabel.textColor = UIColor.red
         specialLabel.textAlignment = .center
         specialLabel.numberOfLines = 0

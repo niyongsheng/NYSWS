@@ -250,7 +250,7 @@
         <image name="User_arrow" width="16" height="16"/>
         <image name="user_set" width="24" height="24"/>
         <namedColor name="fontColor">
-            <color red="0.55699998140335083" green="0.55699998140335083" blue="0.57599997520446777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

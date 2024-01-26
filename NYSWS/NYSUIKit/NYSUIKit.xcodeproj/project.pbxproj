@@ -43,14 +43,14 @@
 		C8B747BB29FA775400673B75 /* CMPopTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7479329FA775400673B75 /* CMPopTipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747BC29FA775400673B75 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7479429FA775400673B75 /* CMPopTipView.m */; };
 		C8B747CC29FA7DF700673B75 /* NSError+NYS.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747BE29FA7DF700673B75 /* NSError+NYS.m */; };
-		C8B747CD29FA7DF700673B75 /* UIView+Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747BF29FA7DF700673B75 /* UIView+Tools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8B747CD29FA7DF700673B75 /* UIView+NYS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747BF29FA7DF700673B75 /* UIView+NYS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747CE29FA7DF700673B75 /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747C029FA7DF700673B75 /* NSDictionary+NilSafe.m */; };
 		C8B747CF29FA7DF700673B75 /* UIButton+NYS.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747C129FA7DF700673B75 /* UIButton+NYS.m */; };
 		C8B747D029FA7DF700673B75 /* UIImage+NYS.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747C229FA7DF700673B75 /* UIImage+NYS.m */; };
 		C8B747D229FA7DF700673B75 /* UITextField+NYS.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747C429FA7DF700673B75 /* UITextField+NYS.m */; };
 		C8B747D329FA7DF700673B75 /* NSError+NYS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747C529FA7DF700673B75 /* NSError+NYS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747D429FA7DF700673B75 /* NSDictionary+NilSafe.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747C629FA7DF700673B75 /* NSDictionary+NilSafe.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8B747D529FA7DF700673B75 /* UIView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747C729FA7DF700673B75 /* UIView+Tools.m */; };
+		C8B747D529FA7DF700673B75 /* UIView+NYS.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B747C729FA7DF700673B75 /* UIView+NYS.m */; };
 		C8B747D629FA7DF700673B75 /* UIButton+NYS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747C829FA7DF700673B75 /* UIButton+NYS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747D729FA7DF700673B75 /* UIImage+NYS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747C929FA7DF700673B75 /* UIImage+NYS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B747D929FA7DF700673B75 /* UITextField+NYS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B747CB29FA7DF700673B75 /* UITextField+NYS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -145,14 +145,14 @@
 		C8B7479329FA775400673B75 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		C8B7479429FA775400673B75 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 		C8B747BE29FA7DF700673B75 /* NSError+NYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+NYS.m"; sourceTree = "<group>"; };
-		C8B747BF29FA7DF700673B75 /* UIView+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Tools.h"; sourceTree = "<group>"; };
+		C8B747BF29FA7DF700673B75 /* UIView+NYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NYS.h"; sourceTree = "<group>"; };
 		C8B747C029FA7DF700673B75 /* NSDictionary+NilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NilSafe.m"; sourceTree = "<group>"; };
 		C8B747C129FA7DF700673B75 /* UIButton+NYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+NYS.m"; sourceTree = "<group>"; };
 		C8B747C229FA7DF700673B75 /* UIImage+NYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+NYS.m"; sourceTree = "<group>"; };
 		C8B747C429FA7DF700673B75 /* UITextField+NYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+NYS.m"; sourceTree = "<group>"; };
 		C8B747C529FA7DF700673B75 /* NSError+NYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+NYS.h"; sourceTree = "<group>"; };
 		C8B747C629FA7DF700673B75 /* NSDictionary+NilSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NilSafe.h"; sourceTree = "<group>"; };
-		C8B747C729FA7DF700673B75 /* UIView+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Tools.m"; sourceTree = "<group>"; };
+		C8B747C729FA7DF700673B75 /* UIView+NYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NYS.m"; sourceTree = "<group>"; };
 		C8B747C829FA7DF700673B75 /* UIButton+NYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+NYS.h"; sourceTree = "<group>"; };
 		C8B747C929FA7DF700673B75 /* UIImage+NYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+NYS.h"; sourceTree = "<group>"; };
 		C8B747CB29FA7DF700673B75 /* UITextField+NYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+NYS.h"; sourceTree = "<group>"; };
@@ -395,8 +395,8 @@
 				C8B7477B29FA775300673B75 /* UINavigationController+FDFullscreenPopGesture.m */,
 				C8B747CB29FA7DF700673B75 /* UITextField+NYS.h */,
 				C8B747C429FA7DF700673B75 /* UITextField+NYS.m */,
-				C8B747BF29FA7DF700673B75 /* UIView+Tools.h */,
-				C8B747C729FA7DF700673B75 /* UIView+Tools.m */,
+				C8B747BF29FA7DF700673B75 /* UIView+NYS.h */,
+				C8B747C729FA7DF700673B75 /* UIView+NYS.m */,
 				C8EE7E7F2A08C18D000E3A3A /* UINavigationController+NYSUIKit.h */,
 				C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */,
 				C8464A9D2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h */,
@@ -535,7 +535,7 @@
 				C8B747FB29FA818900673B75 /* NYSBaseTabBarController.h in Headers */,
 				C8B747A729FA775400673B75 /* UINavigationController+FDFullscreenPopGesture.h in Headers */,
 				C8B747BA29FA775400673B75 /* WSScrollLabel.h in Headers */,
-				C8B747CD29FA7DF700673B75 /* UIView+Tools.h in Headers */,
+				C8B747CD29FA7DF700673B75 /* UIView+NYS.h in Headers */,
 				C8B7480329FA818900673B75 /* NYSBaseObject.h in Headers */,
 				C8A4BE362B4BC7D200152E14 /* NSBundle+NYSFramework.h in Headers */,
 				C8B747A429FA775400673B75 /* PopView.h in Headers */,
@@ -704,7 +704,7 @@
 				C8B7480429FA818900673B75 /* NYSBaseTabBarController.m in Sources */,
 				C8B7479B29FA775400673B75 /* NYSLoadingButton.m in Sources */,
 				C8B747F229FA818900673B75 /* NYSBasePresenter.m in Sources */,
-				C8B747D529FA7DF700673B75 /* UIView+Tools.m in Sources */,
+				C8B747D529FA7DF700673B75 /* UIView+NYS.m in Sources */,
 				C8597AC729F52192008BEE7F /* NYSLabel.m in Sources */,
 				C8B7481329FBA8FA00673B75 /* NYSUIKitUtilities.m in Sources */,
 				C8B7480129FA818900673B75 /* NYSBaseWindow.m in Sources */,

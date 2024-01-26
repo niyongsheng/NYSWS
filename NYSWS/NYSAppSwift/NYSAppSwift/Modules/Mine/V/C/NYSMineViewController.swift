@@ -90,6 +90,9 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             serviceTelBtn.titleLabel?.font = customFont
         }
         
+        iconIV.addTapAction { sender in
+            NYSTools.zoom(toShow: sender?.layer)
+        }
     }
 
     override func configTheme() {
@@ -159,25 +162,25 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             self.navigationController?.pushViewController(NYSFeedbackViewController.init(), animated: true)
             
         } else if sender.tag == 200 {
-            AlertManager.shared.showOverdueAlert(text: "未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,", index: 1, inView: nil)
+            AlertManager.shared.showOverdueAlert(text: "提醒一：未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,未完成基础信息认证,", index: 1, inView: nil)
             
         } else if sender.tag == 201 {
-            AlertManager.shared.showOverdueAlert(text: "未完成驾驶信息认证", index: 2, inView: nil)
+            AlertManager.shared.showOverdueAlert(text: "提醒二：未完成驾驶信息认证", index: 2, inView: nil)
             
         } else if sender.tag == 202 {
-            AlertManager.shared.showOverdueAlert(text: "未完成车辆信息认证", index: 3, inView: nil)
+            AlertManager.shared.showOverdueAlert(text: "提醒三：未完成车辆信息认证", index: 3, inView: nil)
             
         } else if sender.tag == 300 {
             AlertManager.shared.showAlert(title: "强提醒信息弹窗")
             
         } else if sender.tag == 301 {
-            AlertManager.shared.showAlert(title: "标题", content: "强提醒信息弹窗内容", icon: nil, confirmButtonTitle: nil, cancelBtnTitle: "好的")
+            AlertManager.shared.showAlert(title: "标题", content: "标题+内容弹窗", icon: nil, confirmButtonTitle: nil, cancelBtnTitle: "好的")
             
         } else if sender.tag == 302 {
-            AlertManager.shared.showAlert(title: "标题", content: "强提醒信息弹窗内容", icon: UIImage(named: "okay_icon")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "确定", cancelBtnTitle: nil)
+            AlertManager.shared.showAlert(title: "标题", content: "图标+标题+内容弹窗", icon: UIImage(named: "okay_icon")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "确定", cancelBtnTitle: nil)
             
         } else if sender.tag == 303 {
-            AlertManager.shared.showAlert(title: "自定义按钮标题", content: nil, icon: UIImage(named: "ic_88px_warm")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "朕知道了", cancelBtnTitle: "退下吧")
+            AlertManager.shared.showAlert(title: "自定义图标+按钮弹窗", content: nil, icon: UIImage(named: "ic_88px_warm")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "朕知道了", cancelBtnTitle: "退下吧")
             
         } else {
             let webVC = NYSRootWebViewController.init()

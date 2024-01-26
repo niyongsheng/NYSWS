@@ -14,6 +14,7 @@ import ExCodable
 class NYSMineViewModel: NYSRootViewModel {
 
     let mineItems = BehaviorSubject<[NYSMineModel]>(value: [])
-    let refresh = PublishSubject<MJRefreshAction>()
+    let minRefresh = PublishSubject<MJRefreshAction>()
+    let errorSubject = PublishSubject<NYSError>()
     
 }

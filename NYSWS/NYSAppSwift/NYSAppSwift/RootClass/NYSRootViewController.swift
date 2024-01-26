@@ -5,8 +5,11 @@
 //  Created by Nico http://github.com/niyongsheng
 //  Copyright © 2023 NYS. ALL rights reserved.
 //
+//  *项目中控制器继承公共基类方便统一管理，控制框架抽象的颗粒度。
 
 import UIKit
+import RxSwift
+import NYSUIKit
 
 class NYSRootViewController: NYSBaseViewController {
     
