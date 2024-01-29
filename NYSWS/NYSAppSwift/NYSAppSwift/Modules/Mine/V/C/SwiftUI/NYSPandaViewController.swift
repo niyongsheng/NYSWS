@@ -9,10 +9,8 @@
 import UIKit
 import SwiftUI
 
-@available(iOS 14.0, *)
 class NYSPandaViewController: NYSRootViewController {
-    @StateObject private var fetcher = PandaCollectionFetcher()
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +23,7 @@ class NYSPandaViewController: NYSRootViewController {
         
         if #available(iOS 15.0, *) {
             // 创建一个 SwiftUI 视图
-            let memeCreator = MemeCreator().environmentObject(fetcher).padding(.horizontal)
+            let memeCreator = MemeCreator().padding()
             
             // 使用 UIHostingController 将 SwiftUI 视图包装到 UIKit 中
             let hostingController = UIHostingController(rootView: memeCreator)
@@ -35,32 +33,35 @@ class NYSPandaViewController: NYSRootViewController {
             view.addSubview(hostingController.view)
             hostingController.didMove(toParent: self)
             
-            // 关闭自动布局约束
+            // 手动布局约束
             hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            // 添加自定义布局约束
             NSLayoutConstraint.activate([
                 hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
                 hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
-        }
 
-        _ = self.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
-            (item as! Self).navBarBarTintColor = .white
-            (item as! Self).navBarTintColor = .black
-            (item as! Self).navBarTitleColor = .black
-        })
-        _ = self.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
-            (item as! Self).navBarBarTintColor = .black
-            (item as! Self).navBarTintColor = .white
-            (item as! Self).navBarTitleColor = .white
-        })
+            switch traitCollection.userInterfaceStyle {
+            case .light:
+                self.navBarBarTintColor = .white
+                self.navBarTintColor = .black
+                self.navBarTitleColor = .black
+                break
+            case .dark:
+                self.navBarBarTintColor = .black
+                self.navBarTintColor = .white
+                self.navBarTitleColor = .white
+                break
+            default:
+                break
+            }
+        }
     }
+    
 }
 
-@available(iOS 14, *)
+/// 桥接预览
 struct ViewController_Preview: PreviewProvider {
     static var previews: some View {
         NYSPandaViewController().showPreview()

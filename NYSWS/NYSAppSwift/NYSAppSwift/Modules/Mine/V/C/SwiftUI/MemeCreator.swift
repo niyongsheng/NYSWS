@@ -6,7 +6,7 @@ import SwiftUI
 
 @available(iOS 15.0, *)
 struct MemeCreator: View, Sendable {
-    @EnvironmentObject var fetcher: PandaCollectionFetcher
+    @StateObject private var fetcher = PandaCollectionFetcher()
     
     @State private var memeText = ""
     @State private var textSize = 60.0
