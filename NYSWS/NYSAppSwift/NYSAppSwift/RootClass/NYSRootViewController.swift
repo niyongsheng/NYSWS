@@ -23,16 +23,15 @@ class NYSRootViewController: NYSBaseViewController {
         super.configTheme()
         
         _ = self.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
-            (item as! NYSRootViewController).navBarBarTintColor = .white
-            (item as! NYSRootViewController).navBarTintColor = .black
-            (item as! NYSRootViewController).navBarTitleColor = .black
+            (item as! Self).navBarBarTintColor = .white
+            (item as! Self).navBarTintColor = .black
+            (item as! Self).navBarTitleColor = .black
         })
         _ = self.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
-            (item as! NYSRootViewController).navBarBarTintColor = .black
-            (item as! NYSRootViewController).navBarTintColor = .white
-            (item as! NYSRootViewController).navBarTitleColor = .white
+            (item as! Self).navBarBarTintColor = .black
+            (item as! Self).navBarTintColor = .white
+            (item as! Self).navBarTitleColor = .white
         })
-        
     }
     
     override func setupUI() {

@@ -16,6 +16,13 @@ class NYSPandaViewController: NYSRootViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func setupUI() {
+        super.setupUI()
+        
+        self.navigationItem.title = "SwiftUI & UIKit"
+        
         if #available(iOS 15.0, *) {
             // 创建一个 SwiftUI 视图
             let memeCreator = MemeCreator().environmentObject(fetcher).padding(.horizontal)
@@ -39,6 +46,17 @@ class NYSPandaViewController: NYSRootViewController {
                 hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
         }
+
+        _ = self.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
+            (item as! Self).navBarBarTintColor = .white
+            (item as! Self).navBarTintColor = .black
+            (item as! Self).navBarTitleColor = .black
+        })
+        _ = self.lee_theme.leeAddCustomConfig(NIGHT, { (item: Any) in
+            (item as! Self).navBarBarTintColor = .black
+            (item as! Self).navBarTintColor = .white
+            (item as! Self).navBarTitleColor = .white
+        })
     }
 }
 

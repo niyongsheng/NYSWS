@@ -12,14 +12,14 @@ class NYSBannerCollectionViewCell: UICollectionViewCell {
     
     private lazy var bannerIV: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     var urlStr: String = "" {
         didSet {
             if let url = URL(string: urlStr) {
-                self.bannerIV.kf.setImage(with: url, placeholder: NAppPImgFill)
+                self.bannerIV.kf.setImage(with: url, placeholder: NAppPImg)
             }
         }
     }

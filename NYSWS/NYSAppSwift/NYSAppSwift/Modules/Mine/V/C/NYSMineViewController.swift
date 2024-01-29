@@ -182,14 +182,15 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         } else if sender.tag == 303 {
             AlertManager.shared.showAlert(title: "自定义图标+按钮弹窗", content: nil, icon: UIImage(named: "ic_88px_warm")?.resized(to: CGSizeMake(60, 60)), confirmButtonTitle: "朕知道了", cancelBtnTitle: "退下吧")
             
-        } else {
+        } else if sender.tag == 400 {
             if #available(iOS 15.0, *) {
                 self.navigationController?.pushViewController(NYSPandaViewController.init(), animated: true)
             }
-                
-//            let webVC = NYSRootWebViewController.init()
-//            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
-//            self.navigationController?.pushViewController(webVC, animated: true)
+            
+        } else {
+            let webVC = NYSRootWebViewController.init()
+            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
+            self.navigationController?.pushViewController(webVC, animated: true)
         }
     }
     
