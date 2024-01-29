@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9759DA7CC6DDFDC2398D1956 /* Pods_NYSAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */; };
+		C806A5D62B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5D52B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift */; };
+		C806A5DD2B67722F00D6FFE1 /* PandaCollectionFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5D82B67722E00D6FFE1 /* PandaCollectionFetcher.swift */; };
+		C806A5DE2B67722F00D6FFE1 /* MemeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5D92B67722E00D6FFE1 /* MemeCreator.swift */; };
+		C806A5DF2B67722F00D6FFE1 /* LoadableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5DA2B67722E00D6FFE1 /* LoadableImage.swift */; };
+		C806A5E12B67722F00D6FFE1 /* Panda.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5DC2B67722E00D6FFE1 /* Panda.swift */; };
+		C806A5E32B6777B600D6FFE1 /* NYSPandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5E22B6777B600D6FFE1 /* NYSPandaViewController.swift */; };
 		C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */; };
 		C80EE9E62B3ECE2900F79AD0 /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */; };
 		C80EE9EB2B43963800F79AD0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */; };
@@ -136,6 +142,12 @@
 /* Begin PBXFileReference section */
 		42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.release.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.release.xcconfig"; sourceTree = "<group>"; };
+		C806A5D52B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBridgeSwiftUI.swift; sourceTree = "<group>"; };
+		C806A5D82B67722E00D6FFE1 /* PandaCollectionFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandaCollectionFetcher.swift; sourceTree = "<group>"; };
+		C806A5D92B67722E00D6FFE1 /* MemeCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCreator.swift; sourceTree = "<group>"; };
+		C806A5DA2B67722E00D6FFE1 /* LoadableImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableImage.swift; sourceTree = "<group>"; };
+		C806A5DC2B67722E00D6FFE1 /* Panda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panda.swift; sourceTree = "<group>"; };
+		C806A5E22B6777B600D6FFE1 /* NYSPandaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSPandaViewController.swift; sourceTree = "<group>"; };
 		C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSSettingViewController.swift; sourceTree = "<group>"; };
 		C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
 		C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -275,6 +287,18 @@
 			);
 			name = Pods;
 			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		C806A5D72B67721600D6FFE1 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				C806A5DA2B67722E00D6FFE1 /* LoadableImage.swift */,
+				C806A5D92B67722E00D6FFE1 /* MemeCreator.swift */,
+				C806A5DC2B67722E00D6FFE1 /* Panda.swift */,
+				C806A5D82B67722E00D6FFE1 /* PandaCollectionFetcher.swift */,
+				C806A5E22B6777B600D6FFE1 /* NYSPandaViewController.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		C80EE9E92B43954400F79AD0 /* Extension */ = {
@@ -601,6 +625,7 @@
 		C8A4BE3B2B4BD38800152E14 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				C806A5D72B67721600D6FFE1 /* SwiftUI */,
 				C8ED43182B61269C00342153 /* Logoff */,
 				C8200B292B60985900580A1F /* Feedback */,
 				C8D0AF7E2B493315002C18E6 /* Setting */,
@@ -685,6 +710,7 @@
 				C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */,
 				C8469F012B5103F400B8A1E4 /* MarqueeLabel.swift */,
 				C8ED6DEB2B551B5C000F2268 /* NYSWaterfallLayout.swift */,
+				C806A5D52B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -925,6 +951,8 @@
 				C85848102B47A40D00B27086 /* NYSInstructionViewController.swift in Sources */,
 				C8C5D2372B3E48EB00117F58 /* NYSRootScrollViewController.swift in Sources */,
 				C816B6672B4F7B6F00256E58 /* NYSWeaterIndex.swift in Sources */,
+				C806A5D62B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift in Sources */,
+				C806A5E12B67722F00D6FFE1 /* Panda.swift in Sources */,
 				C843D1512B5E50B5003B23B7 /* UIImage+Extension.swift in Sources */,
 				C86DB21F2B3E9E22002126F5 /* WRNavigationBar.swift in Sources */,
 				C8D3E21C2B3BB1E700B77DEA /* NYSHomeListViewController.swift in Sources */,
@@ -950,11 +978,13 @@
 				C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */,
 				C8597A8629F5119E008BEE7F /* ViewController.swift in Sources */,
 				C8A4BE2B2B4B9E5600152E14 /* NYSHomeListCell.swift in Sources */,
+				C806A5E32B6777B600D6FFE1 /* NYSPandaViewController.swift in Sources */,
 				C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */,
 				C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */,
 				C8469F002B50FB6F00B8A1E4 /* NYSContentViewController.swift in Sources */,
 				C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */,
 				C893E3EC2B5F54FB0087AB36 /* NYSTextAlertView.swift in Sources */,
+				C806A5DD2B67722F00D6FFE1 /* PandaCollectionFetcher.swift in Sources */,
 				C8A4BE312B4BBA1800152E14 /* UITableView+Extension.swift in Sources */,
 				C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */,
 				C83162A72B4CE5160014CFE1 /* UIScrollView+RxSwift.swift in Sources */,
@@ -963,6 +993,7 @@
 				C8ED6DE02B550A61000F2268 /* NYSRootCodable.swift in Sources */,
 				C8D0AF7B2B4923C3002C18E6 /* NYSThirdPartyDetailViewController.swift in Sources */,
 				C86DB2202B3E9E22002126F5 /* WRCustomNavigationBar.swift in Sources */,
+				C806A5DE2B67722F00D6FFE1 /* MemeCreator.swift in Sources */,
 				C8BC5EA02B3AA41200814C2B /* NYSAdaptScreen.swift in Sources */,
 				C8BC5E982B3A852200814C2B /* NYSMineViewController.swift in Sources */,
 				C8BC5EA62B3AB14400814C2B /* APPConfig.swift in Sources */,
@@ -976,6 +1007,7 @@
 				C8A4BE3E2B4BD45400152E14 /* NYSHomeModel.swift in Sources */,
 				C83EC4942B4FB1F3008FBE68 /* API.swift in Sources */,
 				C8C5D23B2B3E4FF800117F58 /* NYSSubScrollViewController.swift in Sources */,
+				C806A5DF2B67722F00D6FFE1 /* LoadableImage.swift in Sources */,
 				C816B6682B4F7B6F00256E58 /* NYSWeaterHour.swift in Sources */,
 				C8BC5EA22B3AA6C400814C2B /* UIDevice+Extension.swift in Sources */,
 				C83EC4962B50CB8C008FBE68 /* NYSWeaterCell.swift in Sources */,
