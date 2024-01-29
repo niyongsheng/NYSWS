@@ -22,6 +22,7 @@ class NYSQRCodeViewController: NYSRootViewController, UIScrollViewDelegate {
         
         self.navigationItem.title = "二维码"
         
+        self.checkLocationAuth(isAlways: true)
         DispatchQueue.global(qos: .default).async {
             let qrImg = SGGenerateQRCode.generateQRCode(withData: "https://github.com/niyongsheng", size: 200, color: NAppThemeColor, backgroundColor: .clear)
             

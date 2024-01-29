@@ -14,6 +14,8 @@
 		C806A5DF2B67722F00D6FFE1 /* LoadableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5DA2B67722E00D6FFE1 /* LoadableImage.swift */; };
 		C806A5E12B67722F00D6FFE1 /* Panda.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5DC2B67722E00D6FFE1 /* Panda.swift */; };
 		C806A5E32B6777B600D6FFE1 /* NYSPandaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5E22B6777B600D6FFE1 /* NYSPandaViewController.swift */; };
+		C806A5E82B67AB4700D6FFE1 /* NYSAMapLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C806A5E42B67AB4600D6FFE1 /* NYSAMapLocation.m */; };
+		C806A5E92B67AB4700D6FFE1 /* NYSTrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C806A5E52B67AB4600D6FFE1 /* NYSTrackManager.m */; };
 		C80EE9E52B3ECE2900F79AD0 /* NYSSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */; };
 		C80EE9E62B3ECE2900F79AD0 /* NYSSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */; };
 		C80EE9EB2B43963800F79AD0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */; };
@@ -148,6 +150,10 @@
 		C806A5DA2B67722E00D6FFE1 /* LoadableImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableImage.swift; sourceTree = "<group>"; };
 		C806A5DC2B67722E00D6FFE1 /* Panda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panda.swift; sourceTree = "<group>"; };
 		C806A5E22B6777B600D6FFE1 /* NYSPandaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSPandaViewController.swift; sourceTree = "<group>"; };
+		C806A5E42B67AB4600D6FFE1 /* NYSAMapLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSAMapLocation.m; sourceTree = "<group>"; };
+		C806A5E52B67AB4600D6FFE1 /* NYSTrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSTrackManager.m; sourceTree = "<group>"; };
+		C806A5E62B67AB4600D6FFE1 /* NYSTrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSTrackManager.h; sourceTree = "<group>"; };
+		C806A5E72B67AB4600D6FFE1 /* NYSAMapLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSAMapLocation.h; sourceTree = "<group>"; };
 		C80EE9E32B3ECE2900F79AD0 /* NYSSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSSettingViewController.swift; sourceTree = "<group>"; };
 		C80EE9E42B3ECE2900F79AD0 /* NYSSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSSettingViewController.xib; sourceTree = "<group>"; };
 		C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -299,6 +305,17 @@
 				C806A5E22B6777B600D6FFE1 /* NYSPandaViewController.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		C806A5EA2B67AB4E00D6FFE1 /* OC */ = {
+			isa = PBXGroup;
+			children = (
+				C806A5E72B67AB4600D6FFE1 /* NYSAMapLocation.h */,
+				C806A5E42B67AB4600D6FFE1 /* NYSAMapLocation.m */,
+				C806A5E62B67AB4600D6FFE1 /* NYSTrackManager.h */,
+				C806A5E52B67AB4600D6FFE1 /* NYSTrackManager.m */,
+			);
+			path = OC;
 			sourceTree = "<group>";
 		};
 		C80EE9E92B43954400F79AD0 /* Extension */ = {
@@ -702,6 +719,7 @@
 		C8BC5E9E2B3AA3A400814C2B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C806A5EA2B67AB4E00D6FFE1 /* OC */,
 				C83EC4932B4FB1F3008FBE68 /* API.swift */,
 				C8BC5EA52B3AB14400814C2B /* APPConfig.swift */,
 				C8A00F262B464CBD00245D94 /* Transform.swift */,
@@ -981,6 +999,7 @@
 				C806A5E32B6777B600D6FFE1 /* NYSPandaViewController.swift in Sources */,
 				C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */,
 				C821AAB32B46B29E003C0968 /* NYSScanViewController.m in Sources */,
+				C806A5E82B67AB4700D6FFE1 /* NYSAMapLocation.m in Sources */,
 				C8469F002B50FB6F00B8A1E4 /* NYSContentViewController.swift in Sources */,
 				C8D3E21F2B3BC6F800B77DEA /* NYSRootWindow.swift in Sources */,
 				C893E3EC2B5F54FB0087AB36 /* NYSTextAlertView.swift in Sources */,
@@ -1021,6 +1040,7 @@
 				C8BC5E9C2B3A9E9400814C2B /* NYSSearchView.swift in Sources */,
 				C8A4BE432B4BDF4300152E14 /* NYSRootViewModel.swift in Sources */,
 				C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */,
+				C806A5E92B67AB4700D6FFE1 /* NYSTrackManager.m in Sources */,
 				C821AAB02B4694C4003C0968 /* AppAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

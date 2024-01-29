@@ -7,6 +7,7 @@
 
 #import "NYSTools.h"
 #import "PublicHeader.h"
+#import <MapKit/MapKit.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation NYSTools
@@ -417,6 +418,43 @@
 
 + (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion {
     [SVProgressHUD dismissWithDelay:delay completion:completion];
+}
+
+#pragma mark - 自动根据已安装的地图app跳转导航
+/*
+<key>LSApplicationQueriesSchemes</key>
+<array>
+   <string>iosamap</string>
+   <string>baidumap</string>
+</array>
+*/
++ (void)navigateToAddress:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate viewController:(UIViewController *)viewController {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请选择导航" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"苹果地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction*_Nonnullaction) {
+        MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+        MKMapItem *tolocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil]];
+        tolocation.name= address;
+        [MKMapItem openMapsWithItems:@[currentLocation,tolocation]launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey:[NSNumber numberWithBool:YES]}];
+    }];
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]]) {
+        UIAlertAction*action2 = [UIAlertAction actionWithTitle:@"高德地图"style:UIAlertActionStyleDefault handler:^(UIAlertAction*_Nonnullaction) {
+            NSString *urlsting =[[NSString stringWithFormat:@"iosamap://navi?sourceApplication= &backScheme= &lat=%f&lon=%f&dev=0&style=2",coordinate.latitude, coordinate.longitude] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:urlsting] options:@{UIApplicationOpenURLOptionsSourceApplicationKey: @YES} completionHandler:nil];
+        }];
+        [alert addAction:action2];
+    }
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]]) {
+        UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"百度地图"style:UIAlertActionStyleDefault handler:^(UIAlertAction*_Nonnullaction) {
+            NSString *urlsting =[[NSString stringWithFormat:@"baidumap://map/direction?origin={{我的位置}}&destination=latlng:%f,%f|name=%@&mode=driving&coord_type=gcj02", coordinate.latitude, coordinate.longitude, address] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:urlsting] options:@{UIApplicationOpenURLOptionsSourceApplicationKey: @YES} completionHandler:nil];
+        }];
+        [alert addAction:action3];
+    }
+    UIAlertAction *action4 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:action1];
+    [alert addAction:action4];
+    [viewController.navigationController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - 其他

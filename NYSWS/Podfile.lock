@@ -16,6 +16,12 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Alamofire (5.8.0)
+  - AMapFoundation (1.8.2)
+  - AMapLocation (2.10.0):
+    - AMapFoundation (>= 1.8.0)
+  - AMapTrack (1.4.2):
+    - AMapFoundation (>= 1.6.4)
+    - AMapLocation (>= 2.6.7)
   - BRPickerView (2.8.1):
     - BRPickerView/AddressPickerView (= 2.8.1)
     - BRPickerView/Base (= 2.8.1)
@@ -98,6 +104,8 @@ DEPENDENCIES:
   - AcknowList (= 3.0.1)
   - AFNetworking (= 4.0.1)
   - Alamofire (= 5.8.0)
+  - AMapLocation
+  - AMapTrack
   - BRPickerView (= 2.8.1)
   - CocoaDebug
   - Disk (= 0.6.4)
@@ -142,6 +150,9 @@ SPEC REPOS:
     - AcknowList
     - AFNetworking
     - Alamofire
+    - AMapFoundation
+    - AMapLocation
+    - AMapTrack
     - BRPickerView
     - CocoaDebug
     - Disk
@@ -190,6 +201,9 @@ SPEC CHECKSUMS:
   AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
+  AMapFoundation: 9885c48fc3a78fdfb84a0299a2293e56ea3c9fec
+  AMapLocation: 5248aec2455ebb5d104b367813c946430a2ee033
+  AMapTrack: e95862d44af9c7fd0cc755b7a96622f35bf3764c
   BRPickerView: 2531a2d4d0fea0b57a1c738de215af0f88863a2f
   CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
   Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
@@ -234,6 +248,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: ae13ff9511ab3d3c5434cb4c22b5ce711d78ddd7
+PODFILE CHECKSUM: 75a6bd0dc828829e8b36307f3eb29557086ef3d2
 
 COCOAPODS: 1.12.0

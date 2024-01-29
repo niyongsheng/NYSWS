@@ -10,6 +10,7 @@
 import UIKit
 import RxSwift
 import NYSUIKit
+import CoreLocation
 
 class NYSRootViewController: NYSBaseViewController {
     
@@ -46,5 +47,23 @@ class NYSRootViewController: NYSBaseViewController {
 }
 
 extension NYSRootViewController {
-
+    func checkLocationAuth(isAlways: Bool = false) {
+        let status = CLLocationManager.authorizationStatus()
+        
+        let always = isAlways || status != .authorizedAlways
+        let alertTitle = always ? "请开启持续定位权限" : "请开启定位权限"
+        let alertIcon = always ? UIImage(systemName: "location.fill") : UIImage(systemName: "location")
+        
+        if status == .restricted || status == .denied || always {
+            AlertManager.shared.showAlert(title: nil, content: alertTitle, icon: alertIcon?.withTintColor(NAppThemeColor).resized(to: CGSize(width: 36, height: 36)), confirmButtonTitle: "设置", cancelBtnTitle: nil) { popup, action, obj in
+                if action == .confirm {
+                    popup.dismiss(animated: true)
+                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+        }
+    }
+    
 }

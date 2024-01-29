@@ -39,6 +39,9 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   pod 'SnapKit', '5.6.0'
   pod 'TangramKit', '1.4.2'
   
+  # Third
+  pod 'AMapLocation'
+  pod 'AMapTrack'
   pod 'JPush'
 end
 

@@ -16,10 +16,6 @@ let JPUSH_APPKEY    :String      =        ""
 let JPUSH_CHANNEl   :String      =        "App Store"
 let IS_Prod         :Bool        =        true
 
-// 高德地图
-let AMAP_APPKEY     :String      =        ""
-let AMAP_SECRET     :String      =        ""
-
 // 微信登录
 let WXAPPID         :String      =        ""
 let APPSECRET       :String      =        ""

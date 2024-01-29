@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 typedef void (^NYSToolsDismissCompletion)(void);
 
@@ -153,6 +154,9 @@ typedef void (^NYSToolsDismissCompletion)(void);
 + (void)dismissWithCompletion:(NYSToolsDismissCompletion)completion;
 
 + (void)dismissWithDelay:(NSTimeInterval)delay completion:(NYSToolsDismissCompletion)completion;
+
+#pragma mark - 自动根据已安装的地图app跳转导航
++ (void)navigateToAddress:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate viewController:(UIViewController *)viewController;
 
 #pragma mark - 其他
 /**
