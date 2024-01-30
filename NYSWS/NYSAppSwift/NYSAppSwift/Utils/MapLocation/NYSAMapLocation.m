@@ -9,7 +9,10 @@
 
 #import "NYSAMapLocation.h"
 
-@interface NYSAMapLocation () <AMapLocationManagerDelegate>
+@interface NYSAMapLocation () 
+<
+AMapLocationManagerDelegate
+>
 
 @property (nonatomic, strong) AMapLocationManager *locationManager;
 
@@ -33,7 +36,7 @@
 - (void)configLocationManager {
     [AMapLocationManager updatePrivacyShow:AMapPrivacyShowStatusDidShow privacyInfo:AMapPrivacyInfoStatusDidContain];
     [AMapLocationManager updatePrivacyAgree:AMapPrivacyAgreeStatusDidAgree];
-
+    
     self.locationManager = [[AMapLocationManager alloc] init];
     [self.locationManager setDelegate:self];
     
@@ -49,24 +52,33 @@
     [self.locationManager setReGeocodeTimeout:DefaultReGeocodeTimeout];
 }
 
+#pragma mark - 单次定位
+- (void)requestLocation {
+    // 仅定位请求
+    [self requestLocationWithReGeocode:NO completionBlock:self.completionBlock];
+}
+
+- (void)requestReGeocode {
+    // 带逆地理定位请求
+    [self requestLocationWithReGeocode:YES completionBlock:self.completionBlock];
+}
+
+- (BOOL)requestLocationWithReGeocode:(BOOL)withReGeocode completionBlock:(AMapLocatingCompletionBlock)completionBlock {
+    return [self.locationManager requestLocationWithReGeocode:withReGeocode completionBlock:completionBlock];
+}
+
 - (void)cleanUpAction {
     // 停止定位
     [self.locationManager stopUpdatingLocation];
 }
 
-- (void)reGeocodeAction {
-    // 进行单次带逆地理定位请求
-    [self.locationManager requestLocationWithReGeocode:YES completionBlock:self.completionBlock];
+#pragma mark - 持续定位
+- (void)startUpdatingLocation {
+    [self.locationManager startUpdatingLocation];
 }
 
-- (void)locAction {
-    // 进行单次定位请求
-    [self.locationManager requestLocationWithReGeocode:NO completionBlock:self.completionBlock];
-}
-
-- (BOOL)requestLocationWithReGeocode:(BOOL)withReGeocode completionBlock:(AMapLocatingCompletionBlock)completionBlock {
-    // 定位
-    return [self.locationManager requestLocationWithReGeocode:withReGeocode completionBlock:completionBlock];
+- (void)stopUpdatingLocation {
+    [self.locationManager stopUpdatingLocation];
 }
 
 #pragma mark - Initialization
@@ -77,33 +89,34 @@
             NSLog(@"[NYSAMapLocation]定位错误:{%ld - %@};", (long)error.code, error.localizedDescription);
             
         } else if (error != nil && (error.code == AMapLocationErrorReGeocodeFailed
-                     || error.code == AMapLocationErrorTimeOut
-                     || error.code == AMapLocationErrorCannotFindHost
-                     || error.code == AMapLocationErrorBadURL
-                     || error.code == AMapLocationErrorNotConnectedToInternet
-                     || error.code == AMapLocationErrorCannotConnectToHost)) {
+                                    || error.code == AMapLocationErrorTimeOut
+                                    || error.code == AMapLocationErrorCannotFindHost
+                                    || error.code == AMapLocationErrorBadURL
+                                    || error.code == AMapLocationErrorNotConnectedToInternet
+                                    || error.code == AMapLocationErrorCannotConnectToHost)) {
             
             // 逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值，进行annotation的添加
             NSLog(@"[NYSAMapLocation]逆地理错误:{%ld - %@};", (long)error.code, error.localizedDescription);
             
         } else if (error != nil && error.code == AMapLocationErrorRiskOfFakeLocation) {
-            
             // 存在虚拟定位的风险：此时location和regeocode没有返回值，不进行annotation的添加
             NSLog(@"[NYSAMapLocation]存在虚拟定位的风险:{%ld - %@};", (long)error.code, error.localizedDescription);
         }
         
         if (error) {
-            [NYSTools showIconToast:[NSString stringWithFormat:@"定位错误:{%ld - %@};", (long)error.code, error.localizedDescription] isSuccess:false offset:UIOffsetMake(0, 0)];
+            NSLog(@"%@", [NSString stringWithFormat:@"[NYSAMapLocation] error:{%ld - %@};", (long)error.code, error.localizedDescription]);
             if (weakSelf.completion) {
-                weakSelf.completion(nil, nil, nil, error);
+                weakSelf.completion(@"", @"", @"", error);
             }
             return;
         }
         
+        if (location) {
+            NSLog(@"%@", [NSString stringWithFormat:@"[NYSAMapLocation]lat:%f;lon:%f \n accuracy:%.2fm", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy]);
+        }
+        
         if (regeocode) {
             NSLog(@"%@", [NSString stringWithFormat:@"[NYSAMapLocation]%@ \n %@-%@-%.2fm", regeocode.formattedAddress,regeocode.citycode, regeocode.adcode, location.horizontalAccuracy]);
-        } else {
-            NSLog(@"%@", [NSString stringWithFormat:@"[NYSAMapLocation]lat:%f;lon:%f \n accuracy:%.2fm", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy]);
         }
         
         if (weakSelf.completion) {

@@ -15,6 +15,8 @@
 @class NYSRootWebViewController;
 
 #pragma mark -- OC混编 --
+#import "NYSAMapLocation.h"
+#import "NYSAMapTrackManager.h"
 #import "NYSScanViewController.h"
 
 #pragma mark -- 三方框架 --

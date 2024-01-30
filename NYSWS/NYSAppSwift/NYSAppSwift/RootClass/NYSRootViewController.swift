@@ -50,7 +50,7 @@ extension NYSRootViewController {
     func checkLocationAuth(isAlways: Bool = false) {
         let status = CLLocationManager.authorizationStatus()
         
-        let always = isAlways || status != .authorizedAlways
+        let always = isAlways && status != .authorizedAlways
         let alertTitle = always ? "请开启持续定位权限" : "请开启定位权限"
         let alertIcon = always ? UIImage(systemName: "location.fill") : UIImage(systemName: "location")
         

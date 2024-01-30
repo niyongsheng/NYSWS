@@ -376,32 +376,35 @@
 /// Toast 头部
 /// @param msg 内容
 + (void)showTopToast:(NSString *)msg {
-    [self showToast:msg imageNamed:@"_NULL" offset:UIOffsetMake(0, -[[UIScreen mainScreen] bounds].size.width * 0.3)];
+    [self showToast:msg image:nil offset:UIOffsetMake(0, -[[UIScreen mainScreen] bounds].size.width * 0.3)];
 }
 
 /// Toast 底部
 /// @param msg 内容
 + (void)showBottomToast:(NSString *)msg {
-    [self showToast:msg imageNamed:@"" offset:UIOffsetMake(0, [[UIScreen mainScreen] bounds].size.height * 0.4)];
+    [self showToast:msg image:nil offset:UIOffsetMake(0, [[UIScreen mainScreen] bounds].size.height * 0.4)];
 }
 
 + (void)showToast:(NSString *)msg {
-    [self showToast:msg imageNamed:@"" offset:UIOffsetMake(0, 0)];
+    [self showToast:msg image:nil offset:UIOffsetMake(0, 0)];
 }
 
-+ (void)showToast:(NSString *)msg imageNamed:(NSString *)name offset:(UIOffset)offset {
++ (void)showToast:(NSString *)msg image:(UIImage *)image offset:(UIOffset)offset {
     [SVProgressHUD setHapticsEnabled:YES];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:12]];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [SVProgressHUD setDefaultAnimationType:(SVProgressHUDAnimationTypeNative)];
     [SVProgressHUD setOffsetFromCenter:offset];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD showImage:[UIImage imageNamed:name] status:msg];
-    [SVProgressHUD dismissWithDelay:5.0f completion:nil];
+    [SVProgressHUD showImage:image status:msg];
 }
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset {
     [SVProgressHUD setHapticsEnabled:YES];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.5];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:12]];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [SVProgressHUD setDefaultAnimationType:(SVProgressHUDAnimationTypeNative)];
     [SVProgressHUD setOffsetFromCenter:offset];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];

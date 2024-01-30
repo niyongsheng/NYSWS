@@ -1,5 +1,5 @@
 //
-//  NYSTrackManager.m
+//  NYSAMapTrackManager.m
 //
 //  📌高德猎鹰轨迹上报管理类
 //
@@ -7,25 +7,27 @@
 //  Copyright © 2023 NYS. ALL rights reserved.
 //
 
-#import "NYSTrackManager.h"
+#import "NYSAMapTrackManager.h"
 #import <AMapTrackKit/AMapTrackKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 
-@interface NYSTrackManager ()
+@interface NYSAMapTrackManager ()
 <
 AMapTrackManagerDelegate
 >
 @property (nonatomic, strong) AMapTrackManager *trackManager;
 @end
 
-@implementation NYSTrackManager
+@implementation NYSAMapTrackManager
 
-+ (NYSTrackManager *)sharedNYSTrackManager {
-    static NYSTrackManager *sharedManager = nil;
++ (NYSAMapTrackManager *)sharedNYSAMapTrackManager {
+    static NYSAMapTrackManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-        [locationManager requestAlwaysAuthorization];
+        if (CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorizedAlways) {
+            CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+            [locationManager requestAlwaysAuthorization];
+        }
         
         sharedManager = [[self alloc] init];
     });

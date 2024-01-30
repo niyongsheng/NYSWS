@@ -9,7 +9,4 @@
 #import <SGQRCode/SGQRCode.h>
 #import "NYSAppSwift-Swift.h"
 
-#import "NYSAMapLocation.h"
-#import "NYSTrackManager.h"
-
 #endif /* PrefixHeader_pch */

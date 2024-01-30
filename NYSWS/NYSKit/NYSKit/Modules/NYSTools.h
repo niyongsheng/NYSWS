@@ -147,7 +147,7 @@ typedef void (^NYSToolsDismissCompletion)(void);
 /// @param msg 内容
 + (void)showToast:(NSString *)msg;
 
-+ (void)showToast:(NSString *)msg imageNamed:(NSString *)name offset:(UIOffset)offset;
++ (void)showToast:(NSString *)msg image:(UIImage *)image offset:(UIOffset)offset;
 
 + (void)showIconToast:(NSString *)msg isSuccess:(BOOL)isSuccess offset:(UIOffset)offset;
 

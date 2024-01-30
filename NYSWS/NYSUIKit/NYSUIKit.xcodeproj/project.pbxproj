@@ -18,6 +18,10 @@
 		C8A4BE332B4BC52A00152E14 /* NYSUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8A4BE322B4BC52A00152E14 /* NYSUIKit.bundle */; };
 		C8A4BE362B4BC7D200152E14 /* NSBundle+NYSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C8A4BE342B4BC7D200152E14 /* NSBundle+NYSFramework.h */; };
 		C8A4BE372B4BC7D200152E14 /* NSBundle+NYSFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE352B4BC7D200152E14 /* NSBundle+NYSFramework.m */; };
+		C8B6C96A2B689868007EDDB0 /* NYSLocationTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B6C9682B689868007EDDB0 /* NYSLocationTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8B6C96B2B689868007EDDB0 /* NYSLocationTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B6C9692B689868007EDDB0 /* NYSLocationTransform.m */; };
+		C8B6C9712B68B991007EDDB0 /* NYSSystemLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B6C96F2B68B991007EDDB0 /* NYSSystemLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8B6C9722B68B991007EDDB0 /* NYSSystemLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B6C9702B68B991007EDDB0 /* NYSSystemLocation.m */; };
 		C8B7479529FA775400673B75 /* LEEBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B7476029FA775300673B75 /* LEEBubble.m */; };
 		C8B7479629FA775400673B75 /* LEEBubble.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7476129FA775300673B75 /* LEEBubble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8B7479A29FA775400673B75 /* NYSLoadingButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C8B7476829FA775300673B75 /* NYSLoadingButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -119,6 +123,10 @@
 		C8A4BE322B4BC52A00152E14 /* NYSUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NYSUIKit.bundle; sourceTree = "<group>"; };
 		C8A4BE342B4BC7D200152E14 /* NSBundle+NYSFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+NYSFramework.h"; sourceTree = "<group>"; };
 		C8A4BE352B4BC7D200152E14 /* NSBundle+NYSFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+NYSFramework.m"; sourceTree = "<group>"; };
+		C8B6C9682B689868007EDDB0 /* NYSLocationTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSLocationTransform.h; sourceTree = "<group>"; };
+		C8B6C9692B689868007EDDB0 /* NYSLocationTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSLocationTransform.m; sourceTree = "<group>"; };
+		C8B6C96F2B68B991007EDDB0 /* NYSSystemLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NYSSystemLocation.h; sourceTree = "<group>"; };
+		C8B6C9702B68B991007EDDB0 /* NYSSystemLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSSystemLocation.m; sourceTree = "<group>"; };
 		C8B7475929FA753300673B75 /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B7476029FA775300673B75 /* LEEBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEBubble.m; sourceTree = "<group>"; };
 		C8B7476129FA775300673B75 /* LEEBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEBubble.h; sourceTree = "<group>"; };
@@ -275,9 +283,21 @@
 			path = FIRVersionCheck;
 			sourceTree = "<group>";
 		};
+		C8B6C9672B689835007EDDB0 /* NYSLocation */ = {
+			isa = PBXGroup;
+			children = (
+				C8B6C96F2B68B991007EDDB0 /* NYSSystemLocation.h */,
+				C8B6C9702B68B991007EDDB0 /* NYSSystemLocation.m */,
+				C8B6C9682B689868007EDDB0 /* NYSLocationTransform.h */,
+				C8B6C9692B689868007EDDB0 /* NYSLocationTransform.m */,
+			);
+			path = NYSLocation;
+			sourceTree = "<group>";
+		};
 		C8B7475E29FA76FC00673B75 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C8B6C9672B689835007EDDB0 /* NYSLocation */,
 				C85F4E612A189217007DAADC /* FIRVersionCheck */,
 				C8B7476E29FA775300673B75 /* BlugeTabBar */,
 				C8B7479229FA775400673B75 /* CMPopTipView */,
@@ -549,6 +569,8 @@
 				C8D0AF872B49438F002C18E6 /* NYSMemoryLabel.h in Headers */,
 				C8D0AF892B49438F002C18E6 /* YYFPSLabel.h in Headers */,
 				C85F4E642A189217007DAADC /* FIRVersionCheck.h in Headers */,
+				C8B6C96A2B689868007EDDB0 /* NYSLocationTransform.h in Headers */,
+				C8B6C9712B68B991007EDDB0 /* NYSSystemLocation.h in Headers */,
 				C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */,
 				C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */,
 			);
@@ -675,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B6C96B2B689868007EDDB0 /* NYSLocationTransform.m in Sources */,
 				C8B747FE29FA818900673B75 /* NYSBaseNavigationController.m in Sources */,
 				C8B747B329FA775400673B75 /* TableViewAnimationKit.m in Sources */,
 				C8B747F429FA818900673B75 /* NYSJSHandler.m in Sources */,
@@ -693,6 +716,7 @@
 				C8B747A229FA775400673B75 /* PopView.m in Sources */,
 				C8B7479E29FA775400673B75 /* LEETheme.m in Sources */,
 				C8B747A829FA775400673B75 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				C8B6C9722B68B991007EDDB0 /* NYSSystemLocation.m in Sources */,
 				C8B747A129FA775400673B75 /* PopAnimationTool.m in Sources */,
 				C8B747B929FA775400673B75 /* WSScrollLabel.m in Sources */,
 				C8B747F829FA818900673B75 /* NYSWebViewController.m in Sources */,

@@ -32,7 +32,8 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/WSScrollLabel.h>
 #import <NYSUIKit/TableViewAnimationKit.h>
 #import <NYSUIKit/FIRVersionCheck.h>
-
+#import <NYSUIKit/NYSSystemLocation.h>
+#import <NYSUIKit/NYSLocationTransform.h>
 
 #import <NYSUIKit/NSDictionary+NilSafe.h>
 #import <NYSUIKit/NSError+NYS.h>
@@ -44,7 +45,6 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/UITextField+NYS.h>
 #import <NYSUIKit/UIView+NYS.h>
 
-
 #import <NYSUIKit/NYSBaseNavigationController.h>
 #import <NYSUIKit/NYSBaseObject.h>
 #import <NYSUIKit/NYSBasePresenter.h>
@@ -54,6 +54,5 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/NYSBaseWindow.h>
 #import <NYSUIKit/NYSJSHandler.h>
 #import <NYSUIKit/NYSWebViewController.h>
-
 
 #import <NYSUIKit/ThemeManager.h>

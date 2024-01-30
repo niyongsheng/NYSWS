@@ -34,6 +34,11 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     @IBOutlet weak var serviceL: UILabel!
     @IBOutlet weak var serviceTelBtn: UIButton!
     
+    @IBOutlet weak var infoL: UILabel!
+    
+    var amapLocation: NYSAMapLocation?
+    var systemLocation: NYSSystemLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,6 +97,10 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         
         iconIV.addTapAction { sender in
             NYSTools.zoom(toShow: sender?.layer)
+            
+            let webVC = NYSRootWebViewController.init()
+            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
+            self.navigationController?.pushViewController(webVC, animated: true)
         }
     }
 
@@ -187,10 +196,41 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
                 self.navigationController?.pushViewController(NYSPandaViewController.init(), animated: true)
             }
             
+        } else if sender.tag == 401 {
+            systemLocation = NYSSystemLocation()
+            systemLocation?.completion = { [weak self] address, latitude, longitude, error in
+                if let error = error as NSError? {
+                    let errorMessage = "Location Error:\(error.code) \(error.localizedDescription)"
+                    NYSTools.showBottomToast(errorMessage)
+                    self?.checkLocationAuth()
+                } else {
+                    NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
+                    self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
+                }
+            }
+            systemLocation?.request()
+            
+//            amapLocation = NYSAMapLocation()
+//            amapLocation?.completion = { [weak self] address, latitude, longitude, error in
+//                if let error = error as NSError? {
+//                    let errorMessage = "Location Error:\(error.code) \(error.localizedDescription)"
+//                    NYSTools.showBottomToast(errorMessage)
+//                    self?.checkLocationAuth(isAlways: true)
+//                } else {
+//                    NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
+//                    self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
+//                }
+//            }
+//            amapLocation?.requestReGeocode()
+            
+        } else if sender.tag == 402 {
+            let latitude: CLLocationDegrees = 39.9
+            let longitude: CLLocationDegrees = 116.38
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            NYSTools.navigate(toAddress: "北京", coordinate: coordinate, viewController: self)
+            
         } else {
-            let webVC = NYSRootWebViewController.init()
-            webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
-            self.navigationController?.pushViewController(webVC, animated: true)
+            NYSTools.log("未定义")
         }
     }
     

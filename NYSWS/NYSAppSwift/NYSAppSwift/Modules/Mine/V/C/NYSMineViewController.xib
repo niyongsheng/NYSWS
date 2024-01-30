@@ -16,6 +16,7 @@
                 <outlet property="contenView" destination="5au-6d-EUQ" id="OYg-v4-2DN"/>
                 <outlet property="fourSV" destination="xuC-XL-62d" id="WPa-vs-8nl"/>
                 <outlet property="iconIV" destination="e8i-Fg-6ya" id="CNu-n9-M1N"/>
+                <outlet property="infoL" destination="xQq-49-p0E" id="XRo-CM-Ikl"/>
                 <outlet property="lineV" destination="eAn-aF-K6p" id="kgy-wy-NrL"/>
                 <outlet property="oneSV" destination="cZ3-4g-AEJ" id="4mf-5v-KDK"/>
                 <outlet property="scrollView" destination="e4i-Fb-XrU" id="9Ex-vT-Whb"/>
@@ -48,12 +49,22 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2vo-Bl-TO7">
                                             <rect key="frame" x="0.0" y="0.0" width="363" height="100"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQq-49-p0E">
+                                            <rect key="frame" x="15" y="10" width="333" height="80"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" name="themeColor"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="xQq-49-p0E" secondAttribute="trailing" constant="15" id="6Ri-o8-UKf"/>
+                                        <constraint firstItem="xQq-49-p0E" firstAttribute="top" secondItem="I0G-eL-n7b" secondAttribute="top" constant="10" id="Zqy-8v-z9T"/>
                                         <constraint firstAttribute="trailing" secondItem="2vo-Bl-TO7" secondAttribute="trailing" id="gnn-uO-deN"/>
                                         <constraint firstItem="2vo-Bl-TO7" firstAttribute="leading" secondItem="I0G-eL-n7b" secondAttribute="leading" id="iWq-VL-X1y"/>
+                                        <constraint firstItem="xQq-49-p0E" firstAttribute="leading" secondItem="I0G-eL-n7b" secondAttribute="leading" constant="15" id="ilL-KB-att"/>
                                         <constraint firstAttribute="bottom" secondItem="2vo-Bl-TO7" secondAttribute="bottom" id="m3w-ZC-b5M"/>
+                                        <constraint firstAttribute="bottom" secondItem="xQq-49-p0E" secondAttribute="bottom" constant="10" id="nBb-BC-Ule"/>
                                         <constraint firstAttribute="height" constant="100" id="qKT-t7-Ay9"/>
                                         <constraint firstItem="2vo-Bl-TO7" firstAttribute="top" secondItem="I0G-eL-n7b" secondAttribute="top" id="yRt-22-Hag"/>
                                     </constraints>
@@ -751,8 +762,8 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_write" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-6W-qEt">
                                                             <rect key="frame" x="15" y="10" width="24" height="24"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自定义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-oO-FUw">
-                                                            <rect key="frame" x="49" y="11.999999999999998" width="52" height="20.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-oO-FUw">
+                                                            <rect key="frame" x="49" y="11.999999999999998" width="103" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="fontColor"/>
                                                             <nil key="highlightedColor"/>
@@ -799,8 +810,8 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_write" translatesAutoresizingMaskIntoConstraints="NO" id="ufk-1r-M4Q">
                                                             <rect key="frame" x="15" y="10" width="24" height="24"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自定义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PL8-ps-AT3">
-                                                            <rect key="frame" x="49" y="11.999999999999998" width="52" height="20.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Navigation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PL8-ps-AT3">
+                                                            <rect key="frame" x="49.000000000000007" y="11.999999999999998" width="118.66666666666669" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="fontColor"/>
                                                             <nil key="highlightedColor"/>
@@ -919,10 +930,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

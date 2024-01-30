@@ -53,12 +53,10 @@ class NYSServiceViewController: NYSRootViewController {
         return pagingContent
     }()
     
-    var bannerImageArr = [
-        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZonedOut.jpg",
-        "https://playgrounds-cdn.apple.com/assets/pandas/pandaLeaning.jpg",
-        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZoomEating.jpg",
-        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZoomPortrait.jpg",
-        "https://playgrounds-cdn.apple.com/assets/pandas/pandaSniffingBamboo.jpg"
+    var bannerImageArr = ["", "",
+//        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZonedOut.jpg",
+//        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZoomPortrait.jpg",
+//        "https://playgrounds-cdn.apple.com/assets/pandas/pandaSniffingBamboo.jpg"
     ]
     lazy var headerView: UIView = {
         let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: pro_headerViewHeight))
