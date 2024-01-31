@@ -75,4 +75,10 @@ CLLocationManagerDelegate
     }
 }
 
+- (void)dealloc {
+    [self.sysLocationManager stopUpdatingLocation];
+    self.sysLocationManager.delegate = nil;
+    self.sysLocationManager = nil;
+}
+
 @end

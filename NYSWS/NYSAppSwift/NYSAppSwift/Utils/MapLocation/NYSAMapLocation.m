@@ -132,4 +132,10 @@ AMapLocationManagerDelegate
     [locationManager requestAlwaysAuthorization];
 }
 
+- (void)dealloc {
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager.delegate = nil;
+    self.locationManager = nil;
+}
+
 @end

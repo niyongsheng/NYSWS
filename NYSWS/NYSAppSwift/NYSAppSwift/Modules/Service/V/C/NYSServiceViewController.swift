@@ -76,6 +76,8 @@ class NYSServiceViewController: NYSRootViewController {
         return headerView
     }()
     
+    let pullerVC = NYSPullerViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,16 +93,20 @@ class NYSServiceViewController: NYSRootViewController {
         // 监听子视图发出的通知
         NotificationCenter.default.addObserver(self, selector: #selector(subTableViewDidScroll), name: NSNotification.Name(NNProSubScrollViewDidScroll), object: nil)
         
-//        self.addNavigationItem(withTitles: ["测试", "搜索"], alignment: .left) { sender, index in
-//
+//        self.addNavigationItem(withTitles: ["Touch"], alignment: .left) { sender, index in
+//            
 //        }
+        
+        var existing = false
         let image = UIImage(named: "img_cdtx")!.resized(to: CGSizeMake(30, 30))!
-        self.addNavigationItem(with: [image], alignment: .right) { sender, index in
-            let attributedText = NSMutableAttributedString(string: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint")
-            attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
-                                          NSAttributedString.Key.foregroundColor: UIColor.darkGray],
-                                         range: NSRange(location: 0, length: attributedText.length))
-            AlertManager.shared.showTextAlert(attributedText: attributedText)
+        self.addNavigationItem(with: [image], alignment: .right) { [weak self] sender, index in
+            if existing {
+                self?.removePullUpController(self!.pullerVC, animated: true)
+                existing = false
+            } else {
+                self?.addPullUpController(self!.pullerVC, initialStickyPointOffset: 300, animated: true)
+                existing = true
+            }
         }
     }
     

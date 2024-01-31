@@ -19,6 +19,7 @@
                 <outlet property="infoL" destination="xQq-49-p0E" id="XRo-CM-Ikl"/>
                 <outlet property="lineV" destination="eAn-aF-K6p" id="kgy-wy-NrL"/>
                 <outlet property="oneSV" destination="cZ3-4g-AEJ" id="4mf-5v-KDK"/>
+                <outlet property="qrIV" destination="OoU-9A-kLW" id="3Vr-YW-06q"/>
                 <outlet property="scrollView" destination="e4i-Fb-XrU" id="9Ex-vT-Whb"/>
                 <outlet property="serviceL" destination="dbt-3T-p09" id="8AW-Ct-Mev"/>
                 <outlet property="serviceTelBtn" destination="2QP-mR-gyD" id="LZG-OR-DfD"/>
@@ -860,6 +861,30 @@
                                         <action selector="serviceTelBtnOnclicked:" destination="-1" eventType="touchUpInside" id="vyh-uF-PbE"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iph-ih-gQL">
+                                    <rect key="frame" x="278" y="90" width="100" height="100"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_wallet" translatesAutoresizingMaskIntoConstraints="NO" id="g0g-Do-CZk">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_code_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OoU-9A-kLW">
+                                            <rect key="frame" x="10" y="10" width="80" height="80"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="g0g-Do-CZk" firstAttribute="leading" secondItem="Iph-ih-gQL" secondAttribute="leading" id="017-Sz-xnq"/>
+                                        <constraint firstItem="OoU-9A-kLW" firstAttribute="leading" secondItem="Iph-ih-gQL" secondAttribute="leading" constant="10" id="ECM-06-wZ9"/>
+                                        <constraint firstAttribute="trailing" secondItem="OoU-9A-kLW" secondAttribute="trailing" constant="10" id="GY3-2H-C9b"/>
+                                        <constraint firstAttribute="width" constant="100" id="I6T-77-l44"/>
+                                        <constraint firstAttribute="trailing" secondItem="g0g-Do-CZk" secondAttribute="trailing" id="MkT-ca-w02"/>
+                                        <constraint firstAttribute="width" secondItem="Iph-ih-gQL" secondAttribute="height" multiplier="1:1" id="i4C-7r-64O"/>
+                                        <constraint firstItem="g0g-Do-CZk" firstAttribute="top" secondItem="Iph-ih-gQL" secondAttribute="top" id="ioc-Ak-8ai"/>
+                                        <constraint firstAttribute="bottom" secondItem="g0g-Do-CZk" secondAttribute="bottom" id="wTE-K4-dr2"/>
+                                        <constraint firstAttribute="bottom" secondItem="OoU-9A-kLW" secondAttribute="bottom" constant="10" id="wsg-j7-6m1"/>
+                                        <constraint firstItem="OoU-9A-kLW" firstAttribute="top" secondItem="Iph-ih-gQL" secondAttribute="top" constant="10" id="zYz-fZ-4kL"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                             <constraints>
@@ -872,6 +897,8 @@
                                 <constraint firstItem="I0G-eL-n7b" firstAttribute="top" secondItem="eAn-aF-K6p" secondAttribute="bottom" constant="20" id="PKU-ts-h5N"/>
                                 <constraint firstItem="KFd-0J-vfz" firstAttribute="centerY" secondItem="e8i-Fg-6ya" secondAttribute="centerY" constant="-5" id="SX6-dT-aIi"/>
                                 <constraint firstItem="2QP-mR-gyD" firstAttribute="centerX" secondItem="5au-6d-EUQ" secondAttribute="centerX" id="Ss7-EY-sf3"/>
+                                <constraint firstItem="Iph-ih-gQL" firstAttribute="centerY" secondItem="e8i-Fg-6ya" secondAttribute="centerY" id="VAQ-WD-SB9"/>
+                                <constraint firstAttribute="trailing" secondItem="Iph-ih-gQL" secondAttribute="trailing" constant="15" id="VpA-NW-Me8"/>
                                 <constraint firstItem="eAn-aF-K6p" firstAttribute="leading" secondItem="5au-6d-EUQ" secondAttribute="leading" id="Vug-9y-uGR"/>
                                 <constraint firstItem="M5Y-ml-1al" firstAttribute="top" secondItem="5au-6d-EUQ" secondAttribute="top" id="ak3-pN-X7M"/>
                                 <constraint firstItem="I0G-eL-n7b" firstAttribute="bottom" secondItem="M5Y-ml-1al" secondAttribute="bottom" constant="50" id="b9z-d5-8nt"/>
@@ -913,7 +940,9 @@
     </objects>
     <resources>
         <image name="User_arrow" width="16" height="16"/>
+        <image name="bg_wallet" width="100" height="96"/>
         <image name="pic_48px_def_touxiang" width="48" height="48"/>
+        <image name="qr_code_bg" width="220" height="220"/>
         <image name="user_book" width="24" height="24"/>
         <image name="user_code" width="24" height="24"/>
         <image name="user_header_bg" width="375" height="287"/>
@@ -930,10 +959,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

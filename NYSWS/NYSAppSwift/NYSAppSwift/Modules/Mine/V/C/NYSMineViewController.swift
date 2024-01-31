@@ -19,6 +19,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contenView: UIView!
     
+    @IBOutlet weak var qrIV: UIImageView!
     @IBOutlet weak var iconIV: UIButton!
     @IBOutlet weak var titleL: UILabel!
     @IBOutlet weak var subtitleL: UILabel!
@@ -36,8 +37,33 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var infoL: UILabel!
     
-    var amapLocation: NYSAMapLocation?
-    var systemLocation: NYSSystemLocation?
+    lazy var amapLocation: NYSAMapLocation? = {
+        let location = NYSAMapLocation()
+        location.completion = { [weak self] address, latitude, longitude, error in
+            if let nsError = error as NSError? {
+                NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
+                self?.checkLocationAuth(isAlways: true)
+            } else {
+                NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
+                self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
+            }
+        }
+        return location
+    }()
+    
+    lazy var systemLocation: NYSSystemLocation? = {
+        let location = NYSSystemLocation()
+        location.completion = { [weak self] address, latitude, longitude, error in
+            if let nsError = error as NSError? {
+                NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
+                self?.checkLocationAuth(isAlways: true)
+            } else {
+                NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
+                self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
+            }
+        }
+        return location
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +111,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         threeSV.addRadius(NAppRadius)
         fourSV.addRadius(NAppRadius)
         iconIV.addRadius(30)
+        qrIV.addRadius(5)
         
         navBarBackgroundAlpha = 0
         navBarTintColor = .clear
@@ -96,11 +123,19 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         }
         
         iconIV.addTapAction { sender in
-            NYSTools.zoom(toShow: sender?.layer)
-            
             let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
             self.navigationController?.pushViewController(webVC, animated: true)
+        }
+        
+        qrIV.addTapAction { sender in
+            NYSTools.zoom(toShow: sender?.layer)
+            
+            let attributedText = NSMutableAttributedString(string: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint")
+            attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+                                          NSAttributedString.Key.foregroundColor: UIColor.darkGray],
+                                         range: NSRange(location: 0, length: attributedText.length))
+            AlertManager.shared.showTextAlert(attributedText: attributedText)
         }
     }
 
@@ -197,30 +232,8 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             }
             
         } else if sender.tag == 401 {
-            systemLocation = NYSSystemLocation()
-            systemLocation?.completion = { [weak self] address, latitude, longitude, error in
-                if let error = error as NSError? {
-                    let errorMessage = "Location Error:\(error.code) \(error.localizedDescription)"
-                    NYSTools.showBottomToast(errorMessage)
-                    self?.checkLocationAuth()
-                } else {
-                    NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
-                    self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
-                }
-            }
             systemLocation?.request()
             
-//            amapLocation = NYSAMapLocation()
-//            amapLocation?.completion = { [weak self] address, latitude, longitude, error in
-//                if let error = error as NSError? {
-//                    let errorMessage = "Location Error:\(error.code) \(error.localizedDescription)"
-//                    NYSTools.showBottomToast(errorMessage)
-//                    self?.checkLocationAuth(isAlways: true)
-//                } else {
-//                    NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
-//                    self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
-//                }
-//            }
 //            amapLocation?.requestReGeocode()
             
         } else if sender.tag == 402 {

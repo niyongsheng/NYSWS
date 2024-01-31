@@ -18,8 +18,12 @@ class NYSOverdueAlertView: NYSRootAlertView {
     var popup: FFPopup?
     
     override func setupView() {
-//        super.setupView()
         
+//        _ = self.lee_theme.leeAddCustomConfig(DAY, { (item: Any) in
+//            (item as! Self).backgroundColor = UIColor.init(hexString: "#FFCF8B")
+//        }).leeAddCustomConfig(NIGHT, { (item: Any) in
+//            (item as! Self).backgroundColor = UIColor.init(hexString: "#FF9D45")
+//        })
         self.backgroundColor = UIColor.init(hexString: "#2E2F37")
         self.addRadius(NAppSpace * 0.7)
         self.actionBtn.addRadius(NAppRadius/2)
