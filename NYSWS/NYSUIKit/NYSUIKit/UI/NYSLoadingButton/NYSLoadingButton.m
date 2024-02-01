@@ -6,6 +6,7 @@
 //
 
 #import "NYSLoadingButton.h"
+#import "PublicHeader.h"
 
 @interface NYSLoadingButton()
 @property (assign,readonly) CGFloat percentFilled;
@@ -48,7 +49,7 @@
 
     if (archiveError) {
         // Handle the error, if any
-        NSLog(@"Error archiving data: %@", archiveError);
+        [NYSTools log:self.class error:archiveError];
     } else {
         // Unarchive the data to create a copy
         NSError *unarchiveError = nil;
@@ -56,7 +57,7 @@
 
         if (unarchiveError) {
             // Handle the error, if any
-            NSLog(@"Error unarchiving data: %@", unarchiveError);
+            [NYSTools log:self.class error:unarchiveError];
         }
     }
 }

@@ -5,8 +5,8 @@
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FIRVersionCheck.h"
+#import "PublicHeader.h"
 
 @interface FIRVersionCheck()<UIAlertViewDelegate>
 
@@ -48,8 +48,8 @@
         idString = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
     }
     NSString *apiToken = [FIRVersionCheck sharedInstance].firAPIToken;
-    if (!apiToken) {
-        NSLog(@"FIR - 请先设置API Token");
+    if (apiToken && apiToken.length == 0) {
+        [NYSTools log:self.class msg:@"FIR - 请先设置API Token"];
         return;
     }
     
@@ -65,19 +65,19 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            NSLog(@"FIR - 新版本检测出错!%@", error);
+            [NYSTools log:self.class error:error];
             dispatch_semaphore_signal(sema);
         } else {
             NSError *parseError = nil;
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            NSLog(@"FIR － 更新内容: \n%@ ", responseDictionary);
+            [NYSTools log:self.class msg:[NSString stringWithFormat:@"FIR － 更新内容: \n%@ ", responseDictionary]];
             
             NSString *code = responseDictionary[@"code"];
             NSString *errors = responseDictionary[@"errors"];
             NSString *versionShort = responseDictionary[@"versionShort"];
             NSString *build = responseDictionary[@"build"];
             if (code && errors) {
-                NSLog(@"FIR - 新版本检测失败! (%@,%@)", code, errors);
+                [NYSTools log:self.class msg:[NSString stringWithFormat:@"FIR - 新版本检测失败! (%@,%@)", code, errors]];
                 
             } else {
                 NSString *update_url = responseDictionary[@"update_url"];

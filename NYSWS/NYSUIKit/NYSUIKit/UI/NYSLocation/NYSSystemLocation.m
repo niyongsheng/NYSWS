@@ -39,24 +39,18 @@ CLLocationManagerDelegate
 - (void)requestLocation:(NYSCoordinateType)coordinateType {
     _coordinateType = coordinateType;
     
-    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-    [operationQueue addOperationWithBlock:^{
-        if (!self.isLocationUpdating && [CLLocationManager locationServicesEnabled]) {
-            [self.sysLocationManager startUpdatingLocation];
-            self.isLocationUpdating = YES;
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [NYSTools showIconToast:@"Location services disable" isSuccess:false offset:UIOffsetMake(0, 0)];
-            });
-        }
-    }];
-    
+    if (!self.isLocationUpdating) {
+        self.isLocationUpdating = YES;
+        [self.sysLocationManager startUpdatingLocation];
+    } else {
+        [NYSTools showIconToast:@"Location services disable" isSuccess:false offset:UIOffsetMake(0, 0)];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *currentLocation = [locations lastObject];
     CLLocationCoordinate2D coordinate = currentLocation.coordinate;
-    NSLog(@"[NYSAMapLocation] lat:%f-lng:%f-Accuracy:%.2fm", coordinate.latitude, coordinate.longitude, currentLocation.horizontalAccuracy);
+    [NYSTools log:self.class msg:[NSString stringWithFormat:@"lat:%f-lng:%f-Accuracy:%.2fm", coordinate.latitude, coordinate.longitude, currentLocation.horizontalAccuracy]];
     
     
     // 系统逆地理编码
@@ -68,7 +62,7 @@ CLLocationManagerDelegate
             if (weakSelf.completion) {
                 weakSelf.completion(@"", kCLLocationCoordinate2DInvalid, error);
             }
-            [self log:error];
+            [NYSTools log:self.class error:error];
             return;
         }
         if (placemarks.count > 0) {
@@ -108,14 +102,11 @@ CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(nonnull NSError *)error {
     self.isLocationUpdating = NO;
-    [self log:error];
+    [NYSTools log:self.class error:error];
+    
     if (_completion) {
         self.completion(@"", kCLLocationCoordinate2DInvalid, error);
     }
-}
-
-- (void)log:(NSError *)error {
-    NSLog(@"[%@] 错误: {%ld - %@};", NSStringFromClass(self.class), (long)error.code, error.localizedDescription);
 }
 
 - (void)dealloc {

@@ -176,4 +176,8 @@ typedef void (^NYSToolsDismissCompletion)(void);
 /// @param layer 层级
 + (void)log:(NSString *)text layer:(NSInteger)layer;
 
++ (void)log:(Class)from obj:(id)obj;
++ (void)log:(Class)from msg:(NSString *)msg;
++ (void)log:(Class)from error:(NSError *)error;
+
 @end

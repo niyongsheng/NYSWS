@@ -508,4 +508,27 @@
 //    DBGLog(@"%@", text);
 }
 
++ (void)log:(Class)from msg:(NSString *)msg {
+    [self log:from obj:msg];
+}
+
++ (void)log:(Class)from error:(NSError *)error {
+    [self log:from obj:error];
+}
+
+/// 错误打印
+/// @param from 调用类
+/// @param obj 打印对象
++ (void)log:(Class)from obj:(id)obj {
+#ifdef DEBUG
+    if ([obj isKindOfClass:NSError.class]) {
+        NSLog(@"[%@] ❌: {Code:%ld - Desc:%@};", NSStringFromClass(from), [(NSError *)obj code], [(NSError *)obj localizedDescription]);
+    } else if ([obj isKindOfClass:NSString.class]) {
+        NSLog(@"[%@] 📝: %@;", NSStringFromClass(from), obj);
+    } else {
+        NSLog(@"[%@] 📝: %@;", NSStringFromClass(from), obj);
+    }
+#endif
+}
+
 @end

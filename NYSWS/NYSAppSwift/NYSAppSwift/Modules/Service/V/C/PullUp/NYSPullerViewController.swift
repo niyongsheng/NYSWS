@@ -9,11 +9,12 @@
 import UIKit
 
 class NYSPullerViewController: PullUpController {
-
+    
+    @IBOutlet weak var visualEV: UIVisualEffectView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,4 +36,28 @@ class NYSPullerViewController: PullUpController {
         return 20
     }
 
+}
+
+extension NYSPullerViewController {
+    
+    // 深色模式适配
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateBlurEffect()
+        }
+    }
+    
+    // 更新 UIBlurEffect
+    private func updateBlurEffect() {
+        let blurEffect: UIBlurEffect
+        if traitCollection.userInterfaceStyle == .dark {
+            blurEffect = UIBlurEffect(style: .dark)
+        } else {
+            blurEffect = UIBlurEffect(style: .light)
+        }
+        // 更新 UIVisualEffectView 的效果
+        (view.subviews.first as? UIVisualEffectView)?.effect = blurEffect
+    }
 }

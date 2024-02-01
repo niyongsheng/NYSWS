@@ -5,7 +5,7 @@
 //  Copyright © 2020 NYS. ALL rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FIRVersionCheck : NSObject
 

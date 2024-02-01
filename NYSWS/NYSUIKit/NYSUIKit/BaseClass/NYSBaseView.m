@@ -19,6 +19,7 @@
  */
 
 #import "NYSBaseView.h"
+#import "PublicHeader.h"
 
 @implementation NYSBaseView
 
@@ -61,7 +62,7 @@
 
 // @implementation in subview
 - (void)setupView {
-    NSLog(@"setupView BaseXibView");
+    [NYSTools log:self.class msg:@"setupView BaseXibView"];
 }
 
 @end

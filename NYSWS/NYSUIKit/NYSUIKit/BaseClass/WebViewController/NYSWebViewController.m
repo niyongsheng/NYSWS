@@ -182,12 +182,11 @@
     if ([urlString hasPrefix:@"weixin://"]) {
         Boolean canOpenUrl = [[UIApplication sharedApplication] canOpenURL:url];
         if(canOpenUrl) {
-            NSLog(@"已安装微信");
             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
             // 允许跳转
             decisionHandler(WKNavigationActionPolicyAllow);
         }else {
-            NSLog(@"尚未安装微信");
+            [NYSTools log:self.class msg:@"尚未安装微信"];
             // 不允许跳转
             decisionHandler(WKNavigationActionPolicyCancel);
         }

@@ -223,7 +223,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
                     NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
                     self?.checkLocationAuth(isAlways: true)
                 } else {
-                    NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
+                    NYSTools.showToast("定位成功", image: UIImage(systemName: "location"), offset:UIOffset(horizontal: 0, vertical: 0))
                     self?.infoL.text = "经度：\(coordinate.longitude)\n纬度：\(coordinate.latitude)\n地址：\(address)"
                 }
             }

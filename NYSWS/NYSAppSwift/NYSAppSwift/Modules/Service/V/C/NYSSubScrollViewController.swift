@@ -105,7 +105,7 @@ extension NYSSubScrollViewController: UIScrollViewDelegate {
 extension NYSSubScrollViewController: UIContextMenuInteractionDelegate {
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        guard let indexPath = self.collectionView.indexPathForItem(at: interaction.location(in: self.collectionView)) else {
+        guard let indexPath = self.collectionView.indexPathForItem(at: interaction.location(in: interaction.view?.superview)) else {
             return nil
         }
         let model = self.dataSourceArr[indexPath.row] as! NYSService

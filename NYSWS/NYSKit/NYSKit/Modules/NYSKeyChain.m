@@ -6,6 +6,7 @@
 //
 
 #import "NYSKeyChain.h"
+#import "NYSTools.h"
 #import <Security/Security.h>
 
 @implementation NYSKeyChain
@@ -30,7 +31,7 @@
                                                                error:&archiveError];
     if (archiveError) {
         // Handle the archiving error
-        NSLog(@"Keychain archiving error: %@", archiveError);
+        [NYSTools log:self.class error:archiveError];
         return;
     }
     
@@ -57,7 +58,7 @@
                                                                error:&archiveError];
     if (archiveError) {
         // Handle the archiving error
-        NSLog(@"Keychain archiving error: %@", archiveError);
+        [NYSTools log:self.class error:archiveError];
         return;
     }
     
@@ -69,7 +70,7 @@
     
     if (status != errSecSuccess) {
         // Handle the update error
-        NSLog(@"Keychain update error: %ld", (long)status);
+        [NYSTools log:self.class msg:[NSString stringWithFormat:@"Keychain update error: %ld", (long)status]];
     }
 }
 
@@ -91,10 +92,10 @@
             
             if (unarchiveError) {
                 // Handle the unarchiving error
-                NSLog(@"Keychain unarchiving error: %@", unarchiveError);
+                [NYSTools log:self.class error:unarchiveError];
             }
         } @catch (NSException *exception) {
-            NSLog(@"Unarchive of %@ failed: %@", service, exception);
+            [NYSTools log:self.class msg:[NSString stringWithFormat:@"Unarchive of %@ failed: %@", service, exception]];
         } @finally {
             
         }
