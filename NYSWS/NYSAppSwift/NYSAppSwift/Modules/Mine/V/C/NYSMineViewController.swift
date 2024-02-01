@@ -39,29 +39,11 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     
     lazy var amapLocation: NYSAMapLocation? = {
         let location = NYSAMapLocation()
-        location.completion = { [weak self] address, latitude, longitude, error in
-            if let nsError = error as NSError? {
-                NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
-                self?.checkLocationAuth(isAlways: true)
-            } else {
-                NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
-                self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
-            }
-        }
         return location
     }()
     
     lazy var systemLocation: NYSSystemLocation? = {
         let location = NYSSystemLocation()
-        location.completion = { [weak self] address, latitude, longitude, error in
-            if let nsError = error as NSError? {
-                NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
-                self?.checkLocationAuth(isAlways: true)
-            } else {
-                NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
-                self?.infoL.text = "经度：\(longitude)\n纬度：\(latitude)\n地址：\(address)"
-            }
-        }
         return location
     }()
     
@@ -131,7 +113,11 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         qrIV.addTapAction { sender in
             NYSTools.zoom(toShow: sender?.layer)
             
-            let attributedText = NSMutableAttributedString(string: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint")
+            let attributedText = NSMutableAttributedString(string: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+            let linkRange = NSRange(location: 354, length: 46)
+            let linkURL = URL(string: "https://example.com")
+            attributedText.addAttributes([NSAttributedString.Key.link: linkURL!], range: linkRange)
+            attributedText.addAttributes([NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue], range: linkRange)
             attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                                           NSAttributedString.Key.foregroundColor: UIColor.darkGray],
                                          range: NSRange(location: 0, length: attributedText.length))
@@ -232,8 +218,20 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             }
             
         } else if sender.tag == 401 {
-            systemLocation?.request()
+            systemLocation?.completion = { [weak self] address, coordinate, error in
+                if let nsError = error as NSError? {
+                    NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
+                    self?.checkLocationAuth(isAlways: true)
+                } else {
+                    NYSTools.showIconToast("定位成功", isSuccess: true, offset: UIOffset(horizontal: 0, vertical: 0))
+                    self?.infoL.text = "经度：\(coordinate.longitude)\n纬度：\(coordinate.latitude)\n地址：\(address)"
+                }
+            }
+            systemLocation?.requestSystem()
             
+//            systemLocation?.completion = { address, latitude, longitude, error in
+//
+//            }
 //            amapLocation?.requestReGeocode()
             
         } else if sender.tag == 402 {

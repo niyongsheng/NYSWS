@@ -78,6 +78,9 @@ extension NYSSubScrollViewController {
         let model = self.dataSourceArr[indexPath.row] as! NYSService
         cell.model = model
         
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell.addInteraction(interaction)
+        
         return cell
     }
     
@@ -97,4 +100,23 @@ extension NYSSubScrollViewController: UIScrollViewDelegate {
         // 滚动转发
         subScrollViewDidScroll(scrollView)
     }
+}
+
+extension NYSSubScrollViewController: UIContextMenuInteractionDelegate {
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        guard let indexPath = self.collectionView.indexPathForItem(at: interaction.location(in: self.collectionView)) else {
+            return nil
+        }
+        let model = self.dataSourceArr[indexPath.row] as! NYSService
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            let webVC = NYSRootWebViewController.init()
+            webVC.progressView.top = 0
+            webVC.urlStr = model.url
+            return webVC
+            
+        }, actionProvider: nil)
+    }
+    
 }

@@ -272,6 +272,10 @@ DZNEmptyDataSetDelegate
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 /**
  *  Lazy load collectionView
  *

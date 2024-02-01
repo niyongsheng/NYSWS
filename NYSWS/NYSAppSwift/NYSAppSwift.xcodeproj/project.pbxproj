@@ -89,6 +89,8 @@
 		C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */; };
 		C893E3EC2B5F54FB0087AB36 /* NYSTextAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C893E3EB2B5F54FB0087AB36 /* NYSTextAlertView.swift */; };
 		C893E3EE2B5F552F0087AB36 /* NYSTextAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C893E3ED2B5F552F0087AB36 /* NYSTextAlertView.xib */; };
+		C8958BB02B6B5FE400693DAE /* NYSPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8958BAE2B6B5FE400693DAE /* NYSPreviewViewController.swift */; };
+		C8958BB12B6B5FE400693DAE /* NYSPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8958BAF2B6B5FE400693DAE /* NYSPreviewViewController.xib */; };
 		C8A00F272B464CBD00245D94 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A00F262B464CBD00245D94 /* Transform.swift */; };
 		C8A4BE292B4B99E500152E14 /* system.style in Resources */ = {isa = PBXBuildFile; fileRef = C8A4BE282B4B99E400152E14 /* system.style */; };
 		C8A4BE2B2B4B9E5600152E14 /* NYSHomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4BE2A2B4B9E5600152E14 /* NYSHomeListCell.swift */; };
@@ -235,6 +237,8 @@
 		C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSScrollViewController.swift; sourceTree = "<group>"; };
 		C893E3EB2B5F54FB0087AB36 /* NYSTextAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSTextAlertView.swift; sourceTree = "<group>"; };
 		C893E3ED2B5F552F0087AB36 /* NYSTextAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NYSTextAlertView.xib; sourceTree = "<group>"; };
+		C8958BAE2B6B5FE400693DAE /* NYSPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSPreviewViewController.swift; sourceTree = "<group>"; };
+		C8958BAF2B6B5FE400693DAE /* NYSPreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NYSPreviewViewController.xib; sourceTree = "<group>"; };
 		C8A00F262B464CBD00245D94 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		C8A4BE282B4B99E400152E14 /* system.style */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = system.style; sourceTree = "<group>"; };
 		C8A4BE2A2B4B9E5600152E14 /* NYSHomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSHomeListCell.swift; sourceTree = "<group>"; };
@@ -636,6 +640,15 @@
 			path = xib;
 			sourceTree = "<group>";
 		};
+		C8958BAD2B6B5F6C00693DAE /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				C8958BAE2B6B5FE400693DAE /* NYSPreviewViewController.swift */,
+				C8958BAF2B6B5FE400693DAE /* NYSPreviewViewController.xib */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		C8A4BE382B4BD2FD00152E14 /* M */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +683,7 @@
 				C806A5D72B67721600D6FFE1 /* SwiftUI */,
 				C8ED43182B61269C00342153 /* Logoff */,
 				C8200B292B60985900580A1F /* Feedback */,
+				C8958BAD2B6B5F6C00693DAE /* Preview */,
 				C8D0AF7E2B493315002C18E6 /* Setting */,
 				C8BC5E962B3A852200814C2B /* NYSMineViewController.swift */,
 				C8BC5E972B3A852200814C2B /* NYSMineViewController.xib */,
@@ -919,6 +933,7 @@
 				C8597A8B29F511A0008BEE7F /* Assets.xcassets in Resources */,
 				C8A4BE2F2B4BA0F100152E14 /* TableHeader.xml in Resources */,
 				C821AAAF2B4694C4003C0968 /* AppAlertView.xib in Resources */,
+				C8958BB12B6B5FE400693DAE /* NYSPreviewViewController.xib in Resources */,
 				C83C186C2B33E438002FD985 /* myself.json in Resources */,
 				C83C186B2B33E438002FD985 /* goods.json in Resources */,
 				C8BC5E992B3A852200814C2B /* NYSMineViewController.xib in Resources */,
@@ -1034,6 +1049,7 @@
 				C8713F4E2B69EC420090B289 /* NYSPullerViewController.swift in Sources */,
 				C8A4BE312B4BBA1800152E14 /* UITableView+Extension.swift in Sources */,
 				C8474E532B43DD54001DE04A /* NYSRootViewController.swift in Sources */,
+				C8958BB02B6B5FE400693DAE /* NYSPreviewViewController.swift in Sources */,
 				C83162A72B4CE5160014CFE1 /* UIScrollView+RxSwift.swift in Sources */,
 				C85D7E7C2B60F34300C4BC93 /* NYSImageItemView.swift in Sources */,
 				C8ED6DDB2B51494D000F2268 /* NYSRootWebViewController.swift in Sources */,

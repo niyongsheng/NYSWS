@@ -23,7 +23,7 @@ AMapLocationManagerDelegate
 @implementation NYSAMapLocation
 
 - (instancetype)init {
-    self = [super init];;
+    self = [super init];
     if (self) {
         [AMapServices sharedServices].apiKey = AmapKey;
         [self configLocationManager];
@@ -106,7 +106,7 @@ AMapLocationManagerDelegate
         if (error) {
             NSLog(@"%@", [NSString stringWithFormat:@"[NYSAMapLocation] error:{%ld - %@};", (long)error.code, error.localizedDescription]);
             if (weakSelf.completion) {
-                weakSelf.completion(@"", @"", @"", error);
+                weakSelf.completion(@"", kCLLocationCoordinate2DInvalid, error);
             }
             return;
         }
@@ -120,9 +120,7 @@ AMapLocationManagerDelegate
         }
         
         if (weakSelf.completion) {
-            NSString *latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
-            NSString *longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-            weakSelf.completion(regeocode.formattedAddress, latitude, longitude, error);
+            weakSelf.completion(regeocode.formattedAddress, location.coordinate, error);
         }
     };
 }

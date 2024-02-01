@@ -83,10 +83,10 @@ class NYSMissionViewController: NYSRootViewController {
         })
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.isHidenNaviBar = true;
     }
     
@@ -114,7 +114,7 @@ class NYSMissionViewController: NYSRootViewController {
         self.tableView.frame = CGRect(x: 0, y: imageViewBg.bottom, width: NScreenWidth, height: NScreenHeight - imageViewBg.bottom - NBottomHeight)
         self.view.addSubview(self.tableView)
     }
-
+    
     
     func showAddressPicker(button: UIButton) {
         self.view.endEditing(true)
@@ -204,15 +204,6 @@ extension NYSMissionViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let model = self.dataSourceArr[indexPath.row] as! NYSWeater
-        
-        // 状态栏通知
-        let image = UIImageView(image: UIImage(systemName: "person.icloud.fill"))
-        NotificationPresenter.shared().present(title: "出行建议", subtitle: model.data?[0].air_tips ?? "")
-        NotificationPresenter.shared().displayLeftView(image)
-        NotificationPresenter.shared().dismiss(afterDelay: 1.5) { presenter in
-            
-        }
-        
         let vc:NYSContentViewController = NYSContentViewController()
         vc.titleL.text = model.city
         do {
@@ -223,6 +214,47 @@ extension NYSMissionViewController {
             print("Error encoding the model to JSON: \(error)")
         }
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration {
+        let model = self.dataSourceArr[indexPath.row] as! NYSWeater
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "删除") { [weak self] (action, view, completion) in
+            // 删除            
+            self?.dataSourceArr.removeObject(at: indexPath.row)
+            self?.tableView.beginUpdates()
+            self?.tableView.deleteRows(at: [indexPath], with: .fade)
+            self?.tableView.endUpdates()
+            
+            completion(true)
+        }
+        deleteAction.backgroundColor = UIColor(hexString: "#FF5552")
+        
+        let archiveAction = UIContextualAction(style: .normal, title: "归档") { (action, view, completion) in
+            // 归档
+            AlertManager.shared.showAlert(title: "归档操作")
+            
+            completion(true)
+        }
+        archiveAction.backgroundColor = UIColor(hexString: "#00C042")
+        
+        let promptAction = UIContextualAction(style: .normal, title: "提示") { (action, view, completion) in
+            // 提示
+            let image = UIImageView(image: UIImage(systemName: "person.icloud.fill"))
+            NotificationPresenter.shared().present(title: "出行建议", subtitle: model.data?[0].air_tips ?? "")
+            NotificationPresenter.shared().displayLeftView(image)
+            NotificationPresenter.shared().dismiss(afterDelay: 1.5) { presenter in
+                
+            }
+            
+            completion(true)
+        }
+        promptAction.backgroundColor = UIColor(hexString: "#FFB33B")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, archiveAction, promptAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        
+        return configuration
     }
     
 }

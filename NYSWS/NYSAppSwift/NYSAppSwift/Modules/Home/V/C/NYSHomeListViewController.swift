@@ -17,7 +17,7 @@ class NYSHomeListViewController: NYSRootViewController {
     
     private var _cell : NYSHomeListCell!
     @objc private var content : UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,8 +40,9 @@ class NYSHomeListViewController: NYSRootViewController {
             weakSelf?.tableView.tableHeaderView = weakSelf?.tableView.tableHeaderView
             weakSelf?.tableView.endUpdates()
         }
+        
     }
-
+    
     override func bindViewModel() {
         super.bindViewModel()
         
@@ -53,7 +54,7 @@ class NYSHomeListViewController: NYSRootViewController {
             print(error)
         }).disposed(by: bag)
     }
-
+    
     override func headerRereshing() {
         super.headerRereshing()
         content.text = "This is tableview header " + String.randomString(length: Int.random(in: 1...100))
@@ -67,7 +68,7 @@ class NYSHomeListViewController: NYSRootViewController {
 }
 
 extension NYSHomeListViewController {
-
+    
     override func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
         // 占位偏移量
         return -100;
@@ -89,7 +90,13 @@ extension NYSHomeListViewController {
         if cell == nil {
             cell = NYSHomeListCell(flex:nil, reuseIdentifier:identifier)
         }
-        cell?.model = self.dataSourceArr[indexPath.row] as? NYSHomeList
+        let model = self.dataSourceArr[indexPath.row] as? NYSHomeList
+        cell?.model = model
+        
+        // 添加上下文菜单交互
+        let interaction = UIContextMenuInteraction(delegate: self)
+        cell?.addInteraction(interaction)
+        
         return cell!;
     }
     
@@ -101,6 +108,36 @@ extension NYSHomeListViewController {
         vc.titleL.text = model.title
         vc.contentL.text = model.content
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+
+extension NYSHomeListViewController: UIContextMenuInteractionDelegate {
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        guard let indexPath = self.tableView.indexPathForRow(at: interaction.location(in: interaction.view?.superview)) else {
+            return nil
+        }
+        let model = self.dataSourceArr[indexPath.row] as! NYSHomeList
+        
+        // 创建上下文菜单配置
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            let contentVC = NYSContentViewController()
+            contentVC.titleL.text = model.title
+            contentVC.contentL.text = model.content
+            contentVC.preferredContentSize = CGSize(width: 300, height: 400)
+            return contentVC
+            
+        }, actionProvider: { _ in
+            let action1 = UIAction(title: "Action 1", image: UIImage(systemName: "star.fill")) { _ in
+                NYSTools.log("Action 1 selected")
+            }
+            
+            let action2 = UIAction(title: "Action 2", image: UIImage(systemName: "heart.fill")) { _ in
+                NYSTools.log("Action 2 selected")
+            }
+            return UIMenu(title: "Context Menu", children: [action1, action2])
+        })
     }
     
 }

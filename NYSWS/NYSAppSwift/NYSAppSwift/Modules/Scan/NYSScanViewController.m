@@ -91,7 +91,7 @@
 - (void)configScanCode {
     scanCode = [[SGScanCode alloc] init];
     if (![scanCode checkCameraDeviceRearAvailable]) {
-        return;;
+        return;
     }
     scanCode.delegate = self;
     scanCode.sampleBufferDelegate = self;

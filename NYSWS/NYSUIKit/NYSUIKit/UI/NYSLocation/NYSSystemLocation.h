@@ -6,13 +6,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-typedef void (^NYSLocationCompletion)(NSString * _Nonnull address, NSString * _Nonnull latitude, NSString * _Nonnull longitude, NSError * _Nullable error);
+typedef enum : NSUInteger {
+    NYSLocationTypeBaiDuMap,
+    NYSLocationTypeAMap,
+    NYSLocationTypeSysMap,
+} NYSCoordinateType;
+
+typedef void (^NYSLocationCompletion)(NSString * _Nonnull address, CLLocationCoordinate2D coordinate, NSError * _Nullable error);
 
 @interface NYSSystemLocation : NSObject
 
 #pragma mark - 系统定位
-- (void)requestSystemLocation;
+- (void)requestLocationSystem;
+- (void)requestLocation:(NYSCoordinateType)coordinateType;
 
 /// 定位结果
 @property (nonatomic, copy) NYSLocationCompletion _Nullable completion;

@@ -12,12 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NYSWebViewController : NYSBaseViewController
 
-@property (nonatomic, strong) WKWebView *webView;
-@property (nonatomic, strong) UIProgressView *progressView;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic, weak) WKWebViewConfiguration *webConfiguration;
+/// 连接
 @property (nonatomic, copy) NSString *urlStr;
+/// 是否自动标题
 @property (nonatomic, assign) BOOL autoTitle;
+/// 进度条
+@property (nonatomic, strong) UIProgressView *progressView;
+/// 刷新控件
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, weak) WKWebViewConfiguration *webConfiguration;
 
 - (instancetype)initWithUrlStr:(NSString *)urlStr;
 

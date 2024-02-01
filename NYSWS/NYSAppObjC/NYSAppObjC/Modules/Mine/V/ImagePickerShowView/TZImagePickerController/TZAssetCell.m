@@ -178,7 +178,7 @@
         [self hideProgressView];
     } progressHandler:^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
         if (self.model.isSelected) {
-            progress = progress > 0.02 ? progress : 0.02;;
+            progress = progress > 0.02 ? progress : 0.02;
             self.progressView.progress = progress;
             self.progressView.hidden = NO;
             self.imageView.alpha = 0.4;

@@ -92,11 +92,7 @@ class NYSServiceViewController: NYSRootViewController {
         
         // 监听子视图发出的通知
         NotificationCenter.default.addObserver(self, selector: #selector(subTableViewDidScroll), name: NSNotification.Name(NNProSubScrollViewDidScroll), object: nil)
-        
-//        self.addNavigationItem(withTitles: ["Touch"], alignment: .left) { sender, index in
-//            
-//        }
-        
+             
         var existing = false
         let image = UIImage(named: "img_cdtx")!.resized(to: CGSizeMake(30, 30))!
         self.addNavigationItem(with: [image], alignment: .right) { [weak self] sender, index in
@@ -108,6 +104,21 @@ class NYSServiceViewController: NYSRootViewController {
                 existing = true
             }
         }
+        
+        let action0 = UIAction(title: "chatGPT", image: UIImage(systemName: "message.badge.waveform")) { [weak self] _ in
+            self?.navigationController?.pushViewController(NYSRootViewController(), animated: true)
+        }
+        let action1 = UIAction(title: "Gemini", image: UIImage(systemName: "ellipsis.message")) { [weak self] _ in
+            self?.navigationController?.pushViewController(NYSRootViewController(), animated: true)
+        }
+        let action2 = UIAction(title: "Llama", image: UIImage(systemName: "rectangle.3.group.bubble")) { [weak self] _ in
+            self?.navigationController?.pushViewController(NYSRootViewController(), animated: true)
+        }
+        let menu = UIMenu(title: "LLM", children: [action0, action1, action2])
+        if #available(iOS 16.0, *) {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "AI", image: nil, target: nil, action: nil, menu: menu)
+        }
+        
     }
     
     var tempSubScrollView: UIScrollView?

@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,6 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 从百度坐标到GPS坐标
 - (id)transformFromBDToGPS;
+
+#pragma mark - 判断是不是在中国
++ (BOOL)isLocationOutOfChina:(CLLocationCoordinate2D)location;
 
 @end
 

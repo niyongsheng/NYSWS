@@ -65,6 +65,14 @@ class NYSThirdPartyDetailViewController: NYSRootViewController {
         view.addSubview(textView)
 
         self.textView = textView
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(rightBarAction(_:)))
+    }
+    
+    @objc func rightBarAction(_ sender: Any) {
+        let webVC = NYSRootWebViewController.init()
+        webVC.urlStr = acknowledgement?.repository?.absoluteString ?? ""
+        self.navigationController?.pushViewController(webVC, animated: true)
     }
 
     /// Called to notify the view controller that its view has just laid out its subviews.
