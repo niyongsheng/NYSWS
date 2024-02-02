@@ -12,7 +12,7 @@ import Foundation
 let FirApiToken     :String      =        ""
 
 // 极光推送
-let JPUSH_APPKEY    :String      =        ""
+let JPUSH_APPKEY    :String      =        "1c7f797512ae8a4c7df03eab"
 let JPUSH_CHANNEl   :String      =        "App Store"
 let IS_Prod         :Bool        =        true
 

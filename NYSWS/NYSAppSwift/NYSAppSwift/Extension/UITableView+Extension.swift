@@ -12,7 +12,9 @@ extension UITableView {
     
     func reloadData(animationType: XSTableViewAnimationType) {
         self.reloadData()
-        TableViewAnimationKit.show(with: animationType, tableView: self)
+        if self.window != nil {
+            TableViewAnimationKit.show(with: animationType, tableView: self)
+        }
     }
     
 }

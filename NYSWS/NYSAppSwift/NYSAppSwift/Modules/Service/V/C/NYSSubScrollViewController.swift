@@ -75,11 +75,9 @@ extension NYSSubScrollViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NYSServiceCollectionViewCell.ID, for: indexPath) as! NYSServiceCollectionViewCell
+        cell.addInteraction(UIContextMenuInteraction(delegate: self))
         let model = self.dataSourceArr[indexPath.row] as! NYSService
         cell.model = model
-        
-        let interaction = UIContextMenuInteraction(delegate: self)
-        cell.addInteraction(interaction)
         
         return cell
     }

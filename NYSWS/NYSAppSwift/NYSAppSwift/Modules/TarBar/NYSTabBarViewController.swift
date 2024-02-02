@@ -63,7 +63,7 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
     }
     
     
-    /// Stop Lottie Animation
+    /// 停止Lottie动画
     func stopTabBarAnimation() {
         for view in tabBar.subviews {
             if let tabBarButton = view as? UIControl, let animationView = tabBarButton.subviews.first as? LOTAnimationView {
@@ -73,7 +73,7 @@ class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelega
         }
     }
     
-    /// Play Lottie Animation
+    /// 播放Lottie动画
     func playTabBarAnimation() {
         if self.selectedIndex == self.curSelectedIndex || self.selectedIndex == 2 {
             return

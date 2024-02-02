@@ -15,8 +15,11 @@ class NYSHomeListViewController: NYSRootViewController {
     private let bag = DisposeBag()
     private let vm = NYSHomeViewModel()
     
-    private var _cell : NYSHomeListCell!
-    @objc private var content : UILabel!
+    @objc private var contentL : UILabel!
+    private lazy var _cell : NYSHomeListCell = {
+        let cell = NYSHomeListCell(flex:nil, reuseIdentifier:nil)
+        return cell!
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +60,7 @@ class NYSHomeListViewController: NYSRootViewController {
     
     override func headerRereshing() {
         super.headerRereshing()
-        content.text = "This is tableview header " + String.randomString(length: Int.random(in: 1...100))
+        contentL.text = "When we start thinking about machine intelligence, machines are also thinking about the mechanization of humans."
         vm.fetchHomeDataItemes(headerRefresh: true, parameters: nil)
     }
     
@@ -75,12 +78,9 @@ extension NYSHomeListViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if _cell == nil {
-            _cell = NYSHomeListCell(flex:nil,reuseIdentifier:nil)
-        }
-        
         _cell.model = self.dataSourceArr[indexPath.row] as? NYSHomeList
-        return (_cell?.height(forWidth: NScreenWidth))!
+        let height = _cell.height(forWidth: NScreenWidth)
+        return height
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,13 +89,10 @@ extension NYSHomeListViewController {
         
         if cell == nil {
             cell = NYSHomeListCell(flex:nil, reuseIdentifier:identifier)
+            cell?.addInteraction(UIContextMenuInteraction(delegate: self))
         }
         let model = self.dataSourceArr[indexPath.row] as? NYSHomeList
         cell?.model = model
-        
-        // 添加上下文菜单交互
-        let interaction = UIContextMenuInteraction(delegate: self)
-        cell?.addInteraction(interaction)
         
         return cell!;
     }
@@ -120,7 +117,6 @@ extension NYSHomeListViewController: UIContextMenuInteractionDelegate {
         }
         let model = self.dataSourceArr[indexPath.row] as! NYSHomeList
         
-        // 创建上下文菜单配置
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
             let contentVC = NYSContentViewController()
             contentVC.titleL.text = model.title

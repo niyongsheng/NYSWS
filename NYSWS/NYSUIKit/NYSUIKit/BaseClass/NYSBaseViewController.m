@@ -33,12 +33,6 @@ DZNEmptyDataSetDelegate
 
 @implementation NYSBaseViewController
 
-- (void)setCustomStatusBarStyle:(UIStatusBarStyle)StatusBarStyle {
-    _customStatusBarStyle = StatusBarStyle;
-    // 动态更新状态栏颜色
-    [self setNeedsStatusBarAppearanceUpdate];
-}
-
 #pragma mark - Life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,24 +43,24 @@ DZNEmptyDataSetDelegate
     // 默认使用系统刷新样式
     [self setIsUseUIRefreshControl:YES];
     
-    // 默认错误信息
+    // 默认tableview样式
+    _tableviewStyle = UITableViewStylePlain;
+    
+    // 默认占位信息
     [self addObserver:self forKeyPath:@"dataSource" options:NSKeyValueObservingOptionNew context:nil]; // KVO
     self.emptyError = [NSError errorCode:NSNYSErrorCodeUnKnow
                              description:[NSBundle nys_localizedStringForKey:@"NoData"]
                                   reason:@""
                               suggestion:[NSBundle nys_localizedStringForKey:@"Retry"]
                           placeholderImg:@"error"];
-    
-    // UI
-    [self setupUI];
     // VM
     [self bindViewModel];
+    // UI
+    [self setupUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // 默认tableview样式
-    _tableviewStyle = UITableViewStylePlain;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -102,6 +96,11 @@ DZNEmptyDataSetDelegate
 #pragma mark - UI
 - (void)setupUI {}
 - (void)bindViewModel {}
+- (void)setCustomStatusBarStyle:(UIStatusBarStyle)StatusBarStyle {
+    _customStatusBarStyle = StatusBarStyle;
+    // 动态更新状态栏颜色
+    [self setNeedsStatusBarAppearanceUpdate];
+}
 
 #pragma mark - Theme
 - (void)configTheme {
