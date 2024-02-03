@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class NYSBannerCollectionViewCell: UICollectionViewCell {
     
@@ -18,8 +17,7 @@ class NYSBannerCollectionViewCell: UICollectionViewCell {
     
     var urlStr: String = "" {
         didSet {
-            let url = URL(string: urlStr)
-            self.bannerIV.kf.setImage(with: url, placeholder: NAppPImg)
+            self.bannerIV.setImage(from: urlStr, placeholder: NAppPImg)
         }
     }
     

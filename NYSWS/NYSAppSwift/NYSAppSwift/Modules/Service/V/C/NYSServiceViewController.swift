@@ -53,15 +53,16 @@ class NYSServiceViewController: NYSRootViewController {
         return pagingContent
     }()
     
-    var bannerImageArr = ["", "",
+    var bannerImageArr = [
+        "", "",
 //        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZonedOut.jpg",
 //        "https://playgrounds-cdn.apple.com/assets/pandas/pandaZoomPortrait.jpg",
 //        "https://playgrounds-cdn.apple.com/assets/pandas/pandaSniffingBamboo.jpg"
     ]
-    lazy var headerView: UIView = {
-        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: pro_headerViewHeight))
+    lazy var bannerCycleView: ZCycleView = {
         let h = pro_headerViewHeight - NTopHeight
-        let cycleView = ZCycleView()
+        let cycleView = ZCycleView(frame: CGRect(x: 0, y: NTopHeight, width: NScreenWidth, height: h))
+        cycleView.itemSize = CGSize(width: NScreenWidth, height: h)
         cycleView.scrollDirection = .horizontal
         cycleView.delegate = self
         cycleView.reloadItemsCount(bannerImageArr.count)
@@ -70,9 +71,12 @@ class NYSServiceViewController: NYSRootViewController {
         cycleView.initialIndex = 1
         cycleView.isAutomatic = true
         cycleView.isInfinite = true
-        cycleView.itemSize = CGSize(width: NScreenWidth, height: h)
-        cycleView.frame = CGRect(x: 0, y: NTopHeight, width: NScreenWidth, height: h)
-        headerView.addSubview(cycleView)
+        return cycleView
+    }()
+    
+    lazy var headerView: UIView = {
+        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: NScreenWidth, height: pro_headerViewHeight))
+        headerView.addSubview(bannerCycleView)
         return headerView
     }()
     
@@ -115,10 +119,17 @@ class NYSServiceViewController: NYSRootViewController {
             self?.navigationController?.pushViewController(NYSRootViewController(), animated: true)
         }
         let menu = UIMenu(title: "LLM", children: [action0, action1, action2])
-        if #available(iOS 16.0, *) {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "AI", image: nil, target: nil, action: nil, menu: menu)
-        }
         
+        let leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .plain, target: self, action: #selector(showMenu))
+        if #available(iOS 14.0, *) {
+            leftBarButtonItem.menu = menu
+        }
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        
+    }
+    
+    @objc func showMenu() {
+        NYSTools.showToast("iOS14+\n长按触发UIMenu", image: UIImage(systemName: "filemenu.and.selection"), offset:UIOffset(horizontal: 0, vertical: 150))
     }
     
     var tempSubScrollView: UIScrollView?

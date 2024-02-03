@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,12 +14,12 @@
                 <outlet property="contentViewTop" destination="EL2-uw-m1k" id="hVg-wi-9pc"/>
                 <outlet property="functionV" destination="o9O-oZ-maW" id="Q1i-c3-8d2"/>
                 <outlet property="headerBgV" destination="JUv-di-bj5" id="KO0-Xg-EhK"/>
-                <outlet property="iconIV" destination="QXP-am-lcS" id="3Ez-lG-aEM"/>
                 <outlet property="itemOneBtn" destination="Cv3-u3-Xrf" id="EjK-CE-bzH"/>
                 <outlet property="itemTwoBtn" destination="XlL-4g-vFj" id="wFd-Wx-jvd"/>
                 <outlet property="mineV" destination="b2j-xm-WVL" id="hr1-cd-D1t"/>
                 <outlet property="nicknameL" destination="y2q-O3-8Zf" id="VEZ-nd-A8E"/>
                 <outlet property="phoneL" destination="m3j-TL-eMc" id="tdB-ih-5Kn"/>
+                <outlet property="portraitBtn" destination="QXP-am-lcS" id="3Ez-lG-aEM"/>
                 <outlet property="rechargeBtn" destination="Yc5-4a-r6n" id="B8A-W9-pw5"/>
                 <outlet property="rechargeV" destination="cMR-kg-9Np" id="Pnn-xH-Om7"/>
                 <outlet property="scrollV" destination="5Jg-GP-kca" id="wed-Xg-e0o"/>
@@ -728,7 +727,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

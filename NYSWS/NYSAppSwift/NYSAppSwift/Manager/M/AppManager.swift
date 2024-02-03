@@ -23,9 +23,9 @@ final class AppManager {
     /// 用户信息
     private(set) var userInfo: NYSUserInfo = {
         var defaultUserInfo = NYSUserInfo()
-        if Disk.exists(cachePath, in: .documents),
-           let userinfo = try? Disk.retrieve(cachePath, from: .documents, as: NYSUserInfo.self) {
-            defaultUserInfo = userinfo
+        if Disk.exists(cachePath, in: .documents) {
+            let userinfo = try? Disk.retrieve(cachePath, from: .documents, as: NYSUserInfo.self)
+            defaultUserInfo = userinfo!
         }
         return defaultUserInfo
     }() {

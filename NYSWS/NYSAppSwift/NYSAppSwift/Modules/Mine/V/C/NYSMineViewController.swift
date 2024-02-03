@@ -8,7 +8,6 @@
 import UIKit
 import NYSUIKit
 import RxSwift
-import Kingfisher
 
 class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     
@@ -20,7 +19,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
     @IBOutlet weak var contenView: UIView!
     
     @IBOutlet weak var qrIV: UIImageView!
-    @IBOutlet weak var iconIV: UIButton!
+    @IBOutlet weak var portraitBtn: UIButton!
     @IBOutlet weak var titleL: UILabel!
     @IBOutlet weak var subtitleL: UILabel!
     
@@ -72,7 +71,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
                 self.serviceTelBtn.setTitle("400-000-0000", for: .normal)
             }
             
-            self.iconIV.kf.setImage(with: URL(string: userInfo?.icon ?? ""), for: .normal, placeholder: UIImage.init(named: "pic_48px_def_touxiang"))
+            self.portraitBtn.setImage(from: userInfo?.icon ?? "", placeholder: UIImage.init(named: "pic_48px_def_touxiang"))
         })
     }
     
@@ -92,7 +91,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
         twoSV.addRadius(NAppRadius)
         threeSV.addRadius(NAppRadius)
         fourSV.addRadius(NAppRadius)
-        iconIV.addRadius(30)
+        portraitBtn.addRadius(30)
         qrIV.addRadius(5)
         
         navBarBackgroundAlpha = 0
@@ -104,7 +103,7 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             serviceTelBtn.titleLabel?.font = customFont
         }
         
-        iconIV.addTapAction { sender in
+        portraitBtn.addTapAction { sender in
             let webVC = NYSRootWebViewController.init()
             webVC.urlStr = "https://niyongsheng.github.io/pixel_homepage/"
             self.navigationController?.pushViewController(webVC, animated: true)
@@ -219,12 +218,14 @@ class NYSMineViewController: NYSRootViewController, UIScrollViewDelegate {
             
         } else if sender.tag == 401 {
             systemLocation?.completion = { [weak self] address, coordinate, error in
-                if let nsError = error as NSError? {
-                    NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
-                    self?.checkLocationAuth(isAlways: true)
-                } else {
-                    NYSTools.showToast("定位成功", image: UIImage(systemName: "location"), offset:UIOffset(horizontal: 0, vertical: 0))
-                    self?.infoL.text = "经度：\(coordinate.longitude)\n纬度：\(coordinate.latitude)\n地址：\(address)"
+                DispatchQueue.main.async {
+                    if let nsError = error as NSError? {
+                        NYSTools.showBottomToast("Location Error:\(nsError.code) \n \(nsError.localizedDescription)")
+                        self?.checkLocationAuth(isAlways: true)
+                    } else {
+                        NYSTools.showToast("定位成功", image: UIImage(systemName: "location"), offset:UIOffset(horizontal: 0, vertical: 0))
+                        self?.infoL.text = "经度：\(coordinate.longitude)\n纬度：\(coordinate.latitude)\n地址：\(address)"
+                    }
                 }
             }
             systemLocation?.requestSystem()

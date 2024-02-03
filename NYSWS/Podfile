@@ -12,6 +12,7 @@ def commonPods
   pod 'SGPagingView', '2.1.0'
   pod 'BRPickerView', '2.8.1'
   pod 'JDStatusBarNotification'
+#  pod 'SFSafeSymbols'
   pod 'CocoaDebug', :configurations => ['Debug']
 end
 
