@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NYSAccountViewController" customModule="NYSAppSwift" customModuleProvider="target">
             <connections>
-                <outlet property="agreeBtnBtn" destination="4Hv-lh-CtJ" id="HFP-Ys-RRl"/>
                 <outlet property="contenView" destination="AWK-H7-Xq4" id="jnW-ds-g79"/>
                 <outlet property="contentViewH" destination="d4g-2B-UxR" id="FUq-fh-p8L"/>
                 <outlet property="oneKeyBtn" destination="GPI-7R-6jV" id="6UO-h8-bna"/>
@@ -82,19 +81,6 @@
                                         <action selector="wechatBtnOnclicked:" destination="-1" eventType="touchUpInside" id="KJm-dT-ZpA"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Hv-lh-CtJ">
-                                    <rect key="frame" x="55" y="639" width="35" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="4Hv-lh-CtJ" secondAttribute="height" multiplier="1:1" id="Awb-yf-uNE"/>
-                                        <constraint firstAttribute="width" constant="35" id="lBV-CK-Ftu"/>
-                                    </constraints>
-                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" image="radio-off"/>
-                                    <state key="selected" image="radio-on"/>
-                                    <connections>
-                                        <action selector="agreeBtnOnclicked:" destination="-1" eventType="touchUpInside" id="Khw-Io-fFS"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAN-rF-yZM">
                                     <rect key="frame" x="216.66666666666666" y="719" width="39.999999999999972" height="40"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -122,7 +108,6 @@
                                 <constraint firstItem="pP2-Pr-pCP" firstAttribute="leading" secondItem="AWK-H7-Xq4" secondAttribute="leading" id="KSj-H0-k14"/>
                                 <constraint firstItem="Zrn-w3-P4p" firstAttribute="leading" secondItem="AWK-H7-Xq4" secondAttribute="leading" constant="15" id="Kkv-wc-z53"/>
                                 <constraint firstAttribute="trailing" secondItem="pP2-Pr-pCP" secondAttribute="trailing" id="Oc4-I2-mhN"/>
-                                <constraint firstItem="4Hv-lh-CtJ" firstAttribute="top" secondItem="0xh-fw-Qph" secondAttribute="top" id="Quo-Tq-c3T"/>
                                 <constraint firstItem="934-hl-94V" firstAttribute="top" secondItem="GPI-7R-6jV" secondAttribute="bottom" constant="10" id="QxJ-6k-lfQ"/>
                                 <constraint firstItem="934-hl-94V" firstAttribute="height" secondItem="GPI-7R-6jV" secondAttribute="height" id="SFE-hx-X6e"/>
                                 <constraint firstAttribute="trailing" secondItem="0xh-fw-Qph" secondAttribute="trailing" constant="50" id="YNu-Iq-CXr"/>
@@ -134,7 +119,6 @@
                                 <constraint firstItem="Awg-11-eNK" firstAttribute="top" secondItem="0xh-fw-Qph" secondAttribute="bottom" constant="10" id="eec-HK-vcq"/>
                                 <constraint firstItem="0xh-fw-Qph" firstAttribute="centerX" secondItem="AWK-H7-Xq4" secondAttribute="centerX" constant="20" id="fWi-cj-Irg"/>
                                 <constraint firstItem="GPI-7R-6jV" firstAttribute="centerY" secondItem="AWK-H7-Xq4" secondAttribute="centerY" constant="50" id="gNs-y1-b1d"/>
-                                <constraint firstItem="0xh-fw-Qph" firstAttribute="leading" secondItem="4Hv-lh-CtJ" secondAttribute="trailing" id="jnZ-Xr-lHI"/>
                                 <constraint firstItem="Zrn-w3-P4p" firstAttribute="top" secondItem="AWK-H7-Xq4" secondAttribute="top" constant="100" id="pnK-NM-hJY"/>
                                 <constraint firstItem="GPI-7R-6jV" firstAttribute="leading" secondItem="AWK-H7-Xq4" secondAttribute="leading" constant="15" id="qBv-6r-ZFz"/>
                                 <constraint firstItem="bs9-iJ-Xv1" firstAttribute="top" secondItem="Zrn-w3-P4p" secondAttribute="bottom" constant="5" id="r0r-F9-dJO"/>
@@ -169,8 +153,6 @@
         <image name="login-icon-apple" width="40" height="40"/>
         <image name="login-icon-wechat" width="40" height="40"/>
         <image name="login-top-bg" width="375" height="220"/>
-        <image name="radio-off" width="24" height="24"/>
-        <image name="radio-on" width="24" height="24"/>
         <namedColor name="fontColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

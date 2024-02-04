@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NYSUIKit
 
 class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
 
@@ -17,7 +18,6 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
     @IBOutlet weak var protocolT: UITextView!
     @IBOutlet weak var oneKeyBtn: UIButton!
     @IBOutlet weak var otherAccountBtn: UIButton!
-    @IBOutlet weak var agreeBtnBtn: UIButton!
     
     private let tipV: CMPopTipView = {
         let tipV = CMPopTipView()
@@ -30,6 +30,24 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
         tipV.has3DStyle = false
         return tipV
     }()
+    
+    var isChecked = false
+    lazy var checkBox: BFPaperCheckbox = {
+        let checkbox = BFPaperCheckbox(frame: CGRect(x: self.protocolT.left - 40, y: self.protocolT.top - 10, width: 50, height: 50))
+        checkbox.tintColor = NAppThemeColor
+        checkbox.rippleFromTapLocation = true
+        checkbox.addTarget(self, action: #selector(checkBoxOnclicked(_:)), for: .touchUpInside)
+        return checkbox
+    }()
+
+    @objc func checkBoxOnclicked(_ sender: BFPaperCheckbox) {
+        isChecked = !isChecked
+        if isChecked {
+            sender.check(animated: true)
+        } else {
+            sender.uncheck(animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +76,8 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
         protocolT.linkTextAttributes = [NSAttributedString.Key.foregroundColor: NAppThemeColor]
         protocolT.delegate = self
         protocolT.attributedText = attString
+        
+        self.view.addSubview(self.checkBox)
     }
     
     override func configTheme() {
@@ -70,11 +90,11 @@ class NYSAccountViewController: NYSRootViewController, UITextViewDelegate {
     }
     
     @IBAction func otherAccountBtnOnclicked(_ sender: UIButton) {
-        if !self.agreeBtnBtn.isSelected {
-            NYSTools.shakeAnimation(self.agreeBtnBtn.layer)
+        if !self.isChecked {
+            NYSTools.shakeAnimation(self.checkBox.layer)
             tipV.message = "请勾选"
             tipV.autoDismiss(animated: true, atTimeInterval: 2)
-            tipV.presentPointing(at: self.agreeBtnBtn, in: view, animated: true)
+            tipV.presentPointing(at: self.checkBox, in: view, animated: true)
             return
         }
         self.navigationController?.pushViewController(NYSLoginViewController(), animated: true)

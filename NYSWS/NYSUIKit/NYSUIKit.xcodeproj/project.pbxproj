@@ -89,6 +89,8 @@
 		C8D0AF882B49438F002C18E6 /* NYSMemoryLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D0AF832B49438F002C18E6 /* NYSMemoryLabel.m */; };
 		C8D0AF892B49438F002C18E6 /* YYFPSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C8D0AF852B49438F002C18E6 /* YYFPSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8D0AF8A2B49438F002C18E6 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D0AF862B49438F002C18E6 /* YYFPSLabel.m */; };
+		C8E6C5802B6F7E4500F885E0 /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E6C57E2B6F7E4500F885E0 /* BFPaperCheckbox.m */; };
+		C8E6C5812B6F7E4500F885E0 /* BFPaperCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = C8E6C57F2B6F7E4500F885E0 /* BFPaperCheckbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8EE7E812A08C18D000E3A3A /* UINavigationController+NYSUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C8EE7E7F2A08C18D000E3A3A /* UINavigationController+NYSUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8EE7E822A08C18D000E3A3A /* UINavigationController+NYSUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */; };
 		C8EEC58F2A823CDD0090EDAB /* NYSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B7475929FA753300673B75 /* NYSKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -195,6 +197,8 @@
 		C8D0AF832B49438F002C18E6 /* NYSMemoryLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NYSMemoryLabel.m; sourceTree = "<group>"; };
 		C8D0AF852B49438F002C18E6 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		C8D0AF862B49438F002C18E6 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		C8E6C57E2B6F7E4500F885E0 /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
+		C8E6C57F2B6F7E4500F885E0 /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		C8EE7E7F2A08C18D000E3A3A /* UINavigationController+NYSUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NYSUIKit.h"; sourceTree = "<group>"; };
 		C8EE7E802A08C18D000E3A3A /* UINavigationController+NYSUIKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NYSUIKit.m"; sourceTree = "<group>"; };
 		C8EEC5952A8323450090EDAB /* NYSUIKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NYSUIKit.xcassets; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				C8B7476729FA775300673B75 /* NYSLoadingButton */,
 				C8B7477129FA775300673B75 /* PopView */,
 				C8B7478F29FA775400673B75 /* ScrollLabel */,
+				C8E6C57D2B6F7E4500F885E0 /* BFPaperCheckbox */,
 				C8B7478829FA775400673B75 /* TableViewAnimationKit */,
 			);
 			path = UI;
@@ -525,6 +530,16 @@
 			path = FPS;
 			sourceTree = "<group>";
 		};
+		C8E6C57D2B6F7E4500F885E0 /* BFPaperCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				C8E6C57F2B6F7E4500F885E0 /* BFPaperCheckbox.h */,
+				C8E6C57E2B6F7E4500F885E0 /* BFPaperCheckbox.m */,
+			);
+			name = BFPaperCheckbox;
+			path = NYSUIKit/UI/BFPaperCheckbox;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -570,6 +585,7 @@
 				C8D0AF892B49438F002C18E6 /* YYFPSLabel.h in Headers */,
 				C85F4E642A189217007DAADC /* FIRVersionCheck.h in Headers */,
 				C8B6C96A2B689868007EDDB0 /* NYSLocationTransform.h in Headers */,
+				C8E6C5812B6F7E4500F885E0 /* BFPaperCheckbox.h in Headers */,
 				C8B6C9712B68B991007EDDB0 /* NYSSystemLocation.h in Headers */,
 				C8464A9F2A0A2357003CD376 /* NSBundle+NYSLanguageSwitch.h in Headers */,
 				C8597A0A29F4FDC5008BEE7F /* NYSUIKit.h in Headers */,
@@ -726,6 +742,7 @@
 				C8B747F929FA818900673B75 /* NYSBaseView.m in Sources */,
 				C8D0AF8A2B49438F002C18E6 /* YYFPSLabel.m in Sources */,
 				C8B7480429FA818900673B75 /* NYSBaseTabBarController.m in Sources */,
+				C8E6C5802B6F7E4500F885E0 /* BFPaperCheckbox.m in Sources */,
 				C8B7479B29FA775400673B75 /* NYSLoadingButton.m in Sources */,
 				C8B747F229FA818900673B75 /* NYSBasePresenter.m in Sources */,
 				C8B747D529FA7DF700673B75 /* UIView+NYS.m in Sources */,

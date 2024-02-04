@@ -30,6 +30,7 @@ FOUNDATION_EXPORT const unsigned char NYSUIKitVersionString[];
 #import <NYSUIKit/PopView.h>
 #import <NYSUIKit/PopAnimationTool.h>
 #import <NYSUIKit/WSScrollLabel.h>
+#import <NYSUIKit/BFPaperCheckbox.h>
 #import <NYSUIKit/TableViewAnimationKit.h>
 #import <NYSUIKit/FIRVersionCheck.h>
 #import <NYSUIKit/NYSSystemLocation.h>

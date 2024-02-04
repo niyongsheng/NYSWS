@@ -37,6 +37,7 @@
 		C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */; };
 		C82F2FC12B6E265F00A8F816 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F2FC02B6E265E00A8F816 /* UIImageView+Extension.swift */; };
 		C82F2FC32B6E28A900A8F816 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F2FC22B6E28A900A8F816 /* UIButton+Extension.swift */; };
+		C82F2FC52B6E39D600A8F816 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F2FC42B6E39D600A8F816 /* String+Extension.swift */; };
 		C83162A42B4CE2750014CFE1 /* TypeNameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */; };
 		C83162A72B4CE5160014CFE1 /* UIScrollView+RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */; };
 		C83162A92B4D180F0014CFE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C83162A82B4D180F0014CFE1 /* README.md */; };
@@ -85,7 +86,6 @@
 		C874B9A82B4B8BB8009CC627 /* AppShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C874B9A62B4B8BB8009CC627 /* AppShareView.xib */; };
 		C87CAB752B46773600C84E8E /* PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CAB732B46773600C84E8E /* PropertyWrapper.swift */; };
 		C87CAB762B46773600C84E8E /* Rx+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CAB742B46773600C84E8E /* Rx+Operators.swift */; };
-		C87CAB782B4679B600C84E8E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CAB772B4679B600C84E8E /* String+Extension.swift */; };
 		C87CAB7A2B467B2900C84E8E /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CAB792B467B2900C84E8E /* AppManager.swift */; };
 		C87CAB7D2B467C8E00C84E8E /* NYSUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87CAB7C2B467C8E00C84E8E /* NYSUserInfo.swift */; };
 		C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */; };
@@ -184,6 +184,7 @@
 		C821AAB82B46B930003C0968 /* NYSQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSQRCodeViewController.swift; sourceTree = "<group>"; };
 		C82F2FC02B6E265E00A8F816 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C82F2FC22B6E28A900A8F816 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		C82F2FC42B6E39D600A8F816 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C83162A32B4CE2750014CFE1 /* TypeNameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameProtocol.swift; sourceTree = "<group>"; };
 		C83162A62B4CE5160014CFE1 /* UIScrollView+RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+RxSwift.swift"; sourceTree = "<group>"; };
 		C83162A82B4D180F0014CFE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -235,7 +236,6 @@
 		C874B9A62B4B8BB8009CC627 /* AppShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppShareView.xib; sourceTree = "<group>"; };
 		C87CAB732B46773600C84E8E /* PropertyWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyWrapper.swift; sourceTree = "<group>"; };
 		C87CAB742B46773600C84E8E /* Rx+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+Operators.swift"; sourceTree = "<group>"; };
-		C87CAB772B4679B600C84E8E /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "../../../../../../../../Volumes/TimeMachine/工作目录_Arpa/工作中/云南/RxStudy-0.7/RxStudy/Extension/String+Extension.swift"; sourceTree = "<group>"; };
 		C87CAB792B467B2900C84E8E /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		C87CAB7C2B467C8E00C84E8E /* NYSUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSUserInfo.swift; sourceTree = "<group>"; };
 		C88BC8A92B3CF90900676632 /* NYSScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSScrollViewController.swift; sourceTree = "<group>"; };
@@ -340,11 +340,11 @@
 				C8BC5EA32B3AAEA500814C2B /* UIView+Extension.swift */,
 				C80EE9EA2B43963800F79AD0 /* UIColor+Extension.swift */,
 				C80EE9EC2B439E3B00F79AD0 /* UIControl+Extension.swift */,
-				C87CAB772B4679B600C84E8E /* String+Extension.swift */,
 				C8A4BE302B4BBA1700152E14 /* UITableView+Extension.swift */,
 				C843D1502B5E50B5003B23B7 /* UIImage+Extension.swift */,
 				C82F2FC02B6E265E00A8F816 /* UIImageView+Extension.swift */,
 				C82F2FC22B6E28A900A8F816 /* UIButton+Extension.swift */,
+				C82F2FC42B6E39D600A8F816 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1032,7 +1032,6 @@
 				C843D14F2B5E4EC4003B23B7 /* NYSMineModel.swift in Sources */,
 				C843D1552B5E68CA003B23B7 /* NYSOverdueAlertView.swift in Sources */,
 				C8A4BE412B4BDE9100152E14 /* NYSHomeViewModel.swift in Sources */,
-				C87CAB782B4679B600C84E8E /* String+Extension.swift in Sources */,
 				C816B6652B4F7B6F00256E58 /* NYSWeaterAlarm.swift in Sources */,
 				C821AAB92B46B930003C0968 /* NYSQRCodeViewController.swift in Sources */,
 				C86DB2192B3E8DBC002126F5 /* NYSAccountViewController.swift in Sources */,
@@ -1093,6 +1092,7 @@
 				C8A4BE432B4BDF4300152E14 /* NYSRootViewModel.swift in Sources */,
 				C88BC8AB2B3CF90900676632 /* NYSScrollViewController.swift in Sources */,
 				C806A5E92B67AB4700D6FFE1 /* NYSAMapTrackManager.m in Sources */,
+				C82F2FC52B6E39D600A8F816 /* String+Extension.swift in Sources */,
 				C821AAB02B4694C4003C0968 /* AppAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
