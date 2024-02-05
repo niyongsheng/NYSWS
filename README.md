@@ -7,12 +7,27 @@ NYSWS
 > ios simple componentized solution [framework](https://github.com/niyongsheng/NYSKit).
 
 ## APP
-`pod分支以Cocoapod方式构建` https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS
-
-`main分支以Framework方式构建` https://github.com/niyongsheng/NYSWS/tree/main/NYSWS
-
-- [OC示例项目](https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppObjC/NYSAppObjC)
-- [Swift示例项目](https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppSwift/NYSAppSwift)
+  <details open="open">
+    <summary>构建方式</summary>
+    <ul>
+      <li>
+        <a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS">Cocoapod【pod分支】https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS</a>
+        <ul>
+          <li><a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppObjC/NYSAppObjC">OC示例项目</a></li>
+          <li><a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppSwift/NYSAppSwift">Swift示例项目</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS">Framework【main分支】https://github.com/niyongsheng/NYSWS/tree/main/NYSWS</a>
+        <ul>
+          <li><a href="https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppObjC/NYSAppObjC">OC示例项目</a></li>
+          <li><a href="https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppSwift/NYSAppSwift">Swift示例项目</a></li>
+        </ul>
+      </li>
+    </ul>
+  </details>
 
 <img src="./images/swift_one_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_two_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_three_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_four_light.PNG" width="200" style="border-radius: 15px;"> | <img src="./images/swift_login_light.PNG" width="200" style="border-radius: 15px;"> 
 --- | --- | --- | --- | ---
@@ -52,6 +67,7 @@ NYSWS
 ├─ Podfile
 └─ Pods
 ```
+`*NYSKit/NYSUIKit` https://github.com/niyongsheng/NYSKit
 
 ## apple-app-site-association
 ```json
