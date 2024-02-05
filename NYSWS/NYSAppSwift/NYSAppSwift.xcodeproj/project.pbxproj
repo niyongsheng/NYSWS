@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9759DA7CC6DDFDC2398D1956 /* Pods_NYSAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */; };
+		94678B6D6C3FCF6C0654287B /* Pods_NYSAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14ABCFFA233A4E1481CCF9C0 /* Pods_NYSAppSwift.framework */; };
 		C806A5D62B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5D52B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift */; };
 		C806A5DD2B67722F00D6FFE1 /* PandaCollectionFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5D82B67722E00D6FFE1 /* PandaCollectionFetcher.swift */; };
 		C806A5DE2B67722F00D6FFE1 /* MemeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C806A5D92B67722E00D6FFE1 /* MemeCreator.swift */; };
@@ -67,8 +67,6 @@
 		C85D7E7E2B60F39700C4BC93 /* NYSImageItemView.xml in Resources */ = {isa = PBXBuildFile; fileRef = C85D7E7D2B60F39700C4BC93 /* NYSImageItemView.xml */; };
 		C8621DE82B316F5A00F90DF0 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C8621DE72B316F5A00F90DF0 /* LaunchImage.png */; };
 		C8621DEE2B31845300F90DF0 /* NYSTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8621DED2B31845300F90DF0 /* NYSTabBarViewController.swift */; };
-		C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; };
-		C8621DF02B31B23100F90DF0 /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C86B02AF2B56017C00B359EA /* login_data.json in Resources */ = {isa = PBXBuildFile; fileRef = C86B02AE2B56017C00B359EA /* login_data.json */; };
 		C86B02B12B56028B00B359EA /* userinfo_data.json in Resources */ = {isa = PBXBuildFile; fileRef = C86B02B02B56028B00B359EA /* userinfo_data.json */; };
 		C86B02B72B56487500B359EA /* douyuFont.otf in Resources */ = {isa = PBXBuildFile; fileRef = C86B02B62B56487500B359EA /* douyuFont.otf */; };
@@ -134,22 +132,8 @@
 		C8ED6DEF2B551D9B000F2268 /* NYSServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED6DEE2B551D9B000F2268 /* NYSServiceViewModel.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C8621DF12B31B23100F90DF0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C8621DF02B31B23100F90DF0 /* NYSUIKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14ABCFFA233A4E1481CCF9C0 /* Pods_NYSAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4882A0072F76FA00A0E719B2 /* Pods-NYSAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppSwift.release.xcconfig"; path = "Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C806A5D52B672E5600D6FFE1 /* UIKitBridgeSwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBridgeSwiftUI.swift; sourceTree = "<group>"; };
 		C806A5D82B67722E00D6FFE1 /* PandaCollectionFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PandaCollectionFetcher.swift; sourceTree = "<group>"; };
@@ -212,7 +196,6 @@
 		C8597A8A29F511A0008BEE7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8597A8D29F511A0008BEE7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8597A8F29F511A0008BEE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597AC929F522D9008BEE7F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C85D7E7B2B60F34300C4BC93 /* NYSImageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYSImageItemView.swift; sourceTree = "<group>"; };
 		C85D7E7D2B60F39700C4BC93 /* NYSImageItemView.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NYSImageItemView.xml; sourceTree = "<group>"; };
@@ -291,8 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8621DEF2B31B23100F90DF0 /* NYSUIKit.framework in Frameworks */,
-				9759DA7CC6DDFDC2398D1956 /* Pods_NYSAppSwift.framework in Frameworks */,
+				94678B6D6C3FCF6C0654287B /* Pods_NYSAppSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,8 +469,7 @@
 		C8597A9B29F5191A008BEE7F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C8597A9D29F5191A008BEE7F /* NYSUIKit.framework */,
-				42AA2350569E0966940B1719 /* Pods_NYSAppSwift.framework */,
+				14ABCFFA233A4E1481CCF9C0 /* Pods_NYSAppSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -868,7 +849,6 @@
 				C8597A7A29F5119E008BEE7F /* Sources */,
 				C8597A7B29F5119E008BEE7F /* Frameworks */,
 				C8597A7C29F5119E008BEE7F /* Resources */,
-				C8621DF12B31B23100F90DF0 /* Embed Frameworks */,
 				8AC14BD5FBCF21C9D1920DB7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -967,11 +947,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NYSAppSwift/Pods-NYSAppSwift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

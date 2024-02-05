@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25AB637B06B4A480DFE39BB2 /* Pods_NYSAppObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A263A7082F8E8FD26CB6FA9 /* Pods_NYSAppObjC.framework */; };
 		C80648962A149A6F003397CD /* NYSLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80648982A149A6F003397CD /* NYSLoginVC.xib */; };
 		C806489D2A149C15003397CD /* NYSConsultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C806489F2A149C15003397CD /* NYSConsultVC.xib */; };
 		C80648A42A149C60003397CD /* NYSRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80648A62A149C60003397CD /* NYSRegisterVC.xib */; };
@@ -210,31 +211,14 @@
 		C8EE7EDA2A09032D000E3A3A /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE7ED92A09032D000E3A3A /* ThirdViewController.m */; };
 		C8EEC54D2A80C6520090EDAB /* EMAppStorePay.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EEC54C2A80C6520090EDAB /* EMAppStorePay.m */; };
 		C8EEC54F2A80CA690090EDAB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8EEC54E2A80CA690090EDAB /* StoreKit.framework */; };
-		C8EEC5922A823CE50090EDAB /* NYSUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C8EEC5932A823CE50090EDAB /* NYSUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C8597AA529F5194A008BEE7F /* NYSUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8F4B94E2A0CBBA500719AF2 /* NYSResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F4B94C2A0CBBA500719AF2 /* NYSResetPwdViewController.m */; };
 		C8FBA26A2B5BBD2D0037E907 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C8FBA2692B5BBD2D0037E907 /* README.md */; };
 		C8FC1A112A3C22D600E28323 /* NYSResetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C8FC1A102A3C22D600E28323 /* NYSResetPwdVC.m */; };
 		C8FC1A142A3C22DF00E28323 /* NYSResetPwdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8FC1A122A3C22DF00E28323 /* NYSResetPwdVC.xib */; };
-		E276FB06AABC664200498496 /* Pods_NYSAppObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFE630A95E1877865922C8D /* Pods_NYSAppObjC.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C8EEC5942A823CE50090EDAB /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C8EEC5932A823CE50090EDAB /* NYSUIKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		3AFE630A95E1877865922C8D /* Pods_NYSAppObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A263A7082F8E8FD26CB6FA9 /* Pods_NYSAppObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYSAppObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58F95B0D4613D82244763B3 /* Pods-NYSAppObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYSAppObjC.debug.xcconfig"; path = "Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		C80648972A149A6F003397CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NYSLoginVC.xib; sourceTree = "<group>"; };
 		C806489A2A149A76003397CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NYSLoginVC.strings"; sourceTree = "<group>"; };
@@ -335,7 +319,6 @@
 		C8597A2D29F51054008BEE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8597A2E29F51054008BEE7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C8597A9929F5129D008BEE7F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C8597AA529F5194A008BEE7F /* NYSUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8597AB929F52007008BEE7F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		C8599B8C2A035E8700DEA603 /* themejson_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_day.json; sourceTree = "<group>"; };
 		C8599B8D2A035E8700DEA603 /* themejson_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themejson_night.json; sourceTree = "<group>"; };
@@ -350,7 +333,6 @@
 		C8599BA92A03A3EC00DEA603 /* NYSSearchCourseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSSearchCourseVC.m; sourceTree = "<group>"; };
 		C8599BAB2A03A73A00DEA603 /* NYSCourseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYSCourseCell.h; sourceTree = "<group>"; };
 		C8599BAC2A03A73A00DEA603 /* NYSCourseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYSCourseCell.m; sourceTree = "<group>"; };
-		C8599BB02A03B18E00DEA603 /* NYSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NYSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85A34792A0E40EA00E42C6B /* LLImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLImagePickerManager.m; sourceTree = "<group>"; };
 		C85A347A2A0E40EA00E42C6B /* LLImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLImagePickerView.h; sourceTree = "<group>"; };
 		C85A347B2A0E40EA00E42C6B /* LLImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLImagePickerCell.h; sourceTree = "<group>"; };
@@ -637,8 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8EEC54F2A80CA690090EDAB /* StoreKit.framework in Frameworks */,
-				C8EEC5922A823CE50090EDAB /* NYSUIKit.framework in Frameworks */,
-				E276FB06AABC664200498496 /* Pods_NYSAppObjC.framework in Frameworks */,
+				25AB637B06B4A480DFE39BB2 /* Pods_NYSAppObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,9 +724,7 @@
 			isa = PBXGroup;
 			children = (
 				C8EEC54E2A80CA690090EDAB /* StoreKit.framework */,
-				C8599BB02A03B18E00DEA603 /* NYSKit.framework */,
-				C8597AA529F5194A008BEE7F /* NYSUIKit.framework */,
-				3AFE630A95E1877865922C8D /* Pods_NYSAppObjC.framework */,
+				8A263A7082F8E8FD26CB6FA9 /* Pods_NYSAppObjC.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1304,7 +1283,6 @@
 				C8597A1629F51052008BEE7F /* Frameworks */,
 				C8597A1729F51052008BEE7F /* Resources */,
 				51FA752FB9473966E96F9AB6 /* [CP] Copy Pods Resources */,
-				C8EEC5942A823CE50090EDAB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1461,11 +1439,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NYSAppObjC/Pods-NYSAppObjC-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

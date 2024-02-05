@@ -6,7 +6,7 @@
 //
 
 #import "AppManager.h"
-#import <JPush/JPUSHService.h>
+#import <JPUSHService.h>
 
 /// 是否需要调用接口登出登录
 #define IsNeedLogout NO

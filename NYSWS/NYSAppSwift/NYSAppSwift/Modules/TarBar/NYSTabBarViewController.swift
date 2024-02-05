@@ -7,6 +7,7 @@
 
 import UIKit
 import NYSUIKit
+import Lottie
 
 class NYSTabBarViewController: NYSBaseTabBarController, UITabBarControllerDelegate {
     var curSelectedIndex:Int = 0

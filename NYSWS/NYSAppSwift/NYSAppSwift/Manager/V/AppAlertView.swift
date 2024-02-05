@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FFPopup
 
 class AppAlertView: NYSRootAlertView {
     

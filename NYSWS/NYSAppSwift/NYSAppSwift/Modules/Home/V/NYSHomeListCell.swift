@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import NYSUIKit
+import FlexLib
 
 @objc(NYSHomeListCell)
 class NYSHomeListCell: FlexBaseTableCell {

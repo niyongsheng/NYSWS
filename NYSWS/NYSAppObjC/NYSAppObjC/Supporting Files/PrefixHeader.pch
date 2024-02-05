@@ -3,7 +3,7 @@
 
 #pragma mark -- 三方框架 --
 #import <NYSKit/NYSKit.h>
-#import <NYSUIKit/NYSUIkit.h>
+#import <NYSUIKit/NYSUIKit.h>
 
 #import <YYKit/YYKit.h>
 #import <Masonry.h>
@@ -17,7 +17,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-#import <JDStatusBarNotification/JDStatusBarNotification.h>
+#import <JDStatusBarNotification/JDStatusBarNotification-Swift.h>
 //#import "NYSAppObjC-Swift.h"
 @import ZLPhotoBrowser_objc;
 @import SGPagingView;

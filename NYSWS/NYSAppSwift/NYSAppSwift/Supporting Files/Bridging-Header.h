@@ -2,13 +2,13 @@
 //
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
-#pragma mark -- 基础框架 --
+#pragma mark -- BASE基础框架 --
 //#import <NYSKit/NYSKit.h>
 //#import <NYSUIKit/NYSUIkit.h>
 @import NYSKit;
 @import NYSUIKit;
 
-#pragma mark -- 项目基类 --
+#pragma mark -- SWIFT项目基类 --
 @class NYSRootAlertView;
 @class NYSRootViewModel;
 @class NYSRootViewController;
@@ -19,15 +19,5 @@
 #import "NYSAMapTrackManager.h"
 #import "NYSScanViewController.h"
 
-#pragma mark -- 三方框架 --
-#import <Lottie/Lottie.h>
-#import <FlexLib/FlexLib.h>
-#import <FFPopup/FFPopup.h>
-#import <YYModel/YYModel.h>
-#import <SGQRCode/SGQRCode.h>
-#import <JPush/JPUSHService.h>
-#import <MJRefresh/MJRefresh.h>
-#import <BRPickerView/BRPickerView.h>
-#import <JDStatusBarNotification/JDStatusBarNotification.h>
-
-
+#pragma mark -- OC三方依赖 --
+#import "JPUSHService.h"

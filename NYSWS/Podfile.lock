@@ -15,13 +15,13 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - Alamofire (5.8.0)
   - AMapFoundation (1.8.2)
   - AMapLocation (2.10.0):
     - AMapFoundation (>= 1.8.0)
   - AMapTrack (1.4.2):
     - AMapFoundation (>= 1.6.4)
     - AMapLocation (>= 2.6.7)
+  - BetterCodable (0.4.0)
   - BRPickerView (2.8.1):
     - BRPickerView/AddressPickerView (= 2.8.1)
     - BRPickerView/Base (= 2.8.1)
@@ -52,15 +52,22 @@ PODS:
   - FMDB/standard (2.7.5)
   - IQKeyboardManager (6.5.11)
   - IQKeyboardManagerSwift (6.5.11)
-  - JCore (2.7.1)
-  - JDStatusBarNotification (2.0.9)
-  - JPush (3.7.4):
-    - JCore (< 3.0.0, >= 2.0.0)
+  - JCore (4.6.0)
+  - JDStatusBarNotification (2.2.1)
+  - JPush (5.2.0):
+    - JCore (>= 2.0.0)
   - Kingfisher (7.10.1)
   - lottie-ios (2.5.3)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
-  - MJRefresh (3.7.5)
+  - MJRefresh (3.7.6)
+  - NYSKit (0.0.1):
+    - AFNetworking (~> 4.0)
+    - SVProgressHUD (~> 2.0)
+  - NYSUIKit (0.0.1):
+    - DZNEmptyDataSet (~> 1.8)
+    - MJRefresh (~> 3.7)
+    - NYSKit (~> 0.0.1)
   - ReactiveObjC (3.1.1)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
@@ -68,20 +75,22 @@ PODS:
   - RxRelay (6.6.0):
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
-  - SDWebImage (5.18.8):
-    - SDWebImage/Core (= 5.18.8)
-  - SDWebImage/Core (5.18.8)
+  - SDWebImage (5.18.10):
+    - SDWebImage/Core (= 5.18.10)
+  - SDWebImage/Core (5.18.10)
+  - SFSafeSymbols (4.1.1)
   - SGPagingView (2.1.0)
   - SGQRCode (4.1.0)
   - SnapKit (5.6.0)
-  - SVProgressHUD (2.2.5)
-  - TangramKit (1.4.2)
-  - UMAPM (1.8.4)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
+  - UMAPM (1.8.6)
   - UMCCommon (7.3.7):
     - UMAPM
     - UMDevice
   - UMCCommonLog (2.0.2)
-  - UMDevice (3.2.0)
+  - UMDevice (3.3.0)
   - WechatOpenSDK (2.0.2)
   - WMZBanner (1.2.0):
     - SDWebImage
@@ -102,35 +111,33 @@ PODS:
 
 DEPENDENCIES:
   - AcknowList (= 3.0.1)
-  - AFNetworking (= 4.0.1)
-  - Alamofire (= 5.8.0)
   - AMapLocation
   - AMapTrack
+  - BetterCodable
   - BRPickerView (= 2.8.1)
   - CocoaDebug
   - Disk (= 0.6.4)
-  - DZNEmptyDataSet (= 1.8.1)
   - ExCodable
   - FFPopup (= 1.1.5)
   - FlexLib (= 3.1.6)
   - FMDB (= 2.7.5)
   - IQKeyboardManager (= 6.5.11)
   - IQKeyboardManagerSwift (= 6.5.11)
-  - JDStatusBarNotification
+  - JDStatusBarNotification (= 2.2.1)
   - JPush
   - Kingfisher (= 7.10.1)
   - lottie-ios (= 2.5.3)
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
-  - MJRefresh (= 3.7.5)
+  - "NYSKit (from `git@github.com:niyongsheng/NYSKit.git`, tag `0.0.1`)"
+  - "NYSUIKit (from `git@github.com:niyongsheng/NYSKit.git`, tag `0.0.1`)"
   - ReactiveObjC (= 3.1.1)
   - RxCocoa (= 6.6.0)
   - RxSwift (= 6.6.0)
+  - SFSafeSymbols
   - SGPagingView (= 2.1.0)
   - SGQRCode (= 4.1.0)
   - SnapKit (= 5.6.0)
-  - SVProgressHUD (= 2.2.5)
-  - TangramKit (= 1.4.2)
   - UMAPM
   - UMCCommon
   - UMCCommonLog (= 2.0.2)
@@ -149,10 +156,10 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AcknowList
     - AFNetworking
-    - Alamofire
     - AMapFoundation
     - AMapLocation
     - AMapTrack
+    - BetterCodable
     - BRPickerView
     - CocoaDebug
     - Disk
@@ -177,11 +184,11 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SFSafeSymbols
     - SGPagingView
     - SGQRCode
     - SnapKit
     - SVProgressHUD
-    - TangramKit
     - UMAPM
     - UMCCommon
     - UMCCommonLog
@@ -197,13 +204,29 @@ SPEC REPOS:
     - ZLPhotoBrowser
     - ZLPhotoBrowser-objc
 
+EXTERNAL SOURCES:
+  NYSKit:
+    :git: "git@github.com:niyongsheng/NYSKit.git"
+    :tag: 0.0.1
+  NYSUIKit:
+    :git: "git@github.com:niyongsheng/NYSKit.git"
+    :tag: 0.0.1
+
+CHECKOUT OPTIONS:
+  NYSKit:
+    :git: "git@github.com:niyongsheng/NYSKit.git"
+    :tag: 0.0.1
+  NYSUIKit:
+    :git: "git@github.com:niyongsheng/NYSKit.git"
+    :tag: 0.0.1
+
 SPEC CHECKSUMS:
   AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
-  Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
   AMapFoundation: 9885c48fc3a78fdfb84a0299a2293e56ea3c9fec
   AMapLocation: 5248aec2455ebb5d104b367813c946430a2ee033
   AMapTrack: e95862d44af9c7fd0cc755b7a96622f35bf3764c
+  BetterCodable: 3f2a765c9f4089b19debd2a7b904a69fca0a5fda
   BRPickerView: 2531a2d4d0fea0b57a1c738de215af0f88863a2f
   CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
   Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
@@ -215,28 +238,30 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  JCore: 9d5bda3a172c65bbe14f2806ab0f6246f8a06065
-  JDStatusBarNotification: c3565464c8f199d7afdb903ff28b118d47666c7d
-  JPush: e455ad2a7b854bca8149df085772d6c4f79b2416
+  JCore: bfb281ba5fbf3d3e50ccb36bb41d54e0e99312df
+  JDStatusBarNotification: d43e8481174a2c5f195d16ce65c611f4a12bf507
+  JPush: 76668b765fcfd7c15f86b05ca0e5cdc01945ce23
   Kingfisher: bc5abe80a8e0144537ef1dd5a0b2621b04f7f439
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  MJRefresh: 2fe7fb43a5167ceda20bb7e63f130c04fd1814a5
+  NYSKit: 5de54de2720a7c4df1e4fe860d06adb34f85331c
+  NYSUIKit: c72193bec11a1e45afd3f61444cf1f98e1e43aa9
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
-  SDWebImage: a81bbb3ba4ea5f810f4069c68727cb118467a04a
+  SDWebImage: fc8f2d48bbfd72ef39d70e981bd24a3f3be53fec
+  SFSafeSymbols: 902576dbf8ea16b4c6152cef2a26e47b3f55defb
   SGPagingView: fb90c03c809363ea340189053c5635a128e1ef84
   SGQRCode: 6ad664d63f38f2842503bc5087812c5a3136d924
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TangramKit: aad3ab8f9617418c9da96d59cddd71134ae8af83
-  UMAPM: f3d56b9a9c445af10a74f0cdbf5417045d2ab4f2
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+  UMAPM: e69eb6542a7c98f31a0d177d31ecfa1a2ceee1c3
   UMCCommon: aac337052f23b0e08c0f3cf021d3bb209f2c49bd
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
-  UMDevice: b08f6cc32f26798dbac58bd0e91fea1f008bd2b7
+  UMDevice: f67106f8f1a8bc465ba20d376d896e178be66ba7
   WechatOpenSDK: e79349b37d44c015210f39fd6d2379f0ec60efe2
   WMZBanner: 42d02896dc7a67a4d7a2ebe1ef5b7a79f8d2c540
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
@@ -248,6 +273,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: ff7eeb836196a9174f5cf1954787ac4b87dd5f87
+PODFILE CHECKSUM: 0054a56766f4cfd2201a68124f51fa58e1b2a3f2
 
 COCOAPODS: 1.12.0

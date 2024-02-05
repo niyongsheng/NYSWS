@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SGQRCode
 
 private let NAVBAR_TRANSLATION_POINT:CGFloat = -NTopHeight
 

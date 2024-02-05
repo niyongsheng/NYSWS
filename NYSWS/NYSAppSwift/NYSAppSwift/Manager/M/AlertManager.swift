@@ -8,6 +8,8 @@
 
 import Foundation
 import RxSwift
+import FFPopup
+import JDStatusBarNotification
 
 final class AlertManager {
     
@@ -45,30 +47,26 @@ final class AlertManager {
             if let status = notification.object as? Int {
                 switch status {
                 case -1:
-                    NotificationPresenter.shared().present(text: "网络状态未知", dismissAfterDelay: self.delay, includedStyle:
-                            .defaultStyle)
+                    NotificationPresenter.shared.present("网络状态未知", includedStyle: .defaultStyle, duration: self.delay)
                     imageView = UIImageView(image: UIImage(systemName: "xmark.icloud"))
                     break
                 case 0:
-                    NotificationPresenter.shared().present(text: "网络不可用", dismissAfterDelay: self.delay, includedStyle:
-                            .defaultStyle)
+                    NotificationPresenter.shared.present("网络不可用", includedStyle: .defaultStyle, duration: self.delay)
                     imageView = UIImageView(image: UIImage(systemName: "wifi.slash"))
                     break
                 case 1:
-                    NotificationPresenter.shared().present(text: "移动网络", dismissAfterDelay: self.delay, includedStyle:
-                            .defaultStyle)
+                    NotificationPresenter.shared.present("移动网络", includedStyle: .defaultStyle, duration: self.delay)
                     imageView = UIImageView(image: UIImage(systemName: "antenna.radiowaves.left.and.right.circle.fill"))
                     break
                 case 2:
-                    NotificationPresenter.shared().present(text: "WiFi网络", dismissAfterDelay: self.delay, includedStyle:
-                            .defaultStyle)
+                    NotificationPresenter.shared.present("WiFi网络", includedStyle: .defaultStyle, duration: self.delay)
                     imageView = UIImageView(image: UIImage(systemName: "wifi.circle.fill"))
                     break
                 default:
                     break
                 }
                 imageView.tintColor = NAppThemeColor
-                NotificationPresenter.shared().displayLeftView(imageView)
+                NotificationPresenter.shared.displayLeftView(imageView)
             }
             
         }).disposed(by: disposeBag)

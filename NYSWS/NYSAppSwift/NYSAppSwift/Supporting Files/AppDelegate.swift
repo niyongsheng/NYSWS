@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FlexLib
 import NYSUIKit
 import IQKeyboardManagerSwift
 #if DEBUG
@@ -81,25 +82,6 @@ extension AppDelegate {
         #endif
     }
     
-    func initJPush(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        let entity = JPUSHRegisterEntity()
-        entity.types = NSInteger(UNAuthorizationOptions.alert.rawValue) |
-        NSInteger(UNAuthorizationOptions.sound.rawValue) |
-        NSInteger(UNAuthorizationOptions.badge.rawValue) |
-        NSInteger(UNAuthorizationOptions.provisional.rawValue)
-        
-        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
-        JPUSHService.setInMessageDelegate(self)
-        JPUSHService.setup(withOption: launchOptions, appKey: JPUSH_APPKEY, channel: JPUSH_CHANNEl, apsForProduction: IS_Prod, advertisingIdentifier: nil)
-        JPUSHService.registrationIDCompletionHandler { resCode, registrationID in
-            if resCode == 0 {
-                self.print("registrationID获取成功：\(String(describing: registrationID))")
-            } else {
-                self.print("registrationID获取失败，code：\(String(describing: registrationID))")
-            }
-        }
-    }
-    
     func initNetwork() {
         NYSKitManager.shared().host = Api_Base_Url
         NYSKitManager.shared().token = AppManager.shared.token
@@ -161,7 +143,26 @@ extension AppDelegate {
     }
 }
 
-extension AppDelegate: JPUSHRegisterDelegate, JPushInMessageDelegate {
+extension AppDelegate: JPUSHRegisterDelegate, JPUSHInAppMessageDelegate {
+
+    func initJPush(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        let entity = JPUSHRegisterEntity()
+        entity.types = NSInteger(UNAuthorizationOptions.alert.rawValue) |
+        NSInteger(UNAuthorizationOptions.sound.rawValue) |
+        NSInteger(UNAuthorizationOptions.badge.rawValue) |
+        NSInteger(UNAuthorizationOptions.provisional.rawValue)
+        
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        JPUSHService.setInAppMessageDelegate(self)
+        JPUSHService.setup(withOption: launchOptions, appKey: JPUSH_APPKEY, channel: JPUSH_CHANNEl, apsForProduction: IS_Prod, advertisingIdentifier: nil)
+        JPUSHService.registrationIDCompletionHandler { resCode, registrationID in
+            if resCode == 0 {
+                self.print("registrationID获取成功：\(String(describing: registrationID))")
+            } else {
+                self.print("registrationID获取失败，code：\(String(describing: registrationID))")
+            }
+        }
+    }
     
     // MARK - JPUSHRegisterDelegate
     func jpushNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: (() -> Void)) {
@@ -194,7 +195,11 @@ extension AppDelegate: JPUSHRegisterDelegate, JPushInMessageDelegate {
     }
     
     // MARK - JPushInMessageDelegate
-    func jPushInMessageIsAllowedInMessagePop() -> Bool {
-        return true
+    func jPush(inAppMessageDidShow inAppMessage: JPushInAppMessage) {
+        
+    }
+    
+    func jPush(inAppMessageDidClick inAppMessage: JPushInAppMessage) {
+        
     }
 }

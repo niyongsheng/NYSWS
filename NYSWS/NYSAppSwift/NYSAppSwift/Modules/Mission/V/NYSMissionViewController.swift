@@ -8,6 +8,8 @@
 import UIKit
 import NYSUIKit
 import RxSwift
+import BRPickerView
+import JDStatusBarNotification
 
 class NYSMissionViewController: NYSRootViewController {
     
@@ -220,7 +222,7 @@ extension NYSMissionViewController {
         let model = self.dataSourceArr[indexPath.row] as! NYSWeater
         
         let deleteAction = UIContextualAction(style: .destructive, title: "删除") { [weak self] (action, view, completion) in
-            // 删除            
+            // 删除
             self?.dataSourceArr.removeObject(at: indexPath.row)
             self?.tableView.beginUpdates()
             self?.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -241,9 +243,9 @@ extension NYSMissionViewController {
         let promptAction = UIContextualAction(style: .normal, title: "提示") { (action, view, completion) in
             // 提示
             let image = UIImageView(image: UIImage(systemName: "person.icloud.fill"))
-            NotificationPresenter.shared().present(title: "出行建议", subtitle: model.data?[0].air_tips ?? "")
-            NotificationPresenter.shared().displayLeftView(image)
-            NotificationPresenter.shared().dismiss(afterDelay: 1.5) { presenter in
+            NotificationPresenter.shared.present("出行建议", subtitle: model.data?[0].air_tips ?? "")
+            NotificationPresenter.shared.displayLeftView(image)
+            NotificationPresenter.shared.dismiss(animated: true, after: 1.5) { presenter in
                 
             }
             

@@ -117,7 +117,7 @@ extension AppManager {
 extension AppManager {
     
     /// 刷新用户信息
-    /// - Parameter completion: 完成回调
+    /// - Parameter completion: 回调
     func refreshUserInfo(completion: AppManagerCompletion) {
         if !isLogin {
             completion?(false, nil, nil)
@@ -134,12 +134,12 @@ extension AppManager {
                 self?.userInfo = userinfo ?? NYSUserInfo()
     
                 let tagSet: Set<String> = Set(userinfo!.tagArr)
-                JPUSHService.setTags(tagSet, completion: { resultCode, tags, seq in
-                    NYSTools.log("设置标签：\(resultCode == 0 ? "成功" : "失败")")
+                JPUSHService.setTags(tagSet, completion: { iResCode, iTags, seq in
+                    NYSTools.log("设置标签：\(iResCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
 
-                JPUSHService.setAlias(userinfo!.alias, completion: { resultCode, tags, seq in
-                    NYSTools.log("设置别名：\(resultCode == 0 ? "成功" : "失败")")
+                JPUSHService.setAlias(userinfo!.alias!, completion: { iResCode, iAlias, seq in
+                    NYSTools.log("设置别名：\(iResCode == 0 ? "成功" : "失败")")
                 }, seq: self?.seq ?? 0)
                 
                 completion?(true, self?.userInfo, nil)

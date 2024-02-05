@@ -7,12 +7,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 # 公共依赖库
 def commonPods
+  pod 'SFSafeSymbols'
   pod 'FFPopup', '1.1.5'
   pod 'SGQRCode', '4.1.0'
   pod 'SGPagingView', '2.1.0'
   pod 'BRPickerView', '2.8.1'
-  pod 'JDStatusBarNotification'
-#  pod 'SFSafeSymbols'
+  pod 'JDStatusBarNotification', '2.2.1'
+  pod 'NYSKit', :git => 'git@github.com:niyongsheng/NYSKit.git', :tag => '0.0.1'
+  pod 'NYSUIKit', :git => 'git@github.com:niyongsheng/NYSKit.git', :tag => '0.0.1'
   pod 'CocoaDebug', :configurations => ['Debug']
 end
 
@@ -25,21 +27,16 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
   pod 'RxSwift', '6.6.0'
   pod 'RxCocoa', '6.6.0'
   pod 'AcknowList', '3.0.1'
-  pod 'Alamofire', '5.8.0'
   pod 'ExCodable'
-#  pod 'BetterCodable'
+  pod 'BetterCodable'
   pod 'YYModel', '1.0.4'
   pod 'Kingfisher', '7.10.1'
   pod 'lottie-ios', '2.5.3'
   pod 'ZCycleView', '1.0.4'
   pod 'ZLPhotoBrowser', '4.4.0'
   pod 'IQKeyboardManagerSwift', '6.5.11'
-  
-  # Layout
   pod 'FlexLib', '3.1.6'
   pod 'SnapKit', '5.6.0'
-  pod 'TangramKit', '1.4.2'
-  
   # Third
   pod 'AMapLocation'
   pod 'AMapTrack'
@@ -47,6 +44,7 @@ target 'NYSAppSwift' do project './NYSAppSwift/NYSAppSwift.xcodeproj'
 end
 
 # Object-C 示例项目
+install! 'cocoapods', :disable_input_output_paths => true
 target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   use_modular_headers!
   use_frameworks! :linkage => :static
@@ -60,14 +58,13 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
   pod 'WRNavigationBar', '1.4.0'
   pod 'IQKeyboardManager', '6.5.11'
   pod 'ZLPhotoBrowser-objc', '1.0.4'
-#  pod 'TZImagePickerController', '3.4.3'
   pod 'WMZBanner', '1.2.0'
   pod 'XHLaunchAd', '3.9.12'
   pod 'MBProgressHUD', '1.2.0'
-  
+  # Third
   pod 'JPush'
-  pod 'UMDevice'
   pod 'UMAPM'
+  pod 'UMDevice'
   pod 'UMCCommon'
   pod 'UMCCommonLog', '2.0.2'
   pod 'WechatOpenSDK', '2.0.2'
@@ -83,18 +80,4 @@ target 'NYSAppObjC' do project './NYSAppObjC/NYSAppObjC.xcodeproj'
     end
   end
   
-end
-
-# UI Framework
-target 'NYSUIKit' do project './NYSUIKit/NYSUIKit.xcodeproj'
-  pod 'MJRefresh', '3.7.5'
-  pod 'AFNetworking', '4.0.1'
-  pod 'SVProgressHUD', '2.2.5'
-  pod 'DZNEmptyDataSet', '1.8.1'
-end
-
-# Core Framework
-target 'NYSKit' do project './NYSKit/NYSKit.xcodeproj'
-  pod 'AFNetworking', '4.0.1'
-  pod 'SVProgressHUD', '2.2.5'
 end

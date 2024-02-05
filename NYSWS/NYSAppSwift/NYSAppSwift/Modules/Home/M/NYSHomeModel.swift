@@ -8,6 +8,7 @@
 import Foundation
 import NYSUIKit
 import ExCodable
+import YYModel
 
 class NYSHomeModel: NYSBaseObject, Codable {
     
