@@ -16,7 +16,6 @@
 #import <WRNavigationBar/WRNavigationBar.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SafariServices/SFSafariViewController.h>
-#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <JDStatusBarNotification/JDStatusBarNotification-Swift.h>
 //#import "NYSAppObjC-Swift.h"
 @import ZLPhotoBrowser_objc;

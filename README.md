@@ -13,8 +13,8 @@ NYSWS
       <li>
         <a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS">Cocoapod【pod分支】https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS</a>
         <ul>
-          <li><a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppObjC/NYSAppObjC">OC示例项目</a></li>
           <li><a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppSwift/NYSAppSwift">Swift示例项目</a></li>
+          <li><a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS/NYSAppObjC/NYSAppObjC">Objective-C示例项目</a></li>
         </ul>
       </li>
     </ul>
@@ -22,8 +22,8 @@ NYSWS
       <li>
         <a href="https://github.com/niyongsheng/NYSWS/tree/pod/NYSWS">Framework【main分支】https://github.com/niyongsheng/NYSWS/tree/main/NYSWS</a>
         <ul>
-          <li><a href="https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppObjC/NYSAppObjC">OC示例项目</a></li>
           <li><a href="https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppSwift/NYSAppSwift">Swift示例项目</a></li>
+          <li><a href="https://github.com/niyongsheng/NYSWS/tree/main/NYSWS/NYSAppObjC/NYSAppObjC">Objective-C示例项目</a></li>
         </ul>
       </li>
     </ul>

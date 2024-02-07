@@ -229,7 +229,7 @@ static NSString *NYSStatementCellID = @"NYSStatementCell";
         
         [self.tableView.refreshControl endRefreshing];
         [self.tableView reloadData];
-        [TableViewAnimationKit showWithAnimationType:XSTableViewAnimationTypeMove tableView:self.tableView];
+        [NYSTableViewAnimation showWithAnimationType:NYSTableViewAnimationTypeMove tableView:self.tableView];
         
         CGFloat th = self.tableView.contentSize.height;
         if (self.dataSourceArr.count == 0 || th > ContenHeight) th = ContenHeight;

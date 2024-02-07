@@ -60,7 +60,7 @@ NYSHomeCourseVCDelegate
 @property (nonatomic, strong) SGPagingTitleView *pageTitleView;
 @property (nonatomic, strong) SGPagingContentCollectionView *pageContentCollectionView;
 
-@property (nonatomic, strong) PopView *popView;
+@property (nonatomic, strong) NYSPopView *popView;
 @property (nonatomic, strong) PopTableListView *popListView;
 
 @property (nonatomic, strong) NSMutableArray *childVCs;
@@ -261,7 +261,7 @@ NYSHomeCourseVCDelegate
 
 #pragma mark - PopTableCellDelegate
 - (void)cellOnclick:(NSIndexPath *)indexPath tag:(NSInteger)tag {
-    [PopView hidenPopView];
+    [NYSPopView hidenPopView];
     
     if (indexPath.row == 0) {
         [self showHUDCompletion:^{
@@ -295,7 +295,7 @@ NYSHomeCourseVCDelegate
 }
 
 - (void)rightBtnOnclicked:(UIButton *)sender {
-    self.popView = [PopView popUpContentView:self.popListView direct:PopViewDirection_PopUpBottom onView:sender offset:0 triangleView:nil animation:YES];
+    self.popView = [NYSPopView popUpContentView:self.popListView direct:NYSPopViewDirection_PopUpBottom onView:sender offset:0 triangleView:nil animation:YES];
     self.popView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
 }
 

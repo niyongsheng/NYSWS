@@ -36,7 +36,6 @@ PODS:
     - BRPickerView/Base
   - CocoaDebug (1.7.7)
   - Disk (0.6.4)
-  - DZNEmptyDataSet (1.8.1)
   - ExCodable (0.6.0)
   - FFPopup (1.1.5)
   - FLAnimatedImage (1.0.17)
@@ -61,12 +60,11 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.6)
-  - NYSKit (0.0.1):
+  - NYSKit (0.0.6):
     - AFNetworking (~> 4.0)
     - SVProgressHUD (~> 2.0)
-  - NYSUIKit (0.0.1):
-    - DZNEmptyDataSet (~> 1.8)
-    - MJRefresh (~> 3.7)
+  - NYSUIKit (0.0.6):
+    - MJRefresh (~> 3.7.6)
     - NYSKit (~> 0.0.1)
   - ReactiveObjC (3.1.1)
   - RxCocoa (6.6.0):
@@ -129,8 +127,8 @@ DEPENDENCIES:
   - lottie-ios (= 2.5.3)
   - Masonry (= 1.1.0)
   - MBProgressHUD (= 1.2.0)
-  - "NYSKit (from `git@github.com:niyongsheng/NYSKit.git`, tag `0.0.1`)"
-  - "NYSUIKit (from `git@github.com:niyongsheng/NYSKit.git`, tag `0.0.1`)"
+  - "NYSKit (from `git@github.com:niyongsheng/NYSKit.git`, tag `0.0.6`)"
+  - "NYSUIKit (from `git@github.com:niyongsheng/NYSKit.git`, tag `0.0.6`)"
   - ReactiveObjC (= 3.1.1)
   - RxCocoa (= 6.6.0)
   - RxSwift (= 6.6.0)
@@ -163,7 +161,6 @@ SPEC REPOS:
     - BRPickerView
     - CocoaDebug
     - Disk
-    - DZNEmptyDataSet
     - ExCodable
     - FFPopup
     - FLAnimatedImage
@@ -207,18 +204,18 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   NYSKit:
     :git: "git@github.com:niyongsheng/NYSKit.git"
-    :tag: 0.0.1
+    :tag: 0.0.6
   NYSUIKit:
     :git: "git@github.com:niyongsheng/NYSKit.git"
-    :tag: 0.0.1
+    :tag: 0.0.6
 
 CHECKOUT OPTIONS:
   NYSKit:
     :git: "git@github.com:niyongsheng/NYSKit.git"
-    :tag: 0.0.1
+    :tag: 0.0.6
   NYSUIKit:
     :git: "git@github.com:niyongsheng/NYSKit.git"
-    :tag: 0.0.1
+    :tag: 0.0.6
 
 SPEC CHECKSUMS:
   AcknowList: 1aca788e5f1fae79d671c9c48d83ef21027232c0
@@ -230,7 +227,6 @@ SPEC CHECKSUMS:
   BRPickerView: 2531a2d4d0fea0b57a1c738de215af0f88863a2f
   CocoaDebug: b38d31464b91a9775928f8667d114db07b136565
   Disk: dcee5c2e98fb72f9a924cde8da8435b08244a80e
-  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   ExCodable: bffaf3d9623fc0ee464a07441a1711ea9860c0f7
   FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
   FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
@@ -246,8 +242,8 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 2fe7fb43a5167ceda20bb7e63f130c04fd1814a5
-  NYSKit: 5de54de2720a7c4df1e4fe860d06adb34f85331c
-  NYSUIKit: c72193bec11a1e45afd3f61444cf1f98e1e43aa9
+  NYSKit: b632a9f33c4c19103f66ba3276b8d519ece9f123
+  NYSUIKit: 01e93c7f1e7482f8b2052c61dab3a4db036701f0
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
@@ -273,6 +269,6 @@ SPEC CHECKSUMS:
   ZLPhotoBrowser: fb978a8ea6ed228a146694cd475c9642f0cb7c91
   ZLPhotoBrowser-objc: c7657d3bc85ae231884e058d0e3638f619164736
 
-PODFILE CHECKSUM: 0054a56766f4cfd2201a68124f51fa58e1b2a3f2
+PODFILE CHECKSUM: ed58fe0d5e1a90521cda4113fa0b3da1e1d34a26
 
 COCOAPODS: 1.12.0
