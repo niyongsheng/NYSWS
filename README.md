@@ -7,7 +7,7 @@ NYSWS
 > ios simple componentized solution [framework](https://github.com/niyongsheng/NYSKit).
 
 ## APP
-  <details open="open">
+  <details>
     <summary>构建方式</summary>
     <ul>
       <li>
